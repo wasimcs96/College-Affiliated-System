@@ -4,6 +4,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('front');
 
+
+
 Route::group([
     'namespace' => 'Auth',
 ], function () {
@@ -220,3 +222,5 @@ Route::get('/frontend', function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/*Consultant*/

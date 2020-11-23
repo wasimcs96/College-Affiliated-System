@@ -43,7 +43,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
-        ])->assignRole('student');
+        ])->assignRole('client');
        }
        if($role==2){
         return User::create([

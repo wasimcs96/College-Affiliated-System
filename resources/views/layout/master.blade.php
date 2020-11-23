@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/site.min.css') }}">
 </head>
 
-<body class="theme-blush font-montserrat">
+<body class="theme-blush font-montserrat light_version">
 
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
@@ -49,7 +49,22 @@
     @include('layout.megamenu')
     @include('layout.searchbar')
     @include('layout.rightbar')
+
+@if(Auth()->User()->isAdmin())
     @include('layout.sidebar')
+@endif
+
+@if(Auth()->User()->isConsultant())
+    @include('layout.consultantsidebar')
+@endif
+
+@if(Auth()->User()->isClient())
+   @include('layout.clientsidebar')
+@endif
+
+@if(Auth()->User()->isUniversity())
+   @include('layout.universitysidebar')
+@endif
 
     <div id="main-content">
         <div class="container-fluid">

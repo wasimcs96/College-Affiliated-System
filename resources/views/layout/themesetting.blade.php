@@ -38,7 +38,7 @@
                 Light Version
                 <div class="float-right">
                     <label class="switch">
-                        <input type="checkbox" class="lv-btn">
+                        <input type="checkbox" class="lv-btn" >
                         <span class="slider round"></span>
                     </label>
                 </div>

@@ -25,7 +25,9 @@ trait UserMethod
     public function isUniversity()
     {
         return $this->hasRole("university");
+
     }
+
     /**
      * @return bool
      */
