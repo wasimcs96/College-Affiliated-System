@@ -1,39 +1,77 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
+<header class="header single-header">
+    <div class="container">
+        <div class="main-navigation">
+            <div class="navbar navbar-expand-lg bsnav bsnav-sticky bsnav-sticky-slide bsnav-transparent bsnav-scrollspy">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        {{-- <img src="{{ asset('frontEnd/assets/img/logo/logo-3.png')}}" class="logo-display" alt="thumb">
+                        <img src="{{ asset('frontEnd/assets/img/logo/logo.png') }}" class="logo-scrolled" alt="thumb"> --}}
+                        <h1>Logo</h1>
+                    </a>
+                    <button class="navbar-toggler toggler-spring"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse justify-content-sm-end">
+                        <ul class="navbar-nav navbar-mobile ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">Home <i class="caret ti-plus"></i></a>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link" href="index.html">Home varsion 1</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="index-2.html">Home varsion 2</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="index-3.html">Home varsion 3</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">Pages <i class="caret ti-plus"></i></a>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link" href="advisor.html">Advisor</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="author-details.html">Advisor Single</a></li>
 
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title> Project - A Gateway to Universities </title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
-	<!-- Place favicon.ico in the root directory -->
-	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontEnd/assets/img/logo/favicon.png') }}">
-	<!-- ========== Start Stylesheet ========== -->
-	<link href="{{ asset('frontEnd/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/fontawesome.min.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/magnific-popup.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/owl.carousel.min.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/owl.theme.default.min.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/animate.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/bsnav.min.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/flaticon-set.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/site-animation.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/slick.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/themify-icons.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/swiper.min.css') }}" rel="stylesheet" />
-	<link href="{{ asset('frontEnd/assets/css/style.css') }}" rel="stylesheet">
-	<link href="{{ asset('frontEnd/assets/css/responsive.css') }}" rel="stylesheet" />
-	<!-- ========== End Stylesheet ========== -->
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	  <script src="assets/js/html5/html5shiv.min.js"></script>
-	  <script src="assets/js/html5/respond.min.js"></script>
-	<![endif]-->
-
-</head>
-<body class="demo-1" id="bdy">
+                                    <li class="nav-item"><a class="nav-link" href="event.html">Event</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="event-details.html">Event Single</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="404.html">404 Page</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">Courses <i class="caret ti-plus"></i></a>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link" href="course.html">Courses</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="course-details.html">Courses Details</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">Blog <i class="caret ti-plus"></i></a>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="blog-standard.html">Blog Standard</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="blog-grid.html">Blog Grid</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="single.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">Shop <i class="caret ti-plus"></i></a>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="shop-details.html">Shop Single</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="cart.html">Shop Cart</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        </ul>
+                        <div class="header-serarch-btn ab un-srs">
+                            <input type="checkbox" class="frm" id="frm">
+                            <label for="frm"><i class="ti ti-search"></i></label>
+                            <form class="header-form">
+                                <input type="text" placeholder="search ...">
+                                <button type="button" class="srs-btn"><i class="ti ti-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bsnav-mobile">
+                <div class="bsnav-mobile-overlay"></div>
+                <div class="navbar"></div>
+            </div>
+        </div>
+    </div>
+</header>
