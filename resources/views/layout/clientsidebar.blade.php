@@ -30,12 +30,12 @@
         </div>
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu">
-                <li class="{{ Request::segment(2) === 'index3' ? 'active' : null }}"><a href="{{route('dashboard.index3')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) === 'dashboard' ? 'active' : null }}"><a href="{{route('client.dashboard')}}"><i class="icon fa-dashboard"></i><span>Dashboard</span></a></li>
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
-                <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>My Favourites</span></a></li>
-                <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('client.bookings')}}"><i class="icon-diamond"></i><span>Booking</span></a></li>
-                <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('client.mystatus')}}"><i class="icon-diamond"></i><span>My Status</span></a></li>
-                <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Chat and Feedback</span></a></li>
+                <li class="{{ Request::segment(2) === 'myfavourites' ? 'active' : null }}"><a href="{{route('client.myfavourites')}}"><i class="icon-diamond"></i><span>My Favourites</span></a></li>
+                <li class="{{ Request::segment(2) === 'bookings' ? 'active' : null }}"><a href="{{route('client.bookings')}}"><i class="icon-list"></i><span>Booking</span></a></li>
+                <li class="{{ Request::segment(2) === 'mystatus' ? 'active' : null }}"><a href="{{route('client.mystatus')}}"><i class="icon-direction"></i><span>My Status</span></a></li>
+                <li class="{{ Request::segment(2) === 'feedback' ? 'active' : null }}"><a href="{{route('client.feedback')}}"><i class="icon-bubbles"></i><span>Chat and Feedback</span></a></li>
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Offer Received</span></a></li>
                 <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Accepted</span></a></li>
                 <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>PR/Migration</span></a></li>

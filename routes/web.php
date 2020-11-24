@@ -5,6 +5,17 @@ Route::get('/', function () {
 })->name('front');
 
 
+Route::get('consultant',function (){
+    return view('frontEnd.consultant.consultant');
+})->name('consultant');
+
+Route::get('consultant/book', function(){
+    return view('frontEnd.consultant.book');
+})->name('consultant.book');
+
+Route::get('university', function(){
+    return view('frontEnd.university.university');
+});
 
 Route::group([
     'namespace' => 'Auth',
@@ -32,7 +43,7 @@ Route::get('home', 'UserController@index')->name('home');
 
 
 
-Route::get('Landing/index', function(){
+Route::get('index', function(){
     return view('frontEnd.index');
 })->name('frontend.index');
 /*
@@ -46,7 +57,7 @@ Route::get('Landing/index', function(){
 |
 */
 
-Route::get('/', function () { return redirect('Landing/index'); });
+Route::get('/', function () { return redirect('index'); });
 
 /* My Page */
 Route::get('mypage', function ()                { return redirect('mypage/index'); });

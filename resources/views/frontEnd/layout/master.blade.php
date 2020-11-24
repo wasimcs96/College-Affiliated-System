@@ -26,7 +26,7 @@
 	<link href="{{ asset('frontEnd/assets/css/swiper.min.css') }}" rel="stylesheet" />
 	<link href="{{ asset('frontEnd/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('frontEnd/assets/css/responsive.css') }}" rel="stylesheet" />
-    @yield('per_page_script')
+    @yield('per_page_style')
 	<!-- ========== End Stylesheet ========== -->
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -38,11 +38,15 @@
 
 </head>
 <body class="demo-1" id="bdy">
+    <div class="se-pre-con"></div>
+    <div class="clearfix"></div>
 
+	<main class="main">
 
+        @yield('content')
 
-
-
+    </main>
+<div class="clearfix"></div>
 <!--  data-background=" {{ asset('frontEnd/assets/img/footer/ftr-2-bg.jpg')}}" -->
 <footer class="footer-2 footer-shape">
     <div class="footer-circle">
@@ -99,12 +103,12 @@
                 <div class="footer-widget-box footer-link">
                     <h4 class="foo-widget-title">Gallery</h4>
                     <div class="footer-gallery grid-3">
-                        <img src="{{ asset('frontEnd/assets/img/footer/4.png') }}" alt="thumb">
-                        <img src="{{ asset('frontEnd/assets/img/footer/5.png') }}" alt="thumb">
-                        <img src="{{ asset('frontEnd/assets/img/footer/4.png') }}" alt="thumb">
-                        <img src="{{ asset('frontEnd/assets/img/footer/5.png') }}" alt="thumb">
-                        <img src="{{ asset('frontEnd/assets/img/footer/6.png') }}" alt="thumb">
-                        <img src="{{ asset('frontEnd/assets/img/footer/4.png') }}" alt="thumb">
+                        <img src="{{ asset('frontEnd/assets/img/partner/brand-5.jpg') }}" alt="thumb">
+                        <img src="{{ asset('frontEnd/assets/img/partner/brand-5.jpg') }}" alt="thumb">
+                        <img src="{{ asset('frontEnd/assets/img/partner/brand-5.jpg') }}" alt="thumb">
+                        <img src="{{ asset('frontEnd/assets/img/partner/brand-5.jpg') }}" alt="thumb">
+                        <img src="{{ asset('frontEnd/assets/img/partner/brand-5.jpg') }}" alt="thumb">
+                        <img src="{{ asset('frontEnd/assets/img/partner/brand-5.jpg') }}" alt="thumb">
                     </div>
                 </div>
             </div>

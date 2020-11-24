@@ -766,6 +766,76 @@ select:focus {
 	z-index: 1;
 }
 
+.custom-btn {
+	padding: 1.3rem 2.4rem;
+	border: 2px solid var(--theme-color);
+	color: var(--bg-color);
+	text-transform: capitalize;
+	font-weight: 400;
+	-webkit-border-radius: 3rem;
+	border-radius: 3rem;
+	-webkit-transition: .4s cubic-bezier(0,0,1,1);
+	transition: .4s cubic-bezier(0,0,1,1);
+	position: relative;
+	z-index: 1;
+}
+.cus-btn{
+    padding: 1.3rem 2.4rem;
+	border: 2px solid var(--theme-color);
+	color: var(--black-color);
+	text-transform: capitalize;
+    font-weight: 400;
+    font-family: var(--font-family-2);
+	font-size: 1.4rem;
+
+	-webkit-border-radius: 3rem;
+	border-radius: 3rem;
+	-webkit-transition: .4s cubic-bezier(0,0,1,1);
+	transition: .4s cubic-bezier(0,0,1,1);
+	position: relative;
+	z-index: 1;
+}
+.cus-btn:hover {
+    background-color: #FEBC34;
+   }
+
+
+.btn-m{
+        margin-top: 2px;
+        padding: 0.3rem 1.0rem;
+        border: 1px solid var(--theme-color);
+        color: var(--heading-color);
+        text-transform: capitalize;
+        font-weight: 400;
+        font-family: var(--font-family-2);
+        font-size: 1.4rem;
+        -webkit-border-radius: 2rem;
+        border-radius: 2rem;
+        -webkit-transition: .4s cubic-bezier(0,0,1,1);
+        transition: .2s cubic-bezier(0,0,1,1);
+        position: relative;
+        z-index: 1;
+
+}
+.btn-m:hover {
+  background-color:  #FEBC34;
+   }
+.custm-btn {
+	padding: 1.3rem 2.4rem;
+	border: 2px solid var(--theme-color);
+	color: var(--black-color);
+	text-transform: capitalize;
+	font-weight: 400;
+	-webkit-border-radius: 3rem;
+	border-radius: 3rem;
+	-webkit-transition: .4s cubic-bezier(0,0,1,1);
+	transition: .4s cubic-bezier(0,0,1,1);
+	position: relative;
+    z-index: 1;
+    /* width:50%; */
+    text-align: center;
+    margin-top: 16px;
+}
 .theme-btn i {
 	margin-left: 7px;
 }
@@ -796,12 +866,17 @@ select:focus {
 .theme-btn.btn-2::before {
 	background-color: var(--theme-color-2);
 }
-
+.custom-btn:hover {
+ color: #FEBC34;
+}
+.custm-btn:hover {
+    color: #FEBC34;
+   }
 .theme-btn-active,
 .theme-btn:hover {
 	color: var(--white-color);
 }
-
+/* .custom-btn, */
 .theme-btn-active::before,
 .theme-btn:hover::before {
 	opacity: 1;
@@ -869,7 +944,7 @@ select:focus {
 .header-1-dropdown {
     display: flex;
 }
-
+/*
 .cus-btn {
     color: var(--heading-color);
     background-color: transparent;
@@ -877,11 +952,11 @@ select:focus {
 	outline: none;
 	font-family: var(--font-family-2);
 	font-size: 1.4rem;
-}
-
-button.cus-btn:focus {
+} */
+/*
+.cus-btn:focus {
    outline: none;
-}
+} */
 
 .headerslogan span {
 	color: var(--heading-color);
@@ -3640,6 +3715,15 @@ ul.author-list li:last-child {
     padding: 1.3rem;
 }
 
+.ddgghh{
+    border-radius: 50%;
+    border: 6px solid #eee;
+    padding: 0.3rem;
+    width: 100px;
+}
+    .kkll{
+        vertical-align: inline  ;
+}
 .author-bio-wrapper {
 	-webkit-box-shadow: 0 3px 3rem rgba(139,139,139,.16);
 	box-shadow: 0 3px 3rem rgba(139,139,139,.16);
@@ -4280,6 +4364,10 @@ ul.author-list li:last-child {
     text-align: center;
     margin-top: 5rem;
 }
+.moree-btn {
+    text-align: center;
+    margin-top: 5rem;
+}
 
 .more-btn a {
 	box-shadow: 0px 3px 30px rgba(207, 207, 207, 0.157);
@@ -4292,7 +4380,23 @@ ul.author-list li:last-child {
 	-webkit-border-radius: 3rem;
 	border-radius: 3rem;
 }
+.moree-btn a {
+	box-shadow: 0px 3px 30px rgba(207, 207, 207, 0.157);
+	border: 1px solid rgba(139,139,139,0.157);
+	padding: 12px 3rem;
+	line-height: 20px;
+    font-size: 16px;
+    color: var(--heading-color);
+    text-transform: capitalize;
+    border: 2px solid var(--theme-color);
+	/* color: var(--bg-color); */
 
+	-webkit-border-radius: 3rem;
+	border-radius: 3rem;
+}
+.moree-btn a:hover {
+    color: #FEBC34;
+   }
 /*-------------------------------------------------------
 18.Event css
 ---------------------------------------------------------*/
@@ -5093,7 +5197,32 @@ ul.author-list li:last-child {
     border-radius: 3px;
 	outline: none;
 }
+.FulNam{
+height: 4.5rem;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #FCFCFC;
+    border: 1px solid #EFEFEF;
+    border-radius: 3px;
+    outline: none;
+}
 
+.FulNamo{
+    height: 3.5rem;
+
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #FCFCFC;
+        border: 1px solid #EFEFEF;
+        border-radius: 3px;
+        outline: none;
+    }
 .contact-inputs .contact-form textarea.form-control {
 	height: 7.3rem;
 }
