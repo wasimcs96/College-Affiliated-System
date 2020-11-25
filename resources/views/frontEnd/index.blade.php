@@ -1,7 +1,7 @@
 @extends('frontEnd.layout.master')
 <!-- Start PreLoader
     ============================================= -->
-    @include('frontEnd.layout.headerindex')
+
 
 
  @section('content')
@@ -9,7 +9,7 @@
 
 	<!-- Start header
     ============================================= -->
-
+    @include('frontEnd.layout.headerindex')
     <!-- End header -->
 
 
