@@ -31,16 +31,16 @@
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu">
 
-                <li class="{{ Request::segment(2) === 'dashboard' ? 'active' : null }}"><a href="{{route('university.dashboard')}}"><i class="icon-fa-dashboard"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) === 'dashboard' ? 'active' : null }}"><a href="{{route('university.dashboard')}}"><i class="fa-dashboard"></i><span>Dashboard</span></a></li>
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
                 <li class="{{ Request::segment(2) === 'students' ? 'active' : null }}"><a href="{{route('university.students')}}"><i class="icon-users"></i><span>Students</span></a></li>
                 <li class="{{ Request::segment(2) === 'services' ? 'active' : null }}"><a href="{{route('university.services')}}"><i class="icon-speedometer"></i><span>Services</span></a></li>
-                <li class="{{ Request::segment(2) === 'courses' ? 'active' : null }}"><a href="{{route('university.courses')}}"><i class="icon-book"></i><span>Courses</span></a></li>
+                <li class="{{ Request::segment(2) === 'courses' ? 'active' : null }}"><a href="{{route('university.courses')}}"><i class="icon-notebook"></i><span>Courses</span></a></li>
                 <li class="{{ Request::segment(2) === 'introtoconsultant' ? 'active' : null }}"><a href="{{route('university.introtoconsultant')}}"><i class="icon-user"></i><span>Intro to new consultant</span></a></li>
 
                 <li class="{{ Request::segment(2) === 'gopremium' ? 'active' : null }}"><a href="{{route('university.gopremium')}}"><i class="icon-diamond"></i><span>Go Premium</span></a></li>
                 <li class="{{ Request::segment(2) === 'adevents' ? 'active' : null }}"><a href="{{route('university.adevents')}}"><i class="icon-picture"></i><span>Ad</span></a></li>
-                <li class="{{ Request::segment(2) === 'feedback' ? 'active' : null }}"><a href="{{route('university.feedback')}}"><i class="icon-bubbles"></i><span>FeedBack</span></a></li>
+                {{-- <li class="{{ Request::segment(2) === 'feedback' ? 'active' : null }}"><a href="{{route('university.feedback')}}"><i class="icon-bubbles"></i><span>FeedBack</span></a></li> --}}
                 {{-- <li class="header">Main</li> --}}
                 {{-- <li class="{{ Request::segment(1) === 'mypage' ? 'active open' : null }}">
                     <a href="#myPage" class="has-arrow"><i class="icon-home"></i><span>My Page</span></a>

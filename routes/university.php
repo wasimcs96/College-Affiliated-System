@@ -23,7 +23,7 @@ Route::get('courses',function(){
 })->name('university.courses');
 
 /* services Section */
-Route::get('sservices',function(){
+Route::get('services',function(){
     return view('university.services');
 })->name('university.services');
 
