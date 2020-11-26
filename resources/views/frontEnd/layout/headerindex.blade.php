@@ -114,18 +114,11 @@
                                     @csrf
                                 </form></li>
                             @else
-                            {{-- <li class="nav-item" ><a class="nav-link" id="openLoginModal" data-target="#myModal" href="#">Login</a></li> --}}
-                            {{-- <div class="log-in mt-0">
-                                <a id="openLoginModal" data-target="#myModal"
-                                   href="#">Login</a>
-                                @include('frontend.layout.modals.loginModal')
+                            {{-- <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/register">Signup</a></li> --}}
+                            <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#">Login</a><li>
 
-                            </div> --}}
-                           <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#">Login</a><li>
-
-                            <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">Signup</a></li>
-                            {{-- <li class="nav-item"><a class="nav-link" href="#0" data-signin="login" data-type="login">Sign in</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#0" data-signin="signup" data-type="signup">New account</a></li> --}}
+                                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">Signup</a></li>
                             @endif
                             <!-- <li class="nav-item"><a class="nav-link" href="about.html">About</a></li> -->
                              <li class="nav-item dropdown">
