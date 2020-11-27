@@ -46,6 +46,10 @@ Route::get('home', 'UserController@index')->name('home');
 Route::get('index', function(){
     return view('frontEnd.index');
 })->name('frontend.index');
+
+Route::get('recoverpassword',function(){
+    return view('frontEnd.recover');
+})->name('frontEnd.recover');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
