@@ -19,11 +19,7 @@
                                 <label class="label-text">Email</label>
                                 <div class="form-group">
                                     <span class="la la-user form-icon"></span>
-                                    {{-- <input class="form-control{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" placeholder="Type your Email" value="{{ old('email') }}" required autofocus>
-                                    @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span> --}}
+
                                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
 
                                     @if ($errors->has('email'))
@@ -51,7 +47,7 @@
                                     </span>
                                 @endif
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" href="{{ route('frontEnd.recover') }}">
                                     {{ __('Forgot Password?') }}
                                 </a>
                                         @endif
@@ -62,6 +58,7 @@
                             </div><!-- end input-box -->
                             <div class="btn-box pt-3 pb-4">
                                 <button type="submit" class="theme-btn w-100">Login Account</button>
+                              New to Website? <a href="#" id="signupalready" data-toggle="modal" data-target="#registerModal">Sign Up</a>
                             </div>
                             <div class="action-box text-center">
                                 <p class="font-size-14">Or Login Using</p>
@@ -89,7 +86,17 @@
               show: true
           });
       });
+
+
       </script>
       @endif
+      <script>
+      $(document).on('click','#signupalready', function (e) {
 
+        //   $('#loginPopupForm').removeClass('show').addClass('fade').attr("aria-hidden","true").css("display","none").removeAttr("aria-modal");
+        // $('.modal-backdrop').remove();
+// console.log('qwswd');
+$('#loginPopupForm').modal('hide');
+      });
+    </script>
 @endsection

@@ -83,7 +83,7 @@
                                 <a href="/dashboard/index2" class="theme-btn theme-btn-small">Dashboard</a>
 @else
 
-                                <a href="#" class="theme-btn theme-btn-small theme-btn-transparent mr-1" data-toggle="modal" data-target="#signupPopupForm">Sign Up</a>
+                                <a href="#" class="theme-btn theme-btn-small theme-btn-transparent mr-1" data-toggle="modal" data-target="#registerModal">Sign Up</a>
                                  <a href="#" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Login</a>
                             @endif
                                 </div>
@@ -100,7 +100,7 @@
                     <div class="menu-wrapper">
                         <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('frontEnd/assets/images/logo.png') }}" alt="logo"></a>
+                            <a href="index.html"><img src="{{ asset('frontEnd/assets/images/education-portal.png') }}" alt="logo"></a>
                             <div class="menu-toggler">
                                 <i class="la la-bars"></i>
                                 <i class="la la-times"></i>
@@ -110,23 +110,26 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <a href="#">Home <i class="la la-angle-down"></i></a>
+                                        Home
+                                    </li>
+                                    <li>
+                                        <a href="#">Services <i class="la la-angle-down"></i></a>
                                         <ul class="dropdown-menu-item">
-                                            <li><a href="index.html">Home - main</a></li>
-                                            <li><a href="index2.html">Home - Hotel</a></li>
-                                            <li><a href="index3.html">Home - Activity</a></li>
-                                            <li><a href="index4.html">Home - Car</a></li>
+                                            <li><a href="index.html">Courses</a></li>
+                                            <li><a href="index2.html">Universities</a></li>
+                                            <li><a href="index3.html">Consultants</a></li>
+                                            {{-- <li><a href="index4.html">Home - Car</a></li>
                                             <li><a href="index5.html">Home - Cruise</a></li>
-                                            <li><a href="index6.html">Home - Flight</a></li>
+                                            <li><a href="index6.html">Home - Flight</a></li> --}}
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#">Tour <i class="la la-angle-down"></i></a>
+                                        <a href="#">B.Tech <i class="la la-angle-down"></i></a>
                                         <ul class="dropdown-menu-item">
-                                            <li><a href="tour-fullwidth.html">Tour Full width</a></li>
-                                            <li><a href="tour-grid.html">Tour Grid</a></li>
-                                            <li><a href="tour-list.html">Tour List</a></li>
-                                            <li><a href="tour-left-sidebar.html">Tour Left Sidebar</a></li>
+                                            <li><a href="tour-fullwidth.html">Top Branches</a></li>
+                                            <li><a href="tour-grid.html">Top Colleges</a></li>
+                                            <li><a href="tour-list.html">Top Courses</a></li>
+                                            <li><a href="tour-left-sidebar.html">Top Consultants</a></li>
                                             <li><a href="tour-right-sidebar.html">Tour Right Sidebar</a></li>
                                             <li><a href="tour-details.html">Tour details</a></li>
                                             <li><a href="tour-booking.html">Tour Booking</a></li>

@@ -85,4 +85,9 @@ Route::get('feedback',function(){
     return view('consultant.feedback');
 })->name('consultant.feedback');
 
+/* application Section */
+Route::get('application',function(){
+    return view('consultant.application');
+})->name('consultant.application');
+
 });

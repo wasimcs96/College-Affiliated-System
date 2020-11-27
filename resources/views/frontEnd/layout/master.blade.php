@@ -54,7 +54,7 @@
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
                     <div class="footer-logo padding-bottom-30px">
-                        <a href="index.html" class="foot__logo"><img src="{{ asset('frontEnd/assets/images/logo.png') }}" alt="logo"></a>
+                        <a href="index.html" class="foot__logo"><img src="{{ asset('frontEnd/assets/images/education-portal.png') }}" alt="logo"></a>
                     </div><!-- end logo -->
                     <p class="footer__desc">Morbi convallis bibendum urna ut viverra. Maecenas consequat</p>
                     <ul class="list-items pt-3">
@@ -138,8 +138,8 @@
             <div class="col-lg-7">
                 <div class="copy-right padding-top-30px">
                     <p class="copy__desc">
-                        &copy; Copyright Trizen 2020. Made with
-                        <span class="la la-heart"></span> by <a href="https://themeforest.net/user/techydevs/portfolio">TechyDevs</a>
+                        &copy; Copyright Trizen 2020. Made with  <span class="la la-heart"></span>
+                        {{-- <span class="la la-heart"></span> by <a href="https://themeforest.net/user/techydevs/portfolio">TechyDevs</a> --}}
                     </p>
                 </div><!-- end copy-right -->
             </div><!-- end col-lg-7 -->
@@ -163,12 +163,12 @@
 <!-- end back-to-top -->
 
 <!-- end modal-shared -->
-@include('frontEnd.modals.registerModal')
+
 <!-- end modal-popup -->
 
 <!-- end modal-shared -->
 @include('frontEnd.modals.loginModal')
-
+@include('frontEnd.modals.registerModal')
 <!-- Template JS Files -->
 <script src="{{ asset('frontEnd/assets/js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/jquery-ui.js') }}"></script>

@@ -65,6 +65,7 @@
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
                 <li class="{{ Request::segment(2) === 'students' ? 'active' : null }}"><a href="{{route('consultant.students')}}"><i class="icon-users"></i><span>Students</span></a></li>
                 <li class="{{ Request::segment(2) === 'search' ? 'active' : null }}"><a href="{{route('consultant.search')}}"><i class="icon fa-search"></i><span>Search</span></a></li>
+                <li class="{{ Request::segment(2) === 'application' ? 'active' : null }}"><a href="{{route('consultant.application')}}"><i class="icon-list"></i><span>Application</span></a></li>
                 <li class="{{ Request::segment(2) === 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="icon-list"></i><span>Bookings</span></a></li>
                 <li class="{{ Request::segment(2) === 'offerrecieved' ? 'active' : null }}"><a href="{{route('consultant.offerrecieved')}}"><i class="icon fa-arrow-down"></i><span>Offer Received</span></a></li>
                 <li class="{{ Request::segment(2) === 'accepted' ? 'active' : null }}"><a href="{{route('consultant.accepted')}}"><i class="icon fa-check-square-o"></i><span>Accepted</span></a></li>
