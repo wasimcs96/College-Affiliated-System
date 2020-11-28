@@ -100,9 +100,10 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary btn-block">
                                 {{ __('Register') }}
                             </button>
+                            Already Member? <a href="#" id="loginalready" data-toggle="modal" data-target="#loginPopupForm">Login</a>
                         </div>
                     </div>
                 </form>
@@ -144,7 +145,7 @@ $(function () {
     });
 })
 </script>
-{{-- <script>
+<script>
     $(document).on('click','#loginalready', function (e) {
 
       //   $('#loginPopupForm').removeClass('show').addClass('fade').attr("aria-hidden","true").css("display","none").removeAttr("aria-modal");
@@ -152,5 +153,5 @@ $(function () {
 // console.log('qwswd');
 $('#registerModal').modal('hide');
     });
-  </script> --}}
+  </script>
 @endsection

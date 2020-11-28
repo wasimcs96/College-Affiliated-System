@@ -1,12 +1,13 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Consultant')
-@section('title', 'Booking')
+@section('title', 'University')
 
 @section('content')
+
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Bookings<small>All booking requests</small></h2>
+            <h2>My Universities<small>Universities Consultants Associated With</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -25,42 +26,36 @@
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
-                            <th> <b>
-                                Name</b></th>
-                            <th><b> Mobile </b></th>
-                            <th><b> E-mail</b></th>
-                            <th><b> Universities</b></th>
-                            <th><b>Date</b></th>
-                            <th><b>
-                                Time</b></th>
-                            <th><b>Actions</b></th>
+                            <th>
+                              Name</th>
+                            <th> Code</th>
+                            <th> Fees</th>
+                            <th> Type</th>
+                            <th> Location</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
-
+                        <tr>
+                            <th>
+                                Name</th>
+                              <th> Code</th>
+                              <th> Fees</th>
+                              <th> Type</th>
+                              <th> Location</th>
+                              <th>Actions</th>
+                        </tr>
                     </tfoot>
                     <tbody>
                         <tr>
-                            <td>Sufiyan</td>
-                            <td>1234567890</td>
-                            <td>email@email.com</td>
-                            <td>3</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('consultant.booking.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td>RTU</td>
+                            <td>FY-312</td>
+                            <td>$ 500</td>
+                            <td> UG&PG</td>
+                            <td>Indian</td>
+                            <td>
+                            <a href="{{route('consultant.university.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
-
-                        <tr>
-                            <td>Qureshi</td>
-                            <td>1234567890</td>
-                            <td>@email.com</td>
-                            <td>3</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('consultant.booking.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
-                        </tr>
-
-
 
                     </tbody>
                 </table>
@@ -68,7 +63,11 @@
         </div>
     </div>
 </div>
-</div>
+
+
+
+
+
 @stop
 
 @section('page-styles')
@@ -77,13 +76,13 @@
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}"/>
 <style>
-td.details-control {
-background: url('../assets/images/details_open.png') no-repeat center center;
-cursor: pointer;
+    td.details-control {
+    background: url('../assets/images/details_open.png') no-repeat center center;
+    cursor: pointer;
 }
-tr.shown td.details-control {
-    background: url('../assets/images/details_close.png') no-repeat center center;
-}
+    tr.shown td.details-control {
+        background: url('../assets/images/details_close.png') no-repeat center center;
+    }
 </style>
 @stop
 
@@ -98,4 +97,5 @@ tr.shown td.details-control {
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
+
 @stop

@@ -11,7 +11,7 @@ $(function () {
             setButtonWavesEffect(event);
         }
     });
-    
+
     //Horizontal form basic
     $('#wizard_horizontal').steps({
         headerTag: 'h2',
@@ -44,7 +44,7 @@ $(function () {
         form.steps({
         headerTag: 'h3',
         bodyTag: 'fieldset',
-        transitionEffect: 'slideLeft',        
+        transitionEffect: 'slideLeft',
         onStepChanging: function (event, currentIndex, newIndex) {
             if (currentIndex > newIndex) { return true; }
 

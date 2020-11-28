@@ -103,4 +103,11 @@
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/forms/form-wizard.js') }}"></script>
+
+<script>
+    $(function () {
+        $('#registerForm').submit(function (e) {
+
+    });
+</script>
 @stop
