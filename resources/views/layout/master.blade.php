@@ -38,7 +38,7 @@
     </div>
 </div>
 
-@include('layout.themesetting')
+{{-- @include('layout.themesetting') --}}
 
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>

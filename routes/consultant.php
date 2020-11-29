@@ -29,6 +29,10 @@ Route::get('bookings',function(){
     return view('consultant.bookings');
 })->name('consultant.bookings');
 
+Route::get('booking_show',function(){
+  return view('consultant.booking_show');
+})->name('consultant.booking.show');
+
 
 /* applied Section */
 Route::get('applied',function(){
@@ -89,5 +93,17 @@ Route::get('feedback',function(){
 Route::get('application',function(){
     return view('consultant.application');
 })->name('consultant.application');
+
+/* associated university */
+Route::get('associated_university',function(){
+    return view('consultant.university');
+})->name('consultant.associated_university');
+
+Route::get('university_show',function(){
+    return view('consultant.university_show');
+})->name('consultant.university.show');
+
+
+
 
 });

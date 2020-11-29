@@ -64,21 +64,28 @@
                 <li class="{{ Request::segment(2) === 'dashboard' ? 'active' : null }}"><a href="{{route('consultant.dashboard')}}"><i class="icon fa-dashboard"></i><span>Dashboard</span></a></li>
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
                 <li class="{{ Request::segment(2) === 'students' ? 'active' : null }}"><a href="{{route('consultant.students')}}"><i class="icon-users"></i><span>Students</span></a></li>
-                <li class="{{ Request::segment(2) === 'search' ? 'active' : null }}"><a href="{{route('consultant.search')}}"><i class="icon fa-search"></i><span>Search</span></a></li>
-                <li class="{{ Request::segment(2) === 'application' ? 'active' : null }}"><a href="{{route('consultant.application')}}"><i class="icon-list"></i><span>Application</span></a></li>
+                {{-- <li class="{{ Request::segment(2) === 'search' ? 'active' : null }}"><a href="{{route('consultant.search')}}"><i class="icon fa-search"></i><span>Search</span></a></li> --}}
                 <li class="{{ Request::segment(2) === 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="icon-list"></i><span>Bookings</span></a></li>
-                <li class="{{ Request::segment(2) === 'offerrecieved' ? 'active' : null }}"><a href="{{route('consultant.offerrecieved')}}"><i class="icon fa-arrow-down"></i><span>Offer Received</span></a></li>
+                <li class="{{ Request::segment(2) === 'application' ? 'active' : null }}"><a href="{{route('consultant.application')}}"><i class="icon-list"></i><span>Application</span></a></li>
+                <li class="{{ Request::segment(2) === 'university' ? 'active' : null }}"><a href="{{route('consultant.associated_university')}}"><i class="icon-graduation"></i><span>Associated University</span></a></li>
+
+                {{-- <li class="{{ Request::segment(2) === 'offerrecieved' ? 'active' : null }}"><a href="{{route('consultant.offerrecieved')}}"><i class="icon fa-arrow-down"></i><span>Offer Received</span></a></li>
                 <li class="{{ Request::segment(2) === 'accepted' ? 'active' : null }}"><a href="{{route('consultant.accepted')}}"><i class="icon fa-check-square-o"></i><span>Accepted</span></a></li>
                 <li class="{{ Request::segment(2) === 'readytofly' ? 'active' : null }}"><a href="{{route('consultant.readytofly')}}"><i class="icon fa-plane"></i><span>Ready to fly</span></a></li>
-                <li class="{{ Request::segment(2) === 'prmigration' ? 'active' : null }}"><a href="{{route('consultant.prmigration')}}"><i class="icon-automobile"></i><span>PR/Migration</span></a></li>
-                <li class="{{ Request::segment(2) === 'services' ? 'active' : null }}"><a href="{{route('consultant.services')}}"><i class="icon-speedometer"></i><span>Services</span></a></li>
-                <li class="{{ Request::segment(2) === 'gopremium' ? 'active' : null }}"><a href="{{route('consultant.gopremium')}}"><i class="icon-diamond"></i><span>Go Premium</span></a></li>
+                <li class="{{ Request::segment(2) === 'prmigration' ? 'active' : null }}"><a href="{{route('consultant.prmigration')}}"><i class="icon-automobile"></i><span>PR/Migration</span></a></li> --}}
+                <li class="{{ Request::segment(1) === 'projects' ? 'active open' : null }}">
+                    <a href="#gopremium" class="has-arrow"><i class="icon-diamond"></i><span>Go Premium</span></a>
+                    <ul>
+                     <li class="{{ Request::segment(2) === 'taskboard' ? 'active' : null }}"><a href="{{route('projects.taskboard')}}">Services</a></li>
+
+                     </ul>
+                </li>
                 <li class="{{ Request::segment(2) === 'universityrequest' ? 'active' : null }}"><a href="{{route('consultant.universityrequest')}}"><i class="icon fa-graduation-cap"></i><span>University Request</span></a></li>
                 <li class="{{ Request::segment(2) === 'feedback' ? 'active' : null }}"><a href="{{route('consultant.feedback')}}"><i class="icon-bubbles"></i><span>FeedBack</span></a></li>
 
                 {{-- <li class="header">HR, Project & Job</li>
                 <li class="{{ Request::segment(1) === 'projects' ? 'active open' : null }}">
-                    <a href="#Project" class="has-arrow"><i class="icon-flag"></i><span>Project</span></a>
+                    <a href="#Project" class="has-arrow"><i class="icon-flag"></i><span></span></a>
                     <ul> --}}
                         {{-- <li class="{{ Request::segment(2) === 'taskboard' ? 'active' : null }}"><a href="{{route('projects.taskboard')}}">Search</a></li>
                         <li class="{{ Request::segment(2) === 'projectlist' ? 'active' : null }}"><a href="{{route('projects.projectlist')}}">Booking</a></li>

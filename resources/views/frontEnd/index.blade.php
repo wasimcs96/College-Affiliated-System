@@ -23,14 +23,14 @@
                             <h2 class="sec__title cd-headline zoom">
                                 Amazing <span class="cd-words-wrapper">
                                 <b class="is-visible">Tours</b>
-                                <b>Adventures</b>
-                                <b>Flights</b>
-                                <b>Hotels</b>
-                                <b>Cars</b>
-                                <b>Cruises</b>
-                                <b>Package Deals</b>
-                                <b>Fun</b>
-                                <b>People</b>
+                                <b>Courses</b>
+                                <b>Colleges</b>
+                                <b>Universities</b>
+                                <b>Consultants</b>
+                                <b>Services</b>
+                                <b>Guidance</b>
+                                <b>Assistance</b>
+                                {{-- <b>People</b> --}}
                                 </span>
                                 Waiting for You
                             </h2>
@@ -40,32 +40,32 @@
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center active" id="flight-tab" data-toggle="tab" href="#flight" role="tab" aria-controls="flight" aria-selected="true">
-                                    <i class="la la-plane mr-1"></i>Flights
+                                    <i class="la la-book mr-1"></i>Courses
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center" id="hotel-tab" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel" aria-selected="false">
-                                    <i class="la la-hotel mr-1"></i>Hotels
+                                    <i class="la la-school mr-1"></i>Colleges
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center" id="package-tab" data-toggle="tab" href="#package" role="tab" aria-controls="package" aria-selected="false">
-                                    <i class="la la-shopping-bag mr-1"></i>Vacation Packages
+                                    <i class="la la-university mr-1"></i>Universities
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center" id="car-tab" data-toggle="tab" href="#car" role="tab" aria-controls="car" aria-selected="true">
-                                    <i class="la la-car mr-1"></i>Cars
+                                    <i class="la la-user mr-1"></i>Consultants
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center" id="cruise-tab" data-toggle="tab" href="#cruise" role="tab" aria-controls="cruise" aria-selected="false">
-                                    <i class="la la-ship mr-1"></i>Cruises
+                                    <i class="la la-exchange mr-1"></i>Services
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center" id="tour-tab" data-toggle="tab" href="#tour" role="tab" aria-controls="tour" aria-selected="false">
-                                    <i class="la la-globe mr-1"></i>Tours
+                                    <i class="la la-globe mr-1"></i>Abroad
                                 </a>
                             </li>
                         </ul>
