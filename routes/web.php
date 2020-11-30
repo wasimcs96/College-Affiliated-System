@@ -4,18 +4,42 @@ Route::get('/', function () {
     return view('welcome');
 })->name('front');
 
+/* frontend routes */
+/* Courses route */
 
-Route::get('consultant',function (){
-    return view('frontEnd.consultant.consultant');
-})->name('consultant');
+Route::get('course_all', function(){
+    return view('frontEnd.courses.course_all');
+})->name('course_all');
 
-Route::get('consultant/book', function(){
+Route::get('course_detail', function(){
+    return view('frontEnd.courses.course_detail');
+})->name('course_detail');
+
+/* consultants route */
+
+Route::get('consultant_all',function (){
+    return view('frontEnd.consultant.consultant_all');
+})->name('consultant_all');
+
+Route::get('consultant_detail',function(){
+    return view('frontEnd.consultant.consultant_detail');
+})->name('consultant_detail');
+
+Route::get('consultant_book', function(){
     return view('frontEnd.consultant.book');
 })->name('consultant.book');
 
-Route::get('university', function(){
-    return view('frontEnd.university.university');
-});
+/* university route */
+
+Route::get('university_detail', function(){
+    return view('frontEnd.university.university_detail');
+})->name('university_detail');
+
+Route::get('university_all', function(){
+    return view('frontEnd.university.university_all');
+})->name('university_all');
+
+/* frontend routes end */
 
 Route::group([
     'namespace' => 'Auth',

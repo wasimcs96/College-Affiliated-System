@@ -55,17 +55,17 @@
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-1</th>
+                        <th scope="row">Student University Preference-1</th>
                         <td>RTU</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-2</th>
+                        <th scope="row">Student University Preference-2</th>
                         <td>BTU</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-3</th>
+                        <th scope="row">Student University Preference-3</th>
                         <td>CTU</td>
                     </tr>
 
@@ -121,7 +121,7 @@
 </script>
 <script>
    $("#accept").click(function() {
-    $("#accept").html("Create Application").attr("href","{{route('consultant.application')}}")
+    $("#accept").html("Create Application").addClass("href","{{route('consultant.application')}}")
     $("#dec").html("Close")
     // console.log("sddsk");
     });
