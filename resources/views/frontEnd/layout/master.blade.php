@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/style.css') }}">
     @yield('per_page_style')
+    <script src="https://kit.fontawesome.com/d8864c88b6.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- start cssload-loader -->
