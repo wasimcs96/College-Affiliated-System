@@ -4,6 +4,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('front');
 
+
 /* frontend routes */
 /* Courses route */
 

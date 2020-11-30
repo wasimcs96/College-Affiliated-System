@@ -27,6 +27,10 @@ trait UserMethod
         return $this->hasRole("university");
 
     }
+    public function isSubadmin()
+    {
+        return $this->hasRole("subadmin");
+    }
 
     /**
      * @return bool
