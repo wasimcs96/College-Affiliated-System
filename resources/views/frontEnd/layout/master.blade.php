@@ -60,7 +60,7 @@
                     <ul class="list-items pt-3">
                         <li>3015 Grand Ave, Coconut Grove,<br> Cerrick Way, FL 12345</li>
                         <li>+123-456-789</li>
-                        <li><a href="#">trizen@yourwebsite.com</a></li>
+                        <li><a href="#">educationportal@yourwebsite.com</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -86,7 +86,7 @@
                         <li><a href="#">USA Hotels</a></li>
                         <li><a href="#">USA Car Hire</a></li>
                         <li><a href="#">Create an Account</a></li>
-                        <li><a href="#">Trizen Reviews</a></li>
+                        <li><a href="#">Our Reviews</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -138,7 +138,7 @@
             <div class="col-lg-7">
                 <div class="copy-right padding-top-30px">
                     <p class="copy__desc">
-                        &copy; Copyright Trizen 2020. Made with  <span class="la la-heart"></span>
+                        &copy; Copyright &#169; 2020. Made with  <span class="la la-heart"></span>
                         {{-- <span class="la la-heart"></span> by <a href="https://themeforest.net/user/techydevs/portfolio">TechyDevs</a> --}}
                     </p>
                 </div><!-- end copy-right -->
