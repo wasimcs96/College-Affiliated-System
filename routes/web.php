@@ -4,7 +4,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('front');
 
+// Route::get('details', function () {
 
+// 	$ip = '122.176.16.3';
+//     $data = \Location::get($ip);
+//     dd($data);
+   
+// });
 /* frontend routes */
 /* Courses route */
 
