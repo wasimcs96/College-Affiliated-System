@@ -1,5 +1,5 @@
 @extends('frontEnd.layout.master')
-@section('per_page_style')
+{{-- @section('per_page_style')
 <link rel="stylesheet" href="{{ asset('assets/vendor/themify-icons/themify-icons.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/themify-icons/demo-files/demo.css') }}">
 <style>
@@ -7,7 +7,7 @@
     .icons-list div i {display: inline-block;width: 40px;margin: 0;text-align: center;vertical-align: middle;-webkit-transition: font-size 0.2s;-moz-transition: font-size 0.2s;transition: font-size 0.2s;}
     .icons-list div:hover i {font-size: 26px;}
 </style>
-@endsection
+@endsection --}}
 
 @section('content')
 <!-- ================================
@@ -1791,33 +1791,38 @@
                     <div class="btn-box padding-top-35px">
                         <a href="#" class="theme-btn">Explore All</a>
                     </div> --}}
-                    <div class="row">
-                    <div class="card bg-light m-1" style="max-width: 18rem;">
+                    <div class="row12" style="    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
+                    margin-right: 7px;
+                    margin-left: 8px;">
+                    <div class="card bg-light ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
                         <div class="card-header">1st Step</div>
                         <div class="card-body">
-                          <h5 class="card-title">Light card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <h5 class="card-title">Hire Consultant</h5>
+                          <p class="card-text">djfhgdhghdjkhgkjdfghdfgjdddddddddddddhflgd.</p>
                         </div>
                       </div>
-                      <div class="card bg-light m-1" style="max-width: 18rem;">
+                      <div class="card bg-light ml-4 mb-2 " style="max-width: 15rem; max-height:15rem">
                         <div class="card-header">2nd Step</div>
                         <div class="card-body">
-                          <h5 class="card-title">Light card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <h5 class="card-title">Choose University</h5>
+                          <p class="card-text">sdjfhsjkhfshhkshkhskjghjkfhjkgsajkgjkfhghdfdf.</p>
                         </div>
                       </div>
-                      <div class="card bg-light m-1" style="max-width: 18rem;">
+                      <div class="card bg-light ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
                         <div class="card-header">3rd Step</div>
                         <div class="card-body">
-                          <h5 class="card-title">Light card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <h5 class="card-title">Verify Documents</h5>
+                          <p class="card-text">Some quick example text to build on the carddt.</p>
                         </div>
                       </div>
-                      <div class="card bg-light m-1" style="max-width: 18rem;">
+                      <div class="card bg-light ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
                         <div class="card-header">4th Step</div>
                         <div class="card-body">
-                          <h5 class="card-title">Light card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <h5 class="card-title">Get Visa </h5>
+                          <p class="card-text">Some quick example text to build on the card tit.</p>
                         </div>
                       </div>
                     </div>
@@ -1853,8 +1858,7 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="fa fa-user-md"></i>
-                                        </div><!-- end info-icon-->
+                                            <i class="las la-book-medical"></i>                                        </div><!-- end info-icon-->
                                         <div class="info-content">
                                             <h4 class="info__title"><a href="#">Medical</a></h4>
                                             {{-- <p class="info__desc">
@@ -1866,8 +1870,7 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="fa fa-bar-chart-o"></i>
-                                        </div><!-- end info-icon-->
+                                            <i class="las la-chart-line"></i>                                        </div><!-- end info-icon-->
                                         <div class="info-content">
                                             <h4 class="info__title"><a href="#">Managment</a></h4>
                                             {{-- <p class="info__desc">
@@ -1879,8 +1882,7 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="fa fa-microchip"></i>
-                                        </div><!-- end info-icon-->
+                                            <i class="las la-tools"></i>                                        </div><!-- end info-icon-->
                                         <div class="info-content">
                                             <h4 class="info__title"><a href="#">Engineering</a></h4>
                                             {{-- <p class="info__desc">
@@ -1892,10 +1894,9 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-briefcase"></i>
-                                        </div><!-- end info-icon-->
+                                            <i class="las la-flask"></i>                                        </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">In Business</a></h4>
+                                            <h4 class="info__title"><a href="#">Science</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1905,10 +1906,9 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-hotel"></i>
-                                        </div><!-- end info-icon-->
+                                            <i class="las la-palette"></i>                                                                                </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Handpicked Hotels</a></h4>
+                                            <h4 class="info__title"><a href="#">Arts</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1918,10 +1918,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-user-secret"></i>
-                                        </div><!-- end info-icon-->
+                                            <i class="lar la-money-bill-alt"></i>
+                                            </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Private Guide</a></h4>
+                                            <h4 class="info__title"><a href="#">Commerce</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1931,10 +1931,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-map"></i>
-                                        </div><!-- end info-icon-->
+                                            <i class="las la-book"></i>
+                                                </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Location Manager</a></h4>
+                                            <h4 class="info__title"><a href="#">Education</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1944,10 +1944,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-thumbs-up"></i>
-                                        </div><!-- end info-icon-->
+                                            <i class="las la-capsules"></i>
+                                                </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Best Travel Agent</a></h4>
+                                            <h4 class="info__title"><a href="#">Pharmacy</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1957,10 +1957,9 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-plane"></i>
-                                        </div><!-- end info-icon-->
+                                            <i class="las la-gavel"></i>                                        </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Flight Deals</a></h4>
+                                            <h4 class="info__title"><a href="#">Law</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1970,10 +1969,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-anchor"></i>
+                                            <i class="las la-user-nurse"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Amazing Tour</a></h4>
+                                            <h4 class="info__title"><a href="#">Paramedical</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1983,10 +1982,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-support"></i>
-                                        </div><!-- end info-icon-->
+                                            <i class="las la-tshirt"></i>
+                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Support Cases</a></h4>
+                                            <h4 class="info__title"><a href="#">Design</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1996,10 +1995,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-briefcase"></i>
+                                            <i class="las la-tractor"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">In Business</a></h4>
+                                            <h4 class="info__title"><a href="#">Agriculture</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2009,10 +2008,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-hotel"></i>
+                                            <i class="las la-building"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Handpicked Hotels</a></h4>
+                                            <h4 class="info__title"><a href="#">Architecture</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2022,10 +2021,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-user-secret"></i>
+                                            <i class="las la-desktop"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Private Guide</a></h4>
+                                            <h4 class="info__title"><a href="#">Animation</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2035,10 +2034,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-map"></i>
+                                            <i class="las la-tooth"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Location Manager</a></h4>
+                                            <h4 class="info__title"><a href="#">Dental</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2048,10 +2047,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-thumbs-up"></i>
+                                            <i class="las la-plane"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Best Travel Agent</a></h4>
+                                            <h4 class="info__title"><a href="#">Aviation</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2061,10 +2060,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-plane"></i>
+                                            <i class="las la-laptop-code"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Flight Deals</a></h4>
+                                            <h4 class="info__title"><a href="#">Computer Application</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2074,10 +2073,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-anchor"></i>
+                                            <i class="las la-microphone"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Amazing Tour</a></h4>
+                                            <h4 class="info__title"><a href="#">Mass Communication</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2087,10 +2086,10 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-support"></i>
+                                            <i class="las la-paw"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Support Cases</a></h4>
+                                            <h4 class="info__title"><a href="#">Vetenary Science</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2100,68 +2099,17 @@
                                 <div class="col-lg-2 responsive-column">
                                     <div class="icon-box icon-layout-4">
                                         <div class="info-icon">
-                                            <i class="la la-briefcase"></i>
+                                            <i class="las la-concierge-bell"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">In Business</a></h4>
+                                            <h4 class="info__title"><a href="#">Hotel Managment</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
                                         </div><!-- end info-content -->
                                     </div><!-- end icon-box -->
                                 </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="la la-hotel"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Handpicked Hotels</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="la la-user-secret"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Private Guide</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="la la-map"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Location Manager</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="la la-thumbs-up"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Best Travel Agent</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
+                                <!-- end col-lg-3 -->
                             </div><!-- end row -->
                             {{-- <div class="row">
                                 <div class="col-lg-12">
@@ -2181,7 +2129,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading text-center">
-                    <h2 class="sec__title line-height-55">Most Popular Round-trip <br> Flight Destinations</h2>
+                    <h2 class="sec__title line-height-55">Browse by Destinations</h2>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
@@ -2228,13 +2176,13 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    New York<i class="la la-exchange mx-2"></i>Los Angeles
+                                                 RTU
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$340</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$22132</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2245,13 +2193,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    New York<i class="la la-exchange mx-2"></i>Barcelona
+                                                   BTU
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$740</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2262,13 +2211,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    New York<i class="la la-exchange mx-2"></i>Dallas
+                                                    IIT
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$140</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2279,13 +2229,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    New York<i class="la la-exchange mx-2"></i>San Francisco
+                                                    MIT
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$340</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2296,13 +2247,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    New York<i class="la la-exchange mx-2"></i>Miami
+                                                KANPUR
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$100</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2313,13 +2265,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    New York<i class="la la-exchange mx-2"></i>London
+                                                BOMBAY
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$640</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2334,13 +2287,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Hong Kong<i class="la la-exchange mx-2"></i>Singapore
+                                                Harvard
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$340</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2351,13 +2305,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                   Hong Kong<i class="la la-exchange mx-2"></i>Tokyo
+                                                Cambridge
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$740</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2368,13 +2323,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                   Hong Kong<i class="la la-exchange mx-2"></i>Seoul
+                                               sdfdsgdfsg
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$140</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2385,13 +2341,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                   Hong Kong<i class="la la-exchange mx-2"></i>Manila
+                                                sdfkjksddf
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$340</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2402,13 +2359,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                   Hong Kong<i class="la la-exchange mx-2"></i>Nepal
+                                                sdjafsjdfjs
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$100</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2419,13 +2377,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                   Hong Kong<i class="la la-exchange mx-2"></i>Beijing
+                                                fsjfjsjf
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$640</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2440,13 +2399,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Seoul<i class="la la-exchange mx-2"></i>Nepal
+                                                sdfsdkfjlsdajfl
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$340</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2457,13 +2417,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Seoul<i class="la la-exchange mx-2"></i>Taipei
+                                                sdfghj
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$740</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2474,13 +2435,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Seoul<i class="la la-exchange mx-2"></i>Beijing
+                                                jhgfdf
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$140</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2491,13 +2453,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Seoul<i class="la la-exchange mx-2"></i>Tokyo
+                                                sjdfhjskhf
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$340</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2508,13 +2471,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Seoul<i class="la la-exchange mx-2"></i>Hong kong
+                                                jdgkjdfgjdlfgkl
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$100</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2525,13 +2489,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Seoul<i class="la la-exchange mx-2"></i>Bangkok
+                                                sdjfhskjdhfkj
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$640</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2546,13 +2511,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Tokyo<i class="la la-exchange mx-2"></i>Taipei
+                                                hdfjshdfhdsh
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$340</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2563,13 +2529,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Tokyo<i class="la la-exchange mx-2"></i>Taipei
+                                                fsdfsdfsdf
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$740</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2580,13 +2547,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Tokyo<i class="la la-exchange mx-2"></i>Beijing
+                                                sdhfsjdfhkshdkfhs
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$140</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2597,13 +2565,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Tokyo<i class="la la-exchange mx-2"></i>Tokyo
+                                                sdfkskldflksf
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$340</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2614,13 +2583,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Tokyo<i class="la la-exchange mx-2"></i>Hong kong
+                                               sdjfsjkdhfjkhsdhfs
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$100</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2631,13 +2601,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Tokyo<i class="la la-exchange mx-2"></i>Hanoi
+                                                sdfsdfsdfsd
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$640</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2652,13 +2623,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Beijing<i class="la la-exchange mx-2"></i>Taipei
+                                                sdfdsjjdfgjkl
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$340</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2669,13 +2641,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Beijing<i class="la la-exchange mx-2"></i>Taipei
+                                                dfkdslfksjdj
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$740</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2686,13 +2659,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Beijing<i class="la la-exchange mx-2"></i>Beijing
+                                              sdfsdfsdfsd
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$140</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Feess</span><span class="price__num">$140</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2703,13 +2677,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Beijing<i class="la la-exchange mx-2"></i>Tokyo
+                                                sdfsdfsdfs
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$340</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2720,13 +2695,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Beijing<i class="la la-exchange mx-2"></i>Hong kong
+                                                sdfsdfsdf
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$100</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2737,13 +2713,14 @@
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
                                                 <a href="flight-single.html" class="d-flex align-items-center">
-                                                    Beijing<i class="la la-exchange mx-2"></i>Hanoi
+                                               sdfsdfsdfsda
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">City: Rajasthan</p>
+
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">From</span><span class="price__num">$640</span></div>
+                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
                                             <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
@@ -2763,7 +2740,77 @@
 <!-- ================================
     END ROUND-TRIP AREA
 ================================= -->
-
+<section class="funfact-area padding-bottom-70px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading text-center">
+                    <h2 class="sec__title">Milestone of 10 Years</h2>
+                </div><!-- end section-heading -->
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+        <div class="counter-box counter-box-2 margin-top-60px mb-0">
+            <div class="row">
+                <div class="col-lg-3 responsive-column">
+                    <div class="counter-item counter-item-layout-2 d-flex">
+                        <div class="counter-icon flex-shrink-0">
+                            <i class="la la-users"></i>
+                        </div>
+                        <div class="counter-content">
+                            <div>
+                                <span class="counter" data-from="0" data-to="2000"  data-refresh-interval="6">0</span>
+                                <span class="count-symbol">+</span>
+                            </div>
+                            <p class="counter__title"> Satisfied Students </p>
+                        </div><!-- end counter-content -->
+                    </div><!-- end counter-item -->
+                </div><!-- end col-lg-3 -->
+                <div class="col-lg-3 responsive-column">
+                    <div class="counter-item counter-item-layout-2 d-flex">
+                        <div class="counter-icon flex-shrink-0">
+                            <i class="la la-building"></i>
+                        </div>
+                        <div class="counter-content">
+                            <div>
+                                <span class="counter" data-from="0" data-to="35"  data-refresh-interval="6">0</span>
+                                <span class="count-symbol">k</span>
+                            </div>
+                            <p class="counter__title">Collages</p>
+                        </div><!-- end counter-content -->
+                    </div><!-- end counter-item -->
+                </div><!-- end col-lg-3 -->
+                <div class="col-lg-3 responsive-column">
+                    <div class="counter-item counter-item-layout-2 d-flex">
+                        <div class="counter-icon flex-shrink-0">
+                            <i class="las la-user-tie"></i>
+                        </div>
+                        <div class="counter-content">
+                            <div>
+                                <span class="counter" data-from="0" data-to="4000"  data-refresh-interval="6">0</span>
+                                <span class="count-symbol">+</span>
+                            </div>
+                            <p class="counter__title">Consultants</p>
+                        </div><!-- end counter-content -->
+                    </div><!-- end counter-item -->
+                </div><!-- end col-lg-3 -->
+                <div class="col-lg-3 responsive-column">
+                    <div class="counter-item counter-item-layout-2 d-flex">
+                        <div class="counter-icon flex-shrink-0">
+                            <i class="la la-check-circle"></i>
+                        </div>
+                        <div class="counter-content">
+                            <div>
+                                <span class="counter" data-from="0" data-to="402"  data-refresh-interval="6">0</span>
+                                <span class="count-symbol">k</span>
+                            </div>
+                            <p class="counter__title">Booking</p>
+                        </div><!-- end counter-content -->
+                    </div><!-- end counter-item -->
+                </div><!-- end col-lg-3 -->
+            </div><!-- end row -->
+        </div><!-- end counter-box -->
+    </div><!-- end container -->
+</section>
 <!-- ================================
     START HOTEL AREA
 ================================= -->
@@ -2772,7 +2819,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading text-center">
-                    <h2 class="sec__title line-height-55">Most Popular Hotel <br> Destinations</h2>
+                    <h2 class="sec__title line-height-55">Most Popular <br> Universities</h2>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
@@ -2785,14 +2832,14 @@
                                 <a href="hotel-single.html" class="d-block">
                                     <img src="{{ asset('frontEnd/assets/images/img1.jpg') }}" alt="hotel-img">
                                 </a>
-                                <span class="badge">Bestseller</span>
+                                <span class="badge">featured</span>
                                 <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
                                     <i class="la la-heart-o"></i>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">The Millennium Hilton New York</a></h3>
-                                <p class="card-meta">124 E Huron St, New york</p>
+                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
+                                <p class="card-meta">Rajasthan technical University</p>
                                 <div class="card-rating">
                                     <span class="badge text-white">4.4/5</span>
                                     <span class="review__text">Average</span>
@@ -2800,9 +2847,8 @@
                                 </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
-                                        <span class="price__from">From</span>
+                                        <span class="price__from">Fees</span>
                                         <span class="price__num">$88.00</span>
-                                        <span class="price__text">Per night</span>
                                     </p>
                                     <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                 </div>
@@ -2818,8 +2864,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">Best Western Grant Park Hotel</a></h3>
-                                <p class="card-meta">124 E Huron St, Chicago</p>
+                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
+                                <p class="card-meta">Rajasthan technical University</p>
                                 <div class="card-rating">
                                     <span class="badge text-white">4.4/5</span>
                                     <span class="review__text">Average</span>
@@ -2827,9 +2873,8 @@
                                 </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
-                                        <span class="price__from">From</span>
-                                        <span class="price__num">$58.00</span>
-                                        <span class="price__text">Per night</span>
+                                        <span class="price__from">Fees</span>
+                                        <span class="price__num">$88.00</span>
                                     </p>
                                     <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                 </div>
@@ -2846,8 +2891,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">Hyatt Regency Maui Resort & Spa</a></h3>
-                                <p class="card-meta">200 Nohea Kai Dr, Lahaina, HI</p>
+                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
+                                <p class="card-meta">Rajasthan technical University</p>
                                 <div class="card-rating">
                                     <span class="badge text-white">4.4/5</span>
                                     <span class="review__text">Average</span>
@@ -2855,9 +2900,8 @@
                                 </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
-                                        <span class="price__from">From</span>
+                                        <span class="price__from">Fees</span>
                                         <span class="price__num">$88.00</span>
-                                        <span class="price__text">Per night</span>
                                     </p>
                                     <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                 </div>
@@ -2874,8 +2918,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">Four Seasons Resort Maui at Wailea</a></h3>
-                                <p class="card-meta">3900 Wailea Alanui Drive, Kihei, HI</p>
+                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
+                                <p class="card-meta">Rajasthan technical University</p>
                                 <div class="card-rating">
                                     <span class="badge text-white">4.4/5</span>
                                     <span class="review__text">Average</span>
@@ -2883,9 +2927,8 @@
                                 </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
-                                        <span class="price__from">From</span>
+                                        <span class="price__from">Fees</span>
                                         <span class="price__num">$88.00</span>
-                                        <span class="price__text">Per night</span>
                                     </p>
                                     <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                 </div>
@@ -2901,8 +2944,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">Ibis Styles London Heathrow</a></h3>
-                                <p class="card-meta"> 272 Bath Road, Harlington, England</p>
+                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
+                                <p class="card-meta">Rajasthan technical University</p>
                                 <div class="card-rating">
                                     <span class="badge text-white">4.4/5</span>
                                     <span class="review__text">Average</span>
@@ -2910,9 +2953,8 @@
                                 </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
-                                        <span class="price__from">From</span>
+                                        <span class="price__from">Fees</span>
                                         <span class="price__num">$88.00</span>
-                                        <span class="price__text">Per night</span>
                                     </p>
                                     <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                 </div>
@@ -2928,8 +2970,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">Hotel Europe Saint Severin Paris</a></h3>
-                                <p class="card-meta">38-40 Rue Saint Séverin, Paris, Paris</p>
+                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
+                                <p class="card-meta">Rajasthan technical University</p>
                                 <div class="card-rating">
                                     <span class="badge text-white">4.4/5</span>
                                     <span class="review__text">Average</span>
@@ -2937,9 +2979,8 @@
                                 </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
-                                        <span class="price__from">From</span>
+                                        <span class="price__from">Fees</span>
                                         <span class="price__num">$88.00</span>
-                                        <span class="price__text">Per night</span>
                                     </p>
                                     <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                 </div>
@@ -2950,14 +2991,14 @@
                                 <a href="hotel-single.html" class="d-block">
                                     <img src="{{ asset('frontEnd/assets/images/img1.jpg') }}" alt="hotel-img">
                                 </a>
-                                <span class="badge">Bestseller</span>
+                                <span class="badge">Popular</span>
                                 <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
                                     <i class="la la-heart-o"></i>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">The Millennium Hilton New York</a></h3>
-                                <p class="card-meta">124 E Huron St, New york</p>
+                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
+                                <p class="card-meta">Rajasthan technical University</p>
                                 <div class="card-rating">
                                     <span class="badge text-white">4.4/5</span>
                                     <span class="review__text">Average</span>
@@ -2965,9 +3006,8 @@
                                 </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
-                                        <span class="price__from">From</span>
+                                        <span class="price__from">Fees</span>
                                         <span class="price__num">$88.00</span>
-                                        <span class="price__text">Per night</span>
                                     </p>
                                     <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                 </div>
@@ -2983,8 +3023,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">Best Western Grant Park Hotel</a></h3>
-                                <p class="card-meta">124 E Huron St, Chicago</p>
+                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
+                                <p class="card-meta">Rajasthan technical University</p>
                                 <div class="card-rating">
                                     <span class="badge text-white">4.4/5</span>
                                     <span class="review__text">Average</span>
@@ -2992,9 +3032,8 @@
                                 </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
-                                        <span class="price__from">From</span>
-                                        <span class="price__num">$58.00</span>
-                                        <span class="price__text">Per night</span>
+                                        <span class="price__from">Fees</span>
+                                        <span class="price__num">$88.00</span>
                                     </p>
                                     <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                 </div>
@@ -3013,172 +3052,172 @@
 <!-- ================================
     START DESTINATION AREA
 ================================= -->
-<section class="destination-area section--padding">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-8">
-                <div class="section-heading">
-                    <h2 class="sec__title">Top Visited Places</h2>
-                    <p class="sec__desc pt-3">Morbi convallis bibendum urna ut viverra Maecenas quis
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-8 -->
-            <div class="col-lg-4">
-                <div class="btn-box btn--box text-right">
-                    <a href="tour-grid.html" class="theme-btn">Discover More</a>
+    {{-- <section class="destination-area section--padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="section-heading">
+                        <h2 class="sec__title">Top Visited Places</h2>
+                        <p class="sec__desc pt-3">Morbi convallis bibendum urna ut viverra Maecenas quis
+                    </div><!-- end section-heading -->
+                </div><!-- end col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="btn-box btn--box text-right">
+                        <a href="tour-grid.html" class="theme-btn">Discover More</a>
+                    </div>
                 </div>
-            </div>
-        </div><!-- end row -->
-        <div class="row padding-top-50px">
-            <div class="col-lg-4">
-                <div class="card-item destination-card">
-                    <div class="card-img">
-                        <img src="{{ asset('frontEnd/assets/images/destination-img2.jpg') }}" alt="destination-img">
-                        <span class="badge">new york</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title"><a href="tour-details.html">Main Street Park</a></h3>
-                        <div class="card-rating d-flex align-items-center">
-                            <span class="ratings d-flex align-items-center mr-1">
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star-o"></i>
-                                <i class="la la-star-o"></i>
-                            </span>
-                            <span class="rating__text">(70694 Reviews)</span>
+            </div><!-- end row -->
+            <div class="row padding-top-50px">
+                <div class="col-lg-4">
+                    <div class="card-item destination-card">
+                        <div class="card-img">
+                            <img src="{{ asset('frontEnd/assets/images/destination-img2.jpg') }}" alt="destination-img">
+                            <span class="badge">new york</span>
                         </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p class="tour__text">
-                                50 Tours
-                            </p>
-                            <p>
-                                <span class="price__from">Price</span>
-                                <span class="price__num">$58.00</span>
-                            </p>
+                        <div class="card-body">
+                            <h3 class="card-title"><a href="tour-details.html">Main Street Park</a></h3>
+                            <div class="card-rating d-flex align-items-center">
+                                <span class="ratings d-flex align-items-center mr-1">
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star-o"></i>
+                                    <i class="la la-star-o"></i>
+                                </span>
+                                <span class="rating__text">(70694 Reviews)</span>
+                            </div>
+                            <div class="card-price d-flex align-items-center justify-content-between">
+                                <p class="tour__text">
+                                    50 Tours
+                                </p>
+                                <p>
+                                    <span class="price__from">Price</span>
+                                    <span class="price__num">$58.00</span>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- end card-item -->
-                <div class="card-item destination-card">
-                    <div class="card-img">
-                        <img src="{{ asset('frontEnd/assets/images/destination-img3.jpg') }}" alt="destination-img">
-                        <span class="badge">chicago</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title"><a href="tour-details.html">Chicago Cultural Center</a></h3>
-                        <div class="card-rating d-flex align-items-center">
-                            <span class="ratings d-flex align-items-center mr-1">
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star-o"></i>
-                            </span>
-                            <span class="rating__text">(70694 Reviews)</span>
+                    </div><!-- end card-item -->
+                    <div class="card-item destination-card">
+                        <div class="card-img">
+                            <img src="{{ asset('frontEnd/assets/images/destination-img3.jpg') }}" alt="destination-img">
+                            <span class="badge">chicago</span>
                         </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p class="tour__text">
-                                50 Tours
-                            </p>
-                            <p>
-                                <span class="price__from">Price</span>
-                                <span class="price__num">$68.00</span>
-                            </p>
+                        <div class="card-body">
+                            <h3 class="card-title"><a href="tour-details.html">Chicago Cultural Center</a></h3>
+                            <div class="card-rating d-flex align-items-center">
+                                <span class="ratings d-flex align-items-center mr-1">
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star-o"></i>
+                                </span>
+                                <span class="rating__text">(70694 Reviews)</span>
+                            </div>
+                            <div class="card-price d-flex align-items-center justify-content-between">
+                                <p class="tour__text">
+                                    50 Tours
+                                </p>
+                                <p>
+                                    <span class="price__from">Price</span>
+                                    <span class="price__num">$68.00</span>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4">
-                <div class="card-item destination-card">
-                    <div class="card-img">
-                        <img src="{{ asset('frontEnd/assets/images/destination-img4.jpg') }}" alt="destination-img">
-                        <span class="badge">Hong Kong</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title"><a href="tour-details.html">Lugard Road Lookout</a></h3>
-                        <div class="card-rating d-flex align-items-center">
-                            <span class="ratings d-flex align-items-center mr-1">
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star-o"></i>
-                                <i class="la la-star-o"></i>
-                            </span>
-                            <span class="rating__text">(70694 Reviews)</span>
+                    </div><!-- end card-item -->
+                </div><!-- end col-lg-4 -->
+                <div class="col-lg-4">
+                    <div class="card-item destination-card">
+                        <div class="card-img">
+                            <img src="{{ asset('frontEnd/assets/images/destination-img4.jpg') }}" alt="destination-img">
+                            <span class="badge">Hong Kong</span>
                         </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p class="tour__text">
-                                150 Tours
-                            </p>
-                            <p>
-                                <span class="price__from">Price</span>
-                                <span class="price__num">$79.00</span>
-                                <span class="price__num before-price">$89.00</span>
-                            </p>
+                        <div class="card-body">
+                            <h3 class="card-title"><a href="tour-details.html">Lugard Road Lookout</a></h3>
+                            <div class="card-rating d-flex align-items-center">
+                                <span class="ratings d-flex align-items-center mr-1">
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star-o"></i>
+                                    <i class="la la-star-o"></i>
+                                </span>
+                                <span class="rating__text">(70694 Reviews)</span>
+                            </div>
+                            <div class="card-price d-flex align-items-center justify-content-between">
+                                <p class="tour__text">
+                                    150 Tours
+                                </p>
+                                <p>
+                                    <span class="price__from">Price</span>
+                                    <span class="price__num">$79.00</span>
+                                    <span class="price__num before-price">$89.00</span>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- end card-item -->
-                <div class="card-item destination-card">
-                    <div class="card-img">
-                        <img src="{{ asset('frontEnd/assets/images/destination-img5.jpg') }}" alt="destination-img">
-                        <span class="badge">Las Vegas</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title"><a href="tour-details.html">Planet Hollywood Resort</a></h3>
-                        <div class="card-rating d-flex align-items-center">
-                            <span class="ratings d-flex align-items-center mr-1">
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star-o"></i>
-                            </span>
-                            <span class="rating__text">(70694 Reviews)</span>
+                    </div><!-- end card-item -->
+                    <div class="card-item destination-card">
+                        <div class="card-img">
+                            <img src="{{ asset('frontEnd/assets/images/destination-img5.jpg') }}" alt="destination-img">
+                            <span class="badge">Las Vegas</span>
                         </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p class="tour__text">
-                                50 Tours
-                            </p>
-                            <p>
-                                <span class="price__from">Price</span>
-                                <span class="price__num">$88.00</span>
-                            </p>
+                        <div class="card-body">
+                            <h3 class="card-title"><a href="tour-details.html">Planet Hollywood Resort</a></h3>
+                            <div class="card-rating d-flex align-items-center">
+                                <span class="ratings d-flex align-items-center mr-1">
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star-o"></i>
+                                </span>
+                                <span class="rating__text">(70694 Reviews)</span>
+                            </div>
+                            <div class="card-price d-flex align-items-center justify-content-between">
+                                <p class="tour__text">
+                                    50 Tours
+                                </p>
+                                <p>
+                                    <span class="price__from">Price</span>
+                                    <span class="price__num">$88.00</span>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4">
-                <div class="card-item destination-card">
-                    <div class="card-img">
-                        <img src="{{ asset('frontEnd/assets/images/destination-img.jpg') }}" alt="destination-img">
-                        <span class="badge">Shanghai</span>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title"><a href="tour-details.html">Oriental Pearl TV Tower</a></h3>
-                        <div class="card-rating d-flex align-items-center">
-                            <span class="ratings d-flex align-items-center mr-1">
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                                <i class="la la-star"></i>
-                            </span>
-                            <span class="rating__text">(70694 Reviews)</span>
+                    </div><!-- end card-item -->
+                </div><!-- end col-lg-4 -->
+                <div class="col-lg-4">
+                    <div class="card-item destination-card">
+                        <div class="card-img">
+                            <img src="{{ asset('frontEnd/assets/images/destination-img.jpg') }}" alt="destination-img">
+                            <span class="badge">Shanghai</span>
                         </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p class="tour__text">
-                                50 Tours
-                            </p>
-                            <p>
-                                <span class="price__from">Price</span>
-                                <span class="price__num">$58.00</span>
-                            </p>
+                        <div class="card-body">
+                            <h3 class="card-title"><a href="tour-details.html">Oriental Pearl TV Tower</a></h3>
+                            <div class="card-rating d-flex align-items-center">
+                                <span class="ratings d-flex align-items-center mr-1">
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                </span>
+                                <span class="rating__text">(70694 Reviews)</span>
+                            </div>
+                            <div class="card-price d-flex align-items-center justify-content-between">
+                                <p class="tour__text">
+                                    50 Tours
+                                </p>
+                                <p>
+                                    <span class="price__from">Price</span>
+                                    <span class="price__num">$58.00</span>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end destination-area -->
+                    </div><!-- end card-item -->
+                </div><!-- end col-lg-4 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section><!-- end destination-area --> --}}
 <!-- ================================
     END DESTINATION AREA
 ================================= -->
@@ -3186,224 +3225,73 @@
 <!-- ================================
     START CAR AREA
 ================================= -->
-<section class="car-area section-bg section-padding ">
+<section class="info-area padding-top-100px padding-bottom-60px text-center">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="section-heading text-center">
-                    <h2 class="sec__title">Recommended Car Rentals</h2>
+                <div class="section-heading">
+                    <h2 class="sec__title">Featured Consultants</h2>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
-        <div class="row padding-top-50px">
-            <div class="col-lg-12">
-                <div class="car-wrap">
-                    <div class="car-carousel carousel-action">
-                        <div class="card-item car-card mb-0">
-                            <div class="card-img">
-                                <a href="car-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/car-img.png') }}" alt="car-img">
-                                </a>
-                                <span class="badge">Bestseller</span>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-meta">Compact SUV</p>
-                                <h3 class="card-title"><a href="car-single.html">Toyota Corolla or Similar</a></h3>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-attributes">
-                                    <ul class="d-flex align-items-center">
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passenger"><i class="la la-users"></i><span>4</span></li>
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>1</span></li>
-                                    </ul>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">From</span>
-                                        <span class="price__num">$23.00</span>
-                                        <span class="price__text">Per day</span>
-                                    </p>
-                                    <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item car-card mb-0">
-                            <div class="card-img">
-                                <a href="car-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/car-img2.png') }}" alt="car-img">
-                                </a>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-meta">Standard</p>
-                                <h3 class="card-title"><a href="car-single.html">Volkswagen Jetta 2 Doors or Similar</a></h3>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-attributes">
-                                    <ul class="d-flex align-items-center">
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passenger"><i class="la la-users"></i><span>4</span></li>
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>1</span></li>
-                                    </ul>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">From</span>
-                                        <span class="price__num">$33.00</span>
-                                        <span class="price__text">Per day</span>
-                                    </p>
-                                    <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item car-card mb-0">
-                            <div class="card-img">
-                                <a href="car-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/car-img3.png') }}" alt="car-img">
-                                </a>
-                                <span class="badge">featured</span>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-meta">Compact Elite</p>
-                                <h3 class="card-title"><a href="car-single.html">Toyota Yaris or Similar</a></h3>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-attributes">
-                                    <ul class="d-flex align-items-center">
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passenger"><i class="la la-users"></i><span>4</span></li>
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>1</span></li>
-                                    </ul>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">From</span>
-                                        <span class="price__num">$23.00</span>
-                                        <span class="price__text">Per day</span>
-                                    </p>
-                                    <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item car-card mb-0">
-                            <div class="card-img">
-                                <a href="car-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/car-img4.png') }}" alt="car-img">
-                                </a>
-                                <span class="badge">Bestseller</span>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-meta">Fullsize Van</p>
-                                <h3 class="card-title"><a href="car-single.html">Seat Alhambra or Similar</a></h3>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-attributes">
-                                    <ul class="d-flex align-items-center">
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passenger"><i class="la la-users"></i><span>6</span></li>
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>2</span></li>
-                                    </ul>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">From</span>
-                                        <span class="price__num">$45.00</span>
-                                        <span class="price__text">Per day</span>
-                                    </p>
-                                    <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item car-card mb-0">
-                            <div class="card-img">
-                                <a href="car-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/car-img5.png') }}" alt="car-img">
-                                </a>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-meta">Luxury</p>
-                                <h3 class="card-title"><a href="car-single.html">Mercedes E Class or Similar</a></h3>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-attributes">
-                                    <ul class="d-flex align-items-center">
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passenger"><i class="la la-users"></i><span>5</span></li>
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>3</span></li>
-                                    </ul>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">From</span>
-                                        <span class="price__num">$58.00</span>
-                                        <span class="price__text">Per day</span>
-                                    </p>
-                                    <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item car-card mb-0">
-                            <div class="card-img">
-                                <a href="car-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/car-img6.png') }}" alt="car-img">
-                                </a>
-                                <span class="badge">featured</span>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-meta">Mini</p>
-                                <h3 class="card-title"><a href="car-single.html">Fiat Fiesta 2 Doors or Similar</a></h3>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-attributes">
-                                    <ul class="d-flex align-items-center">
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passenger"><i class="la la-users"></i><span>4</span></li>
-                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>1</span></li>
-                                    </ul>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">From</span>
-                                        <span class="price__num">$23.00</span>
-                                        <span class="price__text">Per day</span>
-                                    </p>
-                                    <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                    </div><!-- end car-carousel -->
-                </div>
-            </div><!-- end col-lg-12 -->
+        <div class="row padding-top-100px">
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item team-card">
+                    <div class="card-img">
+                        <img src="{{('frontEnd/assets/images/team1.jpg')}}" alt="team-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">David Roberts</h3>
+                        <p class="card-meta">Founder & Director</p>
+                        <p class="card-text font-size-15 pt-2">Ligula vehicula enenatis semper, magna lorem aliquet lacusin ante dapibus dictum fugats vitaes nemo minima.</p>
+                        <ul class="social-profile padding-top-20px pb-2">
+                            <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="lab la-twitter"></i></a></li>
+                            <li><a href="#"><i class="lab la-instagram"></i></a></li>
+                            <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
+                        </ul>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item team-card">
+                    <div class="card-img">
+                        <img src="{{('frontEnd/assets/images/team2.jpg')}}" alt="team-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Augusta Silva</h3>
+                        <p class="card-meta">Chief Operating Officer</p>
+                        <p class="card-text font-size-15 pt-2">Ligula vehicula enenatis semper, magna lorem aliquet lacusin ante dapibus dictum fugats vitaes nemo minima.</p>
+                        <ul class="social-profile padding-top-20px pb-2">
+                            <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="lab la-twitter"></i></a></li>
+                            <li><a href="#"><i class="lab la-instagram"></i></a></li>
+                            <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
+                        </ul>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+           <!-- end col-lg-4 -->
+             <!-- end col-lg-4 -->
+           <!-- end col-lg-4 -->
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item team-card">
+                    <div class="card-img">
+                        <img src="{{('frontEnd/assets/images/team6.jpg')}}" alt="team-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Evan Porter</h3>
+                        <p class="card-meta">Head of Design</p>
+                        <p class="card-text font-size-15 pt-2">Ligula vehicula enenatis semper, magna lorem aliquet lacusin ante dapibus dictum fugats vitaes nemo minima.</p>
+                        <ul class="social-profile padding-top-20px pb-2">
+                            <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="lab la-twitter"></i></a></li>
+                            <li><a href="#"><i class="lab la-instagram"></i></a></li>
+                            <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
+                        </ul>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end car-area -->
@@ -3678,6 +3566,6 @@
        START FOOTER AREA
 ================================= -->
 @endsection
-@section('per_page_script')
+{{-- @section('per_page_script')
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
-@endsection
+@endsection --}}
