@@ -38,7 +38,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="header-right-action">
+                            {{-- <div class="header-right-action">
                                 <div class="select-contain select--contain w-auto">
                                     <select class="select-contain-select">
                                         <option value="1">AED</option>
@@ -71,7 +71,7 @@
                                         <option value="28">INR</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="header-right-action">
                                 @if(Auth()->User())
                                 <a class="theme-btn theme-btn-small" href="{{ route('logout') }}"  onclick="event.preventDefault();
@@ -268,7 +268,7 @@
                         </div><!-- end main-menu-content -->
                         <div class="nav-btn">
                             @if(Auth()->user())
-                            <a href="/dashboard/index2" class="theme-btn ">Dashboard</a>
+                        <a href="{{ route('dashboard.index2') }}" class="theme-btn ">Dashboard</a>
                             @else
                             <a href="become-local-expert.html" class="btn btn-primary">Search Courses</a>
 

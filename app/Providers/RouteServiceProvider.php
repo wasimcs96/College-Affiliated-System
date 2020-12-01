@@ -22,6 +22,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapConsultantRoutes();
         $this->mapUniversityRoutes();
         $this->mapClientRoutes();
+        $this->mapSubAdminRoutes();
     }
 
     protected function mapWebRoutes()
@@ -67,5 +68,12 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('web')
             ->namespace('App\Http\Controllers\Client')
             ->group(base_path('routes/client.php'));
+    }
+    protected function mapSubAdminRoutes()
+    {
+        Route::prefix('subadmin')
+             ->middleware('web')
+            ->namespace('App\Http\Controllers\SubAdmin')
+            ->group(base_path('routes/subadmin.php'));
     }
 }

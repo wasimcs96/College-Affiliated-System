@@ -33,6 +33,10 @@ Route::get('booking_show',function(){
   return view('consultant.booking_show');
 })->name('consultant.booking.show');
 
+Route::get('booking/application',function(){
+    return view('consultant.booking_application');
+})->name('consultant.booking.application');
+
 
 /* applied Section */
 Route::get('applied',function(){
@@ -93,6 +97,10 @@ Route::get('feedback',function(){
 Route::get('application',function(){
     return view('consultant.application');
 })->name('consultant.application');
+
+Route::get('application/create',function(){
+    return view('consultant.application_create');
+})->name('consultant.application.create');
 
 /* associated university */
 Route::get('associated_university',function(){

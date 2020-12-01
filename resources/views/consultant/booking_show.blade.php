@@ -22,7 +22,7 @@
             </ul>
         </div>
         <div class="body">
-            <div class="table-responsive">
+            <div class="table-responsive" >
                 <table class="table table-hover table-striped">
 
                     <tbody>
@@ -55,17 +55,17 @@
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Preference-1</th>
+                        <th scope="row">Student University Prefrence-1</th>
                         <td>RTU</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Preference-2</th>
+                        <th scope="row">Student University Prefrence-2</th>
                         <td>BTU</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Preference-3</th>
+                        <th scope="row">Student University Prefrence-3</th>
                         <td>CTU</td>
                     </tr>
 
@@ -85,8 +85,15 @@
                     </tbody>
 
                 </table>
+                <div id="res">
+
+                </div>
+                <br>
+                <div id="dec">
+
+                </div>
                 <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('consultant.bookings')}}" id="dec" class="btn btn-danger btn-flat">Decline</a>
+                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
             </div>
         </div>
     </div>
@@ -121,9 +128,12 @@
 </script>
 <script>
    $("#accept").click(function() {
-    $("#accept").html("Create Application").addClass("href","{{route('consultant.application')}}")
-    $("#dec").html("Close")
-    // console.log("sddsk");
-    });
+    $("#accept").remove()
+    $("#bac").remove()
+    $("#res").html("<a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#dec").html("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat'>Close</a>")
+    // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
+});
+
 </script>
 @stop

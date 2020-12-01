@@ -6,7 +6,7 @@
                 <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
             </div>
             <ul class="nav navbar-nav">
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
                         <i class="icon-envelope"></i>
                         <span class="notification-dot bg-green">4</span>
@@ -58,8 +58,8 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="dropdown">
+                </li> --}}
+                {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
                         <i class="icon-bell"></i>
                         <span class="notification-dot bg-azura">4</span>
@@ -103,8 +103,8 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="dropdown language-menu">
+                </li> --}}
+                {{-- <li class="dropdown language-menu">
                     <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
                         <i class="fa fa-language"></i>
                     </a>
@@ -116,7 +116,7 @@
                         <a class="dropdown-item pt-2 pb-2" href="#"><img src="../assets/images/flag/arabia.svg " class="w20 mr-2 rounded-circle"> Arabic</a>
                         <a class="dropdown-item pt-2 pb-2" href="#"><img src="../assets/images/flag/france.svg " class="w20 mr-2 rounded-circle"> French</a>
                     </div>
-                </li>
+                </li> --}}
                 @if (auth()->user()->isAdmin())
                 <li><a href="javascript:void(0);" class="megamenu_toggle icon-menu" title="University">University</a></li>
                 <li class="p_social"><a href="{{route('extra.social')}}" class="social icon-menu" title="Consultant">Consultant</a></li>
@@ -130,8 +130,8 @@
         <div class="navbar-right">
             <div id="navbar-menu">
                 <ul class="nav navbar-nav">
-                    <li><a href="javascript:void(0);" class="search_toggle icon-menu" title="Search Result"><i class="icon-magnifier"></i></a></li>
-                    <li><a href="javascript:void(0);" class="right_toggle icon-menu" title="Right Menu"><i class="icon-bubbles"></i><span class="notification-dot bg-pink">2</span></a></li>
+                    {{-- <li><a href="javascript:void(0);" class="search_toggle icon-menu" title="Search Result"><i class="icon-magnifier"></i></a></li> --}}
+                    {{-- <li><a href="javascript:void(0);" class="right_toggle icon-menu" title="Right Menu"><i class="icon-bubbles"></i><span class="notification-dot bg-pink">2</span></a></li> --}}
                     <li><a class="icon-menu" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">

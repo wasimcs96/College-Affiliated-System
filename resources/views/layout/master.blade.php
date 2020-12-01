@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/site.min.css') }}">
 </head>
 
-<body class="theme-blush font-montserrat light_version">
+<body class="theme-blush font-montserrat ">
 
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
@@ -38,7 +38,7 @@
     </div>
 </div>
 
-{{-- @include('layout.themesetting') --}}
+@include('layout.themesetting')
 
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
@@ -47,8 +47,12 @@
 
     @include('layout.navbar')
     @include('layout.megamenu')
-    @include('layout.searchbar')
-    @include('layout.rightbar')
+    {{-- @include('layout.searchbar') --}}
+    {{-- @include('layout.rightbar') --}}
+
+@if(Auth()->User()->isSubAdmin())
+    @include('layout.subadminsidebar')
+@endif
 
 @if(Auth()->User()->isAdmin())
     @include('layout.sidebar')
