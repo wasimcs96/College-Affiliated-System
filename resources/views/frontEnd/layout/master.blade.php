@@ -13,6 +13,14 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
 
+
+
+
+
+
+
+
+
     <!-- Template CSS Files -->
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/bootstrap-select.min.css') }}">
@@ -171,6 +179,9 @@
 <!-- end modal-shared -->
 @include('frontEnd.modals.loginModal')
 @include('frontEnd.modals.registerModal')
+
+{{-- <script src="{{ asset('frontEnd/assets/font_awesome/js/v4-shimss.min.js') }}"></script> --}}
+
 <!-- Template JS Files -->
 <script src="{{ asset('frontEnd/assets/js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/jquery-ui.js') }}"></script>
