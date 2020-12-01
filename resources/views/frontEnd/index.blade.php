@@ -1,4 +1,14 @@
 @extends('frontEnd.layout.master')
+@section('per_page_style')
+<link rel="stylesheet" href="{{ asset('assets/vendor/themify-icons/themify-icons.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/themify-icons/demo-files/demo.css') }}">
+<style>
+    .icons-list div {line-height: 40px;white-space: nowrap;cursor: default;position: relative;z-index: 1;padding: 5px;border-right: 1px solid #252a33;}
+    .icons-list div i {display: inline-block;width: 40px;margin: 0;text-align: center;vertical-align: middle;-webkit-transition: font-size 0.2s;-moz-transition: font-size 0.2s;transition: font-size 0.2s;}
+    .icons-list div:hover i {font-size: 26px;}
+</style>
+@endsection
+
 @section('content')
 <!-- ================================
          END HEADER AREA
@@ -1512,7 +1522,7 @@
 <!-- ================================
     START INFO AREA
 ================================= -->
-<section class="info-area info-bg padding-top-50px padding-bottom-50px text-center">
+{{-- <section class="info-area info-bg padding-top-50px padding-bottom-50px text-center">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
@@ -1556,16 +1566,616 @@
             </div><!-- end col-lg-4 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section><!-- end info-area -->
+</section><!-- end info-area --> --}}
 <!-- ================================
     END INFO AREA
 ================================= -->
 
-<div class="section-block"></div>
+{{-- <div class="section-block"></div> --}}
 
 <!-- ================================
     START ROUND-TRIP AREA
 ================================= -->
+<hr>
+<div class="container">
+
+
+        <div class="section-heading" >
+    <h3 class="text-center">Status</h3>
+    <hr>
+<div class="form-title-wrap">
+    <div class="step-bar-wrap text-center">
+        <ul class="step-bar-list d-flex align-items-center justify-content-around">
+            <li class="step-bar flex-grow-1 step-bar-active">
+                <span class="icon-element">1</span>
+                <p class="pt-2 color-text-2">Select Consultant</p>
+            </li>
+            <li class="step-bar flex-grow-1 step-bar-active">
+                <span class="icon-element">2</span>
+                <p class="pt-2 color-text-2">Choose Universities </p>
+            </li>
+            <li class="step-bar flex-grow-1 step-bar-active">
+                <span class="icon-element">3</span>
+                <p class="pt-2 color-text-2">Get Selected by unniversity</p>
+            </li>
+            <li class="step-bar flex-grow-1 ">
+                <span class="icon-element">4</span>
+                <p class="pt-2 color-text-2">Verify Docs</p>
+            </li>
+            <li class="step-bar flex-grow-1 ">
+                <span class="icon-element">5</span>
+                <p class="pt-2 color-text-2">Get Visa</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+</div>
+<hr>
+
+
+<!-- ================================
+       START TESTIMONIAL AREA
+================================= -->
+<section class="testimonial-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h4>Featured University</h4>
+                    <hr>
+                    {{-- <p class="sec__desc padding-top-30px">
+                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero
+                    </p>
+                    <div class="btn-box padding-top-35px">
+                        <a href="#" class="theme-btn">Explore All</a>
+                    </div> --}}
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>First slide label</h5>
+                              <p><a class="btn btn-primary" href="#" role="button">Visit University</a>
+                            </p>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Second slide label</h5>
+                              <p><a class="btn btn-primary" href="#" role="button">Visit University</a>
+
+                            </p>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Third slide label</h5>
+                              <p><a class="btn btn-outline-primary" href="#" role="button">Visit University</a>
+                            </p>
+                            </div>
+                          </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                </div><!-- end section-heading -->
+            </div><!-- end col-lg-4 -->
+            <div class="col-lg-6">
+                <div class="section-heading ">
+
+                    <h4> Featured Consultants</h4>
+                    <hr>
+                <div class="testimonial-carousel carousel-action">
+                    <div class="testimonial-card">
+                        <div class="testi-desc-box">
+                            <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.</p>
+                        </div>
+                        <div class="author-content d-flex align-items-center">
+                            <div class="author-img">
+                                <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image">
+                            </div>
+                            <div class="author-bio">
+                                <h4 class="author__title">Leroy Bell</h4>
+                                <span class="author__meta">United States</span>
+                                <span class="ratings d-flex align-items-center">
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- end testimonial-card -->
+
+
+                    <div class="testimonial-card">
+                        <div class="testi-desc-box">
+                            <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.</p>
+                        </div>
+                        <div class="author-content d-flex align-items-center">
+                            <div class="author-img">
+                                <img src="{{ asset('frontEnd/assets/images/team9.jpg') }}" alt="testimonial image">
+                            </div>
+                            <div class="author-bio">
+                                <h4 class="author__title">Richard Pam</h4>
+                                <span class="author__meta">Canada</span>
+                                <span class="ratings d-flex align-items-center">
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- end testimonial-card -->
+                    <div class="testimonial-card">
+                        <div class="testi-desc-box">
+                            <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.</p>
+                        </div>
+                        <div class="author-content d-flex align-items-center">
+                            <div class="author-img">
+                                <img src="{{ asset('frontEnd/assets/images/team10.jpg') }}" alt="testimonial image">
+                            </div>
+                            <div class="author-bio">
+                                <h4 class="author__title">Luke Jacobs</h4>
+                                <span class="author__meta">Australia</span>
+                                <span class="ratings d-flex align-items-center">
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- end testimonial-card -->
+                    <div class="testimonial-card">
+                        <div class="testi-desc-box">
+                            <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.</p>
+                        </div>
+                        <div class="author-content d-flex align-items-center">
+                            <div class="author-img">
+                                <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image">
+                            </div>
+                            <div class="author-bio">
+                                <h4 class="author__title">Chulbul Panday</h4>
+                                <span class="author__meta">Italy</span>
+                                <span class="ratings d-flex align-items-center">
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                    <i class="la la-star"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- end testimonial-card -->
+                </div><!-- end testimonial-carousel -->
+            </div><!-- end col-lg-8 -->
+        </div>
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end testimonial-area -->
+
+                    {{-- works start --}}
+                    <section class="testimonial-area section-padding">
+    <div class="container">
+        <div class="section-heading text-center" >
+            <h2> How it works</h2>
+            <hr>
+        <div class="row">
+
+            <div class="col-lg-6">
+
+
+                    {{-- <p class="sec__desc padding-top-30px">
+                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero
+                    </p>
+                    <div class="btn-box padding-top-35px">
+                        <a href="#" class="theme-btn">Explore All</a>
+                    </div> --}}
+                    <div class="row">
+                    <div class="card bg-light m-1" style="max-width: 18rem;">
+                        <div class="card-header">1st Step</div>
+                        <div class="card-body">
+                          <h5 class="card-title">Light card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                      </div>
+                      <div class="card bg-light m-1" style="max-width: 18rem;">
+                        <div class="card-header">2nd Step</div>
+                        <div class="card-body">
+                          <h5 class="card-title">Light card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                      </div>
+                      <div class="card bg-light m-1" style="max-width: 18rem;">
+                        <div class="card-header">3rd Step</div>
+                        <div class="card-body">
+                          <h5 class="card-title">Light card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                      </div>
+                      <div class="card bg-light m-1" style="max-width: 18rem;">
+                        <div class="card-header">4th Step</div>
+                        <div class="card-body">
+                          <h5 class="card-title">Light card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                <!-- end section-heading -->
+            </div><!-- end col-lg-4 -->
+            <div class="col-lg-6">
+
+
+                    <div class="embed-responsive embed-responsive-4by3">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                      </div>
+                    <!-- end testimonial-carousel -->
+            </div><!-- end col-lg-8 -->
+        </div>
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>
+                      {{-- works end --}}
+
+                      {{-- discipline start --}}
+
+                      <section class="service-area section--padding text-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="section-heading text-center">
+                                        <h2 class="sec__title">Browse by Discpiline</h2>
+                                    </div><!-- end section-heading -->
+                                </div><!-- end col-lg-12 -->
+                            </div><!-- end row -->
+                            <div class="row padding-top-80px">
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="fa fa-user-md"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Medical</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="fa fa-bar-chart-o"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Managment</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="fa fa-microchip"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Engineering</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-briefcase"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">In Business</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-hotel"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Handpicked Hotels</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-user-secret"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Private Guide</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-map"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Location Manager</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-thumbs-up"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Best Travel Agent</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div>
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-plane"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Flight Deals</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-anchor"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Amazing Tour</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-support"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Support Cases</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-briefcase"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">In Business</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-hotel"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Handpicked Hotels</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-user-secret"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Private Guide</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-map"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Location Manager</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-thumbs-up"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Best Travel Agent</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div>
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-plane"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Flight Deals</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-anchor"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Amazing Tour</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-support"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Support Cases</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-briefcase"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">In Business</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-hotel"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Handpicked Hotels</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-user-secret"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Private Guide</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-map"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Location Manager</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                                <div class="col-lg-2 responsive-column">
+                                    <div class="icon-box icon-layout-4">
+                                        <div class="info-icon">
+                                            <i class="la la-thumbs-up"></i>
+                                        </div><!-- end info-icon-->
+                                        <div class="info-content">
+                                            <h4 class="info__title"><a href="#">Best Travel Agent</a></h4>
+                                            {{-- <p class="info__desc">
+                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
+                                            </p> --}}
+                                        </div><!-- end info-content -->
+                                    </div><!-- end icon-box -->
+                                </div><!-- end col-lg-3 -->
+                            </div><!-- end row -->
+                            {{-- <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="tab-content-info mt-n4 d-flex justify-content-between align-items-center">
+                                        <p class="font-size-15">Do not hesitate to contact us for better help and service.</p>
+                                        <a href="contact.html" class="btn-text font-size-15">Contact us <i class="la la-arrow-right ml-1"></i></a>
+                                    </div><!-- end tab-content-info -->
+                                </div>
+                            </div> --}}
+                        </div><!-- end container -->
+                    </section>
+
+                      {{-- discipline end --}}
+
 <section class="round-trip-flight section-padding">
     <div class="container">
         <div class="row">
@@ -2801,114 +3411,7 @@
     END CAR AREA
 ================================= -->
 
-<!-- ================================
-       START TESTIMONIAL AREA
-================================= -->
-<section class="testimonial-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="section-heading">
-                    <h2 class="sec__title line-height-50">What our customers are saying us?</h2>
-                    <p class="sec__desc padding-top-30px">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero
-                    </p>
-                    <div class="btn-box padding-top-35px">
-                        <a href="#" class="theme-btn">Explore All</a>
-                    </div>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-8">
-                <div class="testimonial-carousel carousel-action">
-                    <div class="testimonial-card">
-                        <div class="testi-desc-box">
-                            <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.</p>
-                        </div>
-                        <div class="author-content d-flex align-items-center">
-                            <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image">
-                            </div>
-                            <div class="author-bio">
-                                <h4 class="author__title">Leroy Bell</h4>
-                                <span class="author__meta">United States</span>
-                                <span class="ratings d-flex align-items-center">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div><!-- end testimonial-card -->
-                    <div class="testimonial-card">
-                        <div class="testi-desc-box">
-                            <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.</p>
-                        </div>
-                        <div class="author-content d-flex align-items-center">
-                            <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/team9.jpg') }}" alt="testimonial image">
-                            </div>
-                            <div class="author-bio">
-                                <h4 class="author__title">Richard Pam</h4>
-                                <span class="author__meta">Canada</span>
-                                <span class="ratings d-flex align-items-center">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div><!-- end testimonial-card -->
-                    <div class="testimonial-card">
-                        <div class="testi-desc-box">
-                            <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.</p>
-                        </div>
-                        <div class="author-content d-flex align-items-center">
-                            <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/team10.jpg') }}" alt="testimonial image">
-                            </div>
-                            <div class="author-bio">
-                                <h4 class="author__title">Luke Jacobs</h4>
-                                <span class="author__meta">Australia</span>
-                                <span class="ratings d-flex align-items-center">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div><!-- end testimonial-card -->
-                    <div class="testimonial-card">
-                        <div class="testi-desc-box">
-                            <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.</p>
-                        </div>
-                        <div class="author-content d-flex align-items-center">
-                            <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image">
-                            </div>
-                            <div class="author-bio">
-                                <h4 class="author__title">Chulbul Panday</h4>
-                                <span class="author__meta">Italy</span>
-                                <span class="ratings d-flex align-items-center">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div><!-- end testimonial-card -->
-                </div><!-- end testimonial-carousel -->
-            </div><!-- end col-lg-8 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end testimonial-area -->
+
 <!-- ================================
        START TESTIMONIAL AREA
 ================================= -->
@@ -3174,4 +3677,7 @@
 <!-- ================================
        START FOOTER AREA
 ================================= -->
+@endsection
+@section('per_page_script')
+<script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 @endsection
