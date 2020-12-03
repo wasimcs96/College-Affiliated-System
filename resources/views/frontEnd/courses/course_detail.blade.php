@@ -284,10 +284,20 @@
                                             </div> --}}
                                         </div>
                                         <div class="cabin-price">
-                                            <p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block">$121</strong></>
-                                            <div class="custom-checkbox mb-0">
+                                            <ul><li>
+                                                <span class="ratings ">
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                </span></li>
+                                                   <li> <span class="ml-2">305 Reviews</span>
+                                              </li>
+                                               </ul>                                            <div class="custom-checkbox mb-0">
 
-                                                <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label>
+                                              <a href="
+                                              {{route('university_detail')}}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
                                             </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
@@ -366,9 +376,20 @@
                                             </div> --}}
                                         </div>
                                         <div class="cabin-price">
-                                            <p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block">$121</strong></>
+                                            <ul><li>
+                                                <span class="ratings ">
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                </span></li>
+                                                   <li> <span class="ml-2">305 Reviews</span>
+                                              </li>
+                                               </ul>
                                             <div class="custom-checkbox mb-0">
-                                                <label for="selectChb2" class="theme-btn theme-btn-small">Detail</label>
+                                                <a href="
+                                              {{route('university_detail')}}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
                                             </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
@@ -447,9 +468,20 @@
                                             </div> --}}
                                         </div>
                                         <div class="cabin-price">
-                                            <p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block">$121</strong></>
+                                            <ul><li>
+                                                <span class="ratings ">
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                </span></li>
+                                                   <li> <span class="ml-2">305 Reviews</span>
+                                              </li>
+                                               </ul>
                                             <div class="custom-checkbox mb-0">
-                                                <label for="selectChb3" class="theme-btn theme-btn-small">Detail</label>
+                                                <a href="
+                                              {{route('university_detail')}}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
                                             </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
@@ -528,9 +560,20 @@
                                             </div> --}}
                                         </div>
                                         <div class="cabin-price">
-                                            <p class="text-uppercase font-size-14">Per/night<strong class="mt-n1 text-black font-size-18 font-weight-black d-block">$121</strong></>
+                                            <ul><li>
+                                                <span class="ratings ">
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                </span></li>
+                                                   <li> <span class="ml-2">305 Reviews</span>
+                                              </li>
+                                               </ul>
                                             <div class="custom-checkbox mb-0">
-                                                <label for="selectChb4" class="theme-btn theme-btn-small">Detail</label>
+                                                <a href="
+                                                {{route('university_detail')}}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
                                             </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
@@ -556,7 +599,7 @@
                                         <div class="col-lg-4 responsive-column">
                                             <div class="single-tour-feature d-flex align-items-center mb-3">
                                                 <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-check"></i>
+                                                    <i class="la la-swimming-pool"></i>
                                                 </div>
                                                 <div class="single-feature-titles">
                                                     <h3 class="title font-size-15 font-weight-medium">Swimming Pool</h3>
@@ -596,7 +639,7 @@
                                         <div class="col-lg-4 responsive-column">
                                             <div class="single-tour-feature d-flex align-items-center mb-3">
                                                 <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-gear"></i>
+                                                    <i class="la la-dumbbell"></i>
                                                 </div>
                                                 <div class="single-feature-titles">
                                                     <h3 class="title font-size-15 font-weight-medium">GYM Facility</h3>
@@ -616,7 +659,7 @@
                                         <div class="col-lg-4 responsive-column">
                                             <div class="single-tour-feature d-flex align-items-center mb-3">
                                                 <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-glass"></i>
+                                                    <i class="la la-flask"></i>
                                                 </div>
                                                 <div class="single-feature-titles">
                                                     <h3 class="title font-size-15 font-weight-medium">Labs</h3>
@@ -1174,17 +1217,118 @@
 
                             <div class="input-group mb-3 ">
                                 <div class="input-group-prepend">
-                                  <button class="btn btn-outline-primary btn-sm" type="button" id="button-addon1">Zip Code</button>
+                                  <button class="btn btn-outline-primary btn-sm" type="button" id="button-addon1">Country</button>
                                 </div>
                                 <input type="text" class="form-control col-xs-2" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                               </div>
-                            <div class="sidebar-list">
+                              <div class="sidebar-list">
                                 <ul class="list-items">
-                                    <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#" ><span>&nbsp;   John Wick</span>
+
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                        </div>
+                                        <div class="author-bio">
+                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
+                                            <span class="author__meta">Member Since 2017</span>
+                                            <span class="ratings d-flex align-items-center">
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star-o"></i>
+                                                     <span class="ml-2">305 Reviews</span>
+                                                </span>
+                                            <div>
+                                            <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div></li>
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                        </div>
+                                        <div class="author-bio">
+                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
+                                            <span class="author__meta">Member Since 2017</span>
+                                            <span class="ratings d-flex align-items-center">
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star-o"></i>
+                                                     <span class="ml-2">305 Reviews</span>
+                                                </span>
+                                                <div>
+                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                </div>
+                                        </div>
+                                    </div></li>
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                        </div>
+                                        <div class="author-bio">
+                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
+                                            <span class="author__meta">Member Since 2017</span>
+                                            <span class="ratings d-flex align-items-center">
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star-o"></i>
+                                                     <span class="ml-2">305 Reviews</span>
+                                                </span>
+                                                <div>
+                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                </div>
+                                        </div>
+                                    </div></li>
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                        </div>
+                                        <div class="author-bio">
+                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
+                                            <span class="author__meta">Member Since 2017</span>
+                                            <span class="ratings d-flex align-items-center">
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star-o"></i>
+                                                     <span class="ml-2">305 Reviews</span>
+                                                </span>
+                                                <div>
+                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                </div>
+                                        </div>
+                                    </div></li>
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                        </div>
+                                        <div class="author-bio">
+                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
+                                            <span class="author__meta">Member Since 2017</span>
+                                            <span class="ratings d-flex align-items-center">
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star-o"></i>
+                                                     <span class="ml-2">305 Reviews</span>
+                                                </span>
+                                                <div>
+                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                </div>
+                                        </div>
+                                    </div></li>
+                                    {{-- <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#" ><span>&nbsp;   John Wick</span>
                                     </a></li>
                                     <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li>
                                     <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li>
-                                    <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li>
+                                    <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li> --}}
                                 </ul>
                             </div><!-- end sidebar-list -->
                         </div>
@@ -1309,7 +1453,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item">
                     <div class="card-img">
-                        <a href="hotel-single.html" class="d-block">
+                        <a href="{{route('course_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/course/course-1.jpg')}}" alt="hotel-img">
                         </a>
                         <span class="badge">Top Ranked</span>
@@ -1318,7 +1462,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title"><a href="hotel-single.html">MSC</a></h3>
+                        <h3 class="card-title"><a href="{{route('course_detail')}}">MSC</a></h3>
                         <p class="card-meta">Technology</p>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
@@ -1330,7 +1474,7 @@
                                 <span class="price__text">Fees:</span>
                                 <span class="price__num">$20000</span>
                             </p>
-                            <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('course_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -1338,7 +1482,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item">
                     <div class="card-img">
-                        <a href="hotel-single.html" class="d-block">
+                        <a href="{{route('course_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/course/course-1.jpg')}}" alt="hotel-img">
                         </a>
                         <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
@@ -1346,7 +1490,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title"><a href="hotel-single.html">Mtech</a></h3>
+                        <h3 class="card-title"><a href="{{route('course_detail')}}">Mtech</a></h3>
                         <p class="card-meta">Technology</p>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
@@ -1358,7 +1502,7 @@
                                 <span class="price__text">Fees:</span>
                                 <span class="price__num">$202000</span>
                             </p>
-                            <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('course_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -1366,7 +1510,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item">
                     <div class="card-img">
-                        <a href="hotel-single.html" class="d-block">
+                        <a href="{{route('course_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/course/course-1.jpg')}}" alt="hotel-img">
                         </a>
                         <span class="badge">Featured</span>
@@ -1375,7 +1519,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title"><a href="hotel-single.html">Btech</a></h3>
+                        <h3 class="card-title"><a href="{{route('course_detail')}}">Btech</a></h3>
                         <p class="card-meta">Technology</p>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
@@ -1387,7 +1531,7 @@
                                 <span class="price__text">Fees:</span>
                                 <span class="price__num">$200000</span>
                             </p>
-                            <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('course_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->

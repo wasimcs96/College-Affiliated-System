@@ -3142,7 +3142,7 @@ body {
 
 .form-title-wrap {
     padding: 20px;
-    border-bottom: 1px solid rgba(128, 137, 150, 0.1)
+    /* border-bottom: 1px solid rgba(128, 137, 150, 0.1) */
 }
 
 .form-content {
@@ -3260,7 +3260,7 @@ body {
 }
 
 .bread-bg-8 {
-    background-image: url(../images/bread-bd4.jpg)
+    background-image: url(../images/bread-bd4.jpeg)
 }
 
 .bread-bg-9 {
@@ -8564,8 +8564,9 @@ body {
 .step-bar-list .step-bar.step-bar-active .icon-element {
     text-indent: -9999px;
     position: relative;
-    background-color: #40CC6F;
-    border-color: #40CC6F
+    background-color:aqua ;
+    border-color: dodgerblue ;
+
 }
 
 .step-bar-list .step-bar.step-bar-active .icon-element::before {
@@ -8586,9 +8587,39 @@ body {
 }
 
 .step-bar-list .step-bar.step-bar-active::before, .step-bar-list .step-bar.step-bar-active::after {
-    background-color: #40CC6F
+    background-image:linear-gradient( to left,dodgerblue ,aqua );
 }
 
+.stbtn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+.stbtn {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff
+}
+.stbtn:hover {
+    color: white;
+    background-color: dodgerblue;
+
+}
 .payment-received-list .icon-element {
     width: 30px;
     height: 30px;
