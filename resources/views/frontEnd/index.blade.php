@@ -1,5 +1,5 @@
 @extends('frontEnd.layout.master')
-{{-- @section('per_page_style')
+{{--
 <link rel="stylesheet" href="{{ asset('assets/vendor/themify-icons/themify-icons.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/themify-icons/demo-files/demo.css') }}">
 <style>
@@ -1576,43 +1576,103 @@
 <!-- ================================
     START ROUND-TRIP AREA
 ================================= -->
-<hr>
+{{-- <hr>
 <div class="container">
 
 
         <div class="section-heading" >
     <h3 class="text-center">Status</h3>
+
     <hr>
 <div class="form-title-wrap">
     <div class="step-bar-wrap text-center">
         <ul class="step-bar-list d-flex align-items-center justify-content-around">
             <li class="step-bar flex-grow-1 step-bar-active">
                 <span class="icon-element">1</span>
-                <p class="pt-2 color-text-2">Select Consultant</p>
+                <p class="pt-2 color-text-2">Booking</p>
             </li>
-            <li class="step-bar flex-grow-1 step-bar-active">
+            <li class="step-bar flex-grow-1 ">
                 <span class="icon-element">2</span>
-                <p class="pt-2 color-text-2">Choose Universities </p>
+                <p class="pt-2 color-text-2">Applied Universities </p>
             </li>
-            <li class="step-bar flex-grow-1 step-bar-active">
+            <li class="step-bar flex-grow-1 ">
                 <span class="icon-element">3</span>
-                <p class="pt-2 color-text-2">Get Selected by unniversity</p>
+                <p class="pt-2 color-text-2">Offer Receipt</p>
             </li>
-            <li class="step-bar flex-grow-1 ">
+            <li class="step-bar  ">
                 <span class="icon-element">4</span>
-                <p class="pt-2 color-text-2">Verify Docs</p>
+                <p class="pt-2 color-text-2">Ready to fly</p>
             </li>
-            <li class="step-bar flex-grow-1 ">
-                <span class="icon-element">5</span>
-                <p class="pt-2 color-text-2">Get Visa</p>
-            </li>
+
         </ul>
+
     </div>
 </div>
 
 </div>
+    <ul>
+        <li class="step-bar flex-grow-1 ">
+
+<a href="{{route('consultant_detail')}}" class="btn btn-primary">View more</a>
+
+                </li>
+    </ul>
+        </div>
+
+<hr> --}}
+    <div class="jumbotron jumbotron-fluid" style="margin-top: 30px; background-image: url('{{asset("/frontEnd/assets/img/blue.png")}}');">
+    <div class="container">
+           <div class="container">
+
+
+        <div class="section-heading" >
+    <h3 style=" font-size: 32px; color:dodgerblue ">Status</h3>
+
+
+<div class="form-title-wrap">
+    <div class="step-bar-wrap text-center">
+
+
+        <ul class="step-bar-list d-flex align-items-center justify-content-around">
+
+            <li class="step-bar flex-grow-1 step-bar-active col-lg-3">
+
+                <span class="icon-element">1</span>
+                <p class="pt-2 color-text-2">Booking</p>
+            </li>
+
+            <li class="step-bar flex-grow-1  col-lg-3 " >
+                <span class="icon-element"><i  style=" color:blue;" class="las la-cloud-upload-alt"></i></span>
+                <p class="pt-2 color-text-2">Applied Universities </p>
+            </li>
+
+            <li class="step-bar flex-grow-1 col-lg-3">
+                <span class="icon-element"><i   style=" color:blue;"class="las la-file-invoice"></i></span>
+                <p class="pt-2 color-text-2">Offer Receipt</p>
+            </li>
+
+            <li class="step-bar col-lg-3 ">
+                <span class="icon-element"><i   style=" color:blue;"class="las la-plane-departure"></i></span>
+                <p class="pt-2 color-text-2">Ready to fly</p>
+            </li>
+
+        </ul>
+
+    </div>
 </div>
-<hr>
+
+</div>
+    <ul>
+        <li style="float: right;">
+
+            <a href="{{route('dashboard.index2')}}" class="stbtn">More <i class="las la-chevron-right"></i></a>
+
+                </li>
+    </ul>
+        </div>
+
+    </div>
+  </div>
 
 
 <!-- ================================
@@ -1642,7 +1702,7 @@
                             <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                               <h5>First slide label</h5>
-                              <p><a class="btn btn-primary" href="#" role="button">Visit University</a>
+                            <p><a class="btn btn-primary" href="{{route('university_detail')}}" role="button">Visit University</a>
                             </p>
                             </div>
                           </div>
@@ -1650,7 +1710,7 @@
                             <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                               <h5>Second slide label</h5>
-                              <p><a class="btn btn-primary" href="#" role="button">Visit University</a>
+                              <p><a class="btn btn-primary" href="{{route('university_detail')}}" role="button">Visit University</a>
 
                             </p>
                             </div>
@@ -1659,7 +1719,7 @@
                             <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                               <h5>Third slide label</h5>
-                              <p><a class="btn btn-outline-primary" href="#" role="button">Visit University</a>
+                              <p><a class="btn btn-outline-primary" href="{{route('university_detail')}}" role="button">Visit University</a>
                             </p>
                             </div>
                           </div>
@@ -1687,10 +1747,10 @@
                         </div>
                         <div class="author-content d-flex align-items-center">
                             <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image">
+                               <a href="{{route('consultant_detail')}}"> <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image"></a>
                             </div>
                             <div class="author-bio">
-                                <h4 class="author__title">Leroy Bell</h4>
+                                <a href="{{route('consultant_detail')}}"><h4 class="author__title">Leroy Bell</h4></a>
                                 <span class="author__meta">United States</span>
                                 <span class="ratings d-flex align-items-center">
                                     <i class="la la-star"></i>
@@ -1710,10 +1770,10 @@
                         </div>
                         <div class="author-content d-flex align-items-center">
                             <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/team9.jpg') }}" alt="testimonial image">
+                                <a href="{{route('consultant_detail')}}">  <img src="{{ asset('frontEnd/assets/images/team9.jpg') }}" alt="testimonial image"></a>
                             </div>
                             <div class="author-bio">
-                                <h4 class="author__title">Richard Pam</h4>
+                                <a href="{{route('consultant_detail')}}">   <h4 class="author__title">Richard Pam</h4></a>
                                 <span class="author__meta">Canada</span>
                                 <span class="ratings d-flex align-items-center">
                                     <i class="la la-star"></i>
@@ -1731,10 +1791,10 @@
                         </div>
                         <div class="author-content d-flex align-items-center">
                             <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/team10.jpg') }}" alt="testimonial image">
+                                <a href="{{route('consultant_detail')}}">   <img src="{{ asset('frontEnd/assets/images/team10.jpg') }}" alt="testimonial image"></a>
                             </div>
                             <div class="author-bio">
-                                <h4 class="author__title">Luke Jacobs</h4>
+                                <a href="{{route('consultant_detail')}}">  <h4 class="author__title">Luke Jacobs</h4></a>
                                 <span class="author__meta">Australia</span>
                                 <span class="ratings d-flex align-items-center">
                                     <i class="la la-star"></i>
@@ -1752,10 +1812,10 @@
                         </div>
                         <div class="author-content d-flex align-items-center">
                             <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image">
+                                <a href="{{route('consultant_detail')}}">   <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image"></a>
                             </div>
                             <div class="author-bio">
-                                <h4 class="author__title">Chulbul Panday</h4>
+                                <a href="{{route('consultant_detail')}}">  <h4 class="author__title">Chulbul Panday</h4></a>
                                 <span class="author__meta">Italy</span>
                                 <span class="ratings d-flex align-items-center">
                                     <i class="la la-star"></i>
@@ -1797,31 +1857,31 @@
                     flex-wrap: wrap;
                     margin-right: 7px;
                     margin-left: 8px;">
-                    <div class="card bg-light ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
-                        <div class="card-header">1st Step</div>
+                    <div class="card border-primary ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
+                        <div class="card-header border-primary">1st Step</div>
                         <div class="card-body">
-                          <h5 class="card-title">Hire Consultant</h5>
+                          <h5 class="card-title text-primary">Hire Consultant</h5>
                           <p class="card-text">djfhgdhghdjkhgkjdfghdfgjdddddddddddddhflgd.</p>
                         </div>
                       </div>
-                      <div class="card bg-light ml-4 mb-2 " style="max-width: 15rem; max-height:15rem">
-                        <div class="card-header">2nd Step</div>
+                      <div class="card border-primary ml-4 mb-2 " style="max-width: 15rem; max-height:15rem">
+                        <div class="card-header border-primary">2nd Step</div>
                         <div class="card-body">
-                          <h5 class="card-title">Choose University</h5>
+                          <h5 class="card-title text-primary ">Choose University</h5>
                           <p class="card-text">sdjfhsjkhfshhkshkhskjghjkfhjkgsajkgjkfhghdfdf.</p>
                         </div>
                       </div>
-                      <div class="card bg-light ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
-                        <div class="card-header">3rd Step</div>
-                        <div class="card-body">
-                          <h5 class="card-title">Verify Documents</h5>
+                      <div class="card border-primary ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
+                        <div class="card-header border-primary">3rd Step</div>
+                        <div class="card-body ">
+                          <h5 class="card-title text-primary">Verify Documents</h5>
                           <p class="card-text">Some quick example text to build on the carddt.</p>
                         </div>
                       </div>
-                      <div class="card bg-light ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
-                        <div class="card-header">4th Step</div>
-                        <div class="card-body">
-                          <h5 class="card-title">Get Visa </h5>
+                      <div class="card border-primary ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
+                        <div class="card-header border-primary">4th Step</div>
+                        <div class="card-body ">
+                          <h5 class="card-title text-primary">Get Visa </h5>
                           <p class="card-text">Some quick example text to build on the card tit.</p>
                         </div>
                       </div>
@@ -1829,10 +1889,10 @@
 
                 <!-- end section-heading -->
             </div><!-- end col-lg-4 -->
-            <div class="col-lg-6">
+            <div class="col-lg-6 ">
 
 
-                    <div class="embed-responsive embed-responsive-4by3">
+                    <div class="embed-responsive embed-responsive-4by3 ">
                         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
                       </div>
                     <!-- end testimonial-carousel -->
@@ -1860,7 +1920,7 @@
                                         <div class="info-icon">
                                             <i class="las la-book-medical"></i>                                        </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Medical</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Medical</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1872,7 +1932,7 @@
                                         <div class="info-icon">
                                             <i class="las la-chart-line"></i>                                        </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Managment</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Managment</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1884,7 +1944,7 @@
                                         <div class="info-icon">
                                             <i class="las la-tools"></i>                                        </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Engineering</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Engineering</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1896,7 +1956,7 @@
                                         <div class="info-icon">
                                             <i class="las la-flask"></i>                                        </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Science</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Science</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1908,7 +1968,7 @@
                                         <div class="info-icon">
                                             <i class="las la-palette"></i>                                                                                </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Arts</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Arts</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1921,7 +1981,7 @@
                                             <i class="lar la-money-bill-alt"></i>
                                             </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Commerce</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Commerce</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1934,7 +1994,7 @@
                                             <i class="las la-book"></i>
                                                 </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Education</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Education</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1947,7 +2007,7 @@
                                             <i class="las la-capsules"></i>
                                                 </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Pharmacy</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Pharmacy</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1959,7 +2019,7 @@
                                         <div class="info-icon">
                                             <i class="las la-gavel"></i>                                        </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Law</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Law</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1972,7 +2032,7 @@
                                             <i class="las la-user-nurse"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Paramedical</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Paramedical</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1985,7 +2045,7 @@
                                             <i class="las la-tshirt"></i>
                                          </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Design</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Design</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -1998,7 +2058,7 @@
                                             <i class="las la-tractor"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Agriculture</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Agriculture</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2011,7 +2071,7 @@
                                             <i class="las la-building"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Architecture</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Architecture</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2024,7 +2084,7 @@
                                             <i class="las la-desktop"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Animation</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Animation</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2037,7 +2097,7 @@
                                             <i class="las la-tooth"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Dental</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Dental</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2050,7 +2110,7 @@
                                             <i class="las la-plane"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Aviation</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Aviation</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2063,7 +2123,7 @@
                                             <i class="las la-laptop-code"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Computer Application</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Computer Application</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2076,7 +2136,7 @@
                                             <i class="las la-microphone"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Mass Communication</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Mass Communication</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2089,7 +2149,7 @@
                                             <i class="las la-paw"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Vetenary Science</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Vetenary Science</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2102,7 +2162,7 @@
                                             <i class="las la-concierge-bell"></i>
                                         </div><!-- end info-icon-->
                                         <div class="info-content">
-                                            <h4 class="info__title"><a href="#">Hotel Managment</a></h4>
+                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Hotel Managment</a></h4>
                                             {{-- <p class="info__desc">
                                                Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
                                             </p> --}}
@@ -2175,7 +2235,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                  RTU
                                                 </a>
                                             </h3>
@@ -2183,7 +2243,7 @@
                                         <p class="deal__meta">City: Rajasthan</p>
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$22132</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2192,7 +2252,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                    BTU
                                                 </a>
                                             </h3>
@@ -2201,7 +2261,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2210,7 +2270,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                     IIT
                                                 </a>
                                             </h3>
@@ -2219,7 +2279,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2228,7 +2288,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                     MIT
                                                 </a>
                                             </h3>
@@ -2237,7 +2297,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2246,7 +2306,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 KANPUR
                                                 </a>
                                             </h3>
@@ -2255,7 +2315,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2264,7 +2324,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 BOMBAY
                                                 </a>
                                             </h3>
@@ -2273,7 +2333,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2286,7 +2346,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 Harvard
                                                 </a>
                                             </h3>
@@ -2295,7 +2355,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2304,7 +2364,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 Cambridge
                                                 </a>
                                             </h3>
@@ -2313,7 +2373,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2322,7 +2382,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                sdfdsgdfsg
                                                 </a>
                                             </h3>
@@ -2331,7 +2391,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2340,7 +2400,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdfkjksddf
                                                 </a>
                                             </h3>
@@ -2349,7 +2409,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2358,7 +2418,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdjafsjdfjs
                                                 </a>
                                             </h3>
@@ -2367,7 +2427,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2376,7 +2436,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 fsjfjsjf
                                                 </a>
                                             </h3>
@@ -2385,7 +2445,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2398,7 +2458,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdfsdkfjlsdajfl
                                                 </a>
                                             </h3>
@@ -2407,7 +2467,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2416,7 +2476,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdfghj
                                                 </a>
                                             </h3>
@@ -2425,7 +2485,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2434,7 +2494,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 jhgfdf
                                                 </a>
                                             </h3>
@@ -2443,7 +2503,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2452,7 +2512,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sjdfhjskhf
                                                 </a>
                                             </h3>
@@ -2461,7 +2521,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2470,7 +2530,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 jdgkjdfgjdlfgkl
                                                 </a>
                                             </h3>
@@ -2479,7 +2539,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2488,7 +2548,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdjfhskjdhfkj
                                                 </a>
                                             </h3>
@@ -2497,7 +2557,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2510,7 +2570,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 hdfjshdfhdsh
                                                 </a>
                                             </h3>
@@ -2519,7 +2579,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2528,7 +2588,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 fsdfsdfsdf
                                                 </a>
                                             </h3>
@@ -2537,7 +2597,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2546,7 +2606,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdhfsjdfhkshdkfhs
                                                 </a>
                                             </h3>
@@ -2555,7 +2615,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2564,7 +2624,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdfkskldflksf
                                                 </a>
                                             </h3>
@@ -2573,7 +2633,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2582,7 +2642,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                sdjfsjkdhfjkhsdhfs
                                                 </a>
                                             </h3>
@@ -2591,7 +2651,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2600,7 +2660,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdfsdfsdfsd
                                                 </a>
                                             </h3>
@@ -2609,7 +2669,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2622,7 +2682,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdfdsjjdfgjkl
                                                 </a>
                                             </h3>
@@ -2631,7 +2691,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2640,7 +2700,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 dfkdslfksjdj
                                                 </a>
                                             </h3>
@@ -2649,7 +2709,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2658,7 +2718,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                               sdfsdfsdfsd
                                                 </a>
                                             </h3>
@@ -2667,7 +2727,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Feess</span><span class="price__num">$140</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2676,7 +2736,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdfsdfsdfs
                                                 </a>
                                             </h3>
@@ -2685,7 +2745,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2694,7 +2754,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                 sdfsdfsdf
                                                 </a>
                                             </h3>
@@ -2703,7 +2763,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2712,7 +2772,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="flight-single.html" class="d-flex align-items-center">
+                                                <a href="{{route('university_detail')}}" class="d-flex align-items-center">
                                                sdfsdfsdfsda
                                                 </a>
                                             </h3>
@@ -2721,7 +2781,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="flight-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -2812,9 +2872,9 @@
     </div><!-- end container -->
 </section>
 <!-- ================================
-    START HOTEL AREA
+    START university AREA
 ================================= -->
-<section class="hotel-area section-bg section-padding overflow-hidden padding-right-100px padding-left-100px">
+{{-- <section class="hotel-area section-bg section-padding overflow-hidden padding-right-100px padding-left-100px">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -3044,9 +3104,9 @@
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
     </div><!-- end container-fluid -->
-</section><!-- end hotel-area -->
+</section><!-- end hotel-area --> --}}
 <!-- ================================
-    END HOTEL AREA
+    END university AREA
 ================================= -->
 
 <!-- ================================
@@ -3223,9 +3283,9 @@
 ================================= -->
 
 <!-- ================================
-    START CAR AREA
+    START cosultant AREA
 ================================= -->
-<section class="info-area padding-top-100px padding-bottom-60px text-center">
+{{-- <section class="info-area padding-top-100px padding-bottom-60px text-center">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -3294,9 +3354,9 @@
             </div><!-- end col-lg-4 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section><!-- end car-area -->
+</section><!-- end car-area --> --}}
 <!-- ================================
-    END CAR AREA
+    END consultant AREA
 ================================= -->
 
 
@@ -3318,10 +3378,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2 class="sec__title text-white line-height-55">Let us show you the world <br> Discover our most popular destinations</h2>
+                    <h2 class="sec__title text-white line-height-55">Let us show you the world <br> Discover our most popular Universities</h2>
                 </div><!-- end section-heading -->
                 <div class="btn-box padding-top-35px">
-                    <a href="become-local-expert.html" class="theme-btn border-0">Join with us</a>
+                <a href="{{route('university_all')}}" class="theme-btn border-0">Checkout</a>
                 </div>
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
@@ -3357,7 +3417,7 @@
                                 <a href="#" class="badge">Travel</a>
                                 <a href="#" class="badge">lifestyle</a>
                             </div>
-                            <h3 class="card-title line-height-26"><a href="blog-single.html">When Traveling Avoid Expensive Hotels & Resorts</a></h3>
+                            <h3 class="card-title line-height-26"><a href="blog-single.html">When Learning Avoid Expensive Universities & Courses</a></h3>
                             <p class="card-meta">
                                 <span class="post__date"> 1 January, 2020</span>
                                 <span class="post-dot"></span>
@@ -3400,7 +3460,7 @@
                             <div class="post-categories">
                                 <a href="#" class="badge">Video</a>
                             </div>
-                            <h3 class="card-title line-height-26"><a href="blog-single.html">My Best Travel Tips: The Ultimate Travel Guide</a></h3>
+                            <h3 class="card-title line-height-26"><a href="blog-single.html">My Best Learing Tips: The Ultimate Learning Guide</a></h3>
                             <p class="card-meta">
                                 <span class="post__date"> 1 February, 2020</span>
                                 <span class="post-dot"></span>
@@ -3443,7 +3503,7 @@
                             <div class="post-categories">
                                 <a href="#" class="badge">audio</a>
                             </div>
-                            <h3 class="card-title line-height-26"><a href="blog-single.html">By all Means, Travel to Popular Sites & Don’t Rule Out Other Locations</a></h3>
+                            <h3 class="card-title line-height-26"><a href="blog-single.html">By all Means, Learn from Popular universities & Don’t Rule Out Other Universities</a></h3>
                             <p class="card-meta">
                                 <span class="post__date"> 1 March, 2020</span>
                                 <span class="post-dot"></span>
@@ -3498,12 +3558,12 @@
             <div class="col-lg-6">
                 <div class="mobile-app-content">
                     <div class="section-heading">
-                        <h2 class="sec__title line-height-55">Trizen Android and IOS App is Available!</h2>
+                        <h2 class="sec__title line-height-55">Education Portal Android and IOS App is Available!</h2>
                     </div><!-- end section-heading -->
                     <ul class="info-list padding-top-30px">
                         <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Access and change your itinerary on-the-go</li>
-                        <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Free cancellation on select hotels</li>
-                        <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Get real-time trip updates</li>
+                        <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Free access</li>
+                        <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Get real-time  updates</li>
                     </ul>
                     <div class="btn-box padding-top-30px">
                         <a href="#" class="d-inline-block mr-3">

@@ -102,54 +102,69 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        Home
+                                    <a href="{{route('front')}}">Home </a>
                                     </li>
                                     <li>
-                                        <a href="#">Services <i class="la la-angle-down"></i></a>
-                                        <ul class="dropdown-menu-item">
-                                            <li><a href="index.html">Courses</a></li>
-                                            <li><a href="index2.html">Universities</a></li>
-                                            <li><a href="index3.html">Consultants</a></li>
-                                            {{-- <li><a href="index4.html">Home - Car</a></li>
-                                            <li><a href="index5.html">Home - Cruise</a></li>
-                                            <li><a href="index6.html">Home - Flight</a></li> --}}
-                                        </ul>
+                                        <a href="#">Courses<i class="la la-angle-down"></i></a>
+                                        <div class="dropdown-menu-item mega-menu">
+                                            <ul class="row no-gutters">
+                                                <li class="col-lg-4 mega-menu-item">
+                                                    <ul>
+                                                    <li><a href="{{route('course_detail')}}">B.Tech<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="{{route('course_detail')}}">MBA <span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="{{route('course_detail')}}">MBBS<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="{{route('course_detail')}}">Law<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="{{route('course_detail')}}">Science<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="{{route('course_detail')}}">Commerce</a></li>
+                                                        <li><a href="{{route('course_detail')}}">Arts</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-8 mega-menu-item">
+                                                    <ul>
+                                                        <li><a href="{{route('course_all')}}">Search Courses</a></li>
+                                                        <li><a href="{{route('course_all')}}">Search Courses in Abroad</a></li>
+                                                        <li><a href="{{route('course_all')}}">Search Courses to study in Abroad</a></li>
+                                                        <li><a href="{{route('course_all')}}">Search Courses</a></li>
+                                                        <li><a href="{{route('course_all')}}">Search Courses in Abroad</a></li>
+                                                        <li><a href="{{route('course_all')}}">Search Courses to study in Abroad</a></li>
+                                                        <li><a href="{{route('consultant.book')}}">Search Consultants </a></li>
+                                                    </ul>
+                                                </li>
+
+                                            </ul>
+                                        </div>
                                     </li>
                                     <li>
-                                        <a href="#">B.Tech <i class="la la-angle-down"></i></a>
-                                        <ul class="dropdown-menu-item">
-                                            <li><a href="tour-fullwidth.html">Streams</a></li>
-                                            <li><a href="tour-grid.html">Colleges</a></li>
-                                            <li><a href="tour-list.html">Courses</a></li>
-                                            <li><a href="tour-left-sidebar.html">Consultants</a></li>
-                                            <li><a href="tour-right-sidebar.html">Book a Consultant</a></li>
-                                            {{-- <li><a href="tour-details.html">Tour details</a></li>
-                                            <li><a href="tour-booking.html">Tour Booking</a></li>
-                                            <li><a href="tour-search-result.html">Tour Search Result</a></li> --}}
-                                        </ul>
+                                        <a href="#">Consultants <i class="la la-angle-down"></i></a>
+                                        <div class="dropdown-menu-item mega-menu">
+                                            <ul class="row no-gutters">
+                                                <li class="col-lg-4 mega-menu-item">
+                                                    <ul>
+                                                        <li><a href="{{ route('consultant_all') }}">Search Consultant<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="{{ route('consultant_all') }}">Consultant <span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="add-tour.html">Colleges in Abroad<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="add-cruise.html">Consultants in Abroad<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="add-car.html">Search Colleges<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="user-dashboard.html">Visa Rules</a></li>
+                                                        <li><a href="admin-dashboard.html">How to book a consultant</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-8 mega-menu-item">
+                                                    <ul>
+                                                        <li><a href="user-profile.html">Search Colleges in Abroad</a></li>
+                                                        <li><a href="become-local-expert.html">Search Universities in Abroad</a></li>
+                                                        <li><a href="contact.html">Search Courses to study in Abroad</a></li>
+                                                        <li><a href="cart.html">MBBS in Foreign Universities</a></li>
+                                                        <li><a href="checkout.html">B.Tech in Foreign Universities</a></li>
+                                                        <li><a href="recover.html">B.Design in Foreign Universities</a></li>
+                                                        <li><a href="payment-received.html">Book a Consultant to Study in Abroad</a></li>
+                                                    </ul>
+                                                </li>
+
+                                            </ul>
+                                        </div>
                                     </li>
-                                    <li>
-                                        <a href="#">MBA <i class="la la-angle-down"></i></a>
-                                        <ul class="dropdown-menu-item">
-                                            <li><a href="cruises.html"></a></li>
-                                            <li><a href="cruises-list.html">Streams</a></li>
-                                            <li><a href="cruise-sidebar.html">Colleges</a></li>
-                                            <li><a href="cruise-details.html">Courses</a></li>
-                                            <li><a href="cruise-booking.html">Consultants</a></li>
-                                            <li><a href="cruise-search-result.html">Book a Consultant</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">MBBS <i class="la la-angle-down"></i></a>
-                                        <ul class="dropdown-menu-item">
-                                            <li><a href="cruises.html"></a></li>
-                                            <li><a href="cruises-list.html">Streams</a></li>
-                                            <li><a href="cruise-sidebar.html">Colleges</a></li>
-                                            <li><a href="cruise-details.html">Courses</a></li>
-                                            <li><a href="cruise-booking.html">Consultants</a></li>
-                                            <li><a href="cruise-search-result.html">Book a Consultant</a></li>
-                                        </ul>
-                                    </li>
+
                                     <li>
                                         <a href="#">Study Abroad <i class="la la-angle-down"></i></a>
                                         <div class="dropdown-menu-item mega-menu">
@@ -176,83 +191,30 @@
                                                         <li><a href="payment-received.html">Book a Consultant to Study in Abroad</a></li>
                                                     </ul>
                                                 </li>
-                                                {{-- <li class="col-lg-3 mega-menu-item">
-                                                    <ul>
-                                                        <li><a href="payment-complete.html">payment complete</a></li>
-                                                        <li><a href="destinations.html">Destinations</a></li>
-                                                        <li><a href="about.html">about</a></li>
-                                                        <li><a href="services.html">Our Services</a></li>
-                                                        <li><a href="gallery.html">Gallery</a></li>
-                                                        <li><a href="pricing.html">pricing</a></li>
-                                                        <li><a href="faq.html">faq</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-lg-3 mega-menu-item">
-                                                    <ul>
-                                                        <li><a href="add-new-post.html">add new post <span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="blog-full-width.html">blog full width</a></li>
-                                                        <li><a href="blog-grid.html">blog grid</a></li>
-                                                        <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                                        <li><a href="blog-single.html">blog details</a></li>
-                                                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                                                        <li><a href="page-404.html">404 page</a></li>
-                                                    </ul>
-                                                </li> --}}
+
                                             </ul>
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#">Law <i class="la la-angle-down"></i></a>
-                                        <ul class="dropdown-menu-item">
-                                            {{-- <li><a href="flight-grid.html">Flight grid</a></li>
-                                            <li><a href="flight-list.html">Flight list</a></li>
-                                            <li><a href="flight-sidebar.html">Flight sidebar </a></li>
-                                            <li><a href="flight-single.html">Flight details</a></li>
-                                            <li><a href="flight-booking.html">Flight Booking</a></li>
-                                            <li><a href="flight-search-result.html">Flight Search Result</a></li> --}}
-                                            <li><a href="cruises.html"></a></li>
-                                            <li><a href="cruises-list.html">Streams</a></li>
-                                            <li><a href="cruise-sidebar.html">Colleges</a></li>
-                                            <li><a href="cruise-details.html">Courses</a></li>
-                                            <li><a href="cruise-booking.html">Consultants</a></li>
-                                            <li><a href="cruise-search-result.html">Book a Consultant</a></li>
-                                        </ul>
+                                        <a href="#">PR/Migration </a>
+                                        {{-- <ul class="dropdown-menu-item">
+                                            <li><a href="cruises.html">Loan</a></li>
+                                            <li><a href="cruises-list.html">Blog</a></li>
+                                            <li><a href="cruise-sidebar.html">Contact Us</a></li>
+                                            <li><a href="cruise-details.html">About Us</a></li>
+                                            <li><a href="cruise-booking.html">Why Us</a></li>
+                                            <li><a href="cruise-search-result.html">How to Book a Consultant</a></li>
+                                        </ul> --}}
                                     </li>
                                     <li>
-                                        <a href="#">Science <i class="la la-angle-down"></i></a>
+                                        <a href="#">More <i class="la la-angle-down"></i></a>
                                         <ul class="dropdown-menu-item">
-                                            {{-- <li><a href="hotel-grid.html">Hotel grid</a></li>
-                                            <li><a href="hotel-list.html">Hotel list</a></li>
-                                            <li><a href="hotel-sidebar.html">Hotel sidebar </a></li>
-                                            <li><a href="hotel-single.html">Hotel details</a></li>
-                                            <li><a href="hotel-booking.html">Hotel Booking</a></li>
-                                            <li><a href="hotel-search-result.html">Hotel Search Result</a></li> --}}
-                                            <li><a href="cruises.html"></a></li>
-                                            <li><a href="cruises-list.html">Streams</a></li>
-                                            <li><a href="cruise-sidebar.html">Colleges</a></li>
-                                            <li><a href="cruise-details.html">Courses</a></li>
-                                            <li><a href="cruise-booking.html">Consultants</a></li>
-                                            <li><a href="cruise-search-result.html">Book a Consultant</a></li>
-                                            <li>
-                                                <a href="#">More Options <i class="la la-plus"></i></a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="cruises-list.html">Streams</a></li>
-                                            <li><a href="cruise-sidebar.html">Colleges</a></li>
-                                            <li><a href="cruise-details.html">Courses</a></li>
-                                            <li><a href="cruise-booking.html">Consultants</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">Commerce <i class="la la-angle-down"></i></a>
-                                        <ul class="dropdown-menu-item">
-                                            <li><a href="cruises.html"></a></li>
-                                            <li><a href="cruises-list.html">Streams</a></li>
-                                            <li><a href="cruise-sidebar.html">Colleges</a></li>
-                                            <li><a href="cruise-details.html">Courses</a></li>
-                                            <li><a href="cruise-booking.html">Consultants</a></li>
-                                            <li><a href="cruise-search-result.html">Book a Consultant</a></li>
+                                            <li><a href="cruises.html">Loan</a></li>
+                                            <li><a href="cruises-list.html">Blog</a></li>
+                                            <li><a href="cruise-sidebar.html">Contact Us</a></li>
+                                            <li><a href="cruise-details.html">About Us</a></li>
+                                            <li><a href="cruise-booking.html">Why Us</a></li>
+                                            <li><a href="cruise-search-result.html">How to Book a Consultant</a></li>
                                         </ul>
                                     </li>
                                 </ul>

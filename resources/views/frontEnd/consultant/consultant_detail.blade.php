@@ -28,6 +28,8 @@
                                 <li class="d-flex justify-content-between align-items-center"><span class="color-text-2 font-weight-medium mr-2">Email</span><span class="theme-btn theme-btn-small theme-btn-rgb">Verified</span></li>
                                 <li class="d-flex justify-content-between align-items-center"><span class="color-text-2 font-weight-medium mr-2">ID Card</span><span class="theme-btn theme-btn-small theme-btn-rgb">Verified</span></li>
                                 <li class="d-flex justify-content-between align-items-center"><span class="color-text-2 font-weight-medium mr-2">Travel Certificate</span><span class="theme-btn theme-btn-small theme-btn-rgb">Verified</span></li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                <a href="{{route('consultant.book')}}"> <span class="btn btn-primary" style="margin-top: 10px;">Book Now</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -76,16 +78,16 @@
                         <div class="my-service-list">
                             <div class="card-item card-item-list">
                                 <div class="card-img">
-                                    <a href="hotel-single.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="hotel-img">
                                     </a>
                                     <span class="badge">Featured </span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="hotel-single.html">The Millennium Hilton New York</a></h3>
-                                    <p class="card-meta">124 E Huron St, New york</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">Rtu</a></h3>
+                                    <p class="card-meta">Rajasthan</p>
                                     <div class="card-rating d-flex align-items-center pt-1">
-                                        <span class="rating__text">Hotel star</span>
+                                        <span class="rating__text">University star</span>
                                         <span class="ratings d-flex align-items-center mx-2">
                                             <i class="la la-star"></i>
                                             <i class="la la-star"></i>
@@ -97,24 +99,23 @@
                                     </div>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$00.00</span>
+
                                         </p>
-                                        <a href="hotel-single.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list">
                                 <div class="card-img">
-                                    <a href="hotel-single.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="hotel-img">
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="hotel-single.html">Hyatt Centric Times Square New York</a></h3>
-                                    <p class="card-meta">6782 Sarasea Circle, Siesta Key, Paris</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">BTU</a></h3>
+                                    <p class="card-meta">Bombay</p>
                                     <div class="card-rating d-flex align-items-center pt-1">
-                                        <span class="rating__text">Hotel star</span>
+                                        <span class="rating__text">University star</span>
                                         <span class="ratings d-flex align-items-center mx-2">
                                             <i class="la la-star-o"></i>
                                             <i class="la la-star-o"></i>
@@ -126,25 +127,24 @@
                                     </div>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$00.00</span>
+
                                         </p>
-                                        <a href="hotel-single.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list">
                                 <div class="card-img">
-                                    <a href="hotel-single.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="hotel-img">
                                     </a>
                                     <span class="badge">Featured</span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="hotel-single.html">Hotel WBF Kitasemba WEST</a></h3>
-                                    <p class="card-meta">6782 Sarasea Circle, Siesta Key, Paris</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">MIT</a></h3>
+                                    <p class="card-meta">USA</p>
                                     <div class="card-rating d-flex align-items-center pt-1">
-                                        <span class="rating__text">Hotel star</span>
+                                        <span class="rating__text">University star</span>
                                         <span class="ratings d-flex align-items-center mx-2">
                                             <i class="la la-star"></i>
                                             <i class="la la-star"></i>
@@ -156,25 +156,24 @@
                                     </div>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$00.00</span>
+
                                         </p>
-                                        <a href="hotel-single.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list">
                                 <div class="card-img">
-                                    <a href="hotel-single.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="hotel-img">
                                     </a>
                                     <span class="badge">Featured</span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="hotel-single.html">Hotel Monterey Le Frere Osaka</a></h3>
-                                    <p class="card-meta">124 E Huron St, New york</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">Kanpur</a></h3>
+                                    <p class="card-meta">Kanpur</p>
                                     <div class="card-rating d-flex align-items-center pt-1">
-                                        <span class="rating__text">Hotel star</span>
+                                        <span class="rating__text">University star</span>
                                         <span class="ratings d-flex align-items-center mx-2">
                                             <i class="la la-star"></i>
                                             <i class="la la-star"></i>
@@ -186,10 +185,9 @@
                                     </div>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$00.00</span>
+
                                         </p>
-                                        <a href="hotel-single.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -220,14 +218,14 @@
                         <div class="my-service-list">
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="tour-details.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="Destination-img">
                                     </a>
                                     <span class="badge">Featured</span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="tour-details.html">A Paris walk to Remember</a></h3>
-                                    <p class="card-meta">124 E Huron St, New york</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">Bombay</a></h3>
+                                    <p class="card-meta">Manhattan</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
                                             <i class="la la-star"></i>
@@ -236,33 +234,32 @@
                                             <i class="la la-star"></i>
                                             <i class="la la-star"></i>
                                         </span>
-                                        <span class="rating__text mr-2">4.5 of 5</span>
-                                        <span class="rating__text">(3 Comments)</span>
+
                                     </div>
                                     <ul class="list-items list-items-2">
-                                        <li><span>Travellers:</span>30 people</li>
+                                        {{-- <li><span>Travellers:</span>30 people</li>
                                         <li><span>Date:</span>12 Jun 2020</li>
-                                        <li><span>Booking details:</span> 0 user booked</li>
+                                        <li><span>Booking details:</span> 0 user booked</li> --}}
                                     </ul>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$989.00</span>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="tour-details.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="tour-details.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="Destination-img">
                                     </a>
-                                    <span class="badge badge-ribbon">Save 39%</span>
+                                    {{-- <span class="badge badge-ribbon">Save 39%</span> --}}
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="tour-details.html">London to Florence in 10 Days</a></h3>
-                                    <p class="card-meta">124 E Huron St, New york</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">hgjhgjggj</a></h3>
+                                    <p class="card-meta">jjhgjgjg</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
                                             <i class="la la-star"></i>
@@ -275,28 +272,28 @@
                                         <span class="rating__text">(3 Comments)</span>
                                     </div>
                                     <ul class="list-items list-items-2">
-                                        <li><span>Travellers:</span>10 people</li>
-                                        <li><span>Booking details:</span> 0 user booked</li>
+                                        {{-- <li><span>Travellers:</span>10 people</li>
+                                        <li><span>Booking details:</span> 0 user booked</li> --}}
                                     </ul>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$950.00</span>
-                                            <span class="price__num before-price color-text-3">$989.00</span>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$950.00</span> --}}
+                                            {{-- <span class="price__num before-price color-text-3">$989.00</span> --}}
                                         </p>
-                                        <a href="tour-details.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="tour-details.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}"alt="Destination-img">
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="tour-details.html">River Cruise Tour on the Seine</a></h3>
-                                    <p class="card-meta">124 E Huron St, New york</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">gfhfhghkjhjkhj</a></h3>
+                                    <p class="card-meta">bghghghgh</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
                                             <i class="la la-star"></i>
@@ -309,29 +306,29 @@
                                         <span class="rating__text">(3 Comments)</span>
                                     </div>
                                     <ul class="list-items list-items-2">
-                                        <li><span>Travellers:</span>30 people</li>
+                                        {{-- <li><span>Travellers:</span>30 people</li>
                                         <li><span>Date:</span>12 Jun 2020</li>
-                                        <li><span>Booking details:</span> 0 user booked</li>
+                                        <li><span>Booking details:</span> 0 user booked</li> --}}
                                     </ul>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$989.00</span>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="tour-details.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="tour-details.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}"alt="Destination-img">
                                     </a>
-                                    <span class="badge">Featured</span>
+                                    {{-- <span class="badge">Featured</span> --}}
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="tour-details.html">3-Day Loire Mer Extraordinaire</a></h3>
-                                    <p class="card-meta">Champs-Elysées, 8ème 5 rue de Berri</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">vghhgfhgffgfghfghfhgfh</a></h3>
+                                    <p class="card-meta">Champs</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
                                             <i class="la la-star"></i>
@@ -344,16 +341,16 @@
                                         <span class="rating__text">(1 Comments)</span>
                                     </div>
                                     <ul class="list-items list-items-2">
-                                        <li><span>Travellers:</span>30 people</li>
+                                        {{-- <li><span>Travellers:</span>30 people</li>
                                         <li><span>Date:</span>12 Jun 2020</li>
-                                        <li><span>Booking details:</span> 0 user booked</li>
+                                        <li><span>Booking details:</span> 0 user booked</li> --}}
                                     </ul>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$989.00</span>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="tour-details.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -384,14 +381,14 @@
                         <div class="my-service-list">
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="tour-details.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}"alt="Destination-img">
                                     </a>
                                     <span class="badge">Featured</span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="tour-details.html">Manhattan Skyline</a></h3>
-                                    <p class="card-meta">Avenue of the Americas, New York</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">Manhattan Skyline</a></h3>
+                                    <p class="card-meta">hgjghhgjgghjgj</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
                                             <i class="la la-star"></i>
@@ -404,27 +401,27 @@
                                         <span class="rating__text">(3 Reviews)</span>
                                     </div>
                                     <ul class="list-items list-items-2">
-                                        <li><span>Activity Type:</span>Specific Date</li>
+                                        {{-- <li><span>Activity Type:</span>Specific Date</li> --}}
                                     </ul>
-                                    <p class="card-meta">Follow the coming-of-age tale of lion cub Simba in this vibrant and colorful family-friendly ...</p>
+                                    {{-- <p class="card-meta">Follow the coming-of-age tale of lion cub Simba in this vibrant and colorful family-friendly ...</p> --}}
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$989.00</span>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="tour-details.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="tour-details.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}"alt="Destination-img">
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="tour-details.html">Best Day for Hiking</a></h3>
-                                    <p class="card-meta">Des Beaux Arts, Paris France</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">Bbhgjhjgj</a></h3>
+                                    <p class="card-meta">Paris France</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
                                             <i class="la la-star"></i>
@@ -437,28 +434,28 @@
                                         <span class="rating__text">(3 Reviews)</span>
                                     </div>
                                     <ul class="list-items list-items-2">
-                                        <li><span>Activity Type:</span>Daily Activity</li>
+                                        {{-- <li><span>Activity Type:</span>Daily Activity</li> --}}
                                     </ul>
-                                    <p class="card-meta">Follow the coming-of-age tale of lion cub Simba in this vibrant and colorful family-friendly ...</p>
+                                    {{-- <p class="card-meta">Follow the coming-of-age tale of lion cub Simba in this vibrant and colorful family-friendly ...</p> --}}
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$989.00</span>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="tour-details.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="tour-details.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="Destination-img">
                                     </a>
                                     <span class="badge">Featured</span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="tour-details.html">Splendous Skyline View</a></h3>
-                                    <p class="card-meta">Avenue of the Americas, New York</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">hjgjjghgView</a></h3>
+                                    <p class="card-meta">New York</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
                                             <i class="la la-star"></i>
@@ -471,28 +468,28 @@
                                         <span class="rating__text">(3 Reviews)</span>
                                     </div>
                                     <ul class="list-items list-items-2">
-                                        <li><span>Activity Type:</span>Specific Date</li>
+                                        {{-- <li><span>Activity Type:</span>Specific Date</li> --}}
                                     </ul>
-                                    <p class="card-meta">Follow the coming-of-age tale of lion cub Simba in this vibrant and colorful family-friendly ...</p>
+                                    {{-- <p class="card-meta">Follow the coming-of-age tale of lion cub Simba in this vibrant and colorful family-friendly ...</p> --}}
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$989.00</span>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="tour-details.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="tour-details.html" class="d-block">
+                                    <a href="{{route('university_detail')}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}"alt="Destination-img">
                                     </a>
-                                    <span class="badge badge-ribbon">Save 39%</span>
+                                    {{-- <span class="badge badge-ribbon">Save 39%</span> --}}
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="tour-details.html">A Walk into the Old Little Town</a></h3>
-                                    <p class="card-meta">Avenue of the Americas, New York</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">gjhgjhgjgjg</a></h3>
+                                    <p class="card-meta">New York</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
                                             <i class="la la-star"></i>
@@ -505,16 +502,161 @@
                                         <span class="rating__text">(3 Reviews)</span>
                                     </div>
                                     <ul class="list-items list-items-2">
-                                        <li><span>Activity Type:</span>Specific Date</li>
+                                        {{-- <li><span>Activity Type:</span>Specific Date</li> --}}
                                     </ul>
-                                    <p class="card-meta">Follow the coming-of-age tale of lion cub Simba in this vibrant and colorful family-friendly ...</p>
+                                    {{-- <p class="card-meta">Follow the coming-of-age tale of lion cub Simba in this vibrant and colorful family-friendly ...</p> --}}
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$950.00</span>
-                                            <span class="price__num before-price color-text-3">$989.00</span>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$950.00</span> --}}
+                                            {{-- <span class="price__num before-price color-text-3">$989.00</span> --}}
                                         </p>
-                                        <a href="tour-details.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                        </div><!-- end my-service-list -->
+                        <nav aria-label="Page navigation example" class="pt-4">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Previous">
+                                        <span aria-hidden="true"><i class="la la-angle-left"></i></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <a class="page-link page-link-nav" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Next">
+                                        <span aria-hidden="true"><i class="la la-angle-right"></i></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- end tab-pane -->
+                    <div class="tab-pane fade " id="my-car" role="tabpanel" aria-labelledby="my-car-tab">
+                        <div class="my-service-list">
+                            <div class="card-item car-card card-item-list">
+                                <div class="card-img padding-top-40px">
+                                    <a href="{{route('university_detail')}}" class="d-block">
+                                        <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
+                                    </a>
+                                    <span class="badge">Bestseller</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-meta">dfgdfgdfgdfg</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">werwerwerwerwer</a></h3>
+                                    <div class="card-rating">
+                                        <span class="badge text-white">4.4/5</span>
+                                        <span class="review__text">Average</span>
+                                        <span class="rating__text">(30 Reviews)</span>
+                                    </div>
+                                    <div class="card-attributes">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="courses"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="students"><i class="la la-suitcase"></i><span>2</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+
+                                        </p>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item car-card card-item-list">
+                                <div class="card-img padding-top-40px">
+                                    <a href="{{route('university_detail')}}" class="d-block">
+                                        <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-meta">Bbhgjhjgj</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">jggjjgjhgjhghjr</a></h3>
+                                    <div class="card-rating">
+                                        <span class="badge text-white">4.4/5</span>
+                                        <span class="review__text">Average</span>
+                                        <span class="rating__text">(30 Reviews)</span>
+                                    </div>
+                                    <div class="card-attributes">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-suitcase"></i><span>2</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$23.00</span>
+                                            <span class="price__text">Per day</span> --}}
+                                        </p>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item car-card card-item-list">
+                                <div class="card-img padding-top-40px">
+                                    <a href="{{route('university_detail')}}" class="d-block">
+                                        <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
+                                    </a>
+                                    <span class="badge">Bestseller</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-meta">gfghfhghfhgfhfhf</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">ggfffgfgfg</a></h3>
+                                    <div class="card-rating">
+                                        <span class="badge text-white">4.4/5</span>
+                                        <span class="review__text">Average</span>
+                                        <span class="rating__text">(30 Reviews)</span>
+                                    </div>
+                                    <div class="card-attributes">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-suitcase"></i><span>2</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$23.00</span>
+                                            <span class="price__text">Per day</span> --}}
+                                        </p>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item car-card card-item-list">
+                                <div class="card-img padding-top-40px">
+                                    <a href="{{route('university_detail')}}" class="d-block">
+                                        <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-meta">ghfhfhgfhfhghgh</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">gghfhfffhgfhg</a></h3>
+                                    <div class="card-rating">
+                                        <span class="badge text-white">4.4/5</span>
+                                        <span class="review__text">Average</span>
+                                        <span class="rating__text">(30 Reviews)</span>
+                                    </div>
+                                    <div class="card-attributes">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-suitcase"></i><span>2</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            {{-- <span class="price__from">Price from</span>
+                                            <span class="price__num">$23.00</span>
+                                            <span class="price__text">Per day</span> --}}
+                                        </p>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -551,8 +693,8 @@
                                     <span class="badge">Bestseller</span>
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-meta">Compact SUV</p>
-                                    <h3 class="card-title"><a href="car-single.html">Toyota Corolla or Similar</a></h3>
+                                    <p class="card-meta">jkhkhkjhkhjkh</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">ggfgfghfghfh</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -560,17 +702,17 @@
                                     </div>
                                     <div class="card-attributes">
                                         <ul class="d-flex align-items-center">
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passengers"><i class="la la-users"></i><span>4</span></li>
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>2</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-suitcase"></i><span>2</span></li>
                                         </ul>
                                     </div>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
+                                            {{-- <span class="price__from">Price from</span>
                                             <span class="price__num">$23.00</span>
-                                            <span class="price__text">Per day</span>
+                                            <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="car-single.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -581,8 +723,8 @@
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-meta">BelCharles Car</p>
-                                    <h3 class="card-title"><a href="car-single.html">Volkswagen Jetta 2 Doors or Similar</a></h3>
+                                    <p class="card-meta">hjgjhgjhghjh</p>
+                                    <h3 class="card-title"><a href="car-single.html">hjgjhhghgghgh</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -590,164 +732,17 @@
                                     </div>
                                     <div class="card-attributes">
                                         <ul class="d-flex align-items-center">
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passengers"><i class="la la-users"></i><span>4</span></li>
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>2</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-suitcase"></i><span>2</span></li>
                                         </ul>
                                     </div>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
+                                            {{-- <span class="price__from">Price from</span>
                                             <span class="price__num">$23.00</span>
-                                            <span class="price__text">Per day</span>
+                                            <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="car-single.html" class="theme-btn theme-btn-small">Book Now</a>
-                                    </div>
-                                </div>
-                            </div><!-- end card-item -->
-                            <div class="card-item car-card card-item-list">
-                                <div class="card-img padding-top-40px">
-                                    <a href="car-single.html" class="d-block">
-                                        <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
-                                    </a>
-                                    <span class="badge">Bestseller</span>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-meta">Lamborghini</p>
-                                    <h3 class="card-title"><a href="car-single.html">Mercedes E Class or Similar</a></h3>
-                                    <div class="card-rating">
-                                        <span class="badge text-white">4.4/5</span>
-                                        <span class="review__text">Average</span>
-                                        <span class="rating__text">(30 Reviews)</span>
-                                    </div>
-                                    <div class="card-attributes">
-                                        <ul class="d-flex align-items-center">
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passengers"><i class="la la-users"></i><span>4</span></li>
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>2</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-price d-flex align-items-center justify-content-between">
-                                        <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$23.00</span>
-                                            <span class="price__text">Per day</span>
-                                        </p>
-                                        <a href="car-single.html" class="theme-btn theme-btn-small">Book Now</a>
-                                    </div>
-                                </div>
-                            </div><!-- end card-item -->
-                            <div class="card-item car-card card-item-list">
-                                <div class="card-img padding-top-40px">
-                                    <a href="car-single.html" class="d-block">
-                                        <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-meta">BelChar Car</p>
-                                    <h3 class="card-title"><a href="car-single.html">Fiat Fiesta 2 Doors or Similar</a></h3>
-                                    <div class="card-rating">
-                                        <span class="badge text-white">4.4/5</span>
-                                        <span class="review__text">Average</span>
-                                        <span class="rating__text">(30 Reviews)</span>
-                                    </div>
-                                    <div class="card-attributes">
-                                        <ul class="d-flex align-items-center">
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passengers"><i class="la la-users"></i><span>4</span></li>
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>2</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-price d-flex align-items-center justify-content-between">
-                                        <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$23.00</span>
-                                            <span class="price__text">Per day</span>
-                                        </p>
-                                        <a href="car-single.html" class="theme-btn theme-btn-small">Book Now</a>
-                                    </div>
-                                </div>
-                            </div><!-- end card-item -->
-                        </div><!-- end my-service-list -->
-                        <nav aria-label="Page navigation example" class="pt-4">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link page-link-nav" href="#" aria-label="Previous">
-                                        <span aria-hidden="true"><i class="la la-angle-left"></i></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link page-link-nav" href="#">1</a></li>
-                                <li class="page-item active">
-                                    <a class="page-link page-link-nav" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link page-link-nav" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link page-link-nav" href="#" aria-label="Next">
-                                        <span aria-hidden="true"><i class="la la-angle-right"></i></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div><!-- end tab-pane -->
-                    <div class="tab-pane fade " id="my-car" role="tabpanel" aria-labelledby="my-car-tab">
-                        <div class="my-service-list">
-                            <div class="card-item car-card card-item-list">
-                                <div class="card-img padding-top-40px">
-                                    <a href="car-single.html" class="d-block">
-                                        <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
-                                    </a>
-                                    <span class="badge">Bestseller</span>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-meta">Compact SUV</p>
-                                    <h3 class="card-title"><a href="car-single.html">Toyota Corolla or Similar</a></h3>
-                                    <div class="card-rating">
-                                        <span class="badge text-white">4.4/5</span>
-                                        <span class="review__text">Average</span>
-                                        <span class="rating__text">(30 Reviews)</span>
-                                    </div>
-                                    <div class="card-attributes">
-                                        <ul class="d-flex align-items-center">
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passengers"><i class="la la-users"></i><span>4</span></li>
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>2</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-price d-flex align-items-center justify-content-between">
-                                        <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$23.00</span>
-                                            <span class="price__text">Per day</span>
-                                        </p>
-                                        <a href="car-single.html" class="theme-btn theme-btn-small">Book Now</a>
-                                    </div>
-                                </div>
-                            </div><!-- end card-item -->
-                            <div class="card-item car-card card-item-list">
-                                <div class="card-img padding-top-40px">
-                                    <a href="car-single.html" class="d-block">
-                                        <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-meta">BelCharles Car</p>
-                                    <h3 class="card-title"><a href="car-single.html">Volkswagen Jetta 2 Doors or Similar</a></h3>
-                                    <div class="card-rating">
-                                        <span class="badge text-white">4.4/5</span>
-                                        <span class="review__text">Average</span>
-                                        <span class="rating__text">(30 Reviews)</span>
-                                    </div>
-                                    <div class="card-attributes">
-                                        <ul class="d-flex align-items-center">
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passengers"><i class="la la-users"></i><span>4</span></li>
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>2</span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-price d-flex align-items-center justify-content-between">
-                                        <p>
-                                            <span class="price__from">Price from</span>
-                                            <span class="price__num">$23.00</span>
-                                            <span class="price__text">Per day</span>
-                                        </p>
-                                        <a href="car-single.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -759,8 +754,8 @@
                                     <span class="badge">Bestseller</span>
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-meta">Lamborghini</p>
-                                    <h3 class="card-title"><a href="car-single.html">Mercedes E Class or Similar</a></h3>
+                                    <p class="card-meta">nvbmnmnbmnbmn</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">ghgjhgjghhgjr</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -768,17 +763,17 @@
                                     </div>
                                     <div class="card-attributes">
                                         <ul class="d-flex align-items-center">
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passengers"><i class="la la-users"></i><span>4</span></li>
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>2</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-suitcase"></i><span>2</span></li>
                                         </ul>
                                     </div>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
+                                            {{-- <span class="price__from">Price from</span>
                                             <span class="price__num">$23.00</span>
-                                            <span class="price__text">Per day</span>
+                                            <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="car-single.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -789,8 +784,8 @@
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-meta">BelChar Car</p>
-                                    <h3 class="card-title"><a href="car-single.html">Fiat Fiesta 2 Doors or Similar</a></h3>
+                                    <p class="card-meta">fhgfffghfh</p>
+                                    <h3 class="card-title"><a href="{{route('university_detail')}}">fghfhgfh</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -798,17 +793,17 @@
                                     </div>
                                     <div class="card-attributes">
                                         <ul class="d-flex align-items-center">
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passengers"><i class="la la-users"></i><span>4</span></li>
-                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>2</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-suitcase"></i><span>2</span></li>
                                         </ul>
                                     </div>
                                     <div class="card-price d-flex align-items-center justify-content-between">
                                         <p>
-                                            <span class="price__from">Price from</span>
+                                            {{-- <span class="price__from">Price from</span>
                                             <span class="price__num">$23.00</span>
-                                            <span class="price__text">Per day</span>
+                                            <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="car-single.html" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->

@@ -29,48 +29,42 @@
                         <div class="search-fields-container margin-top-30px">
                             <div class="contact-form-action">
                                 <form action="#" class="row">
-                                    <div class="col-lg-4 col-sm-6 pr-0">
+                                    <div class="col-lg-2 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Courses Department</label>
+                                            <label class="label-text">Country</label>
                                             <div class="form-group">
-                                                <span class="la la-map-marker form-icon"></span>
-                                                <input class="form-control" type="text" placeholder="Destination">
+                                                <div class="select-contain w-auto">
+                                                <select class="select-contain-select">
+                                                    <option value="1" selected>India</option>
+                                                    <option value="2">USA</option>
+                                                    <option value="3">UK</option>
+                                                    <option value="4">KSA</option>
+                                                    <option value="5">UAE</option>
+                                                    <option value="6">Russia</option>
+                                                    <option value="7">China</option>
+
+
+
+                                                </select>
+                                            </div>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-2 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">Courses Type</label>
-                                            <div class="form-group">
-                                                <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-2 -->
-                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                    <div class="col-lg-4 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">University</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select">
-                                                        <option value="1200AM">Btech</option>
-                                                        <option value="1230AM">Btech</option>
-                                                        <option value="0100AM">Btech</option>
-                                                        <option value="0130AM">Btech</option>
-                                                        <option value="0200AM">Btech</option>
-                                                        <option value="0230AM">Btech</option>
-                                                        <option value="0300AM">Btech</option>
-                                                        <option value="0330AM">Btech</option>
-                                                        <option value="0400AM">Btech</option>
-                                                        <option value="0430AM">Btech</option>
-                                                        <option value="0500AM">Btech</option>
-                                                        <option value="0530AM">Btech</option>
-                                                        <option value="0600AM">Btech</option>
-                                                        <option value="0630AM">Btech</option>
-                                                        <option value="0700AM"></option>
-                                                        <option value="0730AM">Btech</option>
+                                                        <option value="1" selected>ATU</option>
+                                                        <option value="2">BTU</option>
+                                                        <option value="3">CTU</option>
+                                                        <option value="4">DTU</option>
+                                                        <option value="5">ETU</option>
+                                                        <option value="6">FTU</option>
+                                                        <option value="7">GTU</option>
 
-                                                        <option value="0900AM" selected="">Mtech</option>
+
 
                                                     </select>
                                                 </div>
@@ -79,13 +73,37 @@
                                     </div><!-- end col-lg-3 -->
                                     <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Drop-off Date</label>
+                                            <label class="label-text">Courses Type</label>
                                             <div class="form-group">
-                                                <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
+                                                <div class="select-contain w-auto">
+                                                    <select class="select-contain-select">
+                                                        <option value="1" selected>UG</option>
+                                                        <option value="2">PG</option>
+
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div><!-- end col-lg-2 -->
+                                    </div><!-- end col-lg-3 -->
+                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                        <div class="input-box">
+                                            <label class="label-text">Courses Name</label>
+                                            <div class="form-group">
+                                                <div class="select-contain w-auto">
+                                                    <select class="select-contain-select">
+                                                        <option value="1" selected>Mtech</option>
+                                                        <option value="2">Btech</option>
+                                                        <option value="3">Ctech</option>
+                                                        <option value="4">Dtech</option>
+                                                        <option value="5">Etech</option>
+                                                        <option value="6">Ftech</option>
+                                                        <option value="7">Gtech</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end col-lg-3 -->
                                     <div class="col-lg-2 col-sm-2">
                                         <div class="input-box">
                                             <label class="label-text">Time</label>
@@ -147,7 +165,7 @@
                                     </div><!-- end col-lg-3 -->
                                 </form>
                             </div><!-- end contact-form-action -->
-                            <div class="advanced-wrap">
+                            {{-- <div class="advanced-wrap">
                                 <a class="btn collapse-btn theme-btn-hover-gray font-size-15" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
                                     More option <i class="la la-angle-down ml-1"></i>
                                 </a>
@@ -183,7 +201,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="btn-box pt-3">
                                 <button class="theme-btn" type="button">Search Now</button>
                             </div>
@@ -193,9 +211,9 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end breadcrumb-wrap -->
-    <div class="bread-svg-box">
+    {{-- <div class="bread-svg-box">
         <svg class="bread-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><polygon points="100 0 50 10 0 0 0 10 100 10"></polygon></svg>
-    </div><!-- end bread-svg -->
+    </div><!-- end bread-svg --> --}}
 </section><!-- end breadcrumb-area -->
 <!-- ================================
     END BREADCRUMB AREA
@@ -411,7 +429,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('course_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/course/course-1.jpg')}}" alt="car-img">
                         </a>
                         <span class="badge">Top Ranked</span>
@@ -421,7 +439,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Technology</p>
-                        <h3 class="card-title"><a href="car-single.html">BCA</a></h3>
+                        <h3 class="card-title"><a href="{{route('course_detail')}}">BCA</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -438,7 +456,7 @@
                                 <span class="price__text">Fees</span>
                                 <span class="price__num">200000</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('course_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -446,7 +464,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('course_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/course/course-1.jpg')}}" alt="car-img">
                         </a>
                         <span class="badge">Top Ranked</span>
@@ -456,7 +474,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Managment</p>
-                        <h3 class="card-title"><a href="car-single.html">BBA</a></h3>
+                        <h3 class="card-title"><a href="{{route('course_detail')}}">BBA</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -473,7 +491,7 @@
                                 <span class="price__text">Fees</span>
                                 <span class="price__num">300000</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('course_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -481,7 +499,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('course_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/course/course-1.jpg')}}" alt="car-img">
                         </a>
                         <span class="badge">Top Ranked</span>
@@ -491,7 +509,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Technology</p>
-                        <h3 class="card-title"><a href="car-single.html">Mtech</a></h3>
+                        <h3 class="card-title"><a href="{{route('course_detail')}}">Mtech</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -508,7 +526,7 @@
                                 <span class="price__text">Fees</span>
                                 <span class="price__num">800000</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('course_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -516,7 +534,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('course_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/course/course-1.jpg')}}" alt="car-img">
                         </a>
                         <span class="badge">Featured</span>
@@ -526,7 +544,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Medical</p>
-                        <h3 class="card-title"><a href="car-single.html">MBBS</a></h3>
+                        <h3 class="card-title"><a href="{{route('course_detail')}}">MBBS</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -543,7 +561,7 @@
                                 <span class="price__text">Fees</span>
                                 <span class="price__num">80000</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('course_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -551,7 +569,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('course_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/course/course-1.jpg')}}" alt="car-img">
                         </a>
                         <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
@@ -560,7 +578,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Technology</p>
-                        <h3 class="card-title"><a href="car-single.html">Btech</a></h3>
+                        <h3 class="card-title"><a href="{{route('course_detail')}}">Btech</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -577,7 +595,7 @@
                                 <span class="price__text">Fees</span>
                                 <span class="price__num">900000</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('course_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -585,7 +603,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('course_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/course/course-1.jpg')}}" alt="car-img">
                         </a>
                         <span class="badge">Top Ranked</span>
@@ -595,7 +613,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Managment</p>
-                        <h3 class="card-title"><a href="car-single.html">MBA</a></h3>
+                        <h3 class="card-title"><a href="{{route('course_detail')}}">MBA</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -612,7 +630,7 @@
                                 <span class="price__text">Fees</span>
                                 <span class="price__num">200000</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('course_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->

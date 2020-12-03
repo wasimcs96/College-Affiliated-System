@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/style.css') }}">
     @yield('per_page_style')
-    <script src="https://kit.fontawesome.com/d8864c88b6.js" crossorigin="anonymous"></script>
+    {{-- <script src="https://kit.fontawesome.com/d8864c88b6.js" crossorigin="anonymous"></script> --}}
 </head>
 <body>
 <!-- start cssload-loader -->
@@ -61,7 +61,7 @@
 <section class="footer-area section-bg padding-top-100px padding-bottom-30px">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 responsive-column">
+            {{-- <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
                     <div class="footer-logo padding-bottom-30px">
                         <a href="index.html" class="foot__logo"><img src="{{ asset('frontEnd/assets/images/education-portal.png') }}" alt="logo"></a>
@@ -73,50 +73,59 @@
                         <li><a href="#">educationportal@yourwebsite.com</a></li>
                     </ul>
                 </div><!-- end footer-item -->
-            </div><!-- end col-lg-3 -->
+            </div><!-- end col-lg-3 --> --}}
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
-                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Company</h4>
+                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Popular Country</h4>
                     <ul class="list-items list--items">
-                        <li><a href="about.html">About us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="#">Jobs</a></li>
-                        <li><a href="blog-grid.html">News</a></li>
-                        <li><a href="contact.html">Support</a></li>
-                        <li><a href="#">Advertising</a></li>
+                        <li><a href="about.html">China</a></li>
+                        <li><a href="services.html">Germany</a></li>
+                        <li><a href="#">USA</a></li>
+                        <li><a href="blog-grid.html">Canada</a></li>
+                        <li><a href="contact.html">Spain</a></li>
+                        <li><a href="#">Algeria</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
-                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Other Links</h4>
+                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Blogs</h4>
                     <ul class="list-items list--items">
-                        <li><a href="#">USA Vacation Packages</a></li>
-                        <li><a href="#">USA Flights</a></li>
-                        <li><a href="#">USA Hotels</a></li>
-                        <li><a href="#">USA Car Hire</a></li>
-                        <li><a href="#">Create an Account</a></li>
-                        <li><a href="#">Our Reviews</a></li>
+                        <li><a href="#">PR/ Migration</a></li>
+                        <li><a href="#">Loans</a></li>
+                        <li><a href="#">sdfssdfss</a></li>
+                        <li><a href="#">sdfsdfsdf</a></li>
+                        <li><a href="#">sdfsdfsdfs</a></li>
+                        <li><a href="#">sdfsdfsdfsdf</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
+
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
-                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Subscribe now</h4>
-                    <p class="footer__desc pb-3">Subscribe for latest updates & promotions</p>
-                    <div class="contact-form-action">
-                        <form action="#">
-                            <div class="input-box">
-                                <label class="label-text">Enter email address</label>
-                                <div class="form-group mb-0">
-                                    <span class="la la-envelope form-icon"></span>
-                                    <input class="form-control" type="email" name="email" placeholder="Email address">
-                                    <button class="theme-btn theme-btn-small submit-btn" type="submit">Go</button>
-                                    <span class="font-size-14 pt-1"><i class="la la-lock mr-1"></i>Your information is safe with us.</span>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Get in touch</h4>
+                    <ul class="list-items list--items">
+                        <li><a href="#">Book a consultant</a></li>
+                        <li><a href="#">Track Application</a></li>
+                        <li>Download App</li>
+                        <li><a href="#" ><img style="    width: 105px;" src="{{ asset('frontEnd/assets/images/app-store.png') }}" alt=""></a>
+                        <a href="#"><img style="    width: 105px;" src="{{ asset('frontEnd/assets/images/google-play.png') }}" alt="">
+                        </a></li>
+
+                    </ul>
+                </div><!-- end footer-item -->
+            </div>
+
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">About us</h4>
+                    <ul class="list-items list--items">
+                        <li><a href="#">Why C.I</a></li>
+                        <li><a href="#">Vision & Goals</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">User Agreement</a></li>
+                    </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
         </div><!-- end row -->
@@ -153,12 +162,13 @@
                     </p>
                 </div><!-- end copy-right -->
             </div><!-- end col-lg-7 -->
-            <div class="col-lg-5">
+            {{-- <div class="col-lg-5">
                 <div class="copy-right-content d-flex align-items-center justify-content-end padding-top-30px">
                     <h3 class="title font-size-15 pr-2">We Accept</h3>
                     <img src="{{ asset('frontEnd/assets/images/payment-img.png') }}" alt="">
                 </div><!-- end copy-right-content -->
-            </div><!-- end col-lg-5 -->
+            </div><!-- end col-lg-5 --> --}}
+
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end footer-area -->
