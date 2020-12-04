@@ -18,4 +18,5 @@ $(function() {
             error: 'Désolé, le fichier trop volumineux'
         }
     });
+
 });

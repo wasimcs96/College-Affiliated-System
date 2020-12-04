@@ -22,7 +22,7 @@
                         <div class="col-lg-6">
                             <div class="breadcrumb-content">
                                 <div class="section-heading">
-                                    <h2 class="sec__title">Flight Booking</h2>
+                                    <h2 class="sec__title">Consultant Booking</h2>
                                 </div>
                             </div><!-- end breadcrumb-content -->
                         </div><!-- end col-lg-6 -->
@@ -30,7 +30,7 @@
                             <div class="breadcrumb-list">
                                 <ul class="list-items d-flex justify-content-end">
                                     <li><a href="index.html">Home</a></li>
-                                    <li>Flight Booking</li>
+                                    <li>Consultant Booking</li>
                                 </ul>
                             </div><!-- end breadcrumb-list -->
                         </div><!-- end col-lg-6 -->
@@ -376,7 +376,7 @@
                                                 <div class="input-box">
                                                     <div class="custom-checkbox mb-0">
                                                         <input type="checkbox" id="receiveChb">
-                                                        <label for="receiveChb">I want to receive Trizen promotional offers in the future</label>
+                                                        <label for="receiveChb">I want to receive Notification</label>
                                                     </div>
                                                 </div>
                                             </div><!-- end col-lg-12 -->
@@ -400,24 +400,25 @@
                                                         <div class="input-box">
                                                             <label class="label-text">University  Name</label>
                                                             <div class="form-group">
-                                                                <span class="la la-credit-card form-icon"></span>
-                                                                <input class="form-control" type="text" name="text" placeholder="Card holder name">
+                                                                <input class="form-control" type="text" name="text" placeholder="University name">
                                                             </div>
                                                         </div>
                                                     </div><!-- end col-lg-6 -->
                                                     <div class="col-lg-6 responsive-column">
                                                         <label class="label-text">Course  Name</label>
 
-                                                        <div class="input-group mb-3 FulNam" >
-                                                            <div class="input-group-prepend">
-                                                                <label class="input-group-text" for="inputGroupSelect01">Course</label>
-                                                              </div>
-                                                            <select class="custom-select FulNamo"  id="inputGroupSelect01">
-                                                              <option selected>Choose...</option>
-                                                              <option value="1">One</option>
-                                                              <option value="2">Two</option>
-                                                              <option value="3">Three</option>
+
+                                                            <div class="select-contain w-auto">
+                                                              <select class="select-contain-select">
+                                                                <option value="country-code">Select Course</option>
+                                                                <option value="1">Mtech</option>
+                                                                <option value="2">Btech</option>
+                                                                <option value="3">BSC</option>
+                                                                <option value="4">MSC</option>
+                                                                <option value="5">BCA</option>
+                                                                <option value="6">MCA</option>
                                                             </select>
+                                                            </div>
                                                           </div>
                                                     </div>
                                                     <div class="col-md-12">
@@ -425,12 +426,12 @@
                                                         <div class="table-responsive" style="width: 100%;     margin-top: 36px;">
                                                             <label for="name">University  Name</label>
                                                             <table class="table table-bordered" id="dynamic_field">
-                                                                <tr>
+                                                                <tr class="dynamic-added">
                                                                     <td> <select id="inputState" class="form-control FulNamo" >
-                                                                        <option selected>Choose...</option>
-                                                                        <option>...</option>
+                                                                        <option selected>Rtu</option>
+                                                                        <option>btech</option>
                                                                       </select></td>
-                                                                    <td><button type="button" name="add" id="add" class="btn btn-primary btn-m">Add More</button></td>
+                                                                    <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="la la-plus"></i></button></td>
                                                                 </tr>
                                                             </table>
                                                         </div>
@@ -514,7 +515,7 @@
                             </div><!-- end form-content -->
                         </div><!-- end form-box -->
                     </div><!-- end col-lg-8 -->
-                    <div class="col-lg-4">
+                    {{-- <div class="col-lg-4">
                         <div class="form-box booking-detail-form">
                             <div class="form-title-wrap">
                                 <h3 class="title">Booking Details</h3>
@@ -565,7 +566,7 @@
                                 </div><!-- end card-item -->
                             </div><!-- end form-content -->
                         </div><!-- end form-box -->
-                    </div><!-- end col-lg-4 -->
+                    </div><!-- end col-lg-4 --> --}}
                 </div><!-- end row -->
             </div><!-- end container -->
         </section>
@@ -595,14 +596,40 @@
 
 
       $('#add').click(function(){
-           i++;
-           $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><select id="inputState" class="form-control"><option selected>Choose...</option> <option>...</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+             i++;
+           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td><select id="inputState" class="form-control"><option selected>Choose University</option> <option>Harvard</option></select></td><td><select id="inputGroupSelect01" class="form-control"><option selected>Choose University</option> <option>MIT</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           r=$('#dynamic_field .dynamic-added').length;
+            if(r==3){
+                $('#add').prop('disabled', true);
+            }
+
+
+
       });
 
+    //   $('#add_document').click(function(){
+    //       i++;
+    //        $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="aadhar" class="form-control"><span><input type="text" name="document_name" class="form-control col-lg-8 "></span></label>')
+    //   });
+
+    $('#add_document2').click(function(){
+      rt=$('#document_name').val()
+    //   console.log(rt);
+$('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
+$('#documentModal').modal('hide')
+    });
 
       $(document).on('click', '.btn_remove', function(){
            var button_id = $(this).attr("id");
+        //    console.log(button_id);
            $('#row'+button_id+'').remove();
+           r=$('#dynamic_field .dynamic-added').length;
+            if(r<3){
+                $('#add').prop('disabled', false);
+            }
+        //    $('#add').add();
+        //    window.location.reload();
+
       });
 
 
@@ -646,6 +673,63 @@
          });
       }
     });
+    // $(document).ready(function(){
+    //   var postURL = "<?php echo url('addmore'); ?>";
+    //   var i=1;
+
+
+    //   $('#add').click(function(){
+    //        i++;
+    //        $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><select id="inputState" class="form-control"><option selected>Choose...</option> <option>...</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+    //   });
+
+
+    //   $(document).on('click', '.btn_remove', function(){
+    //        var button_id = $(this).attr("id");
+    //        $('#row'+button_id+'').remove();
+    //   });
+
+
+    //   $.ajaxSetup({
+    //       headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //       }
+    //   });
+
+
+    //   $('#submit').click(function(){
+    //        $.ajax({
+    //             url:postURL,
+    //             method:"POST",
+    //             data:$('#add_name').serialize(),
+    //             type:'json',
+    //             success:function(data)
+    //             {
+    //                 if(data.error){
+    //                     printErrorMsg(data.error);
+    //                 }else{
+    //                     i=1;
+    //                     $('.dynamic-added').remove();
+    //                     $('#add_name')[0].reset();
+    //                     $(".print-success-msg").find("ul").html('');
+    //                     $(".print-success-msg").css('display','block');
+    //                     $(".print-error-msg").css('display','none');
+    //                     $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
+    //                 }
+    //             }
+    //        });
+    //   });
+
+
+    //   function printErrorMsg (msg) {
+    //      $(".print-error-msg").find("ul").html('');
+    //      $(".print-error-msg").css('display','block');
+    //      $(".print-success-msg").css('display','none');
+    //      $.each( msg, function( key, value ) {
+    //         $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+    //      });
+    //   }
+    // });
 </script>
 
 @endsection

@@ -17,16 +17,16 @@
                                 <form action="#" class="row">
                                     <div class="col-lg-4 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">University Location</label>
+                                            <label class="label-text">University Name</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
-                                                <input class="form-control" type="text" placeholder="Destination">
+                                                <input class="form-control" type="text" placeholder="University">
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
                                     <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">University Type</label>
+                                            <label class="label-text"> Country</label>
                                             <div class="form-group">
                                                 <span class="la la-calendar form-icon"></span>
                                                 <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
@@ -35,7 +35,21 @@
                                     </div><!-- end col-lg-2 -->
                                     <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Courses</label>
+                                            <label class="label-text">Course Type</label>
+                                            <div class="form-group">
+                                                <div class="select-contain w-auto">
+                                                    <select class="select-contain-select">
+                                                        <option value="1200AM">PG</option>
+                                                        <option value="1230AM">UG</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                        <div class="input-box">
+                                            <label class="label-text">Course</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select">
@@ -53,81 +67,30 @@
                                                         <option value="0530AM">Btech</option>
                                                         <option value="0600AM">Btech</option>
                                                         <option value="0630AM">Btech</option>
-                                                        <option value="0700AM"></option>
+                                                        <option value="0700AM">dfgdfg</option>
                                                         <option value="0730AM">Btech</option>
-
-                                                        <option value="0900AM" selected="">Mtech</option>
-                                                        <option value="0930AM">9:30AM</option>
-                                                        <option value="1000AM">10:00AM</option>
-                                                        <option value="1030AM">10:30AM</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
-                                    <div class="col-lg-2 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">Drop-off Date</label>
-                                            <div class="form-group">
-                                                <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-2 -->
+                                   <!-- end col-lg-2 -->
                                     <div class="col-lg-2 col-sm-2">
                                         <div class="input-box">
-                                            <label class="label-text">Time</label>
+                                            <label class="label-text">Duration</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select">
-                                                        <option value="1200AM">12:00AM</option>
-                                                        <option value="1230AM">12:30AM</option>
-                                                        <option value="0100AM">1:00AM</option>
-                                                        <option value="0130AM">1:30AM</option>
-                                                        <option value="0200AM">2:00AM</option>
-                                                        <option value="0230AM">2:30AM</option>
-                                                        <option value="0300AM">3:00AM</option>
-                                                        <option value="0330AM">3:30AM</option>
-                                                        <option value="0400AM">4:00AM</option>
-                                                        <option value="0430AM">4:30AM</option>
-                                                        <option value="0500AM">5:00AM</option>
-                                                        <option value="0530AM">5:30AM</option>
-                                                        <option value="0600AM">6:00AM</option>
-                                                        <option value="0630AM">6:30AM</option>
-                                                        <option value="0700AM">7:00AM</option>
-                                                        <option value="0730AM">7:30AM</option>
-                                                        <option value="0800AM">8:00AM</option>
-                                                        <option value="0830AM">8:30AM</option>
-                                                        <option value="0900AM" selected="">9:00AM</option>
-                                                        <option value="0930AM">9:30AM</option>
-                                                        <option value="1000AM">10:00AM</option>
-                                                        <option value="1030AM">10:30AM</option>
-                                                        <option value="1100AM">11:00AM</option>
-                                                        <option value="1130AM">11:30AM</option>
-                                                        <option value="1200PM">12:00PM</option>
-                                                        <option value="1230PM">12:30PM</option>
-                                                        <option value="0100PM">1:00PM</option>
-                                                        <option value="0130PM">1:30PM</option>
-                                                        <option value="0200PM">2:00PM</option>
-                                                        <option value="0230PM">2:30PM</option>
-                                                        <option value="0300PM">3:00PM</option>
-                                                        <option value="0330PM">3:30PM</option>
-                                                        <option value="0400PM">4:00PM</option>
-                                                        <option value="0430PM">4:30PM</option>
-                                                        <option value="0500PM">5:00PM</option>
-                                                        <option value="0530PM">5:30PM</option>
-                                                        <option value="0600PM">6:00PM</option>
-                                                        <option value="0630PM">6:30PM</option>
-                                                        <option value="0700PM">7:00PM</option>
-                                                        <option value="0730PM">7:30PM</option>
-                                                        <option value="0800PM">8:00PM</option>
-                                                        <option value="0830PM">8:30PM</option>
-                                                        <option value="0900PM">9:00PM</option>
-                                                        <option value="0930PM">9:30PM</option>
-                                                        <option value="1000PM">10:00PM</option>
-                                                        <option value="1030PM">10:30PM</option>
-                                                        <option value="1100PM">11:00PM</option>
-                                                        <option value="1130PM">11:30PM</option>
+
+
+                                                        <option value="0700AM">6 months</option>
+                                                        <option value="0730AM">1 Years</option>
+                                                        <option value="0800AM">2 Years</option>
+                                                        <option value="0830AM">3 Years</option>
+                                                        <option value="0900AM" selected="">4 Years</option>
+                                                        <option value="0930AM">5 years</option>
+
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -135,7 +98,7 @@
                                     </div><!-- end col-lg-3 -->
                                 </form>
                             </div><!-- end contact-form-action -->
-                            <div class="advanced-wrap">
+                            {{-- <div class="advanced-wrap">
                                 <a class="btn collapse-btn theme-btn-hover-gray font-size-15" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
                                     More option <i class="la la-angle-down ml-1"></i>
                                 </a>
@@ -171,7 +134,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="btn-box pt-3">
                                 <button class="theme-btn" type="button">Search Now</button>
                             </div>
@@ -199,7 +162,7 @@
                 <div class="filter-wrap margin-bottom-30px">
                     <div class="filter-top d-flex align-items-center justify-content-between pb-4">
                         <div>
-                            <h3 class="title font-size-24">New York: 44 Cars found</h3>
+                            <h3 class="title font-size-24">New York: 44 University found</h3>
                             <p class="font-size-14"><span class="mr-1 pt-1">Study with confidence:</span>No University Found</p>
                         </div>
                         <div class="layout-view d-flex align-items-center">
@@ -384,11 +347,11 @@
                         <div class="select-contain">
                             <select class="select-contain-select">
                                 <option value="1">Short by default</option>
-                                <option value="2">New Car</option>
-                                <option value="3">Popular Car</option>
-                                <option value="4">Popular Cruise</option>
-                                <option value="5">Price: low to high</option>
-                                <option value="6">Price: high to low</option>
+                                <option value="2">Recommended University</option>
+                                <option value="3">Popular University</option>
+                                <option value="4">Popular Courses</option>
+                                <option value="5">Rating: low to high</option>
+                                <option value="6">Rating: high to low</option>
                                 <option value="7">A to Z</option>
                             </select>
                         </div><!-- end select-contain -->
@@ -400,7 +363,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                    <a href="{{route('university_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
                         </a>
                         <span class="badge">Top Ranked</span>
@@ -410,7 +373,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Managment</p>
-                        <h3 class="card-title"><a href="car-single.html">MIT</a></h3>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">MIT</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -427,7 +390,7 @@
                                 <span class="price__num">$2300</span>
                                 <span class="price__text">Total fees</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -435,7 +398,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('university_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
                         </a>
                         <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
@@ -444,7 +407,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Technology</p>
-                        <h3 class="card-title"><a href="car-single.html">RTU</a></h3>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">RTU</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -461,7 +424,7 @@
                                 <span class="price__num">$3300</span>
                                 <span class="price__text">Total</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -469,7 +432,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('university_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
                         </a>
                         <span class="badge">featured</span>
@@ -479,7 +442,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Arts</p>
-                        <h3 class="card-title"><a href="car-single.html">RTU</a></h3>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">RTU</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -496,7 +459,7 @@
                                 <span class="price__num">$2300</span>
                                 <span class="price__text">Total Fees</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -504,7 +467,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('university_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
                         </a>
                         <span class="badge">Top Ranked</span>
@@ -514,7 +477,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Commerce</p>
-                        <h3 class="card-title"><a href="car-single.html">IIT Kanpur</a></h3>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">IIT Kanpur</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -531,7 +494,7 @@
                                 <span class="price__num">$4500</span>
                                 <span class="price__text">Total Fees</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -539,7 +502,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('university_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
                         </a>
                         <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
@@ -548,7 +511,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Medical</p>
-                        <h3 class="card-title"><a href="car-single.html">IIT Bombay</a></h3>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">IIT Bombay</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -565,7 +528,7 @@
                                 <span class="price__num">$5800</span>
                                 <span class="price__text">Total Fees</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="car-single.html" class="{{route('university_detail')}}">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -573,7 +536,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                        <a href="car-single.html" class="d-block">
+                        <a href="{{route('university_detail')}}" class="d-block">
                             <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
                         </a>
                         <span class="badge">featured</span>
@@ -583,7 +546,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">Science</p>
-                        <h3 class="card-title"><a href="car-single.html">Btu</a></h3>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">Btu</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -600,7 +563,7 @@
                                 <span class="price__num">$2300</span>
                                 <span class="price__text">Total Feees</span>
                             </p>
-                            <a href="car-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->

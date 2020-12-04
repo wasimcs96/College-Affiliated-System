@@ -458,7 +458,7 @@
                                                <th scope="col">tenure</th>
                                                <th scope="col">Course</th>
                                                <th scope="col">Branch no.</th>
-                                               <th scope="col">Total Fees</th>
+                                               <th scope="col">Action</th>
                                            </tr>
                                        </thead>
                                        <tbody>
@@ -471,7 +471,9 @@
                                                    </div>
                                                </td>
                                                <td>5</td>
-                                               <td>900000</td>
+                                               <td> <div>
+                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
+                                            </div></td>
                                            </tr>
                                            <tr>
                                                <th scope="row">4 Years</th>
@@ -482,7 +484,9 @@
                                                    </div>
                                                </td>
                                                <td>4</td>
-                                               <td>800000 </td>
+                                               <td> <div>
+                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
+                                            </div></td>
                                            </tr>
                                            <tr>
                                                <th scope="row">5years</th>
@@ -493,8 +497,9 @@
                                                    </div>
                                                </td>
                                                <td>5</td>
-                                               <td>800000</td>
-                                           </tr>
+                                               <td> <div>
+                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
+                                            </div></td>                                           </tr>
                                            <tr>
                                                <th scope="row">4years</th>
                                                <td>
@@ -504,8 +509,9 @@
                                                    </div>
                                                </td>
                                                <td>1</td>
-                                               <td>700000</td>
-                                           </tr>
+                                               <td> <div>
+                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
+                                            </div></td>                                           </tr>
                                            <tr>
                                                <th scope="row">4 Years</th>
                                                <td>
@@ -515,8 +521,9 @@
                                                    </div>
                                                </td>
                                                <td>4</td>
-                                               <td>80000 </td>
-                                           </tr>
+                                               <td> <div>
+                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
+                                            </div></td>                                           </tr>
                                            <tr>
                                                <th scope="row">4 Years</th>
                                                <td>
@@ -526,8 +533,9 @@
                                                    </div>
                                                </td>
                                                <td>4</td>
-                                               <td>80000 </td>
-                                           </tr>
+                                               <td> <div>
+                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
+                                            </div></td>                                           </tr>
                                            <tr>
                                                <th scope="row">4 years</th>
                                                <td>
@@ -537,11 +545,12 @@
                                                    </div>
                                                </td>
                                                <td>4</td>
-                                               <td>8</td>
-                                           </tr>
+                                               <td> <div>
+                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
+                                            </div></td>                                           </tr>
                                        </tbody>
                                    </table>
-                                   <p class="font-size-14 line-height-26"><strong class="text-black">Please note:</strong> While we do our best to adhere to our published itineraries, they may be changed at the discretion of the captain due to weather advisories, port traffic, and any other unforeseeable circumstances.</p>
+                                   <p class="font-size-14 line-height-26"><strong class="text-black">Please note:</strong>sdfsdfsdfsdfjjsdhfsjdhfjshsjhdfkjhsjdfhjsdfhsdhfdsfksfksdfjkdshfjshfjshdjkfdshfjhdfhdsjhfdsfkdsfksdkfh.</p>
                                </div>
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
@@ -565,14 +574,20 @@
                                            </ul>
                                        </div>
                                        <div class="cabin-price">
-                                           <ul>
-
-                                               <li>from<strong class="ml-1 text-black">$217</strong><span class="before-price ml-1">$299</span></li>
-                                               <li class="font-size-13 mt-n2">per Admission</li>
+                                           <ul><li>
+                                            <span class="ratings ">
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star-o"></i>
+                                            </span></li>
+                                               <li> <span class="ml-2">305 Reviews</span>
+                                          </li>
                                            </ul>
                                            <div class="custom-checkbox mb-0">
                                                <input type="checkbox" id="chb2">
-                                               <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
+                                           <a href="{{route('consultant_detail')}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
                                        </div>
                                     </div><!-- end cabin-type-item -->
                                 </div><!-- end cabin-type -->
@@ -590,15 +605,20 @@
                                             </ul>
                                         </div>
                                         <div class="cabin-price">
-                                            <ul>
-                                                {{-- <li><span class="badge badge-warning text-white">Up to 40% off</span></li> --}}
-                                                <li>from<strong class="ml-1 text-black">$317</strong><span class="before-price ml-1">$399</span></li>
-                                                <li class="font-size-13 mt-n2">per person*</li>
+                                            <ul><li>
+                                             <span class="ratings ">
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star-o"></i>
+                                             </span></li>
+                                                <li> <span class="ml-2">305 Reviews</span>
+                                           </li>
                                             </ul>
                                             <div class="custom-checkbox mb-0">
-                                                {{-- <input type="checkbox" id="chb4"> --}}
-                                                <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>
-                                            </div>
+                                                <input type="checkbox" id="chb2">
+                                            <a href="{{route('consultant_detail')}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
                                 </div><!-- end cabin-type -->
@@ -617,14 +637,20 @@
                                             </ul>
                                         </div>
                                         <div class="cabin-price">
-                                            <ul>
-
-                                                <li>from<strong class="ml-1 text-black">$417</strong><span class="before-price ml-1">$499</span></li>
-                                                <li class="font-size-13 mt-n2">per person*</li>
+                                            <ul><li>
+                                             <span class="ratings ">
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star-o"></i>
+                                             </span></li>
+                                                <li> <span class="ml-2">305 Reviews</span>
+                                           </li>
                                             </ul>
                                             <div class="custom-checkbox mb-0">
-                                                <input type="checkbox" id="chb5">
-                                                <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                            </div>
+                                                <input type="checkbox" id="chb2">
+                                            <a href="{{route('consultant_detail')}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
                                 </div><!-- end cabin-type -->
@@ -642,14 +668,20 @@
                                             </ul>
                                         </div>
                                         <div class="cabin-price">
-                                            <ul>
-
-                                                <li>from<strong class="ml-1 text-black">$517</strong><span class="before-price ml-1">$599</span></li>
-                                                <li class="font-size-13 mt-n2">per person*</li>
+                                            <ul><li>
+                                             <span class="ratings ">
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star"></i>
+                                                 <i class="la la-star-o"></i>
+                                             </span></li>
+                                                <li> <span class="ml-2">305 Reviews</span>
+                                           </li>
                                             </ul>
                                             <div class="custom-checkbox mb-0">
-                                                <input type="checkbox" id="chb6">
-                                                <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                            </div>
+                                                <input type="checkbox" id="chb2">
+                                            <a href="{{route('consultant_detail')}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
                                 </div><!-- end cabin-type -->
@@ -1097,17 +1129,118 @@
 
                             <div class="input-group mb-3 ">
                                 <div class="input-group-prepend">
-                                  <button class="btn btn-outline-primary btn-sm" type="button" id="button-addon1">Zip Code</button>
+                                  <button class="btn btn-outline-primary btn-sm" type="button" id="button-addon1">Country</button>
                                 </div>
                                 <input type="text" class="form-control col-xs-2" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                               </div>
                             <div class="sidebar-list">
                                 <ul class="list-items">
-                                    <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#" ><span>&nbsp;   John Wick</span>
+
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                        </div>
+                                        <div class="author-bio">
+                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
+                                            <span class="author__meta">Member Since 2017</span>
+                                            <span class="ratings d-flex align-items-center">
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star-o"></i>
+                                                     <span class="ml-2">305 Reviews</span>
+                                                </span>
+                                            <div>
+                                            <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div></li>
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                        </div>
+                                        <div class="author-bio">
+                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
+                                            <span class="author__meta">Member Since 2017</span>
+                                            <span class="ratings d-flex align-items-center">
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star-o"></i>
+                                                     <span class="ml-2">305 Reviews</span>
+                                                </span>
+                                                <div>
+                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                </div>
+                                        </div>
+                                    </div></li>
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                        </div>
+                                        <div class="author-bio">
+                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
+                                            <span class="author__meta">Member Since 2017</span>
+                                            <span class="ratings d-flex align-items-center">
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star-o"></i>
+                                                     <span class="ml-2">305 Reviews</span>
+                                                </span>
+                                                <div>
+                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                </div>
+                                        </div>
+                                    </div></li>
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                        </div>
+                                        <div class="author-bio">
+                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
+                                            <span class="author__meta">Member Since 2017</span>
+                                            <span class="ratings d-flex align-items-center">
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star-o"></i>
+                                                     <span class="ml-2">305 Reviews</span>
+                                                </span>
+                                                <div>
+                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                </div>
+                                        </div>
+                                    </div></li>
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                        </div>
+                                        <div class="author-bio">
+                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
+                                            <span class="author__meta">Member Since 2017</span>
+                                            <span class="ratings d-flex align-items-center">
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star"></i>
+                                                     <i class="la la-star-o"></i>
+                                                     <span class="ml-2">305 Reviews</span>
+                                                </span>
+                                                <div>
+                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                </div>
+                                        </div>
+                                    </div></li>
+                                    {{-- <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#" ><span>&nbsp;   John Wick</span>
                                     </a></li>
                                     <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li>
                                     <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li>
-                                    <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li>
+                                    <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li> --}}
                                 </ul>
                             </div><!-- end sidebar-list -->
                         </div><!-- end sidebar-widget -->
@@ -1174,11 +1307,11 @@
                             <div class="sidebar-list pt-3">
                                 <ul class="list-items">
                                     <li><i class="la la-phone icon-element mr-2"></i><a href="#">+ 61 23 8093 3400</a></li>
-                                    <li><i class="la la-envelope icon-element mr-2"></i><a href="mailto:info@trizen.com">info@trizen.com</a></li>
+                                    <li><i class="la la-envelope icon-element mr-2"></i><a href="mailto:info@dc.com">info@dc.com</a></li>
                                 </ul>
                             </div><!-- end sidebar-list -->
                         </div><!-- end sidebar-widget -->
-                        <div class="sidebar-widget single-content-widget">
+                        {{-- <div class="sidebar-widget single-content-widget">
                             <h3 class="title stroke-shape">Organized by</h3>
                             <div class="author-content d-flex">
                                 <div class="author-img">
@@ -1200,7 +1333,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- end sidebar-widget -->
+                        </div><!-- end sidebar-widget --> --}}
                     </div><!-- end sidebar -->
                 </div><!-- end col-lg-4 -->
             </div><!-- end row -->
