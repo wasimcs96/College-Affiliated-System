@@ -17,6 +17,10 @@ Route::get('students',function(){
     return view('consultant.students');
 })->name('consultant.students');
 
+Route::get('student_show',function(){
+    return view('consultant.student_show');
+})->name('consultant.student.show');
+
 
 /* Search Section */
 Route::get('search',function(){

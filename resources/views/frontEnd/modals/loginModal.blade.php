@@ -60,7 +60,7 @@
                                 <button type="submit" class="theme-btn w-100">Login Account</button>
                               New to Website? <a href="#" id="signupalready" data-toggle="modal" data-target="#registerModal">Sign Up</a>
                             </div>
-                            <div class="action-box text-center">
+                            {{-- <div class="action-box text-center">
                                 <p class="font-size-14">Or Login Using</p>
                                 <ul class="social-profile py-3">
                                     <li><a href="#" class="bg-5 text-white"><i class="lab la-facebook-f"></i></a></li>
@@ -68,7 +68,7 @@
                                     <li><a href="#" class="bg-7 text-white"><i class="lab la-instagram"></i></a></li>
                                     <li><a href="#" class="bg-5 text-white"><i class="lab la-linkedin-in"></i></a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </form>
                     </div><!-- end contact-form-action -->
                 </div>

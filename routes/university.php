@@ -29,17 +29,22 @@ Route::get('services',function(){
 
 /* introtoconsultant Section */
 Route::get('introtoconsultant',function(){
-    return view('university.introtoconsultant');
-})->name('university.introtoconsultant');
+    return view('university.intro_to_consultant');
+})->name('university.intro_to_consultant');
 
 /* gopremium Section */
-Route::get('sgopremium',function(){
-    return view('university.gopremium');
-})->name('university.gopremium');
+Route::get('gopremium',function(){
+    return view('university.go_premium');
+})->name('university.go_premium');
 
 /* adevents Section */
-Route::get('sadevents',function(){
-    return view('university.adevents');
-})->name('university.adevents');
+Route::get('adevents',function(){
+    return view('university.ad_events');
+})->name('university.ad_events');
+
+/* adevents Section */
+Route::get('privacy_policy',function(){
+    return view('university.privacy_policy');
+})->name('university.privacy_policy');
 
 });

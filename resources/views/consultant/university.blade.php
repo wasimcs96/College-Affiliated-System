@@ -11,14 +11,14 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                     <ul class="dropdown-menu">
                         <li><a href="javascript:void(0);">Action</a></li>
                         <li><a href="javascript:void(0);">Another Action</a></li>
                         <li><a href="javascript:void(0);">Something else</a></li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div class="body">
@@ -27,25 +27,15 @@
                     <thead>
                         <tr>
                             <th>
-                              Name</th>
-                            <th> Code</th>
-                            <th> Fees</th>
-                            <th> Type</th>
-                            <th> Location</th>
-                            <th>Actions</th>
+                              <b>Name</b></th>
+                            <th><b> Code</b></th>
+                            <th><b> Fees</b></th>
+                            <th><b> Type</b></th>
+                            <th><b> Location</b></th>
+                            <th><b>Actions</b></th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>
-                                Name</th>
-                              <th> Code</th>
-                              <th> Fees</th>
-                              <th> Type</th>
-                              <th> Location</th>
-                              <th>Actions</th>
-                        </tr>
-                    </tfoot>
+
                     <tbody>
                         <tr>
                             <td>RTU</td>
