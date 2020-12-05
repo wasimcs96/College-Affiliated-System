@@ -9,7 +9,7 @@ Route::get('/', function () {
 // 	$ip = '122.176.16.3';
 //     $data = \Location::get($ip);
 //     dd($data);
-   
+
 // });
 /* frontend routes */
 /* Courses route */
@@ -45,6 +45,30 @@ Route::get('university_detail', function(){
 Route::get('university_all', function(){
     return view('frontEnd.university.university_all');
 })->name('university_all');
+
+/* blog routes*/
+Route::get('blog_all',function(){
+    return view('frontEnd.blog.blog_all');
+})->name('blog_all');
+
+Route::get('blog_detail',function(){
+    return view('frontEnd.blog.blog_detail');
+})->name('blog_detail');
+
+// ######## loan route
+Route::get('loan',function(){
+    return view('frontEnd.loan.loan');
+})->name('loan');
+
+// about and contact
+Route::get('about', function(){
+    return view('frontEnd.about.about');
+})->name('about');
+
+Route::get('contact', function(){
+    return view('frontEnd.contact.contact');
+})->name('contact');
+
 
 /* frontend routes end */
 
@@ -112,9 +136,9 @@ Route::get('dashboard/index3',                  'DashboardController@index3')->n
 
 
 /* App */
-Route::get('contact', function ()               { return redirect('contact/contact'); });
-Route::get('contact/contact',                   'ContactController@contact')->name('contact.contact');
-Route::get('contact/contact2',                  'ContactController@contact2')->name('contact.contact2');
+// Route::get('contact', function ()               { return redirect('contact/contact'); });
+// Route::get('contact/contact',                   'ContactController@contact')->name('contact.contact');
+// Route::get('contact/contact2',                  'ContactController@contact2')->name('contact.contact2');
 
 /* App */
 Route::get('app', function ()                   { return redirect('app/contact'); });
