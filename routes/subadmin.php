@@ -4,7 +4,7 @@
 
        return "subadmin";
    });
-   Route::get('dashboard',function(){
-    return view('client.dashboard');
-})->name('client.dashboard');
+//    Route::get('dashboard',function(){
+//     return view('client.dashboard');
+// })->name('client.dashboard');
 });

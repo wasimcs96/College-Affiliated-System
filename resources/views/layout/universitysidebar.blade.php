@@ -31,15 +31,32 @@
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu">
 
-                <li class="{{ Request::segment(2) === 'dashboard' ? 'active' : null }}"><a href="{{route('university.dashboard')}}"><i class="fa-dashboard"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) === 'university.dashboard' ? 'active' : null }}"><a href="{{route('university.dashboard')}}"> <i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
                 <li class="{{ Request::segment(2) === 'students' ? 'active' : null }}"><a href="{{route('university.students')}}"><i class="icon-users"></i><span>Students</span></a></li>
                 <li class="{{ Request::segment(2) === 'services' ? 'active' : null }}"><a href="{{route('university.services')}}"><i class="icon-speedometer"></i><span>Services</span></a></li>
                 <li class="{{ Request::segment(2) === 'courses' ? 'active' : null }}"><a href="{{route('university.courses')}}"><i class="icon-notebook"></i><span>Courses</span></a></li>
-                <li class="{{ Request::segment(2) === 'introtoconsultant' ? 'active' : null }}"><a href="{{route('university.introtoconsultant')}}"><i class="icon-user"></i><span>Intro to new consultant</span></a></li>
+                <li class="{{ Request::segment(2) === 'intro_to_consultant' ? 'active' : null }}"><a href="{{route('university.intro_to_consultant')}}"><i class="icon-user"></i><span>Intro to new consultant</span></a></li>
 
-                <li class="{{ Request::segment(2) === 'gopremium' ? 'active' : null }}"><a href="{{route('university.gopremium')}}"><i class="icon-diamond"></i><span>Go Premium</span></a></li>
-                <li class="{{ Request::segment(2) === 'adevents' ? 'active' : null }}"><a href="{{route('university.adevents')}}"><i class="icon-picture"></i><span>Ad</span></a></li>
+                <li class="{{ Request::segment(1) === 'services' ? 'active open' : null }}">
+                    <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>
+                    <ul>
+                    <li class="{{ Request::segment(2) === 'taskboard' ? 'active' : null }}"><a href="{{ route('university.go_premium')}}">Go Premium</a></li>
+
+                     </ul>
+                </li>
+                <li class="{{ Request::segment(2) === 'ad_events' ? 'active' : null }}"><a href="{{route('university.ad_events')}}"><i class="icon-picture"></i><span>Ad</span></a></li>
+                <li class="{{ Request::segment(2) === 'privacy_policy' ? 'active' : null }}"><a href="{{route('university.privacy_policy')}}"><i class="fa fa-lock"></i><span>Privacy Policy</span></a></li>
+                <li class="{{ Request::segment(2) === 'terms_condition' ? 'active' : null }}"><a href="#"><i class="fa fa-lock"></i><span>Terms & Conditions</span></a></li>
+                <li class="{{ Request::segment(2) === 'logout' ? 'active' : null }}"><a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                    <i class="icon-power"></i> {{ __('Logout') }}
+                 </a>
+
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                     @csrf
+                 </form></li>
                 {{-- <li class="{{ Request::segment(2) === 'feedback' ? 'active' : null }}"><a href="{{route('university.feedback')}}"><i class="icon-bubbles"></i><span>FeedBack</span></a></li> --}}
                 {{-- <li class="header">Main</li> --}}
                 {{-- <li class="{{ Request::segment(1) === 'mypage' ? 'active open' : null }}">

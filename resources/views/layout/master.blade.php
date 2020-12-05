@@ -91,10 +91,9 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-md-6 col-sm-12 text-right hidden-xs">
+                    {{-- <div class="col-md-6 col-sm-12 text-right hidden-xs">
                         <div class="d-flex flex-row-reverse">
-                            {{-- <a href="https://themeforest.net/user/puffintheme/portfolio" class="btn btn-success ml-1 mr-1" ><i class="icon-basket"></i> Buy Now</a>
-                            <a href="javascript:void(0);" class="btn btn-primary" >Go</a> --}}
+
                             <select class="custom-select w100 mr-3">
                                 <option selected="">India</option>
                                 <option value="2">USA</option>
@@ -108,7 +107,7 @@
                                 <option value="2">Last 1 Year</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

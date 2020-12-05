@@ -1,13 +1,13 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Consultant')
-@section('title', 'See Bookings Detail')
+@section('title', 'See Student Detail')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>My Bookings<small>Booking Details</small></h2>
+            <h2>Registered Student<small>Detail of Student</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -92,8 +92,8 @@
                 <div id="dec">
 
                 </div>
-                <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
+                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a> --}}
             </div>
         </div>
     </div>

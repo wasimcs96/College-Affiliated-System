@@ -221,12 +221,28 @@
                             </nav>
                         </div><!-- end main-menu-content -->
                         <div class="nav-btn">
-                            @if(Auth()->user())
-                        <a href="{{ route('dashboard.index2') }}" class="theme-btn ">Dashboard</a>
-                            @else
-                            <a href="become-local-expert.html" class="btn btn-primary">Search Courses</a>
 
+                            @if(Auth()->user())
+                            @if(Auth()->user()->isAdmin())
+                        <a href="{{ route('dashboard.index2') }}" class="theme-btn ">Dashboard</a>
                             @endif
+
+                            @if(Auth()->user()->isConsultant())
+                        <a href="{{ route('consultant.dashboard') }}" class="theme-btn ">Dashboard</a>
+                            @endif
+
+                            @if(Auth()->user()->isClient())
+                        <a href="{{ route('client.dashboard') }}" class="theme-btn ">Dashboard</a>
+                            @endif
+
+                            @if(Auth()->user()->isUniversity())
+                        <a href="{{ route('university.dashboard') }}" class="theme-btn ">Dashboard</a>
+                            @endif
+
+                            @else
+                        <a href="become-local-expert.html" class="btn btn-primary">Search Courses</a>
+                            @endif
+
                         </div><!-- end nav-btn -->
                     </div><!-- end menu-wrapper -->
                 </div><!-- end col-lg-12 -->
