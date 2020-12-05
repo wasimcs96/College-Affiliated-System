@@ -209,12 +209,10 @@
                                     <li>
                                         <a href="#">More <i class="la la-angle-down"></i></a>
                                         <ul class="dropdown-menu-item">
-                                            <li><a href="cruises.html">Loan</a></li>
-                                            <li><a href="cruises-list.html">Blog</a></li>
-                                            <li><a href="cruise-sidebar.html">Contact Us</a></li>
-                                            <li><a href="cruise-details.html">About Us</a></li>
-                                            <li><a href="cruise-booking.html">Why Us</a></li>
-                                            <li><a href="cruise-search-result.html">How to Book a Consultant</a></li>
+                                            <li><a href="{{route('loan')}}">Loan</a></li>
+                                            <li><a href="{{route('blog_all')}}">Blog</a></li>
+                                            <li><a href="{{route('contact')}}">Contact Us</a></li>
+                                            <li><a href="{{route('about')}}">About Us</a></li>
                                         </ul>
                                     </li>
                                 </ul>
