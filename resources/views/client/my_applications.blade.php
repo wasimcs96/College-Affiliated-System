@@ -1,8 +1,9 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Client')
-@section('title', 'Booking')
+@section('title', 'My Applications')
 
 @section('content')
+
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
@@ -26,13 +27,14 @@
                     <thead>
                         <tr>
                             <th> <b>
-                              Consultant  Name</b></th>
-                              <th> <b>
-                                University  Name</b></th>
-                            <th><b> Booking Date </b></th>
-                            <th><b> Status</b></th>
-                            <th><b> Actions</b></th>
-
+                                Name</b></th>
+                            <th><b> Mobile </b></th>
+                            <th><b> E-mail</b></th>
+                            <th><b> Universities</b></th>
+                            <th><b>Date</b></th>
+                            <th><b>
+                                Time</b></th>
+                            <th><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -41,10 +43,25 @@
                     <tbody>
                         <tr>
                             <td>Sufiyan</td>
-                            <td>RTU</td>
+                            <td>1234567890</td>
+                            <td>email@email.com</td>
+                            <td>3</td>
                             <td>2020/30/11</td>
-                            <td> <button class="btn btn-primary btn-flat">Active</button> </td>
-                            <td><a href=" {{route('client.booking_show')}} " class="btn btn-success"><i class="icon-eye"></i></a></td>                        </tr>
+                            <td> 10:30 A.M. </td>
+                            <td><a href="{{route('consultant.booking.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                        </tr>
+
+                        <tr>
+                            <td>Qureshi</td>
+                            <td>1234567890</td>
+                            <td>@email.com</td>
+                            <td>3</td>
+                            <td>2020/30/11</td>
+                            <td> 10:30 A.M. </td>
+                            <td><a href="{{route('consultant.booking.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                        </tr>
+
+
 
                     </tbody>
                 </table>
@@ -83,3 +100,4 @@ tr.shown td.details-control {
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
 @stop
+

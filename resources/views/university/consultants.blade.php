@@ -1,12 +1,12 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Client')
-@section('title', 'Booking')
+@section('parentPageTitle', 'University')
+@section('title', 'Consultants')
 
 @section('content')
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Bookings<small>All booking requests</small></h2>
+            <h2>Consultants<small>All consultant requests</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -26,13 +26,13 @@
                     <thead>
                         <tr>
                             <th> <b>
-                              Consultant  Name</b></th>
-                              <th> <b>
-                                University  Name</b></th>
-                            <th><b> Booking Date </b></th>
-                            <th><b> Status</b></th>
-                            <th><b> Actions</b></th>
+                                Name</b></th>
+                            <th><b> Mobile </b></th>
+                            <th><b> E-mail</b></th>
 
+                            <th><b>Date</b></th>
+
+                            <th><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -41,10 +41,14 @@
                     <tbody>
                         <tr>
                             <td>Sufiyan</td>
-                            <td>RTU</td>
+                            <td>1234567890</td>
+                            <td>email@email.com</td>
+
                             <td>2020/30/11</td>
-                            <td> <button class="btn btn-primary btn-flat">Active</button> </td>
-                            <td><a href=" {{route('client.booking_show')}} " class="btn btn-success"><i class="icon-eye"></i></a></td>                        </tr>
+
+                            <td><a href="{{route('university.consultant_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                        </tr>
+
 
                     </tbody>
                 </table>
