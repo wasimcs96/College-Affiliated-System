@@ -71,9 +71,40 @@
 
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="icon-notebook"></i><span>Applications</span></a></li>
-                <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="fa fa-list"></i><span>Bookings</span></a></li>
-                <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="fa fa-gear"></i><span>Generals</span></a></li>
+                {{-- <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href=""><i class="icon-notebook"></i><span>Applications</span></a></li> --}}
+                <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
+                    <a href="#JobPortal" class="has-arrow"> <i class="icon-notebook"></i><span>Applications</span></a>
+                    <ul>
+                        <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('subadmin.application.client')}}">Client</a></li>
+                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.application.consultant')}}">Consultant</a></li>
+                        <li class="{{ Request::segment(2) === 'applicants' ? 'active' : null }}"><a href="{{route('subadmin.application.university')}}">University</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
+                    <a href="#JobPortal" class="has-arrow"> <i class="icon-list"></i><span>Bookings</span></a>
+                    <ul>
+                        <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('subadmin.booking.client')}}">Client</a></li>
+                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.booking.consultant')}}">Consultant</a></li>
+
+
+                    </ul>
+                </li>
+
+                {{-- <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="fa fa-gear"></i><span>Generals</span></a></li> --}}
+
+                <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
+                    <a href="#JobPortal" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
+                    <ul>
+                        <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('subadmin.booking.client')}}">Manage About Us</a></li>
+                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.booking.consultant')}}">Manage Contact Us</a></li>
+                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.booking.consultant')}}">Manage Content</a></li>
+                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.booking.consultant')}}">Manage Terms & Conditions</a></li>
+                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.booking.consultant')}}">Manage Payments</a></li>
+                    </ul>
+                </li>
+
                 <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="icon-book-open"></i><span>Reports</span></a></li>
                 <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
                 <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
