@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'University')
-@section('title', 'See University Detail')
+@section('parentPageTitle', 'Client')
+@section('title', 'See Client Detail')
 
 @section('content')
 
@@ -70,7 +70,7 @@
 
                 </div>
                 {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
-                <a href="{{route('subadmin.application.consultant_app')}}"  class="btn btn-warning btn-flat">See Application</a>
+                <a href="{{route('subadmin.application.client_app')}}"  class="btn btn-warning btn-flat">See Application</a>
             </div>
         </div>
     </div>

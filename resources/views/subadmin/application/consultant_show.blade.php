@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'University')
-@section('title', 'See University Detail')
+@section('parentPageTitle', 'Consultant')
+@section('title', 'See Consultant Detail')
 
 @section('content')
 
