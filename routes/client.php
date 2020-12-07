@@ -12,18 +12,22 @@ Route::get('dashboard',function(){
 })->name('client.dashboard');
 
 
-/*myfavourites Section */
+/*my_applications Section */
 Route::get('my_applications',function(){
-    return view('client.my_applications');
+    return view('client.application.my_applications');
 })->name('client.my_applications');
+
+Route::get('my_application_show',function(){
+    return view('client.application.my_application_show');
+})->name('client.my_application_show');
 
   /* Booking Section */
 Route::get('bookings',function(){
-    return view('client.bookings');
+    return view('client.booking.bookings');
 })->name('client.bookings');
 
 Route::get('booking_show',function(){
-    return view('client.booking_show');
+    return view('client.booking.booking_show');
 })->name('client.booking_show');
 
  /* My Status Section */
@@ -36,5 +40,9 @@ Route::get('feedback',function(){
     return view('client.feedback');
 })->name('client.feedback');
 
+ /* Profile Section */
+ Route::get('profile',function(){
+    return view('client.profile');
+})->name('client.profile');
 
 });

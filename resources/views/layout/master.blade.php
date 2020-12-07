@@ -78,7 +78,7 @@
                         <h1>@yield('title')</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('mypage.index')}}"><i class="icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{{route('front')}}"><i class="icon-home"></i></a></li>
                                 @if (trim($__env->yieldContent('parentPageTitle')))
                                     <li class="breadcrumb-item">@yield('parentPageTitle')</li>
                                 @endif

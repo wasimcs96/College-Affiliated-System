@@ -32,7 +32,7 @@
             <ul id="main-menu" class="metismenu">
 
 
-                <li class="{{ Request::segment(2) === 'index2' ? 'active open' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) == 'index2' ? 'active open' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
                 {{-- <li class="{{ Request::segment(2) === 'index3' ? 'active open' : null }}"><a href="{{route('dashboard.index3')}}"><i class="icon-diamond"></i><span>Cryptocurrency</span></a></li> --}}
                 {{-- <li class="header">HR, Project & Job</li> --}}
                 {{-- <li class="{{ Request::segment(1) === 'projects' ? 'active open' : null }}">
@@ -62,12 +62,12 @@
                         <li class="{{ Request::segment(2) === 'report' ? 'active' : null }}"><a href="{{route('hr.report')}}">Report</a></li>
                     </ul>
                 </li> --}}
-                <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
+                <li class="{{ Request::segment(1) == 'job' ? 'active open' : null }}">
                     <a href="#JobPortal" class="has-arrow"> <i class="fa fa-users"></i><span>Users</span></a>
                     <ul>
-                        <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('job.jobdashboard')}}">Client</a></li>
-                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('job.positions')}}">Consultant</a></li>
-                        <li class="{{ Request::segment(2) === 'applicants' ? 'active' : null }}"><a href="{{route('job.applicants')}}">University</a></li>
+                        <li class="{{ Request::segment(2) == 'jobdashboard' ? 'active' : null }}"><a href="{{route('job.jobdashboard')}}">Client</a></li>
+                        <li class="{{ Request::segment(2) == 'positions' ? 'active' : null }}"><a href="{{route('job.positions')}}">Consultant</a></li>
+                        <li class="{{ Request::segment(2) == 'applicants' ? 'active' : null }}"><a href="{{route('job.applicants')}}">University</a></li>
 
                     </ul>
                 </li>
@@ -107,12 +107,12 @@
 
                 <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="icon-book-open"></i><span>Reports</span></a></li>
                 <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
-                <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
+                <li class="{{ Request::segment(1) == 'job' ? 'active open' : null }}">
                     <a href="#JobPortal" class="has-arrow"><i class="icon-envelope-open"></i><span>Email</span></a>
                     <ul>
-                        <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('job.jobdashboard')}}">Client</a></li>
-                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('job.positions')}}">Consultant</a></li>
-                        <li class="{{ Request::segment(2) === 'applicants' ? 'active' : null }}"><a href="{{route('job.applicants')}}">University</a></li>
+                        <li class="{{ Request::segment(2) == 'jobdashboard' ? 'active' : null }}"><a href="{{route('job.jobdashboard')}}">Client</a></li>
+                        <li class="{{ Request::segment(2) == 'positions' ? 'active' : null }}"><a href="{{route('job.positions')}}">Consultant</a></li>
+                        <li class="{{ Request::segment(2) == 'applicants' ? 'active' : null }}"><a href="{{route('job.applicants')}}">University</a></li>
 
                     </ul>
                 </li>

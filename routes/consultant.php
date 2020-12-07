@@ -14,11 +14,11 @@ Route::get('dashboard',function(){
 
 /* Student Section */
 Route::get('students',function(){
-    return view('consultant.students');
+    return view('consultant.student.students');
 })->name('consultant.students');
 
 Route::get('student_show',function(){
-    return view('consultant.student_show');
+    return view('consultant.student.student_show');
 })->name('consultant.student.show');
 
 
@@ -30,15 +30,15 @@ Route::get('search',function(){
 
 /* Booking Section */
 Route::get('bookings',function(){
-    return view('consultant.bookings');
+    return view('consultant.booking.bookings');
 })->name('consultant.bookings');
 
 Route::get('booking_show',function(){
-  return view('consultant.booking_show');
+  return view('consultant.booking.booking_show');
 })->name('consultant.booking.show');
 
 Route::get('booking/application',function(){
-    return view('consultant.booking_application');
+    return view('consultant.booking.booking_application');
 })->name('consultant.booking.application');
 
 
@@ -99,23 +99,26 @@ Route::get('feedback',function(){
 
 /* application Section */
 Route::get('application',function(){
-    return view('consultant.application');
+    return view('consultant.application.application');
 })->name('consultant.application');
 
 Route::get('application/create',function(){
-    return view('consultant.application_create');
+    return view('consultant.application.application_create');
 })->name('consultant.application.create');
 
 /* associated university */
 Route::get('associated_university',function(){
-    return view('consultant.university');
+    return view('consultant.university.university');
 })->name('consultant.associated_university');
 
 Route::get('university_show',function(){
-    return view('consultant.university_show');
+    return view('consultant.university.university_show');
 })->name('consultant.university.show');
 
-
+/* profile Section */
+Route::get('profile',function(){
+    return view('consultant.profile');
+})->name('consultant.profile');
 
 
 });

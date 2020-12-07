@@ -7,7 +7,7 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Bookings<small>All booking requests</small></h2>
+            <h2>Applications<small>All Application requests</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -27,13 +27,10 @@
                     <thead>
                         <tr>
                             <th> <b>
-                                Name</b></th>
-                            <th><b> Mobile </b></th>
-                            <th><b> E-mail</b></th>
-                            <th><b> Universities</b></th>
-                            <th><b>Date</b></th>
-                            <th><b>
-                                Time</b></th>
+                               Consultant Name</b></th>
+                            <th><b>Univesity Name </b></th>
+                            <th><b> Applied On</b></th>
+                            <th><b> Status</b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -43,25 +40,13 @@
                     <tbody>
                         <tr>
                             <td>Sufiyan</td>
-                            <td>1234567890</td>
-                            <td>email@email.com</td>
-                            <td>3</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('consultant.booking.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
-                        </tr>
-
-                        <tr>
                             <td>Qureshi</td>
-                            <td>1234567890</td>
-                            <td>@email.com</td>
-                            <td>3</td>
                             <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('consultant.booking.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td> <button class="btn btn-primary btn-flat">Pending</button> </td>
+
+                            <td><a href="{{route('client.my_application_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+
                         </tr>
-
-
 
                     </tbody>
                 </table>
