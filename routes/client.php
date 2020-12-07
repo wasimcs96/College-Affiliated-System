@@ -13,20 +13,23 @@ Route::get('dashboard',function(){
 
 
 /*myfavourites Section */
-Route::get('myfavourites',function(){
-    return view('client.myfavourites');
-})->name('client.myfavourites');
+Route::get('my_applications',function(){
+    return view('client.my_applications');
+})->name('client.my_applications');
 
   /* Booking Section */
 Route::get('bookings',function(){
     return view('client.bookings');
 })->name('client.bookings');
 
+Route::get('booking_show',function(){
+    return view('client.booking_show');
+})->name('client.booking_show');
 
  /* My Status Section */
-Route::get('mystatus',function(){
-    return view('client.mystatus');
-})->name('client.mystatus');
+Route::get('my_status',function(){
+    return view('client.my_status');
+})->name('client.my_status');
 
 /* feedback Section */
 Route::get('feedback',function(){

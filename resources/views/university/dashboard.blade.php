@@ -6,7 +6,8 @@
 
 
 <div class="row clearfix">
-    <div class="col-lg-9 col-md-12 col-sm-12">
+    {{-- <div class="col-lg-9 col-md-12 col-sm-12"> --}}
+    <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="row clearfix">
             <div class="col-lg-6 col-md-6">
                 <div class="card-wrapper flip-left">
@@ -83,7 +84,7 @@
         </div>
     </div>
 
-    <div class="col-lg-3 col-md-6 col-sm-12">
+    {{-- <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="card">
             <div class="body">
                 <div class="row text-center">
@@ -107,7 +108,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 
 
