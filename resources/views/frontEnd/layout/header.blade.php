@@ -237,6 +237,10 @@
                         <a href="{{ route('university.dashboard') }}" class="theme-btn ">Dashboard</a>
                             @endif
 
+                            @if(Auth()->user()->isSubAdmin())
+                        <a href="{{ route('dashboard.index2') }}" class="theme-btn ">Dashboard</a>
+                            @endif
+
                             @else
                         <a href="become-local-expert.html" class="btn btn-primary">Search Courses</a>
                             @endif

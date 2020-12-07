@@ -85,13 +85,13 @@
                     </ul>
                 </li>
                 <li class="header">App</li>
-                <li class="{{ Request::segment(1) === 'contact' ? 'active open' : null }}">
+                {{-- <li class="{{ Request::segment(1) === 'contact' ? 'active open' : null }}">
                     <a href="#Contact" class="has-arrow"><i class="icon-book-open"></i><span>Contact</span></a>
                     <ul>
                         <li class="{{ Request::segment(2) === 'contact' ? 'active' : null }}"><a href="{{route('contact.contact')}}">List View</a></li>
                         <li class="{{ Request::segment(2) === 'contact2' ? 'active' : null }}"><a href="{{route('contact.contact2')}}">Grid View</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="{{ Request::segment(1) === 'email' ? 'active open' : null }}">
                     <a href="#Contact" class="has-arrow"><i class="icon-drawer"></i><span>Email</span></a>
                     <ul>
