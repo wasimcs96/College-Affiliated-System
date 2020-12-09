@@ -23,7 +23,7 @@
                         <div class="section-heading">
                             <h2 class="sec__title cd-headline zoom">
                                 Amazing <span class="cd-words-wrapper">
-                                <b class="is-visible">Tours</b>
+                                <b class="is-visible">Education</b>
                                 <b>Courses</b>
                                 <b>Colleges</b>
                                 <b>Universities</b>
@@ -147,58 +147,16 @@
                                             </div><!-- end col-lg-3 -->
                                             <div class="col-lg-2 col-sm-2">
                                                 <div class="input-box">
-                                                    <label class="label-text">Time</label>
+                                                    <label class="label-text">Duration</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
                                                             <select class="select-contain-select">
-                                                                <option value="1200AM">12:00AM</option>
-                                                                <option value="1230AM">12:30AM</option>
-                                                                <option value="0100AM">1:00AM</option>
-                                                                <option value="0130AM">1:30AM</option>
-                                                                <option value="0200AM">2:00AM</option>
-                                                                <option value="0230AM">2:30AM</option>
-                                                                <option value="0300AM">3:00AM</option>
-                                                                <option value="0330AM">3:30AM</option>
-                                                                <option value="0400AM">4:00AM</option>
-                                                                <option value="0430AM">4:30AM</option>
-                                                                <option value="0500AM">5:00AM</option>
-                                                                <option value="0530AM">5:30AM</option>
-                                                                <option value="0600AM">6:00AM</option>
-                                                                <option value="0630AM">6:30AM</option>
-                                                                <option value="0700AM">7:00AM</option>
-                                                                <option value="0730AM">7:30AM</option>
-                                                                <option value="0800AM">8:00AM</option>
-                                                                <option value="0830AM">8:30AM</option>
-                                                                <option value="0900AM" selected="">9:00AM</option>
-                                                                <option value="0930AM">9:30AM</option>
-                                                                <option value="1000AM">10:00AM</option>
-                                                                <option value="1030AM">10:30AM</option>
-                                                                <option value="1100AM">11:00AM</option>
-                                                                <option value="1130AM">11:30AM</option>
-                                                                <option value="1200PM">12:00PM</option>
-                                                                <option value="1230PM">12:30PM</option>
-                                                                <option value="0100PM">1:00PM</option>
-                                                                <option value="0130PM">1:30PM</option>
-                                                                <option value="0200PM">2:00PM</option>
-                                                                <option value="0230PM">2:30PM</option>
-                                                                <option value="0300PM">3:00PM</option>
-                                                                <option value="0330PM">3:30PM</option>
-                                                                <option value="0400PM">4:00PM</option>
-                                                                <option value="0430PM">4:30PM</option>
-                                                                <option value="0500PM">5:00PM</option>
-                                                                <option value="0530PM">5:30PM</option>
-                                                                <option value="0600PM">6:00PM</option>
-                                                                <option value="0630PM">6:30PM</option>
-                                                                <option value="0700PM">7:00PM</option>
-                                                                <option value="0730PM">7:30PM</option>
-                                                                <option value="0800PM">8:00PM</option>
-                                                                <option value="0830PM">8:30PM</option>
-                                                                <option value="0900PM">9:00PM</option>
-                                                                <option value="0930PM">9:30PM</option>
-                                                                <option value="1000PM">10:00PM</option>
-                                                                <option value="1030PM">10:30PM</option>
-                                                                <option value="1100PM">11:00PM</option>
-                                                                <option value="1130PM">11:30PM</option>
+                                                                <option value="1">1 Year</option>
+                                                                <option value="2">2 Years</option>
+                                                                <option value="3">3 Years</option>
+                                                                <option value="4">4 Years</option>
+                                                                <option value="5">5 Years</option>
+
                                                             </select>
                                                         </div>
                                                     </div>

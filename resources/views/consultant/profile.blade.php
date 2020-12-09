@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
+@section('parentPageTitle', 'Client')
 @section('title', 'Profile')
 
 
@@ -10,7 +10,7 @@
             <div class="profile-header d-flex justify-content-between justify-content-center">
                 <div class="d-flex">
                     <div class="mr-3">
-                        <img src="../assets/images/user.png" class="rounded" alt="">
+                        <img src="{{ asset('assets/images/user.png') }}" class="rounded" alt="">
                     </div>
                     <div class="details">
                     <h5 class="mb-0">{{Auth()->user()->first_name}}</h5>
@@ -57,12 +57,12 @@
                 <hr>
                 <small class="text-muted">Birth Date: </small>
                 <p class="m-b-0">October 17th, 93</p>
-                <hr>
+                {{-- <hr>
                 <small class="text-muted">Social: </small>
                 <p><i class="fa fa-twitter m-r-5"></i> twitter.com/example</p>
                 <p><i class="fa fa-facebook  m-r-5"></i> facebook.com/example</p>
                 <p><i class="fa fa-github m-r-5"></i> github.com/example</p>
-                <p><i class="fa fa-instagram m-r-5"></i> instagram.com/example</p>
+                <p><i class="fa fa-instagram m-r-5"></i> instagram.com/example</p> --}}
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
     <div class="col-xl-8 col-lg-8 col-md-7">
         <div class="card">
             <div class="header">
-                <h2>Basic Information</h2>
+                <h2>My Information</h2>
                 <ul class="header-dropdown dropdown">
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                     {{-- <li class="dropdown">
@@ -98,7 +98,7 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <select class="form-control">
-                                <option value="">-- Select Gander --</option>
+                                <option value="">-- Select Gender --</option>
                                 <option value="AF">Male</option>
                                 <option value="AX">Female</option>
                             </select>
@@ -118,10 +118,35 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="icon-globe"></i></span>
+                                    <span class="input-group-text"><i class="icon-envelope-open"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="http://">
+                                <input type="text" class="form-control" placeholder="Email">
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Mobile Number">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Landline1">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Landline2">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Latitude">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Longitude">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
@@ -395,6 +420,11 @@
                             <textarea rows="4" type="text" class="form-control" placeholder="Address"></textarea>
                         </div>
                     </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <input type="file" class="dropify-fr" >
+                        </div>
+                    </div>
                     {{-- <div class="col-12">
                         <ul class="list-group mb-3 tp-setting">
                             <li class="list-group-item">
@@ -440,7 +470,7 @@
                 <button type="button" class="btn btn-round btn-default">Cancel</button>
             </div>
         </div>
-        <div class="card">
+        {{-- <div class="card">
             <div class="header">
                 <h2>Account Data</h2>
             </div>
@@ -478,7 +508,7 @@
                 <button type="button" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
                 <button type="button" class="btn btn-round btn-default">Cancel</button>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 
@@ -486,10 +516,25 @@
 
 @section('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
 @stop
 
 @section('page-script')
 <script src="{{ asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/vendor/dropify/js/dropify.js') }}"></script>
+
+<script src="{{ asset('assets/js/pages/forms/dropify.js') }}"></script>
+
+<script>
+    $('.dropify-fr').dropify({
+        messages: {
+            default: 'Upload Profile Image',
+            replace: 'Upload Profile Image',
+            remove: 'Cancel',
+            error: 'Sorry,the file is too large'
+        }
+    });
+</script>
 @stop

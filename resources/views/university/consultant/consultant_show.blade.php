@@ -70,7 +70,7 @@
 
                 </div>
                 {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
-                <a href="{{route('subadmin.application.consultant_app')}}"  class="btn btn-warning btn-flat">See Application</a>
+                <a href="{{ route('university.consultant_application') }}"  class="btn btn-warning btn-flat">See Application</a>
             </div>
         </div>
     </div>

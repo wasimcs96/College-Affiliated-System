@@ -87,12 +87,12 @@
                 <div class="row clearfix">
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
-                            <input type="text" name="first_name" class="form-control" placeholder="First Name">
+                            <input type="text" class="form-control" placeholder="First Name">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
-                            <input type="text" name="last_name" class="form-control" placeholder="Last Name">
+                            <input type="text" class="form-control" placeholder="Last Name">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
@@ -110,7 +110,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-calendar"></i></span>
                                 </div>
-                                <input data-provide="datepicker" data-date-autoclose="true" class="form-control" name="birth_date" placeholder="Birthdate">
+                                <input data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Birthdate">
                             </div>
                         </div>
                     </div>
@@ -537,4 +537,3 @@
         }
     });
 </script>
-@stop
