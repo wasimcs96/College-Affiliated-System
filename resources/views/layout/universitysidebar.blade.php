@@ -32,6 +32,8 @@
             <ul id="main-menu" class="metismenu">
 
                 <li class="{{ Request::segment(2) == 'university.dashboard' ? 'active' : null }}"><a href="{{route('university.dashboard')}}"> <i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('university.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
+
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'students' ? 'active' : null }}"><a href="{{route('university.students')}}"><i class="icon-users"></i><span>Students</span></a></li>
                 <li class="{{ Request::segment(2) == 'my_consultants' ? 'active' : null }}"><a href="{{route('university.my_consultants')}}"><i class="icon-user"></i><span>My Consultants</span></a></li>

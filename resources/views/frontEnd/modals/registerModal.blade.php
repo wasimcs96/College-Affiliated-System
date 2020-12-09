@@ -12,15 +12,15 @@
                     @csrf
 
                     <div class="form-group row">
-                        
+
 
                         <div class="col-md-12">
                             <select id="role" name="role" class="form-control" required>
                                 <option value="">Choose your account Type</option>
                                 <option value="2">University</option>
                                 <option value="3">Student</option>
-                                <option value="4">Consultant</option>
-                                <option value="5">SubAdmin</option>
+                                {{-- <option value="4">Consultant</option>
+                                <option value="5">SubAdmin</option> --}}
 
 
                                 </select>
@@ -31,9 +31,20 @@
                     </div>
 
                     <div class="form-group row" id="nm">
-                       
+
                         <div class="col-md-12">
-                            <input id="first_nameInput" type="text" placeholder="Name" class="form-control" name="first_name" value="{{ old('first_name') }}"  autocomplete="first_name" autofocus>
+                            <input id="first_nameInput" type="text" placeholder="First Name" class="form-control" name="first_name" value="{{ old('first_name') }}"  autocomplete="first_name" autofocus>
+
+                            <span class="invalid-feedback" role="alert" id="first_nameError">
+                                <strong></strong>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="nm">
+
+                        <div class="col-md-12">
+                            <input id="last_nameInput" type="text" placeholder="Last Name" class="form-control" name="last_name" value="{{ old('last_name') }}"  autocomplete="last_name" autofocus>
 
                             <span class="invalid-feedback" role="alert" id="first_nameError">
                                 <strong></strong>
@@ -77,7 +88,7 @@
                     </div>
 
                     <div class="form-group row" id="uni">
-                      
+
                     </div>
 
                     <div class="form-group row mb-0">

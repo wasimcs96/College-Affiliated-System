@@ -33,6 +33,7 @@
 
 
                 <li class="{{ Request::segment(2) == 'dashboard' ? 'active' : null }}"><a href="{{route('consultant.dashboard')}}"> <i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('consultant.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
                 <li class="{{ Request::segment(2) == 'students' ? 'active' : null }}"><a href="{{route('consultant.students')}}"><i class="icon-users"></i><span>Students</span></a></li>
                 <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="fa fa-list"></i><span>Bookings</span></a></li>
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('consultant.application')}}"><i class="icon-notebook"></i><span>Application</span></a></li>

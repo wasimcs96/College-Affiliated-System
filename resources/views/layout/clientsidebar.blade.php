@@ -31,11 +31,13 @@
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu">
                 <li class="{{ Request::segment(2) == 'dashboard' ? 'active' : null }}"><a href="{{route('client.dashboard')}}"><i class="icon fa-dashboard"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('client.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'my_applications' ? 'active' : null }}"><a href="{{route('client.my_applications')}}"><i class="icon-notebook"></i><span>My Applications</span></a></li>
                 {{-- <li class="{{ Request::segment(2) === 'my_applications' ? 'active' : null }}"><a href="{{route('client.my_applications')}}"><i class="icon-notebook"></i><span></span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('client.bookings')}}"><i class="icon-list"></i><span>My Booking</span></a></li>
-                <li class="{{ Request::segment(2) == 'my_status' ? 'active' : null }}"><a href="{{route('client.my_status')}}"><i class="icon-direction"></i><span>My Status</span></a></li>
+
+                {{-- <li class="{{ Request::segment(2) == 'my_status' ? 'active' : null }}"><a href="{{route('client.my_status')}}"><i class="icon-direction"></i><span>My Status</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'feedback' ? 'active' : null }}"><a href="{{route('client.feedback')}}"><i class="icon-bubbles"></i><span>Chat and Feedback</span></a></li>
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Offer Received</span></a></li>
                 <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Accepted</span></a></li>
