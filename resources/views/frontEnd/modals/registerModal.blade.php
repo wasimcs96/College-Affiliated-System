@@ -19,8 +19,8 @@
                                 <option value="">Choose your account Type</option>
                                 <option value="2">University</option>
                                 <option value="3">Student</option>
-                                {{-- <option value="4">Consultant</option>
-                                <option value="5">SubAdmin</option> --}}
+                                <option value="4">Consultant</option>
+                                <option value="5">SubAdmin</option>
 
 
                                 </select>

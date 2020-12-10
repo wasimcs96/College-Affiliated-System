@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\University;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -10,45 +10,46 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class UniversityProfileController extends Controller
 {
 
 
     public function profile()
     {
 
-        return view('client.profile');
+        return view('university.profile');
     }
 
     public function profileStore(Request $request)
     {
         // dd($request);
-        // $this->validate($request,[
-        //     'first_name'=>'required',
-        //     'last_name'=>'required',
-        //     'email' => 'required',
-        //     'mobile'=>'required',
-        //     'landline_1'=>'required',
-        //     'landline_2' => 'required',
-        //    'latitude' => 'required',
-        //     'longitude'=>'required',
+        $this->validate($request,[
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'email' => 'required|email',
+            'mobile'=>'required|unique:users',
+            'landline_1'=>'required',
+            'landline_2' => 'required',
+           'latitude' => 'required',
+            'longitude'=>'required',
 
-        //      ]);
+             ]);
             $id = Auth()->user()->id;
              $user = User::find($id);
 
             //  if($request->hasFile('profile_image'))
             //  {
-                //  $profile_image = $request->profile_image;
-                //  $profile_image_new_name = time().$profile_image->getClientOriginalName();
-                //  $profile_image->move('uploads/client',$profile_image_new_name);
-                //  $user->profile_image = 'uploads/client/'.$profile_image_new_name;
+                 $profile_image = $request->profile_image;
+                 $profile_image_new_name = time().$profile_image->getClientOriginalName();
+                 $profile_image->move('uploads/client',$profile_image_new_name);
+                 $user->profile_image = 'uploads/client/'.$profile_image_new_name;
             //  }
 
-                $profile_image = $request->profile_image;
-                $profile_image_new_name = time().$profile_image->getClientOriginalName();
-                $profile_image->move('uploads/client',$profile_image_new_name);
-                $user->profile_image = 'uploads/client/'.$profile_image_new_name;
+            //     $profile_image = $request->file('profile_image');
+            //    $input['profile_image_new_name'] = time().'.'.getClientOriginalExtension();
+            //    $destinationPath = public_path('uploads/client');
+            //    $profile_image->move($destinationPath,$input['profile_image_new_name']);
+
 
              $user->first_name = $request->first_name;
              $user->last_name = $request->last_name;

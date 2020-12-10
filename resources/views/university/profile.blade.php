@@ -10,7 +10,11 @@
             <div class="profile-header d-flex justify-content-between justify-content-center">
                 <div class="d-flex">
                     <div class="mr-3">
-                        <img src="{{ asset('assets/images/user.png') }}" class="rounded" alt="">
+                        @if(isset(Auth()->user()->profile_image))
+                        <img src="{{ asset(Auth()->user()->profile_image) }}" class="rounded" alt="">
+                        @else
+                        <img src="{{ asset('assets/images/user.png') }}" class="user-photo" alt="User Profile Picture">
+             @endif
                     </div>
                     <div class="details">
                     <h5 class="mb-0">{{Auth()->user()->first_name}}</h5>
@@ -84,20 +88,22 @@
                 </ul>
             </div>
             <div class="body">
+                <form action="{{ route('university.profile.update')}}" method="POST" enctype="multipart/form-data" >
+
                 <div class="row clearfix">
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="University Name">
+                            <input type="text" name="first_name" class="form-control" placeholder="University Name">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="University Name">
+                            <input type="text" name="last_name" class="form-control" placeholder="University Name">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <select class="form-control">
+                            <select class="form-control" name="type">
                                 <option value="">-- Select Type --</option>
                                 <option value="0">Private</option>
                                 <option value="1">Government</option>
@@ -110,7 +116,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-calendar"></i></span>
                                 </div>
-                                <input data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Established Date">
+                                <input name="birth_date" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Established Date">
                             </div>
                         </div>
                     </div>
@@ -120,38 +126,38 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input name="email" type="text" class="form-control" placeholder="Email">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Mobile Number">
+                            <input type="text" name="email" class="form-control" placeholder="Mobile Number">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Landline1">
+                            <input type="text" name="landline_1" class="form-control" placeholder="Landline1">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Landline2">
+                            <input type="text" name="landline_1" class="form-control" placeholder="Landline2">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Latitude">
+                            <input type="text" name="latitude" class="form-control" placeholder="Latitude">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Longitude">
+                            <input type="text" name="longitude" class="form-control" placeholder="Longitude">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <select class="form-control">
+                            <select name="country" class="form-control">
                                 <option value="">-- Select Country --</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AX">Åland Islands</option>
@@ -407,17 +413,17 @@
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="State/Province">
+                            <input type="text" name="state" class="form-control" placeholder="State/Province">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="City">
+                            <input type="text" name="city" class="form-control" placeholder="City">
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <textarea rows="4" type="text" class="form-control" placeholder="Address"></textarea>
+                            <textarea rows="4" name="address" type="text" class="form-control" placeholder="Address"></textarea>
                         </div>
                     </div>
                     {{-- <div class="col-12">
@@ -467,18 +473,19 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="http://">
+                                <input name="website" type="text" class="form-control" placeholder="http://">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <input type="file" class="dropify-fr" >
+                            <input name="profile_image" type="file" class="dropify-fr" >
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
-                <button type="button" class="btn btn-round btn-default">Cancel</button>
+                <button type="submit" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
+            <button type="data-dismiss" class="btn btn-round btn-default ">Cancel</button>
+            </form>
             </div>
         </div>
         {{-- <div class="card">
