@@ -84,7 +84,10 @@
                 </ul>
             </div>
             <div class="body">
+                <form action="{{ route('client.profile.update')}}" method="POST" >
+                    @csrf
                 <div class="row clearfix">
+
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <input type="text" name="first_name" class="form-control" placeholder="First Name">
@@ -95,7 +98,7 @@
                             <input type="text" name="last_name" class="form-control" placeholder="Last Name">
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
+                    {{-- <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <select class="form-control">
                                 <option value="">-- Select Gender --</option>
@@ -103,7 +106,7 @@
                                 <option value="AX">Female</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <div class="input-group">
@@ -120,38 +123,38 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input type="text" name="email" class="form-control" placeholder="Email">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Mobile Number">
+                            <input type="text" name="mobile" class="form-control" placeholder="Mobile Number">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Landline1">
+                            <input type="text" name="landline_1" class="form-control" placeholder="Landline1">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Landline2">
+                            <input type="text" name="landline_2" class="form-control" placeholder="Landline2">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Latitude">
+                            <input type="text" name="latitude" class="form-control" placeholder="Latitude">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Longitude">
+                            <input type="text" name="longitude" class="form-control" placeholder="Longitude">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <select class="form-control">
+                            <select name="country" class="form-control">
                                 <option value="">-- Select Country --</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AX">Åland Islands</option>
@@ -407,22 +410,22 @@
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="State/Province">
+                            <input type="text" name="state" class="form-control" placeholder="State/Province">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="City">
+                            <input type="text" name="city" class="form-control" placeholder="City">
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <textarea rows="4" type="text" class="form-control" placeholder="Address"></textarea>
+                            <textarea rows="4" type="text" name="address" class="form-control" placeholder="Address"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <input type="file" class="dropify-fr" >
+                            <input name="profile_image" type="file" class="dropify-fr" >
                         </div>
                     </div>
                     {{-- <div class="col-12">
@@ -466,8 +469,10 @@
                         </ul>
                     </div> --}}
                 </div>
-                <button type="button" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
-                <button type="button" class="btn btn-round btn-default">Cancel</button>
+            {{-- <a href="{{ route('client.update') }}" class="btn btn-round btn-primary">Update</a> &nbsp;&nbsp; --}}
+            <button type="submit" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
+            <button type="data-dismiss" class="btn btn-round btn-default ">Cancel</button>
+            </form>
             </div>
         </div>
         {{-- <div class="card">

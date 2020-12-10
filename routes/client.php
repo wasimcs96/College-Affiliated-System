@@ -41,8 +41,14 @@ Route::get('feedback',function(){
 })->name('client.feedback');
 
  /* Profile Section */
- Route::get('profile',function(){
-    return view('client.profile');
-})->name('client.profile');
+ Route::get('profile',[
+    'uses' => 'ProfileController@profile',
+    'as' => 'client.profile'
+ ]);
+
+ Route::post('profile_store',[
+     'uses' => 'ProfileController@profileStore',
+     'as' => 'client.profile.update'
+ ]);
 
 });

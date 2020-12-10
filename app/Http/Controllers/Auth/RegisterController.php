@@ -77,4 +77,9 @@ class RegisterController extends Controller
     {
         return view('user.auth.register');
     }
+
+    public function profile()
+    {
+        return view('client.profile');
+    }
 }
