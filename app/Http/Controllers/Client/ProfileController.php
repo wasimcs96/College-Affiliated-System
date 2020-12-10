@@ -56,7 +56,7 @@ class ProfileController extends Controller
              $user->city = $request->city;
              $user->country = $request->country;
              $user->birth_year = $request->birth_year;
-             $user->profile_image = $request->profile_image;
+            //  $user->profile_image = $request->profile_image;
              $user->address_1 = $request->address;
              $user->address_2 = $request->address;
              $user->address = $request->address;
