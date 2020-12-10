@@ -100,9 +100,15 @@ Route::get('add_course',function(){
 })->name('university.add_course');
 
 /* Profile Section */
-Route::get('profile',function(){
-    return view('university.profile');
-})->name('university.profile');
+Route::get('profile',[
+    'uses' => 'UniversityProfileController@profile',
+    'as' => 'university.profile'
+ ]);
+
+ Route::post('profile_store',[
+     'uses' => 'UniversityProfileController@profileStore',
+     'as' => 'university.profile.update'
+ ]);
 
 
 });

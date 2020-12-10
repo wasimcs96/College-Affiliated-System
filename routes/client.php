@@ -42,12 +42,12 @@ Route::get('feedback',function(){
 
  /* Profile Section */
  Route::get('profile',[
-    'uses' => 'ProfileController@profile',
+    'uses' => 'ClientProfileController@profile',
     'as' => 'client.profile'
  ]);
 
  Route::post('profile_store',[
-     'uses' => 'ProfileController@profileStore',
+     'uses' => 'ClientProfileController@profileStore',
      'as' => 'client.profile.update'
  ]);
 
