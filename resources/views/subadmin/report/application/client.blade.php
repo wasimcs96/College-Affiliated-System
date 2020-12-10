@@ -46,7 +46,7 @@
 
                             <td>2020/30/11</td>
 
-                            <td><a href="{{route('subadmin.application.client_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td><a href="{{route('subadmin.report.application.client_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 
 

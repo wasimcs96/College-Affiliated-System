@@ -1,12 +1,12 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Client')
-@section('title', 'Booking')
+@section('parentPageTitle', 'Consultant')
+@section('title', 'Consultants')
 
 @section('content')
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Bookings<small>All booking requests</small></h2>
+            <h2>Consultants<small>All consultant requests</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -29,10 +29,9 @@
                                 Name</b></th>
                             <th><b> Mobile </b></th>
                             <th><b> E-mail</b></th>
-                            <th><b> Universities</b></th>
+
                             <th><b>Date</b></th>
-                            <th><b>
-                                Time</b></th>
+
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -44,22 +43,11 @@
                             <td>Sufiyan</td>
                             <td>1234567890</td>
                             <td>email@email.com</td>
-                            <td>3</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('subadmin.booking.consultant_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
-                        </tr>
 
-                        <tr>
-                            <td>Qureshi</td>
-                            <td>1234567890</td>
-                            <td>@email.com</td>
-                            <td>3</td>
                             <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('subadmin.booking.consultant_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
-                        </tr>
 
+                            <td><a href="{{route('subadmin.report.application.consultant_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                        </tr>
 
 
                     </tbody>
