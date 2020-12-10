@@ -1,13 +1,13 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
-@section('title', 'See Bookings Detail')
+@section('parentPageTitle', 'Earning')
+@section('title', 'See Earnings Detail')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>My Bookings<small>Booking Details</small></h2>
+            <h2>My Earning<small>Earning Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -29,44 +29,44 @@
 
 
                     <tr>
-                        <th scope="row">Student Name</th>
+                        <th scope="row"> Name</th>
                         <td>Sufiyan Qureshi</td>
                     </tr>
                     <tr>
-                        <th scope="row">Student Address</th>
-                        <td>Sikar,Rajasthan</td>
+                        <th scope="row">User Type</th>
+                        <td>Consultant</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student Mobile No.</th>
-                        <td>1234567890</td>
+                        <th scope="row">Amount</th>
+                        <td>$10.030</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student E-mail</th>
-                        <td>email@email.com</td>
+                        <th scope="row">Status</th>
+                        <td>Pending</td>
                     </tr>
 
 
 
                     <tr>
-                        <th scope="row">Student Nationality</th>
+                        <th scope="row">Sender country</th>
                         <td>Indian</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-1</th>
-                        <td>RTU</td>
+                        <th scope="row">Transaction ID</th>
+                        <td>212335123</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-2</th>
-                        <td>BTU</td>
+                        <th scope="row">Payment for</th>
+                        <td>Premium</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-3</th>
-                        <td>CTU</td>
+                        <th scope="row">Date</th>
+                        <td>21:12:20</td>
                     </tr>
 
 
@@ -92,8 +92,8 @@
                 <div id="dec">
 
                 </div>
-                <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('subadmin.booking.consultant')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                {{-- <a  href="{{route('subadmin.booking.client_app')}}" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
+                <a href="{{route('subadmin.earning.earning')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>
@@ -130,8 +130,8 @@
    $("#accept").click(function() {
     $("#accept").remove()
     $("#bac").remove()
-    $("#res").html("<a  href='{{route('subadmin.booking.consultant_app')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
-    $("#dec").html("<a href='{{route('subadmin.booking.consultant')}}' class='btn btn-danger btn-flat'>Close</a>")
+    $("#res").html("<a  href='{{route('subadmin.booking.client_app')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#dec").html("<a href='{{route('subadmin.booking.client')}}' class='btn btn-danger btn-flat'>Close</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
 

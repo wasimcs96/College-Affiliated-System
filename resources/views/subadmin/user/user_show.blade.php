@@ -1,13 +1,13 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Client')
-@section('title', 'See Bookings Detail')
+@section('parentPageTitle', 'Users')
+@section('title', 'See Users Detail')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>My Bookings<small>Booking Details</small></h2>
+            <h2>Users<small>Users Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -29,44 +29,44 @@
 
 
                     <tr>
-                        <th scope="row">Student Name</th>
+                        <th scope="row">Name</th>
                         <td>Sufiyan Qureshi</td>
                     </tr>
                     <tr>
-                        <th scope="row">Student Address</th>
-                        <td>Sikar,Rajasthan</td>
+                        <th scope="row">User Type</th>
+                        <td>consultant</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student Mobile No.</th>
+                        <th scope="row">Mobile</th>
                         <td>1234567890</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student E-mail</th>
+                        <th scope="row">E-mail</th>
                         <td>email@email.com</td>
                     </tr>
 
 
 
                     <tr>
-                        <th scope="row">Student Nationality</th>
+                        <th scope="row"> Nationality</th>
                         <td>Indian</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-1</th>
-                        <td>RTU</td>
+                        <th scope="row"> Prefrence-1</th>
+                        <td>cxvxcv</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-2</th>
-                        <td>BTU</td>
+                        <th scope="row">SPrefrence-2</th>
+                        <td>dfsdf</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-3</th>
-                        <td>CTU</td>
+                        <th scope="row"> Prefrence-3</th>
+                        <td>xvxcvxc</td>
                     </tr>
 
 
@@ -92,8 +92,8 @@
                 <div id="dec">
 
                 </div>
-                <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('subadmin.booking.client')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                {{-- <a  href="{{route('subadmin.report.booking.client_app')}}" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
+                <a href="{{route('subadmin.user.user_show')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>

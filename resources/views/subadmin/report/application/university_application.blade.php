@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
-@section('title', 'Consultant Application')
+@section('parentPageTitle', 'University')
+@section('title', 'Application Report')
 
 @section('content')
 
@@ -79,8 +79,8 @@
 
 
                                 <br>
-                                <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+
+                                <a href="{{route('subadmin.report.application.university')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
                             </form>
                         </div>
                     </div>

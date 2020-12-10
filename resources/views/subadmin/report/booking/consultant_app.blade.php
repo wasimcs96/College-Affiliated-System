@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'University')
-@section('title', 'University Application')
+@section('parentPageTitle', 'Consultant')
+@section('title', 'Application')
 
 @section('content')
 
@@ -8,7 +8,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card">
             <div class="header">
-                <h2>See Application of Consultant</h2>
+                <h2>Generate Application for Student</h2>
                 <ul class="header-dropdown dropdown">
 
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -26,37 +26,37 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Application</h2>
+                            <h2>Form</h2>
                         </div>
                         <div class="body">
                             <form id="basic-form" method="post" novalidate action="#">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="Sufiyan Qureshi" disabled required>
+                                    <input type="text" class="form-control" name="name" id="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Father Name</label>
-                                    <input type="text" class="form-control" name="father_name" id="father_name" value="Sufiyan Qureshi" disabled required>
+                                    <input type="text" class="form-control" name="father_name" id="father_name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Mother Name</label>
-                                    <input type="text" class="form-control" name="mother_name" id="mother_name" value="Sufiyan Qureshi" disabled required>
+                                    <input type="text" class="form-control" name="mother_name" id="mother_name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" value="msq@gmail.com" disabled required>
+                                    <input type="email" class="form-control" name="email" id="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Mobile</label>
-                                    <input type="number" class="form-control" name="mobile" id="mobile" value="1234567890" disabled required>
+                                    <input type="number" class="form-control" name="mobile" id="mobile" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Remarks</label>
-                                    <textarea class="form-control" rows="5" cols="30" required>Graduated from Boston University</textarea>
+                                    <textarea class="form-control" rows="5" cols="30" required></textarea>
                                 </div>
 
 
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="selectmore">Select Universities and Courses</label>
                                     <table class="table table-bordered" id="dynamic_field">
                                         <tr class="dynamic-added">
@@ -75,12 +75,36 @@
                                             <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i> </button></td>
                                         </tr>
                                     </table>
-                                </div> --}}
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="documents">Documents</label>
+
+                                <br />
+                                <label class="control-inline fancy-checkbox">
+                            <div class="dynamic_document" id="dynamic_document">
+                                    <input type="checkbox" name="10marksheet" required data-parsley-check="[1,5]" data-parsley-errors-container="#error-checkbox3">
+                                    <span>Marksheet-10</span>
+                                </label>
+                                <label class="control-inline fancy-checkbox">
+                                    <input type="checkbox" name="aadhar">
+                                    <span>Aadhar Card</span>
+                                </label>
+                                <label class="control-inline fancy-checkbox">
+                                    <input type="checkbox" name="12marksheet">
+                                    <span>Marksheet-12</span>
+                                </label>
+
+                            </div>
+                                <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal"><i class="fa fa-plus"></i> </button>
+                                <p id="error-checkbox3"></p>
+
+
+
 
 
                                 <br>
-                                <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                                <button type="submit" class="btn btn-primary">Confirm Booking</button>
                             </form>
                         </div>
                     </div>
