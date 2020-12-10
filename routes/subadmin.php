@@ -9,11 +9,11 @@
  })->name('subadmin.dashboard');
  //##################users##################
 
- Route::get('subadmin.users',function(){
+ Route::get('users',function(){
      return view('subadmin.user.user');
- })->name('subadmin.user');
+ })->name('subadmin.users');
 
- Route::get('subadmin.users_show',function(){
+ Route::get('users_show',function(){
     return view('subadmin.user.user_show');
 })->name('subadmin.user.user_show');
 
@@ -34,8 +34,8 @@ Route::get('application/application/show',function(){
 })->name('subadmin.application.application_show');
 
 Route::get('application/application',function(){
-    return view('subadmin.application.application_application');
-})->name('subadmin.application.application_application');
+    return view('subadmin.application.application');
+})->name('subadmin.application');
 
 Route::get('application/application/create',function(){
     return view('subadmin.application.application_create');
@@ -57,7 +57,7 @@ Route::get('application/application/create',function(){
 
 Route::get('booking',function(){
     return view('subadmin.booking.booking');
-})->name('subadmin.booking.booking');
+})->name('subadmin.booking');
 
 Route::get('booking/show',function(){
     return view('subadmin.booking.booking_show');
@@ -88,74 +88,74 @@ Route::get('subadmin.general.privacy_policy',function(){
 
 // ###############Report Application########################
 
-Route::get('subadmin.report.application.client',function(){
+Route::get('report/application/client',function(){
     return view('subadmin.report.application.client');
 })->name('subadmin.report.application.client');
 
-Route::get('subadmin.report.application.university',function(){
+Route::get('report/application/university',function(){
     return view('subadmin.report.application.university');
 })->name('subadmin.report.application.university');
 
-Route::get('subadmin.report.application.consultant',function(){
+Route::get('report/application/consultant',function(){
     return view('subadmin.report.application.consultant');
 })->name('subadmin.report.application.consultant');
 
-Route::get('subadmin.report.application.client_show',function(){
+Route::get('report/application/client_show',function(){
     return view('subadmin.report.application.client_show');
 })->name('subadmin.report.application.client_show');
 
-Route::get('subadmin.report.application.university_show',function(){
+Route::get('report/application/university_show',function(){
     return view('subadmin.report.application.university_show');
 })->name('subadmin.report.application.university_show');
 
-Route::get('subadmin.report.application.consultant_show',function(){
+Route::get('report/application/consultant_show',function(){
     return view('subadmin.report.application.consultant_show');
 })->name('subadmin.report.application.consultant_show');
 
-Route::get('subadmin.report.application.client_application',function(){
+Route::get('report/application/client_application',function(){
     return view('subadmin.report.application.client_application');
 })->name('subadmin.report.application.client_application');
 
-Route::get('subadmin.report.application.university_application',function(){
+Route::get('report/application/university_application',function(){
     return view('subadmin.report.application.university_application');
 })->name('subadmin.report.application.university_application');
 
-Route::get('subadmin.report.application.consultant_application',function(){
+Route::get('report/application/consultant_application',function(){
     return view('subadmin.report.application.consultant_application');
 })->name('subadmin.report.application.consultant_application');
 // ############################# Report BooKing#################
-Route::get('subadmin.report.booking.client',function(){
+Route::get('report/booking/client',function(){
     return view('subadmin.report.booking.client');
 })->name('subadmin.report.booking.client');
 
-Route::get('subadmin.report.booking.consultant',function(){
+Route::get('report/booking/consultant',function(){
     return view('subadmin.report.booking.consultant');
 })->name('subadmin.report.booking.consultant');
 
 
-Route::get('subadmin.report.booking.client_show',function(){
+Route::get('report/booking/client_show',function(){
     return view('subadmin.report.booking.client_show');
 })->name('subadmin.report.booking.client_show');
 
-Route::get('subadmin.report.booking.consultant_show',function(){
+Route::get('report/booking/consultant_show',function(){
     return view('subadmin.report.booking.consultant_show');
 })->name('subadmin.report.booking.consultant_show');
 
 
-Route::get('subadmin.report.booking.client_application',function(){
+Route::get('report/booking/client_application',function(){
     return view('subadmin.report.booking.client_application');
 })->name('subadmin.report.booking.client_application');
 
-Route::get('subadmin.report.booking.consultant_application',function(){
+Route::get('report/booking/consultant_application',function(){
     return view('subadmin.report.booking.consultant_application');
 })->name('subadmin.report.booking.consultant_application');
 
 // #################Earning###############
- Route::get('subadmin.earning.earning',function(){
+ Route::get('earnings',function(){
      return view('subadmin.earning.earning');
- })->name('subadmin.earning.earning');
+ })->name('subadmin.earnings');
 
- Route::get('subadmin.earning.earning_show',function(){
+ Route::get('earning_show',function(){
     return view('subadmin.earning.earning_show');
 })->name('subadmin.earning.earning_show');
 

@@ -55,7 +55,7 @@
 @endif
 
 @if(Auth()->User()->isAdmin())
-    @include('layout.sidebar')
+    @include('layout.adminsidebar')
 @endif
 
 @if(Auth()->User()->isConsultant())

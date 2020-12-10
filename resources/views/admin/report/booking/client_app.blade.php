@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'SubAdmin')
+@section('parentPageTitle', 'Client')
 @section('title', 'Application')
 
 @section('content')
@@ -54,29 +54,7 @@
                                     <label>Remarks</label>
                                     <textarea class="form-control" rows="5" cols="30" required></textarea>
                                 </div>
-                                {{-- <div class="col-lg-12 col-md-12"> --}}
-                                    <div class="form-group">
-                                        <label>Select Consultant</label>
-                                        <select name="country" class="form-control">
-                                            <option value="">-- Select Consultant --</option>
-                                            <option value="AF">Deeraj Kumar</option>
-                                            <option value="AX">Deeraj Kumar</option>
-                                            <option value="AL">Deeraj Kumar</option>
-                                            <option value="DZ">Deeraj Kumar</option>
-                                            <option value="AS">Deeraj Kumar</option>
-                                            <option value="AD">Deeraj Kumar</option>
-                                            <option value="AO">Sufiya Qureshi</option>
-                                            <option value="AI">Sufiya Qureshi</option>
-                                            <option value="AQ">Sufiya Qureshi</option>
-                                            <option value="AG">Sufiya Qureshi</option>
-                                            <option value="AR">Sufiya Qureshi</option>
-                                            <option value="AM">Sufiya Qureshi</option>
-                                            <option value="AW">Sufiya Qureshi</option>
-                                            <option value="ZM">Saif</option>
-                                            <option value="ZW">Saif</option>
-                                        </select>
-                                    </div>
-                                {{-- </div> --}}
+
 
                                 <div class="form-group">
                                     <label for="selectmore">Select Universities and Courses</label>

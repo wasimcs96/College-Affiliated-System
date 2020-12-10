@@ -1,17 +1,15 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Applications')
-@section('title', 'All Application')
+@section('parentPageTitle', 'Consultant')
+@section('title', 'Booking')
 
 @section('content')
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Applications<small>All Applications</small></h2>
-
+            <h2>Bookings<small>All booking requests</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-            <a href="{{route('subadmin.application.application_create')}}"class="btn btn-primary">add</a>
                 {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                     <ul class="dropdown-menu">
@@ -24,18 +22,19 @@
         </div>
         <div class="body">
             <div class="table-responsive">
-
-
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
                             <th> <b>
-                               Client Name</b></th>
-                            <th><b> Consultant </b></th>
-
-                            <th><b> Created Date</b></th>
-                            <th><b> Status</b></th>
-
+                                Name</b></th>
+                            <th><b> Mobile </b></th>
+                            <th><b> E-mail</b></th>
+                            <th><b> Universities</b></th>
+                            <th><b>
+                                Consultant</b></th>
+                            <th><b>Date</b></th>
+                            <th><b>
+                                Time</b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -45,15 +44,15 @@
                     <tbody>
                         <tr>
                             <td>Sufiyan</td>
+                            <td>1234567890</td>
+                            <td>email@email.com</td>
+                            <td>tru</td>
                             <td>Qureshi</td>
-
                             <td>2020/30/11</td>
-
-                            <td><button class="btn btn-warning">Pending</button></td>
-
-
-                            <td><a href="{{route('subadmin.application.application_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td> 10:30 A.M. </td>
+                            <td><a href="{{route('admin.booking.booking_show')}}" class="btn btn-success"><i class="fa fa-edit"></i></a></td>
                         </tr>
+
 
 
                     </tbody>

@@ -29,45 +29,45 @@
 
 
                     <tr>
-                        <th scope="row"> Name</th>
+                        <th scope="row">Student Name</th>
                         <td>Sufiyan Qureshi</td>
                     </tr>
                     <tr>
-                        <th scope="row">University</th>
-                        <td>rtu</td>
+                        <th scope="row">Student Address</th>
+                        <td>Sikar,Rajasthan</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Consultant</th>
-                        <td>sufii</td>
+                        <th scope="row">Student Mobile No.</th>
+                        <td>1234567890</td>
                     </tr>
 
                     <tr>
-                        <th scope="row"> E-mail</th>
+                        <th scope="row">Student E-mail</th>
                         <td>email@email.com</td>
                     </tr>
 
 
 
                     <tr>
-                        <th scope="row"> Nationality</th>
+                        <th scope="row">Student Nationality</th>
                         <td>Indian</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Interested In Universities</th>
-                        <td>RTU, Btu, Ctu , MU.</td>
+                        <th scope="row">Student University Prefrence-1</th>
+                        <td>RTU</td>
                     </tr>
 
-                    {{-- <tr>
-                        <th scope="row"> University Prefrence-2</th>
+                    <tr>
+                        <th scope="row">Student University Prefrence-2</th>
                         <td>BTU</td>
                     </tr>
 
                     <tr>
-                        <th scope="row"> University Prefrence-3</th>
+                        <th scope="row">Student University Prefrence-3</th>
                         <td>CTU</td>
-                    </tr> --}}
+                    </tr>
 
 
 
@@ -92,8 +92,8 @@
                 <div id="dec">
 
                 </div>
-                <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                {{-- <a  href="{{route('subadmin.report.booking.consultant_app')}}" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
+                <a href="{{route('subadmin.report.booking.consultant')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>
@@ -126,14 +126,14 @@
         });
     });
 </script>
-<script>
+{{-- <script>
    $("#accept").click(function() {
     $("#accept").remove()
     $("#bac").remove()
-    $("#res").html("<a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
-    $("#dec").html("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat'>Close</a>")
+    $("#res").html("<a  href='{{route('subadmin.booking.consultant_app')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#dec").html("<a href='{{route('subadmin.booking.consultant')}}' class='btn btn-danger btn-flat'>Close</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
 
-</script>
+</script> --}}
 @stop

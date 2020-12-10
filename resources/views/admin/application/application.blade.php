@@ -11,7 +11,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-            <a href="{{route('subadmin.application.application_create')}}"class="btn btn-primary">add</a>
+            <a href="{{route('admin.application.application_create')}}"class="btn btn-primary">add</a>
                 {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                     <ul class="dropdown-menu">
@@ -52,7 +52,7 @@
                             <td><button class="btn btn-warning">Pending</button></td>
 
 
-                            <td><a href="{{route('subadmin.application.application_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td><a href="{{route('admin.application.application_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 
 
