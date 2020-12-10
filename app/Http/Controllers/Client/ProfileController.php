@@ -37,13 +37,18 @@ class ProfileController extends Controller
             $id = Auth()->user()->id;
              $user = User::find($id);
 
-             if($request->hasFile('profile_image'))
-             {
-                 $profile_image = $request->profile_image;
-                 $profile_image_new_name = time().$profile_image->getClientOriginalName();
-                 $profile_image->move('uploads/client',$profile_image_new_name);
-                 $user->profile_image = 'uploads/client/'.$profile_image_new_name;
-             }
+            //  if($request->hasFile('profile_image'))
+            //  {
+                //  $profile_image = $request->profile_image;
+                //  $profile_image_new_name = time().$profile_image->getClientOriginalName();
+                //  $profile_image->move('uploads/client',$profile_image_new_name);
+                //  $user->profile_image = 'uploads/client/'.$profile_image_new_name;
+            //  }
+
+                $profile_image = $request->profile_image;
+                $profile_image_new_name = time().$profile_image->getClientOriginalName();
+                $profile_image->move('uploads/client',$profile_image_new_name);
+                $user->profile_image = 'uploads/client/'.$profile_image_new_name;
 
              $user->first_name = $request->first_name;
              $user->last_name = $request->last_name;
