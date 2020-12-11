@@ -6,8 +6,11 @@
     <div class="sidebar-scroll">
         <div class="user-account">
             <div class="user_div">
+                @if(isset(Auth()->user()->profile_image))
+                <img src="{{ asset(Auth()->user()->profile_image) }}" class="user-photo" alt="User Profile Picture" width="40px" height="40px">
+                @else
                 <img src="{{ asset('assets/images/user.png') }}" class="user-photo" alt="User Profile Picture">
-            </div>
+             @endif            </div>
             <div class="dropdown">
                 <span>Welcome,</span>
                 <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{auth()->user()->first_name}} </strong></a>
@@ -33,6 +36,7 @@
 
 
                 <li class="{{ Request::segment(2) === 'dashboard' ? 'active open' : null }}"><a href="{{route('subadmin.dashboard')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('subadmin.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'users' ? 'active open' : null }}"><a href="{{route('subadmin.users')}}"><i class="fa fa-users"></i><span>Users</span></a></li>
 

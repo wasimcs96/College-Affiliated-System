@@ -159,4 +159,15 @@ Route::get('report/booking/consultant_application',function(){
     return view('subadmin.earning.earning_show');
 })->name('subadmin.earning.earning_show');
 
+/* Profile Section */
+Route::get('profile',[
+    'uses' => 'SubAdminProfileController@profile',
+    'as' => 'subadmin.profile'
+ ]);
+
+ Route::post('profile_store',[
+     'uses' => 'SubAdminProfileController@profileStore',
+     'as' => 'subadmin.profile.update'
+ ]);
+
  });

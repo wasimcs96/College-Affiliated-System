@@ -77,7 +77,7 @@ Route::get('Booking/consultant',function(){
 
 Route::get('general/about',function(){
    return view('admin.general.about');
-})->name('admin.general.about');
+})->name('admin.about');
 
 Route::get('general/terms And Condition',function(){
    return view('admin.general.terms');
@@ -161,14 +161,16 @@ Route::get('earning/earning_show',function(){
 })->name('admin.earning.earning_show');
 // ######################profile##############
 
+/* Profile Section */
 Route::get('profile',[
-    'uses'=> 'AdminProfileController@profile',
-    'as'=>'admin.profile'
-]);
-Route::post('profile_store',[
-    'uses'=> 'AdminProfileController@profileStore',
-    'as'=> 'admin.profile.update'
-]);
+    'uses' => 'AdminProfileController@profile',
+    'as' => 'admin.profile'
+ ]);
+
+ Route::post('profile_store',[
+     'uses' => 'AdminProfileController@profileStore',
+     'as' => 'admin.profile.update'
+ ]);
 
 });
 
