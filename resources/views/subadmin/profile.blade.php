@@ -60,7 +60,7 @@
                 <p>{{Auth()->user()->mobile}}</p>
                 <hr>
                 <small class="text-muted">Birth Date: </small>
-                <p class="m-b-0">October 17th, 93</p>
+                <p class="m-b-0">{{Auth()->user()->birth_year}}</p>
                 {{-- <hr>
                 <small class="text-muted">Social: </small>
                 <p><i class="fa fa-twitter m-r-5"></i> twitter.com/example</p>

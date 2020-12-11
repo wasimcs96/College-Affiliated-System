@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Models\User;
+use App\Models\Country;
 use App\Http\Controllers\Controller;
 use Sessions;
 use Illuminate\Support\Facades\Hash;
@@ -16,8 +17,9 @@ class ClientProfileController extends Controller
 
     public function profile()
     {
-
-        return view('client.profile');
+$id = Auth()->user()->id;
+        $user=User::where('id',$id)->first();
+        return view('client.profile')->with('user',$user)->with('countries',Country::all());
     }
 
     public function profileStore(Request $request)
@@ -27,7 +29,7 @@ class ClientProfileController extends Controller
             'first_name'=>'required',
             'last_name'=>'required',
             'email' => 'required|email',
-            'mobile'=>'required|unique:users',
+            'mobile'=>'required',
             'landline_1'=>'required',
             'landline_2' => 'required',
            'latitude' => 'required',
