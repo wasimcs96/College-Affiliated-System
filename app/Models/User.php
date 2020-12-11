@@ -26,6 +26,9 @@ class User extends Authenticatable
         'image',
         'original_image_path',
         'password',
+        'address_1',
+        'address_2'
+
     ];
 
     protected $hidden = [
