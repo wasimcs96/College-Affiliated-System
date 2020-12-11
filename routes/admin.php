@@ -77,9 +77,9 @@ Route::get('Booking/consultant',function(){
 
 Route::get('general/about',function(){
    return view('admin.general.about');
-})->name('admin.about');
+})->name('admin.general.about');
 
-Route::get('general/terms And Condition',function(){
+Route::get('general/termsCondition',function(){
    return view('admin.general.terms');
 })->name('admin.general.terms');
 

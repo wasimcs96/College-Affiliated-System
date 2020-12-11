@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-left">
             <div class="navbar-btn">
-                <a href="index.html"><img src="../assets/images/icon.svg" alt="Oculux Logo" class="img-fluid logo"></a>
+                <a href="index.html"><img src="{{asset('assets/images/icon.svg') }}" alt="Oculux Logo" class="img-fluid logo"></a>
                 <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
             </div>
             <ul class="nav navbar-nav">
