@@ -2,7 +2,7 @@
 // dd(Auth::check());
 // Auth::routes();
 // Route::middleware(['auth'])->group(function () {
-    Route::group(['middleware' => 'role:superadmin'], function () {
+    Route::group(['prefix'=>'admin', 'middleware' => 'role:superadmin'], function () {
  Route::get('dash', function(){
 
     return "admin";
@@ -83,7 +83,7 @@ Route::get('general/about',function(){
    return view('admin.general.about');
 })->name('admin.general.about');
 
-Route::get('general/termsCondition',function(){
+Route::get('general/terms&condition',function(){
    return view('admin.general.terms');
 })->name('admin.general.terms');
 

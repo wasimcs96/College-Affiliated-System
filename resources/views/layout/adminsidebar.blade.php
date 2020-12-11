@@ -52,10 +52,10 @@
                     <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
                     <ul>
                         <li class="{{ Request::segment(3) == 'about' ? 'active' : null }}"><a href="{{route('admin.general.about')}}">Manage About Us</a></li>
-                        {{-- <li class="{{ Request::segment(2) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.contact')}}">Manage Contact Us</a></li> --}}
-                        {{-- <li class="{{ Request::segment(2) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.content')}}">Manage Content</a></li> --}}
-                        <li class="{{ Request::segment(3) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.terms')}}">Manage Terms & Conditions</a></li>
-                        <li class="{{ Request::segment(3) == 'privacy_policy' ? 'active' : null }}"><a href="{{route('admin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
+                        {{-- <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.general.contact')}}">Manage Contact Us</a></li> --}}
+                        {{-- <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.general.content')}}">Manage Content</a></li> --}}
+                        <li class="{{ Request::segment(3) == 'terms&condition' ? 'active' : null }}"><a href="{{route('admin.general.terms')}}">Manage Terms & Conditions</a></li>
+                        <li class="{{ Request::segment(3) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
                     </ul>
                 </li>
                 {{-- <li class="{{ Request::segment(2) == 'general' ? 'active open' : null }}">
