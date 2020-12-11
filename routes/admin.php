@@ -8,6 +8,10 @@
     return "admin";
 });
 
+Route::get('dashboard',function(){
+    return view('admin.dashboard');
+ })->name('admin.dashboard');
+
 Route::get('mypage/index','MypageController@index')->name('mypage.index');
 
 Route::get('users',function(){
@@ -83,7 +87,7 @@ Route::get('general/terms&condition',function(){
    return view('admin.general.terms');
 })->name('admin.general.terms');
 
-Route::get('admin.general.privacy_policy',function(){
+Route::get('admin/general/privacy_policy',function(){
    return view('admin.general.privacy_policy');
 })->name('admin.general.privacy_policy');
 
@@ -152,7 +156,7 @@ Route::get('report/booking/consultant_application',function(){
 })->name('admin.report.booking.consultant_application');
 
 // #################Earning###############
-Route::get('earning/earning',function(){
+Route::get('earning',function(){
     return view('admin.earning.earning');
 })->name('admin.earning');
 

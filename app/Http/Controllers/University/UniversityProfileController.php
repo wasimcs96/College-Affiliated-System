@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\University;
 
 use App\Models\User;
+use App\Models\University;
 use App\Http\Controllers\Controller;
 use Sessions;
 use Illuminate\Support\Facades\Hash;
@@ -28,10 +29,10 @@ class UniversityProfileController extends Controller
             'last_name'=>'required',
             'email' => 'required|email',
             'mobile'=>'required|unique:users',
-            'landline_1'=>'required',
-            'landline_2' => 'required',
-           'latitude' => 'required',
-            'longitude'=>'required',
+        //     'landline_1'=>'required',
+        //     'landline_2' => 'required',
+        //    'latitude' => 'required',
+        //     'longitude'=>'required',
 
              ]);
             $id = Auth()->user()->id;
@@ -69,8 +70,15 @@ class UniversityProfileController extends Controller
 
              $user->save();
 
-            //  $university =
+             University::create([
+                 'user_id'=>$user->id,
+                 'university_name'=>$request->first_name,
+                 'website'=>$request->website,
+                 'type'=>$request->type
+             ]);
 
-             return redirect()->route('client.profile')->with('success','Profile Updated successfully');
+
+
+             return redirect()->route('university.profile')->with('success','Profile Updated successfully');
     }
 }
