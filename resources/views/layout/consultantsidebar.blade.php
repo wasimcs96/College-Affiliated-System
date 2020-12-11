@@ -6,8 +6,11 @@
     <div class="sidebar-scroll">
         <div class="user-account">
             <div class="user_div">
+                @if(isset(Auth()->user()->profile_image))
+                <img src="{{ asset(Auth()->user()->profile_image) }}" class="user-photo" alt="User Profile Picture" width="40px" height="40px">
+                @else
                 <img src="{{ asset('assets/images/user.png') }}" class="user-photo" alt="User Profile Picture">
-            </div>
+             @endif            </div>
             <div class="dropdown">
                 <span>Welcome,</span>
                 <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{auth()->user()->first_name}} </strong></a>

@@ -10,7 +10,11 @@
             <div class="profile-header d-flex justify-content-between justify-content-center">
                 <div class="d-flex">
                     <div class="mr-3">
-                        <img src="{{ asset('assets/images/user.png') }}" class="rounded" alt="">
+                        @if(isset(Auth()->user()->profile_image))
+                        <img src="{{ asset(Auth()->user()->profile_image) }}" class="rounded" alt="">
+                        @else
+                        <img src="{{ asset('assets/images/user.png') }}" class="user-photo" alt="User Profile Picture">
+             @endif
                     </div>
                     <div class="details">
                     <h5 class="mb-0">{{Auth()->user()->first_name}}</h5>
@@ -84,7 +88,7 @@
                 </ul>
             </div>
             <div class="body">
-                <form action="{{ route('client.profile.update')}}" method="POST" >
+                <form action="{{ route('admin.profile.update')}}" method="POST" enctype="multipart/form-data" >
                     @csrf
                 <div class="row clearfix">
 

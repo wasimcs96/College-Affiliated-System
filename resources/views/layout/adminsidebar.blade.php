@@ -6,8 +6,11 @@
     <div class="sidebar-scroll">
         <div class="user-account">
             <div class="user_div">
+                @if(isset(Auth()->user()->profile_image))
+                <img src="{{ asset(Auth()->user()->profile_image) }}" class="user-photo" alt="User Profile Picture" width="40px" height="40px">
+                @else
                 <img src="{{ asset('assets/images/user.png') }}" class="user-photo" alt="User Profile Picture">
-            </div>
+             @endif            </div>
             <div class="dropdown">
                 <span>Welcome,</span>
                 <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{auth()->user()->first_name}} </strong></a>
@@ -33,6 +36,7 @@
 
 
                 <li class="{{ Request::segment(2) === 'index2' ? 'active open' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('admin.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'users' ? 'active open' : null }}"><a href="{{route('admin.user')}}"><i class="fa fa-users"></i><span>Users</span></a></li>
 
@@ -44,17 +48,24 @@
                 {{-- <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="fa fa-gear"></i><span>Generals</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
 
-                <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
-                    <a href="#JobPortal" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
+                <li class="{{ Request::segment(1) == 'general' ? 'active open' : null }}">
+                    <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
                     <ul>
-                        <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('admin.general.about')}}">Manage About Us</a></li>
+                        <li class="{{ Request::segment(2) == 'about' ? 'active' : null }}"><a href="{{route('admin.about')}}">Manage About Us</a></li>
                         {{-- <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.general.contact')}}">Manage Contact Us</a></li> --}}
                         {{-- <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.general.content')}}">Manage Content</a></li> --}}
-                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.general.terms')}}">Manage Terms & Conditions</a></li>
-                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
+                        <li class="{{ Request::segment(2) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.terms')}}">Manage Terms & Conditions</a></li>
+                        <li class="{{ Request::segment(2) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
                     </ul>
                 </li>
-
+                <li class="{{ Request::segment(1) === 'admin/general' ? 'active open' : null }}">
+                    <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
+                    <ul>
+                        <li class="{{ Request::segment(2) === 'about' ? 'active' : null }}"><a href="{{route('admin.about')}}">Manage About Us</a></li>
+                        <li class="{{ Request::segment(2) === 'iconsline' ? 'active' : null }}"><a href="{{route('icon.iconsline')}}">Simple Line</a></li>
+                        <li class="{{ Request::segment(2) === 'themify' ? 'active' : null }}"><a href="{{route('icon.themify')}}">Themify Icon</a></li>
+                    </ul>
+                </li>
 
                 <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
                     <a href="#JobPortal" class="has-arrow"><i class="icon-book-open"></i><span>Reports</span></a>

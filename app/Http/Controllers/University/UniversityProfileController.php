@@ -69,6 +69,8 @@ class UniversityProfileController extends Controller
 
              $user->save();
 
+            //  $university =
+
              return redirect()->route('client.profile')->with('success','Profile Updated successfully');
     }
 }

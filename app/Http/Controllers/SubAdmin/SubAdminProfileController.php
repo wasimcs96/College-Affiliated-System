@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\SubAdmin;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
-class AdminProfileController extends Controller
+class SubAdminProfileController extends Controller
 {
 
 
     public function profile()
     {
 
-        return view('admin.profile');
+        return view('subadmin.profile');
     }
 
     public function profileStore(Request $request)
@@ -69,6 +69,6 @@ class AdminProfileController extends Controller
 
              $user->save();
 
-             return redirect()->route('admin.profile')->with('success','Profile Updated successfully');
+             return redirect()->route('subadmin.profile')->with('success','Profile Updated successfully');
     }
 }
