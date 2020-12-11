@@ -1,13 +1,13 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
-@section('title', 'See Bookings Detail')
+@section('parentPageTitle', 'Users')
+@section('title', 'See Users Detail')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>My Bookings<small>Booking Details</small></h2>
+            <h2>Users<small>Users Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -29,21 +29,21 @@
 
 
                     <tr>
-                        <th scope="row"> Name</th>
+                        <th scope="row">Name</th>
                         <td>Sufiyan Qureshi</td>
                     </tr>
                     <tr>
-                        <th scope="row">University</th>
-                        <td>rtu</td>
+                        <th scope="row">User Type</th>
+                        <td>consultant</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Consultant</th>
-                        <td>sufii</td>
+                        <th scope="row">Mobile</th>
+                        <td>1234567890</td>
                     </tr>
 
                     <tr>
-                        <th scope="row"> E-mail</th>
+                        <th scope="row">E-mail</th>
                         <td>email@email.com</td>
                     </tr>
 
@@ -55,19 +55,19 @@
                     </tr>
 
                     <tr>
-                        <th scope="row">Interested In Universities</th>
-                        <td>RTU, Btu, Ctu , MU.</td>
-                    </tr>
-
-                    {{-- <tr>
-                        <th scope="row"> University Prefrence-2</th>
-                        <td>BTU</td>
+                        <th scope="row"> Prefrence-1</th>
+                        <td>cxvxcv</td>
                     </tr>
 
                     <tr>
-                        <th scope="row"> University Prefrence-3</th>
-                        <td>CTU</td>
-                    </tr> --}}
+                        <th scope="row">SPrefrence-2</th>
+                        <td>dfsdf</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row"> Prefrence-3</th>
+                        <td>xvxcvxc</td>
+                    </tr>
 
 
 
@@ -92,8 +92,8 @@
                 <div id="dec">
 
                 </div>
-                <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                {{-- <a  href="{{route('admin.report.booking.client_app')}}" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
+                <a href="{{route('admin.user.user_show')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>
@@ -126,14 +126,14 @@
         });
     });
 </script>
-<script>
+{{-- <script>
    $("#accept").click(function() {
     $("#accept").remove()
     $("#bac").remove()
-    $("#res").html("<a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
-    $("#dec").html("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat'>Close</a>")
+    $("#res").html("<a  href='{{route('admin.booking.client_app')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#dec").html("<a href='{{route('admin.booking.client')}}' class='btn btn-danger btn-flat'>Close</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
 
-</script>
+</script> --}}
 @stop

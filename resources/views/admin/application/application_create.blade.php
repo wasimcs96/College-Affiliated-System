@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'SubAdmin')
+@section('parentPageTitle', 'admin')
 @section('title', 'Application')
 
 @section('content')

@@ -1,13 +1,13 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
-@section('title', 'See Bookings Detail')
+@section('parentPageTitle', 'University')
+@section('title', 'See University Detail')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>My Bookings<small>Booking Details</small></h2>
+            <h2>Consultant Requests<small>Consultant Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -32,45 +32,22 @@
                         <th scope="row"> Name</th>
                         <td>Sufiyan Qureshi</td>
                     </tr>
+
+
                     <tr>
-                        <th scope="row">University</th>
-                        <td>rtu</td>
+                        <th scope="row"> Mobile No.</th>
+                        <td>1234567890</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Consultant</th>
-                        <td>sufii</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row"> E-mail</th>
+                        <th scope="row">E-mail</th>
                         <td>email@email.com</td>
                     </tr>
 
-
-
                     <tr>
-                        <th scope="row"> Nationality</th>
-                        <td>Indian</td>
+                        <th scope="row">Date</th>
+                        <td>2020/11/30</td>
                     </tr>
-
-                    <tr>
-                        <th scope="row">Interested In Universities</th>
-                        <td>RTU, Btu, Ctu , MU.</td>
-                    </tr>
-
-                    {{-- <tr>
-                        <th scope="row"> University Prefrence-2</th>
-                        <td>BTU</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row"> University Prefrence-3</th>
-                        <td>CTU</td>
-                    </tr> --}}
-
-
-
 
 
             </div>
@@ -92,8 +69,8 @@
                 <div id="dec">
 
                 </div>
-                <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
+                <a href="{{route('subadmin.report.application.university_application')}}"  class="btn btn-warning btn-flat">See Application</a>
             </div>
         </div>
     </div>
@@ -126,7 +103,7 @@
         });
     });
 </script>
-<script>
+{{-- <script>
    $("#accept").click(function() {
     $("#accept").remove()
     $("#bac").remove()
@@ -135,5 +112,5 @@
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
 
-</script>
+</script> --}}
 @stop

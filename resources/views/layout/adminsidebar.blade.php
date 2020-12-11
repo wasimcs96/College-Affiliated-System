@@ -35,30 +35,37 @@
             <ul id="main-menu" class="metismenu">
 
 
-                <li class="{{ Request::segment(2) === 'dashboard' ? 'active open' : null }}"><a href="{{route('subadmin.dashboard')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
-                <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('subadmin.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
+                <li class="{{ Request::segment(2) === 'index2' ? 'active open' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('admin.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
 
-                <li class="{{ Request::segment(2) == 'users' ? 'active open' : null }}"><a href="{{route('subadmin.users')}}"><i class="fa fa-users"></i><span>Users</span></a></li>
+                <li class="{{ Request::segment(2) == 'users' ? 'active open' : null }}"><a href="{{route('admin.user')}}"><i class="fa fa-users"></i><span>Users</span></a></li>
 
-                <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('subadmin.application')}}"><i class="icon-notebook"></i><span>Applications</span></a></li>
+                <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('admin.application')}}"><i class="icon-notebook"></i><span>Applications</span></a></li>
 
-                <li class="{{ Request::segment(2) == 'booking' ? 'active' : null }}"><a href="{{route('subadmin.booking')}}"><i class="icon-list"></i><span>Bookings</span></a></li>
+                <li class="{{ Request::segment(2) == 'booking' ? 'active' : null }}"><a href="{{route('admin.booking')}}"><i class="icon-list"></i><span>Bookings</span></a></li>
 
 
                 {{-- <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="fa fa-gear"></i><span>Generals</span></a></li> --}}
-                <li class="{{ Request::segment(2) == 'earnings' ? 'active' : null }}"><a href="{{route('subadmin.earnings')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
+                <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
 
-                <li class="{{ Request::segment(1) === 'about' ? 'active open' : null }}">
-                    <a href="#JobPortal" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
+                <li class="{{ Request::segment(1) == 'general' ? 'active open' : null }}">
+                    <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
                     <ul>
-                        <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('subadmin.general.about')}}">Manage About Us</a></li>
-                        {{-- <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.general.contact')}}">Manage Contact Us</a></li> --}}
-                        {{-- <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.general.content')}}">Manage Content</a></li> --}}
-                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.general.terms')}}">Manage Terms & Conditions</a></li>
-                        <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
+                        <li class="{{ Request::segment(2) == 'about' ? 'active' : null }}"><a href="{{route('admin.about')}}">Manage About Us</a></li>
+                        {{-- <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.general.contact')}}">Manage Contact Us</a></li> --}}
+                        {{-- <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.general.content')}}">Manage Content</a></li> --}}
+                        <li class="{{ Request::segment(2) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.terms')}}">Manage Terms & Conditions</a></li>
+                        <li class="{{ Request::segment(2) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
                     </ul>
                 </li>
-
+                <li class="{{ Request::segment(1) === 'admin/general' ? 'active open' : null }}">
+                    <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
+                    <ul>
+                        <li class="{{ Request::segment(2) === 'about' ? 'active' : null }}"><a href="{{route('admin.about')}}">Manage About Us</a></li>
+                        <li class="{{ Request::segment(2) === 'iconsline' ? 'active' : null }}"><a href="{{route('icon.iconsline')}}">Simple Line</a></li>
+                        <li class="{{ Request::segment(2) === 'themify' ? 'active' : null }}"><a href="{{route('icon.themify')}}">Themify Icon</a></li>
+                    </ul>
+                </li>
 
                 <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
                     <a href="#JobPortal" class="has-arrow"><i class="icon-book-open"></i><span>Reports</span></a>
@@ -66,17 +73,17 @@
                         <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
                             <a href="#JobPortal" class="has-arrow"> <i class="icon-notebook"></i><span>Applications</span></a>
                             <ul>
-                                {{-- <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('subadmin.report.application.client')}}">clients</a></li>
-                                <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.report.application.consultant')}}">Consultant</a></li>
-                                <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.report.application.university')}}">University</a></li> --}}
+                                {{-- <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('admin.report.application.client')}}">clients</a></li>
+                                <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.report.application.consultant')}}">Consultant</a></li>
+                                <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.report.application.university')}}">University</a></li> --}}
 
                             </ul>
                         </li>
                         <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
                             <a href="#JobPortal" class="has-arrow"><i class="icon-list"></i><span>Bookings</span></a>
                             <ul>
-                                <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('subadmin.report.booking.client')}}">Clients</a></li>
-                                <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('subadmin.report.booking.consultant')}}">Consultant</a></li>
+                                <li class="{{ Request::segment(2) === 'jobdashboard' ? 'active' : null }}"><a href="{{route('admin.report.booking.client')}}">Clients</a></li>
+                                <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.report.booking.consultant')}}">Consultant</a></li>
 
 
                             </ul>

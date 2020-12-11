@@ -88,7 +88,7 @@
                 </ul>
             </div>
             <div class="body">
-                <form action="{{ route('client.profile.update')}}" method="POST" enctype="multipart/form-data" >
+                <form action="{{ route('admin.profile.update')}}" method="POST" enctype="multipart/form-data" >
                     @csrf
                 <div class="row clearfix">
 

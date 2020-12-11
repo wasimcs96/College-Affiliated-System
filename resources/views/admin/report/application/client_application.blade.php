@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'SubAdmin')
-@section('title', 'Application')
+@section('parentPageTitle', 'Client')
+@section('title', 'Application Report')
 
 @section('content')
 
@@ -8,7 +8,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card">
             <div class="header">
-                <h2>Generate Application for Student</h2>
+                <h2>See Application of Consultant</h2>
                 <ul class="header-dropdown dropdown">
 
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -26,59 +26,37 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Form</h2>
+                            <h2>Application</h2>
                         </div>
                         <div class="body">
                             <form id="basic-form" method="post" novalidate action="#">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" name="name" id="name" required>
+                                    <input type="text" class="form-control" name="name" id="name" value="Sufiyan Qureshi" disabled required>
                                 </div>
                                 <div class="form-group">
                                     <label>Father Name</label>
-                                    <input type="text" class="form-control" name="father_name" id="father_name" required>
+                                    <input type="text" class="form-control" name="father_name" id="father_name" value="Sufiyan Qureshi" disabled required>
                                 </div>
                                 <div class="form-group">
                                     <label>Mother Name</label>
-                                    <input type="text" class="form-control" name="mother_name" id="mother_name" required>
+                                    <input type="text" class="form-control" name="mother_name" id="mother_name" value="Sufiyan Qureshi" disabled required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" required>
+                                    <input type="email" class="form-control" name="email" id="email" value="msq@gmail.com" disabled required>
                                 </div>
                                 <div class="form-group">
                                     <label>Mobile</label>
-                                    <input type="number" class="form-control" name="mobile" id="mobile" required>
+                                    <input type="number" class="form-control" name="mobile" id="mobile" value="1234567890" disabled required>
                                 </div>
                                 <div class="form-group">
                                     <label>Remarks</label>
-                                    <textarea class="form-control" rows="5" cols="30" required></textarea>
+                                    <textarea class="form-control" rows="5" cols="30" required>Graduated from Boston University</textarea>
                                 </div>
-                                {{-- <div class="col-lg-12 col-md-12"> --}}
-                                    <div class="form-group">
-                                        <label>Select Consultant</label>
-                                        <select name="country" class="form-control">
-                                            <option value="">-- Select Consultant --</option>
-                                            <option value="AF">Deeraj Kumar</option>
-                                            <option value="AX">Deeraj Kumar</option>
-                                            <option value="AL">Deeraj Kumar</option>
-                                            <option value="DZ">Deeraj Kumar</option>
-                                            <option value="AS">Deeraj Kumar</option>
-                                            <option value="AD">Deeraj Kumar</option>
-                                            <option value="AO">Sufiya Qureshi</option>
-                                            <option value="AI">Sufiya Qureshi</option>
-                                            <option value="AQ">Sufiya Qureshi</option>
-                                            <option value="AG">Sufiya Qureshi</option>
-                                            <option value="AR">Sufiya Qureshi</option>
-                                            <option value="AM">Sufiya Qureshi</option>
-                                            <option value="AW">Sufiya Qureshi</option>
-                                            <option value="ZM">Saif</option>
-                                            <option value="ZW">Saif</option>
-                                        </select>
-                                    </div>
-                                {{-- </div> --}}
 
-                                <div class="form-group">
+
+                                {{-- <div class="form-group">
                                     <label for="selectmore">Select Universities and Courses</label>
                                     <table class="table table-bordered" id="dynamic_field">
                                         <tr class="dynamic-added">
@@ -97,36 +75,12 @@
                                             <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i> </button></td>
                                         </tr>
                                     </table>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="documents">Documents</label>
-
-                                <br />
-                                <label class="control-inline fancy-checkbox">
-                            <div class="dynamic_document" id="dynamic_document">
-                                    <input type="checkbox" name="10marksheet" required data-parsley-check="[1,5]" data-parsley-errors-container="#error-checkbox3">
-                                    <span>Marksheet-10</span>
-                                </label>
-                                <label class="control-inline fancy-checkbox">
-                                    <input type="checkbox" name="aadhar">
-                                    <span>Aadhar Card</span>
-                                </label>
-                                <label class="control-inline fancy-checkbox">
-                                    <input type="checkbox" name="12marksheet">
-                                    <span>Marksheet-12</span>
-                                </label>
-
-                            </div>
-                                <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal"><i class="fa fa-plus"></i> </button>
-                                <p id="error-checkbox3"></p>
-
-
-
+                                </div> --}}
 
 
                                 <br>
-                                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+
+                                <a href="{{route('subadmin.report.application.client')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
                             </form>
                         </div>
                     </div>

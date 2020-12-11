@@ -49,13 +49,13 @@
     @include('layout.megamenu')
     {{-- @include('layout.searchbar') --}}
     {{-- @include('layout.rightbar') --}}
-
+{{-- @include('includes.alert') --}}
 @if(Auth()->User()->isSubAdmin())
     @include('layout.subadminsidebar')
 @endif
 
 @if(Auth()->User()->isAdmin())
-    @include('layout.sidebar')
+    @include('layout.adminsidebar')
 @endif
 
 @if(Auth()->User()->isConsultant())
@@ -110,7 +110,7 @@
                     </div> --}}
                 </div>
             </div>
-
+            @include('includes.alert')
             @yield('content')
         </div>
 
