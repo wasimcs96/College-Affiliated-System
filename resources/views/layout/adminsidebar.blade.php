@@ -48,24 +48,24 @@
                 {{-- <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="fa fa-gear"></i><span>Generals</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
 
-                <li class="{{ Request::segment(1) == 'general' ? 'active open' : null }}">
+                <li class="{{ Request::segment(2) == 'general' ? 'active open' : null }}">
                     <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
                     <ul>
-                        <li class="{{ Request::segment(2) == 'about' ? 'active' : null }}"><a href="{{route('admin.about')}}">Manage About Us</a></li>
+                        <li class="{{ Request::segment(3) == 'about' ? 'active' : null }}"><a href="{{route('admin.general.about')}}">Manage About Us</a></li>
                         {{-- <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.general.contact')}}">Manage Contact Us</a></li> --}}
                         {{-- <li class="{{ Request::segment(2) === 'positions' ? 'active' : null }}"><a href="{{route('admin.general.content')}}">Manage Content</a></li> --}}
-                        <li class="{{ Request::segment(2) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.terms')}}">Manage Terms & Conditions</a></li>
-                        <li class="{{ Request::segment(2) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
+                        <li class="{{ Request::segment(3) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.terms')}}">Manage Terms & Conditions</a></li>
+                        <li class="{{ Request::segment(3) == 'positions' ? 'active' : null }}"><a href="{{route('admin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(1) === 'admin/general' ? 'active open' : null }}">
+                {{-- <li class="{{ Request::segment(2) === 'general' ? 'active open' : null }}">
                     <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
                     <ul>
-                        <li class="{{ Request::segment(2) === 'about' ? 'active' : null }}"><a href="{{route('admin.about')}}">Manage About Us</a></li>
+                        <li class="{{ Request::segment(3) === 'about' ? 'active' : null }}"><a href="{{route('admin.about')}}">Manage About Us</a></li>
                         <li class="{{ Request::segment(2) === 'iconsline' ? 'active' : null }}"><a href="{{route('icon.iconsline')}}">Simple Line</a></li>
                         <li class="{{ Request::segment(2) === 'themify' ? 'active' : null }}"><a href="{{route('icon.themify')}}">Themify Icon</a></li>
                     </ul>
-                </li>
+                </li> --}}
 
                 <li class="{{ Request::segment(1) === 'job' ? 'active open' : null }}">
                     <a href="#JobPortal" class="has-arrow"><i class="icon-book-open"></i><span>Reports</span></a>
