@@ -89,7 +89,7 @@
             </div>
             <div class="body">
                 <form action="{{ route('university.profile.update')}}" method="POST" enctype="multipart/form-data" >
-
+@csrf
                 <div class="row clearfix">
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
@@ -132,7 +132,7 @@
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" name="email" class="form-control" placeholder="Mobile Number">
+                            <input type="text" name="mobile" class="form-control" placeholder="Mobile Number">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">

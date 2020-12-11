@@ -222,7 +222,7 @@
 
                             @if(Auth()->user())
                             @if(Auth()->user()->isAdmin())
-                        <a href="{{ route('dashboard.index2') }}" class="theme-btn ">Dashboard</a>
+                        <a href="{{ route('admin.dashboard') }}" class="theme-btn ">Dashboard</a>
                             @endif
 
                             @if(Auth()->user()->isConsultant())
