@@ -115,10 +115,16 @@ Route::get('university_show',function(){
     return view('consultant.university.university_show');
 })->name('consultant.university.show');
 
-/* profile Section */
-Route::get('profile',function(){
-    return view('consultant.profile');
-})->name('consultant.profile');
+/* Profile Section */
+Route::get('profile',[
+    'uses' => 'ConsultantProfileController@profile',
+    'as' => 'consultant.profile'
+ ]);
+
+ Route::post('profile_store',[
+     'uses' => 'ConsultantProfileController@profileStore',
+     'as' => 'consultant.profile.update'
+ ]);
 
 
 });
