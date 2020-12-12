@@ -91,16 +91,16 @@
                 <form action="{{ route('university.profile.update')}}" method="POST" enctype="multipart/form-data" >
 @csrf
                 <div class="row clearfix">
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <input type="text" name="first_name" class="form-control" placeholder="University Name">
+                            <input type="text" name="first_name"  class="form-control" placeholder="University Name">
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
+                    {{-- <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <input type="text" name="last_name" class="form-control" placeholder="University Name">
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <select class="form-control" name="type">
@@ -142,10 +142,10 @@
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <input type="text" name="landline_1" class="form-control" placeholder="Landline2">
+                            <input type="text" name="landline_2" class="form-control" placeholder="Landline2">
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
+                    {{-- <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <input type="text" name="latitude" class="form-control" placeholder="Latitude">
                         </div>
@@ -154,7 +154,7 @@
                         <div class="form-group">
                             <input type="text" name="longitude" class="form-control" placeholder="Longitude">
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <select name="country" class="form-control">
