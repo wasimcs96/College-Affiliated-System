@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Models\University;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -45,13 +45,19 @@ class RegisterController extends Controller
         ])->assignRole('client');
        }
        if($role==2){
-        return User::create([
+           $user=User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['first_name'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ])->assignRole('university');
+        University::create([
+            'user_id'=>$user->id,
+
+        ]);
+        return $user;
+
        }
        if($role==4){
         return User::create([
@@ -71,6 +77,13 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ])->assignRole('subadmin');
        }
+
+
+       University::create([
+        'user_id'=>$data->id,
+
+    ]);
+
     }
 
     public function showRegistrationForm()
