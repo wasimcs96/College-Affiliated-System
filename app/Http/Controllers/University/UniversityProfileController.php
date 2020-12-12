@@ -26,11 +26,11 @@ class UniversityProfileController extends Controller
         // dd($request);
         $this->validate($request,[
             'first_name'=>'required',
-            'last_name'=>'required',
+
             'email' => 'required|email',
             'mobile'=>'required|unique:users',
-        //     'landline_1'=>'required',
-        //     'landline_2' => 'required',
+            'landline_1'=>'required',
+            'landline_2' => 'required',
         //    'latitude' => 'required',
         //     'longitude'=>'required',
 
