@@ -27,7 +27,11 @@ class User extends Authenticatable
         'original_image_path',
         'password',
         'address_1',
-        'address_2'
+        'address_2',
+        'landline_1',
+        'landline_2',
+        'city',
+        'country'
 
     ];
 

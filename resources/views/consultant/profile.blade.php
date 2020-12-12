@@ -88,13 +88,14 @@
                 </ul>
             </div>
             <div class="body">
-                <form action="{{ route('client.profile.update')}}" method="POST" enctype="multipart/form-data" >
+                <form action="{{ route('consultant.profile.update')}}" method="POST" enctype="multipart/form-data" >
                     @csrf
                 <div class="row clearfix">
 
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <input type="text" value="@if(isset($user->first_name)){{$user->first_name}}@endif" name="first_name" class="form-control" placeholder="First Name">
+                            <input type="text"  name="userid" value="@if(isset(auth()->user()->id)){{auth()->user()->id}}@endif" hidden>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
@@ -146,7 +147,7 @@
                             <input type="text" value="@if(isset($user->landline_2)){{$user->landline_2}}@endif"  name="landline_2" class="form-control" placeholder="Landline2">
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
+                    {{-- <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <input type="text" value="@if(isset($user->latitude)){{$user->latitude}}@endif" name="latitude" class="form-control" placeholder="Latitude">
                         </div>
@@ -155,7 +156,7 @@
                         <div class="form-group">
                             <input type="text" value="@if(isset($user->longitude)){{$user->longitude}}@endif" name="longitude" class="form-control" placeholder="Longitude">
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <select name="country" class="form-control">
@@ -178,56 +179,177 @@
                             <input type="text" value="@if(isset($user->city)){{$user->city}}@endif" name="city" class="form-control" placeholder="City">
                         </div>
                     </div>
+
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <textarea rows="4"  type="text" name="address" class="form-control" placeholder="Address">@if(isset($user->address)){{$user->address}}@endif</textarea>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-6 col-md-12">
                         <div class="form-group">
-                            <input value="@if(isset($user->profile_image)){{$user->profile_image}}@endif"  name="profile_image" type="file" class="dropify-fr" >
+                            <div class="input-group">
+                                <input name="company_name" type="text" class="form-control" value="{{auth()->user()->consultant->company_name}}" placeholder="Company Name">
+                            </div>
                         </div>
                     </div>
-                    {{-- <div class="col-12">
-                        <ul class="list-group mb-3 tp-setting">
-                            <li class="list-group-item">
-                                Anyone seeing my profile page
-                                <div class="float-right">
-                                    <label class="switch">
-                                        <input type="checkbox" checked>
-                                        <span class="slider round"></span>
-                                    </label>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-globe"></i></span>
                                 </div>
-                            </li>
-                            <li class="list-group-item">
-                                Anyone send me a message
-                                <div class="float-right">
-                                    <label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                Anyone posts a comment on my post
-                                <div class="float-right">
-                                    <label class="switch">
-                                        <input type="checkbox" checked>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                Anyone invite me to group
-                                <div class="float-right">
-                                    <label class="switch">
-                                        <input type="checkbox" checked>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div> --}}
+                                <input name="website" type="text" class="form-control" value="{{auth()->user()->consultant->website}}" placeholder="http://">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+
+                            <label for="weekday">Working Days</label>
+                            <div class="fancy-checkbox">
+                                <?php
+                                $weekarray = Config::get('define.weekday');
+                                $setWorkingDays = explode(",", auth()->user()->consultant->working_week_days);
+
+                            ?>
+
+
+                                 @foreach($weekarray as $key => $value)
+                                    @if(in_array($key, $setWorkingDays))
+                                    <label><input type="checkbox" checked name="weekday[]" value="{{$key}}"><span>{{$value}}</span></label>
+                                    @else
+                                    <label><input type="checkbox"  name="weekday[]" value="{{$key}}"><span>{{$value}}</span></label>
+                                    @endif
+                                 @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <select name="start_time" class="form-control">
+                                <option value="">Start time</option>
+
+                                <option value="00:00">00:00</option>
+                                <option value="00:30">00:30</option>
+                                <option value="1:00">1:00</option>
+                                <option value="1:30">1:30</option>
+                                <option value="2:00">2:00</option>
+                                <option value="2:30">2:30</option>
+                                <option value="3:00">3:00</option>
+                                <option value="3:30">3:30</option>
+                                <option value="4:00">4:00</option>
+                                <option value="4:30">4:30</option>
+                                <option value="5:00">5:00</option>
+                                <option value="5:30">5:30</option>
+                                <option value="6:00">6:00</option>
+                                <option value="6:30">6:30</option>
+                                <option value="7:00">7:00</option>
+                                <option value="7:30">7:30</option>
+                                <option value="8:00">8:00</option>
+                                <option value="8:30">8:30</option>
+                                <option value="9:00">9:00</option>
+                                <option value="9:30">9:30</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:30">10:30</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:30">15:30</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:30">16:30</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:30">17:30</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                                <option value="21:00">21:00</option>
+                                <option value="21:30">21:30</option>
+                                <option value="22:00">22:00</option>
+                                <option value="22:30">22:30</option>
+                                <option value="23:00">23:00</option>
+                                <option value="23:30">23:30</option>
+                                <option value="24:00">24:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <select name="end_time" class="form-control">
+                                <option value="">End time</option>
+
+                                <option value="00:00">00:00</option>
+                                <option value="00:30">00:30</option>
+                                <option value="1:00">1:00</option>
+                                <option value="1:30">1:30</option>
+                                <option value="2:00">2:00</option>
+                                <option value="2:30">2:30</option>
+                                <option value="3:00">3:00</option>
+                                <option value="3:30">3:30</option>
+                                <option value="4:00">4:00</option>
+                                <option value="4:30">4:30</option>
+                                <option value="5:00">5:00</option>
+                                <option value="5:30">5:30</option>
+                                <option value="6:00">6:00</option>
+                                <option value="6:30">6:30</option>
+                                <option value="7:00">7:00</option>
+                                <option value="7:30">7:30</option>
+                                <option value="8:00">8:00</option>
+                                <option value="8:30">8:30</option>
+                                <option value="9:00" >9:00</option>
+                                <option value="9:30">9:30</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:30">10:30</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:30">15:30</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:30">16:30</option>
+                                <option value="17:00" >17:00</option>
+                                <option value="17:30">17:30</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                                <option value="21:00">21:00</option>
+                                <option value="21:30">21:30</option>
+                                <option value="22:00">22:00</option>
+                                <option value="22:30">22:30</option>
+                                <option value="23:00">23:00</option>
+                                <option value="23:30">23:30</option>
+                                <option value="24:00">24:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <input value="@if(isset($user->profile_image)){{$user->profile_image}}@endif"  name="profile_image" type="file" class="dropify-fr" multiple >
+                        </div>
+                    </div>
+
                 </div>
             {{-- <a href="{{ route('client.update') }}" class="btn btn-round btn-primary">Update</a> &nbsp;&nbsp; --}}
             <button type="submit" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
