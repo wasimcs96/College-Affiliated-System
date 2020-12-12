@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\Consultant;
 
 use App\Models\User;
 use App\Models\Country;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
-class ClientProfileController extends Controller
+class ConsultantProfileController extends Controller
 {
 
 
@@ -19,7 +19,7 @@ class ClientProfileController extends Controller
     {
 $id = Auth()->user()->id;
         $user=User::where('id',$id)->first();
-        return view('client.profile')->with('user',$user)->with('countries',Country::all());
+        return view('consultant.profile')->with('user',$user)->with('countries',Country::all());
     }
 
     public function profileStore(Request $request)
@@ -72,6 +72,7 @@ $id = Auth()->user()->id;
 
              $user->save();
 
-             return redirect()->route('client.profile')->with('success','Profile Updated successfully');
+
+             return redirect()->route('consultant.profile')->with('success','Profile Updated successfully');
     }
 }
