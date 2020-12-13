@@ -110,5 +110,13 @@ Route::get('profile',[
      'as' => 'university.profile.update'
  ]);
 
+// university media
+
+Route::post('media_store',[
+    'uses'=>'UniversityMediaController@mediastore',
+    'as'=> 'university.media.store'
+
+]);
+
 
 });

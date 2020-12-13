@@ -17,7 +17,7 @@
              @endif
                     </div>
                     <div class="details">
-                    <h5 class="mb-0">{{Auth()->user()->first_name}}</h5>
+                    <h5 class="mb-0">{{Auth()->user()->university->university_name}}</h5>
                         <span class="text-light">Role</span>
                         {{-- <p class="mb-0"><span>Posts: <strong>321</strong></span> <span>Followers: <strong>4,230</strong></span> <span>Following: <strong>560</strong></span></p> --}}
                     </div>
@@ -237,7 +237,7 @@
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-fr" >
+                            <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-fr" multiple>
                         </div>
                     </div>
                 </div>
@@ -266,14 +266,16 @@
                 </ul>
             </div>
             <div class="body">
-                <form action="{{ route('university.profile.update')}}" method="POST" enctype="multipart/form-data" >
+                <form action="{{ route('university.media.store')}}" method="POST" enctype="multipart/form-data" >
 @csrf
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label>University Image</label>
 
-                            <input required type="file" class="form-control" name="images[]" placeholder="address" multiple>
+                                    <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-frrr" multiple>
+                                </div>
+
                         </div>
                     </div>
 
@@ -287,7 +289,7 @@
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
                                 </div>
 
-                                <input name="Video" type="text" class="form-control" placeholder="Video link">
+                                <input name="link" type="text" class="form-control" placeholder="Video link">
                             </div>
                         </div>
                     </div>
