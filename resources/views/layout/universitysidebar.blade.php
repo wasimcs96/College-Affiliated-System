@@ -13,7 +13,7 @@
              @endif            </div>
             <div class="dropdown">
                 <span>Welcome,</span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{auth()->user()->first_name}} </strong></a>
+                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{auth()->user()->university->university_name}} </strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
                     <li><a href="{{route('university.profile')}}"><i class="icon-user"></i>My Profile</a></li>
                     <li><a href="{{route('email.inbox')}}"><i class="icon-envelope-open"></i>Messages</a></li>
