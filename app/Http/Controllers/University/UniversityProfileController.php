@@ -45,13 +45,13 @@ class UniversityProfileController extends Controller
             $id = Auth()->user()->id;
              $user = User::find($id);
 
-            //  if($request->hasFile('profile_image'))
-            //  {
+             if($request->hasFile('profile_image'))
+             {
                  $profile_image = $request->profile_image;
                  $profile_image_new_name = time().$profile_image->getClientOriginalName();
                  $profile_image->move('uploads/client',$profile_image_new_name);
                  $user->profile_image = 'uploads/client/'.$profile_image_new_name;
-            //  }
+             }
 
 
               $user->fill($request->all());

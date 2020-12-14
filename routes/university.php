@@ -115,6 +115,10 @@ Route::get('profile',[
 Route::post('media_store',[
     'uses'=>'UniversityMediaController@mediastore',
     'as'=> 'university.media.store'
+]);
+Route::get('media/{id}',[
+    'uses' =>'UniversityMediaController@destroy',
+    'as'=>'media.destroy'
 
 ]);
 

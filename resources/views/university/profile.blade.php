@@ -271,9 +271,36 @@
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
+                            <div class="card-group">
+                                <?php $rts=auth()->user()->university->universityMedia;?>
+                                @foreach($rts as $rt)
+                                @if ($rt->file_type==0)
+                                <div class="card">
+                                    <img style="height: 84px;" src="{{asset($rt->media)}}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{ $user->id }}" ><h5 style="color: red;"><i class="fa fa-times" aria-hidden="true"></i></h5></a>
+
+
+                                    </div>
+                                  </div>
+
+                                @else
+                                {{-- @if ($rt->file_type==2)
+
+                            <div class="container">
+                                  <div class="ratio ratio-16x9">
+                                    <iframe src="{{$rt->link}}"></iframe>
+                                  </div>
+                                </div>
+@endif --}}
+                                @endif
+
+
+                                  @endforeach
+                              </div>
                             <label>University Image</label>
 
-                                    <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-frrr" multiple>
+                                    <input name="images[]" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-frrr" multiple>
                                 </div>
 
                         </div>
@@ -344,5 +371,27 @@
             error: 'Sorry,the file is too large'
         }
     });
+</script>
+
+<script>
+$(".deleteRecord").click(function(){
+    var id = $(this).data("id");
+    var token = $("meta[name='csrf-token']").attr("content");
+
+    $.ajax(
+    {
+        url: "{{route('university.profile')}}",
+        type: 'delete',
+        data: {
+            "id": id,
+            "_token": token,
+        },
+        success: function (){
+            console.log("it Works");
+        }
+    });
+
+});
+
 </script>
 @stop
