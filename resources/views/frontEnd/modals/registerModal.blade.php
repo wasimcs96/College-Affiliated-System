@@ -138,5 +138,9 @@ $(function () {
     });
 })
 </script>
-
+<script>
+    $(document).on('click','#loginalready', function (e) {
+       $('#registerModal').modal('hide');
+    });
+  </script>
 @endsection
