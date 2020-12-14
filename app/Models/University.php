@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\UniversityMedia;
 use App\Models\UniversityCourse;
+use App\Models\UniversityConsultantClient;
+
 
 class University extends Model
 {
@@ -33,4 +35,9 @@ class University extends Model
     {
         return $this->hasMany(UniversityConsultant::class);
     }
+    public function universityConsultantClient()
+    {
+        return $this->hasMany(UniversityConsultantClient::class,'university_id');
+    }
+    
 }
