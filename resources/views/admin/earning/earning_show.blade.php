@@ -11,14 +11,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li> --}}
+
             </ul>
         </div>
         <div class="body">
@@ -93,7 +86,7 @@
 
                 </div>
                 {{-- <a  href="{{route('admin.booking.client_app')}}" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
-                <a href="{{route('admin.earning.earning')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                <a href="{{route('admin.earning')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>

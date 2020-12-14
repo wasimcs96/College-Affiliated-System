@@ -81,14 +81,14 @@
                                         </div>
                                     </div>
                                 </div><!-- end col-lg-12 -->
-                                <div class="col-lg-12">
+                                {{-- <div class="col-lg-12">
                                     <div class="input-box">
                                         <div class="recapcha-box pb-4 d-flex align-items-center">
                                             <label class="label-text flex-shrink-0 mr-3 mb-0">What is? 3 + 5 =</label>
                                             <input class="form-control" type="text" name="text" placeholder="Type answer">
                                         </div>
                                     </div>
-                                </div><!-- end col-lg-12 -->
+                                </div><!-- end col-lg-12 --> --}}
                                 <div class="col-lg-12">
                                     <div class="btn-box">
                                         <button type="button" class="theme-btn">Send Message</button>

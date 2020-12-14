@@ -92,11 +92,7 @@
       @endif
       <script>
       $(document).on('click','#signupalready', function (e) {
-
-        //   $('#loginPopupForm').removeClass('show').addClass('fade').attr("aria-hidden","true").css("display","none").removeAttr("aria-modal");
-        // $('.modal-backdrop').remove();
-// console.log('qwswd');
-$('#loginPopupForm').modal('hide');
+         $('#loginPopupForm').modal('hide');
       });
     </script>
 @endsection

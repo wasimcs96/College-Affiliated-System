@@ -72,7 +72,7 @@ Route::get('services',function(){
     return view('consultant.services');
 })->name('consultant.services');
 
-/* gopremium Section */
+/* Gopremium Section */
 Route::get('gopremium',function(){
     return view('consultant.gopremium');
 })->name('consultant.gopremium');
