@@ -18,13 +18,11 @@
                     </div>
                     <div class="details">
                     <h5 class="mb-0">{{Auth()->user()->first_name}}</h5>
-                        <span class="text-light">Role</span>
-                        {{-- <p class="mb-0"><span>Posts: <strong>321</strong></span> <span>Followers: <strong>4,230</strong></span> <span>Following: <strong>560</strong></span></p> --}}
+                        <span class="text-light">{{Auth()->user()->last_name}}</span>
                     </div>
                 </div>
                 <div>
-                    {{-- <button class="btn btn-primary btn-sm">Follow</button>
-                    <button class="btn btn-success btn-sm">Message</button> --}}
+
                 </div>
             </div>
         </div>
@@ -36,22 +34,11 @@
                 <h2>Info</h2>
                 <ul class="header-dropdown dropdown">
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                    {{-- <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another Action</a></li>
-                            <li><a href="javascript:void(0);">Something else</a></li>
-                        </ul>
-                    </li> --}}
+
                 </ul>
             </div>
             <div class="body">
-                {{-- <small class="text-muted">Address: </small>
-                <p>795 Folsom Ave, Suite 600 San Francisco, 94107</p>
-                <div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1923731.7533500232!2d-120.39098936853455!3d37.63767091877441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1522391841133" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div> --}}
+
                 <hr>
                 <small class="text-muted">Email address: </small>
             <p>{{Auth()->user()->email}}</p>
@@ -60,13 +47,8 @@
                 <p>{{Auth()->user()->mobile}}</p>
                 <hr>
                 <small class="text-muted">Birth Date: </small>
-                <p class="m-b-0">October 17th, 93</p>
-                {{-- <hr>
-                <small class="text-muted">Social: </small>
-                <p><i class="fa fa-twitter m-r-5"></i> twitter.com/example</p>
-                <p><i class="fa fa-facebook  m-r-5"></i> facebook.com/example</p>
-                <p><i class="fa fa-github m-r-5"></i> github.com/example</p>
-                <p><i class="fa fa-instagram m-r-5"></i> instagram.com/example</p> --}}
+                <p class="m-b-0">{{Auth()->user()->birth_year}}</p>
+
             </div>
         </div>
     </div>
@@ -77,14 +59,6 @@
                 <h2>My Information</h2>
                 <ul class="header-dropdown dropdown">
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                    {{-- <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another Action</a></li>
-                            <li><a href="javascript:void(0);">Something else</a></li>
-                        </ul>
-                    </li> --}}
                 </ul>
             </div>
             <div class="body">
@@ -102,15 +76,7 @@
                             <input type="text" value="@if(isset($user->last_name)){{$user->last_name}}@endif" name="last_name" class="form-control" placeholder="Last Name">
                         </div>
                     </div>
-                    {{-- <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option value="">-- Select Gender --</option>
-                                <option value="AF">Male</option>
-                                <option value="AX">Female</option>
-                            </select>
-                        </div>
-                    </div> --}}
+
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <div class="input-group">

@@ -80,7 +80,7 @@
 
                                 <br>
 
-                                <a href="{{route('subadmin.report.application.university')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                                <a href="{{route('admin.report.application.university')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
                             </form>
                         </div>
                     </div>

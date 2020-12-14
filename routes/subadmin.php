@@ -29,30 +29,20 @@
 //     return view('subadmin.application.university_show');
 // })->name('subadmin.application.university_show');
 
-Route::get('application/application/show',function(){
+Route::get('application/show',function(){
     return view('subadmin.application.application_show');
 })->name('subadmin.application.application_show');
 
-Route::get('application/application',function(){
+Route::get('application',function(){
     return view('subadmin.application.application');
 })->name('subadmin.application');
 
-Route::get('application/application/create',function(){
+Route::get('application/create',function(){
     return view('subadmin.application.application_create');
 })->name('subadmin.application.application_create');
 
 
-// Route::get('application/consultant/show',function(){
-//     return view('subadmin.application.consultant_app');
-// })->name('subadmin.application.consultant_app');
 
-// Route::get('application/consultant/show',function(){
-//     return view('subadmin.application.client_app');
-// })->name('subadmin.application.client_app');
-
-// Route::get('application/consultant/app',function(){
-//     return view('subadmin.application.university_app');
-// })->name('subadmin.application.university_app');
 // ###############booking#####################
 
 Route::get('booking',function(){
@@ -78,11 +68,11 @@ Route::get('general/about',function(){
     return view('subadmin.general.about');
 })->name('subadmin.general.about');
 
-Route::get('general/terms And Condition',function(){
+Route::get('general/terms&condition',function(){
     return view('subadmin.general.terms');
 })->name('subadmin.general.terms');
 
-Route::get('subadmin.general.privacy_policy',function(){
+Route::get('general/privacy_policy',function(){
     return view('subadmin.general.privacy_policy');
 })->name('subadmin.general.privacy_policy');
 
@@ -151,9 +141,9 @@ Route::get('report/booking/consultant_application',function(){
 })->name('subadmin.report.booking.consultant_application');
 
 // #################Earning###############
- Route::get('earnings',function(){
+ Route::get('earning',function(){
      return view('subadmin.earning.earning');
- })->name('subadmin.earnings');
+ })->name('subadmin.earning');
 
  Route::get('earning_show',function(){
     return view('subadmin.earning.earning_show');

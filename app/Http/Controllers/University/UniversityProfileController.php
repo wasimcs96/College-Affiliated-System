@@ -35,16 +35,14 @@ class UniversityProfileController extends Controller
             'university_name'=>'required',
 
             'email' => 'required|email',
-            'mobile'=>'required|unique:users',
+            // 'mobile'=>'required|unique:users',
             'landline_1'=>'required',
             'landline_2' => 'required',
-        //    'latitude' => 'required',
-        //     'longitude'=>'required',
-
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);
-
+             $ip = '31.220.50.163';
+             $data = \Location::get($ip);
              if($request->hasFile('profile_image'))
              {
                  $profile_image = $request->profile_image;
@@ -55,6 +53,8 @@ class UniversityProfileController extends Controller
 
 
               $user->fill($request->all());
+              $user->latitude = $data->latitude;
+              $user->longitude = $data->longitude;
              $user->save();
               $university=auth()->user()->university;
               $university->fill([

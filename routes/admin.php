@@ -34,7 +34,7 @@ Route::get('application',function(){
 //     return view('admin.application.university_show');
 // })->name('admin.application.university_show');
 
-Route::get('application/application/show',function(){
+Route::get('application/show',function(){
    return view('admin.application.application_show');
 })->name('admin.application.application_show');
 
@@ -42,7 +42,7 @@ Route::get('application/application',function(){
    return view('admin.application.application_application');
 })->name('admin.application.application_application');
 
-Route::get('application/application/create',function(){
+Route::get('application/create',function(){
    return view('admin.application.application_create');
 })->name('admin.application.application_create');
 
@@ -68,7 +68,7 @@ Route::get('booking/show',function(){
    return view('admin.booking.booking_show');
 })->name('admin.booking.booking_show');
 
-Route::get('Booking/consultant',function(){
+Route::get('booking/consultant',function(){
    return view('admin.booking.consultant');
 })->name('admin.booking.consultant');
 
@@ -118,7 +118,7 @@ Route::get('report/application/consultant_show',function(){
 })->name('admin.report.application.consultant_show');
 
 Route::get('report/application/client_application',function(){
-   return view('report/application/client_application');
+   return view('admin.report.application.client_application');
 })->name('admin.report.application.client_application');
 
 Route::get('report/application/university_application',function(){

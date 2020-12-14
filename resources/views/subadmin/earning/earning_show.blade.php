@@ -93,7 +93,7 @@
 
                 </div>
                 {{-- <a  href="{{route('subadmin.booking.client_app')}}" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
-                <a href="{{route('subadmin.earning.earning')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                <a href="{{route('subadmin.earning')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>

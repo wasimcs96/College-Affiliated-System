@@ -1,15 +1,23 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Admin')
-@section('title', 'Earning')
+@section('parentPageTitle', 'Consultant')
+@section('title', 'Consultants')
 
 @section('content')
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Earning<small>All Earning</small></h2>
+            <h2>University<small>All Universities</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+                {{-- <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0);">Action</a></li>
+                        <li><a href="javascript:void(0);">Another Action</a></li>
+                        <li><a href="javascript:void(0);">Something else</a></li>
+                    </ul>
+                </li> --}}
             </ul>
         </div>
         <div class="body">
@@ -19,12 +27,11 @@
                         <tr>
                             <th> <b>
                                 Name</b></th>
-                            <th><b> User type </b></th>
-                            <th><b> Amount</b></th>
-                            <th><b> Status</b></th>
-                            <th><b>Transaction ID</b></th>
-                            <th><b>
-                                Payment for</b></th>
+                            <th><b> Mobile </b></th>
+                            <th><b> E-mail</b></th>
+
+                            <th><b>Date</b></th>
+
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -34,16 +41,13 @@
                     <tbody>
                         <tr>
                             <td>Sufiyan</td>
-                            <td>consultant</td>
-                            <td>$10.020</td>
-                            <td>pending</td>
-                            <td>3233251212</td>
-                            <td>premium</td>
-                            <td><a href="{{route('admin.earning.earning_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td>1234567890</td>
+                            <td>email@email.com</td>
+
+                            <td>2020/30/11</td>
+
+                            <td><a href="{{route('admin.report.application.consultant_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
-
-
-
 
 
                     </tbody>

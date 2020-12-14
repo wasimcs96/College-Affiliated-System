@@ -7,7 +7,7 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Consultant Requests<small>Consultant Details</small></h2>
+            <h2>University<small>University Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -70,7 +70,7 @@
 
                 </div>
                 {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
-                <a href="{{route('subadmin.report.application.university_application')}}"  class="btn btn-warning btn-flat">See Application</a>
+                <a href="{{route('admin.report.application.university_application')}}"  class="btn btn-warning btn-flat">See Application</a>
             </div>
         </div>
     </div>

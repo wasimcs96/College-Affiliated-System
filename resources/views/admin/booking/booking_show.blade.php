@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
+@section('parentPageTitle', 'Admin')
 @section('title', 'See Bookings Detail')
 
 @section('content')
@@ -93,7 +93,7 @@
 
                 </div>
                 <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                <a href="{{route('admin.booking')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
             </div>
         </div>
     </div>
@@ -130,8 +130,8 @@
    $("#accept").click(function() {
     $("#accept").remove()
     $("#bac").remove()
-    $("#res").html("<a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
-    $("#dec").html("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat'>Close</a>")
+    $("#res").html("<a  href='#' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#dec").html("<a href='#' class='btn btn-danger btn-flat'>Close</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
 

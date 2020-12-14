@@ -62,7 +62,7 @@ Route::get('consultant_application',function(){
 })->name('university.consultant_application');
 
 /* gopremium Section */
-Route::get('gopremium',function(){
+Route::get('service/gopremium',function(){
     return view('university.go_premium');
 })->name('university.go_premium');
 

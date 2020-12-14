@@ -1,6 +1,6 @@
 <div id="left-sidebar" class="sidebar">
     <div class="navbar-brand">
-        <a href="index.html"><img src="{{ asset('assets/images/icon.svg') }}" alt="Oculux Logo" class="img-fluid logo"><span>Oculux</span></a>
+        <a href="{{route('front')}}"><img src="{{ asset('assets/images/icon.svg') }}" alt="Education Portal Logo" class="img-fluid logo"><span>Education Portal</span></a>
         <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
     </div>
     <div class="sidebar-scroll">
@@ -13,11 +13,9 @@
              @endif            </div>
             <div class="dropdown">
                 <span>Welcome,</span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{auth()->user()->university->university_name}} </strong></a>
+                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{auth()->user()->first_name}} </strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
                     <li><a href="{{route('university.profile')}}"><i class="icon-user"></i>My Profile</a></li>
-                    <li><a href="{{route('email.inbox')}}"><i class="icon-envelope-open"></i>Messages</a></li>
-                    <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
                     <li class="divider"></li>
                     <li><a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
@@ -34,7 +32,7 @@
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu">
 
-                <li class="{{ Request::segment(2) == 'university.dashboard' ? 'active' : null }}"><a href="{{route('university.dashboard')}}"> <i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) == 'dashboard' ? 'active' : null }}"><a href="{{route('university.dashboard')}}"> <i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
                 <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('university.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
 
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
@@ -44,10 +42,10 @@
                 <li class="{{ Request::segment(2) == 'courses' ? 'active' : null }}"><a href="{{route('university.courses')}}"><i class="icon-notebook"></i><span>Courses</span></a></li>
                 <li class="{{ Request::segment(2) == 'consultants' ? 'active' : null }}"><a href="{{route('university.consultants')}}"><i class="icon-user"></i><span>Consultants Request</span></a></li>
 
-                <li class="{{ Request::segment(1) == 'services' ? 'active open' : null }}">
+                <li class="{{ Request::segment(2) == 'service' ? 'active open' : null }}">
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>
                     <ul>
-                    <li class="{{ Request::segment(2) == 'taskboard' ? 'active' : null }}"><a href="{{ route('university.go_premium')}}">Go Premium</a></li>
+                    <li class="{{ Request::segment(3) == 'gopremium' ? 'active' : null }}"><a href="{{ route('university.go_premium')}}">Go Premium</a></li>
 
                      </ul>
                 </li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SubAdmin;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Sessions;
+use App\Models\Country;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -17,7 +18,7 @@ class SubAdminProfileController extends Controller
     public function profile()
     {
 
-        return view('subadmin.profile');
+        return view('subadmin.profile')->with('countries',Country::all());
     }
 
     public function profileStore(Request $request)
@@ -27,48 +28,30 @@ class SubAdminProfileController extends Controller
             'first_name'=>'required',
             'last_name'=>'required',
             'email' => 'required|email',
-            'mobile'=>'required|unique:users',
+            // 'mobile'=>'required|unique:users',
             'landline_1'=>'required',
             'landline_2' => 'required',
-           'latitude' => 'required',
-            'longitude'=>'required',
-
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);
-
-            //  if($request->hasFile('profile_image'))
-            //  {
+             $ip = '31.220.50.163';
+             $data = \Location::get($ip);
+             if($request->hasFile('profile_image'))
+              {
                  $profile_image = $request->profile_image;
                  $profile_image_new_name = time().$profile_image->getClientOriginalName();
                  $profile_image->move('uploads/client',$profile_image_new_name);
                  $user->profile_image = 'uploads/client/'.$profile_image_new_name;
-            //  }
-
-            //     $profile_image = $request->file('profile_image');
-            //    $input['profile_image_new_name'] = time().'.'.getClientOriginalExtension();
-            //    $destinationPath = public_path('uploads/client');
-            //    $profile_image->move($destinationPath,$input['profile_image_new_name']);
-
-
-             $user->first_name = $request->first_name;
-             $user->last_name = $request->last_name;
-             $user->email = $request->email;
-             $user->mobile = $request->mobile;
-             $user->landline_1 = $request->landline_1;
-             $user->landline_2 = $request->landline_2;
-             $user->latitude = $request->latitude;
-             $user->longitude = $request->longitude;
-             $user->city = $request->city;
-             $user->country = $request->country;
-             $user->birth_year = $request->birth_year;
-            //  $user->profile_image = $request->profile_image;
-             $user->address_1 = $request->address;
-             $user->address_2 = $request->address;
-             $user->address = $request->address;
-
-             $user->save();
-
+              }
+              $user->fill($request->all());
+              $user->latitude = $data->latitude;
+              $user->longitude = $data->longitude;
+              $user->save();
+            //   $admin = Admin::create([
+            //     'name'=>$request->first_name,
+            //     'email'=>$request->email,
+            //     'password'=> Hash::make($request->password),
+            //   ]);
              return redirect()->route('subadmin.profile')->with('success','Profile Updated successfully');
     }
 }
