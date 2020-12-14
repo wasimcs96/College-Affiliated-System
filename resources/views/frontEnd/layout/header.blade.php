@@ -19,7 +19,8 @@
                                 <div class="select-contain select--contain w-auto">
                                     <select class="select-contain-select">
                                         <?php $ip = '31.220.50.163';
-                                        $data = \Location::get($ip); ?>
+                                        $data = \Location::get($ip);
+                                        ?>
                                         @php  $countries=DB::table('countries')->get();
                                         @endphp
                                         @foreach ($countries as $country)

@@ -94,12 +94,14 @@
 
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
+                            <label for="first_name">First Name</label>
                             <input type="text" value="@if(isset($user->first_name)){{$user->first_name}}@endif" name="first_name" class="form-control" placeholder="First Name">
                             <input type="text"  name="userid" value="@if(isset(auth()->user()->id)){{auth()->user()->id}}@endif" hidden>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
+                            <label for="last_name">Last Name</label>
                             <input type="text" value="@if(isset($user->last_name)){{$user->last_name}}@endif" name="last_name" class="form-control" placeholder="Last Name">
                         </div>
                     </div>
@@ -114,6 +116,7 @@
                     </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="birth_year">DOB</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-calendar"></i></span>
@@ -124,6 +127,7 @@
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="email">Email</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
@@ -134,16 +138,19 @@
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="mobile">Mobile</label>
                             <input type="text" value="@if(isset($user->mobile)){{$user->mobile}}@endif" name="mobile" class="form-control" placeholder="Mobile Number">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="landline_1">Landline 1</label>
                             <input type="text" value="@if(isset($user->landline_1)){{$user->landline_1}}@endif" name="landline_1" class="form-control" placeholder="Landline1">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="landline_2">Landline 2</label>
                             <input type="text" value="@if(isset($user->landline_2)){{$user->landline_2}}@endif"  name="landline_2" class="form-control" placeholder="Landline2">
                         </div>
                     </div>
@@ -159,6 +166,7 @@
                     </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="country">Country</label>
                             <select name="country" class="form-control">
                                 <option value="">-- Select Country --</option>
 
@@ -176,6 +184,7 @@
                     </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="city">City</label>
                             <input type="text" value="@if(isset($user->city)){{$user->city}}@endif" name="city" class="form-control" placeholder="City">
                         </div>
                     </div>
@@ -227,123 +236,59 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
-                            <select name="start_time" class="form-control">
-                                <option value="">Start time</option>
-
-                                <option value="00:00">00:00</option>
-                                <option value="00:30">00:30</option>
-                                <option value="1:00">1:00</option>
-                                <option value="1:30">1:30</option>
-                                <option value="2:00">2:00</option>
-                                <option value="2:30">2:30</option>
-                                <option value="3:00">3:00</option>
-                                <option value="3:30">3:30</option>
-                                <option value="4:00">4:00</option>
-                                <option value="4:30">4:30</option>
-                                <option value="5:00">5:00</option>
-                                <option value="5:30">5:30</option>
-                                <option value="6:00">6:00</option>
-                                <option value="6:30">6:30</option>
-                                <option value="7:00">7:00</option>
-                                <option value="7:30">7:30</option>
-                                <option value="8:00">8:00</option>
-                                <option value="8:30">8:30</option>
-                                <option value="9:00">9:00</option>
-                                <option value="9:30">9:30</option>
-                                <option value="10:00">10:00</option>
-                                <option value="10:30">10:30</option>
-                                <option value="11:00">11:00</option>
-                                <option value="11:30">11:30</option>
-                                <option value="12:00">12:00</option>
-                                <option value="12:30">12:30</option>
-                                <option value="13:00">13:00</option>
-                                <option value="13:30">13:30</option>
-                                <option value="14:00">14:00</option>
-                                <option value="14:30">14:30</option>
-                                <option value="15:00">15:00</option>
-                                <option value="15:30">15:30</option>
-                                <option value="16:00">16:00</option>
-                                <option value="16:30">16:30</option>
-                                <option value="17:00">17:00</option>
-                                <option value="17:30">17:30</option>
-                                <option value="18:00">18:00</option>
-                                <option value="18:30">18:30</option>
-                                <option value="19:00">19:00</option>
-                                <option value="19:30">19:30</option>
-                                <option value="20:00">20:00</option>
-                                <option value="20:30">20:30</option>
-                                <option value="21:00">21:00</option>
-                                <option value="21:30">21:30</option>
-                                <option value="22:00">22:00</option>
-                                <option value="22:30">22:30</option>
-                                <option value="23:00">23:00</option>
-                                <option value="23:30">23:30</option>
-                                <option value="24:00">24:00</option>
-                            </select>
+                            <label for="start_time">Selected Start Time</label>
+                            <input type="text" value="{{Auth()->user()->consultant->start_time}}" name="landline_1" class="form-control" disabled>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
-                            <select name="end_time" class="form-control">
-                                <option value="">End time</option>
-
-                                <option value="00:00">00:00</option>
-                                <option value="00:30">00:30</option>
-                                <option value="1:00">1:00</option>
-                                <option value="1:30">1:30</option>
-                                <option value="2:00">2:00</option>
-                                <option value="2:30">2:30</option>
-                                <option value="3:00">3:00</option>
-                                <option value="3:30">3:30</option>
-                                <option value="4:00">4:00</option>
-                                <option value="4:30">4:30</option>
-                                <option value="5:00">5:00</option>
-                                <option value="5:30">5:30</option>
-                                <option value="6:00">6:00</option>
-                                <option value="6:30">6:30</option>
-                                <option value="7:00">7:00</option>
-                                <option value="7:30">7:30</option>
-                                <option value="8:00">8:00</option>
-                                <option value="8:30">8:30</option>
-                                <option value="9:00" >9:00</option>
-                                <option value="9:30">9:30</option>
-                                <option value="10:00">10:00</option>
-                                <option value="10:30">10:30</option>
-                                <option value="11:00">11:00</option>
-                                <option value="11:30">11:30</option>
-                                <option value="12:00">12:00</option>
-                                <option value="12:30">12:30</option>
-                                <option value="13:00">13:00</option>
-                                <option value="13:30">13:30</option>
-                                <option value="14:00">14:00</option>
-                                <option value="14:30">14:30</option>
-                                <option value="15:00">15:00</option>
-                                <option value="15:30">15:30</option>
-                                <option value="16:00">16:00</option>
-                                <option value="16:30">16:30</option>
-                                <option value="17:00" >17:00</option>
-                                <option value="17:30">17:30</option>
-                                <option value="18:00">18:00</option>
-                                <option value="18:30">18:30</option>
-                                <option value="19:00">19:00</option>
-                                <option value="19:30">19:30</option>
-                                <option value="20:00">20:00</option>
-                                <option value="20:30">20:30</option>
-                                <option value="21:00">21:00</option>
-                                <option value="21:30">21:30</option>
-                                <option value="22:00">22:00</option>
-                                <option value="22:30">22:30</option>
-                                <option value="23:00">23:00</option>
-                                <option value="23:30">23:30</option>
-                                <option value="24:00">24:00</option>
-                            </select>
+                            <label for="start_time">Selected End Time</label>
+                            <input type="text" value="{{Auth()->user()->consultant->end_time}}" name="landline_1" class="form-control" disabled>
                         </div>
                     </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                        <label for="start_time">Select Start Time</label>
+                        <?php get_times( $default = '00:00', $interval = '+30 minutes' ); ?>
+                        <select class="form-control" id="starttime" name="start_time" onchange="setEndTime(this.value)">
+                        <option value="">Select Start Time</option>
+                        <?php echo get_times(); ?></select>
+                    </div><br><br>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Select End Time</label>
+                        <?php get_times( $default = '00:00', $interval = '+30 minutes' )?>
+                        <select class="form-control" id="endtime" name="end_time" disabled>
+                        <option value="">Select End Time</option>
+                        <?php echo get_times(); ?></select>
+                    </div>
+                </div>
+
+                      <!-- Function to call time -->
+                      <?php
+
+                      function get_times( $default = '00:00', $interval = '+30 minutes' ) {
+                          $output = '';
+                          $output1 = '';
+                          $current = strtotime( '00:00' );
+                          $end = strtotime( '23:59' );
+
+                          while( $current <= $end ) {
+                              $time = date( 'H:i:s', $current );
+                              $sel = ( $time == $default ) ? ' selected' : '';
+                            //   $selend = ( $time == Auth()->user()->consultant->end_time ) ? ' selected' : '';
+                              $output .= "<option value=\"{$time}\"{$sel} >" . date( 'H:i ', $current ) . '</option>';
+                            //   $output1 .= "<option value=\"{$time}\"{$selend} >" . date( 'H:i ', $current ) . '</option>';
+
+                              $current = strtotime( $interval, $current );
+                          }
+                          return $output;
+                        //   return $output1;
+                      }
+                      ?>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <input value="@if(isset($user->profile_image)){{$user->profile_image}}@endif"  name="profile_image" type="file" class="dropify-fr" multiple >
@@ -357,45 +302,7 @@
             </form>
             </div>
         </div>
-        {{-- <div class="card">
-            <div class="header">
-                <h2>Account Data</h2>
-            </div>
-            <div class="body">
-                <div class="row clearfix">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" value="admin" placeholder="Username">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <input type="email" class="form-control" value="admin@yourdomain.com" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Phone Number">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12">
-                        <hr>
-                        <h6>Change Password</h6>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Current Password">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="New Password">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Confirm New Password">
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
-                <button type="button" class="btn btn-round btn-default">Cancel</button>
-            </div>
-        </div> --}}
+
     </div>
 </div>
 
@@ -413,7 +320,21 @@
 <script src="{{ asset('assets/vendor/dropify/js/dropify.js') }}"></script>
 
 <script src="{{ asset('assets/js/pages/forms/dropify.js') }}"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+    <script type="text/javascript">
 
+    function setEndTime(start_time){
+        if(start_time){
+          $("#endtime").prop('disabled', false);
+
+          $('#endtime option').filter(function() {
+              return $(this).val() <= start_time;
+          }).prop('disabled', true);
+        }else{
+          $("#endtime").prop('disabled', true);
+        }
+    }
+    </script>
 <script>
     $('.dropify-fr').dropify({
         messages: {

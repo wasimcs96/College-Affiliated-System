@@ -28,4 +28,9 @@ class Consultant extends Model
     {
         return $this->hasMany(UniversityConsultant::class);
     }
+    public function consultantSlots()
+    {
+        return $this->hasMany(ConsultantAvailableSlots::class);
+    }
+
 }
