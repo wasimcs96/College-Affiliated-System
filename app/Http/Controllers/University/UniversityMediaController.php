@@ -18,30 +18,55 @@ class UniversityMediaController extends Controller
 
     public function mediastore(Request $request)
     {
-    $images=array();
-    if($files=$request->file('media')){
-        foreach($files as $file){
-            $name=$file->getClientOriginalName();
-            $file->move('media',$name);
-            $images[]=$name;
-        }
-    }
-    /*Insert your data*/
-    $id = Auth()->user()->university->id;
-             $user = University::find($id);
+        // dd(collect($request->images));
+    $images=collect($request->images);
 
-    UniversityMedia::insert( [
+    $id = auth()->user()->university->id;
 
-        'university_id'=>$user->id,
-        'media'=>  implode("|",$images),
-        'link'=> $request->link,
+     foreach($images as $image){
+        $name= time().$image->getClientOriginalName();
+           $type=0;
+               $st= $image->move('uploads/media',$name);
+       $newname='uploads/media/'.$name;
+
+        UniversityMedia::create( [
+
+            'university_id'=>auth()->user()->university->id,
+            'media'=>  $newname,
+
+            'file_type' => $type
+            //you can put other insertion here
+        ]);
+     }
+if ($request->link != null) {
+    UniversityMedia::create( [
+
+        'university_id'=>auth()->user()->university->id,
+         'link'=>$request->link,
+        'file_type' => 2
         //you can put other insertion here
     ]);
+}
+
 
 
     return redirect()->route('university.profile')->with('Success','Media Uploaded successfully');
 }
 
 
+public function destroy($id){
+
+    // University::find($id)->delete($id);
+    $university = UniversityMedia::where('id',$id)->get()->first();
+    // dd($university->toArray());
+    $university->delete();
+    // return response()->json([
+    //     'success' => 'image deleted successfully!'
+    // ]);
+return redirect()->route('university.profile')->with ('Success','Image deleted Successfully');
+}
+
+
     }
+
 

@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class UniversityMedia extends Model
 {
     protected $fillable = [
-    'university_name',
+    'university_id',
     'website',
+    'media',
+    'link',
     'user_id',
-    'type'
+    'file_type'
     ];
     public function university()
     {
