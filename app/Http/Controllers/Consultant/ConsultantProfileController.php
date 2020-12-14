@@ -11,6 +11,7 @@ use Sessions;
 use DateTime;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,9 @@ $id = Auth()->user()->id;
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);
-
+             $ip = '31.220.50.163';
+             $data = \Location::get($ip);
+            //  dd($data->latitude);
              if($request->hasFile('profile_image'))
               {
                  $profile_image = $request->profile_image;
@@ -47,9 +50,9 @@ $id = Auth()->user()->id;
                  $user->profile_image = 'uploads/client/'.$profile_image_new_name;
               }
 
-
-            $user->fill($request->all());
-
+             $user->fill($request->all());
+             $user->latitude = $data->latitude;
+             $user->longitude = $data->longitude;
              $user->save();
              $consultant = Consultant::where('user_id',$id)->first();
 
@@ -72,7 +75,7 @@ $id = Auth()->user()->id;
 
 
             function SplitTime($StartTime, $EndTime, $Duration="30"){
-                $ReturnArray = array ();// Define output
+                $ReturnArray  =  array ();// Defined the output
                 $StartTime    = strtotime ($StartTime); //Get Timestamp
                 $EndTime      = strtotime ($EndTime); //Get Timestamp
 
@@ -86,22 +89,105 @@ $id = Auth()->user()->id;
                 }
                 return $ReturnArray;
             }
+            $consultant_id = auth()->user()->consultant->id;
+            $consultant_slot = ConsultantAvailableSlots::where('consultant_id',$consultant_id)->first();
             $startTime = $request->start_time;
             $endTime = $request->end_time;
             //Calling the function
             $data = SplitTime($startTime, $endTime, "30");
 
-            foreach($data as $ti){
 
-                $vr=strtotime($ti);
                 // $cr=;
+                if ($consultant_slot == null) {
+                    $week_days=explode(",", auth()->user()->consultant->working_week_days);
+                    foreach($week_days as $week_day){
+                    foreach($data as $st){
+
+                        $stw=strtotime($st);
+
+                        $startTime=date ("G:i", $stw);
+                        $et=strtotime($st);
+                        $endTimeNew=date ("G:i", $et+1800);
+                        $etc = strtotime($endTime);
+                        $endTimeCheck=date ("G:i", $etc+1800);
+
+                        if ($endTimeNew == $endTimeCheck){
+
+                            break;
+                         }
+
+
                 ConsultantAvailableSlots::create([
                 'consultant_id'=>auth()->user()->consultant->id,
-                'week_day'=>1,
-                'start_slot_time'=>$ti,
-                'end_slot_time'=>date ("G:i", $vr+1800),
+                'week_day'=>$week_day,
+                'start_slot_time'=>$st,
+                'end_slot_time'=>$endTimeNew,
                 'status'=>1
                 ]);
+
+            }
+
+        }
+    }
+
+                else{
+                    // $consultant_slot->delete();
+                    $consultant_delete =auth()->user()->consultant->consultantSlots;
+// dd($consultant_delete);
+foreach ($consultant_delete as $key => $value) {
+$value->delete();
+}
+
+
+                    //     $vr=strtotime($ti);
+                    //     $endTime=date ("G:i", $vr+1800);
+                    //     // dd($endTime);
+
+                    // $consultant_slot->consultant_id = auth()->user()->consultant->id;
+                    // $consultant_slot->week_day= 1;
+                    // $consultant_slot->start_slot_time = $ti;
+
+                    // $consultant_slot->end_slot_time = date ("G:i", $vr+1800);
+
+                    // $consultant_slot->status = 1;
+                    // $consultant_slot->save();
+                    $week_days=explode(",", auth()->user()->consultant->working_week_days);
+                    foreach($week_days as $week_day){
+                    foreach($data as $st){
+
+                        $stw=strtotime($st);
+
+                        $startTime=date ("G:i", $stw);
+                        $et=strtotime($st);
+                        $endTimeNew=date ("G:i", $et+1800);
+                        $etc = strtotime($endTime);
+                        $endTimeCheck=date ("G:i", $etc+1800);
+
+                        if ($endTimeNew == $endTimeCheck){
+
+                            break;
+                         }
+
+
+                         ConsultantAvailableSlots::create([
+                            'consultant_id'=>auth()->user()->consultant->id,
+                            'week_day'=>$week_day,
+                            'start_slot_time'=>$st,
+                            'end_slot_time'=>$endTimeNew,
+                            'status'=>1
+                            ]);
+                // ConsultantAvailableSlots::update([
+                // 'consultant_id'=>auth()->user()->consultant->id,
+                // 'week_day'=>$week_day,
+                // 'start_slot_time'=>$st,
+                // 'end_slot_time'=>$endTimeNew,
+                // 'status'=>1
+                // ]);
+
+            }
+
+        }
+
             }
 
              return redirect()->route('consultant.profile')->with('success','Profile Updated successfully');
