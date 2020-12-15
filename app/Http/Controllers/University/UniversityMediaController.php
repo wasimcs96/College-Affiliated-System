@@ -20,6 +20,7 @@ class UniversityMediaController extends Controller
     {
         $this->validate($request,[
             'images.*' => 'dimensions:min_width=100,min_height=100,max_width=1024,max_height=640',
+            'link' => 'required|url',
              ]);
         // dd(collect($request->images));
     $images=collect($request->images);

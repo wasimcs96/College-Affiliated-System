@@ -83,6 +83,7 @@
 @csrf
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12">
+                        <label for="university_name">University Name</label>
                         <div class="form-group">
                             <input type="text" name="university_name"  value="@if(isset(auth()->user()->university->university_name)){{auth()->user()->university->university_name}}@endif" class="form-control" placeholder="University Name">
                         </div>
@@ -94,6 +95,7 @@
                     </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="type">University Type</label>
                             <select class="form-control" name="type">
                                 <option value="">-- Select Type -- </option>
                                 <option value="0" <?php if($user->medium == 0) { echo "selected"; } ?>>Private
@@ -114,7 +116,9 @@
                     </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="email">University Email</label>
                             <div class="input-group">
+
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
                                 </div>
@@ -124,16 +128,20 @@
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                        <label for="mobile">University Mobile</label>
+
                             <input type="text" value="@if(isset(auth()->user()->mobile)){{auth()->user()->mobile}}@endif"name="mobile" class="form-control" placeholder="Mobile Number">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="landline_1">Landline 1</label>
                             <input type="text" name="landline_1" class="form-control" value="@if(isset(auth()->user()->landline_1)){{auth()->user()->landline_1}}@endif" placeholder="Landline1">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="landline_2">Landline 2</label>
                             <input type="text" name="landline_2" value="@if(isset(auth()->user()->landline_2)){{auth()->user()->landline_2}}@endif"class="form-control" placeholder="Landline2">
                         </div>
                     </div>
@@ -149,6 +157,7 @@
                     </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="country">Country</label>
                             <select name="country" class="form-control">
                                 <option value="">-- Select Country --</option>
 
@@ -165,11 +174,13 @@
                     </div> --}}
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="city">City</label>
                             <input type="text" name="city"  value="@if(isset(auth()->user()->city)){{auth()->user()->city}}@endif" class="form-control" placeholder="City">
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-12">
                         <div class="form-group">
+                            <label for="website">Website</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
@@ -180,53 +191,15 @@
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
+                            <label for="address">Address</label>
                             <textarea rows="4" name="address"  type="text" class="form-control" placeholder="Address">@if(isset(auth()->user()->address_1)){{auth()->user()->address_1}}@endif</textarea>
                         </div>
                     </div>
-                    {{-- <div class="col-12">
-                        <ul class="list-group mb-3 tp-setting">
-                            <li class="list-group-item">
-                                Anyone seeing my profile page
-                                <div class="float-right">
-                                    <label class="switch">
-                                        <input type="checkbox" checked>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                Anyone send me a message
-                                <div class="float-right">
-                                    <label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                Anyone posts a comment on my post
-                                <div class="float-right">
-                                    <label class="switch">
-                                        <input type="checkbox" checked>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                Anyone invite me to group
-                                <div class="float-right">
-                                    <label class="switch">
-                                        <input type="checkbox" checked>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div> --}}
 
 
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
+                            {{-- <label for="profile_image">Profile Image</label> --}}
                             <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-fr" multiple>
                         </div>
                     </div>

@@ -26,6 +26,7 @@
 @csrf
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12">
+                        @if(!empty(auth()->user()->university->universityMedia) && auth()->user()->university->universityMedia != null)
                         <div class="form-group">
                                   <div id="lightgallery" class="row clearfix lightGallery">
 
@@ -34,16 +35,22 @@
                                 @if ($rt->file_type==0)
                                 {{-- <div class="card">
                                     <img style="height: 84px;" src="{{asset($rt->media)}}" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{ $user->id }}" ><h5 style="color: red;"><i class="fa fa-times" aria-hidden="true"></i></h5></a>
 
-
-                                    </div>
                                   </div> --}}
                                   {{-- <div id="lightgallery" class="row clearfix lightGallery">
                                     <div class="col-lg-4 col-md-5 mb-4"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}" alt=""></a></div>
                                   </div> --}}
-                                    <div class="col-lg-4 col-md-5 m-b-30"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt=""></a></div>
+
+                                    <div class="col-lg-4 col-md-5 m-b-30"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;"></a>
+                                        <div class="card-body">
+                                            <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red; position:absolute;   top: 0;
+                                                right: 0;"><i class="fa fa-times" aria-hidden="true"></i></h5></a>
+
+
+                                        </div>
+                                    </div>
+
+
 
                                 @else
                                 {{-- @if ($rt->file_type==2)
@@ -58,12 +65,18 @@
 
 
                                   @endforeach
+                            {{-- <div class="container">
+
+                                  <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/WNeLUngb-Xg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div> --}}
                               </div>
                             <label>University Image</label>
 
                                     <input name="images[]" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-frrr" multiple>
                                 </div>
-
+@endif
                         </div>
                     </div>
 
@@ -95,6 +108,8 @@
             <link rel="stylesheet" href="{{ asset('assets/vendor/light-gallery/css/lightgallery.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
+
+
             @stop
 @section('page-script')
 
