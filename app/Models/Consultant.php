@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\ConsultantAvailableSlots;
 use App\Models\UniversityConsultant;
 use App\Models\UniversityConsultantClient;
 class Consultant extends Model
@@ -38,5 +39,10 @@ class Consultant extends Model
     public function consultantUniversityClient()
     {
         return $this->hasMany(UniversityConsultantClient::class,'consultant_id');
+    }
+
+    public function consultantSlots()
+    {
+        return $this->hasMany(ConsultantAvailableSlots::class,'consultant_id');
     }
 }

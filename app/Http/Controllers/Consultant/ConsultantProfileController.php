@@ -33,9 +33,10 @@ $id = Auth()->user()->id;
             'first_name'=>'required',
             'last_name'=>'required',
             'email' => 'required|email',
-            'mobile'=>'required',
+            'mobile'=>'numeric|required',
             'landline_1'=>'required',
             'landline_2' => 'required',
+            'website' => 'required|url',
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);
@@ -133,7 +134,7 @@ $id = Auth()->user()->id;
                 else{
                     // $consultant_slot->delete();
                     $consultant_delete =auth()->user()->consultant->consultantSlots;
-// dd($consultant_delete);
+//  dd(auth()->user()->consultant->consultantSlots->toArray());
 foreach ($consultant_delete as $key => $value) {
 $value->delete();
 }

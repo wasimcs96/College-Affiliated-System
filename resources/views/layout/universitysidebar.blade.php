@@ -51,7 +51,6 @@
 
                      </ul>
                 </li>
-                {{-- <li class="{{ Request::segment(2) === 'ad_events' ? 'active' : null }}"><a href="{{route('university.ad_events')}}"><i class="icon-picture"></i><span>Ad</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'privacy_policy' ? 'active' : null }}"><a href="{{route('university.privacy_policy')}}"><i class="fa fa-lock"></i><span>Privacy Policy</span></a></li>
             <li class="{{ Request::segment(2) == 'terms_condition' ? 'active' : null }}"><a href="{{route('university.terms_condition')}}"><i class="fa fa-lock"></i><span>Terms & Conditions</span></a></li>
                 <li class="{{ Request::segment(2) == 'contact_us' ? 'active' : null }}"><a href="{{route('university.contact_us')}}"><i class="fa fa-mobile-phone"></i><span>Contact Us</span></a></li>
