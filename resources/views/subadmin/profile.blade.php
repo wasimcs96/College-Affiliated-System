@@ -17,14 +17,12 @@
              @endif
                     </div>
                     <div class="details">
-                    <h5 class="mb-0">{{Auth()->user()->first_name}}</h5>
-                        <span class="text-light">{{Auth()->user()->last_name}}</span>
-                        {{-- <p class="mb-0"><span>Posts: <strong>321</strong></span> <span>Followers: <strong>4,230</strong></span> <span>Following: <strong>560</strong></span></p> --}}
+                    <h5 class="mb-0"> @if(isset(Auth()->user()->first_name)){{Auth()->user()->first_name}}@endif</h5>
+                        <span class="text-light">@if(isset(Auth()->user()->last_name)){{Auth()->user()->last_name}}@endif</span>
                     </div>
                 </div>
                 <div>
-                    {{-- <button class="btn btn-primary btn-sm">Follow</button>
-                    <button class="btn btn-success btn-sm">Message</button> --}}
+
                 </div>
             </div>
         </div>
@@ -43,19 +41,14 @@
 
                 <hr>
                 <small class="text-muted">Email address: </small>
-            <p>{{Auth()->user()->email}}</p>
+            <p>@if(isset(Auth()->user()->email)){{Auth()->user()->email}}@endif</p>
                 <hr>
                 <small class="text-muted">Mobile: </small>
-                <p>{{Auth()->user()->mobile}}</p>
+                <p>@if(isset(Auth()->user()->mobile)){{Auth()->user()->mobile}}@endif</p>
                 <hr>
                 <small class="text-muted">Birth Date: </small>
-                <p class="m-b-0">{{Auth()->user()->birth_year}}</p>
-                {{-- <hr>
-                <small class="text-muted">Social: </small>
-                <p><i class="fa fa-twitter m-r-5"></i> twitter.com/example</p>
-                <p><i class="fa fa-facebook  m-r-5"></i> facebook.com/example</p>
-                <p><i class="fa fa-github m-r-5"></i> github.com/example</p>
-                <p><i class="fa fa-instagram m-r-5"></i> instagram.com/example</p> --}}
+                <p class="m-b-0">@if(isset(Auth()->user()->birth_year)){{Auth()->user()->birth_year}}@endif</p>
+
             </div>
         </div>
     </div>
@@ -66,14 +59,7 @@
                 <h2>My Information</h2>
                 <ul class="header-dropdown dropdown">
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                    {{-- <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another Action</a></li>
-                            <li><a href="javascript:void(0);">Something else</a></li>
-                        </ul>
-                    </li> --}}
+
                 </ul>
             </div>
             <div class="body">
@@ -83,27 +69,31 @@
 
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
+                            <label for="first_name">First Name</label>
                             <input type="text" value="@if(isset(auth()->user()->first_name)){{auth()->user()->first_name}}@endif" name="first_name" class="form-control" placeholder="First Name">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
+                            <label for="last_name">Last Name</label>
                             <input type="text" value="@if(isset(auth()->user()->last_name)){{auth()->user()->last_name}}@endif" name="last_name" class="form-control" placeholder="Last Name">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="birth_year">DOB</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-calendar"></i></span>
                                 </div>
-                                <input value="@if(isset(auth()->user()->birth_name)){{auth()->user()->birth_name}}@endif" data-provide="datepicker" data-date-autoclose="true" class="form-control" name="birth_date" placeholder="Birthdate">
+                                <input value="@if(isset(auth()->user()->birth_year)){{auth()->user()->birth_year}}@endif" data-provide="datepicker" data-date-autoclose="true" class="form-control" name="birth_date" placeholder="Birthdate">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="email">Email</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
@@ -114,42 +104,48 @@
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="mobile">Mobile</label>
                             <input type="text" value="@if(isset(auth()->user()->mobile)){{auth()->user()->mobile}}@endif" name="mobile" class="form-control" placeholder="Mobile Number">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="landline_1">Landline 1</label>
                             <input type="text" value="@if(isset(auth()->user()->landline_1)){{auth()->user()->landline_1}}@endif" name="landline_1" class="form-control" placeholder="Landline1">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="landline_2">Landline 2</label>
                             <input type="text" value="@if(isset(auth()->user()->landline_2)){{auth()->user()->landline_2}}@endif" name="landline_2" class="form-control" placeholder="Landline2">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="country">Country</label>
                             <select name="country" class="form-control">
                                 <option value="">-- Select Country --</option>
+                                @if($countries->count() > 0)
                                 @foreach($countries as $country)
                                 <option value="{{$country->countries_id}}"  <?php if(Auth()->user()->country == $country->countries_id) { echo "selected"; } ?>>{{$country->countries_name}}</option>
                                         @endforeach
+                                        @else
+                                        <option value="Data Not Available" >Data Not Available</option>
+                                            @endif
                             </select>
                         </div>
                     </div>
-                    {{-- <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <input type="text" value="@if(isset(auth()->user()->state)){{auth()->user()->state}}@endif" name="state" class="form-control" placeholder="State/Province">
-                        </div>
-                    </div> --}}
+
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="city">City</label>
                             <input type="text" value="@if(isset(auth()->user()->city)){{auth()->user()->city}}@endif" name="city" class="form-control" placeholder="City">
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
+                            <label for="address">Address</label>
                             <textarea rows="4" type="text" name="address" class="form-control" placeholder="Address">@if(isset(auth()->user()->address_1)){{auth()->user()->address_1}}@endif
                             </textarea>
                         </div>

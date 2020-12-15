@@ -23,11 +23,6 @@ class UniversityProfileController extends Controller
         return view('university.profile')->with('user',$user)->with('countries',Country::all());
     }
 
-
-
-        // return view('university.profile');
-
-
     public function profileStore(Request $request)
     {
         // dd($request);
@@ -35,9 +30,10 @@ class UniversityProfileController extends Controller
             'university_name'=>'required',
 
             'email' => 'required|email',
-            // 'mobile'=>'required|unique:users',
+             'mobile'=>'numeric|required',
             'landline_1'=>'required',
             'landline_2' => 'required',
+            'website' => 'required|url',
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);

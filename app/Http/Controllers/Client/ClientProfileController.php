@@ -29,12 +29,8 @@ $id = Auth()->user()->id;
             'first_name'=>'required',
             'last_name'=>'required',
             'email' => 'required|email',
-            'mobile'=>'required',
-            'landline_1'=>'required',
-            'landline_2' => 'required',
-           'latitude' => 'required',
-            'longitude'=>'required',
-
+            'mobile'=>'numeric|required',
+            'website' => 'required|url',
              ]);
             $id = Auth()->user()->id;
             $user = User::find($id);

@@ -34,8 +34,6 @@
 
                 <li class="{{ Request::segment(2) == 'dashboard' ? 'active' : null }}"><a href="{{route('university.dashboard')}}"> <i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
                 <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('university.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
-
-                {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'students' ? 'active' : null }}"><a href="{{route('university.students')}}"><i class="icon-users"></i><span>Students</span></a></li>
                 <li class="{{ Request::segment(2) == 'my_consultants' ? 'active' : null }}"><a href="{{route('university.my_consultants')}}"><i class="icon-user"></i><span>My Consultants</span></a></li>
                 <li class="{{ Request::segment(2) == 'services' ? 'active' : null }}"><a href="{{route('university.services')}}"><i class="icon-speedometer"></i><span>Services</span></a></li>
@@ -49,7 +47,6 @@
 
                      </ul>
                 </li>
-                {{-- <li class="{{ Request::segment(2) === 'ad_events' ? 'active' : null }}"><a href="{{route('university.ad_events')}}"><i class="icon-picture"></i><span>Ad</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'privacy_policy' ? 'active' : null }}"><a href="{{route('university.privacy_policy')}}"><i class="fa fa-lock"></i><span>Privacy Policy</span></a></li>
             <li class="{{ Request::segment(2) == 'terms_condition' ? 'active' : null }}"><a href="{{route('university.terms_condition')}}"><i class="fa fa-lock"></i><span>Terms & Conditions</span></a></li>
                 <li class="{{ Request::segment(2) == 'contact_us' ? 'active' : null }}"><a href="{{route('university.contact_us')}}"><i class="fa fa-mobile-phone"></i><span>Contact Us</span></a></li>
