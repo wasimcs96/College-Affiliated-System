@@ -31,6 +31,8 @@ class User extends Authenticatable
         'address_2',
         'landline_1',
         'landline_2',
+        'latitude',
+        'longitude',
         'city',
         'country'
 

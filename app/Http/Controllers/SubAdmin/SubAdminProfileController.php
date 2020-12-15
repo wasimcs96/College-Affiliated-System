@@ -28,9 +28,10 @@ class SubAdminProfileController extends Controller
             'first_name'=>'required',
             'last_name'=>'required',
             'email' => 'required|email',
-            // 'mobile'=>'required|unique:users',
+            'mobile'=>'numeric|required',
             'landline_1'=>'required',
             'landline_2' => 'required',
+            'website' => 'required|url',
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);

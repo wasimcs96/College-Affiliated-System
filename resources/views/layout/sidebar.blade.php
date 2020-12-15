@@ -31,19 +31,7 @@
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu">
                 <li class="header">Main</li>
-                {{-- <li class="{{ Request::segment(1) === 'mypage' ? 'active open' : null }}">
-                    <a href="#myPage" class="has-arrow"><i class="icon-home"></i><span>My Page</span></a>
-                    <ul>
-                        <li class="{{ Request::segment(2) === 'index' ? 'active' : null }}"><a href="{{route('mypage.index')}}">My Dashboard</a></li>
-                        <li class="{{ Request::segment(2) === 'index4' ? 'active' : null }}"><a href="{{route('mypage.index4')}}">Web Analytics</a></li>
-                        <li class="{{ Request::segment(2) === 'index5' ? 'active' : null }}"><a href="{{route('mypage.index5')}}">Event Monitoring</a></li>
-                        <li class="{{ Request::segment(2) === 'index6' ? 'active' : null }}"><a href="{{route('mypage.index6')}}">Finance Performance</a></li>
-                        <li class="{{ Request::segment(2) === 'index7' ? 'active' : null }}"><a href="{{route('mypage.index7')}}">Sales Monitoring</a></li>
-                        <li class="{{ Request::segment(2) === 'index8' ? 'active' : null }}"><a href="{{route('mypage.index8')}}">Hospital Management</a></li>
-                        <li class="{{ Request::segment(2) === 'index9' ? 'active' : null }}"><a href="{{route('mypage.index9')}}">Campaign Monitoring</a></li>
-                        <li class="{{ Request::segment(2) === 'index10' ? 'active' : null }}"><a href="{{route('mypage.index10')}}">University Analytics</a></li>
-                    </ul>
-                </li> --}}
+
                 <li class="{{ Request::segment(2) == 'index2' ? 'active open' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
                 <li class="{{ Request::segment(2) == 'index3' ? 'active open' : null }}"><a href="{{route('dashboard.index3')}}"><i class="icon-diamond"></i><span>Cryptocurrency</span></a></li>
                 <li class="header">HR, Project & Job</li>
@@ -85,13 +73,7 @@
                     </ul>
                 </li>
                 <li class="header">App</li>
-                {{-- <li class="{{ Request::segment(1) === 'contact' ? 'active open' : null }}">
-                    <a href="#Contact" class="has-arrow"><i class="icon-book-open"></i><span>Contact</span></a>
-                    <ul>
-                        <li class="{{ Request::segment(2) === 'contact' ? 'active' : null }}"><a href="{{route('contact.contact')}}">List View</a></li>
-                        <li class="{{ Request::segment(2) === 'contact2' ? 'active' : null }}"><a href="{{route('contact.contact2')}}">Grid View</a></li>
-                    </ul>
-                </li> --}}
+
                 <li class="{{ Request::segment(1) == 'email' ? 'active open' : null }}">
                     <a href="#Contact" class="has-arrow"><i class="icon-drawer"></i><span>Email</span></a>
                     <ul>

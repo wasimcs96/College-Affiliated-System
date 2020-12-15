@@ -33,7 +33,7 @@
             <ul id="main-menu" class="metismenu">
 
 
-                <li class="{{ Request::segment(2) === 'dashboard' ? 'active open' : null }}"><a href="{{route('subadmin.dashboard')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
+                <li class="{{ Request::segment(2) == 'dashboard' ? 'active open' : null }}"><a href="{{route('subadmin.dashboard')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
                 <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('subadmin.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'users' ? 'active open' : null }}"><a href="{{route('subadmin.users')}}"><i class="fa fa-users"></i><span>Users</span></a></li>
