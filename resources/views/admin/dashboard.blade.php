@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'subadmin')
-@section('title', 'dashboard')
+@section('parentPageTitle', 'Admin')
+@section('title', 'Dashboard')
 
 @section('content')
 
