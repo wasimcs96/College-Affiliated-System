@@ -93,7 +93,7 @@
 
                 </div>
                 {{-- <a  href="{{route('admin.report.booking.client_app')}}" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
-                <a href="{{route('admin.user.user_show')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                <a href="{{route('admin.user')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>
