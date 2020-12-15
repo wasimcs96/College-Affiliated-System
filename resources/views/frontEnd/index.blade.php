@@ -572,12 +572,12 @@
             <li class="step-bar flex-grow-1 step-bar-active col-lg-3">
 
                 <span class="icon-element">1</span>
-                <p class="pt-2 color-text-2">Booking</p>
+                <p class="pt-2 color-text-2">Booking Submitted</p>
             </li>
 
             <li class="step-bar flex-grow-1  col-lg-3 " >
                 <span class="icon-element"><i  style=" color:blue;" class="las la-cloud-upload-alt"></i></span>
-                <p class="pt-2 color-text-2">Applied Universities </p>
+                <p class="pt-2 color-text-2">Applied Universities</p>
             </li>
 
             <li class="step-bar flex-grow-1 col-lg-3">
@@ -795,28 +795,28 @@
                     flex-wrap: wrap;
                     margin-right: 7px;
                     margin-left: 8px;">
-                    <div class="card border-primary mt-1 ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
+                    <div class="card border-primary mt-3 ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
                         <div class="card-header border-primary">1st Step</div>
                         <div class="card-body">
                           <h5 class="card-title text-primary">Hire Consultant</h5>
                           <p class="card-text">djfhgdhghdjkhgkjdfghdfgjdddddddddddddhflgd.</p>
                         </div>
                       </div>
-                      <div class="card border-primary mt-1 ml-4 mb-2 " style="max-width: 15rem; max-height:15rem">
+                      <div class="card border-primary mt-3 ml-4 mb-2 " style="max-width: 15rem; max-height:15rem">
                         <div class="card-header border-primary">2nd Step</div>
                         <div class="card-body">
                           <h5 class="card-title text-primary ">Choose University</h5>
                           <p class="card-text">sdjfhsjkhfshhkshkhskjghjkfhjkgsajkgjkfhghdfdf.</p>
                         </div>
                       </div>
-                      <div class="card border-primary mt-5 ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
+                      <div class="card border-primary mt-3 ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
                         <div class="card-header border-primary">3rd Step</div>
                         <div class="card-body ">
                           <h5 class="card-title text-primary">Verify Documents</h5>
                           <p class="card-text">Some quick example text to build on the carddt.</p>
                         </div>
                       </div>
-                      <div class="card border-primary mt-5 ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
+                      <div class="card border-primary mt-3 ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
                         <div class="card-header border-primary">4th Step</div>
                         <div class="card-body ">
                           <h5 class="card-title text-primary">Get Visa </h5>

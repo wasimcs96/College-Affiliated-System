@@ -53,6 +53,8 @@ class UniversityProfileController extends Controller
 
 
               $user->fill($request->all());
+              $user->first_name = $request->university_name;
+              $user->last_name=$request->university_name;
               $user->latitude = $data->latitude;
               $user->longitude = $data->longitude;
              $user->save();
