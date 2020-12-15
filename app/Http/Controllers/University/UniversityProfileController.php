@@ -57,6 +57,7 @@ class UniversityProfileController extends Controller
               $user->longitude = $data->longitude;
              $user->save();
               $university=auth()->user()->university;
+
               $university->fill([
                  'user_id'=>$user->id,
                  'university_name'=>$request->university_name,

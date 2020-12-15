@@ -51,9 +51,9 @@
                                     {{ __('Forgot Password?') }}
                                 </a>
                                         @endif
-                                    <p class="forgot-password">
+                                    {{-- <p class="forgot-password">
                                         <a href="recover.html">Forgot Password?</a>
-                                    </p>
+                                    </p> --}}
                                 </div>
                             </div><!-- end input-box -->
                             <div class="btn-box pt-3 pb-4">

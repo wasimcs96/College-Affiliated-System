@@ -38,7 +38,7 @@ class RegisterController extends Controller
        if($role==3){
         return User::create([
             'first_name' => $data['first_name'],
-            'last_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
@@ -47,7 +47,7 @@ class RegisterController extends Controller
        if($role==2){
            $user=User::create([
             'first_name' => $data['first_name'],
-            'last_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
@@ -62,7 +62,7 @@ class RegisterController extends Controller
        if($role==4){
         return User::create([
             'first_name' => $data['first_name'],
-            'last_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
@@ -71,7 +71,7 @@ class RegisterController extends Controller
        if($role==5){
         return User::create([
             'first_name' => $data['first_name'],
-            'last_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
