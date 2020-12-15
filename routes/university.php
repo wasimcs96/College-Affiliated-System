@@ -112,6 +112,10 @@ Route::get('profile',[
 
 // university media
 
+Route::get('media',function(){
+    return view('university.media.media');
+})->name('university.media');
+
 Route::post('media_store',[
     'uses'=>'UniversityMediaController@mediastore',
     'as'=> 'university.media.store'

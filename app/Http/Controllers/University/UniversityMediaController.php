@@ -18,6 +18,10 @@ class UniversityMediaController extends Controller
 
     public function mediastore(Request $request)
     {
+        $this->validate($request,[
+            'images.*' => 'dimensions:min_width=100,min_height=100,max_width=1024,max_height=640',
+            'link' => 'required|url',
+             ]);
         // dd(collect($request->images));
     $images=collect($request->images);
 
@@ -50,7 +54,7 @@ if ($request->link != null) {
 
 
 
-    return redirect()->route('university.profile')->with('Success','Media Uploaded successfully');
+    return redirect()->route('university.media')->with('Success','Media Uploaded successfully');
 }
 
 
@@ -63,7 +67,7 @@ public function destroy($id){
     // return response()->json([
     //     'success' => 'image deleted successfully!'
     // ]);
-return redirect()->route('university.profile')->with ('Success','Image deleted Successfully');
+return redirect()->route('university.media')->with ('Success','Image deleted Successfully');
 }
 
 
