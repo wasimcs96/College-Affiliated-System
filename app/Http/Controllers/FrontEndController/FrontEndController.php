@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
-class ConsultantFrontController extends Controller
+class FrontEndController extends Controller
 {
 
 
-    public function index_all()
+    public function index()
      {
-        return view('frontEnd.consultant.consultant_all')->with('consultants',Consultant::all());
+        return view('frontEnd.index')->with('consultants',Consultant::all());
      }
 
 }

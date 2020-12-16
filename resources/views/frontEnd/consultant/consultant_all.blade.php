@@ -109,43 +109,7 @@
                                     <!-- end col-lg-3 -->
                                 </form>
                             </div><!-- end contact-form-action -->
-                            {{-- <div class="advanced-wrap">
-                                <a class="btn collapse-btn theme-btn-hover-gray font-size-15" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
-                                    More option <i class="la la-angle-down ml-1"></i>
-                                </a> --}}
-                                {{-- <div class="pt-3 collapse" id="collapseTwo">
-                                    <div class="slider-range-wrap ">
-                                        <div class="price-slider-amount padding-bottom-20px">
-                                            <label for="amount" class="filter__label">Price:</label>
-                                            <input type="text" id="amount" class="amounts" readonly>
-                                        </div><!-- end price-slider-amount -->
-                                        <div id="slider-range"></div><!-- end slider-range -->
-                                    </div><!-- end slider-range-wrap -->
-                                    <div class="checkbox-wrap padding-top-30px">
-                                        <h3 class="title font-size-15 pb-3">Car Categories</h3>
-                                        <div class="custom-checkbox d-inline-block mr-4">
-                                            <input type="checkbox" id="c1">
-                                            <label for="c1">Convertibles</label>
-                                        </div>
-                                        <div class="custom-checkbox d-inline-block mr-4">
-                                            <input type="checkbox" id="c2">
-                                            <label for="c2">Coupes</label>
-                                        </div>
-                                        <div class="custom-checkbox d-inline-block mr-4">
-                                            <input type="checkbox" id="c3">
-                                            <label for="c3">Hatchbacks</label>
-                                        </div>
-                                        <div class="custom-checkbox d-inline-block mr-4">
-                                            <input type="checkbox" id="c4">
-                                            <label for="c4">Minivans</label>
-                                        </div>
-                                        <div class="custom-checkbox d-inline-block mr-4">
-                                            <input type="checkbox" id="c5">
-                                            <label for="c5">SUVs</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
+
                             <div class="btn-box pt-3">
                                 <button class="theme-btn" type="button">Search Now</button>
                             </div>
@@ -168,8 +132,9 @@
 ================================= -->
 <section class="card-area section--padding">
     <div class="container">
+
         <div class="row">
-            <div class="col-lg-12">
+            {{-- <div class="col-lg-12">
                 <div class="filter-wrap margin-bottom-30px">
                     <div class="filter-top d-flex align-items-center justify-content-between pb-4">
                         <div>
@@ -368,14 +333,18 @@
                         </div><!-- end select-contain -->
                     </div><!-- end filter-bar -->
                 </div><!-- end filter-wrap -->
-            </div><!-- end col-lg-12 -->
+            </div><!-- end col-lg-12 --> --}}
         </div><!-- end row -->
+        @foreach($consultants as $consultant)
+
         <div class="row">
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
+
                         <a href="{{route('consultant_detail')}}" class="d-block">
-                            <img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}" alt="car-img">
+                            {{ $consultant->company_name }}
+                             {{-- <img src="{{asset($consultant->user->profile_image)}}" alt="car-img"> --}}
                         </a>
                         <span class="badge">Top Ranked</span>
                         <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
@@ -581,6 +550,7 @@
                 </div><!-- end card-item -->
             </div><!-- end col-lg-4 -->
         </div><!-- end row -->
+        @endforeach
         <div class="row">
             <div class="col-lg-12">
                 <div class="btn-box mt-3 text-center">

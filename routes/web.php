@@ -1,18 +1,9 @@
 <?php
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('front');
+Route::get('/', function () {
+    return view('welcome');
+})->name('front');
 
-Route::get('/',[
-    'uses'=>'FrontEndController@index',
-    'as'=> 'front'
-]);
-
-Route::post('media_store',[
-    'uses'=>'UniversityMediaController@mediastore',
-    'as'=> 'university.media.store'
-]);
 // Route::get('details', function () {
 
 // 	$ip = '122.176.16.3';
@@ -33,9 +24,14 @@ Route::get('course_detail', function(){
 
 /* consultants route */
 
-Route::get('consultant_all',function (){
-    return view('frontEnd.consultant.consultant_all');
-})->name('consultant_all');
+// Route::get('consultant_all',function (){
+//     return view('frontEnd.consultant.consultant_all');
+// })->name('consultant_all');
+
+Route::get('consultant/all',[
+    'uses' => 'FrontEndController\ConsultantFrontController@index_all',
+    'as' => 'consultant_all'
+]);
 
 Route::get('consultant_detail',function(){
     return view('frontEnd.consultant.consultant_detail');
@@ -77,7 +73,6 @@ Route::get('about', function(){
 Route::get('contact', function(){
     return view('frontEnd.contact.contact');
 })->name('contact');
-
 
 
 /* frontend routes end */

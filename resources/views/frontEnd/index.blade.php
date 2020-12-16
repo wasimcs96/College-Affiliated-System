@@ -671,18 +671,23 @@
             </div><!-- end col-lg-4 -->
             <div class="col-lg-6">
                 <div class="section-heading ">
-
+<?php $consultants = DB::table('consultants')->get();
+?>
                     <h4> Featured Consultants</h4>
                     <hr>
+                    @foreach($consultants as $consultant)
                     <div class="testimonial-carousel carousel-action">
                         <div class="testimonial-card">
                             <div class="author-content d-flex align-items-center">
                                 <div class="author-img">
-                                   <a href="{{route('consultant_detail')}}"> <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image"></a>
+                                    {{-- @php
+                                        print_r($consultant->user);
+                                    @endphp --}}
+                                   <a href="{{route('consultant_detail',['id' => $consultant->id])}}"> <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image"></a>
                                 </div>
                                 <div class="author-bio">
-                                    <a href="{{route('consultant_detail')}}"><h4 class="author__title">Leroy Bell</h4></a>
-                                    <span class="author__meta">United States</span>
+                                    <a href="{{route('consultant_detail',['id' => $consultant->id])}}"><h4 class="author__title">{{$consultant->company_name}}</h4></a>
+                                    <span class="author__meta">{{$consultant->company_name}}</span>
                                     <span class="ratings d-flex align-items-center">
                                         <i class="la la-star"></i>
                                         <i class="la la-star"></i>
@@ -699,73 +704,9 @@
                         </div><!-- end testimonial-card -->
 
 
-                        <div class="testimonial-card">
-                            <div class="author-content d-flex align-items-center">
-                                <div class="author-img">
-                                    <a href="{{route('consultant_detail')}}">  <img src="{{ asset('frontEnd/assets/images/team9.jpg') }}" alt="testimonial image"></a>
-                                </div>
-                                <div class="author-bio">
-                                    <a href="{{route('consultant_detail')}}">   <h4 class="author__title">Richard Pam</h4></a>
-                                    <span class="author__meta">Canada</span>
-                                    <span class="ratings d-flex align-items-center">
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="testi-desc-box">
-                                <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaeca</p><a  class="btn btn-primary" href="{{route('consultant_detail')}}">Book</a>
-                            </div>
 
-                        </div><!-- end testimonial-card -->
-                        <div class="testimonial-card">
-                            <div class="author-content d-flex align-items-center">
-                                <div class="author-img">
-                                    <a href="{{route('consultant_detail')}}">   <img src="{{ asset('frontEnd/assets/images/team10.jpg') }}" alt="testimonial image"></a>
-                                </div>
-                                <div class="author-bio">
-                                    <a href="{{route('consultant_detail')}}">  <h4 class="author__title">Luke Jacobs</h4></a>
-                                    <span class="author__meta">Australia</span>
-                                    <span class="ratings d-flex align-items-center">
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="testi-desc-box">
-                                <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat</p><a  class="btn btn-primary" href="{{route('consultant_detail')}}">Book</a>
-                            </div>
-
-                        </div><!-- end testimonial-card -->
-                        <div class="testimonial-card">
-                            <div class="author-content d-flex align-items-center">
-                                <div class="author-img">
-                                    <a href="{{route('consultant_detail')}}">   <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image"></a>
-                                </div>
-                                <div class="author-bio">
-                                    <a href="{{route('consultant_detail')}}">  <h4 class="author__title">Chulbul Panday</h4></a>
-                                    <span class="author__meta">Italy</span>
-                                    <span class="ratings d-flex align-items-center">
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="testi-desc-box">
-                                <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat</p><a  class="btn btn-primary" href="{{route('consultant_detail')}}">Book</a>
-                            </div>
-
-                        </div><!-- end testimonial-card -->
                     </div><!-- end testimonial-carousel -->
+                    @endforeach
             </div><!-- end col-lg-8 -->
         </div>
         </div><!-- end row -->
