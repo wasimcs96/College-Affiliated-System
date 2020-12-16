@@ -360,6 +360,7 @@
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         <div class="row">
+
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
@@ -394,7 +395,8 @@
                         </div>
                     </div>
                 </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
+            </div>
+            <!-- end col-lg-4 -->
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
