@@ -142,13 +142,13 @@
                             <input type="text" name="city"  value="@if(isset(auth()->user()->city)){{auth()->user()->city}}@endif" class="form-control" placeholder="City">
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12">
+                    {{-- <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <textarea rows="4" name="address"  type="text" class="form-control" placeholder="Address">@if(isset(auth()->user()->address_1)){{auth()->user()->address_1}}@endif</textarea>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-8 col-md-12">
                         <div class="form-group">
                             <label for="website">Website</label>
                             <div class="input-group">
