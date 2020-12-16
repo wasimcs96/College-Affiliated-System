@@ -24,7 +24,7 @@ class UniversityMediaController extends Controller
              ]);
         // dd(collect($request->images));
     $images=collect($request->images);
-
+    dd(auth()->user());
     $id = auth()->user()->university->id;
 
      foreach($images as $image){

@@ -1,9 +1,18 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('front');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('front');
 
+Route::get('/',[
+    'uses'=>'FrontEndController@index',
+    'as'=> 'front'
+]);
+
+Route::post('media_store',[
+    'uses'=>'UniversityMediaController@mediastore',
+    'as'=> 'university.media.store'
+]);
 // Route::get('details', function () {
 
 // 	$ip = '122.176.16.3';
@@ -68,6 +77,7 @@ Route::get('about', function(){
 Route::get('contact', function(){
     return view('frontEnd.contact.contact');
 })->name('contact');
+
 
 
 /* frontend routes end */
