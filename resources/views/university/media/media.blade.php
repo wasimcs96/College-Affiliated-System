@@ -72,11 +72,12 @@
                                 </div>
                             </div> --}}
                               </div>
-                            <label>University Image</label>
 
-                                    <input name="images[]" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-frrr" multiple>
                                 </div>
 @endif
+<label>University Image</label>
+
+<input name="images[]" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-frrr" multiple>
                         </div>
                     </div>
 
