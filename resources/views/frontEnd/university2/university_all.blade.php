@@ -10,66 +10,46 @@
                 <div class="col-lg-12">
                     <div class="search-result-content">
                         <div class="section-heading">
-                            <h2 class="sec__title text-white">Search Consultant</h2>
+                            <h2 class="sec__title text-white"> University Search Result</h2>
                         </div>
                         <div class="search-fields-container margin-top-30px">
                             <div class="contact-form-action">
                                 <form action="#" class="row">
-
-                                    <div class="col-lg-4 col-sm-2">
+                                    <div class="col-lg-4 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Name</label>
-                                            <div class="form-group">
-                                                <input class=" form-control" type="text" name="Consultant Name " Placeholder="Search Consultant by Name">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-sm-6 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">Country</label>
+                                            <label class="label-text">University Name</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
-                                                <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1" selected>India</option>
-                                                        <option value="2">USA</option>
-                                                        <option value="3">UK</option>
-                                                        <option value="4">KSA</option>
-                                                        <option value="5">UAE</option>
-                                                        <option value="6">Russia</option>
-                                                        <option value="7">China</option>
-
-
-
-                                                    </select>
-                                                </div>                                            </div>
+                                                <input class="form-control" type="text" placeholder="University">
+                                            </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-4 col-sm-2 pr-0">
+                                    <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">University </label>
+                                            <label class="label-text"> Country</label>
                                             <div class="form-group">
-
-                                                <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1" selected>ATU</option>
-                                                        <option value="2">BTU</option>
-                                                        <option value="3">CTU</option>
-                                                        <option value="4">DTU</option>
-                                                        <option value="5">ETU</option>
-                                                        <option value="6">FTU</option>
-                                                        <option value="7">GTU</option>
-
-
-
-                                                    </select>
-                                                </div>                                            </div>
+                                                <span class="la la-calendar form-icon"></span>
+                                                <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
+                                            </div>
                                         </div>
                                     </div><!-- end col-lg-2 -->
                                     <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Courses</label>
+                                            <label class="label-text">Course Type</label>
+                                            <div class="form-group">
+                                                <div class="select-contain w-auto">
+                                                    <select class="select-contain-select">
+                                                        <option value="1200AM">PG</option>
+                                                        <option value="1230AM">UG</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                        <div class="input-box">
+                                            <label class="label-text">Course</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select">
@@ -87,29 +67,74 @@
                                                         <option value="0530AM">Btech</option>
                                                         <option value="0600AM">Btech</option>
                                                         <option value="0630AM">Btech</option>
-
+                                                        <option value="0700AM">dfgdfg</option>
                                                         <option value="0730AM">Btech</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end col-lg-3 -->
+                                   <!-- end col-lg-2 -->
+                                    <div class="col-lg-2 col-sm-2">
+                                        <div class="input-box">
+                                            <label class="label-text">Duration</label>
+                                            <div class="form-group">
+                                                <div class="select-contain w-auto">
+                                                    <select class="select-contain-select">
 
-                                                        <option value="0900AM" selected>Mtech</option>
+
+                                                        <option value="0700AM">6 months</option>
+                                                        <option value="0730AM">1 Years</option>
+                                                        <option value="0800AM">2 Years</option>
+                                                        <option value="0830AM">3 Years</option>
+                                                        <option value="0900AM" selected="">4 Years</option>
+                                                        <option value="0930AM">5 years</option>
+
 
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
-                                    {{-- <div class="col-lg-2 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">Drop-off Date</label>
-                                            <div class="form-group">
-                                                <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-2 --> --}}
-                                    <!-- end col-lg-3 -->
                                 </form>
                             </div><!-- end contact-form-action -->
-
+                            {{-- <div class="advanced-wrap">
+                                <a class="btn collapse-btn theme-btn-hover-gray font-size-15" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+                                    More option <i class="la la-angle-down ml-1"></i>
+                                </a>
+                                <div class="pt-3 collapse" id="collapseTwo">
+                                    <div class="slider-range-wrap ">
+                                        <div class="price-slider-amount padding-bottom-20px">
+                                            <label for="amount" class="filter__label">Price:</label>
+                                            <input type="text" id="amount" class="amounts" readonly>
+                                        </div><!-- end price-slider-amount -->
+                                        <div id="slider-range"></div><!-- end slider-range -->
+                                    </div><!-- end slider-range-wrap -->
+                                    <div class="checkbox-wrap padding-top-30px">
+                                        <h3 class="title font-size-15 pb-3">Car Categories</h3>
+                                        <div class="custom-checkbox d-inline-block mr-4">
+                                            <input type="checkbox" id="c1">
+                                            <label for="c1">Convertibles</label>
+                                        </div>
+                                        <div class="custom-checkbox d-inline-block mr-4">
+                                            <input type="checkbox" id="c2">
+                                            <label for="c2">Coupes</label>
+                                        </div>
+                                        <div class="custom-checkbox d-inline-block mr-4">
+                                            <input type="checkbox" id="c3">
+                                            <label for="c3">Hatchbacks</label>
+                                        </div>
+                                        <div class="custom-checkbox d-inline-block mr-4">
+                                            <input type="checkbox" id="c4">
+                                            <label for="c4">Minivans</label>
+                                        </div>
+                                        <div class="custom-checkbox d-inline-block mr-4">
+                                            <input type="checkbox" id="c5">
+                                            <label for="c5">SUVs</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
                             <div class="btn-box pt-3">
                                 <button class="theme-btn" type="button">Search Now</button>
                             </div>
@@ -120,7 +145,7 @@
         </div><!-- end container -->
     </div><!-- end breadcrumb-wrap -->
     <div class="bread-svg-box">
-        {{-- <svg class="bread-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><polygon points="100 0 50 10 0 0 0 10 100 10"></polygon></svg> --}}
+        <svg class="bread-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><polygon points="100 0 50 10 0 0 0 10 100 10"></polygon></svg>
     </div><!-- end bread-svg -->
 </section><!-- end breadcrumb-area -->
 <!-- ================================
@@ -132,13 +157,12 @@
 ================================= -->
 <section class="card-area section--padding">
     <div class="container">
-
         <div class="row">
-            {{-- <div class="col-lg-12">
+            <div class="col-lg-12">
                 <div class="filter-wrap margin-bottom-30px">
                     <div class="filter-top d-flex align-items-center justify-content-between pb-4">
                         <div>
-                            <h3 class="title font-size-24">New York: 44 Cars found</h3>
+                            <h3 class="title font-size-24">New York: 44 University found</h3>
                             <p class="font-size-14"><span class="mr-1 pt-1">Study with confidence:</span>No University Found</p>
                         </div>
                         <div class="layout-view d-flex align-items-center">
@@ -323,36 +347,34 @@
                         <div class="select-contain">
                             <select class="select-contain-select">
                                 <option value="1">Short by default</option>
-                                <option value="2">New Car</option>
-                                <option value="3">Popular Car</option>
-                                <option value="4">Popular Cruise</option>
-                                <option value="5">Price: low to high</option>
-                                <option value="6">Price: high to low</option>
+                                <option value="2">Recommended University</option>
+                                <option value="3">Popular University</option>
+                                <option value="4">Popular Courses</option>
+                                <option value="5">Rating: low to high</option>
+                                <option value="6">Rating: high to low</option>
                                 <option value="7">A to Z</option>
                             </select>
                         </div><!-- end select-contain -->
                     </div><!-- end filter-bar -->
                 </div><!-- end filter-wrap -->
-            </div><!-- end col-lg-12 --> --}}
+            </div><!-- end col-lg-12 -->
         </div><!-- end row -->
-        @foreach($consultants as $consultant)
-
         <div class="row">
+
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-
-                        <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
-                             <img src="{{asset($consultant->user->profile_image)}}" alt="car-img">
+                    <a href="{{route('university_detail')}}" class="d-block">
+                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
                         </a>
                         <span class="badge">Top Ranked</span>
-                        {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
+                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
                             <i class="la la-heart-o"></i>
-                        </div> --}}
+                        </div>
                     </div>
                     <div class="card-body">
-                        {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
-                        <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->user->first_name}} {{$consultant->user->last_name}}</a></h3>
+                        <p class="card-meta">Managment</p>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">MIT</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -360,23 +382,195 @@
                         </div>
                         <div class="card-attributes">
                             <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Admission Done"><i class="la la-users"></i><span>24</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="la la-suitcase"></i><span>15</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-users"></i><span>4000</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-suitcase"></i><span>16</span></li>
                             </ul>
                         </div>
                         <div class="card-price d-flex align-items-center justify-content-between">
                             <p>
-                                <span class="price__num">Country</span>
-                                <span class="price__text">{{$consultant->user->country}}</span>
+                                <span class="price__num">$2300</span>
+                                <span class="price__text">Total fees</span>
                             </p>
-                            <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div>
+            <!-- end col-lg-4 -->
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item car-card border">
+                    <div class="card-img">
+                        <a href="{{route('university_detail')}}" class="d-block">
+                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
+                        </a>
+                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
+                            <i class="la la-heart-o"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-meta">Technology</p>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">RTU</a></h3>
+                        <div class="card-rating">
+                            <span class="badge text-white">4.4/5</span>
+                            <span class="review__text">Average</span>
+                            <span class="rating__text">(30 Reviews)</span>
+                        </div>
+                        <div class="card-attributes">
+                            <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-users"></i><span>4000</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-suitcase"></i><span>15</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            <p>
+                                <span class="price__num">$3300</span>
+                                <span class="price__text">Total</span>
+                            </p>
+                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
             </div><!-- end col-lg-4 -->
-
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item car-card border">
+                    <div class="card-img">
+                        <a href="{{route('university_detail')}}" class="d-block">
+                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
+                        </a>
+                        <span class="badge">featured</span>
+                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
+                            <i class="la la-heart-o"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-meta">Arts</p>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">RTU</a></h3>
+                        <div class="card-rating">
+                            <span class="badge text-white">4.4/5</span>
+                            <span class="review__text">Average</span>
+                            <span class="rating__text">(30 Reviews)</span>
+                        </div>
+                        <div class="card-attributes">
+                            <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-users"></i><span>4000</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-suitcase"></i><span>13</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            <p>
+                                <span class="price__num">$2300</span>
+                                <span class="price__text">Total Fees</span>
+                            </p>
+                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item car-card border">
+                    <div class="card-img">
+                        <a href="{{route('university_detail')}}" class="d-block">
+                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
+                        </a>
+                        <span class="badge">Top Ranked</span>
+                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
+                            <i class="la la-heart-o"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-meta">Commerce</p>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">IIT Kanpur</a></h3>
+                        <div class="card-rating">
+                            <span class="badge text-white">4.4/5</span>
+                            <span class="review__text">Average</span>
+                            <span class="rating__text">(30 Reviews)</span>
+                        </div>
+                        <div class="card-attributes">
+                            <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-users"></i><span>6000</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-suitcase"></i><span>21</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            <p>
+                                <span class="price__num">$4500</span>
+                                <span class="price__text">Total Fees</span>
+                            </p>
+                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item car-card border">
+                    <div class="card-img">
+                        <a href="{{route('university_detail')}}" class="d-block">
+                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
+                        </a>
+                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
+                            <i class="la la-heart-o"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-meta">Medical</p>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">IIT Bombay</a></h3>
+                        <div class="card-rating">
+                            <span class="badge text-white">4.4/5</span>
+                            <span class="review__text">Average</span>
+                            <span class="rating__text">(30 Reviews)</span>
+                        </div>
+                        <div class="card-attributes">
+                            <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-users"></i><span>5000</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-suitcase"></i><span>31</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            <p>
+                                <span class="price__num">$5800</span>
+                                <span class="price__text">Total Fees</span>
+                            </p>
+                            <a href="car-single.html" class="{{route('university_detail')}}">See details<i class="la la-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item car-card border">
+                    <div class="card-img">
+                        <a href="{{route('university_detail')}}" class="d-block">
+                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
+                        </a>
+                        <span class="badge">featured</span>
+                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
+                            <i class="la la-heart-o"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-meta">Science</p>
+                        <h3 class="card-title"><a href="{{route('university_detail')}}">Btu</a></h3>
+                        <div class="card-rating">
+                            <span class="badge text-white">4.4/5</span>
+                            <span class="review__text">Average</span>
+                            <span class="rating__text">(30 Reviews)</span>
+                        </div>
+                        <div class="card-attributes">
+                            <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passenger"><i class="la la-users"></i><span>4</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>1</span></li>
+                            </ul>
+                        </div>
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            <p>
+                                <span class="price__num">$2300</span>
+                                <span class="price__text">Total Feees</span>
+                            </p>
+                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
         </div><!-- end row -->
-        @endforeach
         <div class="row">
             <div class="col-lg-12">
                 <div class="btn-box mt-3 text-center">

@@ -360,21 +360,30 @@
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         <div class="row">
-
+            @foreach($universities as $university)
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
-                    <a href="{{route('university_detail')}}" class="d-block">
-                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
+                    <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-block">
+                        {{-- @php
+                        print_r($university->user->profile_image);
+                    @endphp --}}
+                            <img src="
+                            {{asset($university->user->profile_image)}}
+                            "   alt="university-img" width="368px" height="230px">
                         </a>
-                        <span class="badge">Top Ranked</span>
-                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
+                        {{-- <span class="badge">Top Ranked</span> --}}
+                        {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
                             <i class="la la-heart-o"></i>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-body">
-                        <p class="card-meta">Managment</p>
-                        <h3 class="card-title"><a href="{{route('university_detail')}}">MIT</a></h3>
+                        <p class="card-meta">
+                            @if($university->type==0)
+                        Private
+                    @else Govenment</p>
+                    @endif
+                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university_name }}</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -391,191 +400,19 @@
                                 <span class="price__num">$2300</span>
                                 <span class="price__text">Total fees</span>
                             </p>
-                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
             </div>
-            <!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item car-card border">
-                    <div class="card-img">
-                        <a href="{{route('university_detail')}}" class="d-block">
-                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
-                        </a>
-                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                            <i class="la la-heart-o"></i>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-meta">Technology</p>
-                        <h3 class="card-title"><a href="{{route('university_detail')}}">RTU</a></h3>
-                        <div class="card-rating">
-                            <span class="badge text-white">4.4/5</span>
-                            <span class="review__text">Average</span>
-                            <span class="rating__text">(30 Reviews)</span>
-                        </div>
-                        <div class="card-attributes">
-                            <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-users"></i><span>4000</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-suitcase"></i><span>15</span></li>
-                            </ul>
-                        </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p>
-                                <span class="price__num">$3300</span>
-                                <span class="price__text">Total</span>
-                            </p>
-                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item car-card border">
-                    <div class="card-img">
-                        <a href="{{route('university_detail')}}" class="d-block">
-                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
-                        </a>
-                        <span class="badge">featured</span>
-                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                            <i class="la la-heart-o"></i>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-meta">Arts</p>
-                        <h3 class="card-title"><a href="{{route('university_detail')}}">RTU</a></h3>
-                        <div class="card-rating">
-                            <span class="badge text-white">4.4/5</span>
-                            <span class="review__text">Average</span>
-                            <span class="rating__text">(30 Reviews)</span>
-                        </div>
-                        <div class="card-attributes">
-                            <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-users"></i><span>4000</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-suitcase"></i><span>13</span></li>
-                            </ul>
-                        </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p>
-                                <span class="price__num">$2300</span>
-                                <span class="price__text">Total Fees</span>
-                            </p>
-                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item car-card border">
-                    <div class="card-img">
-                        <a href="{{route('university_detail')}}" class="d-block">
-                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
-                        </a>
-                        <span class="badge">Top Ranked</span>
-                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                            <i class="la la-heart-o"></i>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-meta">Commerce</p>
-                        <h3 class="card-title"><a href="{{route('university_detail')}}">IIT Kanpur</a></h3>
-                        <div class="card-rating">
-                            <span class="badge text-white">4.4/5</span>
-                            <span class="review__text">Average</span>
-                            <span class="rating__text">(30 Reviews)</span>
-                        </div>
-                        <div class="card-attributes">
-                            <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-users"></i><span>6000</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-suitcase"></i><span>21</span></li>
-                            </ul>
-                        </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p>
-                                <span class="price__num">$4500</span>
-                                <span class="price__text">Total Fees</span>
-                            </p>
-                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item car-card border">
-                    <div class="card-img">
-                        <a href="{{route('university_detail')}}" class="d-block">
-                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
-                        </a>
-                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                            <i class="la la-heart-o"></i>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-meta">Medical</p>
-                        <h3 class="card-title"><a href="{{route('university_detail')}}">IIT Bombay</a></h3>
-                        <div class="card-rating">
-                            <span class="badge text-white">4.4/5</span>
-                            <span class="review__text">Average</span>
-                            <span class="rating__text">(30 Reviews)</span>
-                        </div>
-                        <div class="card-attributes">
-                            <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-users"></i><span>5000</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-suitcase"></i><span>31</span></li>
-                            </ul>
-                        </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p>
-                                <span class="price__num">$5800</span>
-                                <span class="price__text">Total Fees</span>
-                            </p>
-                            <a href="car-single.html" class="{{route('university_detail')}}">See details<i class="la la-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item car-card border">
-                    <div class="card-img">
-                        <a href="{{route('university_detail')}}" class="d-block">
-                            <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img">
-                        </a>
-                        <span class="badge">featured</span>
-                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                            <i class="la la-heart-o"></i>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-meta">Science</p>
-                        <h3 class="card-title"><a href="{{route('university_detail')}}">Btu</a></h3>
-                        <div class="card-rating">
-                            <span class="badge text-white">4.4/5</span>
-                            <span class="review__text">Average</span>
-                            <span class="rating__text">(30 Reviews)</span>
-                        </div>
-                        <div class="card-attributes">
-                            <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Passenger"><i class="la la-users"></i><span>4</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Luggage"><i class="la la-suitcase"></i><span>1</span></li>
-                            </ul>
-                        </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p>
-                                <span class="price__num">$2300</span>
-                                <span class="price__text">Total Feees</span>
-                            </p>
-                            <a href="{{route('university_detail')}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
+            @endforeach
+
         </div><!-- end row -->
         <div class="row">
             <div class="col-lg-12">
                 <div class="btn-box mt-3 text-center">
                     <button type="button" class="theme-btn"><i class="la la-refresh mr-1"></i>Load More</button>
-                    <p class="font-size-13 pt-2">Showing 1 - 6 of 44 Cars</p>
+                    <p class="font-size-13 pt-2">Showing 1 - 6 of 44 university</p>
                 </div><!-- end btn-box -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->

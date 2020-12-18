@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Consultant;
 class UniversityConsultant extends Model
 {
+
+    protected $fillable=["university_id","consultant_id","status"];
+
+
     public function consultant()
     {
         return $this->belongsTo(Consultant::class);

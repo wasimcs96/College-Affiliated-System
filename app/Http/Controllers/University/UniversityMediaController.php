@@ -19,12 +19,12 @@ class UniversityMediaController extends Controller
     public function mediastore(Request $request)
     {
         $this->validate($request,[
-            'images.*' => 'dimensions:min_width=100,min_height=100,max_width=1024,max_height=640',
-            'link' => 'required|url',
+            // 'images.*' => 'dimensions:min_width=100,min_height=100,max_width=1024,max_height=640',
+            // 'link' => 'required|url',
              ]);
         // dd(collect($request->images));
     $images=collect($request->images);
-    dd(auth()->user());
+    // dd(auth()->user());
     $id = auth()->user()->university->id;
 
      foreach($images as $image){

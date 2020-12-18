@@ -41,7 +41,7 @@
                                     <div class="col-lg-4 col-md-5 mb-4"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}" alt=""></a></div>
                                   </div> --}}
 
-                                    <div class="col-lg-4 col-md-5 m-b-30"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;"></a>
+                                    <div class="col-lg-4 col-md-5 m-b-30"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
                                         <div class="card-body">
                                             <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red; position:absolute;   top: 0;
                                                 right: 0;"><i class="fa fa-times" aria-hidden="true"></i></h5></a>
@@ -91,7 +91,7 @@
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
                                 </div>
 
-                                <input name="link" type="text" class="form-control" placeholder="Video link">
+                                <input name="link" type="url" class="form-control" placeholder="Video link">
                             </div>
                         </div>
                     </div>

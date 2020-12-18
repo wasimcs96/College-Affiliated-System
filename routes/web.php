@@ -1,18 +1,25 @@
 <?php
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('front');
-
-Route::get('/',[
-    'uses'=>'FrontEndController@index',
-    'as'=> 'front'
+Route::get('/', function () {
+    return view('welcome');
+})->name('front');
+// ######################univerisity all###################################
+Route::get('university/all',[
+    'uses'=>'FrontEndController\UniversityFrontController@index',
+    'as'=>'university_all'
 ]);
 
-Route::post('media_store',[
-    'uses'=>'UniversityMediaController@mediastore',
-    'as'=> 'university.media.store'
+Route::get('university/detail/{id}',[
+    'uses' => 'FrontEndController\UniversityFrontController@detail',
+    'as' => 'university_detail'
 ]);
+
+Route::post('university/consultant',[
+    'uses' => 'FrontEndController\UniversityFrontController@consultant',
+    'as' => 'university_consultant'
+]);
+
+// ################university all######################################
 // Route::get('details', function () {
 
 // 	$ip = '122.176.16.3';
@@ -33,27 +40,34 @@ Route::get('course_detail', function(){
 
 /* consultants route */
 
-Route::get('consultant_all',function (){
-    return view('frontEnd.consultant.consultant_all');
-})->name('consultant_all');
+// Route::get('consultant_all',function (){
+//     return view('frontEnd.consultant.consultant_all');
+// })->name('consultant_all');
 
-Route::get('consultant_detail',function(){
-    return view('frontEnd.consultant.consultant_detail');
-})->name('consultant_detail');
+Route::get('consultant/all',[
+    'uses' => 'FrontEndController\ConsultantFrontController@index_all',
+    'as' => 'consultant_all'
+]);
 
-Route::get('consultant_book', function(){
-    return view('frontEnd.consultant.book');
-})->name('consultant.book');
+Route::get('consultant/detail/{id}',[
+    'uses' => 'FrontEndController\ConsultantFrontController@index_single',
+    'as' => 'consultant_detail'
+]);
+
+Route::get('consultant/book/{id}',[
+    'uses' => 'FrontEndController\ConsultantFrontController@book',
+    'as' => 'consultant_book'
+]);
 
 /* university route */
 
-Route::get('university_detail', function(){
-    return view('frontEnd.university.university_detail');
-})->name('university_detail');
+// Route::get('university_detail', function(){
+//     return view('frontEnd.university.university_detail');
+// })->name('university_detail');
 
-Route::get('university_all', function(){
-    return view('frontEnd.university.university_all');
-})->name('university_all');
+// Route::get('university_all', function(){
+//     return view('frontEnd.university.university_all');
+// })->name('university_all');
 
 /* blog routes*/
 Route::get('blog_all',function(){
@@ -77,7 +91,6 @@ Route::get('about', function(){
 Route::get('contact', function(){
     return view('frontEnd.contact.contact');
 })->name('contact');
-
 
 
 /* frontend routes end */
