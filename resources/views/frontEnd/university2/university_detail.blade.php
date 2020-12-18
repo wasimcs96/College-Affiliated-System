@@ -30,7 +30,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-btn">
                         <div class="btn-box">
-                            <a class="theme-btn" data-fancybox="video" data-src="https://www.youtube.com/embed?v=S5WFxUDs0pE"
+                            <a class="theme-btn" data-fancybox="video" data-src="https://www.youtube.com/watch?v=S5WFxUDs0pE"
                                data-speed="700">
                                 <i class="la la-video-camera mr-2"></i>Video
                             </a>
@@ -40,24 +40,13 @@
                                data-speed="700">
                                 <i class="la la-photo mr-2"></i>More Photos
                             </a>
-
                         </div>
-                      <?php
-                      $medias = DB::table('university_media')
-                      ->where('university_id', '=', $university->id)
-
-                      ->get()
-                ?>
-                        @foreach($medias as $media)
                         <a class="d-none"
                              data-fancybox="gallery"
-                             data-src="{{asset($media->media)}}"
-
-                             data-caption="Showing image - {{$media->id}}"
+                             data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
+                             data-caption="Showing image - 02"
                              data-speed="700"></a>
-                             @endforeach
-
-                        {{-- <a class="d-none"
+                        <a class="d-none"
                              data-fancybox="gallery"
                              data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
                              data-caption="Showing image - 03"
@@ -66,7 +55,7 @@
                              data-fancybox="gallery"
                              data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
                              data-caption="Showing image - 04"
-                             data-speed="700"></a> --}}
+                             data-speed="700"></a>
                     </div><!-- end breadcrumb-btn -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
@@ -92,44 +81,6 @@
                             <li><a data-scroll="staterooms" href="#staterooms" class="scroll-link">Consultants</a></li>
                             <li><a data-scroll="faq" href="#faq" class="scroll-link">FAQ</a></li>
                             <li><a data-scroll="reviews" href="#reviews" class="scroll-link">Reviews</a></li>
-                        <li>
-                            <?php
-                            $consultant = DB::table('university_consultants')
-                                      ->where('university_id', '=', $university->id)
-
-                                      ->get();
-                                $consults = DB::table('consultants')
-
-                                            ->get();
-                                     ?>
-
-
-@if(auth()->user())
-                       @if (Auth()->User()->isConsultant())
-                                         @if ($universityconsultant)
-                                         @if ($universityconsultant->status == 1)
-                                 <div class="btn btn-success">
-                                    All Ready a Consultant
-                                </div>
-
-                                             @else
-                                             <a class="btn btn-primary" id="btn5">
-                                                 Pending</a>
-                                         @endif
-
-                                         @else
-                                         <input type="text" name="unviersity_id"  value="{{$university->id}}" hidden>
-                                         <input type="text" name="consultant_id"  value="{{auth()->user()->consultant->id}}" hidden>
-                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-
-                                         <a class="btn btn-warning cs" custom1="{{$university->id}}" href="javascript:void(0);"
-                                         @if(!auth()->user()) data-toggle="modal" data-target="#loginPopupForm" @else id="submitClass" @endif
-                                         ><i class="las la-user-plus mr-2"></i>Be a Consultant </a>
-                                        @endif
-
-@endif
-@endif
-                        </li>
                         </ul>
                     </div>
                 </div>
@@ -143,12 +94,9 @@
                     <div class="single-content-wrap padding-top-60px">
                         <div id="description" class="page-scroll">
                             <div class="single-content-item pb-4">
-                                <h3 class="title font-size-26">{{$university->university_name}}</h3>
+                                <h3 class="title font-size-26">IIT kanpur</h3>
                                 <div class="d-flex flex-wrap align-items-center pt-2">
-                                    <p class="mr-2">University Type:       @if($university->type==0)
-                                        Private
-                                    @else Govenment</p>
-                                    @endif
+                                    <p class="mr-2">Galveston, Texas</p>
                                     <p>
                                         <span class="badge badge-warning text-white font-size-16">4.6</span>
                                         <span>(4,209 Reviews)</span>
@@ -1444,36 +1392,4 @@
     <i class="la la-angle-up" title="Go top"></i>
 </div>
 
-@endsection
-@section('per_page_script')
-<script>
-    $(document).ready(function () {
-       $('#submitClass').click(function (e) {
-var university_id = $(this).attr('custom1');
-var consultant_id = $('input[name="consultant_id"]').val();
-var _token =  $('input[name="_token"]').val();
-// console.log(university_id,consultant_id,_token);
-        // alert();
-// console.log('click');
-            // e.preventDefault();
-            // var university_id = $(this).attr("data-university_id");
-            $.ajaxSetup({
-headers: {
-'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-}
-});
-            $.ajax({
-                type: "post",
-                url: "{{route('university_consultant')}}",
-                data: {university_id:university_id,consultant_id:consultant_id},
-                success: function (result) {
-                    console.log('success');
-                }
-            });
-            $(this).text("Pending");
-            // console.log(university_id,consultant_id,_token);
-
-        });
-    });
-    </script>
 @endsection

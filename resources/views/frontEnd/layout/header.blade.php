@@ -128,7 +128,7 @@
                                                         <li><a href="{{route('course_all')}}">Search Courses</a></li>
                                                         <li><a href="{{route('course_all')}}">Search Courses in Abroad</a></li>
                                                         <li><a href="{{route('course_all')}}">Search Courses to study in Abroad</a></li>
-                                                        <li><a href="{{route('consultant.book')}}">Search Consultants </a></li>
+                                                        {{-- <li><a href="{{route('consultant_book')}}">Search Consultants </a></li> --}}
                                                     </ul>
                                                 </li>
 

@@ -17,8 +17,21 @@ class ConsultantFrontController extends Controller
 
 
     public function index_all()
-     {
+    {
         return view('frontEnd.consultant.consultant_all')->with('consultants',Consultant::all());
-     }
+    }
+
+    public function index_single($id)
+    {
+        $consultant = Consultant::find($id);
+        return view('frontEnd.consultant.consultant_detail')->with('consultant', $consultant);
+    }
+
+    public function book($id)
+    {
+        $consultant = Consultant::find($id);
+        return view('frontEnd.consultant.book')->with('consultant', $consultant)->with('countries',Country::all());
+
+    }
 
 }

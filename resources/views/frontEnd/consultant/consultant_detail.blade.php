@@ -11,18 +11,19 @@
                         <img src="{{asset('frontEnd/assets/images/team7.jpg')}}"alt="user image" class="h-auto">
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">John Wick</h3>
+                        <h3 class="card-title">{{$consultant->user->first_name}} {{$consultant->user->last_name}}</h3>
                         <p class="card-meta">Member since April 2016</p>
                         <div class="d-flex justify-content-between pt-3">
                             <ul class="list-items list-items-2 flex-grow-1">
-                                <li><span>Email:</span>contact@techydevs.com</li>
-                                <li><span>Phone:</span>+22 12345678</li>
-                                <li><span>Paypal Email:</span>contact@techydevs.com</li>
-                                <li><span>Home Airport:</span>Knoxville, TN 37920, USA</li>
-                                <li><span>Address:</span>php2701 Spence Pl, Knoxville, USA</li>
-                                <li><span>Website:</span><a href="#">techydevs.com</a></li>
+                                <li><span>Email:</span>{{$consultant->user->email}}</li>
+                                <li><span>Mobile:</span>{{$consultant->user->mobile}}</li>
+                                {{-- <li><span>Paypal Email:</span>contact@techydevs.com</li> --}}
+                                {{-- <li><span>Home Airport:</span>Knoxville, TN 37920, USA</li> --}}
+                                <li><span>Address:</span>{{$consultant->user->address}}</li>
+                                <li><span>Website:</span><a href="#">{{$consultant->website}}</a></li>
+                                <a href="{{route('consultant_book',['id'=>$consultant->id])}}"> <span class="btn btn-primary" style="margin-top: 10px;">Book Now</span></a></li>
                             </ul>
-                             <ul class="list-items flex-grow-1">
+                             {{-- <ul class="list-items flex-grow-1">
                                 <li><h3 class="title">Verifications</h3></li>
                                 <li class="d-flex justify-content-between align-items-center"><span class="color-text-2 font-weight-medium mr-2">Phone</span><span class="theme-btn theme-btn-small theme-btn-rgb theme-btn-danger-rgb">Not verified</span></li>
                                 <li class="d-flex justify-content-between align-items-center"><span class="color-text-2 font-weight-medium mr-2">Email</span><span class="theme-btn theme-btn-small theme-btn-rgb">Verified</span></li>
@@ -30,7 +31,7 @@
                                 <li class="d-flex justify-content-between align-items-center"><span class="color-text-2 font-weight-medium mr-2">Travel Certificate</span><span class="theme-btn theme-btn-small theme-btn-rgb">Verified</span></li>
                                 <li class="d-flex justify-content-between align-items-center">
                                 <a href="{{route('consultant.book')}}"> <span class="btn btn-primary" style="margin-top: 10px;">Book Now</span></a></li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -66,11 +67,11 @@
                                 Science
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" id="my-review-tab" data-toggle="tab" href="#my-review" role="tab" aria-controls="my-review" aria-selected="false">
                                 Reviews
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div><!-- end section-tab -->
                 <div class="tab-content margin-bottom-40px" id="myTabcontent">
