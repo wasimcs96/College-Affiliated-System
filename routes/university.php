@@ -36,26 +36,49 @@ Route::get('services',function(){
 })->name('university.services');
 
 /* My Consultant Section */
-Route::get('my_consultants',function(){
-    return view('university.my_consultant.my_consultants');
-})->name('university.my_consultants');
+// Route::get('my_consultants',function(){
+//     return view('university.my_consultant.my_consultants');
+// })->name('university.my_consultants');
 
-Route::get('my_consultant_show',function(){
-    return view('university.my_consultant.my_consultant_show');
-})->name('university.my_consultant_show');
+Route::get('my_consultants',[
+    'uses' => 'UniversityConsultantController@myconsultantindex',
+    'as' => 'university.my_consultants',
+]);
+
+
+
+// Route::get('my_consultant_show',function(){
+//     return view('university.my_consultant.my_consultant_show');
+// })->name('university.my_consultant_show');
+
+Route::get('my_consultant/show/{id}',[
+    'uses' => 'UniversityConsultantController@myconsultantshow',
+    'as' => 'university.my_consultant_show',
+]);
 
 Route::get('my_consultant_application',function(){
     return view('university.my_consultant.my_consultant_application');
 })->name('university.my_consultant_application');
 
 /* Consultant Section */
-Route::get('consultants',function(){
-    return view('university.consultant.consultants');
-})->name('university.consultants');
+// Route::get('consultants',function(){
+//     return view('university.consultant.consultants');
+// })->name('university.consultants');
 
-Route::get('consultant_show',function(){
-    return view('university.consultant.consultant_show');
-})->name('university.consultant_show');
+Route::get('consultants',[
+    'uses' => 'UniversityConsultantController@index',
+    'as' => 'university.consultants',
+]);
+
+Route::get('consultant/show/{id}',[
+    'uses' => 'UniversityConsultantController@show',
+    'as' => 'university.consultant_show',
+]);
+
+Route::get('consultant/show/accept/{id}',[
+    'uses' => 'UniversityConsultantController@accept',
+    'as' => 'university.consultant_accept',
+]);
 
 Route::get('consultant_application',function(){
     return view('university.consultant.consultant_application');

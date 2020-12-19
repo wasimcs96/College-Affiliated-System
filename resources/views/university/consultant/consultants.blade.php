@@ -25,12 +25,13 @@
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
+                            <th><b> Sno. </b></th>
                             <th> <b>
                                 Name</b></th>
                             <th><b> Mobile </b></th>
                             <th><b> E-mail</b></th>
 
-                            <th><b>Date</b></th>
+                            <th><b>Status</b></th>
 
                             <th><b>Actions</b></th>
                         </tr>
@@ -38,19 +39,37 @@
                     <tfoot>
 
                     </tfoot>
+                    @if($universityConsultants->count())
                     <tbody>
-                        <tr>
-                            <td>Sufiyan</td>
-                            <td>1234567890</td>
-                            <td>email@email.com</td>
+                        <?php $sno=0;?>
+                        @foreach($universityConsultants as $universityConsultant)
+                        @if($universityConsultant->status == 0)
+                        <tr class="row-{{ $universityConsultant->consultant->id }}">
+                            <td> {{ $sno=$sno+1}}. </td>
+                            <td>{{ $universityConsultant->consultant->user->first_name }} {{ $universityConsultant->consultant->user->last_name }}</td>
+                            <td>{{ $universityConsultant->consultant->user->mobile }}</td>
+                            <td>
+                                {{ $universityConsultant->consultant->user->email }}
+                            </td>
 
-                            <td>2020/30/11</td>
+                            <td> @if($universityConsultant->status == 0)
+                                <span class="btn btn-warning" >Pending</span>
+                                @else
+                                <span class="btn btn-info" >Accepted</span>
+                              @endif</td>
 
-                            <td><a href="{{route('university.consultant_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td><a href="{{route('university.consultant_show',['id' => $universityConsultant->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
-
-
+@endif
+                     @endforeach
                     </tbody>
+                    @else
+                    <tfoot>
+                        <tr>
+                            <td colspan='7' align='center'> <strong>Record Not Available</strong> </td>
+                        </tr>
+                    </tfoot>
+                    @endif
                 </table>
             </div>
         </div>

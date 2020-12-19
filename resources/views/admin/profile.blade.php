@@ -127,7 +127,7 @@
                                 <option value="">-- Select Country --</option>
                                 @if($countries->count() > 0)
                                 @foreach($countries as $country)
-                                <option value="{{$country->countries_id}}"  <?php if(Auth()->user()->country == $country->countries_id) { echo "selected"; } ?>>{{$country->countries_name}}</option>
+                                <option value="{{$country->countries_name}}"  <?php if(Auth()->user()->country == $country->countries_name) { echo "selected"; } ?>>{{$country->countries_name}}</option>
                                         @endforeach
                                         @else
                                         <option value="Data Not Available" >Data Not Available</option>
@@ -144,7 +144,7 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea rows="4" type="text" name="address_1" class="form-control" placeholder="Address">@if(isset(auth()->user()->address_1)){{auth()->user()->address_1}}@endif
+                            <textarea rows="4" type="text" name="address_1" class="form-control" placeholder="Address">@if(isset(auth()->user()->address)){{auth()->user()->address}}@endif
                             </textarea>
                         </div>
                     </div>

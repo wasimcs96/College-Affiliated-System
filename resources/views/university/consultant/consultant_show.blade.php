@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('parentPageTitle', 'University')
-@section('title', 'See University Detail')
+@section('title', 'See Consultant Detail')
 
 @section('content')
 
@@ -11,14 +11,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li> --}}
+
             </ul>
         </div>
         <div class="body">
@@ -30,35 +23,54 @@
 
                     <tr>
                         <th scope="row"> Name</th>
-                        <td>Sufiyan Qureshi</td>
+                        <td>{{$status->consultant->user->first_name}} {{$status->consultant->user->last_name}}</td>
                     </tr>
 
 
                     <tr>
                         <th scope="row"> Mobile No.</th>
-                        <td>1234567890</td>
+                        <td>{{$status->consultant->user->mobile}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">E-mail</th>
-                        <td>email@email.com</td>
+                        <td>{{$status->consultant->user->email}}</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Date</th>
-                        <td>2020/11/30</td>
+                        <th scope="row">Status</th>
+                        <td>@if($status->status == 0)
+                            <span class="btn btn-warning" >Pending</span>
+                            @else
+                            <span class="btn btn-info" >Accepted</span>
+                          @endif</td>
                     </tr>
-
-
+                    <tr>
+                        <th scope="row">Company Name</th>
+                        <td>{{$status->consultant->company_name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Website</th>
+                        <td>{{$status->consultant->website}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Landline_2</th>
+                        <td>{{$status->consultant->user->landline_2}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Address</th>
+                        <td>{{$status->consultant->user->address}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">City</th>
+                        <td>{{$status->consultant->user->city}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Country</th>
+                        <td>{{$status->consultant->user->country}}</td>
+                    </tr>
             </div>
-
-
-
-
-
         {{-- </tr> --}}
-
-
                     </tbody>
 
                 </table>
@@ -69,10 +81,14 @@
                 <div id="dec">
 
                 </div>
+                @if($status->status == 0)
                 {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
-                <a href="{{ route('university.consultant_application') }}"  class="btn btn-warning btn-flat">See Application</a>
+                <a  href="{{route('university.consultant_accept',['id' => $status->id])}}" class="btn btn-success btn-flat" id="accept">Accept</a>
+                <a href="{{route('university.consultants')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>            </div>
+        @else
+        <a href="{{route('university.consultants')}}" id="back" class="btn btn-danger btn-flat">Back</a> </div>
+                @endif
             </div>
-        </div>
     </div>
 </div>
 

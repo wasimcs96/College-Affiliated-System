@@ -23,7 +23,6 @@ class SubAdminProfileController extends Controller
 
     public function profileStore(Request $request)
     {
-        // dd($request);
         $this->validate($request,[
             'first_name'=>'required',
             'last_name'=>'required',

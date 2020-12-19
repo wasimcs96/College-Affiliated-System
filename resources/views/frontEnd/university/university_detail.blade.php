@@ -43,10 +43,8 @@
 
                         </div>
                       <?php
-                      $medias = DB::table('university_media')
-                      ->where('university_id', '=', $university->id)
-
-                      ->get()
+                      $medias = $university->universityMedia;
+                    //   dd($medias);
                 ?>
                         @foreach($medias as $media)
                         <a class="d-none"
@@ -1173,6 +1171,8 @@
                     </div><!-- end single-content-wrap -->
                 </div><!-- end col-lg-8 -->
                 <div class="col-lg-4">
+@if ($university->universityConsultant)
+<?php $universityconsultant=$university->universityConsultant; ?>
 
                     <div class="sidebar single-content-sidebar mb-0">
                         <div class="sidebar-widget single-content-widget">
@@ -1187,14 +1187,14 @@
                               </div>
                             <div class="sidebar-list">
                                 <ul class="list-items">
-
+@foreach($universityconsultant as $consultant)
                                     <li><div class="author-content d-flex">
                                         <div class="author-img">
                                             <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
                                         </div>
                                         <div class="author-bio">
-                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
-                                            <span class="author__meta">Member Since 2017</span>
+                                            <h4 class="author__title"><a href="#">{{$consultant->consultant->company_name}}</a></h4>
+                                            <span class="author__meta">Member Since {{$consultant->consultant->created_at}}</span>
                                             <span class="ratings d-flex align-items-center">
                                                      <i class="la la-star"></i>
                                                      <i class="la la-star"></i>
@@ -1208,91 +1208,8 @@
                                             </div>
                                         </div>
                                     </div></li>
-                                    <li><div class="author-content d-flex">
-                                        <div class="author-img">
-                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                        </div>
-                                        <div class="author-bio">
-                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
-                                            <span class="author__meta">Member Since 2017</span>
-                                            <span class="ratings d-flex align-items-center">
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star-o"></i>
-                                                     <span class="ml-2">305 Reviews</span>
-                                                </span>
-                                                <div>
-                                                    <a href="#" class="btn btn-primary text-light">Book Now</a>
-                                                </div>
-                                        </div>
-                                    </div></li>
-                                    <li><div class="author-content d-flex">
-                                        <div class="author-img">
-                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                        </div>
-                                        <div class="author-bio">
-                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
-                                            <span class="author__meta">Member Since 2017</span>
-                                            <span class="ratings d-flex align-items-center">
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star-o"></i>
-                                                     <span class="ml-2">305 Reviews</span>
-                                                </span>
-                                                <div>
-                                                    <a href="#" class="btn btn-primary text-light">Book Now</a>
-                                                </div>
-                                        </div>
-                                    </div></li>
-                                    <li><div class="author-content d-flex">
-                                        <div class="author-img">
-                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                        </div>
-                                        <div class="author-bio">
-                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
-                                            <span class="author__meta">Member Since 2017</span>
-                                            <span class="ratings d-flex align-items-center">
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star-o"></i>
-                                                     <span class="ml-2">305 Reviews</span>
-                                                </span>
-                                                <div>
-                                                    <a href="#" class="btn btn-primary text-light">Book Now</a>
-                                                </div>
-                                        </div>
-                                    </div></li>
-                                    <li><div class="author-content d-flex">
-                                        <div class="author-img">
-                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                        </div>
-                                        <div class="author-bio">
-                                            <h4 class="author__title"><a href="#">John Wick</a></h4>
-                                            <span class="author__meta">Member Since 2017</span>
-                                            <span class="ratings d-flex align-items-center">
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star-o"></i>
-                                                     <span class="ml-2">305 Reviews</span>
-                                                </span>
-                                                <div>
-                                                    <a href="#" class="btn btn-primary text-light">Book Now</a>
-                                                </div>
-                                        </div>
-                                    </div></li>
-                                    {{-- <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#" ><span>&nbsp;   John Wick</span>
-                                    </a></li>
-                                    <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li>
-                                    <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li>
-                                    <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li> --}}
+@endforeach
+
                                 </ul>
                             </div><!-- end sidebar-list -->
                         </div><!-- end sidebar-widget -->
@@ -1387,6 +1304,7 @@
                             </div>
                         </div><!-- end sidebar-widget --> --}}
                     </div><!-- end sidebar -->
+                    @endif
                 </div><!-- end col-lg-4 -->
             </div><!-- end row -->
         </div><!-- end container -->

@@ -56,14 +56,21 @@ $id = Auth()->user()->id;
              $user->longitude = $data->longitude;
              $user->save();
              $consultant = Consultant::where('user_id',$id)->first();
-
+// dd($request->weekday);
              if ($consultant == null) {
                  # code...
-                 $consultantnew=Consultant::create($request->all());
-                 $consultantnew->save();
-                 $consultantnew->user_id=$id;
-                 $consultant->working_week_days = collect($request->weekday)->implode(',');
-                 $consultantnew->save();
+                 $consultantnew=Consultant::create([
+                    'user_id' => $id,
+                    'working_week_days' => collect($request->weekday)->implode(','),
+                    'company_name' => $request->company_name,
+                    'start_time' => $request->start_time,
+                    'end_time' => $request->end_time,
+                    'website' => $request->website,
+                 ]);
+                //  $consultantnew->save();
+                //  $consultantnew->user_id=$id;
+                //  $consultant->working_week_days = collect($request->weekday)->implode(',');
+                //  $consultantnew->save();
                 }
              else{
                 $consultant->fill($request->all());
