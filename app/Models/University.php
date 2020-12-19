@@ -39,5 +39,5 @@ class University extends Model
     {
         return $this->hasMany(UniversityConsultantClient::class,'university_id');
     }
-    
+
 }

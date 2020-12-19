@@ -1,13 +1,13 @@
 @extends('layout.master')
 @section('parentPageTitle', 'University')
-@section('title', 'See University Detail')
+@section('title', 'See Consultant Detail')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Consultant Requests<small>Consultant Details</small></h2>
+            <h2>My Consultant<small>Consultant Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -30,35 +30,60 @@
 
                     <tr>
                         <th scope="row"> Name</th>
-                        <td>Sufiyan Qureshi</td>
+                        <td>{{$consultant->user->first_name}} {{$consultant->user->last_name}}</td>
                     </tr>
 
 
                     <tr>
                         <th scope="row"> Mobile No.</th>
-                        <td>1234567890</td>
+                        <td>{{$consultant->user->mobile}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">E-mail</th>
-                        <td>email@email.com</td>
+                        <td>{{$consultant->user->email}}</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Date</th>
-                        <td>2020/11/30</td>
+                        <th scope="row">Status</th>
+                        <td>@if($status == 0)
+                            <span class="btn btn-warning" >Pending</span>
+                            @else
+                            <span class="btn btn-info" >Accepted</span>
+                          @endif</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Company Name</th>
+                        <td>{{$consultant->company_name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Website</th>
+                        <td>{{$consultant->website}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Landline_1</th>
+                        <td>{{$consultant->user->landline_1}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Landline_2</th>
+                        <td>{{$consultant->user->landline_2}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Address</th>
+                        <td>{{$consultant->user->address}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">City</th>
+                        <td>{{$consultant->user->city}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Country</th>
+                        <td>{{$consultant->user->country}}</td>
                     </tr>
 
 
             </div>
-
-
-
-
-
         {{-- </tr> --}}
-
-
                     </tbody>
 
                 </table>
@@ -69,10 +94,14 @@
                 <div id="dec">
 
                 </div>
-            <a  href="{{ route('university.my_consultant_application')}}" class="btn btn-success btn-flat" >See Application</a>
-                {{-- <a href="{{route('university.consultants')}}" id="bac" class="btn btn-danger btn-flat">Decline</a> --}}
+                @if($status == 0)
+                {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
+                <a  href="{{route('university.consultant_accept',['id' => $consultant_id])}}" class="btn btn-success btn-flat" id="accept">Accept</a>
+                <a href="{{route('university.consultants')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>            </div>
+        @else
+        <a href="{{route('university.my_consultants')}}" id="back" class="btn btn-danger btn-flat">Back</a> </div>
+                @endif
             </div>
-        </div>
     </div>
 </div>
 

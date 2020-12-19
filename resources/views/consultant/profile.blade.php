@@ -127,7 +127,7 @@
                                 <option value="">-- Select Country --</option>
                                 @if($countries->count() > 0)
                                     @foreach($countries as $country)
-                            <option value="{{$country->countries_id}}"  <?php if(Auth()->user()->country == $country->countries_id) { echo "selected"; } ?>>{{$country->countries_name}}</option>
+                            <option value="{{$country->countries_name}}"  <?php if(Auth()->user()->country == $country->countries_name) { echo "selected"; } ?>>{{$country->countries_name}}</option>
                                     @endforeach
                                 @else
                             <option value="Data Not Available" >Data Not Available</option>
@@ -176,8 +176,13 @@
                             <div class="fancy-checkbox">
                                 <?php
                                 $weekarray = Config::get('define.weekday');
+                                if(isset(auth()->user()->consultant->working_week_days))
+                                {
                                 $setWorkingDays = explode(",", auth()->user()->consultant->working_week_days);
-
+                                }
+                                else {
+                                    $setWorkingDays = [];
+                                }
                             ?>
 
                                   @if(count($weekarray)>0)
