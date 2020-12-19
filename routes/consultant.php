@@ -28,19 +28,33 @@ Route::get('search',function(){
 })->name('consultant.search');
 
 
-/* Booking Section */
-Route::get('bookings',function(){
-    return view('consultant.booking.bookings');
-})->name('consultant.bookings');
+/* Booking Section #######################################*/
 
-Route::get('booking_show',function(){
-  return view('consultant.booking.booking_show');
-})->name('consultant.booking.show');
+// Route::get('bookings/{id}',function(){
+//     return view('consultant.booking.bookings');
+// })->name('consultant.bookings');
+Route::get('consultant/booking',[
+    'uses'=>'ConsultantBookingController@index',
+    'as'=>'consultant.bookings'
+]);
+
+// Route::get('booking_show',function(){
+//   return view('consultant.booking.booking_show');
+// })->name('consultant.booking.show');
+
+Route::get('consultant/booking/show/{id}',[
+    'uses'=>'ConsultantBookingController@show',
+    'as'=>'consultant.booking.show'
+]);
 
 Route::get('booking/application',function(){
     return view('consultant.booking.booking_application');
 })->name('consultant.booking.application');
 
+Route::post('consultant/booking/accept',[
+    'uses'=>'ConsultantBookingController@accept',
+    'as'=>'consultant.booking.accept'
+]);
 
 /* applied Section */
 Route::get('applied',function(){

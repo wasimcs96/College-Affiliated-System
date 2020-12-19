@@ -30,33 +30,33 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>Sufiyan Qureshi</td>
+                        <td>{{$show->user->first_name}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student Address</th>
-                        <td>Sikar,Rajasthan</td>
+                        <td>{{$show->user->address}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>1234567890</td>
+                        <td>{{$show->user->mobile}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>email@email.com</td>
+                        <td>{{$show->user->email}}</td>
                     </tr>
 
 
 
                     <tr>
                         <th scope="row">Student Nationality</th>
-                        <td>Indian</td>
+                        <td>{{$show->user->country}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student University Prefrence-1</th>
-                        <td>RTU</td>
+                        <td>{{$show->enquiry}}</td>
                     </tr>
 
                     <tr>
@@ -70,7 +70,7 @@
                     </tr>
 
 
-
+<input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>
 
 
             </div>
@@ -92,8 +92,12 @@
                 <div id="dec">
 
                 </div>
+                @if($show->status== 0)
                 <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
                 <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                @else
+                <a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>
+                @endif
             </div>
         </div>
     </div>
@@ -128,6 +132,20 @@
 </script>
 <script>
    $("#accept").click(function() {
+    var booking_id = $('input[name="booking_id"]').val();
+    $.ajaxSetup({
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+}
+});
+            $.ajax({
+                type: "post",
+                url: "{{route('consultant.booking.accept')}}",
+                data: {booking_id:booking_id},
+                success: function (result) {
+                    console.log('success');
+                }
+            });
     $("#accept").remove()
     $("#bac").remove()
     $("#res").html("<a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")

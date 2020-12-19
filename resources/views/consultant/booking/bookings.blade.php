@@ -40,25 +40,19 @@
 
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>Sufiyan</td>
-                            <td>1234567890</td>
-                            <td>email@email.com</td>
-                            <td>3</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('consultant.booking.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
-                        </tr>
+                <?php $bookings=auth()->user()->consultant->booking; ?>
+                        @foreach($bookings as $booking)
 
                         <tr>
-                            <td>Qureshi</td>
-                            <td>1234567890</td>
-                            <td>@email.com</td>
-                            <td>3</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('consultant.booking.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td>{{$booking->user->first_name}} </td>
+                            <td>{{$booking->user->mobile}}</td>
+                            <td>{{$booking->user->email}}</td>
+                            <td>{{$booking->enquiry}}</td>
+                            <td>{{$booking->booking_date}}</td>
+                            <td>{{$booking->booking_start_time}}</td>
+                            <td><a href="{{route('consultant.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
+@endforeach
 
 
 
