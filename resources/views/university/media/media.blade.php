@@ -40,8 +40,9 @@
                                   {{-- <div id="lightgallery" class="row clearfix lightGallery">
                                     <div class="col-lg-4 col-md-5 mb-4"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}" alt=""></a></div>
                                   </div> --}}
-
+                                  <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
                                     <div class="col-lg-4 col-md-5 m-b-30"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
+
                                         <div class="card-body">
                                             <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red; position:absolute;   top: 0;
                                                 right: 0;"><i class="fa fa-times" aria-hidden="true"></i></h5></a>
@@ -136,26 +137,32 @@
     });
 </script>
 
-<script>
+{{-- <script>
 $(".deleteRecord").click(function(){
-    var id = $(this).data("id");
-    var token = $("meta[name='csrf-token']").attr("content");
+    // for(int i=0; )
 
-    $.ajax(
-    {
-        url: "{{route('university.media')}}",
-        type: 'delete',
-        data: {
-            "id": id,
-            "_token": token,
-        },
-        success: function (){
-            console.log("it Works");
-        }
-    });
+    foreach($rts as $rt){
+    var media_id = $('input[name="media_id{{$rt->id}}"]').val();
+    }
+console.log(media_id);
+    $.ajaxSetup({
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+}
+});
+            $.ajax({
+                type: "post",
+                url: "{{route('media.destroy')}}",
+                data: {media_id: media_id},
+                success: function (result) {
+                    console.log('success');
+                }
+            });
+
+            document.getElementsByClassName(".deleteRecord").hide;
 
 });
 
-</script>
+</script> --}}
 
 @stop
