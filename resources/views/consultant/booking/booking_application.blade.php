@@ -29,14 +29,18 @@
                             <h2>Form</h2>
                         </div>
                         <div class="body">
-                            <form id="basic-form" method="post" novalidate action="#">
+                            <form action="{{ route('booking.application.store')}}"  id="basic-form" method="POST" novalidate action="#">
+
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" name="name" id="name" required>
+                                    <label> Consultant Name</label>
+                                    <input type="text" class="form-control" name="name" value="{{$book->consultant->company_name}}"id="name" required>
                                 </div>
+                                <input type="text" class="form-control" name="client_id" value="{{$book->client_id}}"id="name" hidden>
+                                <input type="text" class="form-control" name="consultant_id" value="{{$book->consultant_id}}"id="name" hidden>
+                                <input type="text" class="form-control" name="booking_id" value="{{$book->id}}"id="name" hidden>
                                 <div class="form-group">
-                                    <label>Father Name</label>
-                                    <input type="text" class="form-control" name="father_name" id="father_name" required>
+                                    <label>Student Name</label>
+                                    <input type="text" class="form-control" value="{{$book->user->first_name}}" name="father_name" id="father_name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Mother Name</label>
@@ -52,11 +56,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Remarks</label>
-                                    <textarea class="form-control" rows="5" cols="30" required></textarea>
+                                    <textarea class="form-control" rows="5" name="note" cols="30" required></textarea>
                                 </div>
 
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="selectmore">Select Universities and Courses</label>
                                     <table class="table table-bordered" id="dynamic_field">
                                         <tr class="dynamic-added">
@@ -75,7 +79,7 @@
                                             <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i> </button></td>
                                         </tr>
                                     </table>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <label for="documents">Documents</label>
@@ -83,15 +87,15 @@
                                 <br />
                                 <label class="control-inline fancy-checkbox">
                             <div class="dynamic_document" id="dynamic_document">
-                                    <input type="checkbox" name="10marksheet" required data-parsley-check="[1,5]" data-parsley-errors-container="#error-checkbox3">
+                                    <input type="checkbox" name="docs" value="Marksheet-10" required data-parsley-check="[1,5]" data-parsley-errors-container="#error-checkbox3">
                                     <span>Marksheet-10</span>
                                 </label>
                                 <label class="control-inline fancy-checkbox">
-                                    <input type="checkbox" name="aadhar">
+                                    <input type="checkbox" name="docsb" value="Aadhar_Card">
                                     <span>Aadhar Card</span>
                                 </label>
                                 <label class="control-inline fancy-checkbox">
-                                    <input type="checkbox" name="12marksheet">
+                                    <input type="checkbox" name="docsbb" value="Marksheet-12">
                                     <span>Marksheet-12</span>
                                 </label>
 
@@ -102,7 +106,7 @@
 
 
 
-
+                                @csrf
                                 <br>
                                 <button type="submit" class="btn btn-primary">Confirm Booking</button>
                             </form>

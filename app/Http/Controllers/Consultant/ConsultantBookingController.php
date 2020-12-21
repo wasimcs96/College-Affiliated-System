@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Consultant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Application;
+
 
 class ConsultantBookingController extends Controller
 {
@@ -34,4 +36,27 @@ return response('success');
 
 //      return view('consultant.booking.booking_show');
    }
+
+public function application($id)
+{
+    $book = Booking::where('id',$id)->get()->first();
+    return view('consultant.booking.booking_application',compact('book'));
+}
+
+public function store(Request $request){
+
+    $store=Application::create([
+
+        'booking_id' => $request->booking_id,
+        'client_id' => $request->client_id,
+        'consultant_id' => $request->consultant_id,
+        'note' => $request->note,
+        'status' => 0,
+        'documents'=>$request->docsb,
+
+     ]);
+     $store->save();
+     return redirect()->back();
+}
+
 }

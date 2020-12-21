@@ -47,9 +47,19 @@ Route::get('consultant/booking/show/{id}',[
     'as'=>'consultant.booking.show'
 ]);
 
-Route::get('booking/application',function(){
-    return view('consultant.booking.booking_application');
-})->name('consultant.booking.application');
+// Route::get('booking/application',function(){
+//     return view('consultant.booking.booking_application');
+// })->name('consultant.booking.application');
+
+Route::get('consultant/booking/application/{id}',[
+    'uses'=>'ConsultantBookingController@application',
+    'as'=>'consultant.booking.application'
+]);
+
+Route::post('booking/application/store',[
+    'uses'=>'ConsultantBookingController@store',
+    'as'=>'booking.application.store'
+]);
 
 Route::post('consultant/booking/accept',[
     'uses'=>'ConsultantBookingController@accept',
