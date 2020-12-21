@@ -60,14 +60,17 @@ if ($request->link != null) {
 
 public function destroy($id){
 
-    // University::find($id)->delete($id);
-    $university = UniversityMedia::where('id',$id)->get()->first();
+    UniversityMedia::find($id)->delete($id);
+    // $university = UniversityMedia::where('id',$request->media_id)->get()->first();
     // dd($university->toArray());
-    $university->delete();
+    // $university->delete();
+
     // return response()->json([
     //     'success' => 'image deleted successfully!'
     // ]);
-return redirect()->route('university.media')->with ('Success','Image deleted Successfully');
+//     $university->save();
+// return response('success');
+ return redirect()->back()->with ('success','Image deleted Successfully');
 }
 
 

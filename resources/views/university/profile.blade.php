@@ -162,7 +162,7 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea rows="4" name="address"  type="text" class="form-control" placeholder="Address">@if(isset(auth()->user()->address_1)){{auth()->user()->address_1}}@endif</textarea>
+                            <textarea rows="4" name="address"  type="text" class="form-control" placeholder="Address">@if(isset(auth()->user()->address)){{auth()->user()->address}}@endif</textarea>
                         </div>
                     </div>
 
