@@ -2,7 +2,10 @@
 // dd(Auth::check());
 // Auth::routes();
 // Route::middleware(['auth'])->group(function () {
-    Route::group(['prefix'=>'admin', 'middleware' => 'role:superadmin'], function () {
+ use Illuminate\Support\Facades\Route;
+//use Illuminate\Routing\Route;
+
+Route::group(['prefix'=>'admin', 'middleware' => 'role:superadmin'], function () {
  Route::get('dash', function(){
 
     return "admin";
@@ -175,6 +178,51 @@ Route::get('profile',[
      'uses' => 'AdminProfileController@profileStore',
      'as' => 'admin.profile.update'
  ]);
+
+
+ /* Packages */
+
+ Route::get('packages',[
+    'uses' => 'AdminPackagesController@index',
+    'as' => 'admin.packages'
+]);
+
+ Route::get('packages/create',[
+    'uses' => 'AdminPackagesController@create',
+    'as' => 'admin.packages.create'
+]);
+
+Route::get('packages/show/{id}',[
+    'uses' => 'AdminPackagesController@show',
+    'as' => 'admin.packages.show'
+]);
+
+Route::get('packages/add',[
+    'uses' => 'AdminPackagesController@add',
+    'as' => 'admin.packages.add'
+]);
+
+Route::post('packages/store',[
+    'uses' => 'AdminPackagesController@store',
+    'as' => 'admin.packages.store'
+]);
+
+
+Route::get('packages/edit/{id}',[
+    'uses' => 'AdminPackagesController@edit',
+    'as' => 'admin.packages.edit'
+]);
+
+Route::post('packages/update/{id}',[
+    'uses' => 'AdminPackagesController@update',
+    'as' => 'admin.packages.update'
+]);
+
+Route::get('packages/delete/{id}', [
+    'uses' => 'AdminPackagesController@destroy',
+    'as' => 'admin.packages.delete'
+]);
+
 
 });
 
