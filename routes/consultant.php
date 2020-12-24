@@ -150,5 +150,11 @@ Route::get('profile',[
      'as' => 'consultant.profile.update'
  ]);
 
+ /* Subscription */
+Route::get('subscription', [
+    'uses' => 'ConsultantSubscriptionController@index',
+    'as' => 'consultant.subscription'
+]);
+
 
 });

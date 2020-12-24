@@ -223,6 +223,12 @@ Route::get('packages/delete/{id}', [
     'as' => 'admin.packages.delete'
 ]);
 
+/* Subscription */
+Route::get('subscription', [
+    'uses' => 'AdminSubscriptionController@index',
+    'as' => 'admin.subscription'
+]);
+
 
 });
 

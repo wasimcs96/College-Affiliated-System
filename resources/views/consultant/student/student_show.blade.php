@@ -126,7 +126,7 @@
         });
     });
 </script>
-<script>
+{{-- <script>
    $("#accept").click(function() {
     $("#accept").remove()
     $("#bac").remove()
@@ -135,5 +135,5 @@
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
 
-</script>
+</script> --}}
 @stop
