@@ -149,5 +149,11 @@ Route::get('media/delete/{id}',[
 
 ]);
 
+/* Subscription */
+Route::get('subscription', [
+    'uses' => 'UniversitySubscriptionController@index',
+    'as' => 'university.subscription'
+]);
+
 
 });
