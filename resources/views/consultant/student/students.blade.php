@@ -49,7 +49,7 @@
                             <td>3</td>
                             <td>2020/30/11</td>
                             <td> 10:30 A.M. </td>
-                            <td><a href="{{route('consultant.booking.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td><a href="{{route('consultant.student.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 
                         <tr>
