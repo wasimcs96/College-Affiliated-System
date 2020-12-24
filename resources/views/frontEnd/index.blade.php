@@ -617,7 +617,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="section-heading">
-                    <h4>University</h4>
+                    <h4>Featured University</h4>
                     <hr>
                     {{-- <p class="sec__desc padding-top-30px">
                         Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero
@@ -625,17 +625,14 @@
                     <div class="btn-box padding-top-35px">
                         <a href="#" class="theme-btn">Explore All</a>
                     </div> --}}
-                    <?php
-                    $universities = DB::table('universities') ->get();
-                    ?>
-
-
-
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-
                         <ol class="carousel-indicators">
                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         </ol>
+                        <div class="carousel-inner">
+                            <?php
+                                $universities = DB::table('universities') ->get();
+                                ?>
 
                             @foreach($universities as $key => $university)
                             {{-- {{dd($university->id)}} --}}
@@ -662,23 +659,18 @@
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="sr-only">Next</span>
                         </a>
-
                       </div>
-
                 </div><!-- end section-heading -->
-
             </div><!-- end col-lg-4 -->
             <div class="col-lg-6">
                 <div class="section-heading ">
 <?php $consultants = DB::table('consultants')->get();
 ?>
-                    <h4>Consultants</h4>
+                    <h4> Featured Consultants</h4>
                     <hr>
-
+                    @foreach($consultants as $consultant)
                     <div class="testimonial-carousel carousel-action">
-                        @foreach($consultants as $consultant)
                         <div class="testimonial-card">
-
                             <div class="author-content d-flex align-items-center">
                                 <div class="author-img">
                                     {{-- @php
@@ -703,11 +695,11 @@
                             </div>
 
                         </div><!-- end testimonial-card -->
-                        @endforeach
+
 
 
                     </div><!-- end testimonial-carousel -->
-
+                    @endforeach
             </div><!-- end col-lg-8 -->
         </div>
         </div><!-- end row -->

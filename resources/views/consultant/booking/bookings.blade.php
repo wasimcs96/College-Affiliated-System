@@ -38,8 +38,10 @@
                     <tfoot>
 
                     </tfoot>
+                    <?php $bookings=auth()->user()->consultant->booking; ?>
+                    @if($bookings->count() > 0)
                     <tbody>
-                <?php $bookings=auth()->user()->consultant->booking; ?>
+
                         @foreach($bookings as $booking)
 
                         <tr>
@@ -47,7 +49,7 @@
                             <td>{{$booking->user->mobile}}</td>
                             <td>{{$booking->user->email}}</td>
                             <td>{{$booking->booking_date}}</td>
-                            <td>{{$booking->booking_start_time}}</td>
+                            <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td>
                             <td>@if($booking->status==0)<div class="btn btn-warning">Pending</div>@endif
                                 @if($booking->status==1)<div class="btn btn-success">Accepted</div>@endif
                                 @if($booking->status==2)<div class="btn btn-danger">Rejected</div>@endif
@@ -56,9 +58,10 @@
                             <td><a href="{{route('consultant.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 @endforeach
+@else
 
-
-
+Records not available
+@endif
                     </tbody>
                 </table>
             </div>

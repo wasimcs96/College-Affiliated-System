@@ -29,38 +29,38 @@
                                 Name</b></th>
                             <th><b> Mobile </b></th>
                             <th><b> E-mail</b></th>
-                            <th><b> Universities</b></th>
-                            <th><b> Date</b></th>
-                            <th><b> Remark</b></th>
+                            {{-- <th><b> Universities</b></th> --}}
+                            {{-- <th><b> Date</b></th> --}}
+                            <th><b> Status</b></th>
                             <th><b> Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
+                    <?php $applications=auth()->user()->consultant->application; ?>
+                    @if($applications->count() > 0)
                     <tbody>
-                        <tr>
-                            <td>Sufiyan</td>
-                            <td>1234567890</td>
-                            <td>email@email.com</td>
-                            <td>3</td>
-                            <td>2020/30/11</td>
-                            <td> Applied </td>
-                            <td><a href="{{route('consultant.application.create')}}" class="btn btn-success"><i class="fa fa-edit"></i></a></td>
-                        </tr>
+
+                        @foreach($applications as $application)
 
                         <tr>
-                            <td>Qureshi</td>
-                            <td>1234567890</td>
-                            <td>@email.com</td>
-                            <td>3</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('consultant.application.create')}}" class="btn btn-success"><i class="fa fa-edit"></i></a></td>
+                            <td>{{$application->user->first_name}} </td>
+                            <td>{{$application->user->mobile}}</td>
+                            <td>{{$application->user->email}}</td>
+                            {{-- <td>{{$application->consultant->university->university_name}}</td> --}}
+                            {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
+                            <td>@if($application->status==0)<div class="btn btn-warning">In Progress</div>@endif
+                                @if($application->status==1)<div class="btn btn-danger">Closed</div>@endif
+
+                            </td>
+                            <td><a href="{{route('consultant.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
+@endforeach
+@else
 
-
-
+Records not available
+@endif
                     </tbody>
                 </table>
             </div>

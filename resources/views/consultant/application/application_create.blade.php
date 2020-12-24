@@ -33,31 +33,31 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>Sufiyan Qureshi</td>
+                        <td>{{$application->booking->user->first_name}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student Address</th>
-                        <td>Sikar,Rajasthan</td>
+                        <td>{{$application->booking->user->address}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>1234567890</td>
+                        <td>{{$application->booking->user->mobile}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>email@email.com</td>
+                        <td>{{$application->booking->user->email}}</td>
                     </tr>
 
 
 
                     <tr>
-                        <th scope="row">Student Nationality</th>
-                        <td>Indian</td>
+                        <th scope="row">Student Country</th>
+                        <td>{{$application->booking->user->country}}</td>
                     </tr>
 
-                    <tr>
+                    {{-- <tr>
                         <th scope="row">Student University Prefrence-1</th>
                         <td>RTU</td>
                     </tr>
@@ -70,14 +70,14 @@
                     <tr>
                         <th scope="row">Student University Prefrence-3</th>
                         <td>CTU</td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <th scope="row">Date</th>
-                        <td>12/12/2020</td>
+                        <td>{{$application->booking->booking_date}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Time</th>
-                        <td>12:12:12 P.M.</td>
+                        <th scope="row">Time-Slot</th>
+                        <td>{{$application->booking->booking_start_time}}-{{$application->booking->booking_end_time}}</td>
                     </tr>
 
 
@@ -137,27 +137,27 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>Sufiyan Qureshi</td>
+                        <td>{{$application->user->first_name}} {{$application->user->last_name}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>1234567890</td>
+                        <td>{{$application->user->mobile}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>email@email.com</td>
+                        <td>{{$application->user->email}}</td>
                     </tr>
 
 
 
                     <tr>
-                        <th scope="row">Student Nationality</th>
-                        <td>Indian</td>
+                        <th scope="row">Student Country</th>
+                        <td>{{$application->user->country}}</td>
                     </tr>
 
-                    <tr>
+                    {{-- <tr>
                         <th scope="row">Student University Prefrence-1</th>
                         <td>RTU</td>
                     </tr>
@@ -170,8 +170,8 @@
                     <tr>
                         <th scope="row">Student University Prefrence-3</th>
                         <td>CTU</td>
-                    </tr>
-                <tr >
+                    </tr> --}}
+          <!--      <tr >
              <th scope="row">Documents</th>
             <td > Marksheet-10
                 {{-- <button type="button" name="add_document" id="add_document" class="btn btn-primary btn-m ml-3" data-toggle="modal" data-target="#documentModal"><i class="fa fa-plus"></i> </button> --}}
@@ -194,7 +194,7 @@
            <td > Domicile certificate
                {{-- <button type="button" name="add_document" id="add_document" class="btn btn-primary btn-m ml-3" data-toggle="modal" data-target="#documentModal"><i class="fa fa-plus"></i> </button> --}}
            </td>
-               </tr>
+               </tr>  -->
        </div>
 
 
@@ -220,8 +220,8 @@
                             <label for="documents">Documents</label>
 
                         <br />
-                        <label class="control-inline fancy-checkbox">
                     <div class="dynamic_document" id="dynamic_document">
+                        <label class="control-inline fancy-checkbox">
                             <input type="checkbox" name="10marksheet" required data-parsley-check="[1,5]" data-parsley-errors-container="#error-checkbox3" checked>
                             <span>Marksheet-10</span>
                         </label>
@@ -283,11 +283,11 @@
                                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                                     <li class="dropdown">
                                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                                        <ul class="dropdown-menu">
+                                        {{-- <ul class="dropdown-menu">
                                             <li><a href="javascript:void(0);">Action</a></li>
                                             <li><a href="javascript:void(0);">Another Action</a></li>
                                             <li><a href="javascript:void(0);">Something else</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                 </ul>
                             </div>

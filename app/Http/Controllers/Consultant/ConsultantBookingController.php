@@ -27,12 +27,12 @@ class ConsultantBookingController extends Controller
 
    {
 // dd($request->all());
-       $booking = Booking::find($request->booking_id);
+        $booking = Booking::find($request->booking_id);
     //    dd($booking);
 
         $booking->status = 1;
-$booking->save();
-return response('success');
+        $booking->save();
+        return response('success');
 
 //      return view('consultant.booking.booking_show');
    }
@@ -43,8 +43,12 @@ public function application($id)
     return view('consultant.booking.booking_application',compact('book'));
 }
 
-public function store(Request $request){
 
+public function applicationStore(Request $request){
+// dd(json_encode(collect($request->document)));
+// dd(collect($request->document->toJson()));
+ dd(json_encode($request->document));
+//  $json = json_encode($request->document);
     $store=Application::create([
 
         'booking_id' => $request->booking_id,
@@ -52,7 +56,8 @@ public function store(Request $request){
         'consultant_id' => $request->consultant_id,
         'note' => $request->note,
         'status' => 0,
-        'documents'=>$request->docsb,
+        'documents'=> $json,
+
 
      ]);
      $store->save();
