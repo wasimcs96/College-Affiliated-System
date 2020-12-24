@@ -33,7 +33,7 @@ Route::get('search',function(){
 // Route::get('bookings/{id}',function(){
 //     return view('consultant.booking.bookings');
 // })->name('consultant.bookings');
-Route::get('consultant/booking',[
+Route::get('booking',[
     'uses'=>'ConsultantBookingController@index',
     'as'=>'consultant.bookings'
 ]);
@@ -42,7 +42,7 @@ Route::get('consultant/booking',[
 //   return view('consultant.booking.booking_show');
 // })->name('consultant.booking.show');
 
-Route::get('consultant/booking/show/{id}',[
+Route::get('show/{id}',[
     'uses'=>'ConsultantBookingController@show',
     'as'=>'consultant.booking.show'
 ]);
@@ -51,7 +51,7 @@ Route::get('consultant/booking/show/{id}',[
 //     return view('consultant.booking.booking_application');
 // })->name('consultant.booking.application');
 
-Route::get('consultant/booking/application/{id}',[
+Route::get('booking/application/{id}',[
     'uses'=>'ConsultantBookingController@application',
     'as'=>'consultant.booking.application'
 ]);
@@ -61,7 +61,7 @@ Route::post('booking/application/store',[
     'as'=>'booking.application.store'
 ]);
 
-Route::post('consultant/booking/accept',[
+Route::post('booking/accept',[
     'uses'=>'ConsultantBookingController@accept',
     'as'=>'consultant.booking.accept'
 ]);

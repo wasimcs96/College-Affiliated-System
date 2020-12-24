@@ -44,106 +44,8 @@
         <section class="booking-area padding-top-100px padding-bottom-70px">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8">
-                        <div class="form-box">
-                            <div class="form-title-wrap">
-                                <h3 class="title">Your Personal Information</h3>
-                            </div><!-- form-title-wrap -->
-                            <div class="form-content">
-                                <div class="contact-form-action">
-                                    <form method="post">
-                                        <div class="row">
-                                            <div class="col-lg-6 responsive-column">
-                                                <div class="input-box">
-                                                    <label class="label-text">First Name</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-user form-icon"></span>
-                                                        <input class="form-control" type="text" name="text" placeholder="First name">
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-6 -->
-                                            <div class="col-lg-6 responsive-column">
-                                                <div class="input-box">
-                                                    <label class="label-text">Last Name</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-user form-icon"></span>
-                                                        <input class="form-control" type="text" name="text" placeholder="Last name">
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-6 -->
-                                            <div class="col-lg-6 responsive-column">
-                                                <div class="input-box">
-                                                    <label class="label-text">Your Email</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-envelope-o form-icon"></span>
-                                                        <input class="form-control" type="email" name="email" placeholder="Email address">
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-6 -->
-                                            <div class="col-lg-6 responsive-column">
-                                                <div class="input-box">
-                                                    <label class="label-text">Phone Number</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-phone form-icon"></span>
-                                                        <input class="form-control" type="text" name="text" placeholder="Phone Number">
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-6 -->
-                                            <div class="col-lg-12">
-                                                <div class="input-box">
-                                                    <label class="label-text">Address Line</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-map-marked form-icon"></span>
-                                                        <input class="form-control" type="text" name="text" placeholder="Address line">
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-12 -->
-                                            <div class="col-lg-6 responsive-column">
-                                                <div class="input-box">
-                                                    <label class="label-text">Country</label>
-                                                    <div class="form-group">
-                                                        <div class="select-contain w-auto">
-                                                            <select class="select-contain-select">
-                                                                <option value="select-country">Select country</option>
-                                                                @foreach($countries as $country)
-                                                                   <option value="{{$country->countries_name}}">{{$country->countries_name}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-6 -->
-                                            {{-- <div class="col-lg-6 responsive-column">
-                                                <div class="input-box">
-                                                    <label class="label-text">Country Code</label>
-                                                    <div class="form-group">
-                                                        <div class="select-contain w-auto">
-                                                            <select class="select-contain-select">
-                                                                <option value="country-code">Select country code</option>
-                                                                <option value="1">United Kingdom (+44)</option>
-                                                                <option value="2">United States (+1)</option>
-                                                                <option value="3">Bangladesh (+880)</option>
-                                                                <option value="4">Brazil (+55)</option>
-                                                                <option value="5">China (+86)</option>
-                                                                <option value="6">India (+91)</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-6 --> --}}
-                                            <div class="col-lg-12">
-                                                <div class="input-box">
-                                                    <div class="custom-checkbox mb-0">
-                                                        <input type="checkbox" id="receiveChb">
-                                                        <label for="receiveChb">I want to receive Notification</label>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-12 -->
-                                        </div>
-                                    </form>
-                                </div><!-- end contact-form-action -->
-                            </div><!-- end form-content -->
-                        </div><!-- end form-box -->
+                    <div class="col-lg-12">
+                       <!-- end form-box -->
                         <div class="form-box">
                             {{-- <div class="form-title-wrap">
                                 <h3 class="title">Your Card Information</h3>
@@ -159,7 +61,11 @@
                                                         <div class="input-box">
                                                             <label class="label-text">University  Name</label>
                                                             <div class="form-group">
-                                                                <input class="form-control" type="text" name="text" placeholder="University name">
+                                                       <?php $univers=$consultant->consultantUniversity?>
+                                                                <input class="form-control" value="
+                                                                @foreach($univers as $univer)
+                                                                {{$univer->university->university_name}}
+                                                                @endforeach"type="text" name="text" placeholder="University name">
                                                             </div>
                                                         </div>
                                                     </div><!-- end col-lg-6 -->
@@ -195,20 +101,71 @@
                                                             </table>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                    <div class="col-lg-6 col-md-12">
+                                                        <div class="input-box">
+                                                            <label class="label-text">Date</label>
+                                                            <div class="form-group">
+                                                                <span class="las la-calendar-alt form-icon"></span>
+                                                                <input class="form-control"   id="date" name="text" placeholder="Date">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="start_time">Select Booking Time</label>
+                                                            <?php get_times( $default = '00:00', $interval = '+30 minutes' ); ?>
+                                                            <select class="form-control" id="starttime" name="start_time" style="height: 50px;" >
+                                                            <option value="">Select Start Time</option>
+                                                           {{$times=$consultant->consultantSlots}}
+
+                                                        </select>
+                                                        </div><br><br>
+                                                        <input type="text" id="cid" name="cid" value="{{$consultant->id}}" hidden>
+                                                    </div>
+                                                </div>
+
+
+                                                          <!-- Function to call time -->
+                                                          <?php
+
+                                                          function get_times( $default = '00:00', $interval = '+30 minutes' ) {
+                                                              $output = '';
+                                                              $output1 = '';
+                                                              $current = strtotime( '00:00' );
+                                                              $end = strtotime( '23:59' );
+
+                                                              while( $current <= $end ) {
+                                                                  $time = date( 'H:i:s', $current );
+                                                                  $sel = ( $time == $default ) ? ' selected' : '';
+                                                                  $output .= "<option value=\"{$time}\"{$sel} >" . date( 'H:i ', $current ) . '</option>';
+                                                                  $current = strtotime( $interval, $current );
+                                                              }
+                                                              return $output;
+                                                          }
+                                                          ?>
                                                     <!-- end col-lg-6 -->
                                                   <!-- end col-lg-6 -->
                                                     <!-- end col-lg-6 -->
                                                     <!-- end col-lg-12 -->
                                                     <div class="col-lg-12">
+                                                        @if(auth()->user())
                                                         <div class="btn-box">
                                                             <button class="theme-btn" type="submit">Confirm Booking</button>
                                                         </div>
+
+                                                        @endif
                                                     </div><!-- end col-lg-12 -->
                                                 </div>
                                             </form>
+                                            @if(!auth()->user())
+                                            <div class="btn-box">
+                                                <button class="theme-btn" data-toggle="modal" data-target="#loginPopupForm">Confirm Booking</button>
+                                            </div>
+                                            @endif
                                         </div><!-- end contact-form-action -->
                                     </div><!-- end tab-pane-->
-                                    <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                                    {{-- <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
                                         <div class="contact-form-action">
                                             <form method="post">
                                                 <div class="row">
@@ -238,8 +195,8 @@
                                                 </div>
                                             </form>
                                         </div><!-- end contact-form-action -->
-                                    </div><!-- end tab-pane-->
-                                    <div class="tab-pane fade" id="payoneer" role="tabpanel" aria-labelledby="payoneer-tab">
+                                    </div><!-- end tab-pane--> --}}
+                                    {{-- <div class="tab-pane fade" id="payoneer" role="tabpanel" aria-labelledby="payoneer-tab">
                                         <div class="contact-form-action">
                                             <form method="post">
                                                 <div class="row">
@@ -269,7 +226,7 @@
                                                 </div>
                                             </form>
                                         </div><!-- end contact-form-action -->
-                                    </div><!-- end tab-pane-->
+                                    </div><!-- end tab-pane--> --}}
                                 </div><!-- end tab-content -->
                             </div><!-- end form-content -->
                         </div><!-- end form-box -->
@@ -347,7 +304,52 @@
 @endsection
 
 @section('per_page_script')
+{{-- <script type="text/javascript">
 
+    function setEndTime(start_time){
+        if(start_time){
+          $("#endtime").prop('disabled', false);
+
+          $('#endtime option').filter(function() {
+              return $(this).val() <= start_time;
+          }).prop('disabled', true);
+        }else{
+          $("#endtime").prop('disabled', true);
+        }
+    }
+    </script> --}}
+<script>
+    $("#date").datepicker({ onSelect: function(dateText) {
+
+
+        var select = $(this).attr("id");
+   var value = this.value;
+    var consultantid= $('#cid').val();
+//    console.log(dependent);
+$.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+   $.ajax({
+    url:"{{ route('slots.avail') }}",
+    method:"POST",
+    data:{select:select,consultantid:consultantid,value:value},
+    success:function(result)
+    {
+        $('#starttime').html(result);
+
+    }
+
+   })
+
+        console.log("Selected date: " + dateText + "; input's current value: " + this.value);
+
+
+
+
+         } });
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
       var postURL = "<?php echo url('addmore'); ?>";

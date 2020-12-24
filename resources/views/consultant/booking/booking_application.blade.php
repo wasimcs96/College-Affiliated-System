@@ -42,7 +42,7 @@
                                     <label>Student Name</label>
                                     <input type="text" class="form-control" value="{{$book->user->first_name}}" name="father_name" id="father_name" required>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Mother Name</label>
                                     <input type="text" class="form-control" name="mother_name" id="mother_name" required>
                                 </div>
@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <label>Mobile</label>
                                     <input type="number" class="form-control" name="mobile" id="mobile" required>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label>Remarks</label>
                                     <textarea class="form-control" rows="5" name="note" cols="30" required></textarea>

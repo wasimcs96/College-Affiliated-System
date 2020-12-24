@@ -634,35 +634,31 @@
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
 
                         <ol class="carousel-indicators">
-                          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         </ol>
 
-                        <div class="carousel-inner">
-                            @foreach($universities as $university)
-                                            {{-- {{dd($university->id)}} --}}
-                                    <div class="carousel-item active">
+                            @foreach($universities as $key => $university)
+                            {{-- {{dd($university->id)}} --}}
+                            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
 
-                                            <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="...">
-                                            <div class="carousel-caption d-none d-md-block">
-                                                       <h5>
-                                                    {{-- {{$university->university_name}} --}}
-                                                       </h5>
-                                                <p><a class="btn btn-primary" href="{{route('university_detail',['id'=>$university->id])}}" role="button">Visit University</a>
-                                                </p>
-                                            </div>
-                                    </div>
-                            @endforeach
+                            <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>
+                                  {{-- {{$university->university_name}} --}}
+                            </h5>
+                            <p><a class="btn btn-primary" href="{{route('university_detail',['id'=>$university->id])}}" role="button">Visit University</a>
+                            </p>
+                            </div>
+                        </div>
+                          @endforeach
 
 
                         </div>
-
-                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="sr-only">Next</span>
                         </a>

@@ -1,21 +1,21 @@
 @extends('frontEnd.layout.master')
 @section('content')
 
-<section class="breadcrumb-top-bar">
+{{-- <section class="breadcrumb-top-bar">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-list breadcrumb-top-list">
                     <ul class="list-items d-flex justify-content-start">
                         <li><a href="index.html">Home</a></li>
-                        <li>RTU, Rajasthan</li>
+                        <li></li>
                         <li>University of Technology </li>
                     </ul>
                 </div><!-- end breadcrumb-list -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section><!-- end breadcrumb-top-bar -->
+</section><!-- end breadcrumb-top-bar --> --}}
 <!-- ================================
     END BREADCRUMB TOP BAR
 ================================= -->
@@ -23,7 +23,8 @@
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
-<section class="breadcrumb-area bread-bg-4 py-0">
+
+    <section class="breadcrumb-area bread-bg-4 py-0" style="background-image: url('{{asset($university->user->profile_image)}}');">
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row">
@@ -34,7 +35,7 @@
                                data-speed="700">
                                 <i class="la la-video-camera mr-2"></i>Video
                             </a>
-                            <a class="theme-btn" data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
+                            <a class="theme-btn" data-src="{{asset($university->user->profile_image)}}"
                                data-fancybox="gallery"
                                data-caption="Showing image - 01"
                                data-speed="700">
@@ -607,20 +608,24 @@
                         </div><!-- end itinerary -->
                         <div  class="page-scroll">
                             {{-- <!-- end single-content-item --> --}}
+                            @if ($university->universityConsultant)
+                            <?php $universityconsultant=$university->universityConsultant; ?>
                             <div class="section-block" id="staterooms"></div>
                             <div class="single-content-item padding-top-40px padding-bottom-40px">
                                 <h2 class="title font-size-23" >Select a Consutant </h2>
+                                @foreach($universityconsultant as $consultant)
                                 <div class="cabin-type padding-top-30px">
                                     <div class="cabin-type-item d-flex pt-4">
                                         <div class="cabin-type-img flex-shrink-0">
-                                            <img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}" alt="">
+                                            <img    style=" width: 152px;
+                                            height: 115px;" src="{{asset($consultant->consultant->user->profile_image)}}" alt="">
                                         </div>
                                        <div class="cabin-type-detail">
-                                            <h3 class="title">Kurdoglu</h3>
+                                            <h3 class="title">{{$consultant->consultant->company_name}}</h3>
                                            <ul class="list-items pt-2 pb-2">
                                                <li><span>Admission Done:</span>139</li>
                                                <li><span>affiliated since:</span>2000</li>
-                                               <li><span>Location:</span>Dalal street New delhi.</li>
+                                        <li><span>Location:</span>{{$consultant->consultant->user->address}}.</li>
                                            </ul>
                                        </div>
                                        <div class="cabin-price">
@@ -637,11 +642,13 @@
                                            </ul>
                                            <div class="custom-checkbox mb-0">
                                                <input type="checkbox" id="chb2">
-                                           <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
+
+                                           <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
                                        </div>
                                     </div><!-- end cabin-type-item -->
                                 </div><!-- end cabin-type -->
-                                <div class="cabin-type padding-top-30px">
+                                @endforeach
+                                {{-- <div class="cabin-type padding-top-30px">
                                     <div class="cabin-type-item d-flex pt-4">
                                         <div class="cabin-type-img flex-shrink-0">
                                             <img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}" alt="">
@@ -671,8 +678,8 @@
                                             <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
-                                </div><!-- end cabin-type -->
-                                <div class="cabin-type padding-top-30px">
+                                </div><!-- end cabin-type --> --}}
+                                {{-- <div class="cabin-type padding-top-30px">
 
                                     <div class="cabin-type-item d-flex pt-4">
                                         <div class="cabin-type-img flex-shrink-0">
@@ -703,8 +710,8 @@
                                             <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
-                                </div><!-- end cabin-type -->
-                                <div class="cabin-type padding-top-30px">
+                                </div><!-- end cabin-type --> --}}
+                                {{-- <div class="cabin-type padding-top-30px">
                                     <div class="cabin-type-item d-flex pt-4">
                                         <div class="cabin-type-img flex-shrink-0">
                                             <img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}" alt="">
@@ -734,12 +741,13 @@
                                             <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
-                                </div><!-- end cabin-type -->
-                            </div><!-- end single-content-item -->
-                            <p class="font-size-14 line-height-26 padding-bottom-40px"><strong class="text-black">Please note:</strong> Cabin photos shown are samples only. Actual cabin details may vary.</p>
+                                </div><!-- end cabin-type --> --}}
+                            </div>
+                            @endif<!-- end single-content-item -->
+                            <p class="font-size-14 line-height-26 padding-bottom-40px"><strong class="text-black">Please note:</strong>Above Consultants are affiliated to this University.</p>
                             <div class="section-block"></div>
                         </div><!-- end staterooms -->
-                        <div id="faq" class="page-scroll">
+                        {{-- <div id="faq" class="page-scroll">
                             <div class="single-content-item padding-top-40px padding-bottom-40px">
                                 <h3 class="title font-size-20">Policies</h3>
                                 <div class="accordion accordion-item padding-top-30px" id="accordionExample2">
@@ -833,20 +841,20 @@
                                 </div>
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
-                        </div><!-- end faq -->
+                        </div><!-- end faq --> --}}
                         <div id="reviews" class="page-scroll">
                             <div class="single-content-item padding-top-40px padding-bottom-40px">
                                 <h3 class="title font-size-20">Reviews</h3>
                                 <div class="review-container padding-top-30px">
                                     <div class="row align-items-center">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-8">
                                             <div class="review-summary">
                                                 <h2>4.5<span>/5</span></h2>
                                                 <p>Excellent</p>
                                                 <span>Based on 4 reviews</span>
                                             </div>
                                         </div><!-- end col-lg-4 -->
-                                        <div class="col-lg-8">
+                                        {{-- <div class="col-lg-8">
                                             <div class="review-bars">
                                                 <div class="row">
                                                     <div class="col-lg-6">
@@ -916,7 +924,7 @@
                                                     </div><!-- end col-lg-6 -->
                                                 </div><!-- end row -->
                                             </div>
-                                        </div><!-- end col-lg-8 -->
+                                        </div><!-- end col-lg-8 --> --}}
                                     </div>
                                 </div>
                             </div><!-- end single-content-item -->
@@ -1171,10 +1179,11 @@
                     </div><!-- end single-content-wrap -->
                 </div><!-- end col-lg-8 -->
                 <div class="col-lg-4">
-@if ($university->universityConsultant)
-<?php $universityconsultant=$university->universityConsultant; ?>
+
 
                     <div class="sidebar single-content-sidebar mb-0">
+    @if ($university->universityConsultant)
+                        <?php $universityconsultant=$university->universityConsultant; ?>
                         <div class="sidebar-widget single-content-widget">
                             <h3 class="title stroke-shape">Featured Consultant</h3>
                             <!-- Example split danger button -->
@@ -1190,7 +1199,7 @@
 @foreach($universityconsultant as $consultant)
                                     <li><div class="author-content d-flex">
                                         <div class="author-img">
-                                            <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
+                                            <a href="#"><img src="{{asset($consultant->consultant->user->profile_image)}}" alt="testimonial image"></a>
                                         </div>
                                         <div class="author-bio">
                                             <h4 class="author__title"><a href="#">{{$consultant->consultant->company_name}}</a></h4>
@@ -1213,6 +1222,7 @@
                                 </ul>
                             </div><!-- end sidebar-list -->
                         </div><!-- end sidebar-widget -->
+                        @endif
                         <div class="sidebar-widget single-content-widget">
                             <h3 class="title stroke-shape">Enquiry Form</h3>
                             <div class="enquiry-forum">
@@ -1304,7 +1314,7 @@
                             </div>
                         </div><!-- end sidebar-widget --> --}}
                     </div><!-- end sidebar -->
-                    @endif
+                    {{-- @endif --}}
                 </div><!-- end col-lg-4 -->
             </div><!-- end row -->
         </div><!-- end container -->
