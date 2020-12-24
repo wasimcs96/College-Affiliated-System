@@ -29,10 +29,9 @@
                                 Name</b></th>
                             <th><b> Mobile </b></th>
                             <th><b> E-mail</b></th>
-                            <th><b> Universities</b></th>
                             <th><b>Date</b></th>
-                            <th><b>
-                                Time</b></th>
+                            <th><b>Time Slot</b></th>
+                            <th><b> Status</b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -47,9 +46,13 @@
                             <td>{{$booking->user->first_name}} </td>
                             <td>{{$booking->user->mobile}}</td>
                             <td>{{$booking->user->email}}</td>
-                            <td>{{$booking->enquiry}}</td>
                             <td>{{$booking->booking_date}}</td>
                             <td>{{$booking->booking_start_time}}</td>
+                            <td>@if($booking->status==0)<div class="btn btn-warning">Pending</div>@endif
+                                @if($booking->status==1)<div class="btn btn-success">Accepted</div>@endif
+                                @if($booking->status==2)<div class="btn btn-danger">Rejected</div>@endif
+                                @if($booking->status==3)<div class="btn btn-primary">Walking</div>@endif
+                            </td>
                             <td><a href="{{route('consultant.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 @endforeach

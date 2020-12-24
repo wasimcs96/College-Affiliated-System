@@ -59,6 +59,10 @@ Route::get('consultant/book/{id}',[
     'as' => 'consultant_book'
 ]);
 
+Route::post('/slots',[
+    'uses' => 'FrontEndController\ConsultantFrontController@slots',
+    'as' => 'slots.avail'
+]);
 /* university route */
 
 // Route::get('university_detail', function(){
