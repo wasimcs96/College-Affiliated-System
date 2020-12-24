@@ -57,7 +57,7 @@ Route::get('booking/application/{id}',[
 ]);
 
 Route::post('booking/application/store',[
-    'uses'=>'ConsultantBookingController@store',
+    'uses'=>'ConsultantBookingController@applicationStore',
     'as'=>'booking.application.store'
 ]);
 
@@ -122,13 +122,20 @@ Route::get('feedback',function(){
 })->name('consultant.feedback');
 
 /* application Section */
-Route::get('application',function(){
-    return view('consultant.application.application');
-})->name('consultant.application');
 
-Route::get('application/create',function(){
-    return view('consultant.application.application_create');
-})->name('consultant.application.create');
+Route::get('application',[
+    'uses'=>'ConsultantApplicationController@index',
+    'as'=>'consultant.application'
+]);
+
+Route::get('application/create/{id}',[
+    'uses'=>'ConsultantApplicationController@applicationCreate',
+    'as'=>'consultant.application.create'
+]);
+
+// Route::get('application/create/',function(){
+//     return view('consultant.application.application_create');
+// })->name('consultant.application.create');
 
 /* associated university */
 Route::get('associated_university',function(){

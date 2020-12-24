@@ -12,14 +12,7 @@
                 <ul class="header-dropdown dropdown">
 
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                    {{-- <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another Action</a></li>
-                            <li><a href="javascript:void(0);">Something else</a></li>
-                        </ul>
-                    </li> --}}
+
                 </ul>
             </div>
             <div class="row clearfix">
@@ -31,16 +24,20 @@
                         <div class="body">
                             <form action="{{ route('booking.application.store')}}"  id="basic-form" method="POST" novalidate action="#">
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label> Consultant Name</label>
                                     <input type="text" class="form-control" name="name" value="{{$book->consultant->company_name}}"id="name" required>
-                                </div>
+                                </div> --}}
                                 <input type="text" class="form-control" name="client_id" value="{{$book->client_id}}"id="name" hidden>
                                 <input type="text" class="form-control" name="consultant_id" value="{{$book->consultant_id}}"id="name" hidden>
                                 <input type="text" class="form-control" name="booking_id" value="{{$book->id}}"id="name" hidden>
                                 <div class="form-group">
-                                    <label>Student Name</label>
-                                    <input type="text" class="form-control" value="{{$book->user->first_name}}" name="father_name" id="father_name" required>
+                                    <label>Student First Name</label>
+                                    <input type="text" class="form-control" value="{{$book->user->first_name}}" name="first_name" id="first_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Student Last Name</label>
+                                    <input type="text" class="form-control" value="{{$book->user->last_name}}" name="last_name" id="last_name" required>
                                 </div>
                                 {{-- <div class="form-group">
                                     <label>Mother Name</label>
@@ -55,20 +52,21 @@
                                     <input type="number" class="form-control" name="mobile" id="mobile" required>
                                 </div> --}}
                                 <div class="form-group">
-                                    <label>Remarks</label>
+                                    <label>Note</label>
                                     <textarea class="form-control" rows="5" name="note" cols="30" required></textarea>
                                 </div>
 
 
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="selectmore">Select Universities and Courses</label>
                                     <table class="table table-bordered" id="dynamic_field">
                                         <tr class="dynamic-added">
                                             <td > <select id="inputState" class="form-control FulNamo" >
                                                 <option selected>Choose University</option>
-                                                <option>RTU</option>
-                                                <option>BTU</option>
-                                                <option>CTU</option>
+
+                                            {{-- @foreach($universities as $key => $value)
+                                                <option value={{$value->university_name}}>{{$value->university_name}}</option>
+                                            @endforeach --}}
                                               </select></td>
                                               <td> <select class="form-control FulNamo"  id="inputGroupSelect01">
                                                 <option selected>Choose Course</option>
@@ -79,31 +77,29 @@
                                             <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i> </button></td>
                                         </tr>
                                     </table>
-                                </div> --}}
+                                </div>
 
                                 <div class="form-group">
+                                    <?php $documentarray = Config::get('define.document');
+                                    $inc=0;
+                                    ?>
                                     <label for="documents">Documents</label>
 
                                 <br />
-                                <label class="control-inline fancy-checkbox">
+
                             <div class="dynamic_document" id="dynamic_document">
-                                    <input type="checkbox" name="docs" value="Marksheet-10" required data-parsley-check="[1,5]" data-parsley-errors-container="#error-checkbox3">
-                                    <span>Marksheet-10</span>
-                                </label>
+                                @foreach($documentarray as $key => $value)
                                 <label class="control-inline fancy-checkbox">
-                                    <input type="checkbox" name="docsb" value="Aadhar_Card">
-                                    <span>Aadhar Card</span>
-                                </label>
-                                <label class="control-inline fancy-checkbox">
-                                    <input type="checkbox" name="docsbb" value="Marksheet-12">
-                                    <span>Marksheet-12</span>
-                                </label>
+                                {{-- <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" multiple> --}}
+                                    <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked >
 
+                                    <span>{{$value}}</span>
+                                    @php $inc++ @endphp
+                                    @endforeach
+                                </label>
                             </div>
-                                <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal"><i class="fa fa-plus"></i> </button>
+                                <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
                                 <p id="error-checkbox3"></p>
-
-
 
 
                                 @csrf
@@ -171,6 +167,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+      var document_row = {{ $inc }};
       var postURL = "<?php echo url('addmore'); ?>";
       var i=1;
 
@@ -187,19 +184,15 @@
 
       });
 
-    //   $('#add_document').click(function(){
-    //       i++;
-    //        $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="aadhar" class="form-control"><span><input type="text" name="document_name" class="form-control col-lg-8 "></span></label>')
-    //   });
-
     $('#add_document2').click(function(){
       rt=$('#document_name').val()
     //   console.log(rt);
-$('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
-$('#documentModal').modal('hide')
+    $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document['+document_row+']" value="'+rt+'"><span>'+rt+'</span></label>')
+    $('#documentModal').modal('hide')
+    document_row++;
     });
 
-      $(document).on('click', '.btn_remove', function(){
+    $(document).on('click', '.btn_remove', function(){
            var button_id = $(this).attr("id");
         //    console.log(button_id);
            $('#row'+button_id+'').remove();
@@ -253,6 +246,7 @@ $('#documentModal').modal('hide')
          });
       }
     });
+
 </script>
 <script src="{{ asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js') }}"></script>
 <script src="{{ asset('assets/vendor/parsleyjs/js/parsley.min.js') }}"></script>
