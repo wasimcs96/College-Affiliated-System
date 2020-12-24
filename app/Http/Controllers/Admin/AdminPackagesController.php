@@ -36,7 +36,7 @@ class AdminPackagesController extends Controller
     }
 
 
-    public function add(Request $request)
+    public function add()
     {
 
         return view('admin.packages.add');
@@ -72,7 +72,7 @@ class AdminPackagesController extends Controller
 
     public function edit(Package $id)
     {
-        return view('admin.packages.edit')->with('packages', $id);
+        return view('admin.packages.edit')->with('packages', $id)->with('package', Package::all());
     }
 
     /**

@@ -48,6 +48,7 @@
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>
                     <ul>
                     <li class="{{ Request::segment(3) == 'gopremium' ? 'active' : null }}"><a href="{{ route('university.go_premium')}}">Go Premium</a></li>
+                    <li class="{{ Request::segment(3) == 'gopremium' ? 'active' : null }}"><a href="{{ route('university.subscription')}}">Subscription</a></li>
 
                      </ul>
                 </li>

@@ -45,6 +45,7 @@
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>
                     <ul>
                      <li class="{{ Request::segment(2) == 'taskboard' ? 'active' : null }}"><a href="#">Go Premium</a></li>
+                     <li class="{{ Request::segment(2) == 'taskboard' ? 'active' : null }}"><a href="{{route('consultant.subscription')}}">Subscription</a></li>
 
                      </ul>
                 </li>

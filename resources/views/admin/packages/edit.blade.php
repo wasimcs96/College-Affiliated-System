@@ -40,9 +40,9 @@
                                         <label>Package Type</label>
                                         <select name="package_type" class="form-control">
                                             {{-- <option value="">-- Select Package --</option> --}}
-                                            <option value="0">Subscription</option>
-                                            <option value="1">Premium</option>
-                                            <option value="2">Advertisement</option>
+                                            <option value="0" <?php if($packages->package_type == 0) { echo "selected"; } ?>>Subscription</option>
+                                            <option value="1" <?php if($packages->package_type == 1) { echo "selected"; } ?>>Premium</option>
+                                            <option value="2" <?php if($packages->package_type == 2) { echo "selected"; } ?>>Advertisement</option>
 
                                         </select>
                               </div>
@@ -58,8 +58,8 @@
                                     <label>Status</label>
                                     <select name="status" class="form-control">
                                         {{-- <option value="">-- Select --</option> --}}
-                                        <option value="0">Active</option>
-                                        <option value="1">InActive</option>
+                                        <option value="1" <?php if($packages->status == 1) { echo "selected"; } ?>>Active</option>
+                                        <option value="0" <?php if($packages->status == 0) { echo "selected"; } ?>>InActive</option>
                                     </select>
                                </div>
                                 <div class="form-group">

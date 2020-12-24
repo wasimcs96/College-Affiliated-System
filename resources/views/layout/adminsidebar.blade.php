@@ -48,6 +48,8 @@
 
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.packages')}}"><i class="fa fa-money"></i><span>Packages</span></a></li>
 
+                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.subscription')}}"><i class="fa fa-money"></i><span>Subscription</span></a></li>
+
                 <li class="{{ Request::segment(2) == 'general' ? 'active open' : null }}">
                     <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
                     <ul>
