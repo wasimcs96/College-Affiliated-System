@@ -40,15 +40,19 @@
 
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('admin.application')}}"><i class="icon-notebook"></i><span>Applications</span></a></li>
 
+                <li class="{{ Request::segment(2) == 'category' ? 'active' : null }}"><a href="{{route('admin.category')}}"><i class="icon-notebook"></i><span>Categories</span></a></li>
+
+                <li class="{{ Request::segment(2) == 'courses' ? 'active' : null }}"><a href="{{route('admin.courses')}}"><i class="icon-notebook"></i><span>Courses</span></a></li>
+
 
 
                 <li class="{{ Request::segment(2) == 'booking' ? 'active' : null }}"><a href="{{route('admin.booking')}}"><i class="icon-list"></i><span>Bookings</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
 
-                <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.packages')}}"><i class="fa fa-money"></i><span>Packages</span></a></li>
+                <li class="{{ Request::segment(2) == 'packages' ? 'active' : null }}"><a href="{{route('admin.packages')}}"><i class="fa fa-money"></i><span>Packages</span></a></li>
 
-                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.subscription')}}"><i class="fa fa-money"></i><span>Subscription</span></a></li>
+                 <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('admin.subscription')}}"><i class="fa fa-money"></i><span>Subscription</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'general' ? 'active open' : null }}">
                     <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>

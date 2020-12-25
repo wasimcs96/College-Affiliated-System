@@ -1,17 +1,17 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Admin')
-@section('title', 'Packages')
+@section('title', 'Category')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Packages<small>All Packages</small></h2>
+            <h2>Category<small>All Category</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <a href="{{route('admin.packages.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>Add </a>
+                <a href="{{route('admin.category.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>Add </a>
                 {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                     <ul class="dropdown-menu">
@@ -28,41 +28,26 @@
                     <thead>
 
                         <tr>
-                            <th> <b>Title</b></th>
-                            <th><b> Package Type </b></th>
-                            <th><b> Description</b></th>
-                            <th><b> Package Time </b></th>
-                            <th><b>Amount</b></th>
+                            <th> <b>Parent Category</b></th>
+                            <th><b> Title </b></th>
+                            <th><b> Slug</b></th>
                             <th><b>Status</b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
-                    @if($packages->count() > 0)
+                    @if($category->count() > 0)
                    <tbody>
-                    @foreach ($packages as $package)
+                    @foreach ($category as $categories)
                         <tr>
 
-                            <td>{{$package->title}}</td>
+                            <td>{{$categories->parent_category->title}}</td>
                             <td>
-                                @if ($package->package_type  == 0)
-
-                                    <span class="">Subscription</span>
-
-                                @elseif($package->package_type == 1)
-
-                                    <span class="">Premium</span>
-
-                                @else
-
-                                    <span class="">Advertisement</span>
-
-                                @endif
+                               {{$categories->title}}
                             </td>
-                            <td>{{$package->description}}</td>
-                            <td>{{$package->package_time}}</td>
-                            <td>{{$package->amount}}</td>
+
+                            <td>{{$categories->slug}}</td>
                             <td>
-                                @if ($package->status == 0)
+                                @if ($categories->status == 0)
 
                                     <span class="btn btn-danger">InActive</span>
 
@@ -73,13 +58,13 @@
                                 @endif
                             </td>
                             <td>
-                            <a href="{{route('admin.packages.show', $package->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View Package" title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
-                            <a href="{{route('admin.packages.edit', $package->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="{{route('admin.category.show', $categories->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View Package" title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
+                            <a href="{{route('admin.category.edit', $categories->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>
                             &nbsp;&nbsp;
 
 
 
-                              <a href="{{route('admin.packages.delete', $package->id)}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete Package" data-url="" data-title="Delete Package"><i class="fa fa-trash"></i></a>
+                              <a href="{{route('admin.category.delete', $categories->id)}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete Package" data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
 
                             </td>
 
