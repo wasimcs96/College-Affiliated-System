@@ -642,8 +642,16 @@
                                            </ul>
                                            <div class="custom-checkbox mb-0">
                                                <input type="checkbox" id="chb2">
+<form action="{{route('consultant_book')}}" method="POST">
+    @csrf
+    <input type="text" name="universityid" value="{{$university->id}}" hidden>
+    <input type="text" name="consultantid" value="{{$consultant->consultant->id}}" hidden>
 
-                                           <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
+                                           {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
+                                           <button type="submit" class="theme-btn theme-btn-small">Book Now</button>
+
+</form>
+                                        </div>
                                        </div>
                                     </div><!-- end cabin-type-item -->
                                 </div><!-- end cabin-type -->
