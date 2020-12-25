@@ -47,7 +47,7 @@ public function application($id)
 public function applicationStore(Request $request){
 // dd(json_encode(collect($request->document)));
 // dd(collect($request->document->toJson()));
- dd(json_encode($request->document));
+ dd(json_encode($request->images));
 //  $json = json_encode($request->document);
     $store=Application::create([
 
