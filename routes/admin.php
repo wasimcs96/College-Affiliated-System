@@ -202,6 +202,8 @@ Route::get('packages/add',[
     'as' => 'admin.packages.add'
 ]);
 
+
+
 Route::post('packages/store',[
     'uses' => 'AdminPackagesController@store',
     'as' => 'admin.packages.store'
@@ -227,6 +229,80 @@ Route::get('packages/delete/{id}', [
 Route::get('subscription', [
     'uses' => 'AdminSubscriptionController@index',
     'as' => 'admin.subscription'
+]);
+
+/* Category  */
+
+Route::get('category', [
+    'uses' => 'AdminCategoryController@index',
+    'as' => 'admin.category'
+]);
+
+Route::get('category/add',[
+    'uses' => 'AdminCategoryController@create',
+    'as' => 'admin.category.add'
+]);
+
+Route::get('category/show/{id}',[
+    'uses' => 'AdminCategoryController@show',
+    'as' => 'admin.category.show'
+]);
+
+Route::post('category/store',[
+    'uses' => 'AdminCategoryController@store',
+    'as' => 'admin.category.store'
+]);
+
+Route::get('category/edit/{id}',[
+    'uses' => 'AdminCategoryController@edit',
+    'as' => 'admin.category.edit'
+]);
+
+Route::post('category/update/{id}',[
+    'uses' => 'AdminCategoryController@update',
+    'as' => 'admin.category.update'
+]);
+
+Route::get('category/delete/{id}', [
+    'uses' => 'AdminCategoryController@destroy',
+    'as' => 'admin.category.delete'
+]);
+
+/* Courses  */
+
+Route::get('courses', [
+   'uses' => 'AdminCoursesController@index',
+   'as' => 'admin.courses'
+]);
+
+Route::get('courses/add',[
+   'uses' => 'AdminCoursesController@create',
+   'as' => 'admin.courses.add'
+]);
+
+Route::get('courses/show/{id}',[
+   'uses' => 'AdminCoursesController@show',
+   'as' => 'admin.courses.show'
+]);
+
+Route::post('courses/store',[
+   'uses' => 'AdminCoursesController@store',
+   'as' => 'admin.courses.store'
+]);
+
+Route::get('courses/edit/{id}',[
+   'uses' => 'AdminCoursesController@edit',
+   'as' => 'admin.courses.edit'
+]);
+
+Route::post('courses/update/{id}',[
+   'uses' => 'AdminCoursesController@update',
+   'as' => 'admin.courses.update'
+]);
+
+Route::get('courses/delete/{id}', [
+   'uses' => 'AdminCoursesController@destroy',
+   'as' => 'admin.courses.delete'
 ]);
 
 
