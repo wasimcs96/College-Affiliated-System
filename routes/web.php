@@ -59,6 +59,16 @@ Route::post('consultant/book',[
     'as' => 'consultant_book'
 ]);
 
+Route::post('consultant/book/store',[
+    'uses' => 'FrontEndController\ConsultantFrontController@book_store',
+    'as' => 'consultant_book.store'
+]);
+
+Route::get('/fetch/course',[
+    'uses' => 'FrontEndController\ConsultantFrontController@fetch_course',
+    'as' => 'fetch.course'
+]);
+
 Route::post('/slots',[
     'uses' => 'FrontEndController\ConsultantFrontController@slots',
     'as' => 'slots.avail'

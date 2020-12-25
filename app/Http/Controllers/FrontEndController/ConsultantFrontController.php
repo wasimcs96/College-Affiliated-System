@@ -9,6 +9,7 @@ use App\Models\University;
 use App\Models\Country;
 use App\Http\Controllers\Controller;
 use App\Models\ConsultantAvailableSlots;
+use App\Models\UniversityCourse;
 use Sessions;
 use DB;
 use Illuminate\Support\Facades\Hash;
@@ -40,6 +41,18 @@ class ConsultantFrontController extends Controller
         return view('frontEnd.consultant.book',compact('universityid'))->with('consultant', $consultant)->with('countries',Country::all());
 
     }
+
+    public function book_store(Request $request)
+    {
+        dd($request->all());
+        // dd($request->all());
+        $universityid = $request->get('universityid');
+        $consultantid = $request->get('consultantid');
+        $consultant = Consultant::find($consultantid);
+        return view('frontEnd.consultant.book',compact('universityid'))->with('consultant', $consultant)->with('countries',Country::all());
+
+    }
+
     function slots(Request $request)
     {
 
@@ -66,6 +79,22 @@ class ConsultantFrontController extends Controller
             echo $output;
 
 
+    }
+
+    function fetch_Course(Request $request)
+    {
+        $fetch=University::where('id',$request->universityid)->first();
+        $courses =  $fetch->UniversityCourse;
+
+
+        $output='';
+        foreach($courses as $row)
+        {
+
+         $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
+        }
+        echo $output;
+        // dd();
     }
 
 }
