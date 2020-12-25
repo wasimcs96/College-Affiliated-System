@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApplicationAppliedUniversity extends Model
 {
-    // protected $fillable = ['booking_id','client_id','consultant_id','note','status','document'];
+    protected $fillable = ['university_id','consultant_id','documents', 'course_id', 'application_id','country_id', 'note','status','document'];
 }
