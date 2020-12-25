@@ -57,16 +57,16 @@
                                 </div>
 
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="selectmore">Select Universities and Courses</label>
                                     <table class="table table-bordered" id="dynamic_field">
                                         <tr class="dynamic-added">
                                             <td > <select id="inputState" class="form-control FulNamo" >
                                                 <option selected>Choose University</option>
 
-                                            {{-- @foreach($universities as $key => $value)
+                                            @foreach($universities as $key => $value)
                                                 <option value={{$value->university_name}}>{{$value->university_name}}</option>
-                                            @endforeach --}}
+                                            @endforeach
                                               </select></td>
                                               <td> <select class="form-control FulNamo"  id="inputGroupSelect01">
                                                 <option selected>Choose Course</option>
@@ -77,6 +77,37 @@
                                             <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i> </button></td>
                                         </tr>
                                     </table>
+                                </div> --}}
+
+                                <div class="form-group">
+                                    <?php $univers=$book->consultant->consultantUniversity;
+                                    $increase=0;
+                                    $inc=1;
+                                    ?>
+                                    <div class="table-responsive" style="width: 100%;margin-top: 36px;">
+                                        <label for="name">Select University</label>
+                                        <table class="table table-bordered" id="dynamic_field">
+                                            <tr class="dynamic-added" data-row_id="{{$increase}}">
+
+                                                <td> <select id="university" custom1="{{$increase}}" data-row_id="{{$increase}}" custom2="" class="form-control FulNamo" name="university[{{$increase}}]">
+                                                    <option selected>University Name</option>
+                                                    @foreach($univers as $univer)
+                                                    <option value="{{$univer->university->university_name}}">{{$univer->university->university_name}}</option>
+                                                    @endforeach
+                                                  </select></td>
+                                                  <td> <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control FulNamo" >
+                                                    <option selected>Course Name</option>
+                                                <?php $course=$univer->university->universityCourse?>
+                                                    @foreach($course as $cours)
+                                                    <option value="$course-course">
+                                                        {{$cours->course->name}}
+                                                    </option>
+                                                    @endforeach
+                                                  </select></td>
+                                                <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i></button></td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -91,17 +122,17 @@
                                 @foreach($documentarray as $key => $value)
                                 <label class="control-inline fancy-checkbox">
                                 {{-- <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" multiple> --}}
-                                    <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked >
+                                    <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" required >
 
                                     <span>{{$value}}</span>
                                     @php $inc++ @endphp
                                     @endforeach
                                 </label>
                             </div>
+
                                 <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
                                 <p id="error-checkbox3"></p>
-
-
+                                <input type="file" name="images[]" class="dropify" multiple>
                                 @csrf
                                 <br>
                                 <button type="submit" class="btn btn-primary">Confirm Booking</button>
@@ -145,12 +176,13 @@
 @stop
 
 @section('page-styles')
+<link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
 @stop
 
 @section('page-script')
-
+<script src="{{ asset('assets/vendor/dropify/js/dropify.js') }}"></script>
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
-
+<script src="{{ asset('assets/js/pages/forms/dropify.js') }}"></script>
 <script>
     $(function() {
         // (Optional) Active an item if it has the class "is-active"
@@ -166,15 +198,14 @@
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-      var document_row = {{ $inc }};
+     $(document).ready(function(){
       var postURL = "<?php echo url('addmore'); ?>";
-      var i=1;
+      var i=0;
 
 
       $('#add').click(function(){
              i++;
-           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td><select id="inputState" class="form-control"><option selected>Choose...</option> <option>...</option></select></td><td><select id="inputGroupSelect01" class="form-control"><option selected>Choose...</option> <option>...</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td><select custom1="'+i+'" data-row_id="{{$increase}}" id="university" name="enquiry['+i+']" class="form-control"><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td><td><select id="course-'+i+'" name="enquiry['+i+']" class="form-control"></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
            r=$('#dynamic_field .dynamic-added').length;
             if(r==3){
                 $('#add').prop('disabled', true);
