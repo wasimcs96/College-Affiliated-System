@@ -263,7 +263,7 @@ $.ajaxSetup({
 
       $('#add').click(function(){
              i++;
-           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td><select custom1="'+i+'" data-row_id="{{$increase}}" id="university" name="enquiry['+i+']" class="form-control"><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td><td><select id="course-'+i+'" name="enquiry['+i+']" class="form-control"></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td><select custom1="'+i+'" data-row_id="{{$increase}}" id="university" name="enquiry['+i+']" class="form-control"><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td><td><select id="course-'+i+'" name="enquiry['+i+']" class="form-control"><option>btech</option><option>mtech</option><option>ptech</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
            r=$('#dynamic_field .dynamic-added').length;
             if(r==3){
                 $('#add').prop('disabled', true);
@@ -395,43 +395,5 @@ $('#documentModal').modal('hide')
     //   }
     // });
 </script>
-<script>
-    var image_row = {{ $inc }}
 
-
-        $(document).on('change', '#university', function () {
-        dt=$(this).attr("custom1");
-console.log($(this).val());
-dt=    $(this).data("row_id")
-    if($('#university').val() == "3"){
-
-
-            $('#course-'+dt+'').html('<option>udyfydsu</option>');
-
-
-
-
-
-    }
-    if($('#university').val() == "2"){
-
-
-$('#course-'+dt+'').html('<option>uddsdsdsdsddsdsdsdsds</option>');
-
-
-
-
-
-}
-    // if($('#media_type-'+dt+'').val() == "file"){
-    //     // var image_row = {{ $inc }};
-    //     $('#tc-'+dt+'').html('<input class="form-control mt-3 d-none" placeholder="labels.backend.lessons.enter_video_url" name="banner_images[' + dt + '][video_file]" id="video_file"  type="file">');
-
-    // }
-            });
-
-
-
-
-        </script>
 @endsection

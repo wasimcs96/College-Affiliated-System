@@ -31,21 +31,13 @@ class ConsultantFrontController extends Controller
         return view('frontEnd.consultant.consultant_detail')->with('consultant', $consultant);
     }
 
-    public function book($id)
-
+    public function book(Request $request)
     {
-
-        $consultant = Consultant::find($id);
-// dd($consultant);
-    //     $consultantuniversity= DB::table('university_consultants')->where('consultant_id',$id)->find(3);
-    //   foreach($consultantuniversity as $conuni){
-    //     dd($conuni->university_id);
-    //   };
-        // $consultantuniversity=UniversityConsultant::where('consultant_id',$id)->get();
-        // dd( $consultantuniversity->university_id);
-        // $universityconsultant=University::where('id',$consultantuniversity->university_id)->get();
-        // dd($consultant->consultantUniversity->university);
-        return view('frontEnd.consultant.book')->with('consultant', $consultant)->with('countries',Country::all());
+        // dd($request->all());
+        $universityid = $request->get('universityid');
+        $consultantid = $request->get('consultantid');
+        $consultant = Consultant::find($consultantid);
+        return view('frontEnd.consultant.book',compact('universityid'))->with('consultant', $consultant)->with('countries',Country::all());
 
     }
     function slots(Request $request)

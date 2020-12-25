@@ -54,7 +54,7 @@ Route::get('consultant/detail/{id}',[
     'as' => 'consultant_detail'
 ]);
 
-Route::get('consultant/book/{id}',[
+Route::post('consultant/book',[
     'uses' => 'FrontEndController\ConsultantFrontController@book',
     'as' => 'consultant_book'
 ]);
