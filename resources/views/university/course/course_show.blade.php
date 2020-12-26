@@ -28,59 +28,55 @@
                     <tbody>
 
 
-                    <tr>
-                        <th scope="row"> Name</th>
-                        <td>Computer Science</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Detail</th>
-                        <td>B.Tech Course</td>
-                    </tr>
+                        <tr>
+                            <th scope="row"> Course</th>
+                            <td>{{$courses->course->name}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td>{{$courses->description}}</td>
+                        </tr>
 
-                    <tr>
-                        <th scope="row">Duration</th>
-                        <td>4</td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Fees</th>
+                            <td>{{$courses->fees}}</td>
+                        </tr>
 
-                    <tr>
-                        <th scope="row">Start Date</th>
-                        <td>2020/30/11</td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Start Date</th>
+                            <td>{{$courses->start_date}}</td>
+                        </tr>
 
-                    <tr>
-                        <th scope="row">End Date</th>
-                        <td>2020/30/11</td>
-                    </tr>
+                        <tr>
+                            <th scope="row">End Date</th>
+                            <td>{{$courses->end_date}}</td>
+                        </tr>
 
+                        <tr>
+                            <th scope="row">Fax Number</th>
+                            <td>{{$courses->fax_number}}</td>
+                        </tr>
 
+                        <tr>
+                            <th scope="row">Terms & Condition</th>
+                            <td>{{$courses->term_conditions}}</td>
+                        </tr>
 
-            </div>
-
-
-
-
-
-        {{-- </tr> --}}
-
-
+                        <tr>
+                            <th scope="row">Privacy_Policy</th>
+                            <td>{{$courses->privacy_policy}}</td>
+                        </tr>
                     </tbody>
 
                 </table>
-                <div id="res">
 
-                </div>
-                <br>
-                <div id="dec">
-
-                </div>
-                {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a> --}}
             </div>
         </div>
     </div>
 </div>
 
-</section>
+<!-- Media############################################################################## -->
+
 
 
 
@@ -88,11 +84,14 @@
 @stop
 
 @section('page-styles')
+<link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
 @stop
 
 @section('page-script')
-
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/vendor/dropify/js/dropify.js') }}"></script>
+
+<script src="{{ asset('assets/js/pages/forms/dropify.js') }}"></script>
 
 <script>
     $(function() {
@@ -107,14 +106,7 @@
         });
     });
 </script>
-<script>
-   $("#accept").click(function() {
-    $("#accept").remove()
-    $("#bac").remove()
-    $("#res").html("<a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
-    $("#dec").html("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat'>Close</a>")
-    // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
-});
 
-</script>
+
+
 @stop

@@ -28,14 +28,11 @@
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
-                            <th> <b>
-                                Name</b></th>
-                            <th><b> Detail </b></th>
-
-                            <th><b> Duration</b></th>
+                            <th> <b>Course</b></th>
+                            <th><b> Description</b></th>
+                            <th><b>Fees</b></th>
                             <th><b>Start Date</b></th>
-                            <th><b>
-                                End Date</b></th>
+                            <th><b>End Date</b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -43,21 +40,34 @@
 
                     </tfoot>
                     <tbody>
+                        @if($universitycourses->count() > 0)
                         <tr>
-                            <td>Computer Science</td>
-                            <td>B.Tech in computer science </td>
-
-                            <td>4</td>
-                            <td>2020/30/11</td>
-                            <td> 2024/30/11 </td>
-                            <td><a href="{{route('university.course_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            @foreach($universitycourses as $course)
+                            <td>{{$course->course->name}}</td>
+                            <td>{{$course->description}}</td>
+                            <td>{{$course->fees}}</td>
+                            <td>{{$course->start_date}}</td>
+                            <td>{{$course->end_date}}</td>
+                            <td>
+                            <a href="{{route('university.course.show', $course->id)}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                            <a href="{{route('university.course.edit', $course->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="{{route('university.course.delete', $course->id)}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete " data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
+                            </td>
                         </tr>
 
-
+                        @endforeach
 
 
 
                     </tbody>
+                    @else
+                        <tfoot>
+                            <tr>
+                                <td colspan='7' align='center'> <strong>Record Not Available</strong> </td>
+                            </tr>
+                        </tfoot>
+                     @endif
                 </table>
             </div>
         </div>
