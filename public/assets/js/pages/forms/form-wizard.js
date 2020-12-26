@@ -40,7 +40,7 @@ $(function () {
     });
 
 //Advanced form with validation2
-var form = $('#wizard_with_validation2').show();
+var form = $('#wizard_with_validation1').show();
 form.steps({
 headerTag: 'h3',
 bodyTag: 'fieldset',
@@ -86,7 +86,7 @@ rules: {
 });
 
 //Advanced form with validation2
-var form = $('#wizard_with_validation3').show();
+var form = $('#wizard_with_validation2').show();
 form.steps({
 headerTag: 'h3',
 bodyTag: 'fieldset',
@@ -132,7 +132,7 @@ rules: {
 });
 
     //Advanced form with validation
-    var form = $('#wizard_with_validation').show();
+    var form = $('#wizard_with_validation0').show();
         form.steps({
         headerTag: 'h3',
         bodyTag: 'fieldset',

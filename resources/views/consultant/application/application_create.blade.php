@@ -214,356 +214,152 @@
                 <div class="header">
                     <h2>Documents</h2>
                 </div>
-                <div class="body">
-                    <form  method="post" novalidate action="#">
-                        <div class="form-group">
-                            <label for="documents">Documents</label>
 
-                        <br />
+            <div class="body">
+                <div class="form-group">
+                    <?php $documentarray = Config::get('define.document');
+                    $inc=0;
+                    $documentSelect = json_decode($application->documents);
+                    ?>
+                    <label for="documents">Documents</label>
+                    <br/>
                     <div class="dynamic_document" id="dynamic_document">
-                        <label class="control-inline fancy-checkbox">
-                            <input type="checkbox" name="10marksheet" required data-parsley-check="[1,5]" data-parsley-errors-container="#error-checkbox3" checked>
-                            <span>Marksheet-10</span>
-                        </label>
-                        <label class="control-inline fancy-checkbox">
-                            <input type="checkbox" name="aadhar" checked>
-                            <span>Aadhar Card</span>
-                        </label>
-                        <label class="control-inline fancy-checkbox">
-                            <input type="checkbox" name="12marksheet" checked>
-                            <span>Marksheet-12</span>
-                        </label>
-                        <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal"><i class="fa fa-plus"></i> </button>
-                        <p id="error-checkbox3"></p>
-                    </div>
-                </div>
-                    <div class="hard" id="upload_document">
-                        <div class="card"  >
-                            <div class="card-header">
-                                Upload Document
-                            </div>
-                            <div class="body" id="nb" >
-                                <input type="file" class="dropify">
+                        @foreach($documentarray as $key => $value)
 
+                        <label class="control-inline fancy-checkbox">
+                            @if(in_array($value,$documentSelect))
+                        {{-- <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" multiple> --}}
+                            <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked required >
 
-                            </div>
-                        </div>
+                            <span>{{$value}}</span>
+                            @else
+                            <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" required >
+
+                            <span>{{$value}}</span>
+                            @endif
+                            @php $inc++ @endphp
+                            @endforeach
+                        </label>
                     </div>
-                    <button type="button" name="uploaddocument" id="upload_document_button" class="btn btn-primary btn-m " ><i class="fa fa-plus"></i> </button>
+
+                    <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
+                    <p id="error-checkbox3"></p>
+                    <input type="file" name="documents[]" class="dropify" multiple>
+                    @csrf
                     <br>
-                    {{-- <a href="#" type="submit" class="btn btn-primary btn-lg mt-4">Submit</a> --}}
-                 </form>
                 </div>
+            </div>
             </div>
         </div>
     </div>
 </div>
+@foreach($application->applicationAppliedUniversity as $key=>$applied)
 
 <div class="accordion" id="accordionExample">
 
     <div class="card">
-      <div class="card-header" id="headingOne">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            University Form #1
-          </button>
-        </h2>
-      </div>
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapse-{{$key}}">
+              University Form #2
+            </button>
+          </h2>
+        </div>
+        <div id="collapse-{{$key}}" class="collapse" aria-labelledby="heading-{{$key}}" data-parent="#accordionExample">
+          <div class="card-body">
+              <div class="col-lg-12">
+                  <div class="row clearfix">
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                          <div class="card">
+                              <div class="header">
+                                  <h2>University Form-2</h2>
+                                  <ul class="header-dropdown dropdown">
 
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body">
-            <div class="col-lg-12">
-                <div class="row clearfix">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="card">
-                            <div class="header">
-                                <h2>University Form-1</h2>
-                                <ul class="header-dropdown dropdown">
+                                      <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+                                      <li class="dropdown">
+                                          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                                          <ul class="dropdown-menu">
+                                              <li><a href="javascript:void(0);">Action</a></li>
+                                              <li><a href="javascript:void(0);">Another Action</a></li>
+                                              <li><a href="javascript:void(0);">Something else</a></li>
+                                          </ul>
+                                      </li>
+                                  </ul>
+                              </div>
+                              <div class="body wizard_validation">
 
-                                    <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                                        {{-- <ul class="dropdown-menu">
-                                            <li><a href="javascript:void(0);">Action</a></li>
-                                            <li><a href="javascript:void(0);">Another Action</a></li>
-                                            <li><a href="javascript:void(0);">Something else</a></li>
-                                        </ul> --}}
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="body wizard_validation">
-
-                                <form id="wizard_with_validation" method="POST">
-                                    <h3>Account Information</h3>
-                                    <fieldset>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-12">
+                                  <form id="wizard_with_validation{{$key}}" method="POST">
+                                      <h3>Account Information</h3>
+                                      <fieldset>
+                                          <div class="row clearfix">
+                                            <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Username" name="username" required>
+                                                    <input type="text" class="form-control" value="@if(isset($applied->university->university_name)){{$applied->university->university_name}}@endif" placeholder="Username" name="username" >
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-12">
+                                            <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
-                                                    <input type="password" class="form-control" placeholder="Password " name="password" id="password" required>
+                                                    <input type="text" class="form-control" value="@if(isset($applied->course->title)){{$applied->course->title}}@endif" placeholder="Password " name="password" id="password">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-12">
+                                            {{-- <div class="col-lg-4 col-md-12">
                                                 <div class="form-group">
                                                     <input type="password" class="form-control" placeholder="Confirm Password " name="confirm" required>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <h3>Profile Information</h3>
-                                    <fieldset>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" name="name" placeholder="First Name " class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" name="surname" placeholder="Last Name " class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="email" name="email" placeholder="Email " class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input min="18" type="number" name="age" placeholder="Age " class="form-control" required>
-                                                    <div class="help-info">The warning step will show up if age is less than 18</div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <textarea name="address" cols="30" rows="3" placeholder="Address " class="form-control no-resize" required></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <h3>Terms Conditions - Finish</h3>
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <div class="fancy-checkbox">
-                                                <label><input type="checkbox" name="acceptTerms"><span>I agree with the Terms and Conditions.</span></label>
-                                            </div>
-                                        </div>
-                                    </fieldset>
+                                            </div> --}}
+                                          </div>
+                                      </fieldset>
+                                      <h3>Profile Information</h3>
+                                      <fieldset>
+                                          <div class="row clearfix">
+                                              <div class="col-lg-4 col-md-12">
+                                                  <div class="form-group">
+                                                      <input type="text" name="name" placeholder="First Name" class="form-control" >
+                                                  </div>
+                                              </div>
+                                              <div class="col-lg-4 col-md-12">
+                                                  <div class="form-group">
+                                                      <input type="text" name="surname" placeholder="Last Name" class="form-control" >
+                                                  </div>
+                                              </div>
+                                              <div class="col-lg-4 col-md-12">
+                                                  <div class="form-group">
+                                                      <input type="email" name="email" placeholder="Email" class="form-control" >
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-12">
+                                                  <div class="form-group">
+                                                      <input min="18" type="number" name="age" placeholder="Age" class="form-control" >
+                                                      <div class="help-info">The warning step will show up if age is less than 18</div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <textarea name="address" cols="30" rows="3" placeholder="Address" class="form-control no-resize" ></textarea>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </fieldset>
+                                      <h3>Terms Conditions - Finish</h3>
+                                      <fieldset>
+                                          <div class="form-group">
+                                              <div class="fancy-checkbox">
+                                                  <label><input type="checkbox" name="acceptTerms"><span>I agree with the Terms and Conditions.</span></label>
+                                              </div>
+                                          </div>
+                                      </fieldset>
 
 
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
 
-            </div>        </div>
+              </div>        </div>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-header" id="headingTwo">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            University Form #2
-          </button>
-        </h2>
-      </div>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-        <div class="card-body">
-            <div class="col-lg-12">
-                <div class="row clearfix">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="card">
-                            <div class="header">
-                                <h2>University Form-2</h2>
-                                <ul class="header-dropdown dropdown">
 
-                                    <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="javascript:void(0);">Action</a></li>
-                                            <li><a href="javascript:void(0);">Another Action</a></li>
-                                            <li><a href="javascript:void(0);">Something else</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="body wizard_validation">
-
-                                <form id="wizard_with_validation2" method="POST">
-                                    <h3>Account Information</h3>
-                                    <fieldset>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Username " name="username" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="password" class="form-control" placeholder="Password " name="password" id="password" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="password" class="form-control" placeholder="Confirm Password " name="confirm" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <h3>Profile Information</h3>
-                                    <fieldset>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" name="name" placeholder="First Name" class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" name="surname" placeholder="Last Name" class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="email" name="email" placeholder="Email" class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input min="18" type="number" name="age" placeholder="Age" class="form-control" required>
-                                                    <div class="help-info">The warning step will show up if age is less than 18</div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <textarea name="address" cols="30" rows="3" placeholder="Address" class="form-control no-resize" required></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <h3>Terms Conditions - Finish</h3>
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <div class="fancy-checkbox">
-                                                <label><input type="checkbox" name="acceptTerms"><span>I agree with the Terms and Conditions.</span></label>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header" id="headingThree">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            University Form #3
-          </button>
-        </h2>
-      </div>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-        <div class="card-body">
-            <div class="col-lg-12">
-                <div class="row clearfix">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="card">
-                            <div class="header">
-                                <h2>University Form-3</h2>
-                                <ul class="header-dropdown dropdown">
-
-                                    <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="javascript:void(0);">Action</a></li>
-                                            <li><a href="javascript:void(0);">Another Action</a></li>
-                                            <li><a href="javascript:void(0);">Something else</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="body wizard_validation">
-
-                                <form id="wizard_with_validation3" method="POST">
-                                    <h3>Account Information</h3>
-                                    <fieldset>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Username " name="username" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="password" class="form-control" placeholder="Password " name="password" id="password" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="password" class="form-control" placeholder="Confirm Password " name="confirm" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <h3>Profile Information</h3>
-                                    <fieldset>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" name="name" placeholder="First Name " class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" name="surname" placeholder="Last Name " class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="email" name="email" placeholder="Email " class="form-control" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input min="18" type="number" name="age" placeholder="Age " class="form-control" required>
-                                                    <div class="help-info">The warning step will show up if age is less than 18</div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <textarea name="address" cols="30" rows="3" placeholder="Address " class="form-control no-resize" required></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <h3>Terms Conditions - Finish</h3>
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <div class="fancy-checkbox">
-                                                <label><input type="checkbox" name="acceptTerms"><span>I agree with the Terms and Conditions.</span></label>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>        </div>
-      </div>
-    </div>
   </div>
-
+@endforeach
 
 
 
@@ -615,29 +411,32 @@
     $(document).ready(function(){
       var postURL = "<?php echo url('addmore'); ?>";
       var i=1;
+      var document_row = {{$inc}} ;
       clc=0;
       $('#add_document2').click(function(){
       rt=$('#document_name').val()
-    //   console.log(rt);
-$('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
-$('#documentModal').modal('hide')
+      //   console.log(rt);
+      $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document['+document_row+']" value="'+rt+'"><span>'+rt+'</span></label>')
+      // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
+      $('#documentModal').modal('hide')
+      document_row++
     });
 
     $('#upload_document_button').click(function(){
     //   rt=$('#document_name').val()
     //   console.log(rt);
     clc=clc+1;
-$('#nb').append('<input type="file" class="dropify" id="dr'+clc+'">')
-$('#dr'+clc+'').dropify();
+    $('#nb').append('<input type="file" class="dropify" id="dr'+clc+'">')
+    $('#dr'+clc+'').dropify();
 
-var drEvent = $('#dropify-event').dropify();
-drEvent.on('dropify.beforeClear', function(event, element) {
+    var drEvent = $('#dropify-event').dropify();
+    drEvent.on('dropify.beforeClear', function(event, element) {
     return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-});
+    });
 
-drEvent.on('dropify.afterClear', function(event, element) {
+    drEvent.on('dropify.afterClear', function(event, element) {
     alert('File deleted');
-});
+    });
 
 $('.dropify-fr').dropify({
     messages: {

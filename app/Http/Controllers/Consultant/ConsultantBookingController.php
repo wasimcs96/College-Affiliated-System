@@ -86,23 +86,23 @@ public function applicationStore(Request $request){
         ]);
 
     }
-    $documents = collect($request->documents);
+    $documentes = collect($request->documents);
 // dd(collect($request->documents));
-        foreach($documents as $key=>$value)
+        foreach($documentes as $doc)
         {
             $applicationDocument = ApplicationDocument::create([
                 'application_id' => $store->id,
             ]);
             // dd($document);
-           $documentSave = $value;
-           $documentSave_new_name = time().$documentSave->getClientOriginalName();
-           $documentSave->move('uploads/document',$documentSave_new_name);
+            //    $documentSave = $value;
+           $doc_new_name = time().$doc->getClientOriginalName();
+           $doc->move('uploads/document',$doc_new_name);
 
-           $applicationDocument->file = 'uploads/document/'.$documentSave_new_name;
+           $applicationDocument->file = 'uploads/document/'.$doc_new_name;
            $applicationDocument->save();
         }
 
-    return redirect()->back();
+        return redirect()->route('consultant.application')->with('success','Application Created Successfully');
 }
 
 }

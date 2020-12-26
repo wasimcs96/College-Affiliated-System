@@ -27,4 +27,14 @@ class Application extends Model
     {
         return $this->belongsTo(Booking::class);
     }
+
+    public function applicationAppliedUniversity()
+    {
+        return $this->hasMany(ApplicationAppliedUniversity::class);
+    }
+
+    public function applicationDocument()
+    {
+        return $this->hasMany(ApplicationDocument::class);
+    }
 }

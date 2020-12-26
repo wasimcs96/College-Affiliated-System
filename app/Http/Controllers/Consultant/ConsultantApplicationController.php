@@ -12,14 +12,17 @@ class ConsultantApplicationController extends Controller
 {
    public function index()
    {
-    //    dd(auth()->user()->consultant->application);
-    // $book = auth()->user()->consultant->booking;
      return view('consultant.application.application');
    }
 
    public function applicationCreate($id)
    {
        $application = Application::where('id',$id)->get()->first();
+    //    dd($application->applicationAppliedUniversity[application_id]);
+    //    foreach($application->applicationAppliedUniversity as $app)
+    //    {
+    //        dd(json_decode($app->documents));
+    //    }
        return view('consultant.application.application_create',compact('application'));
    }
 }
