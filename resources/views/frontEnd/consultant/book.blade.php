@@ -55,64 +55,35 @@
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active" id="credit-card" role="tabpanel" aria-labelledby="credit-card-tab">
                                         <div class="contact-form-action">
-                                            <form method="">
-                                                <?php $univers=$consultant->consultantUniversity;
+                                            <form action="{{route('consultant_book.store')}}" method="POST">
+                                                @csrf
 
-                                                ?>
-                                                <div class="col-md-12">
-                                                    <table id="bannewrImages" class="table table-striped table-bordered table-hover">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="text-left" style="width: 40%;">Choose University </th>
-                                                                <th class="text-left" style="width: 40%;">Choose Course</th>
-                                                                <th class="text-right" style="width: 10%;">Action</th>
-
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                           @php
-                                                                  $bannerImages = old('banner_images') ?? [];
-                                                                  $inc = 0;
-                                                              @endphp
-
-                                                        </tbody>
-                                                        <tfoot>
-                                                            <tr>
-                                                                <td colspan="4"></td>
-                                                                <td>
-                                                                    <button type="button" onclick="addImage();" data-toggle="tooltip" title="<?= __('Add Banner') ?>" class="btn btn-primary">
-                                                                        <i class="las la-plus-circle"></i>
-                                                                    </button>
-                                                                </td>
-                                                            </tr>
-                                                        </tfoot>
-                                                    </table>
-
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-md-12">
-                                                            <div class="input-box">
-                                                                <label class="label-text">Date</label>
-                                                                <div class="form-group">
-                                                                    <span class="las la-calendar-alt form-icon"></span>
-                                                                    <input class="form-control"   id="date" name="text" placeholder="Date">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-12">
+                                                <div class="row col-lg-12" style="margin-bottom: -34px;">
+                                                    <div class="col-lg-6 col-md-12">
+                                                        <div class="input-box">
+                                                            <label style="color: grey;
+                                                            font: caption;     margin-bottom: 13px;" class="label-text"> Booking Date</label>
                                                             <div class="form-group">
-                                                                <label for="start_time">Select Booking Time</label>
-                                                                <?php get_times( $default = '00:00', $interval = '+30 minutes' ); ?>
-                                                                <select class="form-control" id="starttime" name="start_time" style="height: 50px;" >
-                                                                <option value="">Select Start Time</option>
-                                                               {{$times=$consultant->consultantSlots}}
-
-                                                            </select>
-                                                            </div><br><br>
-                                                            <input type="text" id="cid" name="cid" value="{{$consultant->id}}" hidden>
+                                                                <span class="las la-calendar-alt form-icon"></span>
+                                                                <input class="form-control"   id="date" name="booking_date" placeholder="Date">
+                                                            </div>
                                                         </div>
                                                     </div>
 
+                                                    <div class="col-lg-6 col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="start_time">Select Booking Time</label>
+                                                            <?php get_times( $default = '00:00', $interval = '+30 minutes' ); ?>
+                                                            <select class="form-control" id="starttime" name="start_time" style="height: 50px;" >
+                                                            <option value="">Select Start Time</option>
+                                                           {{$times=$consultant->consultantSlots}}
+
+                                                        </select>
+                                                        </div><br><br>
+                                                        <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
+                                                        <input type="text" id="cid" name="cid" value="{{$consultant->id}}" hidden>
+                                                    </div>
+                                                    </div>
 
                                                               <!-- Function to call time -->
                                                               <?php
@@ -132,14 +103,56 @@
                                                                   return $output;
                                                               }
                                                               ?>
-                                                        <!-- end col-lg-6 -->
-                                                      <!-- end col-lg-6 -->
-                                                        <!-- end col-lg-6 -->
-                                                        <!-- end col-lg-12 -->
+{{-- #######################TIMESLOT#################### --}}
+                                                <?php $univers=$consultant->consultantUniversity;
+
+                                                ?>
+                                                <div class="col-md-12">
+                                                    <table id="bannewrImages" class="table table-striped table-bordered table-hover" >
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-left" style="width: 40%;">Choose University </th>
+                                                                <th class="text-left" style="width: 40%;">Choose Course</th>
+                                                                <th class="text-left" style="width: 10%;">Action</th>
+
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                           @php
+                                                                  $bannerImages = old('banner_images') ?? [];
+                                                                  $inc = 0;
+                                                              @endphp
+
+                                                        </tbody>
+                                                        <tfoot>
+
+                                                            <tr>
+<td></td>
+<td></td>
+
+
+                                                                <td>
+                                                                    <button type="button" id="bst" onclick="addImage();" data-toggle="tooltip" title="<?= __('Add More') ?>" class="btn btn-primary">
+                                                                        <i class="las la-plus-circle"></i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+
+
+                                                        {{-- <div class="form-floating mb-4">
+                                                            <label for="floatingTextarea">Comments</label>
+                                                            <textarea class="form-control"  name="comment" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+
+                                                        </div> --}}
+
                                                         <div class="col-lg-12">
                                                             @if(auth()->user())
                                                             <div class="btn-box">
-                                                                <button class="theme-btn" type="submit">Confirm Booking</button>
+                                                                <button  style="
+                                                                margin-left: -15px;" class="theme-btn" type="submit">Confirm Booking</button>
                                                             </div>
 
                                                             @endif
@@ -148,7 +161,8 @@
                                                 </form>
                                                 @if(!auth()->user())
                                                 <div class="btn-box">
-                                                    <button class="theme-btn" data-toggle="modal" data-target="#loginPopupForm">Confirm Booking</button>
+                                                    <button  style="
+                                                    margin-left: -15px;" class="theme-btn" data-toggle="modal" data-target="#loginPopupForm">Confirm Booking</button>
                                                 </div>
                                                 @endif
 
@@ -160,10 +174,14 @@
                                                 </div>
 
                                 </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                                 </section>
 
 
-                                            </div>
 
 
                                                <div class="box-footer">
@@ -265,26 +283,25 @@ $.ajaxSetup({
 
 
 
-    $('#add_document2').click(function(){
+    $('#bst').click(function(){
       rt=$('#document_name').val()
     //   console.log(rt);
 $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
 $('#documentModal').modal('hide')
     });
 
-      $(document).on('click', '.btn_remove', function(){
+    // $(document).on('click', '.btn_remove', function(){
 
-           var button_id = $(this).attr("id");
+    //        var button_id = $(this).attr("id");
 
-           $('#row'+button_id+'').remove();
-           r=$('#dynamic_field .dynamic-added').length;
-            if(r<3){
-                $('#add').prop('disabled', false);
-            }
-        //    $('#add').add();
-        //    window.location.reload();
+    //     //    $('#row'+button_id+'').remove();
+    //        r=$('#dynamic_field .dynamic-added').length;
+    //         if(r<3){
+    //             $('#bst').prop('disabled', false);
+    //         }
 
-      });
+
+    //   });
 
 
       $.ajaxSetup({
@@ -376,7 +393,7 @@ $('#course-'+dt+'').html('<option>uddsdsdsdsddsdsdsdsds</option>');
              html = '<tr id="imageBox-' + image_row + '" class="imageBox">';
 
 
-           html += '  <td class="text-center filetype"  data-row_id='+image_row+'><select class="col-lg-12" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][type]"> <option selected>University Name</option><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td>';
+           html += '  <td class="text-center filetype"  data-row_id='+image_row+'><select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][university]"> <option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td>';
            html += ' <td class="text-left" id="tc-'+image_row+'" >'
            html +='<select required class="form-control"  id="tl-'+image_row+'" name="banner_images['+image_row+'][course]"></select>';
            html +='</td>';
@@ -385,13 +402,33 @@ $('#course-'+dt+'').html('<option>uddsdsdsdsddsdsdsdsds</option>');
 
 
 
-            html += '  <td class="text-left"><button type="button" onclick="$(\'#imageBox-' + image_row + ', .tooltip\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="las la-minus-circle"></i></button></td>';
+            html += '  <td class="text-left"><button type="button" onclick="$(\'#imageBox-' + image_row + ', .tooltip\').remove();" data-toggle="tooltip" title="Remove" id="'+image_row+'" class="btn btn-danger btn_remove"><i class="las la-minus-circle"></i></button></td>';
             html += '</tr>';
             $('table#bannewrImages tbody').append(html);
-
+            r=$('#bannewrImages .imageBox').length;
+            if(r==3){
+                $('#bst').prop('disabled', true);
+            }
             image_row++;
 
             }
+
+            $(document).on('click', '.btn_remove', function(){
+           var button_id = $(this).attr("id");
+            // console.log(button_id);
+           $('#imageBox'+button_id+'').remove();
+           r=$('#bannewrImages .imageBox').length;
+           console.log(r);
+            if(r<3){
+                $('#bst').prop('disabled', false);
+            }
+        //    $('#add').add();
+        //    window.location.reload();
+
+      });
+
+
+
 
 
           </script>
