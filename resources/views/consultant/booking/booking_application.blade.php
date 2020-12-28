@@ -96,9 +96,11 @@
                                                     @endforeach
                                                   </select></td>
                                                   <td> <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control FulNamo" >
-
-                                                   <option value="0">BTech</option>
-                                                   <option value="1">MTech</option>
+<?php $courses = $univer->university->universityCourse?>
+                                                    @foreach($courses as $course)
+                                                   <option value="{{$course->id}}">{{$course->name}}</option>
+                                                   {{-- <option value="1">MTech</option> --}}
+                                                   @endforeach
                                                     {{-- <option selected>Course Name</option>
                                                 <?php $course=$univer->university->universityCourse ;
                                                ?>
