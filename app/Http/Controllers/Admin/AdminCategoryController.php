@@ -25,7 +25,7 @@ class AdminCategoryController extends Controller
     public function index()
     {
 
-        return view('admin.category.index')->with('category', Category::all());
+        return view('admin.category.index')->with('categories', Category::all());
 
     }
 
@@ -49,7 +49,6 @@ class AdminCategoryController extends Controller
     {
 
         $this->validate($request, [
-            'parent_id' => 'required',
             'title' => 'required',
             'slug' => 'required',
             'status' => 'required'

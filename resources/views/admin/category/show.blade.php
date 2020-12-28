@@ -29,7 +29,7 @@
 
                     <tr>
                         <th scope="row">Parent Category</th>
-                        <td>{{$category->parent_category->title}}</td>
+                        <td>{{$category->parent_category->title ?? ''}}</td>
                     </tr>
 
 

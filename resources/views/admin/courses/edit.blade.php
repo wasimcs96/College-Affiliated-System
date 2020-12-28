@@ -37,8 +37,8 @@
                                     <label for="title"> Category</label>
                                     <select name="category_id" class="form-control" required>
 
-                                        @foreach ($category as $categories)
-                                            <option value="" <?php if($course->category_id == $categories->id) { echo "selected"; } ?>>{{ $categories->title }}</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{$category->id}}" <?php if($course->category_id == $category->id) { echo "selected"; } ?>>{{ $category->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -11,7 +11,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <a href="{{route('admin.courses.add')}}"class="btn btn-primary"> <i class="fa fa-plus"></i>Add </a>
+                <a href="{{route('admin.courses.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>  Add </a>
                 {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                     <ul class="dropdown-menu">
@@ -39,7 +39,7 @@
                    <tbody>
                     @foreach ($courses as $course)
                         <tr>
-                            <td>{{$course->category->title}}</td>
+                            <td>{{$course->category->title ?? ''}}</td>
                              <td>{{$course->name}}</td>
                             <td>
                                 @if ($course->type  == 0)
