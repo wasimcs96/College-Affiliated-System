@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $fillable = ['status'];
+    protected $fillable = ['client_id','consultant_id','enquiry','booking_date','booking_start_time','booking_end_time','booking_for','status','comments'];
 
     public function user()
     {
