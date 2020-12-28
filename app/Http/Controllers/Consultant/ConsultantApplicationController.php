@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Application;
+use App\Models\Course;
+use App\Models\University;
 
 
 class ConsultantApplicationController extends Controller
@@ -23,6 +25,26 @@ class ConsultantApplicationController extends Controller
     //    {
     //        dd(json_decode($app->documents));
     //    }
-       return view('consultant.application.application_create',compact('application'));
+    // $book = $application->booking->enquiry;
+    // $bookings = json_decode($book);
+    // dd($bookings);
+    $book = $application->booking->enquiry;
+    $bookings = json_decode($book,true);
+    $i = 0;
+    foreach($bookings as $booking)
+    {
+        $university_id[$i] = $booking['university'];
+        $course_id[$i] = $booking['course'];
+        $i++;
+    }
+    $university0 =  University::where('id',$university_id[0])->get()->first();
+    $university1 =  University::where('id',$university_id[1])->get()->first();
+    $university2 =  University::where('id',$university_id[2])->get()->first();
+
+    $course0 = Course::where('id',$course_id[0])->get()->first();
+    $course1 = Course::where('id',$course_id[1])->get()->first();
+    $course2 = Course::where('id',$course_id[2])->get()->first();
+
+       return view('consultant.application.application_create',compact('application','university0','university1','university2','course0','course1','course2'));
    }
 }

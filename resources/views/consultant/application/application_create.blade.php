@@ -56,21 +56,26 @@
                         <th scope="row">Student Country</th>
                         <td>{{$application->booking->user->country}}</td>
                     </tr>
-
-                    {{-- <tr>
-                        <th scope="row">Student University Prefrence-1</th>
-                        <td>RTU</td>
+                    {{--
+                        @foreach($bookings as $booking)
+                    <tr>
+                        <th scope="row">Student University {{$booking['university']}} </th>
+                        <td>{{$booking['course']}}</td>
+                    </tr>{{$course0->name}}
+                        @endforeach --}}
+                    <tr>
+                        <th scope="row">Student University/Course Preference-1</th>
+                        <td>{{$university0->university_name}}/</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-2</th>
-                        <td>BTU</td>
+                        <th scope="row">Student University/Course Prefrence-2</th>
+                        <td>{{$university1->university_name}}/{{$course1->name}}</td>
                     </tr>
-
                     <tr>
-                        <th scope="row">Student University Prefrence-3</th>
-                        <td>CTU</td>
-                    </tr> --}}
+                        <th scope="row">Student University/Course Prefrence-3</th>
+                        <td>{{$university2->university_name}}/{{$course2->name}}</td>
+                    </tr>
                     <tr>
                         <th scope="row">Date</th>
                         <td>{{$application->booking->booking_date}}</td>
@@ -261,7 +266,7 @@
         <div class="card-header" id="headingTwo">
           <h2 class="mb-0">
             <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapse-{{$key}}">
-              University Form #2
+              University Form #{{$key+ 1}}
             </button>
           </h2>
         </div>
@@ -272,18 +277,18 @@
                       <div class="col-lg-12 col-md-12 col-sm-12">
                           <div class="card">
                               <div class="header">
-                                  <h2>University Form-2</h2>
+                                  <h2>University Form-{{$key+ 1}} </h2>
                                   <ul class="header-dropdown dropdown">
 
                                       <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                                      <li class="dropdown">
+                                      {{-- <li class="dropdown">
                                           <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                                           <ul class="dropdown-menu">
                                               <li><a href="javascript:void(0);">Action</a></li>
                                               <li><a href="javascript:void(0);">Another Action</a></li>
                                               <li><a href="javascript:void(0);">Something else</a></li>
                                           </ul>
-                                      </li>
+                                      </li> --}}
                                   </ul>
                               </div>
                               <div class="body wizard_validation">
@@ -299,7 +304,7 @@
                                             </div>
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" value="@if(isset($applied->course->title)){{$applied->course->title}}@endif" placeholder="Password " name="password" id="password">
+                                                    <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course">
                                                 </div>
                                             </div>
                                             {{-- <div class="col-lg-4 col-md-12">
