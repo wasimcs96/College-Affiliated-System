@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
-    protected $fillable = ['booking_id','client_id','consultant_id','note','status','document'];
+    protected $fillable = ['booking_id','client_id','consultant_id','note','status','documents'];
 
     public function user()
     {
@@ -26,5 +26,15 @@ class Application extends Model
     public function booking()
     {
         return $this->belongsTo(Booking::class);
+    }
+
+    public function applicationAppliedUniversity()
+    {
+        return $this->hasMany(ApplicationAppliedUniversity::class);
+    }
+
+    public function applicationDocument()
+    {
+        return $this->hasMany(ApplicationDocument::class);
     }
 }

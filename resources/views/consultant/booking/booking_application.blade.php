@@ -22,7 +22,7 @@
                             <h2>Form</h2>
                         </div>
                         <div class="body">
-                            <form action="{{ route('booking.application.store')}}"  id="basic-form" method="POST" novalidate action="#">
+                            <form action="{{ route('booking.application.store')}}"  id="basic-form" method="POST" novalidate action="#" enctype="multipart/form-data">
 
                                 {{-- <div class="form-group">
                                     <label> Consultant Name</label>
@@ -89,20 +89,26 @@
                                         <table class="table table-bordered" id="dynamic_field">
                                             <tr class="dynamic-added" data-row_id="{{$increase}}">
 
-                                                <td> <select id="university" custom1="{{$increase}}" data-row_id="{{$increase}}" custom2="" class="form-control FulNamo" name="university[{{$increase}}]">
-                                                    <option selected>University Name</option>
+                                                <td> <select id="university" custom1="{{$increase}}" data-row_id="{{$increase}}" custom2="" class="form-control FulNamo" name="university[{{$increase}}]" placeholder="Select University">
+                                                    <option value="" selected>University Name</option>
                                                     @foreach($univers as $univer)
-                                                    <option value="{{$univer->university->university_name}}">{{$univer->university->university_name}}</option>
+                                                    <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option>
                                                     @endforeach
                                                   </select></td>
                                                   <td> <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control FulNamo" >
-                                                    <option selected>Course Name</option>
-                                                <?php $course=$univer->university->universityCourse?>
+
+                                                   <option value="0">BTech</option>
+                                                   <option value="1">MTech</option>
+                                                    {{-- <option selected>Course Name</option>
+                                                <?php $course=$univer->university->universityCourse ;
+                                               ?>
+
                                                     @foreach($course as $cours)
                                                     <option value="$course-course">
                                                         {{$cours->course->name}}
                                                     </option>
-                                                    @endforeach
+                                                    @endforeach --}}
+
                                                   </select></td>
                                                 <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i></button></td>
                                             </tr>
@@ -116,25 +122,26 @@
                                     ?>
                                     <label for="documents">Documents</label>
 
-                                <br />
+                                     <br/>
 
-                            <div class="dynamic_document" id="dynamic_document">
-                                @foreach($documentarray as $key => $value)
-                                <label class="control-inline fancy-checkbox">
-                                {{-- <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" multiple> --}}
-                                    <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" required >
+                                    <div class="dynamic_document" id="dynamic_document">
+                                        @foreach($documentarray as $key => $value)
+                                        <label class="control-inline fancy-checkbox">
+                                        {{-- <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" multiple> --}}
+                                            <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" required >
 
-                                    <span>{{$value}}</span>
-                                    @php $inc++ @endphp
-                                    @endforeach
-                                </label>
-                            </div>
+                                            <span>{{$value}}</span>
+                                            @php $inc++ @endphp
+                                            @endforeach
+                                        </label>
+                                    </div>
 
-                                <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
-                                <p id="error-checkbox3"></p>
-                                <input type="file" name="images[]" class="dropify" multiple>
-                                @csrf
-                                <br>
+                                    <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
+                                    <p id="error-checkbox3"></p>
+                                    <input type="file" name="documents[]" class="dropify" multiple>
+                                    @csrf
+                                    <br>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Confirm Booking</button>
                             </form>
                         </div>
@@ -146,31 +153,31 @@
 </div>
 
 
-<div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add Document Title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form id="basic-form" method="post" novalidate action="#">
-                <div class="form-group">
-                    <label>Document Name</label>
-                    <input type="text" class="form-control" name="document_name" id="document_name" required>
+    <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Document Title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
                 </div>
-            </form>
+                <div class="modal-body">
+                    <form id="basic-form" method="post" novalidate action="#">
+                        <div class="form-group">
+                            <label>Document Name</label>
+                            <input type="text" class="form-control" name="document_name" id="document_name" required>
+                        </div>
+                   </form>
+                </div>
+                <div class="modal-footer">
+                   {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                   {{-- <button type= class="btn btn-primary">Submit</button> --}}
+                       <a href="javascript:void(0)" class="btn btn-primary" id="add_document2"> Add </a>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
-          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-          {{-- <button type= class="btn btn-primary">Submit</button> --}}
-<a href="javascript:void(0)" class="btn btn-primary" id="add_document2"> Add </a>
- </div>
-      </div>
     </div>
-  </div>
 
 
 @stop
@@ -201,11 +208,11 @@
      $(document).ready(function(){
       var postURL = "<?php echo url('addmore'); ?>";
       var i=0;
-
+      var document_row = {{$inc}} ;
 
       $('#add').click(function(){
              i++;
-           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td><select custom1="'+i+'" data-row_id="{{$increase}}" id="university" name="enquiry['+i+']" class="form-control"><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td><td><select id="course-'+i+'" name="enquiry['+i+']" class="form-control"></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td><select custom1="'+i+'" data-row_id="{{$increase}}" id="university" name="university['+i+']" class="form-control"><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td><td><select id="course-'+i+'" name="course['+i+']" class="form-control"><option value='+i+'>Course</select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
            r=$('#dynamic_field .dynamic-added').length;
             if(r==3){
                 $('#add').prop('disabled', true);
@@ -216,7 +223,7 @@
       });
 
     $('#add_document2').click(function(){
-      rt=$('#document_name').val()
+    rt=$('#document_name').val()
     //   console.log(rt);
     $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document['+document_row+']" value="'+rt+'"><span>'+rt+'</span></label>')
     $('#documentModal').modal('hide')
@@ -268,14 +275,15 @@
       });
 
 
-      function printErrorMsg (msg) {
+    function printErrorMsg (msg)
+    {
          $(".print-error-msg").find("ul").html('');
          $(".print-error-msg").css('display','block');
          $(".print-success-msg").css('display','none');
          $.each( msg, function( key, value ) {
             $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
          });
-      }
+    }
     });
 
 </script>
