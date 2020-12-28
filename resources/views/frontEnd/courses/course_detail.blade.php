@@ -297,7 +297,7 @@
                                                </ul>                                            <div class="custom-checkbox mb-0">
 
                                               <a href="
-                                              {{route('university_detail')}}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
+                                             #}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
                                             </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
@@ -389,7 +389,7 @@
                                                </ul>
                                             <div class="custom-checkbox mb-0">
                                                 <a href="
-                                              {{route('university_detail')}}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
+                                             #}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
                                             </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
@@ -481,7 +481,7 @@
                                                </ul>
                                             <div class="custom-checkbox mb-0">
                                                 <a href="
-                                              {{route('university_detail')}}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
+                                             #}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
                                             </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
@@ -573,7 +573,7 @@
                                                </ul>
                                             <div class="custom-checkbox mb-0">
                                                 <a href="
-                                                {{route('university_detail')}}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
+                                               #}">  <label for="selectChb1" class="theme-btn theme-btn-small">Detail</label></a>
                                             </div>
                                         </div>
                                     </div><!-- end cabin-type-item -->
@@ -1240,7 +1240,7 @@
                                                      <span class="ml-2">305 Reviews</span>
                                                 </span>
                                             <div>
-                                            <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                            <a href="#" class="btn btn-primary text-light">Book Now</a>
                                             </div>
                                         </div>
                                     </div></li>
@@ -1260,7 +1260,7 @@
                                                      <span class="ml-2">305 Reviews</span>
                                                 </span>
                                                 <div>
-                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                    <a href="#" class="btn btn-primary text-light">Book Now</a>
                                                 </div>
                                         </div>
                                     </div></li>
@@ -1280,7 +1280,7 @@
                                                      <span class="ml-2">305 Reviews</span>
                                                 </span>
                                                 <div>
-                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                    <a href="#" class="btn btn-primary text-light">Book Now</a>
                                                 </div>
                                         </div>
                                     </div></li>
@@ -1300,7 +1300,7 @@
                                                      <span class="ml-2">305 Reviews</span>
                                                 </span>
                                                 <div>
-                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                    <a href="#" class="btn btn-primary text-light">Book Now</a>
                                                 </div>
                                         </div>
                                     </div></li>
@@ -1320,7 +1320,7 @@
                                                      <span class="ml-2">305 Reviews</span>
                                                 </span>
                                                 <div>
-                                                    <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                    <a href="#" class="btn btn-primary text-light">Book Now</a>
                                                 </div>
                                         </div>
                                     </div></li>

@@ -617,8 +617,11 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="section-heading">
-                    <h4>Featured University</h4>
+                    <h4>Featured University <span style="
+                        float: right;
+                    "><a  href="{{route('university_all')}}" class="btn btn-primary btn-sm">View all</a></span></h4>
                     <hr>
+
                     {{-- <p class="sec__desc padding-top-30px">
                         Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero
                     </p>
@@ -633,7 +636,7 @@
                             <?php
                                 $universities = DB::table('universities') ->get();
                                 ?>
-
+@if($universities->count()>0)
                             @foreach($universities as $key => $university)
                             {{-- {{dd($university->id)}} --}}
                             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
@@ -648,6 +651,9 @@
                             </div>
                         </div>
                           @endforeach
+                          @else
+                          <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
+
 
 
                         </div>
@@ -662,6 +668,7 @@
                       </div>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-4 -->
+            @endif
             <div class="col-lg-6">
                 <div class="section-heading ">
 <?php $consultants = DB::table('consultants')->get();
@@ -1098,6 +1105,7 @@
                        </ul>
                    </div><!-- end section-tab -->
                </div><!-- end flight-filter-tab -->
+               @if($universities->count()>0)
                 <div class="popular-round-trip-wrap padding-top-40px">
                     <div class="tab-content" id="myTabContent4">
                         <div class="tab-pane fade show active" id="new-york" role="tabpanel" aria-labelledby="new-york-tab">
@@ -1664,6 +1672,10 @@
                         <p class="font-size-15"><i class="la la-question-circle mr-1"></i>Average round-trip price per person, taxes and fees included.</p>
                         <a href="#" class="btn-text font-size-15">Discover More <i class="la la-angle-right"></i></a>
                     </div><!-- end tab-content-info -->
+                @else
+                <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
+
+                    @endif
                 </div>
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
@@ -2462,7 +2474,10 @@
 <!-- ================================
        START CLIENTLOGO AREA
 ================================= -->
-<section class="clientlogo-area padding-top-80px padding-bottom-80px text-center">
+<br>
+<br>
+
+{{-- <section class="clientlogo-area padding-top-80px padding-bottom-80px text-center">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -2489,7 +2504,7 @@
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section><!-- end clientlogo-area -->
+</section><!-- end clientlogo-area --> --}}
 <!-- ================================
        START CLIENTLOGO AREA
 ================================= -->
