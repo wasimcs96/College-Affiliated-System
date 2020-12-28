@@ -90,6 +90,15 @@ class ConsultantFrontController extends Controller
 
     public function book_store(Request $request)
     {
+
+        $this->validate($request,[
+        'start_time'=>'required',
+        'booking_date'=>'required',
+        'banner_images' => 'required',
+
+         ]);
+
+
         $time = explode("-" ,$request->start_time);
         $start_time = $time[0];
         $end_time = $time[1];

@@ -26,14 +26,7 @@
                                 </div>
                             </div><!-- end breadcrumb-content -->
                         </div><!-- end col-lg-6 -->
-                        <div class="col-lg-6">
-                            <div class="breadcrumb-list">
-                                <ul class="list-items d-flex justify-content-end">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li>Consultant Booking</li>
-                                </ul>
-                            </div><!-- end breadcrumb-list -->
-                        </div><!-- end col-lg-6 -->
+                       <!-- end col-lg-6 -->
                     </div><!-- end row -->
                 </div><!-- end container -->
             </div><!-- end breadcrumb-wrap -->
@@ -65,7 +58,7 @@
                                                             font: caption;     margin-bottom: 13px;" class="label-text"> Booking Date</label>
                                                             <div class="form-group">
                                                                 <span class="las la-calendar-alt form-icon"></span>
-                                                                <input class="form-control"   id="date" name="booking_date" placeholder="Date">
+                                                                <input class="form-control"   id="date" name="booking_date" placeholder="Date" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,7 +67,7 @@
                                                         <div class="form-group">
                                                             <label for="start_time">Select Booking Time</label>
                                                             <?php get_times( $default = '00:00', $interval = '+30 minutes' ); ?>
-                                                            <select class="form-control" id="starttime" name="start_time" style="height: 50px;" >
+                                                            <select class="form-control" id="starttime" name="start_time" style="height: 50px;" required>
                                                             <option value="">Select Start Time</option>
                                                            {{$times=$consultant->consultantSlots}}
 
@@ -128,10 +121,25 @@
                                                         <tfoot>
 
                                                             <tr>
-<td></td>
-<td></td>
-
-
+                                                                <td class="text-center filetype"  data-row_id='+image_row+'>
+                                                                    <select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[][university]" required>
+                                                       <?php $un=$consultant->consultantUniversity?>
+                                                                 @foreach($un as $uns)
+                                                            <option value="{{$uns->university->id}}"
+                                                                @if($uns->university->id==$universityid) selected @endif >
+                                                                {{-- {{ $t->title }} --}} {{$uns->university->university_name}}
+                                                            </option>
+                                                    @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select required class="form-control"  id="tl-'+image_row+'" name="banner_images[][course]">
+                                                                    <?php $courses = $uns->university->universityCourse?>
+                                                                    @foreach($courses as $course)
+                                                                   <option value="{{$course->course->id}}">{{$course->course->name}}</option>
+                                                                   @endforeach
+                                                                </select>
+                                                            </td>
                                                                 <td>
                                                                     <button type="button" id="bst" onclick="addImage();" data-toggle="tooltip" title="<?= __('Add More') ?>" class="btn btn-primary">
                                                                         <i class="las la-plus-circle"></i>
@@ -393,7 +401,7 @@ $('#course-'+dt+'').html('<option>uddsdsdsdsddsdsdsdsds</option>');
              html = '<tr id="imageBox-' + image_row + '" class="imageBox">';
 
 
-           html += '  <td class="text-center filetype"  data-row_id='+image_row+'><select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][university]"> <option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td>';
+           html += '  <td class="text-center filetype"  data-row_id='+image_row+'><select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][university]" required> <option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td>';
            html += ' <td class="text-left" id="tc-'+image_row+'" >'
            html +='<select required class="form-control"  id="tl-'+image_row+'" name="banner_images['+image_row+'][course]"></select>';
            html +='</td>';
@@ -406,7 +414,7 @@ $('#course-'+dt+'').html('<option>uddsdsdsdsddsdsdsdsds</option>');
             html += '</tr>';
             $('table#bannewrImages tbody').append(html);
             r=$('#bannewrImages .imageBox').length;
-            if(r==3){
+            if(r==2){
                 $('#bst').prop('disabled', true);
             }
             image_row++;

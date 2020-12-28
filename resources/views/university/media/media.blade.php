@@ -31,6 +31,7 @@
                                   <div id="lightgallery" class="row clearfix lightGallery">
 
                                 <?php $rts=auth()->user()->university->universityMedia;?>
+                                @if($rts->count()>0)
                                 @foreach($rts as $rt)
                                 @if ($rt->file_type==0)
                                 {{-- <div class="card">
@@ -41,7 +42,7 @@
                                     <div class="col-lg-4 col-md-5 mb-4"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}" alt=""></a></div>
                                   </div> --}}
                                   <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
-                                    <div class="col-lg-4 col-md-5 m-b-30"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
+                                    <div class="col-lg-3 col-md-5 m-b-30"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
 
                                         <div class="card-body">
                                             <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red; position:absolute;   top: 0;
@@ -66,6 +67,10 @@
 
 
                                   @endforeach
+                                  @else
+                                  <h2 class="mt-5" style="text-align: center"> No Media Available</h2>
+                                  @endif
+
                             {{-- <div class="container">
 
                                   <div class="ratio ratio-16x9">

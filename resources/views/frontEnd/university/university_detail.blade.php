@@ -91,7 +91,7 @@
                             <li><a data-scroll="staterooms" href="#staterooms" class="scroll-link">Consultants</a></li>
                             <li><a data-scroll="faq" href="#faq" class="scroll-link">FAQ</a></li>
                             <li><a data-scroll="reviews" href="#reviews" class="scroll-link">Reviews</a></li>
-                        <li>
+                        {{-- <li> --}}
                             <?php
                             $consultant = DB::table('university_consultants')
                                       ->where('university_id', '=', $university->id)
@@ -112,7 +112,7 @@
                                 </div>
 
                                              @else
-                                             <a class="btn btn-primary" id="btn5">
+                                             <a class="btn btn-primary" style="color:white; " id="btn5">
                                                  Pending</a>
                                          @endif
 
@@ -121,14 +121,14 @@
                                          <input type="text" name="consultant_id"  value="{{auth()->user()->consultant->id}}" hidden>
                                          <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
-                                         <a class="btn btn-warning cs" custom1="{{$university->id}}" href="javascript:void(0);"
+                                         <a class="btn btn-primary cs" custom1="{{$university->id}}" href="javascript:void(0);"
                                          @if(!auth()->user()) data-toggle="modal" data-target="#loginPopupForm" @else id="submitClass" @endif
                                          ><i class="las la-user-plus mr-2"></i>Be a Consultant </a>
                                         @endif
 
 @endif
 @endif
-                        </li>
+                        {{-- </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                                     </div><!-- end col-lg-6 -->
                                 </div><!-- end row -->
                             </div><!-- end single-content-item -->
-                            <div class="single-content-item padding-bottom-40px">
+                            {{-- <div class="single-content-item padding-bottom-40px">
                                 <h3 class="title font-size-20 d-flex align-items-center justify-content-between">
                                     What's Included
                                     <a class="btn collapse-btn theme-btn-hover-gray font-size-15" data-toggle="collapse" href="#viewIncludedExample" role="button" aria-expanded="false" aria-controls="viewIncludedExample">
@@ -227,8 +227,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- end single-content-item -->
-                            <div class="single-content-item">
+                            </div><!-- end single-content-item --> --}}
+                            {{-- <div class="single-content-item">
                                 <h3 class="title font-size-20 d-flex align-items-center justify-content-between">
                                     University Amenities
                                     <a class="btn collapse-btn theme-btn-hover-gray font-size-15" data-toggle="collapse" href="#viewAmenitiesExample" role="button" aria-expanded="false" aria-controls="viewAmenitiesExample">
@@ -496,7 +496,7 @@
                                         </div><!-- end col-lg-6 -->
                                     </div><!-- end row -->
                                 </div>
-                            </div><!-- end single-content-item -->
+                            </div><!-- end single-content-item --> --}}
                         </div><!-- end description -->
                         <div id="itinerary" class="page-scroll">
                             <div class="section-block margin-top-40px"></div>
@@ -513,12 +513,14 @@
                                            </tr>
                                        </thead>
                                        <tbody>
+                                           <?php $courses=$university->universityCourse?>
+                                          @foreach($courses as $course)
                                            <tr>
                                                <th scope="row">4 years</th>
                                                <td>
                                                    <div class="table-content d-flex align-items-center">
                                                        <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0">
-                                                       <h3 class="title">Btech</h3>
+                                                       <h3 class="title">{{$course->course->name}}</h3>
                                                    </div>
                                                </td>
                                                <td>5</td>
@@ -526,80 +528,8 @@
                                                 <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
                                             </div></td>
                                            </tr>
-                                           <tr>
-                                               <th scope="row">4 Years</th>
-                                               <td>
-                                                   <div class="table-content d-flex align-items-center">
-                                                       <img src="{{asset('frontEnd/assets/images/small-img5.jpg')}}" alt="" class="flex-shrink-0">
-                                                       <h3 class="title">Mtech</h3>
-                                                   </div>
-                                               </td>
-                                               <td>4</td>
-                                               <td> <div>
-                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
-                                            </div></td>
-                                           </tr>
-                                           <tr>
-                                               <th scope="row">5years</th>
-                                               <td>
-                                                   <div class="table-content d-flex align-items-center">
-                                                       <img src="{{asset('frontEnd/assets/images/small-img5.jpg')}}" alt="" class="flex-shrink-0">
-                                                       <h3 class="title">BSC</h3>
-                                                   </div>
-                                               </td>
-                                               <td>5</td>
-                                               <td> <div>
-                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
-                                            </div></td>                                           </tr>
-                                           <tr>
-                                               <th scope="row">4years</th>
-                                               <td>
-                                                   <div class="table-content d-flex align-items-center">
-                                                       <img src="{{asset('frontEnd/assets/images/small-img6.jpg')}}" alt="" class="flex-shrink-0">
-                                                       <h3 class="title">BHMCT</h3>
-                                                   </div>
-                                               </td>
-                                               <td>1</td>
-                                               <td> <div>
-                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
-                                            </div></td>                                           </tr>
-                                           <tr>
-                                               <th scope="row">4 Years</th>
-                                               <td>
-                                                   <div class="table-content d-flex align-items-center">
-                                                       <img src="{{asset('frontEnd/assets/images/small-img7.jpg')}}" alt="" class="flex-shrink-0">
-                                                       <h3 class="title">MCA</h3>
-                                                   </div>
-                                               </td>
-                                               <td>4</td>
-                                               <td> <div>
-                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
-                                            </div></td>                                           </tr>
-                                           <tr>
-                                               <th scope="row">4 Years</th>
-                                               <td>
-                                                   <div class="table-content d-flex align-items-center">
-                                                       <img src="{{asset('frontEnd/assets/images/small-img5.jpg')}}" alt="" class="flex-shrink-0">
-                                                       <h3 class="title">BCA</h3>
-                                                   </div>
-                                               </td>
-                                               <td>4</td>
-                                               <td> <div>
-                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
-                                            </div></td>                                           </tr>
-                                           <tr>
-                                               <th scope="row">4 years</th>
-                                               <td>
-                                                   <div class="table-content d-flex align-items-center">
-                                                       <img src="{{asset('frontEnd/assets/images/small-img8.jpg')}}" alt="" class="flex-shrink-0">
-                                                       <h3 class="title">MSC</h3>
-                                                   </div>
-                                               </td>
-                                               <td>4</td>
-                                               <td> <div>
-                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
-                                            </div></td>                                           </tr>
-                                       </tbody>
+                                           @endforeach
+                                    </tbody>
                                    </table>
                                    <p class="font-size-14 line-height-26"><strong class="text-black">Please note:</strong>sdfsdfsdfsdfjjsdhfsjdhfjshsjhdfkjhsjdfhjsdfhsdhfdsfksfksdfjkdshfjshfjshdjkfdshfjhdfhdsjhfdsfkdsfksdkfh.</p>
                                </div>
