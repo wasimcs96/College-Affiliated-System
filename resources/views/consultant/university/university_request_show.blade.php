@@ -1,13 +1,13 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Consultant')
-@section('title', 'See University details')
+@section('title', 'See Requested University details')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>My Universities<small>Universities Consultants Associated With</small></h2>
+            <h2>My Universities<small>Universities Consultant Requested to</small></h2>
             <ul class="header-dropdown dropdown">
 
                 {{-- <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>

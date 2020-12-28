@@ -7,18 +7,11 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>My Universities<small>Universities Consultants Associated With</small></h2>
+            <h2>My Universities<small>Universities Consultant Requested to</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li> --}}
+
             </ul>
         </div>
         <div class="body">
@@ -40,7 +33,7 @@
                     <tbody>
                         <?php $sno=0;?>
                         @foreach($universities as $university)
-                        @if($university->status == 1)
+                        @if($university->status == 0)
                         <tr class="row-{{ $university->id }}">
                             <td>{{ $sno=$sno+1}}.</td>
                             <td>{{$university->university->university_name}}</td>
@@ -53,12 +46,10 @@
                             {{-- <td> {{$university->university->user->address}}</td>
                             <td>Indian</td>--}}
                             <td>
-                            <a href="{{route('consultant.university.show',['id'=>$university->university->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <a href="{{route('consultant.request_university.show',['id'=>$university->university->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
                         @endif
                         @endforeach
-                    @else
-                    No Record Available
                     </tbody>
                 @endif
                 </table>

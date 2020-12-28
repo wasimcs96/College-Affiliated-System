@@ -96,20 +96,18 @@
                                                     @endforeach
                                                   </select></td>
                                                   <td> <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control FulNamo" >
-<?php $courses = $univer->university->universityCourse?>
-                                                    @foreach($courses as $course)
-                                                   <option value="{{$course->id}}">{{$course->name}}</option>
-                                                   {{-- <option value="1">MTech</option> --}}
+                                                    <?php $univers=$book->consultant->consultantUniversity;
+                                                    $increase=0;
+                                                    $inc=1;
+                                                    ?>
+                                                    @foreach($univers as $univer)
+                                                   <option value="0">BTech</option>
+                                                   <option value="1">MTech</option>
                                                    @endforeach
                                                     {{-- <option selected>Course Name</option>
                                                 <?php $course=$univer->university->universityCourse ;
                                                ?>
 
-                                                    @foreach($course as $cours)
-                                                    <option value="$course-course">
-                                                        {{$cours->course->name}}
-                                                    </option>
-                                                    @endforeach --}}
 
                                                   </select></td>
                                                 <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i></button></td>

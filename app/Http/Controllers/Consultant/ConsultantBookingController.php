@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Application;
 use App\Models\ApplicationAppliedUniversity;
+use App\Models\University;
+use App\Models\Course;
 use App\Models\ApplicationDocument;
 
 
@@ -23,8 +25,23 @@ class ConsultantBookingController extends Controller
    public function show($id)
    {
        $show = Booking::where('id',$id)->first();
+       $enq = $show->enquiry;
+       $queries = json_decode($enq,true);
+       $i = 0;
+       foreach($queries as $query)
+       {
+           $university_id[$i] = $query['university'];
+           $course_id[$i] = $query['course'];
+           $i++;
+       }
+       $university0 =  University::where('id',$university_id[0])->get()->first();
+       $university1 =  University::where('id',$university_id[1])->get()->first();
+       $university2 =  University::where('id',$university_id[2])->get()->first();
 
-     return view('consultant.booking.booking_show',compact('show'));
+       $course0 = Course::where('id',$course_id[0])->get()->first();
+       $course1 = Course::where('id',$course_id[1])->get()->first();
+       $course2 = Course::where('id',$course_id[2])->get()->first();
+       return view('consultant.booking.booking_show',compact('show','university0','university1','university2','course0','course1','course2'));
    }
 
    public function accept(Request $request)
@@ -44,7 +61,8 @@ class ConsultantBookingController extends Controller
 public function application($id)
 {
     $book = Booking::where('id',$id)->get()->first();
-    return view('consultant.booking.booking_application',compact('book'));
+    $courses = Course::all();
+    return view('consultant.booking.booking_application',compact('book','courses'));
 }
 
 

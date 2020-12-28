@@ -642,6 +642,7 @@
                                            </ul>
                                            <div class="custom-checkbox mb-0">
                                                <input type="checkbox" id="chb2">
+                                               @if(auth()->user())
 <form action="{{route('consultant_book')}}" method="POST">
     @csrf
     <input type="text" name="universityid" value="{{$university->id}}" hidden>
@@ -651,6 +652,9 @@
                                            <button type="submit" class="theme-btn theme-btn-small">Book Now</button>
 
 </form>
+                                         @else
+                                         <button type="submit" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Book Now</button>
+@endif
                                         </div>
                                        </div>
                                     </div><!-- end cabin-type-item -->
@@ -754,102 +758,7 @@
                             @endif<!-- end single-content-item -->
                             <p class="font-size-14 line-height-26 padding-bottom-40px"><strong class="text-black">Please note:</strong>Above Consultants are affiliated to this University.</p>
                             <div class="section-block"></div>
-                        </div><!-- end staterooms -->
-                        {{-- <div id="faq" class="page-scroll">
-                            <div class="single-content-item padding-top-40px padding-bottom-40px">
-                                <h3 class="title font-size-20">Policies</h3>
-                                <div class="accordion accordion-item padding-top-30px" id="accordionExample2">
-                                    <div class="card">
-                                        <div class="card-header" id="faqHeadingOne">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link d-flex align-items-center justify-content-end flex-row-reverse font-size-16" type="button" data-toggle="collapse" data-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
-                                                    <span class="ml-3">Cancellation Policy</span>
-                                                    <i class="la la-minus"></i>
-                                                    <i class="la la-plus"></i>
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="faqCollapseOne" class="collapse show" aria-labelledby="faqHeadingOne" data-parent="#accordionExample2">
-                                            <div class="card-body">
-                                                <p class="pb-2">*In instances where the deposit amount paid is higher than the 25/50/75% of cruise fare cancellation charge, then the highest of the two amounts is payable as the cancellation charge, i.e. the full deposit amount is retained.</p>
-                                                <p><strong class="text-black mr-1">Note:</strong>Cancellation Policies are subject to change at any time by the cruise line without prior notice.</p>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card -->
-                                    <div class="card">
-                                        <div class="card-header" id="faqHeadingTwo">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link d-flex align-items-center justify-content-end flex-row-reverse font-size-16" type="button" data-toggle="collapse" data-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
-                                                    <span class="ml-3">University Information</span>
-                                                    <i class="la la-minus"></i>
-                                                    <i class="la la-plus"></i>
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="faqCollapseTwo" class="collapse" aria-labelledby="faqHeadingTwo" data-parent="#accordionExample2">
-                                            <div class="card-body">
-                                                <p class="pb-2">MSC will automatically add a $14.50 USD gratuity for standard staterooms, $17.50 USD for Suite guests, to each guest's SeaPass® account on a daily basis. Gratuities apply to all guests of all ages.</p>
-                                                <p><strong class="text-black mr-1">Note:</strong> Details, ship facts, policies, images and descriptions are gathered for information only and subject to change without notice. Images and descriptions displayed are subject to change at any time without notice. Actual details, design and configuration may vary.</p>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card -->
-                                    <div class="card">
-                                        <div class="card-header" id="faqHeadingThree">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link d-flex align-items-center justify-content-end flex-row-reverse font-size-16" type="button" data-toggle="collapse" data-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
-                                                    <span class="ml-3">Course Policy</span>
-                                                    <i class="la la-minus"></i>
-                                                    <i class="la la-plus"></i>
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="faqCollapseThree" class="collapse" aria-labelledby="faqHeadingThree" data-parent="#accordionExample2">
-                                            <div class="card-body">
-                                                <p class="pb-2">MSC cannot accept guests who will have entered their 24th week of pregnancy by the beginning of, or at any time during the cruise or cruisetour. A physician's "Fit to Travel" note is required prior to sailing, stating how far along (in weeks) your pregnancy will be at the beginning of the cruise and confirming that you are in good health and not experiencing a high-risk pregnancy.</p>
-                                                <p><strong class="text-black mr-1">Note:</strong>Details, ship facts, policies, images and descriptions are gathered for information only and subject to change without notice. Images and descriptions displayed are subject to change at any time without notice. Actual details, design and configuration may vary.</p>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card -->
-                                    <div class="card">
-                                        <div class="card-header" id="faqHeadingFour">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link d-flex align-items-center justify-content-end flex-row-reverse font-size-16" type="button" data-toggle="collapse" data-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
-                                                    <span class="ml-3">Rules</span>
-                                                    <i class="la la-minus"></i>
-                                                    <i class="la la-plus"></i>
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="faqCollapseFour" class="collapse" aria-labelledby="faqHeadingFour" data-parent="#accordionExample2">
-                                            <div class="card-body">
-                                                <p class="pb-2">MSC cruises are kids friendly and offer variety of activities for children every day. Day programs are divided by age groups. Children with a parent or guardian are welcome in most (not all) specialty restaurants throughout serving hours. There are kids gatherings, swimming pools, play areas and much more activities available for entertaining. </p>
-                                                <p><strong class="text-black mr-1">Babysitting Services:</strong>Babysitting is offered in groups at children's play areas. Hourly rate is applied for this service.</p>
-                                                <p><strong class="text-black mr-1">Please note:</strong>Due to public health regulations, in diapers, swim diapers, pull-ups or who are not COMPLETELY toilet trained are not allowed in the pools, whirlpools or H2O zone. Cribs for babies are not provided. </p>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card -->
-                                    <div class="card">
-                                        <div class="card-header" id="faqHeadingFive">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link d-flex align-items-center justify-content-end flex-row-reverse font-size-16" type="button" data-toggle="collapse" data-target="#faqCollapseFive" aria-expanded="false" aria-controls="faqCollapseFive">
-                                                    <span class="ml-3">Other Policies</span>
-                                                    <i class="la la-minus"></i>
-                                                    <i class="la la-plus"></i>
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="faqCollapseFive" class="collapse" aria-labelledby="faqHeadingFive" data-parent="#accordionExample2">
-                                            <div class="card-body">
-                                                <p class="pb-2">For the comfort and enjoyment of our guests, our ships are designated as non-smoking; however, we recognize that some of our guests smoke. Therefore, to provide an onboard environment that also satisfies smokers, we have designated certain public and private areas of the ship as "smoking areas."</p>
-                                                <p class="pb-2"> Smoking in public areas is only permitted in designated smoking sections which vary by ship. Generally, smoking is permitted outdoors on only one side of the ship; and smoking is permitted on all private ocean front balconies, including Loft Suite balconies on Oasis Class. To assist in locating areas where smoking is permitted, you will find visible signage posted within all smoking areas and ashtrays that are provided for your use. The location of all smoking venues can also be found in the daily Cruise Compass; or you may contact Guest Services once onboard. </p>
-                                                <p><strong class="text-black mr-1">Please note:</strong>Details, ship facts, policies, images and descriptions are gathered for information only and subject to change without notice. Images and descriptions displayed are subject to change at any time without notice. Actual details, design and configuration may vary.</p>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card -->
-                                </div>
-                            </div><!-- end single-content-item -->
-                            <div class="section-block"></div>
-                        </div><!-- end faq --> --}}
+                        </div>
                         <div id="reviews" class="page-scroll">
                             <div class="single-content-item padding-top-40px padding-bottom-40px">
                                 <h3 class="title font-size-20">Reviews</h3>
@@ -862,77 +771,7 @@
                                                 <span>Based on 4 reviews</span>
                                             </div>
                                         </div><!-- end col-lg-4 -->
-                                        {{-- <div class="col-lg-8">
-                                            <div class="review-bars">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="progress-item">
-                                                            <h3 class="progressbar-title">Service</h3>
-                                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
-                                                                <div class="progressbar-box flex-shrink-0">
-                                                                    <div class="progressbar-line" data-percent="70%">
-                                                                        <div class="progressbar-line-item bar-bg-1"></div>
-                                                                    </div> <!-- End Skill Bar -->
-                                                                </div>
-                                                                <div class="bar-percent">4.6</div>
-                                                            </div>
-                                                        </div><!-- end progress-item -->
-                                                    </div><!-- end col-lg-6 -->
-                                                    <div class="col-lg-6">
-                                                        <div class="progress-item">
-                                                            <h3 class="progressbar-title">Location</h3>
-                                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
-                                                                <div class="progressbar-box flex-shrink-0">
-                                                                    <div class="progressbar-line" data-percent="55%">
-                                                                        <div class="progressbar-line-item bar-bg-2"></div>
-                                                                    </div> <!-- End Skill Bar -->
-                                                                </div>
-                                                                <div class="bar-percent">4.7</div>
-                                                            </div>
-                                                        </div><!-- end progress-item -->
-                                                    </div><!-- end col-lg-6 -->
-                                                    <div class="col-lg-6">
-                                                        <div class="progress-item">
-                                                            <h3 class="progressbar-title">Value for Money</h3>
-                                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
-                                                                <div class="progressbar-box flex-shrink-0">
-                                                                    <div class="progressbar-line" data-percent="40%">
-                                                                        <div class="progressbar-line-item bar-bg-3"></div>
-                                                                    </div> <!-- End Skill Bar -->
-                                                                </div>
-                                                                <div class="bar-percent">2.6</div>
-                                                            </div>
-                                                        </div><!-- end progress-item -->
-                                                    </div><!-- end col-lg-6 -->
-                                                    <div class="col-lg-6">
-                                                        <div class="progress-item">
-                                                            <h3 class="progressbar-title">Cleanliness</h3>
-                                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
-                                                                <div class="progressbar-box flex-shrink-0">
-                                                                    <div class="progressbar-line" data-percent="60%">
-                                                                        <div class="progressbar-line-item bar-bg-4"></div>
-                                                                    </div> <!-- End Skill Bar -->
-                                                                </div>
-                                                                <div class="bar-percent">3.6</div>
-                                                            </div>
-                                                        </div><!-- end progress-item -->
-                                                    </div><!-- end col-lg-6 -->
-                                                    <div class="col-lg-6">
-                                                        <div class="progress-item">
-                                                            <h3 class="progressbar-title">Facilities</h3>
-                                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
-                                                                <div class="progressbar-box flex-shrink-0">
-                                                                    <div class="progressbar-line" data-percent="50%">
-                                                                        <div class="progressbar-line-item bar-bg-5"></div>
-                                                                    </div> <!-- End Skill Bar -->
-                                                                </div>
-                                                                <div class="bar-percent">2.6</div>
-                                                            </div>
-                                                        </div><!-- end progress-item -->
-                                                    </div><!-- end col-lg-6 -->
-                                                </div><!-- end row -->
-                                            </div>
-                                        </div><!-- end col-lg-8 --> --}}
+
                                     </div>
                                 </div>
                             </div><!-- end single-content-item -->
@@ -1221,8 +1060,19 @@
                                                      <span class="ml-2">305 Reviews</span>
                                                 </span>
                                             <div>
-                                            <a href="#" class="btn btn-primary text-light">Book Now</a>
-                                            </div>
+                                                @if(auth()->user())
+                                                <form action="{{route('consultant_book')}}" method="POST">
+                                                    @csrf
+                                                    <input type="text" name="universityid" value="{{$university->id}}" hidden>
+                                                    <input type="text" name="consultantid" value="{{$consultant->consultant->id}}" hidden>
+
+                                                                                           {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
+                                                                                           <button type="submit" class="theme-btn theme-btn-small">Book Now</button>
+
+                                                </form>
+                                                                                         @else
+                                                                                         <button type="submit" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Book Now</button>
+                                                @endif                                            </div>
                                         </div>
                                     </div></li>
 @endforeach

@@ -39,7 +39,7 @@
                     <tfoot>
 
                     </tfoot>
-                    @if($universityConsultants->count())
+                    @if($universityConsultants->count()>0)
                     <tbody>
                         <?php $sno=0;?>
                         @foreach($universityConsultants as $universityConsultant)
