@@ -68,10 +68,8 @@ class AdminCoursesController extends Controller
     public function edit(Course $id)
     {
 
-        //  $category = Category::where('id',$id)->first();
-        // dd($id);
-         return view('admin.courses.edit')->with('course', $id)->with('category', Category::all());
-        //  ->with('categories',Category::all());
+         return view('admin.courses.edit')->with('course', $id)->with('categories', Category::all());
+       
     }
 
     /**

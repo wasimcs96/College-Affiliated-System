@@ -34,7 +34,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="title">Parent Category</label>
-                                    <select name="parent_id" class="form-control" required>
+                                    <select name="parent_id" class="form-control" >
                                         <option value="">--- Select Parent Category ---</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->title }}</option>

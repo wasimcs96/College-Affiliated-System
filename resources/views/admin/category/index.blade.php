@@ -35,12 +35,12 @@
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
-                    @if($category->count() > 0)
+                    @if($categories->count() > 0)
                    <tbody>
                     @foreach ($categories as $category)
                         <tr>
 
-                            <td>{{$category->parent_category->title}}</td>
+                            <td>{{$category->parent_category->title ?? ''}}</td>
                             <td>
                                {{$category->title}}
                             </td>
@@ -58,13 +58,13 @@
                                 @endif
                             </td>
                             <td>
-                            <a href="{{route('admin.category.show', $categories->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View Package" title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
-                            <a href="{{route('admin.category.edit', $categories->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="{{route('admin.category.show', $category->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View Package" title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
+                            <a href="{{route('admin.category.edit', $category->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>
                             &nbsp;&nbsp;
 
 
 
-                              <a href="{{route('admin.category.delete', $categories->id)}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete Package" data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
+                              <a href="{{route('admin.category.delete', $category->id)}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete Package" data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
 
                             </td>
 

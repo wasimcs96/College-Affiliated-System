@@ -34,7 +34,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="title">Parent Category</label>
-                                    <select name="parent_id" class="form-control" required>
+                                    <select name="parent_id" class="form-control">
                                          @foreach ($categories as $cate)
                                         {{-- <option value="">--- Select Parent Category ---</option> --}}
                                         <option value="{{$cate->id}}" <?php if($cate->id == $category->parent_id) { echo "selected"; } ?>>{{ $cate->title }}</option>
