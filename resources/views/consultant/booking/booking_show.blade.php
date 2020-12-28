@@ -54,20 +54,19 @@
                         <td>{{$show->user->country}}</td>
                     </tr>
 
-                    <tr>
-                        <th scope="row">Student University Prefrence-1</th>
-                        <td>{{$show->enquiry}}</td>
-                    </tr>
+                   <tr>
+                    <th scope="row">Student University/Course Preference-1</th>
+                    <td>{{$university0->university_name}}/</td>
+                </tr>
 
-                    <tr>
-                        <th scope="row">Student University Prefrence-2</th>
-                        <td>BTU</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Student University Prefrence-3</th>
-                        <td>CTU</td>
-                    </tr>
+                <tr>
+                    <th scope="row">Student University/Course Prefrence-2</th>
+                    <td>{{$university1->university_name}}/{{$course1->name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Student University/Course Prefrence-3</th>
+                    <td>{{$university2->university_name}}/{{$course2->name}}</td>
+                </tr>
 
 
 <input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>

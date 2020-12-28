@@ -675,9 +675,11 @@
 ?>
                     <h4> Featured Consultants</h4>
                     <hr>
-                    @foreach($consultants as $consultant)
+
                     <div class="testimonial-carousel carousel-action">
+                        @foreach($consultants as $consultant)
                         <div class="testimonial-card">
+
                             <div class="author-content d-flex align-items-center">
                                 <div class="author-img">
                                     {{-- @php
@@ -698,15 +700,15 @@
                                 </div>
                             </div>
                             <div class="testi-desc-box">
-                                <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat</p><a  class="btn btn-primary" href="{{route('consultant_detail',['id'=>$consultant->id])}}">Book</a>
+                                <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat</p><a  class="btn btn-primary" href="{{route('consultant_detail',['id'=>$consultant->id])}}">Details</a>
                             </div>
 
                         </div><!-- end testimonial-card -->
-
+                        @endforeach
 
 
                     </div><!-- end testimonial-carousel -->
-                    @endforeach
+
             </div><!-- end col-lg-8 -->
         </div>
         </div><!-- end row -->

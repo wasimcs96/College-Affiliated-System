@@ -138,13 +138,35 @@ Route::get('application/create/{id}',[
 // })->name('consultant.application.create');
 
 /* associated university */
-Route::get('associated_university',function(){
-    return view('consultant.university.university');
-})->name('consultant.associated_university');
 
-Route::get('university_show',function(){
-    return view('consultant.university.university_show');
-})->name('consultant.university.show');
+
+// Route::get('associated_university',function(){
+//     return view('consultant.university.university');
+// })->name('consultant.associated_university');
+
+Route::get('associated_university',[
+    'uses'=>'ConsultantUniversityController@index',
+    'as'=>'consultant.associated_university'
+]);
+
+// Route::get('university_show',function(){
+//     return view('consultant.university.university_show');
+// })->name('consultant.university.show');
+
+Route::get('university/show/{id}',[
+    'uses'=>'ConsultantUniversityController@show',
+    'as'=>'consultant.university.show'
+]);
+
+Route::get('requested_university',[
+    'uses'=>'ConsultantUniversityController@indexRequest',
+    'as'=>'consultant.request_university'
+]);
+
+Route::get('requested_university/show/{id}',[
+    'uses'=>'ConsultantUniversityController@showRequest',
+    'as'=>'consultant.request_university.show'
+]);
 
 /* Profile Section */
 Route::get('profile',[

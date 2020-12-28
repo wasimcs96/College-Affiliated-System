@@ -447,18 +447,18 @@ $('#course-'+dt+'').html('<option>uddsdsdsdsddsdsdsdsds</option>');
                     $(document).on('change', '.filetype', function () {
                     dt=    $(this).data("row_id")
                     $.ajaxSetup({headers: {
-'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-}
-});
-universityid=$('#media_type-'+dt+'').val();
-$.ajax({
-url:"{{ route('fetch.course') }}",
-method:"GET",
-data:{universityid:universityid,dt:dt},
-success: function(result){
-    $('#tl-'+dt+'').html(result);
-}
-})
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                            });
+                        universityid=$('#media_type-'+dt+'').val();
+                        $.ajax({
+                        url:"{{ route('fetch.course') }}",
+                        method:"GET",
+                        data:{universityid:universityid,dt:dt},
+                        success: function(result){
+                            $('#tl-'+dt+'').html(result);
+                        }
+                        });
 // console.log($('#media_type-'+dt+'').val());
 
                 // if($('#media_type-'+dt+'').val() == "4"){
@@ -476,7 +476,7 @@ success: function(result){
                 //     $('#tc-'+dt+'').html('<input class="form-control"  name="banner_images[' + dt + '][video_file]" id="video_file"  type="file">');
 
                 // }
-                        });
+                        // });
 
 
 

@@ -79,13 +79,13 @@
                         <div class="my-service-list">
                             <div class="card-item card-item-list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="hotel-img">
                                     </a>
                                     <span class="badge">Featured </span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">Rtu</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">Rtu</a></h3>
                                     <p class="card-meta">Rajasthan</p>
                                     <div class="card-rating d-flex align-items-center pt-1">
                                         <span class="rating__text">University star</span>
@@ -102,18 +102,18 @@
                                         <p>
 
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="hotel-img">
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">BTU</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">BTU</a></h3>
                                     <p class="card-meta">Bombay</p>
                                     <div class="card-rating d-flex align-items-center pt-1">
                                         <span class="rating__text">University star</span>
@@ -130,19 +130,19 @@
                                         <p>
 
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="hotel-img">
                                     </a>
                                     <span class="badge">Featured</span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">MIT</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">MIT</a></h3>
                                     <p class="card-meta">USA</p>
                                     <div class="card-rating d-flex align-items-center pt-1">
                                         <span class="rating__text">University star</span>
@@ -159,19 +159,19 @@
                                         <p>
 
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="hotel-img">
                                     </a>
                                     <span class="badge">Featured</span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">Kanpur</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">Kanpur</a></h3>
                                     <p class="card-meta">Kanpur</p>
                                     <div class="card-rating d-flex align-items-center pt-1">
                                         <span class="rating__text">University star</span>
@@ -188,7 +188,7 @@
                                         <p>
 
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -219,13 +219,13 @@
                         <div class="my-service-list">
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="Destination-img">
                                     </a>
                                     <span class="badge">Featured</span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">Bombay</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">Bombay</a></h3>
                                     <p class="card-meta">Manhattan</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
@@ -247,19 +247,19 @@
                                             {{-- <span class="price__from">Price from</span>
                                             <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="Destination-img">
                                     </a>
                                     {{-- <span class="badge badge-ribbon">Save 39%</span> --}}
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">hgjhgjggj</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">hgjhgjggj</a></h3>
                                     <p class="card-meta">jjhgjgjg</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
@@ -282,18 +282,18 @@
                                             <span class="price__num">$950.00</span> --}}
                                             {{-- <span class="price__num before-price color-text-3">$989.00</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}"alt="Destination-img">
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">gfhfhghkjhjkhj</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">gfhfhghkjhjkhj</a></h3>
                                     <p class="card-meta">bghghghgh</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
@@ -316,19 +316,19 @@
                                             {{-- <span class="price__from">Price from</span>
                                             <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}"alt="Destination-img">
                                     </a>
                                     {{-- <span class="badge">Featured</span> --}}
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">vghhgfhgffgfghfghfhgfh</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">vghhgfhgffgfghfghfhgfh</a></h3>
                                     <p class="card-meta">Champs</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
@@ -351,7 +351,7 @@
                                             {{-- <span class="price__from">Price from</span>
                                             <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -382,13 +382,13 @@
                         <div class="my-service-list">
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}"alt="Destination-img">
                                     </a>
                                     <span class="badge">Featured</span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">Manhattan Skyline</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">Manhattan Skyline</a></h3>
                                     <p class="card-meta">hgjghhgjgghjgj</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
@@ -410,18 +410,18 @@
                                             {{-- <span class="price__from">Price from</span>
                                             <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}"alt="Destination-img">
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">Bbhgjhjgj</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">Bbhgjhjgj</a></h3>
                                     <p class="card-meta">Paris France</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
@@ -443,19 +443,19 @@
                                             {{-- <span class="price__from">Price from</span>
                                             <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="Destination-img">
                                     </a>
                                     <span class="badge">Featured</span>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">hjgjjghgView</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">hjgjjghgView</a></h3>
                                     <p class="card-meta">New York</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
@@ -477,19 +477,19 @@
                                             {{-- <span class="price__from">Price from</span>
                                             <span class="price__num">$989.00</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item card-item-list card-item--list">
                                 <div class="card-img">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}"alt="Destination-img">
                                     </a>
                                     {{-- <span class="badge badge-ribbon">Save 39%</span> --}}
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">gjhgjhgjgjg</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">gjhgjhgjgjg</a></h3>
                                     <p class="card-meta">New York</p>
                                     <div class="card-rating d-flex align-items-center pt-0">
                                         <span class="ratings d-flex align-items-center mr-2">
@@ -512,7 +512,7 @@
                                             <span class="price__num">$950.00</span> --}}
                                             {{-- <span class="price__num before-price color-text-3">$989.00</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -543,14 +543,14 @@
                         <div class="my-service-list">
                             <div class="card-item car-card card-item-list">
                                 <div class="card-img padding-top-40px">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
                                     </a>
                                     <span class="badge">Bestseller</span>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-meta">dfgdfgdfgdfg</p>
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">werwerwerwerwer</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">werwerwerwerwer</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -566,19 +566,19 @@
                                         <p>
 
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item car-card card-item-list">
                                 <div class="card-img padding-top-40px">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
                                     </a>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-meta">Bbhgjhjgj</p>
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">jggjjgjhgjhghjr</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">jggjjgjhgjhghjr</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -596,20 +596,20 @@
                                             <span class="price__num">$23.00</span>
                                             <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item car-card card-item-list">
                                 <div class="card-img padding-top-40px">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
                                     </a>
                                     <span class="badge">Bestseller</span>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-meta">gfghfhghfhgfhfhf</p>
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">ggfffgfgfg</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">ggfffgfgfg</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -627,19 +627,19 @@
                                             <span class="price__num">$23.00</span>
                                             <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
                             <div class="card-item car-card card-item-list">
                                 <div class="card-img padding-top-40px">
-                                    <a href="{{route('university_detail')}}" class="d-block">
+                                    <a href="{{route('university_detail',['id'=>5])}}" class="d-block">
                                         <img src="{{asset('frontEnd/assets/img/partner/img-2.jpg')}}" alt="car-img" class="h-auto">
                                     </a>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-meta">ghfhfhgfhfhghgh</p>
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">gghfhfffhgfhg</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">gghfhfffhgfhg</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -657,7 +657,7 @@
                                             <span class="price__num">$23.00</span>
                                             <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -695,7 +695,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="card-meta">jkhkhkjhkhjkh</p>
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">ggfgfghfghfh</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">ggfgfghfghfh</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -713,7 +713,7 @@
                                             <span class="price__num">$23.00</span>
                                             <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -743,7 +743,7 @@
                                             <span class="price__num">$23.00</span>
                                             <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -756,7 +756,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="card-meta">nvbmnmnbmnbmn</p>
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">ghgjhgjghhgjr</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">ghgjhgjghhgjr</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -774,7 +774,7 @@
                                             <span class="price__num">$23.00</span>
                                             <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->
@@ -786,7 +786,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="card-meta">fhgfffghfh</p>
-                                    <h3 class="card-title"><a href="{{route('university_detail')}}">fghfhgfh</a></h3>
+                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>5])}}">fghfhgfh</a></h3>
                                     <div class="card-rating">
                                         <span class="badge text-white">4.4/5</span>
                                         <span class="review__text">Average</span>
@@ -804,7 +804,7 @@
                                             <span class="price__num">$23.00</span>
                                             <span class="price__text">Per day</span> --}}
                                         </p>
-                                        <a href="{{route('university_detail')}}" class="theme-btn theme-btn-small">Book Now</a>
+                                        <a href="{{route('university_detail',['id'=>5])}}" class="theme-btn theme-btn-small">Book Now</a>
                                     </div>
                                 </div>
                             </div><!-- end card-item -->

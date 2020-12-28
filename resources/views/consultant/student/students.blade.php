@@ -42,7 +42,7 @@
 
                     </tfoot>
                     <tbody>
-                        <tr>
+                        {{-- <tr>
                             <td>Sufiyan</td>
                             <td>1234567890</td>
                             <td>email@email.com</td>
@@ -60,8 +60,8 @@
                             <td>2020/30/11</td>
                             <td> 10:30 A.M. </td>
                             <td><a href="{{route('consultant.student.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
-                        </tr>
-
+                        </tr> --}}
+                               No Record available
 
 
                     </tbody>
