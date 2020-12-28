@@ -110,17 +110,40 @@ Route::get('terms_condition',function(){
 })->name('university.terms_condition');
 
 /* Courses */
-Route::get('courses',function(){
-      return view('university.course.courses');
-})->name('university.courses');
+Route::get('courses',[
+    'uses' => 'UniversityCoursesController@index',
+    'as' => 'university.courses'
+]);
 
-Route::get('course_show',function(){
-    return view('university.course.course_show');
-})->name('university.course_show');
+Route::get('add_course',[
+    'uses' => 'UniversityCoursesController@create',
+    'as' => 'university.add_course'
+]);
 
-Route::get('add_course',function(){
-    return view('university.course.add_course');
-})->name('university.add_course');
+Route::post('course/store',[
+    'uses' => 'UniversityCoursesController@store',
+    'as' => 'university.course.store'
+]);
+
+Route::get('course_show/{id}',[
+    'uses' => 'UniversityCoursesController@show',
+    'as' => 'university.course.show'
+]);
+
+Route::get('course_edit/{id}',[
+    'uses' => 'UniversityCoursesController@edit',
+    'as' => 'university.course.edit'
+]);
+
+Route::get('course_delete/{id}',[
+    'uses' => 'UniversityCoursesController@destroy',
+    'as' => 'university.course.delete'
+]);
+
+Route::get('course_update/{id}',[
+    'uses' => 'UniversityCoursesController@update',
+    'as' => 'university.course.update'
+]);
 
 /* Profile Section */
 Route::get('profile',[

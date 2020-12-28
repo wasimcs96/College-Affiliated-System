@@ -55,7 +55,7 @@ class AdminCategoryController extends Controller
             'status' => 'required'
         ]);
 
-        $category =  Category::create($request->all());
+         Category::create($request->all());
         // dd($category);
 
         return redirect()->route('admin.category')->with('success', 'Category has been saved Successfully');

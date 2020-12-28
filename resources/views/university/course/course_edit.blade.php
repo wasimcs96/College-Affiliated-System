@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('parentPageTitle', 'University')
-@section('title', 'Add Course')
+@section('title', 'Edit Course')
 
 @section('content')
 
@@ -10,59 +10,96 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Add Course</h2>
+                <h2>Edit Course</h2>
             </div>
             <div class="body">
-                <form id="basic-form" method="POST" enctype="multipart/form-data" action="{{route('university.course.store')}}">
+                <form id="basic-form" method="POST" enctype="multipart/form-data" action="{{route('university.course.store', $universitycourse->id)}}">
                     @csrf
                     <div class="form-group">
                         <label for="course_id">Course Name</label>
                         <select name="course_id" class="form-control" required>
-                            <option value="">--- Select  Course ---</option>
+
                             @foreach ($courses as $course)
-                                <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                <option value="{{ $course->id }}"<?php if($course->id == $universitycourse->id) { echo "selected"; } ?>{{ $universitycourse->name }}</option>
                             @endforeach
                         </select>
                     </div>
                    <input type="text" name="university_id" value="{{auth()->user()->university->id}}" hidden>
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea class="form-control" name="description" rows="5" cols="30" required></textarea>
+                        <textarea class="form-control" value="" name="description" rows="5" cols="30" required>{{$universitycourse->description}}</textarea>
                     </div>
                     <div class="form-group">
                         <label>Fees</label>
-                        <input type="text"  name="fees" class="form-control" required>
+                        <input type="text" value="" name="fees" value="{{$universitycourse->fees}}" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Course Start Date</label>
-                        <input type="date" name="start_date" class="form-control" required>
+                        <input type="date" name="start_date" value="{{$universitycourse->start_date}}" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Course End Date</label>
-                        <input type="date" name="end_date" class="form-control" required>
+                        <input type="date" name="end_date" value="{{$universitycourse->end_date}}" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Fax Number</label>
-                        <input type="text" name="fax_number" class="form-control" required>
+                        <input type="text" name="fax_number" value="{{$universitycourse->fax_number}}" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Terms & Condition</label>
-                        <textarea class="form-control" name="term_conditions" rows="5" cols="30" required></textarea>
+                        <textarea class="form-control" name="term_conditions" rows="5" cols="30" required>{{$universitycourse->term_conditions}} </textarea>
                     </div>
                     <div class="form-group">
                         <label>Privacy Policy</label>
-                        <textarea class="form-control" name="privacy_policy" rows="5" cols="30" required></textarea>
+                        <textarea class="form-control" name="privacy_policy" rows="5" cols="30" required>{{$universitycourse->privacy_policy}}</textarea>
                     </div>
+
+                    <!--  Show Uploaded Image   -->
+
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12">
+                            @if(!empty(auth()->user()->university->courseMedia) && auth()->user()->university->courseMedia != null)
+                            <div class="form-group">
+                                      <div id="lightgallery" class="row clearfix lightGallery">
+
+                                    <?php $rts=auth()->user()->university->courseMedia;?>
+                                    @foreach($rts as $rt)
+                                    @if ($rt->file_type==0)
+
+                                      <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
+                                        <div class="col-lg-4 col-md-5 m-b-30"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
+
+                                            <div class="card-body">
+                                                <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red; position:absolute;   top: 0;
+                                                    right: 0;"><i class="fa fa-times" aria-hidden="true"></i></h5></a>
+
+
+                                            </div>
+                                        </div>
+
+
+
+                                    @else
+                                    @endif
+
+
+                                      @endforeach
+
+                                  </div>
+
+                                    </div>
+    @endif
+
                     <div class="form-group">
-                                      Upload Media
+                                <lable>Upload Media</lable>
                            <div class="body"id="nb"  >
                               <input type="file" name="image[]"class="dropify" multiple>
                            </div>
                            <button type="button" name="uploaddocument" id="upload_document_button" class="btn btn-primary btn-m " ><i class="fa fa-plus"></i> </button>
                     </div>
+
+
                     <br>
-
-
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

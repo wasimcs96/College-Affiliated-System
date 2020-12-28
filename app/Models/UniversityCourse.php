@@ -6,13 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class UniversityCourse extends Model
 {
+
+    protected $fillable = [ 'course_id', 'university_id', 'description', 'fees', 'start_date', 'end_date', 'fax_number', 'term_conditions', 'privacy_policy' ];
+
     public function course()
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(Course::class,'course_id');
     }
 
     public function university()
     {
         return $this->belongsTo(University::class);
+    }
+
+    public function courseMedia()
+    {
+        return $this->hasMany(CourseMedia::class);
     }
 }

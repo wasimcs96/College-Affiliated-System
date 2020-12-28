@@ -280,27 +280,27 @@ Route::get('courses/add',[
    'as' => 'admin.courses.add'
 ]);
 
-Route::get('courses/show/{id}',[
+Route::get('course/show/{id}',[
    'uses' => 'AdminCoursesController@show',
    'as' => 'admin.courses.show'
 ]);
 
-Route::post('courses/store',[
+Route::post('course/store',[
    'uses' => 'AdminCoursesController@store',
    'as' => 'admin.courses.store'
 ]);
 
-Route::get('courses/edit/{id}',[
+Route::get('course/edit/{id}',[
    'uses' => 'AdminCoursesController@edit',
    'as' => 'admin.courses.edit'
 ]);
 
-Route::post('courses/update/{id}',[
+Route::post('course/update/{id}',[
    'uses' => 'AdminCoursesController@update',
    'as' => 'admin.courses.update'
 ]);
 
-Route::get('courses/delete/{id}', [
+Route::get('course/delete/{id}', [
    'uses' => 'AdminCoursesController@destroy',
    'as' => 'admin.courses.delete'
 ]);

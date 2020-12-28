@@ -37,17 +37,17 @@
                     </thead>
                     @if($category->count() > 0)
                    <tbody>
-                    @foreach ($category as $categories)
+                    @foreach ($categories as $category)
                         <tr>
 
-                            <td>{{$categories->parent_category->title}}</td>
+                            <td>{{$category->parent_category->title}}</td>
                             <td>
-                               {{$categories->title}}
+                               {{$category->title}}
                             </td>
 
-                            <td>{{$categories->slug}}</td>
+                            <td>{{$category->slug}}</td>
                             <td>
-                                @if ($categories->status == 0)
+                                @if ($category->status == 0)
 
                                     <span class="btn btn-danger">InActive</span>
 
