@@ -19,6 +19,8 @@ Route::post('university/consultant',[
     'as' => 'university_consultant'
 ]);
 
+Route::post('payment/subscription','PaymentController@payment')->name('subscription.payment');
+Route::get('payment/transaction','PaymentController@transaction')->name('transaction.pay');
 // ################university all######################################
 // Route::get('details', function () {
 
