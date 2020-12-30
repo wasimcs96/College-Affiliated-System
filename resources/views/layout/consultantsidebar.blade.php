@@ -50,6 +50,7 @@
                      </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'requested_university' ? 'active' : null }}"><a href="{{route('consultant.request_university')}}"><i class="icon fa-graduation-cap"></i><span>University Request</span></a></li>
+                <li class="{{ Request::segment(2) == 'advertisements' ? 'active' : null }}"><a href="{{route('consultant.advertisement')}}"><i class="icon fa-graduation-cap"></i><span>Advertisements</span></a></li>
                 <li class="{{ Request::segment(2) == 'feedback' ? 'active' : null }}"><a href="{{route('consultant.feedback')}}"><i class="icon-bubbles"></i><span>FeedBack</span></a></li>
                 <li class="{{ Request::segment(2) == 'logout' ? 'active' : null }}"><a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
