@@ -184,6 +184,10 @@ Route::get('subscription', [
     'uses' => 'ConsultantSubscriptionController@index',
     'as' => 'consultant.subscription'
 ]);
+Route::get('subscription/add', [
+    'uses' => 'ConsultantSubscriptionController@add',
+    'as' => 'consultant.subscription.add'
+]);
  /* Advertisements */
  Route::get('advertisements', [
     'uses' => 'ConsultantAdvertisementController@index',
