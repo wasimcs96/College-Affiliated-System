@@ -178,6 +178,12 @@ Route::get('subscription', [
     'as' => 'university.subscription'
 ]);
 
+/* Go Premium */
+Route::get('premium', [
+    'uses' => 'UniversityPremiumController@index',
+    'as' => 'university.premium'
+]);
+
  /* Advertisements */
  Route::get('advertisements', [
     'uses' => 'UniversityAdvertisementController@index',
