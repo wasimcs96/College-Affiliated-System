@@ -45,12 +45,13 @@
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>
                     <ul>
                      <li class="{{ Request::segment(2) == 'taskboard' ? 'active' : null }}"><a href="#">Go Premium</a></li>
-                     <li class="{{ Request::segment(2) == 'taskboard' ? 'active' : null }}"><a href="{{route('consultant.subscription')}}">Subscription</a></li>
+                     <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('consultant.subscription')}}">Subscription</a></li>
+                     <li class="{{ Request::segment(2) == 'advertisements' ? 'active' : null }}"><a href="{{route('consultant.advertisement')}}">Advertisements</a></li>
 
                      </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'requested_university' ? 'active' : null }}"><a href="{{route('consultant.request_university')}}"><i class="icon fa-graduation-cap"></i><span>University Request</span></a></li>
-                <li class="{{ Request::segment(2) == 'advertisements' ? 'active' : null }}"><a href="{{route('consultant.advertisement')}}"><i class="icon fa-graduation-cap"></i><span>Advertisements</span></a></li>
+
                 <li class="{{ Request::segment(2) == 'feedback' ? 'active' : null }}"><a href="{{route('consultant.feedback')}}"><i class="icon-bubbles"></i><span>FeedBack</span></a></li>
                 <li class="{{ Request::segment(2) == 'logout' ? 'active' : null }}"><a href="{{ route('logout') }}"
                     onclick="event.preventDefault();

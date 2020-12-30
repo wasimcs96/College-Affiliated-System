@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\UniversityConsultantClient;
+use App\Models\Order;
 class User extends Authenticatable
 {
     use Notifiable, HasRoles,UserMethod;
@@ -64,4 +65,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(UniversityConsultantClient::class,'user_id');
     }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

@@ -25,11 +25,14 @@ class ConsultantAdvertisementController extends Controller
 
    public function store(Request $request)
    {
+    $this->validate($request,[
+        'image'=>'required',
+    ]);
+
+
     $expire=$request->expire_date;
-    $new=Carbon::now()->addMonths($expire);
+      $new=Carbon::now()->addMonths($expire);
     $dt= $new->format('Y-m-d');
-
-
     if($request->hasFile('image'))
     {
         $ad_image = $request->image;
