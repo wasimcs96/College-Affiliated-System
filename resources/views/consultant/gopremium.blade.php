@@ -4,7 +4,25 @@
 
 @section('content')
 
+<div class="row clearfix">
+    @foreach ($packages as $package)
 
+    <div class="col-lg-4 cool-md-4 col-sm-12">
+        <div class="card">
+            <ul class="pricing body">
+                <li class="plan-img"><img class="img-fluid rounded-circle" src="../assets/images/plan-1.svg" alt="" /></li>
+                <li class="price">
+                    <h3><span>$</span>{{$package->amount}}<small>/ mo</small></h3>
+                    <span>Premium</span>
+                </li>
+                <li>{{$package->description}}</li>
+
+                <li class="plan-btn"><button class="btn btn-round btn-outline-secondary">Choose plan</button></li>
+            </ul>
+        </div>
+    </div>
+    @endforeach
+</div>
 
 
 
