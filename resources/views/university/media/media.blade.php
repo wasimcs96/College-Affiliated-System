@@ -41,17 +41,20 @@
                                   {{-- <div id="lightgallery" class="row clearfix lightGallery">
                                     <div class="col-lg-4 col-md-5 mb-4"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}" alt=""></a></div>
                                   </div> --}}
+                                  <div style="margin-left:24px; ">
                                   <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
-                                    <div class="col-lg-3 col-md-5 m-b-30"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
+                                    <div class="img-responsive iws">
+                                        <a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
+                                        <br>
+                                        <br>
 
                                         <div class="card-body">
-                                            <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red; position:absolute;   top: 0;
-                                                right: 0;"><i class="fa fa-times" aria-hidden="true"></i></h5></a>
-
+                                            {{-- <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red;"><i class="fa fa-times" aria-hidden="true"></i></h5></a> --}}
+                                            <span class="closes deleteRecord" title="Delete"><a href="{{route('media.destroy',['id'=>$rt->id])}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
 
                                         </div>
                                     </div>
-
+                                  </div>
 
 
                                 @else
@@ -84,11 +87,12 @@
 <label>University Image</label>
 
 <input name="images[]" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-frrr" multiple>
+<small><b>Please Note:</b> Image Dimension Should be in (min_width:872.13|min_height:302|max_width=1024|max_height=640)</small>
                         </div>
                     </div>
 
 
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-12 col-md-12" style="margin-top: 13px;">
                         <div class="form-group">
                             <label>Video Link</label>
                             <div class="input-group">
@@ -112,6 +116,37 @@
             @stop
 
             @section('page-styles')
+            <style>
+
+
+.iws {
+    position: relative;
+    display: inline-block;
+
+    font-size: 0;
+}
+.iws .closes {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    z-index: 6;
+    background-color: #FFF;
+    padding: 4px 3px;
+
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+    border:1px solid white;
+}
+.iws:hover .closes {
+    opacity: 1;
+}
+                </style>
             <link rel="stylesheet" href="{{ asset('assets/vendor/light-gallery/css/lightgallery.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
