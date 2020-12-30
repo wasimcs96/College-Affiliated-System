@@ -8,6 +8,7 @@ use App\Models\Country;
 use App\Http\Controllers\Controller;
 use App\Models\University;
 use Sessions;
+use Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -30,8 +31,8 @@ class UniversityMediaController extends Controller
      foreach($images as $image){
         $name= time().$image->getClientOriginalName();
            $type=0;
-               $st= $image->move('uploads/media',$name);
-       $newname='uploads/media/'.$name;
+               $st= $image->move(Config::get('define.image.media'),$name);
+       $newname= Config::get('define.image.media').'/'.$name;
 
         UniversityMedia::create( [
 

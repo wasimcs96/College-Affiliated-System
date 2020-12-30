@@ -84,20 +84,10 @@
                         <th scope="row">Time-Slot</th>
                         <td>{{$application->booking->booking_start_time}}-{{$application->booking->booking_end_time}}</td>
                     </tr>
-
-
-
-
-            </div>
-
-
-
-
+           </div>
 
         {{-- </tr> --}}
-
-
-                    </tbody>
+               </tbody>
 
                 </table>
                 {{-- <div id="res">
@@ -294,17 +284,17 @@
                               <div class="body wizard_validation">
 
                                   <form id="wizard_with_validation{{$key}}" method="POST">
-                                      <h3>Account Information</h3>
+                                      <h3>University Information</h3>
                                       <fieldset>
                                           <div class="row clearfix">
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" value="@if(isset($applied->university->university_name)){{$applied->university->university_name}}@endif" placeholder="Username" name="username" >
+                                                    <input type="text" class="form-control" value="@if(isset($applied->university->university_name)){{$applied->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course">
+                                                    <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
                                                 </div>
                                             </div>
                                             {{-- <div class="col-lg-4 col-md-12">

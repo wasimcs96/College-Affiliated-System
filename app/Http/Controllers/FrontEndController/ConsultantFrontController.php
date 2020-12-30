@@ -80,7 +80,6 @@ class ConsultantFrontController extends Controller
         $output='';
         foreach($courses as $row)
         {
-
          $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
         }
         echo $output;

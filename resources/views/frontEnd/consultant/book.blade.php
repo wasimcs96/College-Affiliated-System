@@ -352,9 +352,9 @@ $('#documentModal').modal('hide')
 
         $(document).on('change', '#university', function () {
         dt=$(this).attr("custom1");
-console.log($(this).val());
-dt=    $(this).data("row_id")
-    if($('#university').val() == "3"){
+        console.log($(this).val());
+        dt = $(this).data("row_id")
+        if($('#university').val() == "3"){
 
 
             $('#course-'+dt+'').html('<option>udyfydsu</option>');
@@ -436,39 +436,25 @@ $('#course-'+dt+'').html('<option>uddsdsdsdsddsdsdsdsds</option>');
                 var image_row = {{ $inc }}
 
 
-                    $(document).on('change', '.filetype', function () {
-                    dt=    $(this).data("row_id")
-                    $.ajaxSetup({headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    $(document).on('change', '.filetype', function ()
+                    {
+                        dt=    $(this).data("row_id")
+                           $.ajaxSetup({headers:
+                            {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             }
                             });
-                        universityid=$('#media_type-'+dt+'').val();
-                        $.ajax({
-                        url:"{{ route('fetch.course') }}",
-                        method:"GET",
-                        data:{universityid:universityid,dt:dt},
-                        success: function(result){
-                            $('#tl-'+dt+'').html(result);
-                        }
+                            universityid=$('#media_type-'+dt+'').val();
+                                  $.ajax({
+                                      url:"{{ route('fetch.course') }}",
+                                      method:"GET",
+                                      data:{universityid:universityid,dt:dt},
+                                      success: function(result){
+                                      $('#tl-'+dt+'').html(result);
+                                    }
+                                    });
+
                         });
-// console.log($('#media_type-'+dt+'').val());
-
-                // if($('#media_type-'+dt+'').val() == "4"){
-
-                //     // var image_row = {{ $inc }};
-                //         $('#tc-'+dt+'').html('<input  required class="form-control"  id="video" name="banner_images[' + dt + '][video]" type="text">');
-
-
-
-
-
-                // }
-                // if($('#media_type-'+dt+'').val() == "2"){
-                //     // var image_row = {{ $inc }};
-                //     $('#tc-'+dt+'').html('<input class="form-control"  name="banner_images[' + dt + '][video_file]" id="video_file"  type="file">');
-
-                // }
-                        // });
 
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Consultant;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Support\Jsonable;
 use Json;
+use Config;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Application;
@@ -67,17 +68,9 @@ public function application($id)
 
 
 public function applicationStore(Request $request){
-// dd(json_encode(collect($request->document)));
-// dd(collect($request->document->toJson()));
-//  dd(json_encode($request->course));
-// dd($request->course);
-//  dd($request->university);
-//  dd(json_encode($request->images));
-//  $json = json_encode($request->document);
-// dd(json_encode(collect($request->documents)));
-    // $json = json_encode(collect($request->documents));
-
-
+    // dd($request->all());
+    $clientExists = Application::where('client_id',$request->client_id)->first();
+    if($clientExists==null){
     $jsonApplication = $request->document;
     $jsonApplicationStore = json_encode($jsonApplication);
     $store=Application::create([
@@ -114,13 +107,33 @@ public function applicationStore(Request $request){
             // dd($document);
             //    $documentSave = $value;
            $doc_new_name = time().$doc->getClientOriginalName();
-           $doc->move('uploads/document',$doc_new_name);
+           $doc->move(Config::get('define.image.document'),$doc_new_name);
 
-           $applicationDocument->file = 'uploads/document/'.$doc_new_name;
+           $applicationDocument->file = Config::get('define.image.document').'/'.$doc_new_name;
            $applicationDocument->save();
         }
 
         return redirect()->route('consultant.application')->with('success','Application Created Successfully');
+    }
+    else
+    {
+        return redirect()->back()->with('warning','Application Already Created');
+    }
 }
+
+    function fetchCourse(Request $request)
+    {
+        $fetch=University::where('id',$request->universityid)->first();
+// dd($fetch);
+        $courses =  $fetch->UniversityCourse;
+        $output='';
+        foreach($courses as $row)
+        {
+         $output .= '<option value="'.$row->course->id.'">'.$row->course->name.'</option>';
+        }
+        // dd($output);
+        echo $output;
+        // dd();
+    }
 
 }
