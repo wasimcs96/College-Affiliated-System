@@ -596,13 +596,13 @@
 </div>
 
 </div>
-    <ul>
+    {{-- <ul>
         <li style="float: right;">
 
             <a href="{{route('dashboard.index2')}}" class="stbtn">More <i class="las la-chevron-right"></i></a>
 
                 </li>
-    </ul>
+    </ul> --}}
         </div>
 
     </div>

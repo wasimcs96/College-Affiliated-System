@@ -96,7 +96,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
                                 </div>
-                                <input name="email" type="text" class="form-control" value="@if(isset(auth()->user()->email)){{auth()->user()->email}}@endif" placeholder="Email">
+                                <input name="email" type="text" class="form-control" value="@if(isset(auth()->user()->email)){{auth()->user()->email}}@endif" placeholder="Email" required>
                             </div>
                         </div>
                     </div>
@@ -104,26 +104,26 @@
                         <div class="form-group">
                         <label for="mobile">University Mobile</label>
 
-                            <input type="text" value="@if(isset(auth()->user()->mobile)){{auth()->user()->mobile}}@endif"name="mobile" class="form-control" placeholder="Mobile Number">
+                            <input type="text" value="@if(isset(auth()->user()->mobile)){{auth()->user()->mobile}}@endif"name="mobile" class="form-control" placeholder="Mobile Number" required>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="landline_1">Landline 1</label>
-                            <input type="text" name="landline_1" class="form-control" value="@if(isset(auth()->user()->landline_1)){{auth()->user()->landline_1}}@endif" placeholder="Landline1">
+                            <input type="text" name="landline_1" class="form-control" value="@if(isset(auth()->user()->landline_1)){{auth()->user()->landline_1}}@endif" placeholder="Landline1" required>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="landline_2">Landline 2</label>
-                            <input type="text" name="landline_2" value="@if(isset(auth()->user()->landline_2)){{auth()->user()->landline_2}}@endif"class="form-control" placeholder="Landline2">
+                            <input type="text" name="landline_2" value="@if(isset(auth()->user()->landline_2)){{auth()->user()->landline_2}}@endif"class="form-control" placeholder="Landline2" required>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="country">Country</label>
-                            <select name="country" class="form-control">
+                            <select name="country" class="form-control" required>
                                 <option value="">-- Select Country --</option>
                                 @if($countries->count() > 0)
                                     @foreach($countries as $country)
@@ -139,7 +139,7 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="city">City</label>
-                            <input type="text" name="city"  value="@if(isset(auth()->user()->city)){{auth()->user()->city}}@endif" class="form-control" placeholder="City">
+                            <input type="text" name="city"  value="@if(isset(auth()->user()->city)){{auth()->user()->city}}@endif" class="form-control" placeholder="City" required>
                         </div>
                     </div>
                     {{-- <div class="col-lg-12 col-md-12">
@@ -155,14 +155,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
                                 </div>
-                                <input name="website" type="text" class="form-control" value="@if(isset(auth()->user()->university->website)){{auth()->user()->university->website}}@endif" placeholder="http://">
+                                <input name="website" type="text" class="form-control" value="@if(isset(auth()->user()->university->website)){{auth()->user()->university->website}}@endif" placeholder="http://" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea rows="4" name="address"  type="text" class="form-control" placeholder="Address">@if(isset(auth()->user()->address)){{auth()->user()->address}}@endif</textarea>
+                            <textarea rows="4" name="address"  type="text" class="form-control" placeholder="Address" required>@if(isset(auth()->user()->address)){{auth()->user()->address}}@endif</textarea>
                         </div>
                     </div>
 
@@ -170,7 +170,7 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             {{-- <label for="profile_image">Profile Image</label> --}}
-                            <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-fr" multiple>
+                            <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-fr"  required>
                         </div>
                     </div>
                 </div>
