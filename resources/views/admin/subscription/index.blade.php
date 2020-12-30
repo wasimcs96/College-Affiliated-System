@@ -12,7 +12,7 @@
             @csrf
         <div class="card">
             <ul class="pricing body">
-                <li class="plan-img"><img class="img-fluid rounded-circle" src="../assets/images/plan-1.svg" alt="" /></li>
+                <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
                     <h3><span>$</span> {{$package->amount}}<small>/ mo</small></h3>
                     <span>Subscription</span>
@@ -77,14 +77,14 @@ var options = {
     "image": "https://example.com/your_logo",
     "order_id": "{{Session::get('orderId')}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     "handler": function (response){
-        
+
         $.ajaxSetup({headers:
             {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
             });
 
-            
+
              transactionId=response.razorpay_payment_id;
              amount="{{Session::get('amount')}}";
              userId="{{Session::get('userId')}}";
@@ -99,8 +99,8 @@ var options = {
             }
             });
 
-       
-     
+
+
 
     },
     "prefill": {
