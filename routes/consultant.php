@@ -201,5 +201,10 @@ Route::post('advertisements/store', [
     'as' => 'consultant.advertisement.store'
 ]);
 
+/* Fetch */
+Route::get('application/fetch/course',[
+    'uses' => 'ConsultantBookingController@fetchCourse',
+    'as' => 'fetch.course_application'
+]);
 
 });
