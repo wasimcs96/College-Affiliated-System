@@ -250,6 +250,9 @@
 </div>
 
 @foreach($application->applicationAppliedUniversity as $key=>$applied)
+@php
+$increase = 0;
+@endphp
 <div class="accordion" id="accordionExample">
 
     <div class="card">
@@ -357,6 +360,29 @@
       </div>
 
   </div>
+  <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+                  <h4>  Are you sure you want to apply for this University?</h4>
+
+        </div>
+        <div class="modal-footer">
+           <a href="javascript:void(0)" custom1="{{$applied->id}}"class="btn btn-primary" id="apply"> Apply </a>
+        </div>
+    </div>
+</div>
+</div>
+@php
+$increase++
+@endphp
 @endforeach
 
 
@@ -389,26 +415,7 @@
 </div>
 
 
- <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
 
-                  <h4>  Are you sure you want to apply for this University?</h4>
-
-        </div>
-        <div class="modal-footer">
-           <a href="javascript:void(0)" class="btn btn-primary" id="apply"> Apply </a>
-        </div>
-    </div>
-</div>
-</div>
 @stop
 
 @section('page-styles')
@@ -512,12 +519,14 @@ $('#documentModal').modal('hide')
       }
     });
 </script>
+
 <script>
 $(document).on('click', '#apply', function ()
 {
+    //   -'+row+' var row = {{ $increase }} ;
        var university_id = $('input[name="university_id"]').val();
        var application_id = $('input[name="application_id"]').val();
-// console.log(application_id);
+ console.log(application_id);
        $.ajaxSetup({headers:
         {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -533,7 +542,8 @@ $(document).on('click', '#apply', function ()
                 }
             });
             // $(this).text("Pending");
-
+            $('#applyModal').modal('hide');
+            // row++;
     });
 
 </script>
