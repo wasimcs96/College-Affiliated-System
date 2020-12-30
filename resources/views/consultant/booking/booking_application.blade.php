@@ -315,30 +315,5 @@ $(function() {
 
 </script>
 
-<script>
-    var image_row = {{ $inc }}
-
-
-        $(document).on('change', '.filetype', function ()
-        {
-            dt=    $(this).data("row_id")
-               $.ajaxSetup({headers:
-                {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-                });
-                universityid=$('#media_type-'+dt+'').val();
-                      $.ajax({
-                          url:"{{ route('fetch.course') }}",
-                          method:"GET",
-                          data:{universityid:universityid,dt:dt},
-                          success: function(result){
-                          $('#tl-'+dt+'').html(result);
-                        }
-                        });
-
-            });
-
-        </script>
 
 @stop

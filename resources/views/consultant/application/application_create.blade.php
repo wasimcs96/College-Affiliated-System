@@ -248,8 +248,8 @@
         </div>
     </div>
 </div>
-@foreach($application->applicationAppliedUniversity as $key=>$applied)
 
+@foreach($application->applicationAppliedUniversity as $key=>$applied)
 <div class="accordion" id="accordionExample">
 
     <div class="card">
@@ -271,14 +271,7 @@
                                   <ul class="header-dropdown dropdown">
 
                                       <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                                      {{-- <li class="dropdown">
-                                          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                                          <ul class="dropdown-menu">
-                                              <li><a href="javascript:void(0);">Action</a></li>
-                                              <li><a href="javascript:void(0);">Another Action</a></li>
-                                              <li><a href="javascript:void(0);">Something else</a></li>
-                                          </ul>
-                                      </li> --}}
+
                                   </ul>
                               </div>
                               <div class="body wizard_validation">
@@ -295,6 +288,16 @@
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
+                                                </div>
+                                            </div>
+                                            <input type="text" name="university_id" value="{{$applied->university->id}}" hidden>
+                                            <input type="text" name="application_id" value="{{$applied->id}}" hidden>
+
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                 @if($applied->Is_applied==0) <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#applyModal">In Progress</a>@endif
+                                                 @if($applied->Is_applied==1)<div class="btn btn-success">Applied</div>@endif
+                                                 {{-- @if($applied->approved_status==2)<div class="btn btn-danger">Cancelled</div>@endif --}}
                                                 </div>
                                             </div>
                                             {{-- <div class="col-lg-4 col-md-12">
@@ -381,9 +384,31 @@
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
 <a href="javascript:void(0)" class="btn btn-primary" id="add_document2"> Add </a>
  </div>
+</div>
+</div>
+</div>
 
 
+ <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
 
+                  <h4>  Are you sure you want to apply for this University?</h4>
+
+        </div>
+        <div class="modal-footer">
+           <a href="javascript:void(0)" class="btn btn-primary" id="apply"> Apply </a>
+        </div>
+    </div>
+</div>
+</div>
 @stop
 
 @section('page-styles')
@@ -486,5 +511,30 @@ $('#documentModal').modal('hide')
          });
       }
     });
+</script>
+<script>
+$(document).on('click', '#apply', function ()
+{
+       var university_id = $('input[name="university_id"]').val();
+       var application_id = $('input[name="application_id"]').val();
+// console.log(application_id);
+       $.ajaxSetup({headers:
+        {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+        $.ajax({
+                type: "post",
+                url: "{{route('application.apply')}}",
+                data: {university_id:university_id,application_id:application_id},
+                success: function (result) {
+                    console.log('success');
+                }
+            });
+            // $(this).text("Pending");
+
+    });
+
 </script>
 @stop
