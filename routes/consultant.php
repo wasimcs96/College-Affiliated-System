@@ -185,5 +185,10 @@ Route::get('subscription', [
     'as' => 'consultant.subscription'
 ]);
 
+/* Fetch */
+Route::get('application/fetch/course',[
+    'uses' => 'ConsultantBookingController@fetchCourse',
+    'as' => 'fetch.course_application'
+]);
 
 });
