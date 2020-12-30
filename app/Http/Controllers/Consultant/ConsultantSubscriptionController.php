@@ -12,13 +12,13 @@ class ConsultantSubscriptionController extends Controller
     public function index()
     {
 
-        $subscriptions=auth()->user()->Order;
+        $ua=auth()->user()->id;
 
         // dd($subscriptions);
-        // Order::where('user_id',$ua)->where('payment_type', 0 )->get();
-        // dd($subscription);
-        $packages=Package::where('package_type', 0)->get();
-        return view('consultant.subscription.subscription',compact('subscriptions'))->with('packages',$packages);
+        $subscriptions= Order::where('user_id',$ua)->where('payment_type', 0 )->orderBy('updated_at', 'DESC')->get();
+        // dd($subscriptions);
+
+        return view('consultant.subscription.subscription',compact('subscriptions'));
     }
 
     public function add()

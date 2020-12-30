@@ -185,11 +185,20 @@ Route::get('subscription', [
     'as' => 'consultant.subscription'
 ]);
 
+Route::get('subscription/add', [
+    'uses' => 'ConsultantSubscriptionController@add',
+    'as' => 'consultant.subscription.add'
+]);
 
 /* Go Premium */
 Route::get('premium', [
     'uses' => 'ConsultantPremiumController@index',
     'as' => 'consultant.premium'
+]);
+
+Route::get('premium/add', [
+    'uses' => 'ConsultantPremiumController@add',
+    'as' => 'consultant.gopremium'
 ]);
 
  /* Advertisements */

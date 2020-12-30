@@ -10,7 +10,7 @@
     <div class="col-lg-4 cool-md-4 col-sm-12">
         <div class="card">
             <ul class="pricing body">
-                <li class="plan-img"><img class="img-fluid rounded-circle" src="../assets/images/plan-1.svg" alt="" /></li>
+                <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
                     <h3><span>$</span>{{$package->amount}}<small>/ mo</small></h3>
                     <span>Premium</span>
