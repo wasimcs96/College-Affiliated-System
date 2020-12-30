@@ -654,7 +654,7 @@
                           @else
                           <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
 
-
+                          @endif
 
                         </div>
                         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -668,7 +668,7 @@
                       </div>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-4 -->
-            @endif
+
             <div class="col-lg-6">
                 <div class="section-heading ">
 <?php $consultants = DB::table('consultants')->get();
@@ -677,6 +677,7 @@
                     <hr>
 
                     <div class="testimonial-carousel carousel-action">
+                        @if($consultants->count()>0)
                         @foreach($consultants as $consultant)
                         <div class="testimonial-card">
 
@@ -705,7 +706,9 @@
 
                         </div><!-- end testimonial-card -->
                         @endforeach
-
+@else
+<h2 class="mt-5" style="text-align: center"> No Data Available</h2>
+@endif
 
                     </div><!-- end testimonial-carousel -->
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SubAdmin;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Sessions;
+use Config;
 use App\Models\Country;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -40,8 +41,8 @@ class SubAdminProfileController extends Controller
               {
                  $profile_image = $request->profile_image;
                  $profile_image_new_name = time().$profile_image->getClientOriginalName();
-                 $profile_image->move('uploads/client',$profile_image_new_name);
-                 $user->profile_image = 'uploads/client/'.$profile_image_new_name;
+                 $profile_image->move(Config::get('define.image.profile'),$profile_image_new_name);
+                 $user->profile_image = Config::get('define.image.profile').'/'.$profile_image_new_name;
               }
               $user->fill($request->all());
               $user->latitude = $data->latitude;

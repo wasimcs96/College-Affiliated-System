@@ -184,12 +184,27 @@ Route::get('subscription', [
     'uses' => 'ConsultantSubscriptionController@index',
     'as' => 'consultant.subscription'
 ]);
-
-/* Go Premium */
-Route::get('premium', [
-    'uses' => 'ConsultantPremiumController@index',
-    'as' => 'consultant.premium'
+ /* Advertisements */
+ Route::get('advertisements', [
+    'uses' => 'ConsultantAdvertisementController@index',
+    'as' => 'consultant.advertisement'
 ]);
 
+Route::get('advertisements/add', [
+    'uses' => 'ConsultantAdvertisementController@add',
+    'as' => 'consultant.advertisement.add'
+]);
+
+
+Route::post('advertisements/store', [
+    'uses' => 'ConsultantAdvertisementController@store',
+    'as' => 'consultant.advertisement.store'
+]);
+
+/* Fetch */
+Route::get('application/fetch/course',[
+    'uses' => 'ConsultantBookingController@fetchCourse',
+    'as' => 'fetch.course_application'
+]);
 
 });

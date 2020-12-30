@@ -82,35 +82,30 @@
                                 <div class="form-group">
                                     <?php $univers=$book->consultant->consultantUniversity;
                                     $increase=0;
-                                    $inc=1;
-                                    ?>
-                                    <div class="table-responsive" style="width: 100%;margin-top: 36px;">
+                                      ?>
+                                    <div class="table-responsive" style="width: 100%; margin-top: 36px;">
                                         <label for="name">Select University</label>
                                         <table class="table table-bordered" id="dynamic_field">
-                                            <tr class="dynamic-added" data-row_id="{{$increase}}">
+                                            <tr class="dynamic-added" >
 
-                                                <td> <select id="university" custom1="{{$increase}}" data-row_id="{{$increase}}" custom2="" class="form-control FulNamo" name="university[{{$increase}}]" placeholder="Select University">
+                                                <td class="university" data-row_id="{{$increase}}">
+                                                    <select id="university-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control FulNamo" name="university[{{$increase}}]" placeholder="Select University">
                                                     <option value="" selected>University Name</option>
                                                     @foreach($univers as $univer)
                                                     <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option>
+
                                                     @endforeach
-                                                  </select></td>
-                                                  <td> <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control FulNamo" >
-                                                    <?php $univers=$book->consultant->consultantUniversity;
-                                                    $increase=0;
-                                                    $inc=1;
-                                                    ?>
-                                                    @foreach($univers as $univer)
-                                                   <option value="0">BTech</option>
-                                                   <option value="1">MTech</option>
-                                                   @endforeach
-                                                    {{-- <option selected>Course Name</option>
-                                                <?php $course=$univer->university->universityCourse ;
-                                               ?>
+                                                  </select>
+                                                </td>
+                                                  <td id="">
+                                                      <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control FulNamo" >
 
-
-                                                  </select></td>
+                                                    {{-- @foreach($courses as $course)
+                                                   <option value="{{$course->id}}">{{$course->name}}</option>
+                                                   @endforeach --}}
+                                                 </select></td>
                                                 <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i></button></td>
+                                                @php $increase++ @endphp
                                             </tr>
                                         </table>
                                     </div>
@@ -121,9 +116,7 @@
                                     $inc=0;
                                     ?>
                                     <label for="documents">Documents</label>
-
                                      <br/>
-
                                     <div class="dynamic_document" id="dynamic_document">
                                         @foreach($documentarray as $key => $value)
                                         <label class="control-inline fancy-checkbox">
@@ -209,18 +202,18 @@
       var postURL = "<?php echo url('addmore'); ?>";
       var i=0;
       var document_row = {{$inc}} ;
-
+      var table_row = {{$increase}} ;
+// console.log(table_row);
       $('#add').click(function(){
              i++;
-           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td><select custom1="'+i+'" data-row_id="{{$increase}}" id="university" name="university['+i+']" class="form-control"><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td><td><select id="course-'+i+'" name="course['+i+']" class="form-control"><option value='+i+'>Course</select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td class="university" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="university-'+table_row+'" name="university['+table_row+']" class="form-control"><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td><td ><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control"></select></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
            r=$('#dynamic_field .dynamic-added').length;
             if(r==3){
                 $('#add').prop('disabled', true);
             }
-
-
-
+            table_row++;
       });
+
 
     $('#add_document2').click(function(){
     rt=$('#document_name').val()
@@ -238,9 +231,6 @@
             if(r<3){
                 $('#add').prop('disabled', false);
             }
-        //    $('#add').add();
-        //    window.location.reload();
-
       });
 
 
@@ -300,4 +290,55 @@ $(function() {
     $('#basic-form').parsley();
 });
 </script>
+<script>
+     $(document).on('change', '.university', function ()
+                    {
+                           dt  = $(this).data("row_id");
+
+                           $.ajaxSetup({headers:
+                            {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                            });
+                            universityid=$('#university-'+dt+'').val();
+                            console.log(universityid);
+                                  $.ajax({
+                                      url:"{{ route('fetch.course_application') }}",
+                                      method:"GET",
+                                      data:{universityid:universityid,dt:dt},
+                                      success: function(result){
+                                      $('#course-'+dt+'').html(result);
+                                    }
+                                    });
+
+                        });
+
+</script>
+
+<script>
+    var image_row = {{ $inc }}
+
+
+        $(document).on('change', '.filetype', function ()
+        {
+            dt=    $(this).data("row_id")
+               $.ajaxSetup({headers:
+                {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+                });
+                universityid=$('#media_type-'+dt+'').val();
+                      $.ajax({
+                          url:"{{ route('fetch.course') }}",
+                          method:"GET",
+                          data:{universityid:universityid,dt:dt},
+                          success: function(result){
+                          $('#tl-'+dt+'').html(result);
+                        }
+                        });
+
+            });
+
+        </script>
+
 @stop
