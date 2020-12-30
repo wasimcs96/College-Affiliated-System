@@ -117,7 +117,7 @@ public function applicationStore(Request $request){
     }
     else
     {
-        return redirect()->back()->with('warning','Application Already Created');
+        return redirect()->route('consultant.application')->with('warning','Application Already Created Check the Following List');
     }
 }
 

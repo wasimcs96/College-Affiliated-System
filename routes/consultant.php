@@ -230,4 +230,20 @@ Route::post('application/apply',[
     'as' => 'application.apply'
 ]);
 
+/* Application Follow Up */
+Route::get('applications/followup',[
+    'uses' => 'ConsultantApplicationFollowUpController@index',
+    'as' => 'consultant.application.followup'
+]);
+
+Route::get('applications/followup/create',[
+    'uses' => 'ConsultantApplicationFollowUpController@create',
+    'as' => 'consultant.application.followup.create'
+]);
+
+Route::post('applications/followup/store',[
+    'uses' => 'ConsultantApplicationFollowUpController@store',
+    'as' => 'consultant.application.followup.store'
+]);
+
 });
