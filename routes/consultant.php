@@ -207,4 +207,10 @@ Route::get('application/fetch/course',[
     'as' => 'fetch.course_application'
 ]);
 
+/* Application Apply */
+Route::post('application/apply',[
+    'uses' => 'ConsultantApplicationController@applicationApply',
+    'as' => 'application.apply'
+]);
+
 });

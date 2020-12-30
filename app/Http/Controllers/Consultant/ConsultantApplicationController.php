@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Consultant;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Application;
 use App\Models\Course;
 use App\Models\University;
+use App\Models\ApplicationAppliedUniversity;
 
 
 class ConsultantApplicationController extends Controller
@@ -20,6 +24,7 @@ class ConsultantApplicationController extends Controller
    public function applicationCreate($id)
    {
        $application = Application::where('id',$id)->get()->first();
+    //    dd($application->applicationAppliedUniversity);
     //    dd($application->applicationAppliedUniversity[application_id]);
     //    foreach($application->applicationAppliedUniversity as $app)
     //    {
@@ -47,4 +52,16 @@ class ConsultantApplicationController extends Controller
 
        return view('consultant.application.application_create',compact('application','university0','university1','university2','course0','course1','course2'));
    }
+
+   public function applicationApply(Request $request)
+   {
+       $id = $request->application_id;
+    //    $university = ApplicationAppliedUniversity::where('id',$request->application_id)->get()->first();
+       $university = ApplicationAppliedUniversity::find($id);
+       $university->Is_applied = 1;
+       $university->save();
+
+       return response('success');
+
+    }
 }
