@@ -47,7 +47,7 @@
                                         </select>
                               </div>
                                 <div class="form-group">
-                                    <label>Package Time</label>
+                                    <label>Package Time(in months)</label>
                                     <input type="text" class="form-control" value="{{$packages->package_time}}" name="package_time" id="package_time" required>
                                 </div>
                                 <div class="form-group">

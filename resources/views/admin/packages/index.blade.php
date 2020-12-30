@@ -31,7 +31,7 @@
                             <th> <b>Title</b></th>
                             <th><b> Package Type </b></th>
                             <th><b> Description</b></th>
-                            <th><b> Package Time </b></th>
+                            <th><b> Package Time(in months) </b></th>
                             <th><b>Amount</b></th>
                             <th><b>Status</b></th>
                             <th><b>Actions</b></th>
