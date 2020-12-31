@@ -128,7 +128,7 @@ Route::get('application',[
     'as'=>'consultant.application'
 ]);
 
-Route::get('application/create/{id}',[
+Route::get('application/show/{id}',[
     'uses'=>'ConsultantApplicationController@applicationCreate',
     'as'=>'consultant.application.create'
 ]);

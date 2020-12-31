@@ -61,7 +61,7 @@
                             <td> 10:30 A.M. </td>
                             <td><a href="{{route('consultant.student.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr> --}}
-                               No Record available
+
 
 
                     </tbody>

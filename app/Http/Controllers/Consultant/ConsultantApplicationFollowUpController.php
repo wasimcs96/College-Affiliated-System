@@ -54,7 +54,7 @@ class ConsultantApplicationFollowUpController extends Controller
         'date' => $request->date,
     ]);
     $application->save();
-    return redirect()->route('consultant.application.followup')->with('success', 'Follow Up Created Succefully.');
+    return redirect()->back()->with('success', 'Follow Up Created Succefully.');
    }
 
 }
