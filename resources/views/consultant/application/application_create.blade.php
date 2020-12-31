@@ -14,14 +14,42 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li> --}}
+                <a href="#" data-toggle="modal" data-target="#followUpModal" class="btn btn-primary" ><i class="fa fa-plus" style="margin-right: 8px;"></i>Add Follow Up</a>
+                <div class="modal fade" id="followUpModal" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel3" style="color:white; text-align: center;">Add Follow Up</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                                <form id="basic-form" method="post" novalidate action="{{route('consultant.application.followup.store')}}">
+                                    @csrf
+                                    {{-- <div class="form-group">
+                                        <label>Title</label>
+                                        <input type="text" class="form-control" name="title" id="title" required>
+                                    </div> --}}
+                                  <input type="text" name="application_id" value={{$application->id}} hidden>
+                                    <div class="form-group">
+                                        <label style="color:white">Note</label>
+                                        <textarea class="form-control" name="note" rows="5" cols="30" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="color:white">Date</label>
+                                        <input  class="form-control" name="date" id="date" required>
+                                    </div>
+                                    <br>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary">Add Follow Up</button>
+                        </form>
+                                    </div>
+                </div>
+                </div>
+                </div>
             </ul>
         </div>
         <div class="body">
@@ -65,7 +93,7 @@
                         @endforeach --}}
                     <tr>
                         <th scope="row">Student University/Course Preference-1</th>
-                        <td>{{$university0->university_name}}/</td>
+                        <td>{{$university0->university_name}}/{{$course0->name}}</td>
                     </tr>
 
                     <tr>
@@ -151,45 +179,6 @@
                         <th scope="row">Student Country</th>
                         <td>{{$application->user->country}}</td>
                     </tr>
-
-                    {{-- <tr>
-                        <th scope="row">Student University Prefrence-1</th>
-                        <td>RTU</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Student University Prefrence-2</th>
-                        <td>BTU</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Student University Prefrence-3</th>
-                        <td>CTU</td>
-                    </tr> --}}
-          <!--      <tr >
-             <th scope="row">Documents</th>
-            <td > Marksheet-10
-                {{-- <button type="button" name="add_document" id="add_document" class="btn btn-primary btn-m ml-3" data-toggle="modal" data-target="#documentModal"><i class="fa fa-plus"></i> </button> --}}
-            </td>
-
-                </tr>
-        </div>
-
-               <th scope="row">Document-2</th>
-           <td > Marksheet-12
-               {{-- <button type="button" name="add_document" id="add_document" class="btn btn-primary btn-m ml-3" data-toggle="modal" data-target="#documentModal"><i class="fa fa-plus"></i> </button> --}}
-           </td>
-               </tr>
-               <th scope="row">Document-3</th>
-           <td > Aadhar
-               {{-- <button type="button" name="add_document" id="add_document" class="btn btn-primary btn-m ml-3" data-toggle="modal" data-target="#documentModal"><i class="fa fa-plus"></i> </button> --}}
-           </td>
-               </tr>
-               <th scope="row">Document-4</th>
-           <td > Domicile certificate
-               {{-- <button type="button" name="add_document" id="add_document" class="btn btn-primary btn-m ml-3" data-toggle="modal" data-target="#documentModal"><i class="fa fa-plus"></i> </button> --}}
-           </td>
-               </tr>  -->
        </div>
 
 
@@ -239,6 +228,39 @@
 
                     <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
                     <p id="error-checkbox3"></p>
+                    <label for="uploaded_documents">Uploaded Documents</label>
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12">
+                            @if(!empty($application->applicationDocument) && $application->applicationDocument != null)
+                            <div class="form-group">
+                                      <div id="lightgallery" class="row clearfix lightGallery">
+
+                                    <?php $rts=$application->applicationDocument;?>
+                                    @if($rts->count()>0)
+                                    @foreach($rts as $rt)
+
+                                      <div style="margin-left:24px; ">
+                                      <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
+                                        <div class="img-responsive iws">
+                                            <a class="light-link" href="{{asset($rt->file)}}"><img class="img-fluid rounded" src="{{asset($rt->file)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
+                                            <div class="card-body">
+                                                <a href="{{asset($rt->file)}}" class="btn btn-primary" target="_blank" download style="margin-left: 19px;">
+                                                    <i class="fa fa-download"></i> Download
+                                                </a>
+                                            </div>
+                                        </div>
+                                      </div>
+
+                                      @endforeach
+                                      @else
+                                      <h2 class="mt-5" style="text-align: center"> No Media Available</h2>
+                                      @endif
+
+                                  </div>
+
+                                    </div>
+    @endif
+<label for="">Upload Document</label>
                     <input type="file" name="documents[]" class="dropify" multiple>
                     @csrf
                     <br>
@@ -248,11 +270,10 @@
         </div>
     </div>
 </div>
-
+</div>
+</div>
 @foreach($application->applicationAppliedUniversity as $key=>$applied)
-@php
-$increase = 0;
-@endphp
+
 <div class="accordion" id="accordionExample">
 
     <div class="card">
@@ -294,7 +315,7 @@ $increase = 0;
                                                 </div>
                                             </div>
                                             <input type="text" name="university_id" value="{{$applied->university->id}}" hidden>
-                                            <input type="text" name="application_id" value="{{$applied->id}}" hidden>
+                                            <input type="text" name="apply_id" value="{{$applied->id}}" hidden>
 
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
@@ -380,9 +401,7 @@ $increase = 0;
     </div>
 </div>
 </div>
-@php
-$increase++
-@endphp
+
 @endforeach
 
 
@@ -421,6 +440,11 @@ $increase++
 @section('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-steps/jquery.steps.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
+<style>
+.ui-datepicker-header .ui-icon {
+    border:2px solid black;
+}
+</style>
 @stop
 
 @section('page-script')
@@ -523,9 +547,9 @@ $('#documentModal').modal('hide')
 <script>
 $(document).on('click', '#apply', function ()
 {
-    //   -'+row+' var row = {{ $increase }} ;
+
        var university_id = $('input[name="university_id"]').val();
-       var application_id = $('input[name="application_id"]').val();
+       var application_id = $('input[name="apply_id"]').val();
  console.log(application_id);
        $.ajaxSetup({headers:
         {
@@ -546,5 +570,27 @@ $(document).on('click', '#apply', function ()
             // row++;
     });
 
+    $(document).ready(function () {
+    $('#date').datepicker({
+        dateFormat: 'mm-dd-yy',
+         minDate: 0,
+         maxDate:"4w"
+    });
+});
 </script>
+{{-- <script>
+    $("#date").datepicker({ onSelect: function(dateText) {
+        dateFormat: 'mm-dd-yyyy',
+         minDate: '-0D',
+         maxDate: '+28D',
+    });
+</script> --}}
+ {{-- <script>
+//    $(document).ready(function() {
+//   $("#date").datepicker({
+//       minDate: -3,
+//       maxDate: "1w"
+//   });
+// });
+// </script> --}}
 @stop

@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/animate-css/vivify.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/jquery.fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/jquery-ui.css') }}">
 
     @stack('after-styles')
     @if (trim($__env->yieldContent('page-styles')))
@@ -122,6 +125,12 @@
 <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/bundles/vendorscripts.bundle.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+
+<script src="{{ asset('frontEnd/assets/js/jquery-ui.js') }}"></script>
+<script src="{{ asset('frontEnd/assets/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('frontEnd/assets/js/jquery.countTo.min.js') }}"></script>
+<script src="{{ asset('frontEnd/assets/js/jquery.ripples-min.js') }}"></script>
 @stack('after-scripts')
 
 @if (trim($__env->yieldContent('page-script')))
