@@ -63,13 +63,13 @@ Route::get('application/create',function(){
 // })->name('admin.application.university_app');
 // ###############booking#####################
 
-Route::get('booking',function(){
-   return view('admin.booking.booking');
-})->name('admin.booking');
+// Route::get('booking',function(){
+//    return view('admin.booking.booking');
+// })->name('admin.booking');
 
-Route::get('booking/show',function(){
-   return view('admin.booking.booking_show');
-})->name('admin.booking.booking_show');
+// Route::get('booking/show',function(){
+//    return view('admin.booking.booking_show');
+// })->name('admin.booking.booking_show');
 
 Route::get('booking/consultant',function(){
    return view('admin.booking.consultant');
@@ -312,5 +312,18 @@ Route::get('/', function () {
     return view('frontEnd.index');
 })->name('front');
 
+// Booking Routes ###########################
 
+Route::get('booking',[
+    'uses'=>'AdminBookingController@index',
+    'as'=>'admin.booking'
+]);
 
+Route::get('booking/{id}',[
+    'uses'=>'AdminBookingController@show',
+    'as'=>'admin.booking_show'
+]);
+Route::post('booking/accept',[
+    'uses'=>'AdminBookingController@accept',
+    'as'=>'admin.booking.accept'
+]);

@@ -26,35 +26,43 @@
                     <thead>
                         <tr>
                             <th> <b>
-                                Name</b></th>
-                            <th><b> Mobile </b></th>
-                            <th><b> E-mail</b></th>
-                            <th><b> Universities</b></th>
-                            <th><b>
-                                Consultant</b></th>
-                            <th><b>Date</b></th>
-                            <th><b>
-                                Time</b></th>
+                               Client Name</b></th>
+                            <th><b>Consultant Name </b></th>
+                            <th><b>Booking Date</b></th>
+                            {{-- <th><b>Date</b></th> --}}
+                            <th><b>Time Slot</b></th>
+                            <th><b> Status</b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
+
+                    @if($books->count() > 0)
                     <tbody>
+
+                        @foreach($books as $book)
                         <tr>
-                            <td>Sufiyan</td>
-                            <td>1234567890</td>
-                            <td>email@email.com</td>
-                            <td>tru</td>
-                            <td>Qureshi</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('admin.booking.booking_show')}}" class="btn btn-success"><i class="fa fa-edit"></i></a></td>
+                            <td>{{$book->user->first_name}}</td>
+                            <td>{{$book->consultant->user->first_name}}</td>
+                            <td>{{$book->booking_date}}</td>
+                            {{-- <td>tru</td>--}}
+                            <td>{{$book->booking_start_time}}-{{$book->booking_end_time}}</td>
+                            {{-- <td>2020/30/11</td> --}}
+                            <td>@if($book->status==0)<div class="btn btn-warning">Pending</div>@endif
+                                @if($book->status==1)<div class="btn btn-success">Accepted</div>@endif
+                                @if($book->status==2)<div class="btn btn-danger">Rejected</div>@endif
+                                @if($book->status==3)<div class="btn btn-primary">Walking</div>@endif
+                            </td>
+                            <td><a href="{{route('admin.booking_show',['id'=>$book->id])}}" class="btn btn-success"><i class="fa fa-edit"></i></a></td>
                         </tr>
 
+@endforeach
+@else
 
-
+Records not available
+@endif
                     </tbody>
                 </table>
             </div>

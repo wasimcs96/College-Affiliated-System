@@ -130,7 +130,7 @@
     top: 5px;
     right: 8px;
     z-index: 6;
-    background-color: #FFF;
+    background-color:#22252a;
     padding: 4px 3px;
 
     color: #000;
@@ -141,7 +141,7 @@
     font-size: 22px;
     line-height: 10px;
     border-radius: 50%;
-    border:1px solid white;
+    border:1px solid #22252a;
 }
 .iws:hover .closes {
     opacity: 1;
