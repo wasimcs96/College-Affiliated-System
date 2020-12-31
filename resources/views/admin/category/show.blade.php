@@ -60,14 +60,12 @@
                         </td>
                     </tr>
 
-            </div>
+
 
                     </tbody>
 
                 </table>
-                <div id="dec">
 
-                </div>
 
                 <a href="{{route('admin.category')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>

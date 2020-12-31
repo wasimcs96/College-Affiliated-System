@@ -13,14 +13,14 @@
                 <h2>Edit Course</h2>
             </div>
             <div class="body">
-                <form id="basic-form" method="POST" enctype="multipart/form-data" action="{{route('university.course.store', $universitycourse->id)}}">
+                <form id="basic-form" method="POST" enctype="multipart/form-data" action="{{route('university.course.update', $universitycourse->id)}}">
                     @csrf
                     <div class="form-group">
                         <label for="course_id">Course Name</label>
                         <select name="course_id" class="form-control" required>
 
                             @foreach ($courses as $course)
-                                <option value="{{ $course->id }}"<?php if($course->id == $universitycourse->id) { echo "selected"; } ?>{{ $universitycourse->name }}</option>
+                                <option value="{{ $course->id }}"<?php if($universitycourse->course_id ==  $course->id) { echo "selected"; } ?>>{{ $course->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label>Fees</label>
-                        <input type="text" value="" name="fees" value="{{$universitycourse->fees}}" class="form-control" required>
+                        <input type="text" name="fees" value= "{{$universitycourse->fees}}"  class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Course Start Date</label>
@@ -58,47 +58,42 @@
 
                     <div class="row clearfix">
                         <div class="col-lg-12 col-md-12">
-                            @if(!empty(auth()->user()->university->courseMedia) && auth()->user()->university->courseMedia != null)
+                            {{-- @if(!empty(auth()->user()->university->universityCourse->courseMedia) && auth()->user()->university->universityCourse->courseMedia != null) --}}
                             <div class="form-group">
-                                      <div id="lightgallery" class="row clearfix lightGallery">
+                              <div id="lightgallery" class="row clearfix lightGallery">
+                                 @foreach($universitycourse->courseMedia as $rt)
 
-                                    <?php $rts=auth()->user()->university->courseMedia;?>
-                                    @foreach($rts as $rt)
-                                    @if ($rt->file_type==0)
+                                                {{-- {{dd($rt->course->courseMedia)}} --}}
+                                        @if ($rt->file_type==0)
+                                                <div style="margin-left:24px;">
+                                                    <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
+                                                        <div class="img-responsive iws">
+                                                            <a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
+                                                            <div class="card-body">
+                                                                {{-- <a href="{{route('course.media.destroy',['id'=>$cm->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red; position:absolute;   top: 0;
+                                                                    right: 0;"><i class="fa fa-times" aria-hidden="true"></i></h5></a> --}}
 
-                                      <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
-                                        <div class="col-lg-4 col-md-5 m-b-30"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
-
-                                            <div class="card-body">
-                                                <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red; position:absolute;   top: 0;
-                                                    right: 0;"><i class="fa fa-times" aria-hidden="true"></i></h5></a>
-
-
-                                            </div>
-                                        </div>
-
-
-
-                                    @else
-                                    @endif
+                                                                <span class="closes deleteRecord" title="Delete"><a href="{{route('course.media.destroy',['id'=>$rt->id])}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                        @else
+                                            No Data Found.
+                                         @endif
 
 
-                                      @endforeach
-
-                                  </div>
-
-                                    </div>
-    @endif
-
+                                 @endforeach
+                                </div>
+                             </div>
+                                     {{-- @endif --}}
+                        </div>
+                    </div>
                     <div class="form-group">
                                 <lable>Upload Media</lable>
                            <div class="body"id="nb"  >
                               <input type="file" name="image[]"class="dropify" multiple>
                            </div>
-                           <button type="button" name="uploaddocument" id="upload_document_button" class="btn btn-primary btn-m " ><i class="fa fa-plus"></i> </button>
                     </div>
-
-
                     <br>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -113,6 +108,37 @@
 @stop
 
 @section('page-styles')
+<style>
+
+
+    .iws {
+    position: relative;
+    display: inline-block;
+
+    font-size: 0;
+    }
+    .iws .closes {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    z-index: 6;
+    background-color:#22252a;
+    padding: 4px 3px;
+
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+    border:1px solid #22252a;
+    }
+    .iws:hover .closes {
+    opacity: 1;
+    }
+    </style>
 <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
 
 @stop

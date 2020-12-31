@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->hasOne(University::class);
     }
 
+    public function universityCourse()
+    {
+        return $this->hasMany(UniversityCourse::class);
+    }
+
     public function booking()
     {
         return $this->hasMany(Booking::class);

@@ -17,8 +17,9 @@ class UniversityCoursesController extends Controller
      */
     public function index()
     {
-
-        return view('university.course.courses')->with('universitycourses', UniversityCourse::all());
+        $universitycourse=auth()->user()->universityCourse;
+        // dd($universitycourse);
+        return view('university.course.courses')->with('universitycourses', $universitycourse);
 
     }
 
@@ -63,7 +64,7 @@ class UniversityCoursesController extends Controller
 
             CourseMedia::create( [
 
-                'course_id'=>$request->course_id,
+                'course_id'=>$request->university_course_id,
                 'media'=>  $newname,
                 'status'=>0,
                 'file_type' => $type,
@@ -73,7 +74,7 @@ class UniversityCoursesController extends Controller
     if ($request->link != null) {
         CourseMedia::create( [
 
-            'course_id'=>$request->course_id,
+            'course_id'=>$request->university_course_id,
              'link'=>$request->link,
              'status'=>0,
             'file_type' => 2
@@ -111,6 +112,7 @@ class UniversityCoursesController extends Controller
     public function edit(UniversityCourse $id)
     {
 
+
         return view('university.course.course_edit')->with('courses', Course::all())->with('universitycourse', $id);
 
     }
@@ -132,7 +134,7 @@ class UniversityCoursesController extends Controller
      * Remove the specified resource from storage.
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(UniversityCourse $id)
     {
 
         UniversityCourse::find($id)->delete($id);

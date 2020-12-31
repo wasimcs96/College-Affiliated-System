@@ -4,8 +4,6 @@
 
 @section('content')
 
-
-
 <div class="row clearfix">
     <div class="col-md-12">
         <div class="card">
@@ -54,7 +52,7 @@
                         <textarea class="form-control" name="privacy_policy" rows="5" cols="30" required></textarea>
                     </div>
                     <div class="form-group">
-                                      Upload Media
+                                Upload Media
                            <div class="body"id="nb"  >
                               <input type="file" name="image[]"class="dropify" multiple>
                            </div>
