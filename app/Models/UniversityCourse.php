@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class UniversityCourse extends Model
 {
 
-    protected $fillable = [ 'course_id', 'university_id', 'description', 'fees', 'start_date', 'end_date', 'fax_number', 'term_conditions', 'privacy_policy' ];
+    protected $fillable = [ 'course_id', 'user_id', 'description', 'fees', 'start_date', 'end_date', 'fax_number', 'term_conditions', 'privacy_policy' ];
 
     public function course()
     {
         return $this->belongsTo(Course::class,'course_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function university()
@@ -23,4 +28,5 @@ class UniversityCourse extends Model
     {
         return $this->hasMany(CourseMedia::class);
     }
+
 }

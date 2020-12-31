@@ -140,10 +140,11 @@ Route::get('course_delete/{id}',[
     'as' => 'university.course.delete'
 ]);
 
-Route::get('course_update/{id}',[
+Route::post('course_update/{id}',[
     'uses' => 'UniversityCoursesController@update',
     'as' => 'university.course.update'
 ]);
+
 
 /* Profile Section */
 Route::get('profile',[
@@ -199,6 +200,13 @@ Route::get('advertisements/add', [
 Route::post('advertisements/store', [
     'uses' => 'UniversityAdvertisementController@store',
     'as' => 'university.advertisement.store'
+]);
+
+/* University Course Media */
+Route::get('/course/media/delete/{id}',[
+    'uses' =>'UniversityCoursesController@destroy',
+    'as'=>'course.media.destroy'
+
 ]);
 
 

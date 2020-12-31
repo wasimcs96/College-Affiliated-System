@@ -69,6 +69,7 @@
                     </tbody>
 
                 </table>
+                <a href="{{route('university.courses')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
 
             </div>
         </div>

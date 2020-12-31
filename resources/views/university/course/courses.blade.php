@@ -49,10 +49,9 @@
                             <td>{{$course->start_date}}</td>
                             <td>{{$course->end_date}}</td>
                             <td>
-                            <a href="{{route('university.course.show', $course->id)}}" class="btn btn-success"><i class="icon-eye"></i></a>
-                            <a href="{{route('university.course.edit', $course->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                            &nbsp;&nbsp;
-                            <a href="{{route('university.course.delete', $course->id)}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete " data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
+                                <a href="{{route('university.course.show', $course->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View " title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
+                                <a href="{{route('university.course.edit', $course->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
+                                <a href="{{route('university.course.delete', $course->id)}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete " data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
 
