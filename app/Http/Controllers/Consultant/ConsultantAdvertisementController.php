@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use DateTime;
+use Config;
 use Illuminate\Support\Carbon;
 use DateInterval;
 use Dotenv\Regex\Success;
@@ -26,7 +27,7 @@ class ConsultantAdvertisementController extends Controller
 
    public function store(Request $request)
    {
-  
+
 
     $this->validate($request,[
         'image'=>'required',
@@ -40,8 +41,8 @@ class ConsultantAdvertisementController extends Controller
     {
         $ad_image = $request->image;
         $ad_image_new_name = time().$ad_image->getClientOriginalName();
-        $ad_image->move('uploads/banner',$ad_image_new_name);
-        $newname='uploads/banner/'.$ad_image_new_name;
+        $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
+        $newname=Config::get('define.image.advertisement').$ad_image_new_name;
     }
     Advertisement::create([
 
@@ -54,7 +55,7 @@ class ConsultantAdvertisementController extends Controller
 
        $new=new PaymentController();
        $new->payment($request);
-       
+
        return redirect()->route('consultant.advertisement')->with('success','Advertisement updated successfully');
    }
 }

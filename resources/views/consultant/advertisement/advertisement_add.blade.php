@@ -48,13 +48,30 @@
     </div>
 
     @endforeach
-    <button id="rzp-button1">Pay</button>
+    {{-- <button id="rzp-button1">Pay</button> --}}
 </div>
-
+{{-- <img style="width: 200px; height: 100px; border-radius: 7px; margin-top: -16px;" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} "> --}}
+<div class="container">
+    <h2 class="text-center" style="font-family: -webkit-pictograph;
+    font-weight: unset;"> Pay with Razorpay</h2>
+    <hr>
+    <br>
+    <div class="align-content-center">
+    <img style="width: 279px; height: 218px; border-radius: 7px; margin-top: -83px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} ">
+    </div>
+    </div>
 
             @stop
 
             @section('page-styles')
+            <style>
+                .cntr {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+
+                  }
+                </style>
             <link rel="stylesheet" href="{{ asset('assets/vendor/light-gallery/css/lightgallery.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
@@ -91,7 +108,7 @@
    $(":radio[name='"+radioName+"']").attr("disabled", true); //Disable all with the same name
 });
     </script>
-   
+
 
     <script>
     var options = {
@@ -103,14 +120,14 @@
         "image": "https://example.com/your_logo",
         "order_id": "{{Session::get('orderId')}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": function (response){
-    
+
             $.ajaxSetup({headers:
                 {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
                 });
-    
-    
+
+
                  transactionId=response.razorpay_payment_id;
                  amount="{{Session::get('amount')}}";
                  userId="{{Session::get('userId')}}";
@@ -124,10 +141,10 @@
                console.log(result);
                 }
                 });
-    
-    
-    
-    
+
+
+
+
         },
         "prefill": {
             "name": "Gaurav Kumar",
