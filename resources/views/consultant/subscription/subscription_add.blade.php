@@ -30,12 +30,30 @@
     </div>
 
     @endforeach
-<button id="rzp-button1">Pay</button>
+{{-- <button id="rzp-button1">Pay</button> --}}
 
 </div>
+{{-- <img style="width: 200px; height: 100px; border-radius: 7px; margin-top: -16px;" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} "> --}}
+<div class="container">
+    <h2 class="text-center" style="font-family: -webkit-pictograph;
+    font-weight: unset;"> Pay with Razorpay</h2>
+    <hr>
+    <br>
+    <div class="align-content-center">
+    <img style="width: 279px; height: 218px; border-radius: 7px; margin-top: -83px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} ">
+    </div>
+    </div>
 @stop
 
 @section('page-styles')
+<style>
+    .cntr {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+      }
+    </style>
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">

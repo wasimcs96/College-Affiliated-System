@@ -10,7 +10,7 @@
             <ul class="header-dropdown dropdown">
 <li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('consultant.advertisement.add')}}">Purchase AD</a></li>
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-              
+
             </ul>
         </div>
         <div class="body">
@@ -36,7 +36,7 @@
                         @foreach($rts as $rt)
 
                         <tr>
-                            <td>  <img src="{{asset($rt->banner_image)}}" class="user-photo" alt="User Profile Picture" width="40px" height="40px"></td>
+                            <td>  <img src="{{asset($rt->banner_image)}}" class="user-photo" alt="Banner image" width="40px" height="40px"></td>
                             {{-- <td>{{$booking->user->mobile}}</td>
                             <td>{{$booking->user->email}}</td> --}}
                             <td>{{$rt->expire_date}}</td>

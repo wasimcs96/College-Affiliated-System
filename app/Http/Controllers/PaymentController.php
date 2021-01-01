@@ -15,7 +15,7 @@ class PaymentController extends Controller
 
     function payment(Request $request)
     {
-       
+
         $api = new Api('rzp_test_6PaQ95AP7ZPT1S', '409ACfFYI6hON1ZmCThrD7nN');
         $amount = $request->amount;
         $userId = $request->user_id;
@@ -33,13 +33,13 @@ class PaymentController extends Controller
         Session::put('userId', $userId);
         Session::put('type', $type);
         Session::put('title', $title);
-        
-        return redirect(route('admin.subscription'));
+
+        return redirect()->back();
     }
 
     function transaction(Request $request)
     {
-        
+
         $order = Order::create([
             'user_id' => $request->userId,
             'payment_type' => $request->payment_type,
@@ -48,7 +48,7 @@ class PaymentController extends Controller
             'status' => 1,
         ]);
         $order->save();
-      
+
 
         $orderID = $order->id;
         OrderItem::create([
@@ -56,8 +56,8 @@ class PaymentController extends Controller
             'item_title' => $request->title,
         ]);
 
-       
-        
+
+
         return "success";
     }
 }
