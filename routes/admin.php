@@ -17,14 +17,6 @@ Route::get('dashboard',function(){
 
 Route::get('mypage/index','MypageController@index')->name('mypage.index');
 
-Route::get('users',function(){
-    return view('admin.user.user');
-})->name('admin.user');
-
-Route::get('users_show',function(){
-   return view('admin.user.user_show');
-})->name('admin.user.user_show');
-
 
 // ####################application#############
 Route::get('application',function(){
@@ -294,36 +286,29 @@ Route::get('course/delete/{id}', [
 
 
 /* Users Client Section */
-// Route::get('users/{id}',[
-//     'uses' => 'AdminUsersController@index',
+Route::get('users/{id}',[
+    'uses' => 'AdminUsersController@index',
+    'as' => 'admin.users'
+]);
+
+// Route::get('users/client',[
+//     'uses' => 'AdminUsersController@indexClient',
 //     'as' => 'admin.user'
 // ]);
 
-Route::get('users/client',[
-    'uses' => 'AdminUsersController@indexClient',
-    'as' => 'admin.user'
-]);
-
-Route::get('users/client/show/{id}',[
-    'uses' => 'AdminUsersController@showClient',
+Route::get('users/show/{id}',[
+    'uses' => 'AdminUsersController@show',
     'as' => 'admin.user.show'
 ]);
 
-Route::get('users/client/edit/{id}',[
-    'uses' => 'AdminUsersController@showClient',
+Route::get('users/edit/{id}',[
+    'uses' => 'AdminUsersController@edit',
     'as' => 'admin.user.edit'
 ]);
 
-/* Users Consultant Section */
-Route::get('users/consultant',[
-    'uses' => 'AdminUsersController@indexConsultant',
-    'as' => 'admin.user.consultant'
-]);
-
-/* Users University Section */
-Route::get('users/university',[
-    'uses' => 'AdminUsersController@indexUniversity',
-    'as' => 'admin.user.university'
+Route::post('users/update/{id}',[
+    'uses' => 'AdminUsersController@update',
+    'as' => 'admin.user.update'
 ]);
 
 });
