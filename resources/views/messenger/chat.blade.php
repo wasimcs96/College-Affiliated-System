@@ -15,20 +15,33 @@
                             <span class="input-group-text"><i class="icon-magnifier"></i></span>
                         </div>
                     </div>
-                    <ul class="right_chat list-unstyled mb-0">                                
-                        <li class="offline">
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <div class="avtar-pic w35 bg-red"><span>FC</span></div>
-                                    <div class="media-body">
-                                        <span class="name">Folisise Chosielie</span>
-                                        <span class="message">offline</span>
-                                        <span class="badge badge-outline status"></span>
+
+                    @foreach($users as $user)
+
+                        <ul class="right_chat list-unstyled mb-0">
+                            <li class="offline">
+                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
+                                    <div class="media">
+                                        <div class="avtar-pic w35 bg-red"><span>FC</span></div>
+                                        <div class="media-body">
+                                            <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
+                                            @if($user->message != null)
+                                                @foreach($user->message as $key=>$message)
+                                                    @if($key == 0)
+                                                        <h5><span class="chat_date">{{$message->created_at}}</span></h5>
+                                                        <p>{{$message->message}}</p>
+                                                    @endif
+                                                @endforeach
+                                             @endif
+                                            <span class="message">offline</span>
+                                            <span class="badge badge-outline status"></span>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>                            
-                        </li>
-                        <li class="online">
+                                </a>
+                            </li>
+                        </ul>
+                    @endforeach
+                        {{-- <li class="online">
                             <a href="javascript:void(0);">
                                 <div class="media">
                                     <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="">
@@ -38,7 +51,7 @@
                                         <span class="badge badge-outline status"></span>
                                     </div>
                                 </div>
-                            </a>                            
+                            </a>
                         </li>
                         <li class="online">
                             <a href="javascript:void(0);">
@@ -50,7 +63,7 @@
                                         <span class="badge badge-outline status"></span>
                                     </div>
                                 </div>
-                            </a>                            
+                            </a>
                         </li>
                         <li class="online">
                             <a href="javascript:void(0);">
@@ -62,7 +75,7 @@
                                         <span class="badge badge-outline status"></span>
                                     </div>
                                 </div>
-                            </a>                            
+                            </a>
                         </li>
                         <li class="offline">
                             <a href="javascript:void(0);">
@@ -74,7 +87,7 @@
                                         <span class="badge badge-outline status"></span>
                                     </div>
                                 </div>
-                            </a>                            
+                            </a>
                         </li>
                         <li class="online">
                             <a href="javascript:void(0);">
@@ -86,7 +99,7 @@
                                         <span class="badge badge-outline status"></span>
                                     </div>
                                 </div>
-                            </a>                            
+                            </a>
                         </li>
                         <li class="offline">
                             <a href="javascript:void(0);">
@@ -98,7 +111,7 @@
                                         <span class="badge badge-outline status"></span>
                                     </div>
                                 </div>
-                            </a>                            
+                            </a>
                         </li>
                         <li class="online">
                             <a href="javascript:void(0);">
@@ -110,7 +123,7 @@
                                         <span class="badge badge-outline status"></span>
                                     </div>
                                 </div>
-                            </a>                            
+                            </a>
                         </li>
                         <li class="online">
                             <a href="javascript:void(0);">
@@ -122,7 +135,7 @@
                                         <span class="badge badge-outline status"></span>
                                     </div>
                                 </div>
-                            </a>                            
+                            </a>
                         </li>
                         <li class="offline">
                             <a href="javascript:void(0);">
@@ -134,9 +147,9 @@
                                         <span class="badge badge-outline status"></span>
                                     </div>
                                 </div>
-                            </a>                            
-                        </li>
-                    </ul>
+                            </a>
+                        </li> --}}
+
                 </div>
                 <div class="chatapp_body">
                     <div class="chat-header clearfix">
@@ -194,7 +207,7 @@
                 </div>
                 <div class="chatapp_detail text-center vivify pullLeft delay-150">
                     <div class="profile-image"><img src="../assets/images/user.png" class="rounded-circle mb-3" alt=""></div>
-                    <h5 class="mb-0">Louis Pierce</h5>                                
+                    <h5 class="mb-0">Louis Pierce</h5>
                     <small class="text-muted">Address: </small>
                     <p> San Francisco</p>
                     <small class="text-muted">Email address: </small>
@@ -216,4 +229,101 @@
 
 @section('page-script')
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
+
+<script>
+
+
+    $(document).ready(function(){
+
+      document.getElementById("bt").disabled = true;
+        $('.javae').click(function(){
+
+                var userid = $(this).attr("id");
+                var _token = $('input[name="_token"]').val();
+
+                  // document.getElementById(`userlist-${userid}`).style.background="grey";
+                $.ajax({
+                  url: ,
+                    method: "POST",
+                    data:{userid:userid,_token:_token},
+                    success:function(result)
+                    {
+                         var re=JSON.parse(result);
+                         console.log(re);
+                            document.getElementById("hed").innerHTML = re.first_name+" "+re.last_name;
+                            document.getElementById("target").innerHTML+= `<input type="text" class="write_msg" name="id" value=${re.id} placeholder="Type a message" hidden/>`;
+                            document.getElementById("bt").disabled = false;
+
+                          if (re.conversation == false) {
+                            document.getElementById("history").style.marginLeft="240px";
+                              document.getElementById("history").innerHTML=re.messages;
+                          }
+                          else{
+                              html='';
+                              (re.messages).forEach(element => {
+                                  if (element.send_by_admin == 0) {
+                                      html+=`<div class="incoming_msg">
+            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="user"> </div>
+
+            <div class="received_msg">
+              <div class="received_withd_msg">
+                <p>${element.message}</p>
+                <span class="time_date">${element.created_at}</span></div>
+            </div>
+          </div>`;
+                                  }
+                                  else{
+
+          html+=` <div class="outgoing_msg">
+            <div class="sent_msg">
+              <p>${element.message}</p>
+              <span class="time_date">${element.created_at}</span> </div>
+          </div>`;
+                                  }
+
+
+
+                          });
+                              document.getElementById("history").innerHTML=html;
+
+                          }
+
+                }
+
+
+        })
+    })
+
+
+    })
+
+</script>
+
+<script>
+    function myFunction() {
+      var input, filter, ul, li, a, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      ul = document.getElementsByClassName("chat_list");
+      // console.log(ul[0]);
+      li = ul[0].getElementsByTagName("a");
+      // console.log();
+      Array.from(ul).forEach(element => {
+          a=element.getElementsByTagName("div")[0];
+          b=a.getElementsByTagName("a")[0];
+          c=b.getElementsByTagName("div")[1];
+          d=c.getElementsByTagName("h5")[0];
+          console.log(d);
+          txtValue = d.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+           element.style.display = "";
+          } else {
+          element.style.display = "none";
+          }
+
+});
+
+  }
+  </script>
+
 @stop
