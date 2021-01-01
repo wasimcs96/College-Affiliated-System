@@ -230,6 +230,16 @@ Route::post('application/apply',[
     'as' => 'application.apply'
 ]);
 
+Route::post('application/approval',[
+    'uses' => 'ConsultantApplicationController@applicationApprovel',
+    'as' => 'application.approval'
+]);
+
+Route::post('application/accepted',[
+    'uses' => 'ConsultantApplicationController@applicationAccepted',
+    'as' => 'application.accepted'
+]);
+
 /* Application Follow Up */
 Route::get('applications/followup',[
     'uses' => 'ConsultantApplicationFollowUpController@index',

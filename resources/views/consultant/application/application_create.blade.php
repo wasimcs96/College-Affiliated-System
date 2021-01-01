@@ -319,7 +319,7 @@
 
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
-                                                 @if($applied->Is_applied==0) <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#applyModal">In Progress</a>@endif
+                                                 @if($applied->Is_applied==0) <a href="#" class="btn btn-warning applied" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyModal">In Progress</a>@endif
                                                  @if($applied->Is_applied==1)<div class="btn btn-success">Applied</div>@endif
                                                  {{-- @if($applied->approved_status==2)<div class="btn btn-danger">Cancelled</div>@endif --}}
                                                 </div>
@@ -334,41 +334,61 @@
                                       <h3>Profile Information</h3>
                                       <fieldset>
                                           <div class="row clearfix">
-                                              <div class="col-lg-4 col-md-12">
+                                             @if ($applied->approved_status == 0)
+                                                 
+                                             
                                                   <div class="form-group">
-                                                      <input type="text" name="name" placeholder="First Name" class="form-control" >
+                                                    <a href="#"  class="btn btn-success approvel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#dateModal" >Approve</a>
                                                   </div>
+                                               
+                                        
+                                              <div class="form-group">
+                                                <a href="#"  class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" >Decline</a>
                                               </div>
-                                              <div class="col-lg-4 col-md-12">
-                                                  <div class="form-group">
-                                                      <input type="text" name="surname" placeholder="Last Name" class="form-control" >
-                                                  </div>
+                                              @endif
+                                              @if ($applied->approved_status == 1)
+                                                  
+                                              <div class="form-group">
+                                                <h3 class="btn btn-success" >Approved</h3>
                                               </div>
-                                              <div class="col-lg-4 col-md-12">
-                                                  <div class="form-group">
-                                                      <input type="email" name="email" placeholder="Email" class="form-control" >
-                                                  </div>
+                                              @endif
+                                              @if ($applied->approved_status == 2)
+                                              <div class="form-group">
+                                                <h3 class="btn btn-danger" >Canceled</h3>
                                               </div>
-                                              <div class="col-md-12">
-                                                  <div class="form-group">
-                                                      <input min="18" type="number" name="age" placeholder="Age" class="form-control" >
-                                                      <div class="help-info">The warning step will show up if age is less than 18</div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <textarea name="address" cols="30" rows="3" placeholder="Address" class="form-control no-resize" ></textarea>
-                                                  </div>
-                                              </div>
+                                              @endif
                                           </div>
                                       </fieldset>
                                       <h3>Terms Conditions - Finish</h3>
                                       <fieldset>
+                                        @if ($applied->approved_status == 1)
                                           <div class="form-group">
                                               <div class="fancy-checkbox">
-                                                  <label><input type="checkbox" name="acceptTerms"><span>I agree with the Terms and Conditions.</span></label>
-                                              </div>
+                                                  <label><span>University has been accepted your application. Please accept before {{$applied->deadline}}</span></label>                                                
+                                                   
+                                                </div>
                                           </div>
+                                          <div class="row clearfix">
+                                            @if ($applied->is_accepeted == 0)
+                                            <div class="form-group">
+                                                <a href="#"  class="btn btn-success accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accepted</a>
+                                              </div>
+                                           
+                                    
+                                        
+                                            @endif
+                                        </div>
+                                          @endif
                                       </fieldset>
-
+                                      <h3>Ready To Fly - Finish</h3>
+                                      <fieldset>
+                                        <div class="form-group">
+                                            <div class="fancy-checkbox">
+                                                <label><span>University has been accepted your application. Please accept before {{$applied->deadline}}</span></label>                                                
+                                                 
+                                              </div>
+                                        </div>
+                                      </fieldset>
 
                                   </form>
                               </div>
@@ -381,7 +401,13 @@
       </div>
 
   </div>
-  <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+
+
+
+@endforeach
+
+
+<div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -396,16 +422,74 @@
 
         </div>
         <div class="modal-footer">
-           <a href="javascript:void(0)" custom1="{{$applied->id}}"class="btn btn-primary" id="apply"> Apply </a>
+           <a href="javascript:void(0)"  class="btn btn-primary" id="apply"> Apply </a>
         </div>
     </div>
 </div>
 </div>
 
-@endforeach
+<div class="modal fade" id="dateModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+              <input type="date" id="modalDate" name="date">
+
+        </div>
+        <div class="modal-footer">
+           <a href="javascript:void(0)" id="applyApprovel" class="btn btn-primary" > Apply </a>
+        </div>
+    </div>
+</div>
+</div>
 
 
 
+<div class="modal fade" id="Accepted" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+            <h4>Are you sure you want to accept this offer</h4>
+
+        </div>
+        <div class="modal-footer">
+           <a href="javascript:void(0)" id="applyAccepted" class="btn btn-primary" >Confirm</a>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="applyCanceled" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h4>Are you sure you want to cancel</h4>
+        </div>
+        <div class="modal-footer">
+           <a href="javascript:void(0)" id="applyDecline" class="btn btn-primary" >Apply</a>
+        </div>
+    </div>
+</div>
+</div>
 
 <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -548,26 +632,35 @@ $('#documentModal').modal('hide')
 </script>
 
 <script>
+   var appliedUniversityRowId='';
+    $(document).on('click', '.applied', function ()
+{
+   appliedUniversityRowId=$(this).attr('custom1');
+console.log(appliedUniversityRowId);
+});
 $(document).on('click', '#apply', function ()
 {
 
-       var university_id = $('input[name="university_id"]').val();
-       var application_id = $('input[name="apply_id"]').val();
- console.log(application_id);
-       $.ajaxSetup({headers:
-        {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-
-        $.ajax({
-                type: "post",
-                url: "{{route('application.apply')}}",
-                data: {university_id:university_id,application_id:application_id},
-                success: function (result) {
-                    console.log('success');
-                }
+      
+      if(appliedUniversityRowId > 0){
+        $.ajaxSetup({headers:
+            {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
             });
+    
+            $.ajax({
+                    type: "post",
+                    url: "{{route('application.apply')}}",
+                    data: {appliedUniversityRowId:appliedUniversityRowId},
+                    success: function (result) {
+
+                        console.log('success');
+                    }
+                });
+      }
+ 
+   
             // $(this).text("Pending");
             $('#applyModal').modal('hide');
             // row++;
@@ -581,6 +674,117 @@ $(document).on('click', '#apply', function ()
     });
 });
 </script>
+<script>
+    var appliedUniversityRowIdApproval='';
+     $(document).on('click', '.approvel', function ()
+ {
+    appliedUniversityRowIdApproval=$(this).attr('custom1');
+ console.log(appliedUniversityRowIdApproval);
+ });
+ $(document).on('click', '#applyApprovel', function ()
+ {
+ 
+    var modalDate=$('#modalDate').val()
+       if(appliedUniversityRowIdApproval > 0){
+         $.ajaxSetup({headers:
+             {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+             });
+     
+             $.ajax({
+                     type: "post",
+                     url: "{{route('application.approval')}}",
+                     data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval,modalDate:modalDate},
+                     success: function (result) {
+ 
+                         console.log('success');
+                     }
+                 });
+       }
+  
+    
+             // $(this).text("Pending");
+             $('#dateModal').modal('hide');
+             // row++;
+     });
+ 
+  
+ </script>
+ <script>
+    var appliedUniversityRowIdApproval='';
+     $(document).on('click', '.cancel', function ()
+ {
+    appliedUniversityRowIdApproval=$(this).attr('custom1');
+ console.log(appliedUniversityRowIdApproval);
+ });
+ $(document).on('click', '#applyDecline', function ()
+ {
+ 
+    
+       if(appliedUniversityRowIdApproval > 0){
+         $.ajaxSetup({headers:
+             {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+             });
+     
+             $.ajax({
+                     type: "post",
+                     url: "{{route('application.approval')}}",
+                     data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval},
+                     success: function (result) {
+ 
+                         console.log('success');
+                     }
+                 });
+       }
+  
+    
+             // $(this).text("Pending");
+             $('#applyCanceled').modal('hide');
+             // row++;
+     });
+ 
+  
+ </script>
+ <script>
+    var appliedUniversityRowIdAccepted='';
+     $(document).on('click', '.accepted', function ()
+ {
+    appliedUniversityRowIdAccepted=$(this).attr('custom1');
+ console.log(appliedUniversityRowIdAccepted);
+ });
+ $(document).on('click', '#Accepted', function ()
+ {
+ 
+    
+       if(appliedUniversityRowIdAccepted > 0){
+         $.ajaxSetup({headers:
+             {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+             });
+     
+             $.ajax({
+                     type: "post",
+                     url: "{{route('application.accepted')}}",
+                     data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted},
+                     success: function (result) {
+ 
+                         console.log('success');
+                     }
+                 });
+       }
+  
+    
+             // $(this).text("Pending");
+             $('#Accepted').modal('hide');
+             // row++;
+     });
+ 
+  
+ </script>
 {{-- <script>
     $("#date").datepicker({ onSelect: function(dateText) {
         dateFormat: 'mm-dd-yyyy',

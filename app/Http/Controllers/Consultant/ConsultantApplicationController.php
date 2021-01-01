@@ -12,7 +12,7 @@ use App\Models\Application;
 use App\Models\Course;
 use App\Models\University;
 use App\Models\ApplicationAppliedUniversity;
-
+use date;
 
 class ConsultantApplicationController extends Controller
 {
@@ -55,8 +55,8 @@ class ConsultantApplicationController extends Controller
 
    public function applicationApply(Request $request)
    {
-       $id = $request->application_id;
-    //    $university = ApplicationAppliedUniversity::where('id',$request->application_id)->get()->first();
+       $id = $request->appliedUniversityRowId;
+    
        $university = ApplicationAppliedUniversity::find($id);
        $university->Is_applied = 1;
        $university->save();
@@ -64,4 +64,40 @@ class ConsultantApplicationController extends Controller
        return response('success');
 
     }
+
+    public function applicationAccepted(Request $request)
+   {
+       $id = $request->appliedUniversityRowIdAccepted;
+    
+       $university = ApplicationAppliedUniversity::find($id);
+       $university->is_accepeted = 1;
+       $university->save();
+
+       return response('success');
+
+    }
+
+    public function applicationApprovel(Request $request)
+    {
+        if ($request->modalDate) {
+            
+        
+        $id = $request->appliedUniversityRowIdApproval;
+        $date=date("Y-m-d",strtotime($request->modalDate));
+        $university = ApplicationAppliedUniversity::find($id);
+        $university->approved_status = 1;
+        $university->deadline=$date;
+        $university->save();
+    }
+    else {
+         
+        $id = $request->appliedUniversityRowIdApproval;
+
+        $university = ApplicationAppliedUniversity::find($id);
+        $university->approved_status = 2;
+        $university->save();
+    }
+        return response('success');
+ 
+     }
 }
