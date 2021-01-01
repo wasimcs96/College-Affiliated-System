@@ -10,14 +10,7 @@
             <ul class="header-dropdown dropdown">
 <li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('consultant.advertisement.add')}}">Purchase AD</a></li>
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li> --}}
+              
             </ul>
         </div>
         <div class="body">
@@ -25,14 +18,9 @@
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
-                            <th> <b>
-                                Banner Image</b></th>
+                            <th><b>Banner Image</b></th>
                             <th><b> Date </b></th>
-                            {{-- <th><b> E-mail</b></th>
-                            <th><b>Date</b></th>
-                            <th><b>Time Slot</b></th> --}}
                             <th><b> Status</b></th>
-                            {{-- <th><b>Actions</b></th> --}}
                         </tr>
                     </thead>
                     <tfoot>
