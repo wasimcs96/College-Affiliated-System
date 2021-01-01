@@ -44,7 +44,7 @@
 
                 <li class="{{ Request::segment(2) == 'courses' ? 'active' : null }}"><a href="{{route('admin.courses')}}"><i class="fa fa-book" aria-hidden="true"></i><span>Courses</span></a></li>
 
-
+                <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('admin.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'booking' ? 'active' : null }}"><a href="{{route('admin.booking')}}"><i class="icon-list"></i><span>Bookings</span></a></li>
 
