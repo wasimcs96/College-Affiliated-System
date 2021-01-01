@@ -49,28 +49,6 @@ Route::get('application/create',function(){
    return view('admin.application.application_create');
 })->name('admin.application.application_create');
 
-
-// Route::get('application/consultant/show',function(){
-//     return view('admin.application.consultant_app');
-// })->name('admin.application.consultant_app');
-
-// Route::get('application/consultant/show',function(){
-//     return view('admin.application.client_app');
-// })->name('admin.application.client_app');
-
-// Route::get('application/consultant/app',function(){
-//     return view('admin.application.university_app');
-// })->name('admin.application.university_app');
-// ###############booking#####################
-
-// Route::get('booking',function(){
-//    return view('admin.booking.booking');
-// })->name('admin.booking');
-
-// Route::get('booking/show',function(){
-//    return view('admin.booking.booking_show');
-// })->name('admin.booking.booking_show');
-
 Route::get('booking/consultant',function(){
    return view('admin.booking.consultant');
 })->name('admin.booking.consultant');
@@ -314,6 +292,39 @@ Route::get('course/delete/{id}', [
    'as' => 'admin.courses.delete'
 ]);
 
+
+/* Users Client Section */
+// Route::get('users/{id}',[
+//     'uses' => 'AdminUsersController@index',
+//     'as' => 'admin.user'
+// ]);
+
+Route::get('users/client',[
+    'uses' => 'AdminUsersController@indexClient',
+    'as' => 'admin.user'
+]);
+
+Route::get('users/client/show/{id}',[
+    'uses' => 'AdminUsersController@showClient',
+    'as' => 'admin.user.show'
+]);
+
+Route::get('users/client/edit/{id}',[
+    'uses' => 'AdminUsersController@showClient',
+    'as' => 'admin.user.edit'
+]);
+
+/* Users Consultant Section */
+Route::get('users/consultant',[
+    'uses' => 'AdminUsersController@indexConsultant',
+    'as' => 'admin.user.consultant'
+]);
+
+/* Users University Section */
+Route::get('users/university',[
+    'uses' => 'AdminUsersController@indexUniversity',
+    'as' => 'admin.user.university'
+]);
 
 });
 

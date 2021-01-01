@@ -24,35 +24,41 @@
             <div class="table-responsive">
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
-                        <tr>
-                            <th> <b>
+
+                           <tr>
+                               <th> <b>
                                 Name</b></th>
-                            <th><b> Usertype</b></th>
-                            <th><b> Mobile </b></th>
-                            <th><b> E-mail</b></th>
-                            <th><b>Date</b></th>
-                            <th><b>Time</b></th>
-                            <th><b>Actions</b></th>
-                        </tr>
+                                <th><b> DOB</b></th>
+                                <th><b> Mobile </b></th>
+                                <th><b> E-mail</b></th>
+                                <th><b>City</b></th>
+                                <th><b>Country</b></th>
+                                <th><b>Actions</b></th>
+                            </tr>
+
                     </thead>
                     <tfoot>
 
                     </tfoot>
+                    @if($users->count() > 0)
                     <tbody>
-                        <tr>
-                            <td>Sufiyan</td>
-                            <td>consultant</td>
-                            <td>365262626</td>
-                            <td>dsf@sd.com</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('admin.user.user_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
-                        </tr>
-
-
-
-
+                        @foreach ($users as $user)
+                        @if($user->isClient())
+                           <tr>
+                               <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
+                               <td>{{$user->birth_year ?? ''}}</td>
+                               <td>{{$user->mobile ?? ''}}</td>
+                               <td>{{$user->email ?? ''}}</td>
+                               <td>{{$user->city ?? ''}}</td>
+                               <td> {{$user->country ?? ''}} </td>
+                               <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a></td>
+                           </tr>
+                           @endif
+                        @endforeach
                     </tbody>
+
+                @endif
                 </table>
             </div>
         </div>
