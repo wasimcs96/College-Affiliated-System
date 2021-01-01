@@ -246,4 +246,15 @@ Route::post('applications/followup/store',[
     'as' => 'consultant.application.followup.store'
 ]);
 
+Route::get('PR_Migration',[
+    'uses'=>'ConsultantPrmigrationController@index',
+    'as'=>'consultant.prmigration'
+]);
+
+Route::post('PR_Migration/store',[
+    'uses'=>'ConsultantPrmigrationController@store',
+    'as'=>'consultant.prmigration.store'
+]);
+
+
 });

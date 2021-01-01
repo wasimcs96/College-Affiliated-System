@@ -40,7 +40,7 @@
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('consultant.application')}}"><i class="icon-notebook"></i><span>Application</span></a></li>
                 <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="{{route('consultant.application.followup')}}"><i class="icon-notebook"></i><span>Application Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'university' ? 'active' : null }}"><a href="{{route('consultant.associated_university')}}"><i class="icon-graduation"></i><span>Associated University</span></a></li>
-
+                <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('consultant.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li>
                 <li class="{{ Request::segment(1) == 'services' ? 'active open' : null }}">
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>
                     <ul>
