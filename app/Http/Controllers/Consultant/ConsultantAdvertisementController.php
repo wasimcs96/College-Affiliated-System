@@ -9,6 +9,7 @@ use DateTime;
 use Illuminate\Support\Carbon;
 use DateInterval;
 use Dotenv\Regex\Success;
+use App\Http\Controllers\PaymentController;
 
 class ConsultantAdvertisementController extends Controller
 {
@@ -25,6 +26,8 @@ class ConsultantAdvertisementController extends Controller
 
    public function store(Request $request)
    {
+  
+
     $this->validate($request,[
         'image'=>'required',
     ]);
@@ -49,6 +52,9 @@ class ConsultantAdvertisementController extends Controller
         'expire_date'=> $dt,
     ]);
 
+       $new=new PaymentController();
+       $new->payment($request);
+       
        return redirect()->route('consultant.advertisement')->with('success','Advertisement updated successfully');
    }
 }
