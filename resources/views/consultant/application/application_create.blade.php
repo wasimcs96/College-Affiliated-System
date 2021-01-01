@@ -444,6 +444,9 @@
 .ui-datepicker-header .ui-icon {
     border:2px solid black;
 }
+.ui-datepicker-header .ui-icon:after {
+    content: ">";
+}
 </style>
 @stop
 

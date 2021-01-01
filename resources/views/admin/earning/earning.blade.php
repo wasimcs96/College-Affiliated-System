@@ -24,29 +24,49 @@
                             <th><b> Status</b></th>
                             <th><b>Transaction ID</b></th>
                             <th><b>
-                                Payment for</b></th>
+                                Payment Type</b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
+                    @if($orders->count() > 0)
                     <tbody>
+                        @foreach ($orders as $order)
                         <tr>
-                            <td>Sufiyan</td>
-                            <td>consultant</td>
-                            <td>$10.020</td>
-                            <td>pending</td>
-                            <td>3233251212</td>
-                            <td>premium</td>
-                            <td><a href="{{route('admin.earning.earning_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td>{{$order->user->first_name ?? ''}}{{$order->user->last_name ?? ''}}</td>
+                            <td>@if($order->user->isConsultant()) Consultant @endif
+                                @if($order->user->isUniversity()) University @endif
+                                @if($order->user->isAdmin()) Admin @endif
+                                @if($order->user->isSubAdmin()) SubAdmin @endif
+                                @if($order->user->isClient()) Client @endif
+                            </td>
+                            <td>{{$order->amount ?? ''}}</td>
+                            <td>
+                            @if ($order->status == 0)
+                                <span class="btn btn-danger">InActive</span>
+                            @else
+                                <span class="btn btn-info">Active</span>
+                            @endif </td>
+                            <td>{{$order->transaction_id}}</td>
+                            <td>@if($order->payment_type == 0)Subscription @endif
+                                @if($order->payment_type == 1)Premium @endif
+                                @if($order->payment_type == 2)Advertisement @endif
+                                @if($order->payment_type == 3)Consultant Visa Commission @endif
+                                @if($order->payment_type == 4)Consultant PR Commission @endif
+                            </td>
+                            <td><a href="{{route('admin.earning.earning_show',['id'=>$order->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
-
-
-
-
-
+                        @endforeach
                     </tbody>
+                            @else
+                            <tfoot>
+                                <tr>
+                                    <td colspan='7' align='center'> <strong>Record Not Available</strong> </td>
+                                </tr>
+                            </tfoot>
+                        @endif
                 </table>
             </div>
         </div>
