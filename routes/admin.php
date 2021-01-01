@@ -159,13 +159,22 @@ Route::get('report/booking/consultant_application',function(){
 })->name('admin.report.booking.consultant_application');
 
 // #################Earning###############
-Route::get('earning',function(){
-    return view('admin.earning.earning');
-})->name('admin.earning');
+// Route::get('earning',function(){
+//     return view('admin.earning.earning');
+// })->name('admin.earning');
 
-Route::get('earning/earning_show',function(){
-   return view('admin.earning.earning_show');
-})->name('admin.earning.earning_show');
+Route::get('earning',[
+    'uses' => 'AdminEarningController@index',
+     'as' => 'admin.earning'
+]);
+
+Route::get('earning/show/{id}',[
+    'uses' => 'AdminEarningController@show',
+     'as' => 'admin.earning.earning_show'
+]);
+// Route::get('earning/earning_show',function(){
+//    return view('admin.earning.earning_show');
+// })->name('admin.earning.earning_show');
 // ######################profile##############
 
 /* Profile Section */

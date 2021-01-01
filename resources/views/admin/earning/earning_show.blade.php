@@ -20,59 +20,50 @@
 
                     <tbody>
 
-
                     <tr>
                         <th scope="row"> Name</th>
-                        <td>Sufiyan Qureshi</td>
+                        <td>{{$order->user->first_name ?? ''}}{{$order->user->last_name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">User Type</th>
-                        <td>Consultant</td>
+                        <td>@if($order->user->isConsultant()) Consultant @endif
+                            @if($order->user->isUniversity()) University @endif
+                            @if($order->user->isAdmin()) Admin @endif
+                            @if($order->user->isSubAdmin()) SubAdmin @endif
+                            @if($order->user->isClient()) Client @endif</td>
                     </tr>
-
                     <tr>
                         <th scope="row">Amount</th>
-                        <td>$10.030</td>
+                        <td>{{$order->amount ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Status</th>
-                        <td>Pending</td>
+                        <td> @if ($order->status == 0)
+                            <span class="btn btn-danger">InActive</span>
+                        @else
+                            <span class="btn btn-info">Active</span>
+                        @endif</td>
                     </tr>
-
-
-
-                    <tr>
-                        <th scope="row">Sender country</th>
-                        <td>Indian</td>
-                    </tr>
-
                     <tr>
                         <th scope="row">Transaction ID</th>
-                        <td>212335123</td>
+                        <td>{{$order->transaction_id ?? ''}}</td>
                     </tr>
-
                     <tr>
-                        <th scope="row">Payment for</th>
-                        <td>Premium</td>
+                        <th scope="row">Payment Type</th>
+                        <td>@if($order->payment_type == 0)Subscription @endif
+                            @if($order->payment_type == 1)Premium @endif
+                            @if($order->payment_type == 2)Advertisement @endif
+                            @if($order->payment_type == 3)Consultant Visa Commission @endif
+                            @if($order->payment_type == 4)Consultant PR Commission @endif</td>
                     </tr>
-
                     <tr>
-                        <th scope="row">Date</th>
-                        <td>21:12:20</td>
+                        <th scope="row">Package Description</th>
+                        @foreach($order->OrderItem as $key=>$item)
+                        <td>{{$item->Item_title ?? ''}}</td>
+                        @endforeach
                     </tr>
-
-
-
-
-
             </div>
-
-
-
-
-
-        {{-- </tr> --}}
 
 
                     </tbody>
@@ -119,14 +110,5 @@
         });
     });
 </script>
-{{-- <script>
-   $("#accept").click(function() {
-    $("#accept").remove()
-    $("#bac").remove()
-    $("#res").html("<a  href='{{route('admin.booking.client_app')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
-    $("#dec").html("<a href='{{route('admin.booking.client')}}' class='btn btn-danger btn-flat'>Close</a>")
-    // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
-});
 
-</script> --}}
 @stop

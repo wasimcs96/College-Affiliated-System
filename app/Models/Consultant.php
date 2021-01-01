@@ -50,4 +50,9 @@ class Consultant extends Model
     {
         return $this->hasMany(Application::class,'consultant_id');
     }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
