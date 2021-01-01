@@ -31,7 +31,7 @@
                                 <th><b> DOB</b></th>
                                 <th><b> Mobile </b></th>
                                 <th><b> E-mail</b></th>
-                                <th><b>City</b></th>
+                                {{-- <th><b>City</b></th> --}}
                                 <th><b>Country</b></th>
                                 <th><b>Actions</b></th>
                             </tr>
@@ -41,22 +41,62 @@
 
                     </tfoot>
                     @if($users->count() > 0)
-                    <tbody>
-                        @foreach ($users as $user)
-                        @if($user->isClient())
-                           <tr>
-                               <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
-                               <td>{{$user->birth_year ?? ''}}</td>
-                               <td>{{$user->mobile ?? ''}}</td>
-                               <td>{{$user->email ?? ''}}</td>
-                               <td>{{$user->city ?? ''}}</td>
-                               <td> {{$user->country ?? ''}} </td>
-                               <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
-                                <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a></td>
-                           </tr>
-                           @endif
-                        @endforeach
-                    </tbody>
+                        @if($id == 1)
+                            <tbody>
+                                @foreach ($users as $user)
+                                    @if($user->isClient())
+                                        <tr>
+                                            <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
+                                            <td>{{$user->birth_year ?? ''}}</td>
+                                            <td>{{$user->mobile ?? ''}}</td>
+                                            <td>{{$user->email ?? ''}}</td>
+                                            {{-- <td>{{$user->city ?? ''}}</td> --}}
+                                            <td> {{$user->country ?? ''}} </td>
+                                            <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                            <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                            <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>
+                        @endif
+                        @if($id == 2)
+                            <tbody>
+                                @foreach ($users as $user)
+                                    @if($user->isConsultant())
+                                        <tr>
+                                            <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
+                                            <td>{{$user->birth_year ?? ''}}</td>
+                                            <td>{{$user->mobile ?? ''}}</td>
+                                            <td>{{$user->email ?? ''}}</td>
+                                            <td>{{$user->city ?? ''}}</td>
+                                            <td> {{$user->country ?? ''}} </td>
+                                            <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                            <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a></td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>
+                        @endif
+                        @if($id == 3)
+                            <tbody>
+                                @foreach ($users as $user)
+                                    @if($user->isUniversity())
+                                        <tr>
+                                            <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
+                                            <td>{{$user->birth_year ?? ''}}</td>
+                                            <td>{{$user->mobile ?? ''}}</td>
+                                            <td>{{$user->email ?? ''}}</td>
+                                            <td>{{$user->city ?? ''}}</td>
+                                            <td> {{$user->country ?? ''}} </td>
+                                            <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                            <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a></td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>
+                        @endif
+
 
                 @endif
                 </table>

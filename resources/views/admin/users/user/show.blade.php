@@ -24,14 +24,7 @@
                         <th scope="row"> Name</th>
                         <td>{{$user->first_name ?? ''}}{{$user->last_name ?? ''}}</td>
                     </tr>
-                    {{-- <tr>
-                        <th scope="row">User Type</th>
-                        <td>@if($user->user->isConsultant()) Consultant @endif
-                            @if($user->user->isUniversity()) University @endif
-                            @if($user->user->isAdmin()) Admin @endif
-                            @if($user->user->isSubAdmin()) SubAdmin @endif
-                            @if($user->user->isClient()) Client @endif</td>
-                    </tr> --}}
+
                     <tr>
                         <th scope="row">Email</th>
                         <td>{{$user->email ?? ''}}</td>
@@ -76,15 +69,8 @@
                     </tbody>
 
                 </table>
-                <div id="res">
 
-                </div>
-                <br>
-                <div id="dec">
-
-                </div>
-                {{-- <a  href="{{route('admin.booking.client_app')}}" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
-                <a href="{{route('admin.earning')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                <a href="{{route('admin.user')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>
