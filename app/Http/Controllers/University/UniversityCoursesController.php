@@ -41,7 +41,7 @@ class UniversityCoursesController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($request->all());
         $this->validate($request, [
             'course_id' => 'required',
             'university_id' => 'required',
@@ -55,6 +55,7 @@ class UniversityCoursesController extends Controller
         ]);
 
         $images=collect($request->image);
+
 
         foreach($images as $image){
             $name= time().$image->getClientOriginalName();

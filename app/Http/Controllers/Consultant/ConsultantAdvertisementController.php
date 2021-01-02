@@ -42,7 +42,7 @@ class ConsultantAdvertisementController extends Controller
         $ad_image = $request->image;
         $ad_image_new_name = time().$ad_image->getClientOriginalName();
         $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
-        $newname=Config::get('define.image.advertisement').$ad_image_new_name;
+        $newname=Config::get('define.image.advertisement').'/'.$ad_image_new_name;
     }
     Advertisement::create([
 
