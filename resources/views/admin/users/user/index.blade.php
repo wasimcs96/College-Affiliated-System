@@ -24,7 +24,7 @@
                                 <th><b> DOB</b></th>
                                 <th><b> Mobile </b></th>
                                 <th><b> E-mail</b></th>
-                                {{-- <th><b>City</b></th> --}}
+                                <th><b>City</b></th>
                                 <th><b>Country</b></th>
                                 <th><b>Actions</b></th>
                             </tr>

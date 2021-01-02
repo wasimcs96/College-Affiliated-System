@@ -382,12 +382,64 @@
                                       </fieldset>
                                       <h3>Ready To Fly - Finish</h3>
                                       <fieldset>
-                                        <div class="form-group">
-                                            <div class="fancy-checkbox">
-                                                <label><span>University has been accepted your application. Please accept before {{$applied->deadline}}</span></label>
-
+                                       
+                                            @if ($applied->is_accepeted == 1)
+                                            <div class="row clearfix">
+                                                <div class="col-lg-6 col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="@if(isset($applied->university->university_name)){{$applied->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Course Fees</label>
+                                                <input type="text"  class="form-control" id="coursefees"  value="{{$applied->fees}}" />
                                               </div>
-                                        </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <?php 
+                                                $inc=0;
+                                                $appliedUniversity=$applied->university->default_documents;
+                                                $documentSelect = json_decode($appliedUniversity);
+                                                ?>
+                                                <label for="documents">Documents</label>
+                                                <br/>
+                                                <div class="dynamic_document" id="dynamic_document">
+                                                    @if ($documentSelect)
+                                                        
+                                                   
+                                                    @foreach($documentSelect as $key => $value)
+                            
+                                                    <label class="control-inline fancy-checkbox">
+                                                       
+                                                    
+                                                        <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked required >
+                            
+                                                        <span>{{$value}}</span>
+                                                      
+                                                        @php $inc++ @endphp
+                                                        @endforeach
+                                                    </label>
+                                                    @endif
+                                                </div>
+                            
+                                                <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
+                                              
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <button type="button" class="btn btn-primary">Update</button>
+                                                    <button type="button" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-success readytof" data-toggle="modal" data-target="#readyToFly" > Ready to fly</button>
+                                                    
+                                                </div></div>
+                                            @endif
+                                          
+                                       
                                       </fieldset>
 
                                   </form>
@@ -471,6 +523,28 @@
     </div>
 </div>
 </div>
+
+<div class="modal fade" id="readyToFly" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+            <h4>Are you sure you want to Ready To Fly</h4>
+
+        </div>
+        <div class="modal-footer">
+           <a href="javascript:void(0)" id="readyTo" class="btn btn-primary" >Confirm</a>
+        </div>
+    </div>
+</div>
+</div>
+
 
 <div class="modal fade" id="applyCanceled" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
@@ -785,19 +859,43 @@ $(document).on('click', '#apply', function ()
 
 
  </script>
-{{-- <script>
-    $("#date").datepicker({ onSelect: function(dateText) {
-        dateFormat: 'mm-dd-yyyy',
-         minDate: '-0D',
-         maxDate: '+28D',
-    });
-</script> --}}
- {{-- <script>
-//    $(document).ready(function() {
-//   $("#date").datepicker({
-//       minDate: -3,
-//       maxDate: "1w"
-//   });
-// });
-// </script> --}}
+ <script>
+     var fees='';
+    var appliedUniversityRowIdReadyToFly='';
+     $(document).on('click', '.readytof', function ()
+ {
+    appliedUniversityRowIdReadyToFly=$(this).attr('custom1');
+    fees=$('#coursefees').val();
+ console.log(appliedUniversityRowIdReadyToFly);
+ });
+ $(document).on('click', '#readyTo', function ()
+ {
+ 
+    
+       if(appliedUniversityRowIdReadyToFly > 0){
+         $.ajaxSetup({headers:
+             {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+             });
+     
+             $.ajax({
+                     type: "post",
+                     url: "{{route('application.readytofly')}}",
+                     data: {appliedUniversityRowIdReadyToFly:appliedUniversityRowIdReadyToFly,fees:fees},
+                     success: function (result) {
+ 
+                         console.log('success');
+                     }
+                 });
+       }
+  
+    
+             // $(this).text("Pending");
+             $('#readyToFly').modal('hide');
+             // row++;
+     });
+ 
+  
+ </script>
 @stop

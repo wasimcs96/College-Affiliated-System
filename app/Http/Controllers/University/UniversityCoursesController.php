@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\CourseMedia;
 use App\Models\University;
+use Config;
 use App\Models\UniversityCourse;
 use App\Models\UniversityMedia;
 
@@ -57,11 +58,12 @@ class UniversityCoursesController extends Controller
         $course = UniversityCourse::create($request->all());
         $images=collect($request->image);
 
+
         foreach($images as $image){
             $name= time().$image->getClientOriginalName();
                $type=0;
-                //    $st= $image->move('uploads/media',$name);
-           $newname='uploads/media/'.$name;
+                   $st= $image->move(Config::get('define.image.course_media'),$name);
+           $newname=Config::get('define.image.course_media').'/'.$name;
 
             CourseMedia::create( [
 
@@ -121,7 +123,30 @@ class UniversityCoursesController extends Controller
      */
     public function update(Request $request, UniversityCourse $id)
     {
+        // dd($request->all());
         $id->update($request->all());
+
+
+        $images=collect($request->image);
+
+
+        foreach($images as $image){
+            $name= time().$image->getClientOriginalName();
+               $type=0;
+                   $st= $image->move(Config::get('define.image.course_media'),$name);
+           $newname=Config::get('define.image.course_media').'/'.$name;
+
+            CourseMedia::create( [
+
+
+                'university_course_id'=> $request->university_course_id,
+                'media'=>  $newname,
+                'status'=>0,
+                'file_type' => $type,
+                'course_id'=>$request->course_id
+                //you can put other insertion here
+            ]);
+         }
 
         return redirect()->route('university.courses')->with('success', 'Course updated succefully.');
 
@@ -145,5 +170,16 @@ class UniversityCoursesController extends Controller
         return redirect()->route('university.courses')->with('success', 'Course has been deleted Successfully');
     }
 
+    public function delete(Request $request)
+    {
+        $id=$request->id;
+// dd($id);
+        CourseMedia::find($id)->delete($id);
+
+
+        return response()->json([
+            'success' => 'image deleted successfully!'
+        ]);
+    }
 
 }
