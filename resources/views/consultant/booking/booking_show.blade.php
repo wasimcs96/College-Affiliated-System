@@ -11,14 +11,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li> --}}
+
             </ul>
         </div>
         <div class="body">
@@ -67,20 +60,8 @@
                     <th scope="row">Student University/Course Prefrence-3</th>
                     <td>{{$university2->university_name}}/{{$course2->name}}</td>
                 </tr>
-
-
-<input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>
-
-
+                 <input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>
             </div>
-
-
-
-
-
-        {{-- </tr> --}}
-
-
                     </tbody>
 
                 </table>
@@ -95,7 +76,9 @@
                 <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
                 <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
                 @else
+                @if($show->application->count()>0)
                 <a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>
+                @endif
                 @endif
             </div>
         </div>

@@ -311,6 +311,13 @@ Route::post('users/update/{id}',[
     'as' => 'admin.user.update'
 ]);
 
+Route::get('users/delete/{id}',[
+    'uses' => 'AdminUsersController@destroy',
+    'as' => 'admin.user.delete'
+]);
+
+
+
 });
 
 Route::get('/', function () {

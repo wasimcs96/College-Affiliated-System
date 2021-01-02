@@ -335,19 +335,19 @@
                                       <fieldset>
                                           <div class="row clearfix">
                                              @if ($applied->approved_status == 0)
-                                                 
-                                             
+
+
                                                   <div class="form-group">
                                                     <a href="#"  class="btn btn-success approvel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#dateModal" >Approve</a>
                                                   </div>
-                                               
-                                        
+
+
                                               <div class="form-group">
                                                 <a href="#"  class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" >Decline</a>
                                               </div>
                                               @endif
                                               @if ($applied->approved_status == 1)
-                                                  
+
                                               <div class="form-group">
                                                 <h3 class="btn btn-success" >Approved</h3>
                                               </div>
@@ -364,8 +364,8 @@
                                         @if ($applied->approved_status == 1)
                                           <div class="form-group">
                                               <div class="fancy-checkbox">
-                                                  <label><span>University has been accepted your application. Please accept before {{$applied->deadline}}</span></label>                                                
-                                                   
+                                                  <label><span>University has been accepted your application. Please accept before {{$applied->deadline}}</span></label>
+
                                                 </div>
                                           </div>
                                           <div class="row clearfix">
@@ -373,9 +373,9 @@
                                             <div class="form-group">
                                                 <a href="#"  class="btn btn-success accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accepted</a>
                                               </div>
-                                           
-                                    
-                                        
+
+
+
                                             @endif
                                         </div>
                                           @endif
@@ -585,10 +585,10 @@
         <div class="modal-footer">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-<a href="javascript:void(0)" class="btn btn-primary" id="add_document2"> Add </a>
- </div>
-</div>
-</div>
+          <a href="javascript:void(0)" class="btn btn-primary" id="add_document2"> Add </a>
+        </div>
+        </div>
+       </div>
 </div>
 
 
@@ -715,14 +715,14 @@ console.log(appliedUniversityRowId);
 $(document).on('click', '#apply', function ()
 {
 
-      
+
       if(appliedUniversityRowId > 0){
         $.ajaxSetup({headers:
             {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
             });
-    
+
             $.ajax({
                     type: "post",
                     url: "{{route('application.apply')}}",
@@ -733,8 +733,8 @@ $(document).on('click', '#apply', function ()
                     }
                 });
       }
- 
-   
+
+
             // $(this).text("Pending");
             $('#applyModal').modal('hide');
             // row++;
@@ -757,7 +757,7 @@ $(document).on('click', '#apply', function ()
  });
  $(document).on('click', '#applyApprovel', function ()
  {
- 
+
     var modalDate=$('#modalDate').val()
        if(appliedUniversityRowIdApproval > 0){
          $.ajaxSetup({headers:
@@ -765,25 +765,25 @@ $(document).on('click', '#apply', function ()
                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
              }
              });
-     
+
              $.ajax({
                      type: "post",
                      url: "{{route('application.approval')}}",
                      data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval,modalDate:modalDate},
                      success: function (result) {
- 
+
                          console.log('success');
                      }
                  });
        }
-  
-    
+
+
              // $(this).text("Pending");
              $('#dateModal').modal('hide');
              // row++;
      });
- 
-  
+
+
  </script>
  <script>
     var appliedUniversityRowIdApproval='';
@@ -794,33 +794,33 @@ $(document).on('click', '#apply', function ()
  });
  $(document).on('click', '#applyDecline', function ()
  {
- 
-    
+
+
        if(appliedUniversityRowIdApproval > 0){
          $.ajaxSetup({headers:
              {
                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
              }
              });
-     
+
              $.ajax({
                      type: "post",
                      url: "{{route('application.approval')}}",
                      data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval},
                      success: function (result) {
- 
+
                          console.log('success');
                      }
                  });
        }
-  
-    
+
+
              // $(this).text("Pending");
              $('#applyCanceled').modal('hide');
              // row++;
      });
- 
-  
+
+
  </script>
  <script>
     var appliedUniversityRowIdAccepted='';
@@ -831,33 +831,33 @@ $(document).on('click', '#apply', function ()
  });
  $(document).on('click', '#Accepted', function ()
  {
- 
-    
+
+
        if(appliedUniversityRowIdAccepted > 0){
          $.ajaxSetup({headers:
              {
                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
              }
              });
-     
+
              $.ajax({
                      type: "post",
                      url: "{{route('application.accepted')}}",
                      data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted},
                      success: function (result) {
- 
+
                          console.log('success');
                      }
                  });
        }
-  
-    
+
+
              // $(this).text("Pending");
              $('#Accepted').modal('hide');
              // row++;
      });
- 
-  
+
+
  </script>
  <script>
      var fees='';
