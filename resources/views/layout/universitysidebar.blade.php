@@ -44,6 +44,7 @@
                 <li class="{{ Request::segment(2) == 'courses' ? 'active' : null }}"><a href="{{route('university.courses')}}"><i class="icon-notebook"></i><span>Courses</span></a></li>
                 <li class="{{ Request::segment(2) == 'consultants' ? 'active' : null }}"><a href="{{route('university.consultants')}}"><i class="icon-user"></i><span>Consultants Request</span></a></li>
                 <li class="{{ Request::segment(2) === 'chat' ? 'active open' : null }}"><a href="{{route('messenger.chat')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                <li class="{{ Request::segment(2) == 'document' ? 'active' : null }}"><a href="{{route('university.document')}}"><i class="fa fa-sticky-note"></i><span>Add Document</span></a></li>
                 <li class="{{ Request::segment(2) == 'service' ? 'active open' : null }}">
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>
                     <ul>

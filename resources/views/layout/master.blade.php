@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/site.min.css') }}">
 </head>
 
-<body class="font-montserrat light_version theme-cyan">
+<body class="font-montserrat theme-cyan">
 
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
