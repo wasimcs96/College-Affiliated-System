@@ -40,22 +40,23 @@
                 {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'students' ? 'active' : null }}"><a href="{{route('university.students')}}"><i class="icon-users"></i><span>Students</span></a></li>
                 <li class="{{ Request::segment(2) == 'my_consultants' ? 'active' : null }}"><a href="{{route('university.my_consultants')}}"><i class="icon-user"></i><span>My Consultants</span></a></li>
-                <li class="{{ Request::segment(2) == 'services' ? 'active' : null }}"><a href="{{route('university.services')}}"><i class="icon-speedometer"></i><span>Services</span></a></li>
+                {{-- <li class="{{ Request::segment(2) == 'services' ? 'active' : null }}"><a href="{{route('university.services')}}"><i class="icon-speedometer"></i><span>Services</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'courses' ? 'active' : null }}"><a href="{{route('university.courses')}}"><i class="icon-notebook"></i><span>Courses</span></a></li>
                 <li class="{{ Request::segment(2) == 'consultants' ? 'active' : null }}"><a href="{{route('university.consultants')}}"><i class="icon-user"></i><span>Consultants Request</span></a></li>
                 <li class="{{ Request::segment(2) === 'chat' ? 'active open' : null }}"><a href="{{route('messenger.chat')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
-                <li class="{{ Request::segment(2) == 'service' ? 'active open' : null }}">
+                <li class="{{ Request::segment(2) == 'services' ? 'active open' : null }}">
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>
                     <ul>
-                    <li class="{{ Request::segment(3) == 'gopremium' ? 'active' : null }}"><a href="{{ route('university.premium')}}">Go Premium</a></li>
-                    <li class="{{ Request::segment(3) == 'gopremium' ? 'active' : null }}"><a href="{{ route('university.subscription')}}">Subscription</a></li>
+                    <li class="{{ Request::segment(3) == 'premium' ? 'active' : null }}"><a href="{{ route('university.premium')}}">Go Premium</a></li>
+                    <li class="{{ Request::segment(3) == 'subscription' ? 'active' : null }}"><a href="{{ route('university.subscription')}}">Subscription</a></li>
 
+                    <li class="{{ Request::segment(3) == 'advertisements' ? 'active' : null }}"><a href="{{route('university.advertisement')}}"><span>Advertisements</span></a></li>
                      </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'privacy_policy' ? 'active' : null }}"><a href="{{route('university.privacy_policy')}}"><i class="fa fa-lock"></i><span>Privacy Policy</span></a></li>
             <li class="{{ Request::segment(2) == 'terms_condition' ? 'active' : null }}"><a href="{{route('university.terms_condition')}}"><i class="fa fa-lock"></i><span>Terms & Conditions</span></a></li>
                 <li class="{{ Request::segment(2) == 'contact_us' ? 'active' : null }}"><a href="{{route('university.contact_us')}}"><i class="fa fa-mobile-phone"></i><span>Contact Us</span></a></li>
-                <li class="{{ Request::segment(2) == 'advertisements' ? 'active' : null }}"><a href="{{route('university.advertisement')}}"><i class="icon fa-graduation-cap"></i><span>Advertisements</span></a></li>
+
                 <li class="{{ Request::segment(2) == 'logout' ? 'active' : null }}"><a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
