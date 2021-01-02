@@ -66,14 +66,14 @@
                                                 {{-- {{dd($rt->course->courseMedia)}} --}}
                                         @if ($rt->file_type==0)
                                                 <div style="margin-left:24px;">
-                                                    <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
+                                                    <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden id="deleteRecord">
                                                         <div class="img-responsive iws">
                                                             <a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
                                                             <div class="card-body">
                                                                 {{-- <a href="{{route('course.media.destroy',['id'=>$cm->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red; position:absolute;   top: 0;
                                                                     right: 0;"><i class="fa fa-times" aria-hidden="true"></i></h5></a> --}}
 
-                                                                <span class="closes deleteRecord" title="Delete"><a href="{{route('course.media.destroy',['id'=>$rt->id])}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
+                                                                <span class="closes deleteRecord" title="Delete"><a href="{{route('course.media.destroy',['id'=>$rt->id])}}" data-id="{{auth()->user()->id}}" onclick="deleteRecord()" >&times;</a></span>
                                                             </div>
                                                         </div>
                                                 </div>
@@ -244,5 +244,35 @@ $('#documentModal').modal('hide')
          });
       }
     });
+</script>
+
+<script>
+$(".deleteRecord").click(function(){
+
+
+
+
+            var media_id = $('input[name="media_id"]').val();
+
+        console.log(media_id);
+            $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+                    $.ajax({
+                        type: "post",
+                        url: "{{route('course.media.destroy',['id'=>'+media_id+'])}}",
+                        data: {media_id: media_id},
+                        success: function (result) {
+                            console.log('success');
+                        }
+                    });
+
+                    document.getElementsByClassName(".deleteRecord").hide;
+
+        });
+
+
 </script>
 @stop

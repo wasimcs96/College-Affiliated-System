@@ -144,7 +144,7 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea rows="4" type="text" name="address_1" class="form-control" placeholder="Address">@if(isset(auth()->user()->address)){{auth()->user()->address}}@endif
+                            <textarea rows="4" type="text" name="address" class="form-control" placeholder="Address">@if(isset(auth()->user()->address)){{auth()->user()->address}}@endif
                             </textarea>
                         </div>
                     </div>

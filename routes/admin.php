@@ -17,14 +17,6 @@ Route::get('dashboard',function(){
 
 Route::get('mypage/index','MypageController@index')->name('mypage.index');
 
-Route::get('users',function(){
-    return view('admin.user.user');
-})->name('admin.user');
-
-Route::get('users_show',function(){
-   return view('admin.user.user_show');
-})->name('admin.user.user_show');
-
 
 // ####################application#############
 Route::get('application',function(){
@@ -48,28 +40,6 @@ Route::get('application/application',function(){
 Route::get('application/create',function(){
    return view('admin.application.application_create');
 })->name('admin.application.application_create');
-
-
-// Route::get('application/consultant/show',function(){
-//     return view('admin.application.consultant_app');
-// })->name('admin.application.consultant_app');
-
-// Route::get('application/consultant/show',function(){
-//     return view('admin.application.client_app');
-// })->name('admin.application.client_app');
-
-// Route::get('application/consultant/app',function(){
-//     return view('admin.application.university_app');
-// })->name('admin.application.university_app');
-// ###############booking#####################
-
-// Route::get('booking',function(){
-//    return view('admin.booking.booking');
-// })->name('admin.booking');
-
-// Route::get('booking/show',function(){
-//    return view('admin.booking.booking_show');
-// })->name('admin.booking.booking_show');
 
 Route::get('booking/consultant',function(){
    return view('admin.booking.consultant');
@@ -314,6 +284,32 @@ Route::get('course/delete/{id}', [
    'as' => 'admin.courses.delete'
 ]);
 
+
+/* Users Client Section */
+Route::get('users/{id}',[
+    'uses' => 'AdminUsersController@index',
+    'as' => 'admin.users'
+]);
+
+// Route::get('users/client',[
+//     'uses' => 'AdminUsersController@indexClient',
+//     'as' => 'admin.user'
+// ]);
+
+Route::get('users/show/{id}',[
+    'uses' => 'AdminUsersController@show',
+    'as' => 'admin.user.show'
+]);
+
+Route::get('users/edit/{id}',[
+    'uses' => 'AdminUsersController@edit',
+    'as' => 'admin.user.edit'
+]);
+
+Route::post('users/update/{id}',[
+    'uses' => 'AdminUsersController@update',
+    'as' => 'admin.user.update'
+]);
 
 });
 

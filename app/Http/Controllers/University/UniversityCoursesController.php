@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\CourseMedia;
 use App\Models\University;
 use App\Models\UniversityCourse;
+use App\Models\UniversityMedia;
 
 class UniversityCoursesController extends Controller
 {
@@ -41,10 +42,10 @@ class UniversityCoursesController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+            // dd($request);
         $this->validate($request, [
             'course_id' => 'required',
-            'university_id' => 'required',
+            'user_id' => 'required',
             'description' => 'required',
             'fees' => 'required',
             'start_date' => 'required',
@@ -53,41 +54,37 @@ class UniversityCoursesController extends Controller
             'term_conditions' => 'required',
             'privacy_policy' => 'required'
         ]);
-
+        $course = UniversityCourse::create($request->all());
         $images=collect($request->image);
 
 
         foreach($images as $image){
             $name= time().$image->getClientOriginalName();
                $type=0;
-                   $st= $image->move('uploads/media',$name);
+                //    $st= $image->move('uploads/media',$name);
            $newname='uploads/media/'.$name;
 
             CourseMedia::create( [
 
-                'course_id'=>$request->university_course_id,
+
+                'university_course_id'=> $course->id,
                 'media'=>  $newname,
                 'status'=>0,
                 'file_type' => $type,
+                'course_id'=>$request->course_id
                 //you can put other insertion here
             ]);
          }
-    if ($request->link != null) {
-        CourseMedia::create( [
+    // if ($request->link != null) {
+    //     CourseMedia::create( [
 
-            'course_id'=>$request->university_course_id,
-             'link'=>$request->link,
-             'status'=>0,
-            'file_type' => 2
-            //you can put other insertion here
-        ]);
-    }
-
-
-
-        $course = UniversityCourse::create($request->all());
-
-        $course->save();
+    //         'course_id'=>$request->course_id,
+    //          'link'=>$request->link,
+    //          'status'=>0,
+    //         'file_type' => 2
+    //         //you can put other insertion here
+    //     ]);
+    // }
 
         return redirect()->route('university.courses')->with('success', 'Course has been saved Successfully');
 
@@ -137,11 +134,17 @@ class UniversityCoursesController extends Controller
      */
     public function destroy(UniversityCourse $id)
     {
+        $medias=$id->courseMedia;
+        if ($medias->count() >0) {
+            foreach ($medias as $key => $value) {
+                $value->delete();
+            }
+        }
 
-        UniversityCourse::find($id)->delete($id);
-        // CourseMedia::find($id)->delete($id);
+       $id->delete();
 
-
-        return redirect()->route('university.courses')->with('success', 'Course has been saved Successfully');
+        return redirect()->route('university.courses')->with('success', 'Course has been deleted Successfully');
     }
+
+
 }

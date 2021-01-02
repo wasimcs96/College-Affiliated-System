@@ -36,8 +36,18 @@
                 <li class="{{ Request::segment(2) == 'dashboard' ? 'active open' : null }}"><a href="{{route('admin.dashboard')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
                 <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('admin.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
 
-                <li class="{{ Request::segment(2) == 'users' ? 'active open' : null }}"><a href="{{route('admin.user')}}"><i class="fa fa-users"></i><span>Users</span></a></li>
-
+                {{-- <li class="{{ Request::segment(2) == 'users' ? 'active open' : null }}"><a href="{{route('admin.user')}}"><i class="fa fa-users"></i><span>Users</span></a></li> --}}
+                <li class="{{ Request::segment(2) == 'users' ? 'active open' : null }}">
+                    <a href="#Users" class="has-arrow"><i class="fa fa-users"></i><span>Users</span></a>
+                    <ul>
+                        {{-- <li class="{{ Request::segment(3) == 'client' ? 'active' : null }}"><a href="{{route('admin.user')}}">Client</a></li> --}}
+                        {{-- <li class="{{ Request::segment(3) == 'consultant' ? 'active' : null }}"><a href="{{route('admin.user.consultant')}}">Consultant</a></li>
+                        <li class="{{ Request::segment(3) == 'university' ? 'active' : null }}"><a href="{{route('admin.user.university')}}">University</a></li> --}}
+                        <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>1])}}">Client</a></li>
+                        <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>2])}}">Consultant</a></li>
+                        <li class="{{ Request::segment(3) == '3' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>3])}}">University</a></li>
+                    </ul>
+                </li>
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('admin.application')}}"><i class="fa fa-sticky-note" aria-hidden="true"></i><span>Applications</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'category' ? 'active' : null }}"><a href="{{route('admin.category')}}"><i class="icon-notebook"></i><span>Categories</span></a></li>

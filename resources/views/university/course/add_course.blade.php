@@ -22,7 +22,7 @@
                             @endforeach
                         </select>
                     </div>
-                   <input type="text" name="university_id" value="{{auth()->user()->university->id}}" hidden>
+                   <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
                     <div class="form-group">
                         <label>Description</label>
                         <textarea class="form-control" name="description" rows="5" cols="30" required></textarea>
@@ -56,7 +56,7 @@
                            <div class="body"id="nb"  >
                               <input type="file" name="image[]"class="dropify" multiple>
                            </div>
-                           <button type="button" name="uploaddocument" id="upload_document_button" class="btn btn-primary btn-m " ><i class="fa fa-plus"></i> </button>
+
                     </div>
                     <br>
 

@@ -10,14 +10,14 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Type</a>
                     <ul class="dropdown-menu">
                         <li><a href="javascript:void(0);">University</a></li>
                         <li><a href="javascript:void(0);">Consultant</a></li>
                         <li><a href="javascript:void(0);">Client</a></li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div class="body">
