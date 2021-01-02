@@ -209,17 +209,5 @@ Route::get('/course/media/delete/{id}',[
 
 ]);
 
-/* University Messanger */
-
-Route::post('university/messanger/fetchData', [
-    'uses' => 'MessengerController@fetchData',
-    'as' => 'university.messanger.fetchdata'
-]);
-
-Route::post('university/messanger/sendMessage', [
-    'uses' => 'MessengerController@sendMessage',
-    'as' => 'university.messanger.sendmessage'
-]);
-
 
 });
