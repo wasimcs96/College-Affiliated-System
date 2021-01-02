@@ -15,7 +15,8 @@ class University extends Model
         'university_name',
         'website',
         'user_id',
-        'type'
+        'type',
+        'default_documents'
 
     ];
 

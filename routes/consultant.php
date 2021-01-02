@@ -240,6 +240,10 @@ Route::post('application/accepted',[
     'as' => 'application.accepted'
 ]);
 
+Route::post('application/readytofly',[
+    'uses' => 'ConsultantApplicationController@applicationReady',
+    'as' => 'application.readytofly'
+]);
 /* Application Follow Up */
 Route::get('applications/followup',[
     'uses' => 'ConsultantApplicationFollowUpController@index',
