@@ -57,6 +57,7 @@ class UniversityCoursesController extends Controller
         $course = UniversityCourse::create($request->all());
         $images=collect($request->image);
 
+
         foreach($images as $image){
             $name= time().$image->getClientOriginalName();
                $type=0;

@@ -20,7 +20,7 @@ class UniversityMediaController extends Controller
     public function mediastore(Request $request)
     {
         $this->validate($request,[
-            'images.*' => 'dimensions:min_width=872.13,min_height=302,max_width=1024,max_height=640',
+            'images.*' => 'dimensions:min_width=446,min_height=258',
             // 'link' => 'required|url',
              ]);
         // dd(collect($request->images));
@@ -59,22 +59,28 @@ if ($request->link != null) {
 }
 
 
-public function destroy($id){
-
+public function destroy(Request $request){
+// dd($id);
+$id=$request->media_id;
     UniversityMedia::find($id)->delete($id);
     // $university = UniversityMedia::where('id',$request->media_id)->get()->first();
     // dd($university->toArray());
     // $university->delete();
 
-    // return response()->json([
-    //     'success' => 'image deleted successfully!'
-    // ]);
-//     $university->save();
+    return response()->json([
+        'success' => 'image deleted successfully!'
+    ]);
+    // $university->save();
 // return response('success');
- return redirect()->back()->with ('success','Image deleted Successfully');
+//  return redirect()->back()->with ('success','Image deleted Successfully');
 }
 
 
     }
 
+    // User::find($id)->delete($id);
+
+    // return response()->json([
+    //     'success' => 'Record deleted successfully!'
+    // ]);
 

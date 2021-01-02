@@ -167,7 +167,7 @@ Route::post('media_store',[
     'uses'=>'UniversityMediaController@mediastore',
     'as'=> 'university.media.store'
 ]);
-Route::get('media/delete/{id}',[
+Route::post('media/delete',[
     'uses' =>'UniversityMediaController@destroy',
     'as'=>'media.destroy'
 
