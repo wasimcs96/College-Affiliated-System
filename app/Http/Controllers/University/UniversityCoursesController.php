@@ -159,7 +159,7 @@ class UniversityCoursesController extends Controller
     public function destroy(UniversityCourse $id)
     {
         $medias=$id->courseMedia;
-        if ($medias->count() >0) {
+        if ($medias->count() > 0) {
             foreach ($medias as $key => $value) {
                 $value->delete();
             }
@@ -172,14 +172,20 @@ class UniversityCoursesController extends Controller
 
     public function delete(Request $request)
     {
-        $id=$request->id;
-// dd($id);
-        CourseMedia::find($id)->delete($id);
+        $id=$request->media_id;
+
+        if(CourseMedia::find($id)->delete()){
+            return response()->json([
+                'success' => 'image deleted successfully!'
+            ]);
+        }else{
+            return response()->json([
+                'error' => 'failed'
+            ]);
+        }
 
 
-        return response()->json([
-            'success' => 'image deleted successfully!'
-        ]);
+        
     }
 
 }
