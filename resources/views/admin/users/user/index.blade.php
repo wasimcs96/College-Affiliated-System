@@ -10,14 +10,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Type</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">University</a></li>
-                        <li><a href="javascript:void(0);">Consultant</a></li>
-                        <li><a href="javascript:void(0);">Client</a></li>
-                    </ul>
-                </li> --}}
+
             </ul>
         </div>
         <div class="body">
@@ -42,6 +35,7 @@
                     </tfoot>
                     @if($users->count() > 0)
                         @if($id == 1)
+                        <input type="text" value=1 name="parameter_id" hidden>
                             <tbody>
                                 @foreach ($users as $user)
                                     @if($user->isClient())
@@ -54,13 +48,14 @@
                                             <td> {{$user->country ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                                            <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                                         </tr>
                                     @endif
                                 @endforeach
                             </tbody>
                         @endif
                         @if($id == 2)
+                        <input type="text" value=2 name="parameter_id" hidden>
                             <tbody>
                                 @foreach ($users as $user)
                                     @if($user->isConsultant())
@@ -69,16 +64,18 @@
                                             <td>{{$user->birth_year ?? ''}}</td>
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
-                                            <td>{{$user->city ?? ''}}</td>
+                                            {{-- <td>{{$user->city ?? ''}}</td> --}}
                                             <td> {{$user->country ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
-                                            <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a></td>
+                                            <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
+                                            <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                                         </tr>
                                     @endif
                                 @endforeach
                             </tbody>
                         @endif
                         @if($id == 3)
+                        <input type="text" value=3 name="parameter_id" hidden>
                             <tbody>
                                 @foreach ($users as $user)
                                     @if($user->isUniversity())
@@ -87,10 +84,12 @@
                                             <td>{{$user->birth_year ?? ''}}</td>
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
-                                            <td>{{$user->city ?? ''}}</td>
+                                            {{-- <td>{{$user->city ?? ''}}</td> --}}
                                             <td> {{$user->country ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
-                                            <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a></td>
+                                            <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
+                                            <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                                            </td>
                                         </tr>
                                     @endif
                                 @endforeach

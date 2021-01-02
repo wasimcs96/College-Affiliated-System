@@ -17,4 +17,9 @@ class Booking extends Model
     {
         return $this->belongsTo(Consultant::class);
     }
+
+    public function application()
+    {
+        return $this->hasOne(Application::class);
+    }
 }

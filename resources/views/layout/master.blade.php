@@ -12,7 +12,11 @@
     @yield('meta')
 
     @stack('before-styles')
-
+    <style>
+        .table{
+            background-color: #c0c0c0;
+        }
+    </style>
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/animate-css/vivify.min.css') }}">
@@ -28,7 +32,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/site.min.css') }}">
 </head>
 
-<body class="theme-blush font-montserrat ">
+<body class="font-montserrat light_version theme-cyan">
 
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
@@ -41,7 +45,7 @@
     </div>
 </div>
 
-@include('layout.themesetting')
+{{-- @include('layout.themesetting') --}}
 
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
