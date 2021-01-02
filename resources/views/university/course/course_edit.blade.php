@@ -53,7 +53,7 @@
                         <label>Privacy Policy</label>
                         <textarea class="form-control" name="privacy_policy" rows="5" cols="30" required>{{$universitycourse->privacy_policy}}</textarea>
                     </div>
-
+                    <input type="hidden" value="{{$universitycourse->id}}" name="university_course_id">
                     <!--  Show Uploaded Image   -->
 
                     <div class="row clearfix">
@@ -65,7 +65,7 @@
 
                                                 {{-- {{dd($rt->course->courseMedia)}} --}}
                                         @if ($rt->file_type==0)
-                                                <div style="margin-left:24px;">
+                                                <div style="margin-left:24px;" id="{{$rt->id}}">
                                                     <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden id="deleteRecord">
                                                         <div class="img-responsive iws">
                                                             <a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
@@ -73,7 +73,8 @@
                                                                 {{-- <a href="{{route('course.media.destroy',['id'=>$cm->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red; position:absolute;   top: 0;
                                                                     right: 0;"><i class="fa fa-times" aria-hidden="true"></i></h5></a> --}}
 
-                                                                <span class="closes deleteRecord" title="Delete"><a href="{{route('course.media.destroy',['id'=>$rt->id])}}" data-id="{{auth()->user()->id}}" onclick="deleteRecord()" >&times;</a></span>
+                                                                <span class="closes"  custom2="{{$rt->id}}" title="Delete">
+                                                                    <a href="#"  custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" onclick="deleteRecord()" >&times;</a></span>
                                                             </div>
                                                         </div>
                                                 </div>
@@ -89,7 +90,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                                <lable>Upload Media</lable>
+                                <label>Upload Media</label>
                            <div class="body"id="nb"  >
                               <input type="file" name="image[]"class="dropify" multiple>
                            </div>
@@ -246,33 +247,36 @@ $('#documentModal').modal('hide')
     });
 </script>
 
+
 <script>
-$(".deleteRecord").click(function(){
+    var media_id=""
 
 
 
+    $('.closes').click(function(){
 
-            var media_id = $('input[name="media_id"]').val();
 
-        console.log(media_id);
+        var media_id = $(this).attr('custom2');
+    console.log(media_id);
+    document.getElementById(media_id).style.display="none";
+    console.log(media_id);
             $.ajaxSetup({
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-                    $.ajax({
-                        type: "post",
-                        url: "{{route('course.media.destroy',['id'=>'+media_id+'])}}",
-                        data: {media_id: media_id},
-                        success: function (result) {
-                            console.log('success');
-                        }
-                    });
+             headers: {
+             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+                });
+                $.ajax({
+                    type: "post",
+                    url: "{{route('course.media.delete')}}",
+                    data: {media_id: media_id},
+                    success: function (result) {
+                        console.log('success');
 
-                    document.getElementsByClassName(".deleteRecord").hide;
-
-        });
+                    }
+                });
 
 
-</script>
+
+    });
+     </script>
 @stop

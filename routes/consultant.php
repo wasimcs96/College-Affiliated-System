@@ -180,7 +180,7 @@ Route::get('profile',[
  ]);
 
  /* Subscription */
-Route::get('subscription', [
+Route::get('services/subscription', [
     'uses' => 'ConsultantSubscriptionController@index',
     'as' => 'consultant.subscription'
 ]);
@@ -191,7 +191,7 @@ Route::get('subscription/add', [
 ]);
 
 /* Go Premium */
-Route::get('premium', [
+Route::get('services/premium', [
     'uses' => 'ConsultantPremiumController@index',
     'as' => 'consultant.premium'
 ]);
@@ -202,7 +202,7 @@ Route::get('premium/add', [
 ]);
 
  /* Advertisements */
- Route::get('advertisements', [
+ Route::get('services/advertisements', [
     'uses' => 'ConsultantAdvertisementController@index',
     'as' => 'consultant.advertisement'
 ]);
