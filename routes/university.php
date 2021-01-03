@@ -36,20 +36,12 @@ Route::get('services',function(){
 })->name('university.services');
 
 /* My Consultant Section */
-// Route::get('my_consultants',function(){
-//     return view('university.my_consultant.my_consultants');
-// })->name('university.my_consultants');
+
 
 Route::get('my_consultants',[
     'uses' => 'UniversityConsultantController@myconsultantindex',
     'as' => 'university.my_consultants',
 ]);
-
-
-
-// Route::get('my_consultant_show',function(){
-//     return view('university.my_consultant.my_consultant_show');
-// })->name('university.my_consultant_show');
 
 Route::get('my_consultant/show/{id}',[
     'uses' => 'UniversityConsultantController@myconsultantshow',
@@ -61,10 +53,6 @@ Route::get('my_consultant_application',function(){
 })->name('university.my_consultant_application');
 
 /* Consultant Section */
-// Route::get('consultants',function(){
-//     return view('university.consultant.consultants');
-// })->name('university.consultants');
-
 Route::get('consultants',[
     'uses' => 'UniversityConsultantController@index',
     'as' => 'university.consultants',
@@ -206,7 +194,6 @@ Route::post('advertisements/store', [
 Route::get('/course/media/destroy/{id}',[
     'uses' =>'UniversityCoursesController@destroy',
     'as'=>'course.media.destroy'
-
 ]);
 
 Route::post('/course/media/delete',[
@@ -227,5 +214,15 @@ Route::post('university/messanger/sendMessage', [
     'as' => 'university.messanger.sendmessage'
 ]);
 
+/* Document Section */
+Route::get('document',[
+    'uses' =>'UniversityDocumentController@index',
+    'as'=>'university.document'
+]);
+
+Route::post('document/store',[
+    'uses' =>'UniversityDocumentController@store',
+    'as'=>'university.document.store'
+]);
 
 });
