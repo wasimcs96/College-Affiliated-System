@@ -41,7 +41,7 @@
 ?>
 
 {{-- @if($rt<$mytime) --}}
-@if (Session::get('amount'))
+{{--  @if (Session::get('amount'))
 <h2 class="text-center" style="font-family: -webkit-pictograph;
 font-weight: unset;"> Pay with Razorpay</h2>
 <hr>
@@ -49,7 +49,7 @@ font-weight: unset;"> Pay with Razorpay</h2>
     <img style="width: 279px; height: 218px; border-radius: 7px; margin-top: -83px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} ">
 
 </div>
-@endif
+@endif  --}}
 
 {{-- @endif --}}
 </div>
@@ -110,6 +110,10 @@ font-weight: unset;"> Pay with Razorpay</h2>
         </li>
         <li>${description}</li>
     </ul>
+    <div class="align-content-center">
+        <img style="width: 279px; height: 218px; border-radius: 7px; margin-top: -83px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} ">
+    
+    </div>
 </div>`;
 $('#choosedcontent').html(html);
     $.ajaxSetup({headers:
