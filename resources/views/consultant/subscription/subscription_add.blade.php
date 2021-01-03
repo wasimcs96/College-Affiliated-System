@@ -39,9 +39,15 @@
     font-weight: unset;"> Pay with Razorpay</h2>
     <hr>
     <br>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');
+        $rt=auth()->user()->Subscription_expire_date;
+?>
+
+@if($rt<$mytime)
     <div class="align-content-center">
     <img style="width: 279px; height: 218px; border-radius: 7px; margin-top: -83px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} ">
     </div>
+    @endif
     </div>
 @stop
 

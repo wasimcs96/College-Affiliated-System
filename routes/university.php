@@ -155,26 +155,26 @@ Route::post('media_store',[
     'uses'=>'UniversityMediaController@mediastore',
     'as'=> 'university.media.store'
 ]);
-Route::get('media/delete/{id}',[
+Route::post('media/delete',[
     'uses' =>'UniversityMediaController@destroy',
     'as'=>'media.destroy'
 
 ]);
 
 /* Subscription */
-Route::get('subscription', [
+Route::get('services/subscription', [
     'uses' => 'UniversitySubscriptionController@index',
     'as' => 'university.subscription'
 ]);
 
 /* Go Premium */
-Route::get('premium', [
+Route::get('services/premium', [
     'uses' => 'UniversityPremiumController@index',
     'as' => 'university.premium'
 ]);
 
  /* Advertisements */
- Route::get('advertisements', [
+ Route::get('services/advertisements', [
     'uses' => 'UniversityAdvertisementController@index',
     'as' => 'university.advertisement'
 ]);
@@ -191,9 +191,15 @@ Route::post('advertisements/store', [
 ]);
 
 /* University Course Media */
-Route::get('/course/media/delete/{id}',[
+Route::get('/course/media/destroy/{id}',[
     'uses' =>'UniversityCoursesController@destroy',
     'as'=>'course.media.destroy'
+]);
+
+Route::post('/course/media/delete',[
+    'uses' =>'UniversityCoursesController@delete',
+    'as'=>'course.media.delete'
+
 ]);
 
 /* University Messanger */

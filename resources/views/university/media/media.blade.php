@@ -34,14 +34,8 @@
                                 @if($rts->count()>0)
                                 @foreach($rts as $rt)
                                 @if ($rt->file_type==0)
-                                {{-- <div class="card">
-                                    <img style="height: 84px;" src="{{asset($rt->media)}}" class="card-img-top" alt="...">
 
-                                  </div> --}}
-                                  {{-- <div id="lightgallery" class="row clearfix lightGallery">
-                                    <div class="col-lg-4 col-md-5 mb-4"><a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}" alt=""></a></div>
-                                  </div> --}}
-                                  <div style="margin-left:24px; ">
+                                  <div style="margin-left:24px; "  id="{{$rt->id}}">
                                   <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
                                     <div class="img-responsive iws">
                                         <a class="light-link" href="{{asset($rt->media)}}"><img class="img-fluid rounded" src="{{asset($rt->media)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
@@ -49,8 +43,7 @@
                                         <br>
 
                                         <div class="card-body">
-                                            {{-- <a href="{{route('media.destroy',['id'=>$rt->id])}}"  class="deleteRecord" data-id="{{auth()->user()->id}}" ><h5 style="color: red;"><i class="fa fa-times" aria-hidden="true"></i></h5></a> --}}
-                                            <span class="closes deleteRecord" title="Delete"><a href="{{route('media.destroy',['id'=>$rt->id])}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
+                                            <span class="closes" custom2="{{$rt->id}}"  title="Delete" ><a href="#" id="deleteRecord" custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
 
                                         </div>
                                     </div>
@@ -58,14 +51,7 @@
 
 
                                 @else
-                                {{-- @if ($rt->file_type==2)
 
-                            <div class="container">
-                                  <div class="ratio ratio-16x9">
-                                    <iframe src="{{$rt->link}}"></iframe>
-                                  </div>
-                                </div>
-@endif --}}
                                 @endif
 
 
@@ -74,12 +60,7 @@
                                   <h2 class="mt-5" style="text-align: center"> No Media Available</h2>
                                   @endif
 
-                            {{-- <div class="container">
 
-                                  <div class="ratio ratio-16x9">
-                                    <iframe src="https://www.youtube.com/embed/WNeLUngb-Xg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div> --}}
                               </div>
 
                                 </div>
@@ -177,32 +158,35 @@
     });
 </script>
 
-{{-- <script>
-$(".deleteRecord").click(function(){
-    // for(int i=0; )
+<script>
+var media_id=""
 
-    foreach($rts as $rt){
-    var media_id = $('input[name="media_id{{$rt->id}}"]').val();
-    }
+
+
+$('.closes').click(function(){
+
+
+    var media_id = $(this).attr('custom2');
 console.log(media_id);
-    $.ajaxSetup({
-headers: {
-'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-}
-});
+document.getElementById(media_id).style.display="none";
+console.log(media_id);
+        $.ajaxSetup({
+         headers: {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+            });
             $.ajax({
                 type: "post",
                 url: "{{route('media.destroy')}}",
                 data: {media_id: media_id},
                 success: function (result) {
                     console.log('success');
+
                 }
             });
 
-            document.getElementsByClassName(".deleteRecord").hide;
+
 
 });
-
-</script> --}}
-
+ </script>
 @stop
