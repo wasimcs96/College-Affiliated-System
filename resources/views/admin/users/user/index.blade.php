@@ -21,7 +21,7 @@
                            <tr>
                                <th> <b>
                                 Name</b></th>
-                                <th><b> DOB</b></th>
+                                {{-- <th><b> DOB</b></th> --}}
                                 <th><b> Mobile </b></th>
                                 <th><b> E-mail</b></th>
                                 <th><b>City</b></th>
@@ -41,10 +41,10 @@
                                     @if($user->isClient())
                                         <tr>
                                             <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
-                                            <td>{{$user->birth_year ?? ''}}</td>
+                                            {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
-                                            {{-- <td>{{$user->city ?? ''}}</td> --}}
+                                            <td>{{$user->city ?? ''}}</td>
                                             <td> {{$user->country ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
@@ -61,10 +61,10 @@
                                     @if($user->isConsultant())
                                         <tr>
                                             <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
-                                            <td>{{$user->birth_year ?? ''}}</td>
+                                            {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
-                                            {{-- <td>{{$user->city ?? ''}}</td> --}}
+                                            <td>{{$user->city ?? ''}}</td>
                                             <td> {{$user->country ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
@@ -80,11 +80,11 @@
                                 @foreach ($users as $user)
                                     @if($user->isUniversity())
                                         <tr>
-                                            <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
-                                            <td>{{$user->birth_year ?? ''}}</td>
+                                            <td> {{$user->university->university_name ?? ''}} </td>
+                                            {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
-                                            {{-- <td>{{$user->city ?? ''}}</td> --}}
+                                            <td>{{$user->city ?? ''}}</td>
                                             <td> {{$user->country ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
