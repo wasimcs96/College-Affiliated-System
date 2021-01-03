@@ -10,17 +10,17 @@
             <div class="body">
                 <div class="chatapp_list">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input type="text" class="form-control" onkeyup="myFunction()" id="myInput" placeholder="Search...">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="icon-magnifier"></i></span>
                         </div>
                     </div>
 
+                    <ul class="right_chat list-unstyled mb-0">
                     @foreach($users as $user)
 
-                        <ul class="right_chat list-unstyled mb-0">
                             <li class="offline">
-                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
+                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae chat_list">
                                     <div class="media">
                                         <div class="avtar-pic w35 bg-red"><span>FC</span></div>
                                         <div class="media-body">
@@ -39,130 +39,24 @@
                                     </div>
                                 </a>
                             </li>
+                            @endforeach
                         </ul>
-                    @endforeach
-                        {{-- <li class="online">
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="">
-                                    <div class="media-body">
-                                        <span class="name">Marshall Nichols</span>
-                                        <span class="message">online</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="online">
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <div class="avtar-pic w35 bg-red"><span>FC</span></div>
-                                    <div class="media-body">
-                                        <span class="name">Louis Henry</span>
-                                        <span class="message">online</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="online">
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <div class="avtar-pic w35 bg-orange"><span>DS</span></div>
-                                    <div class="media-body">
-                                        <span class="name">Debra Stewart</span>
-                                        <span class="message">online</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="offline">
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <div class="avtar-pic w35 bg-green"><span>SW</span></div>
-                                    <div class="media-body">
-                                        <span class="name">Lisa Garett</span>
-                                        <span class="message">offline since May 12</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="online">
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <img class="media-object " src="../assets/images/xs/avatar5.jpg" alt="">
-                                    <div class="media-body">
-                                        <span class="name">Debra Stewart</span>
-                                        <span class="message">online</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="offline">
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <img class="media-object " src="../assets/images/xs/avatar2.jpg" alt="">
-                                    <div class="media-body">
-                                        <span class="name">Lisa Garett</span>
-                                        <span class="message">offline since Jan 18</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="online">
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <div class="avtar-pic w35 bg-indigo"><span>FC</span></div>
-                                    <div class="media-body">
-                                        <span class="name">Louis Henry</span>
-                                        <span class="message">online</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="online">
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <div class="avtar-pic w35 bg-pink"><span>DS</span></div>
-                                    <div class="media-body">
-                                        <span class="name">Debra Stewart</span>
-                                        <span class="message">online</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="offline">
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <div class="avtar-pic w35 bg-info"><span>SW</span></div>
-                                    <div class="media-body">
-                                        <span class="name">Lisa Garett</span>
-                                        <span class="message">offline since May 12</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li> --}}
+
 
                 </div>
-                <div class="chatapp_body">
+                <div class="chatapp_body mesgs">
                     <div class="chat-header clearfix">
                         <div class="row clearfix">
                             <div class="col-lg-12">
                                 <div class="chat-about">
-                                    <h6 class="m-b-0">Louis Pierce</h6>
+                                    <h6 class="m-b-0" id="hed">Louis Pierce</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="chat-history">
-                        <ul class="message_data">
+                        <ul class="message_data" id="history">
+
                             <li class="right clearfix">
                                 <img class="user_pix" src="../assets/images/xs/avatar7.jpg" alt="avatar">
                                 <div class="message">
@@ -177,7 +71,8 @@
                                 </div>
                                 <span class="data_time">10:12 AM, Today</span>
                             </li>
-                            <li class="right clearfix">
+
+                            {{-- <li class="right clearfix">
                                 <img class="user_pix" src="../assets/images/xs/avatar5.jpg" alt="avatar">
                                 <div class="message">
                                     <span>How is the project coming along?</span>
@@ -190,10 +85,23 @@
                                     <span>Project has been already finished and I have<br> results to show you.</span>
                                 </div>
                                 <span class="data_time">10:16 AM, Today</span>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
-                    <div class="chat-message clearfix">
+
+                    <div class="type_msg">
+
+                        <div class="input_msg_write" id="btn">
+                            <form  action="#" id="target" class="frm">
+
+                                <input type="text" class=" form-control" name="msd"  id="ms" placeholder="Type a message" require="require" />
+                                <button class="msg_send_btn" id="bt" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                            </form>
+
+                        </div>
+
+                    </div>
+                    {{-- <div class="chat-message clearfix">
                         <div class="input-group mb-0">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -201,9 +109,16 @@
                                     <a href="javascript:void(0);" class="btn btn-link"><i class="icon-camcorder text-warning"></i></a>
                                 </span>
                             </div>
-                            <textarea type="text" row="" class="form-control" placeholder="Enter text here..."></textarea>
+                            <div class="input_msg_write" id="btn">
+                                <form  action="#" id="target" class="frm">
+                                    <textarea type="text" row="" class="form-control" id="ms" placeholder="Enter text here..."></textarea>
+
+                                 {{-- <input type="text" class=" form-control" name="msd"  id="ms" placeholder="Type a message" require="require" />
+                                 <button class="msg_send_btn" id="bt" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="chatapp_detail text-center vivify pullLeft delay-150">
                     <div class="profile-image"><img src="../assets/images/user.png" class="rounded-circle mb-3" alt=""></div>
@@ -237,13 +152,13 @@
 
       document.getElementById("bt").disabled = true;
         $('.javae').click(function(){
-
+    // console.log("djsf")
                 var userid = $(this).attr("id");
                 var _token = $('input[name="_token"]').val();
 
                   // document.getElementById(`userlist-${userid}`).style.background="grey";
                 $.ajax({
-                  url: ,
+                  url: "{{ route('messanger.fetchdata') }}",
                     method: "POST",
                     data:{userid:userid,_token:_token},
                     success:function(result)
@@ -261,7 +176,7 @@
                           else{
                               html='';
                               (re.messages).forEach(element => {
-                                  if (element.send_by_admin == 0) {
+                                  if (element.send_by == 0) {
                                       html+=`<div class="incoming_msg">
             <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="user"> </div>
 
@@ -300,12 +215,46 @@
 </script>
 
 <script>
+    $("#target").submit(function(e) {
+
+       e.preventDefault(); // avoid to execute the actual submit of the form.
+       // console.log('working');
+       // var form = $(this);
+       // var url = form.attr('action');
+       var id = $('input[name="id"]').val();
+       var msd = $('input[name="msd"]').val();
+                         var _token = $('input[name="_token"]').val();
+
+       $.ajax({
+              type: "POST",
+              url: "{{ route('messanger.sendmessage') }}",
+              data: {id:id,_token:_token,msd:msd}, // serializes the form's elements.
+              success: function(data)
+              {
+                  document.getElementById('history').innerHTML+=`<div class="outgoing_msg">
+                     <div class="sent_msg">
+                       <p>${msd}</p>
+                       <span class="time_date"> </span> </div>
+                   </div>`;
+                   $('.msg_history').animate({
+                   scrollTop: $('.msg_history')[0]
+                   }, 1000);
+                   // document.getElementById('ms').innerHTML=" ";
+               //    console.log(data); // show response from the php script.
+              }
+            });
+
+
+   });
+         </script>
+
+<script>
     function myFunction() {
       var input, filter, ul, li, a, i, txtValue;
       input = document.getElementById("myInput");
       filter = input.value.toUpperCase();
       ul = document.getElementsByClassName("chat_list");
-      // console.log(ul[0]);
+    //    console.log(ul[0]);
       li = ul[0].getElementsByTagName("a");
       // console.log();
       Array.from(ul).forEach(element => {

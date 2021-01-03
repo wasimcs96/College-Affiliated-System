@@ -333,3 +333,21 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*Consultant*/
+
+/* Messenger  */
+
+Route::get('university/messanger', [
+    'uses' => 'MessengerController@index',
+    'as' => 'messanger'
+]);
+
+Route::post('university/messanger/fetchData', [
+    'uses' => 'MessengerController@fetchData',
+    'as' => 'messanger.fetchdata'
+]);
+
+Route::post('university/messanger/sendMessage', [
+    'uses' => 'MessengerController@sendMessage',
+    'as' => 'messanger.sendmessage'
+]);
+

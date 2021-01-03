@@ -1,32 +1,82 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-
-use Illuminate\Routing\Controller as BaseController;
-
-class MessengerController extends BaseController
+class MessengerController extends Controller
 {
-    public function chat(){
+
+    public function index(){
+
+        // $users=User::where('status','=',1)->with(["message"])->orderBY("first_name", "ASC")->get();
+        //dd($users);
         return view('messenger.chat')->with('users', User::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-
     public function fetchData(Request $request){
 
+        $userid = $request->get('sender');
+        $use=User::where('id','=',$userid)->get()->first();
+        $message = DB::table('application_chats')->where('receiver',$userid)->where('sender',auth()->user()->id)->get();
+        // dd($message);
+        if ($message->count() > 0) {
+            $msg=$message;
+            $conversation=true;
+        }
+        else{
+            $msg='Start the conversation';
+            $conversation=false;
+        }
+        // foreach($message as $output){
+
+        $output=array(
+            'id'=>$use['id'],
+            'first_name'=>$use['first_name'],
+            'last_name'=>$use['last_name'],
+            'messages'=>$msg,
+            'conversation'=>$conversation,
+            'send_by'=>1
+        );
+    // }
+
+        echo json_encode($output);
     }
 
+    public function sendMessage(Request $request ) {
 
-    public function sendMessage(Request $request){
+    //    dd($request->all());
 
+        $message = $request->get('msd');
+        $userid = $request->get('id');
+        $msg = DB::table('application_chats')->where('receiver',$userid)->where('sender',auth()->user()->id)->first();
+        $ldate =date('Y-m-d H:i:s');
+
+        if ($msg != null) {
+            $ms=DB::table('application_chats')->insert([
+                'receiver'=>$userid,
+                'sender'=>auth()->user()->id,
+                 'send_by'=>0,
+
+                 'message'=>$message,
+                 'created_at'=>$ldate
+            ]);
+        }
+
+        else{
+       $ms=DB::table('application_chats')->insert([
+           'receiver'=>$userid,
+           'sender'=>auth()->user()->id,
+            'send_by'=>1,
+
+            'message'=>$message,
+            'created_at'=>$ldate
+       ]);
+        }
+
+        return Redirect()->route('messanger');
 
     }
 
