@@ -57,7 +57,7 @@
 
                                 @endif
                             </td>
-                            <td>
+                            <td style="text-align: center;">
                                 <a href="{{route('admin.category.show', $category->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View " title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
                                 <a href="{{route('admin.category.edit', $category->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
                                 <a href="{{route('admin.category.delete', $category->id)}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete " data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>

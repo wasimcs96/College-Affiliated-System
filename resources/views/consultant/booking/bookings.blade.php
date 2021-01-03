@@ -55,7 +55,7 @@
                                 @if($booking->status==2)<div class="btn btn-danger">Rejected</div>@endif
                                 @if($booking->status==3)<div class="btn btn-primary">Walking</div>@endif
                             </td>
-                            <td><a href="{{route('consultant.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td style="text-align: center;"><a href="{{route('consultant.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 @endforeach
 @else
