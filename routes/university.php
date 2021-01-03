@@ -36,20 +36,12 @@ Route::get('services',function(){
 })->name('university.services');
 
 /* My Consultant Section */
-// Route::get('my_consultants',function(){
-//     return view('university.my_consultant.my_consultants');
-// })->name('university.my_consultants');
+
 
 Route::get('my_consultants',[
     'uses' => 'UniversityConsultantController@myconsultantindex',
     'as' => 'university.my_consultants',
 ]);
-
-
-
-// Route::get('my_consultant_show',function(){
-//     return view('university.my_consultant.my_consultant_show');
-// })->name('university.my_consultant_show');
 
 Route::get('my_consultant/show/{id}',[
     'uses' => 'UniversityConsultantController@myconsultantshow',
@@ -61,10 +53,6 @@ Route::get('my_consultant_application',function(){
 })->name('university.my_consultant_application');
 
 /* Consultant Section */
-// Route::get('consultants',function(){
-//     return view('university.consultant.consultants');
-// })->name('university.consultants');
-
 Route::get('consultants',[
     'uses' => 'UniversityConsultantController@index',
     'as' => 'university.consultants',
@@ -167,26 +155,26 @@ Route::post('media_store',[
     'uses'=>'UniversityMediaController@mediastore',
     'as'=> 'university.media.store'
 ]);
-Route::get('media/delete/{id}',[
+Route::post('media/delete',[
     'uses' =>'UniversityMediaController@destroy',
     'as'=>'media.destroy'
 
 ]);
 
 /* Subscription */
-Route::get('subscription', [
+Route::get('services/subscription', [
     'uses' => 'UniversitySubscriptionController@index',
     'as' => 'university.subscription'
 ]);
 
 /* Go Premium */
-Route::get('premium', [
+Route::get('services/premium', [
     'uses' => 'UniversityPremiumController@index',
     'as' => 'university.premium'
 ]);
 
  /* Advertisements */
- Route::get('advertisements', [
+ Route::get('services/advertisements', [
     'uses' => 'UniversityAdvertisementController@index',
     'as' => 'university.advertisement'
 ]);
@@ -203,11 +191,38 @@ Route::post('advertisements/store', [
 ]);
 
 /* University Course Media */
-Route::get('/course/media/delete/{id}',[
+Route::get('/course/media/destroy/{id}',[
     'uses' =>'UniversityCoursesController@destroy',
     'as'=>'course.media.destroy'
+]);
+
+Route::post('/course/media/delete',[
+    'uses' =>'UniversityCoursesController@delete',
+    'as'=>'course.media.delete'
 
 ]);
 
+/* University Messanger */
+
+Route::post('university/messanger/fetchData', [
+    'uses' => 'MessengerController@fetchData',
+    'as' => 'university.messanger.fetchdata'
+]);
+
+Route::post('university/messanger/sendMessage', [
+    'uses' => 'MessengerController@sendMessage',
+    'as' => 'university.messanger.sendmessage'
+]);
+
+/* Document Section */
+Route::get('document',[
+    'uses' =>'UniversityDocumentController@index',
+    'as'=>'university.document'
+]);
+
+Route::post('document/store',[
+    'uses' =>'UniversityDocumentController@store',
+    'as'=>'university.document.store'
+]);
 
 });

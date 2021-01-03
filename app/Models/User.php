@@ -5,6 +5,8 @@ use App\Models\Method\RoleMethod;
 use App\Models\Method\UserMethod;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\UniversityConsultantClient;
 use App\Models\Order;
@@ -16,6 +18,8 @@ class User extends Authenticatable
     const ACTIVE = 'active';
 
     protected $table = 'users';
+
+    use softDeletes;
 
     protected $fillable = [
         'first_name',
@@ -38,6 +42,8 @@ class User extends Authenticatable
         'country'
 
     ];
+
+    protected $dates = ['deleted_at'];
 
     protected $hidden = [
         'password',

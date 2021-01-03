@@ -7,7 +7,7 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Clients<small>Client Details</small></h2>
+            <h2>Users<small>User Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -69,8 +69,15 @@
                     </tbody>
 
                 </table>
-
-                <a href="{{route('admin.user')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                @if($user->isClient())
+                   <a href="{{route('admin.users',['id'=>1])}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                @endif
+                @if($user->isConsultant())
+                   <a href="{{route('admin.users',['id'=>2])}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                @endif
+                @if($user->isUniversity())
+                   <a href="{{route('admin.users',['id'=>3])}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                @endif
             </div>
         </div>
     </div>

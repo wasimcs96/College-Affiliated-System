@@ -335,19 +335,19 @@
                                       <fieldset>
                                           <div class="row clearfix">
                                              @if ($applied->approved_status == 0)
-                                                 
-                                             
+
+
                                                   <div class="form-group">
                                                     <a href="#"  class="btn btn-success approvel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#dateModal" >Approve</a>
                                                   </div>
-                                               
-                                        
+
+
                                               <div class="form-group">
                                                 <a href="#"  class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" >Decline</a>
                                               </div>
                                               @endif
                                               @if ($applied->approved_status == 1)
-                                                  
+
                                               <div class="form-group">
                                                 <h3 class="btn btn-success" >Approved</h3>
                                               </div>
@@ -364,8 +364,8 @@
                                         @if ($applied->approved_status == 1)
                                           <div class="form-group">
                                               <div class="fancy-checkbox">
-                                                  <label><span>University has been accepted your application. Please accept before {{$applied->deadline}}</span></label>                                                
-                                                   
+                                                  <label><span>University has been accepted your application. Please accept before {{$applied->deadline}}</span></label>
+
                                                 </div>
                                           </div>
                                           <div class="row clearfix">
@@ -373,21 +373,73 @@
                                             <div class="form-group">
                                                 <a href="#"  class="btn btn-success accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accepted</a>
                                               </div>
-                                           
-                                    
-                                        
+
+
+
                                             @endif
                                         </div>
                                           @endif
                                       </fieldset>
                                       <h3>Ready To Fly - Finish</h3>
                                       <fieldset>
-                                        <div class="form-group">
-                                            <div class="fancy-checkbox">
-                                                <label><span>University has been accepted your application. Please accept before {{$applied->deadline}}</span></label>                                                
-                                                 
+                                       
+                                            @if ($applied->is_accepeted == 1)
+                                            <div class="row clearfix">
+                                                <div class="col-lg-6 col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="@if(isset($applied->university->university_name)){{$applied->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Course Fees</label>
+                                                <input type="text"  class="form-control" id="coursefees"  value="{{$applied->fees}}" />
                                               </div>
-                                        </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <?php 
+                                                $inc=0;
+                                                $appliedUniversity=$applied->university->default_documents;
+                                                $documentSelect = json_decode($appliedUniversity);
+                                                ?>
+                                                <label for="documents">Documents</label>
+                                                <br/>
+                                                <div class="dynamic_document" id="dynamic_document">
+                                                    @if ($documentSelect)
+                                                        
+                                                   
+                                                    @foreach($documentSelect as $key => $value)
+                            
+                                                    <label class="control-inline fancy-checkbox">
+                                                       
+                                                    
+                                                        <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked required >
+                            
+                                                        <span>{{$value}}</span>
+                                                      
+                                                        @php $inc++ @endphp
+                                                        @endforeach
+                                                    </label>
+                                                    @endif
+                                                </div>
+                            
+                                                <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
+                                              
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <button type="button" class="btn btn-primary">Update</button>
+                                                    <button type="button" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-success readytof" data-toggle="modal" data-target="#readyToFly" > Ready to fly</button>
+                                                    
+                                                </div></div>
+                                            @endif
+                                          
+                                       
                                       </fieldset>
 
                                   </form>
@@ -472,6 +524,28 @@
 </div>
 </div>
 
+<div class="modal fade" id="readyToFly" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+            <h4>Are you sure you want to Ready To Fly</h4>
+
+        </div>
+        <div class="modal-footer">
+           <a href="javascript:void(0)" id="readyTo" class="btn btn-primary" >Confirm</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
 <div class="modal fade" id="applyCanceled" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -511,10 +585,10 @@
         <div class="modal-footer">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-<a href="javascript:void(0)" class="btn btn-primary" id="add_document2"> Add </a>
- </div>
-</div>
-</div>
+          <a href="javascript:void(0)" class="btn btn-primary" id="add_document2"> Add </a>
+        </div>
+        </div>
+       </div>
 </div>
 
 
@@ -641,14 +715,14 @@ console.log(appliedUniversityRowId);
 $(document).on('click', '#apply', function ()
 {
 
-      
+
       if(appliedUniversityRowId > 0){
         $.ajaxSetup({headers:
             {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
             });
-    
+
             $.ajax({
                     type: "post",
                     url: "{{route('application.apply')}}",
@@ -659,8 +733,8 @@ $(document).on('click', '#apply', function ()
                     }
                 });
       }
- 
-   
+
+
             // $(this).text("Pending");
             $('#applyModal').modal('hide');
             // row++;
@@ -683,7 +757,7 @@ $(document).on('click', '#apply', function ()
  });
  $(document).on('click', '#applyApprovel', function ()
  {
- 
+
     var modalDate=$('#modalDate').val()
        if(appliedUniversityRowIdApproval > 0){
          $.ajaxSetup({headers:
@@ -691,25 +765,25 @@ $(document).on('click', '#apply', function ()
                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
              }
              });
-     
+
              $.ajax({
                      type: "post",
                      url: "{{route('application.approval')}}",
                      data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval,modalDate:modalDate},
                      success: function (result) {
- 
+
                          console.log('success');
                      }
                  });
        }
-  
-    
+
+
              // $(this).text("Pending");
              $('#dateModal').modal('hide');
              // row++;
      });
- 
-  
+
+
  </script>
  <script>
     var appliedUniversityRowIdApproval='';
@@ -720,33 +794,33 @@ $(document).on('click', '#apply', function ()
  });
  $(document).on('click', '#applyDecline', function ()
  {
- 
-    
+
+
        if(appliedUniversityRowIdApproval > 0){
          $.ajaxSetup({headers:
              {
                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
              }
              });
-     
+
              $.ajax({
                      type: "post",
                      url: "{{route('application.approval')}}",
                      data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval},
                      success: function (result) {
- 
+
                          console.log('success');
                      }
                  });
        }
-  
-    
+
+
              // $(this).text("Pending");
              $('#applyCanceled').modal('hide');
              // row++;
      });
- 
-  
+
+
  </script>
  <script>
     var appliedUniversityRowIdAccepted='';
@@ -757,9 +831,48 @@ $(document).on('click', '#apply', function ()
  });
  $(document).on('click', '#Accepted', function ()
  {
+
+
+       if(appliedUniversityRowIdAccepted > 0){
+         $.ajaxSetup({headers:
+             {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+             });
+
+             $.ajax({
+                     type: "post",
+                     url: "{{route('application.accepted')}}",
+                     data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted},
+                     success: function (result) {
+
+                         console.log('success');
+                     }
+                 });
+       }
+
+
+             // $(this).text("Pending");
+             $('#Accepted').modal('hide');
+             // row++;
+     });
+
+
+ </script>
+ <script>
+     var fees='';
+    var appliedUniversityRowIdReadyToFly='';
+     $(document).on('click', '.readytof', function ()
+ {
+    appliedUniversityRowIdReadyToFly=$(this).attr('custom1');
+    fees=$('#coursefees').val();
+ console.log(appliedUniversityRowIdReadyToFly);
+ });
+ $(document).on('click', '#readyTo', function ()
+ {
  
     
-       if(appliedUniversityRowIdAccepted > 0){
+       if(appliedUniversityRowIdReadyToFly > 0){
          $.ajaxSetup({headers:
              {
                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -768,8 +881,8 @@ $(document).on('click', '#apply', function ()
      
              $.ajax({
                      type: "post",
-                     url: "{{route('application.accepted')}}",
-                     data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted},
+                     url: "{{route('application.readytofly')}}",
+                     data: {appliedUniversityRowIdReadyToFly:appliedUniversityRowIdReadyToFly,fees:fees},
                      success: function (result) {
  
                          console.log('success');
@@ -779,25 +892,10 @@ $(document).on('click', '#apply', function ()
   
     
              // $(this).text("Pending");
-             $('#Accepted').modal('hide');
+             $('#readyToFly').modal('hide');
              // row++;
      });
  
   
  </script>
-{{-- <script>
-    $("#date").datepicker({ onSelect: function(dateText) {
-        dateFormat: 'mm-dd-yyyy',
-         minDate: '-0D',
-         maxDate: '+28D',
-    });
-</script> --}}
- {{-- <script>
-//    $(document).ready(function() {
-//   $("#date").datepicker({
-//       minDate: -3,
-//       maxDate: "1w"
-//   });
-// });
-// </script> --}}
 @stop

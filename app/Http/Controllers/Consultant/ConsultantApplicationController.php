@@ -24,15 +24,7 @@ class ConsultantApplicationController extends Controller
    public function applicationCreate($id)
    {
        $application = Application::where('id',$id)->get()->first();
-    //    dd($application->applicationAppliedUniversity);
-    //    dd($application->applicationAppliedUniversity[application_id]);
-    //    foreach($application->applicationAppliedUniversity as $app)
-    //    {
-    //        dd(json_decode($app->documents));
-    //    }
-    // $book = $application->booking->enquiry;
-    // $bookings = json_decode($book);
-    // dd($bookings);
+    
     $book = $application->booking->enquiry;
     $bookings = json_decode($book,true);
     $i = 0;
@@ -76,6 +68,19 @@ class ConsultantApplicationController extends Controller
        return response('success');
 
     }
+
+    public function applicationReady(Request $request)
+    {
+        $id = $request->appliedUniversityRowIdReadyToFly;
+        $fees = $request->fees;
+        $university = ApplicationAppliedUniversity::find($id);
+        $university->is_complete =1;
+        $university->fees =$fees;
+        $university->save();
+ 
+        return response('success');
+ 
+     }
 
     public function applicationApprovel(Request $request)
     {

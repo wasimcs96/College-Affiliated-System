@@ -31,6 +31,7 @@ class AdminUsersController extends Controller
     }
     public function show($id)
     {
+        // dd($request->all());
         $user = User::where('id',$id)->first();
         return view('admin.users.user.show')->with('user', $user);
     }
@@ -55,10 +56,10 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        $id = Package::find($id);
-        $id->delete();
+        $user = User::find($id);
+        $user->delete();
 
-        return redirect()->route('admin.packages')->with('success', 'Package Removed Succefully.');
+        return redirect()->back()->with('danger', 'User Deleted Successfully.');
     }
 
 

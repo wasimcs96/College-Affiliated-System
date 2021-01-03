@@ -60,7 +60,7 @@ Route::get('general/terms&condition',function(){
    return view('admin.general.terms');
 })->name('admin.general.terms');
 
-Route::get('admin/general/privacy_policy',function(){
+Route::get('general/privacy_policy',function(){
    return view('admin.general.privacy_policy');
 })->name('admin.general.privacy_policy');
 
@@ -310,6 +310,13 @@ Route::post('users/update/{id}',[
     'uses' => 'AdminUsersController@update',
     'as' => 'admin.user.update'
 ]);
+
+Route::get('users/delete/{id}',[
+    'uses' => 'AdminUsersController@destroy',
+    'as' => 'admin.user.delete'
+]);
+
+
 
 });
 
