@@ -15,7 +15,7 @@ class PaymentController extends Controller
 
     function payment(Request $request)
     {
-
+// dd($request->all());
         $api = new Api('rzp_test_6PaQ95AP7ZPT1S', '409ACfFYI6hON1ZmCThrD7nN');
         $amount = $request->amount;
         $userId = $request->user_id;
@@ -33,8 +33,10 @@ class PaymentController extends Controller
         Session::put('userId', $userId);
         Session::put('type', $type);
         Session::put('title', $title);
-
-        return redirect()->back();
+// dd($order->toArray());
+           
+       $saif=$order->toArray();
+        return response($saif);
     }
 
     function transaction(Request $request)
