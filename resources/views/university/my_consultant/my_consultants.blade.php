@@ -58,7 +58,7 @@
                                 <span class="btn btn-info" >Accepted</span>
                               @endif</td>
 
-                            <td><a href="{{route('university.my_consultant_show',['id' => $universityConsultant->consultant->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td style="text-align: center;"><a href="{{route('university.my_consultant_show',['id' => $universityConsultant->consultant->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 @endif
                      @endforeach

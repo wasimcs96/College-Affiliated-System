@@ -25,7 +25,7 @@
                             {{-- <th> <b>Status</b></th> --}}
                             <th><b> Note </b></th>
                             <th><b> Date </b></th>
-                            <th><b> Actions </b></th>
+                            <th style="text-align: center;"><b> Actions </b></th>
                         </tr>
                     </thead>
                     @if($applications->count() > 0)
@@ -39,7 +39,7 @@
 
                             <td>{{$application->note ?? ''}}</td>
                             <td>{{$application->date ?? ''}}</td>
-                            <td><a href="{{route('consultant.application.create',['id'=> $application->application_id])}}" class="btn btn-success">Go to Application<i class="icon-arrow"></i></a></td>
+                            <td style="text-align: center;"><a href="{{route('consultant.application.create',['id'=> $application->application_id])}}" class="btn btn-success">Go to Application<i class="icon-arrow"></i></a></td>
 
                         </tr>
 
