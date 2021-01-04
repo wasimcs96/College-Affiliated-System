@@ -133,6 +133,17 @@ Route::get('application/show/{id}',[
     'as'=>'consultant.application.create'
 ]);
 
+Route::post('application/document/store',[
+    'uses'=>'ConsultantApplicationController@documentStore',
+    'as'=>'consultant.application.document'
+]);
+
+Route::post('application/document/delete',[
+    'uses' =>'ConsultantApplicationController@destroy',
+    'as'=>'consultant.application.document.destroy'
+
+]);
+
 // Route::get('application/create/',function(){
 //     return view('consultant.application.application_create');
 // })->name('consultant.application.create');

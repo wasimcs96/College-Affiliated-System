@@ -200,6 +200,9 @@
                 </div>
 
             <div class="body">
+                <form action="{{ route('consultant.application.document')}}" method="POST" enctype="multipart/form-data" >
+                    @csrf
+
                 <div class="form-group">
                     <?php $documentarray = Config::get('define.document');
                     $inc=0;
@@ -208,16 +211,16 @@
                     <label for="documents">Documents</label>
                     <br/>
                     <div class="dynamic_document" id="dynamic_document">
-                        @foreach($documentarray as $key => $value)
+                        @foreach($documentSelect as $key => $value)
 
                         <label class="control-inline fancy-checkbox">
-                            @if(in_array($value,$documentSelect))
+                            @if(in_array($value,$documentarray))
                         {{-- <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" multiple> --}}
-                            <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked required >
+                            <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked  >
 
                             <span>{{$value}}</span>
                             @else
-                            <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" required >
+                            <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked  >
 
                             <span>{{$value}}</span>
                             @endif
@@ -225,7 +228,8 @@
                             @endforeach
                         </label>
                     </div>
-
+                    <input type="text" value="{{$application->id}}" name="app_id" hidden>
+                    {{-- <input type="text" value="{{$application->applicationAppliedUniversity->id}}" name="app_university_id" hidden> --}}
                     <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
                     <p id="error-checkbox3"></p>
                     <label for="uploaded_documents">Uploaded Documents</label>
@@ -239,15 +243,17 @@
                                     @if($rts->count()>0)
                                     @foreach($rts as $rt)
 
-                                      <div style="margin-left:24px; ">
-                                      <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
+                                      <div style="margin-left:24px;" id="documentid{{$rt->id}}">
+                                      <input type="text" class="" value="{{$rt->id}}" name="document_id" hidden>
                                         <div class="img-responsive iws">
-                                            <a class="light-link" href="{{asset($rt->file)}}"><img class="img-fluid rounded" src="{{asset($rt->file)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
+                                            <a class="light-link" href="{{asset($rt->file)}}"><img  class="img-fluid rounded" src="{{asset($rt->file)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
                                             <div class="card-body">
                                                 <a href="{{asset($rt->file)}}" class="btn btn-primary" target="_blank" download style="margin-left: 19px;">
                                                     <i class="fa fa-download"></i> Download
                                                 </a>
+                                                <span class="closes" custom2="{{$rt->id}}"  title="Delete" ><a href="#" id="deleteRecord" custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
                                             </div>
+
                                         </div>
                                       </div>
 
@@ -259,6 +265,7 @@
                                   </div>
 
                                     </div>
+                                </div>
     @endif
 <label for="">Upload Document</label>
                     <input type="file" name="documents[]" class="dropify" multiple>
@@ -266,6 +273,8 @@
                     <br>
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
             </div>
         </div>
     </div>
@@ -382,7 +391,7 @@
                                       </fieldset>
                                       <h3>Ready To Fly - Finish</h3>
                                       <fieldset>
-                                       
+
                                             @if ($applied->is_accepeted == 1)
                                             <div class="row clearfix">
                                                 <div class="col-lg-6 col-md-12">
@@ -402,8 +411,8 @@
                                               </div>
                                             </div>
                                             <div class="form-group">
-                                                <?php 
-                                                $inc=0;
+                                                <?php
+                                                $increase=0;
                                                 $appliedUniversity=$applied->university->default_documents;
                                                 $documentSelect = json_decode($appliedUniversity);
                                                 ?>
@@ -411,35 +420,35 @@
                                                 <br/>
                                                 <div class="dynamic_document" id="dynamic_document">
                                                     @if ($documentSelect)
-                                                        
-                                                   
+
+
                                                     @foreach($documentSelect as $key => $value)
-                            
+
                                                     <label class="control-inline fancy-checkbox">
-                                                       
-                                                    
-                                                        <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked required >
-                            
+
+
+                                                        <input type="checkbox" name="document[{{$increase}}]" value="{{$value}}" checked required >
+
                                                         <span>{{$value}}</span>
-                                                      
-                                                        @php $inc++ @endphp
+
+                                                        @php $increase++ @endphp
                                                         @endforeach
                                                     </label>
                                                     @endif
                                                 </div>
-                            
+
                                                 <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
-                                              
+
                                             </div>
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
                                                     <button type="button" class="btn btn-primary">Update</button>
                                                     <button type="button" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-success readytof" data-toggle="modal" data-target="#readyToFly" > Ready to fly</button>
-                                                    
+
                                                 </div></div>
                                             @endif
-                                          
-                                       
+
+
                                       </fieldset>
 
                                   </form>
@@ -596,6 +605,38 @@
 @stop
 
 @section('page-styles')
+
+<style>
+
+
+    .iws {
+        position: relative;
+        display: inline-block;
+
+        font-size: 0;
+    }
+    .iws .closes {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        z-index: 6;
+        background-color:#22252a;
+        padding: 4px 3px;
+
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+
+        text-align: center;
+        font-size: 22px;
+        line-height: 10px;
+        border-radius: 50%;
+        border:1px solid #22252a;
+    }
+    .iws:hover .closes {
+        opacity: 1;
+    }
+                    </style>
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-steps/jquery.steps.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
 <style>
@@ -870,32 +911,56 @@ $(document).on('click', '#apply', function ()
  });
  $(document).on('click', '#readyTo', function ()
  {
- 
-    
+
+
        if(appliedUniversityRowIdReadyToFly > 0){
          $.ajaxSetup({headers:
              {
                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
              }
              });
-     
+
              $.ajax({
                      type: "post",
                      url: "{{route('application.readytofly')}}",
                      data: {appliedUniversityRowIdReadyToFly:appliedUniversityRowIdReadyToFly,fees:fees},
                      success: function (result) {
- 
+
                          console.log('success');
                      }
                  });
        }
-  
-    
+
+
              // $(this).text("Pending");
              $('#readyToFly').modal('hide');
              // row++;
      });
- 
-  
+
+
  </script>
+<script>
+    $('.closes').click( function()
+    {
+        var document_id = $(this).attr('custom2');
+        // console.log(document_id);
+        document.getElementById('documentid'+document_id).style.display="none";
+        // console.log(document_id);
+        $.ajaxSetup({
+                        headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                    });
+                $.ajax({
+                            type: "post",
+                            url: "{{route('consultant.application.document.destroy')}}",
+                            data: {document_id: document_id},
+                            success: function (result)
+                            {
+                                console.log('success');
+                            }
+                        });
+
+    });
+</script>
 @stop
