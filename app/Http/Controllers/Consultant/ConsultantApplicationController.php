@@ -50,6 +50,7 @@ class ConsultantApplicationController extends Controller
    public function documentStore(Request $request)
    {
 
+
        $jsonApplication = $request->document;
 
        $jsonApplicationStore = json_encode($jsonApplication);
@@ -116,12 +117,21 @@ class ConsultantApplicationController extends Controller
 
     public function applicationReady(Request $request)
     {
+        // dd($request->all());
         $id = $request->appliedUniversityRowIdReadyToFly;
         $fees = $request->fees;
+        $doc = $request->docs;
+        $document = json_encode($doc);
         $university = ApplicationAppliedUniversity::find($id);
         $university->is_complete =1;
+        $university->documents = $document;
         $university->fees =$fees;
         $university->save();
+
+        $university_id = $request->uni_id;
+        $default_document = University::find($university_id);
+        $default_document->default_documents = $document;
+        $default_document->save();
 
         return response('success');
 
@@ -158,6 +168,26 @@ class ConsultantApplicationController extends Controller
             return response()->json([
                 'success' => 'image deleted successfully!'
             ]);
+    }
+
+    public function universityUpdate(Request $request)
+    {
+        $id = $request->appliedUniversityRowIdReadyToFly;
+        $fees = $request->fees;
+        $doc = $request->docs;
+        $document = json_encode($doc);
+        $university = ApplicationAppliedUniversity::find($id);
+        // $university->is_complete =1;
+        $university->documents = $document;
+        $university->fees =$fees;
+        $university->save();
+
+        $university_id = $request->uni_id;
+        $default_document = University::find($university_id);
+        $default_document->default_documents = $document;
+        $default_document->save();
+
+        return response('success');
     }
 
 }

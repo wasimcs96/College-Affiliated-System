@@ -28,11 +28,12 @@ class ConsultantBookingController extends Controller
        $show = Booking::where('id',$id)->first();
        $enq = $show->enquiry;
        $queries = json_decode($enq,true);
+    //    dd( $queries);
        $i = 0;
        foreach($queries as $query)
        {
-           $university_id[$i] = $query['university'];
-           $course_id[$i] = $query['course'];
+           $university_id[$i] = $query['university'] ?? '';
+           $course_id[$i] = $query['course'] ?? '';
            $i++;
        }
        $university0 =  University::where('id',$university_id[0])->get()->first();
