@@ -1,16 +1,23 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
-@section('title', 'Advertisement')
+@section('parentPageTitle', 'University')
+@section('title', 'Subscription')
 
 @section('content')
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Advertisement</h2>
+            <h2>Subscription</h2>
             <ul class="header-dropdown dropdown">
-<li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('admin.advertisement.add')}}">Purchase AD</a></li>
+<li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('university.subscription.add')}}">Purchase subscription</a></li>
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-
+                {{-- <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0);">Action</a></li>
+                        <li><a href="javascript:void(0);">Another Action</a></li>
+                        <li><a href="javascript:void(0);">Something else</a></li>
+                    </ul>
+                </li> --}}
             </ul>
         </div>
         <div class="body">
@@ -18,45 +25,49 @@
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
-                            <th><b>Banner Image</b></th>
-                            <th><b> Date </b></th>
+                            <th><b> Package Discription</b></th>
+                            <th><b>Amount</b></th>
+                            <th><b>Transaction Id </b></th>
+                             {{--  <th><b>Date</b></th>
+                            <th><b>Time Slot</b></th> --}}
                             <th><b> Status</b></th>
+                            {{-- <th><b>Actions</b></th> --}}
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
-                    <?php $adid=auth()->user()->id?>
-                        <?php  $rts=App\Models\Advertisement::where('user_id',$adid)->orderBy('updated_at', 'DESC')->get();
-                    ?>
+
                     {{-- {{dd($rts)}} --}}
-                    @if($rts->count() > 0)
+                    @if($subscriptions->count() > 0)
                     <tbody>
 
-                        @foreach($rts as $rt)
-
+                        @foreach($subscriptions as $subscription)
+                        <?php $orders=$subscription->OrderItem?>
+@foreach($orders as $order)
                         <tr>
-                            <td>  <img src="{{asset($rt->banner_image)}}" class="user-photo" alt="Banner image" width="40px" height="40px"></td>
-                            {{-- <td>{{$booking->user->mobile}}</td>
-                            <td>{{$booking->user->email}}</td> --}}
-                            <td>{{$rt->expire_date}}</td>
+                            <td>{{$order->Item_title}}</td>
+                            <td>{{$subscription->amount}}$</td>
+                            {{-- <td>{{$rt->expire_date}}</td> --}}
                             {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
+                            <td>{{$subscription->transaction_id}}</td>
                             <td>
-                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
 
-                                {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}
-                                @if($rt->expire_date>$mytime)<div class="btn btn-success">Active</div>@endif
-                                @if($rt->expire_date<$mytime)<div class="btn btn-danger">Expired</div>@endif
-                                @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif
+                                @if($subscription->status==0)<div class="btn btn-warning">Pending</div>@endif
+                                {{-- @if($subscription->expire_date>$mytime)<div class="btn btn-success">Active</div>@endif
+                                @if($subscription->expire_date<$mytime)<div class="btn btn-danger">Expired</div>@endif --}}
+                                @if($subscription->status==1)<div class="btn btn-primary">Inactive</div>@endif
                             </td>
                             {{-- <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td> --}}
                         </tr>
 @endforeach
+@endforeach
+</tbody>
 @else
 
 Records not available
 @endif
-                    </tbody>
+
                 </table>
             </div>
         </div>
