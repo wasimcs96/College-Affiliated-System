@@ -10,19 +10,17 @@
             <div class="body">
                 <div class="chatapp_list">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" onkeyup="myFunction()" id="myInput" placeholder="Search...">
+                        <input type="text" class="form-control" placeholder="Search...">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="icon-magnifier"></i></span>
                         </div>
                     </div>
-
                     <ul class="right_chat list-unstyled mb-0">
-                    @foreach($users as $user)
-
-                            <li class="offline">
-                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae chat_list">
+                        @foreach($users as $user)
+                            <li class="online">
+                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
                                     <div class="media">
-                                        <div class="avtar-pic w35 bg-red"><span>FC</span></div>
+                                        <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="">
                                         <div class="media-body">
                                             <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
                                             @if($user->message != null)
@@ -33,45 +31,41 @@
                                                     @endif
                                                 @endforeach
                                              @endif
-                                            <span class="message">offline</span>
+                                            <span class="message">online</span>
                                             <span class="badge badge-outline status"></span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
-                            @endforeach
-                        </ul>
-
-
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="chatapp_body mesgs">
+                <div class="chatapp_body">
                     <div class="chat-header clearfix">
                         <div class="row clearfix">
                             <div class="col-lg-12">
                                 <div class="chat-about">
-                                    <h6 class="m-b-0" id="hed">Louis Pierce</h6>
+                                    <h6 class="m-b-0" id="hed" >Louis Pierce</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="chat-history">
-                        <ul class="message_data" id="history">
-
+                        <ul class="message_data msg_history" id="history">
                             <li class="right clearfix">
                                 <img class="user_pix" src="../assets/images/xs/avatar7.jpg" alt="avatar">
                                 <div class="message">
-                                    <span>Hi Aiden, how are you?<br> How is the project coming along?</span>
+                                    <p></p>
                                 </div>
-                                <span class="data_time">10:12 AM, Today</span>
+                                <span class="data_time"></span>
                             </li>
                             <li class="left clearfix">
                                 <img class="user_pix" src="../assets/images/user.png" alt="avatar">
                                 <div class="message">
-                                    <span>Are we meeting today?</span>
+                                   <p></p>
                                 </div>
-                                <span class="data_time">10:12 AM, Today</span>
+                                <span class="data_time"></span>
                             </li>
-
                             {{-- <li class="right clearfix">
                                 <img class="user_pix" src="../assets/images/xs/avatar5.jpg" alt="avatar">
                                 <div class="message">
@@ -88,37 +82,18 @@
                             </li> --}}
                         </ul>
                     </div>
-
-                    <div class="type_msg">
-
-                        <div class="input_msg_write" id="btn">
-                            <form  action="#" id="target" class="frm">
-
-                                <input type="text" class=" form-control" name="msd"  id="ms" placeholder="Type a message" require="require" />
-                                <button class="msg_send_btn" id="bt" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                    <div class="chat-message clearfix" id="btn">
+                        {{-- <div class="input-group mb-0" id="btn target" > --}}
+                            <form class="input-group mb-0" id="target">
+                                <textarea type="text" row="" id="message" name="message" class="form-control" placeholder="Enter text here..."></textarea>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <button class="btn btn-link" id="bt" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                    </span>
+                                </div>
                             </form>
-
-                        </div>
-
+                        {{-- </div> --}}
                     </div>
-                    {{-- <div class="chat-message clearfix">
-                        <div class="input-group mb-0">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <a href="javascript:void(0);" class="btn btn-link"><i class="icon-camera text-warning"></i></a>
-                                    <a href="javascript:void(0);" class="btn btn-link"><i class="icon-camcorder text-warning"></i></a>
-                                </span>
-                            </div>
-                            <div class="input_msg_write" id="btn">
-                                <form  action="#" id="target" class="frm">
-                                    <textarea type="text" row="" class="form-control" id="ms" placeholder="Enter text here..."></textarea>
-
-                                 {{-- <input type="text" class=" form-control" name="msd"  id="ms" placeholder="Type a message" require="require" />
-                                 <button class="msg_send_btn" id="bt" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
                 <div class="chatapp_detail text-center vivify pullLeft delay-150">
                     <div class="profile-image"><img src="../assets/images/user.png" class="rounded-circle mb-3" alt=""></div>
@@ -144,6 +119,7 @@
 
 @section('page-script')
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
+{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
 
 <script>
 
@@ -152,7 +128,7 @@
 
       document.getElementById("bt").disabled = true;
         $('.javae').click(function(){
-    // console.log("djsf")
+
                 var userid = $(this).attr("id");
                 var _token = $('input[name="_token"]').val();
 
@@ -164,7 +140,7 @@
                     success:function(result)
                     {
                          var re=JSON.parse(result);
-                         console.log(re);
+                        //  console.log(re);
                             document.getElementById("hed").innerHTML = re.first_name+" "+re.last_name;
                             document.getElementById("target").innerHTML+= `<input type="text" class="write_msg" name="id" value=${re.id} placeholder="Type a message" hidden/>`;
                             document.getElementById("bt").disabled = false;
@@ -177,23 +153,23 @@
                               html='';
                               (re.messages).forEach(element => {
                                   if (element.send_by == 0) {
-                                      html+=`<div class="incoming_msg">
-            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="user"> </div>
-
-            <div class="received_msg">
-              <div class="received_withd_msg">
-                <p>${element.message}</p>
-                <span class="time_date">${element.created_at}</span></div>
-            </div>
-          </div>`;
+                                      html+=` <li class="right clearfix">
+                                <img class="user_pix" src="../assets/images/xs/avatar7.jpg" alt="avatar">
+                                <div class="message">
+                                    <p>${element.message}</p>
+                                </div>
+                                <span class="data_time">${element.created_at}</span>
+                            </li>`;
                                   }
                                   else{
 
-          html+=` <div class="outgoing_msg">
-            <div class="sent_msg">
-              <p>${element.message}</p>
-              <span class="time_date">${element.created_at}</span> </div>
-          </div>`;
+                                        html+=` <li class="left clearfix">
+                                                <img class="user_pix" src="../assets/images/user.png" alt="avatar">
+                                                <div class="message">
+                                                    <p>${element.message}</p>
+                                                </div>
+                                                <span class="data_time">${element.created_at}</span>
+                                            </li>`;
                                   }
 
 
@@ -222,7 +198,7 @@
        // var form = $(this);
        // var url = form.attr('action');
        var id = $('input[name="id"]').val();
-       var msd = $('input[name="msd"]').val();
+       var msd = $('#message').val();
                          var _token = $('input[name="_token"]').val();
 
        $.ajax({
@@ -231,14 +207,18 @@
               data: {id:id,_token:_token,msd:msd}, // serializes the form's elements.
               success: function(data)
               {
-                  document.getElementById('history').innerHTML+=`<div class="outgoing_msg">
-                     <div class="sent_msg">
-                       <p>${msd}</p>
-                       <span class="time_date"> </span> </div>
-                   </div>`;
+
+                  document.getElementById('history').innerHTML+=`<li class="right clearfix">
+                                                <img class="user_pix" src="../assets/images/user.png" alt="avatar">
+                                                <div class="message">
+                                                    <p>${msd}</p>
+                                                </div>
+                                                <span class="data_time"></span>
+                                            </li>`;
                    $('.msg_history').animate({
-                   scrollTop: $('.msg_history')[0]
+                    height: $('.msg_history').get(0).scrollHeight
                    }, 1000);
+                   $(this).height('auto');
                    // document.getElementById('ms').innerHTML=" ";
                //    console.log(data); // show response from the php script.
               }
@@ -247,32 +227,31 @@
 
    });
          </script>
+         {{-- <script>
+                function myFunction() {
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                ul = document.getElementsByClassName("chat_list");
+                // console.log(ul[0]);
+                li = ul[0].getElementsByTagName("a");
+                // console.log();
+                Array.from(ul).forEach(element => {
+                    a=element.getElementsByTagName("div")[0];
+                    b=a.getElementsByTagName("a")[0];
+                    c=b.getElementsByTagName("div")[1];
+                    d=c.getElementsByTagName("h5")[0];
+                    console.log(d);
+                    txtValue = d.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        element.style.display = "";
+                    } else {
+                    element.style.display = "none";
+                    }
 
-<script>
-    function myFunction() {
-      var input, filter, ul, li, a, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      ul = document.getElementsByClassName("chat_list");
-    //    console.log(ul[0]);
-      li = ul[0].getElementsByTagName("a");
-      // console.log();
-      Array.from(ul).forEach(element => {
-          a=element.getElementsByTagName("div")[0];
-          b=a.getElementsByTagName("a")[0];
-          c=b.getElementsByTagName("div")[1];
-          d=c.getElementsByTagName("h5")[0];
-          console.log(d);
-          txtValue = d.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-           element.style.display = "";
-          } else {
-          element.style.display = "none";
-          }
+                 });
 
-});
-
-  }
-  </script>
+            }
+       </script> --}}
 
 @stop
