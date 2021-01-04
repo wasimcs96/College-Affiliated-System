@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Consultant')
-@section('title', 'Go Premium')
+@section('title', 'Subscription')
 
 @section('content')
 
@@ -14,9 +14,9 @@
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
                     <h3><span>$</span>{{$package->amount}}<small>/ mo</small></h3>
-                    <span>Premium</span>
+                    <span>Subscription</span>
                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');
-        $rt=auth()->user()->Premium_expire_date;
+        $rt=auth()->user()->Subscription_expire_date;
 ?>
                 </li>
                 <li>{{$package->description}}</li>
@@ -458,10 +458,10 @@ timeline.add(
                     <div class="col-md-3">
                         <p><b>Plan Type</b></p>
                         <ul style="list-style-type: none;">
-        <li class="plan-img"> Premium Plan</li>
+        <li class="plan-img"> Subscription Plan</li>
         <li class="price">
 
-            <span>Premium</span>
+            <span>Subscription</span>
         </li>
         <li></li>
     </ul>
@@ -472,7 +472,7 @@ timeline.add(
                     </div>
                     <div class="col-md-3">
                         <p class="align-right"><b style="float: left;">Description</b></p>
-                        <div class="align-left" style="float: left;">${description} </div>
+                        <div class="align-left" style="float: left;margin-left: -85px;">${description} </div>
                     </div>
                     <div class="col-md-3">
                         <p class="align-justify"><b >Payment Method</b></p>
