@@ -69,19 +69,12 @@ class ConsultantApplicationController extends Controller
           $storeUniversityDocument->documents = $jsonApplicationStore;
           $storeUniversityDocument->save();
        }
-
-    //    $jsonUniversity = $request->documents;
-    //    $jsonUniversityStore=json_encode($jsonUniversity);
-
        $documentes = collect($request->documents);
-       // dd(collect($request->documents));
                foreach($documentes as $doc)
                {
                    $applicationDocument = ApplicationDocument::create([
                        'application_id' => $application->id,
                    ]);
-                   // dd($document);
-                   //    $documentSave = $value;
                   $doc_new_name = time().$doc->getClientOriginalName();
                   $doc->move(Config::get('define.image.document'),$doc_new_name);
 
@@ -110,7 +103,6 @@ class ConsultantApplicationController extends Controller
        $university = ApplicationAppliedUniversity::find($id);
        $university->is_accepeted = 1;
        $university->save();
-
        return response('success');
 
     }
@@ -140,8 +132,6 @@ class ConsultantApplicationController extends Controller
     public function applicationApprovel(Request $request)
     {
         if ($request->modalDate) {
-
-
         $id = $request->appliedUniversityRowIdApproval;
         $date=date("Y-m-d",strtotime($request->modalDate));
         $university = ApplicationAppliedUniversity::find($id);

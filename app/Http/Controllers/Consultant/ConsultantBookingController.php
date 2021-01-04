@@ -125,16 +125,14 @@ public function applicationStore(Request $request){
     function fetchCourse(Request $request)
     {
         $fetch=University::where('id',$request->universityid)->first();
-// dd($fetch);
         $courses =  $fetch->UniversityCourse;
         $output='';
         foreach($courses as $row)
         {
          $output .= '<option value="'.$row->course->id.'">'.$row->course->name.'</option>';
         }
-        // dd($output);
         echo $output;
-        // dd();
+
     }
 
 }
