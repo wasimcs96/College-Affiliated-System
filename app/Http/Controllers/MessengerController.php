@@ -18,9 +18,9 @@ class MessengerController extends Controller
 
     public function fetchData(Request $request){
 
-        $userid = $request->get('sender');
+        $userid = $request->get('userid');
         $use=User::where('id','=',$userid)->get()->first();
-        $message = DB::table('application_chats')->where('receiver',$userid)->where('sender',auth()->user()->id)->get();
+        $message = DB::table('application_chats')->where('sender',auth()->user()->id)->where('receiver',$userid)->get();
         // dd($message);
         if ($message->count() > 0) {
             $msg=$message;
@@ -47,9 +47,10 @@ class MessengerController extends Controller
 
     public function sendMessage(Request $request ) {
 
-    //    dd($request->all());
+        // dd($request->all());
 
         $message = $request->get('msd');
+        // dd($message);
         $userid = $request->get('id');
         $msg = DB::table('application_chats')->where('receiver',$userid)->where('sender',auth()->user()->id)->first();
         $ldate =date('Y-m-d H:i:s');
@@ -59,7 +60,6 @@ class MessengerController extends Controller
                 'receiver'=>$userid,
                 'sender'=>auth()->user()->id,
                  'send_by'=>0,
-
                  'message'=>$message,
                  'created_at'=>$ldate
             ]);
@@ -70,7 +70,6 @@ class MessengerController extends Controller
            'receiver'=>$userid,
            'sender'=>auth()->user()->id,
             'send_by'=>1,
-
             'message'=>$message,
             'created_at'=>$ldate
        ]);
