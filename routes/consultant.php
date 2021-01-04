@@ -141,7 +141,6 @@ Route::post('application/document/store',[
 Route::post('application/document/delete',[
     'uses' =>'ConsultantApplicationController@destroy',
     'as'=>'consultant.application.document.destroy'
-
 ]);
 
 // Route::get('application/create/',function(){
@@ -254,6 +253,11 @@ Route::post('application/accepted',[
 Route::post('application/readytofly',[
     'uses' => 'ConsultantApplicationController@applicationReady',
     'as' => 'application.readytofly'
+]);
+
+Route::post('application/university/update',[
+    'uses' =>'ConsultantApplicationController@universityUpdate',
+    'as'=>'consultant.application.university.update'
 ]);
 /* Application Follow Up */
 Route::get('applications/followup',[
