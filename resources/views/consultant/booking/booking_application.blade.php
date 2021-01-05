@@ -219,7 +219,8 @@
     rt=$('#document_name').val()
     //   console.log(rt);
     $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document['+document_row+']" value="'+rt+'"><span>'+rt+'</span></label>')
-    $('#documentModal').modal('hide')
+    $('#documentModal').modal('hide');
+    document.getElementById("basic-form").reset();
     document_row++;
     });
 
