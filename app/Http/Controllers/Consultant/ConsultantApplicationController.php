@@ -168,7 +168,6 @@ class ConsultantApplicationController extends Controller
         $doc = $request->docs;
         $document = json_encode($doc);
         $university = ApplicationAppliedUniversity::find($id);
-        // $university->is_complete =1;
         $university->documents = $document;
         $university->fees =$fees;
         $university->save();
