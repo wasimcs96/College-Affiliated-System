@@ -41,6 +41,21 @@
     @endforeach
     {{-- <img style="width: 100px; height: 50px; border-radius: 11px;" id="rzp-button1" src="{{asset('assets/images/razor_pay.jpeg')}} "> --}}
 </div>
+
+<div class="container" id="choosedcontent">
+
+</div>
+<div class="container">
+
+<br>
+
+
+
+
+
+</div>
+
+
 <div class="modal fade" id="mdlerror" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

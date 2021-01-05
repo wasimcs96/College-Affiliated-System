@@ -13,14 +13,20 @@ Route::get('dashboard',function(){
 })->name('consultant.dashboard');
 
 /* Student Section */
-Route::get('students',function(){
-    return view('consultant.student.students');
-})->name('consultant.students');
-
-Route::get('student_show',function(){
-    return view('consultant.student.student_show');
-})->name('consultant.student.show');
-
+// Route::get('students',function(){
+//     return view('consultant.student.students');
+// })->name('consultant.students');
+Route::get('student',[
+    'uses'=>'ConsultantStudentController@index',
+    'as'=>'consultant.students'
+]);
+// Route::get('student_show',function(){
+//     return view('consultant.student.student_show');
+// })->name('consultant.student.show');
+Route::get('student/detail/{id}',[
+    'uses'=>'ConsultantStudentController@show',
+    'as'=>'consultant.student.show'
+]);
 
 /* Search Section */
 Route::get('search',function(){
