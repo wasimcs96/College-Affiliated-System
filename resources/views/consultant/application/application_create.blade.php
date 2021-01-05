@@ -367,14 +367,13 @@
                                           <div class="row clearfix">
                                             @if ($applied->is_accepeted == 0)
                                             <div class="form-group">
-                                                <h6>Accept Your Application by clicking the below button</h6>
-                                                <a style="margin-left: 16px;" href="#"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accept</a>
+                                                <h6 style="margin-left: 16px;">Accept Your Application by clicking the below button</h6>                                                <a style="margin-left: 16px;" href="#"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accept</a>
                                               </div>
 
                                             @endif
                                             @if ($applied->is_accepeted == 1)
                                             <div class="form-group">
-                                                <h6 style="margin-left: 16px;">Accept Your Application by clicking the below button</h6>
+
                                                 <a style="margin-left: 16px;" href="#"  class="btn btn-success">Accepted</a>
                                               </div>
                                             @endif

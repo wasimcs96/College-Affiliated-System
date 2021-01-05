@@ -72,11 +72,11 @@
                 <div id="dec">
 
                 </div>
-                @if($show->status== 0)
+                @if($show->status == 0)
                 <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
                 <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
                 @else
-                @if($show->application->count()>0)
+                @if($show->application == NULL)
                 <a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>
                 @endif
                 @endif
