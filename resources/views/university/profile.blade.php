@@ -10,11 +10,11 @@
             <div class="profile-header d-flex justify-content-between justify-content-center">
                 <div class="d-flex">
                     <div class="mr-3">
-                        @if(isset(Auth()->user()->profile_image))
+                      @if(isset(Auth()->user()->profile_image))
                         <img src="{{ asset(Auth()->user()->profile_image) }}" class="rounded" alt="">
                         @else
                         <img src="{{ asset('assets/images/user.png') }}" class="user-photo" alt="User Profile Picture">
-             @endif
+                      @endif
                     </div>
                     <div class="details">
 
@@ -49,9 +49,38 @@
 
             </div>
         </div>
+        <div class="card">
+            <div class="header">
+                <h2>Add Default Document</h2>
+                <ul class="header-dropdown dropdown">
+                    <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+
+                </ul>
+            </div>
+            <div class="body">
+                <form action="{{ route('university.document.store')}}" method="POST" enctype="multipart/form-data" >
+                    @csrf
+                    <div class="form-group">
+                        <label for="documents">
+                            <p id="error-checkbox3">
+                                <div class="dynamic_document" id="dynamic_document"></label>
+                                <?php $inc = 0 ?>
+                                @if(isset($documents))
+                                    @foreach($documents as $key => $value)
+                                       <label class="control-inline fancy-checkbox">
+                                       <input type="checkbox" name= "document[{{$inc}}]" value="{{$value}}" checked><span>{{$value}}</span></label>
+                                       @php $inc++ @endphp
+                                    @endforeach
+                                @endif
+
+                                </div>
+                    </div>
+                    <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i>Add Document </button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
-
-
 
 
     <div class="col-xl-8 col-lg-8 col-md-7">
@@ -185,7 +214,31 @@
 
         </div>
 
-
+        <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Document Title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="basic-form" method="post" novalidate action="#">
+                            <div class="form-group">
+                                <label>Document Name</label>
+                                <input type="text" class="form-control" name="document_name" id="document_name" required>
+                            </div>
+                       </form>
+                    </div>
+                    <div class="modal-footer">
+                       {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                       {{-- <button type= class="btn btn-primary">Submit</button> --}}
+                           <a href="javascript:void(0)" class="btn btn-primary" id="add_document2"> Add </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 @stop
 @section('page-styles')
@@ -235,7 +288,21 @@ $(".deleteRecord").click(function(){
 });
 
 </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var i=0;
+        var document_row = {{$inc}} ;
+        $('#add_document2').click(function(){
+        rt=$('#document_name').val()
+        $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document['+document_row+']" value="'+rt+'" checked><span>'+rt+'</span></label>')
+        $('#documentModal').modal('hide');
+        document.getElementById("basic-form").reset();
+        document_row++;
+    });
 
+
+    });
+</script>
 @stop
 
 

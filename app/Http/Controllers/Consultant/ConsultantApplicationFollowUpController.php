@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use Date;
 use App\Models\Application;
 use App\Models\Course;
 use App\Models\University;
@@ -47,14 +48,16 @@ class ConsultantApplicationFollowUpController extends Controller
         'note' => 'required',
         'date' => 'required',
     ]);
-
+     $dateFormat = strtotime($request->date);
+     $dateFormat =  date('Y-m-d');
+    //  dd($dateFormat);
     $application = ApplicationFollowsUp::create([
         'application_id' => $request->application_id,
         'note' => $request->note,
-        'date' => $request->date,
+        'date' => $dateFormat,
     ]);
     $application->save();
-    return redirect()->back()->with('success', 'Follow Up Created Succefully.');
+    return response('success');
    }
 
 }

@@ -14,7 +14,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <a href="#" data-toggle="modal" data-target="#followUpModal" class="btn btn-primary" ><i class="fa fa-plus" style="margin-right: 8px;"></i>Add Follow Up</a>
+                <a href="#" data-toggle="modal" data-target="#followUpModal" custom1="{{$application->id}}" class="btn btn-primary" id="follow_up_trigger"><i class="fa fa-plus" style="margin-right: 8px;"></i>Add Follow Up</a>
                 <div class="modal fade" id="followUpModal" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -34,7 +34,7 @@
                                   <input type="text" name="application_id" value={{$application->id}} hidden>
                                     <div class="form-group">
                                         <label style="color:white">Note</label>
-                                        <textarea class="form-control" name="note" rows="5" cols="30" required></textarea>
+                                        <textarea class="form-control" id="note" name="note" rows="5" cols="30" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label style="color:white">Date</label>
@@ -44,7 +44,8 @@
 
                         </div>
                         <div class="modal-footer">
-                          <button type="submit" class="btn btn-primary">Add Follow Up</button>
+                          {{-- <button type="submit" class="btn btn-primary">Add Follow Up</button> --}}
+                          <a href="javascript:void(0)"  class="btn btn-primary" id="add_follow_up"> Add </a>
                         </form>
                                     </div>
                 </div>
@@ -57,7 +58,6 @@
                 <table class="table table-hover table-striped">
 
                     <tbody>
-
 
                     <tr>
                         <th scope="row">Student Name</th>
@@ -171,7 +171,7 @@
                         <th scope="row">Student Country</th>
                         <td>{{$application->user->country}}</td>
                     </tr>
-       </div>
+                </div>
 
 
                     </tbody>
@@ -259,13 +259,13 @@
                                     </div>
                                 </div>
     @endif
-<label for="">Upload Document</label>
+<label for="" style="margin-left: 17px;">Upload Document</label>
                     <input type="file" name="documents[]" class="dropify" multiple>
                     @csrf
                     <br>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Upload</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
             </div>
         </div>
@@ -274,6 +274,15 @@
 </div>
 </div>
 @if(isset($application->applicationAppliedUniversity))
+<div class="col-lg-12">
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Applied Universities</h2>
+                </div>
+
+            <div class="body">
 @foreach($application->applicationAppliedUniversity as $key=>$applied)
 
 <div class="accordion" id="accordionExample">
@@ -282,7 +291,7 @@
         <div class="card-header" id="headingTwo">
           <h2 class="mb-0">
             <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapse-{{$key}}">
-              University Form #{{$key+ 1}}
+              University Form-{{$applied->university->university_name ?? ''}}
             </button>
           </h2>
         </div>
@@ -293,7 +302,7 @@
                       <div class="col-lg-12 col-md-12 col-sm-12">
                           <div class="card">
                               <div class="header">
-                                  <h2>University Form-{{$key+ 1}} </h2>
+                                  {{-- <h2>University Form-{{$key+ 1}} </h2> --}}
                                   <ul class="header-dropdown dropdown">
 
                                       <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -303,30 +312,40 @@
                               <div class="body wizard_validation">
 
                                   <form id="wizard_with_validation{{$key}}" method="POST">
-                                      <h3>University Information</h3>
-                                      <fieldset>
-                                          <div class="row clearfix">
-                                            <div class="col-lg-6 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" value="@if(isset($applied->university->university_name)){{$applied->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
-                                                </div>
-                                            </div>
-                                            <input type="text" name="university_id" value="{{$applied->university->id}}" hidden>
-                                            <input type="text" name="apply_id" value="{{$applied->id}}" hidden>
+                                    <h3>University Information</h3>
+                                    <fieldset>
+                                        <div class="table-responsive" >
+                                            <table class="table table-hover table-striped" >
 
-                                            <div class="col-lg-6 col-md-12">
-                                                <div class="form-group">
-                                                 @if($applied->Is_applied==0) <a href="#" class="btn btn-warning applied" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyModal">In Progress</a>@endif
-                                                 @if($applied->Is_applied==1)<div class="btn btn-success">Applied</div>@endif
-                                                </div>
-                                            </div>
-                                          </div>
-                                      </fieldset>
+                                                <tbody>
+
+                                                <tr>
+                                                    <th scope="row">University Name</th>
+                                                    <td>{{$applied->university->university_name ?? ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Course Name</th>
+                                                    <td>{{$applied->course->name ?? ''}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-12">
+
+                                    </div>
+
+                                    <input type="text" name="university_id" value="{{$applied->university->id}}" hidden>
+                                    <input type="text" name="apply_id" value="{{$applied->id}}" hidden>
+
+                                    <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                    @if($applied->Is_applied==0) <a href="#" class="btn btn-warning applied" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyModal" style="float: right;margin-top: 69px;">Apply</a>@endif
+                                    @if($applied->Is_applied==1)<div class="btn btn-success" style="float: right;margin-top: 69px;">Applied</div>@endif
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </fieldset>
                                       <h3>Application Status</h3>
                                       <fieldset>
                                           <div class="row clearfix">
@@ -479,7 +498,12 @@
 
 
 
-@endforeach
+
+  @endforeach
+</div>
+</div>
+</div>
+</div>
 @endif
 
 <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -732,7 +756,8 @@
       //   console.log(rt);
       $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document['+document_row+']" id="document['+document_row+']" value="'+rt+'"><span>'+rt+'</span></label>')
       // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
-      $('#documentModal').modal('hide')
+      $('#documentModal').modal('hide');
+      document.getElementById("basic-form").reset();
       document_row++
     });
 
@@ -741,7 +766,8 @@
       //   console.log(rt);
       $('#dynamic_document2').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document[]" id="document" value="'+rt+'"><span>'+rt+'</span></label>')
       // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
-      $('#documentModal2').modal('hide')
+      $('#documentModal2').modal('hide');
+      document.getElementById("basic-form").reset();
     //   document_row2++
     });
 
@@ -770,7 +796,8 @@ $('.dropify-fr').dropify({
     }
 });
 // $( "#nb" ). load(window. location. href + " #nb" );
-$('#documentModal').modal('hide')
+$('#documentModal').modal('hide');
+document.getElementById("basic-form").reset();
     });
 
 
@@ -855,7 +882,7 @@ $(document).on('click', '#apply', function ()
     $('#date').datepicker({
         dateFormat: 'mm-dd-yy',
          minDate: 0,
-         maxDate:"4w"
+        //  maxDate:"4w"
     });
 });
 </script>
@@ -1095,4 +1122,43 @@ $(document).on('click', '#readyTo2', function ()
 
 
 </script>
+<script>
+    var application_id='';
+    var note ='';
+    var date='';
+     $(document).on('click', '#follow_up_trigger', function ()
+ {
+    application_id=$(this).attr('custom1');
+ console.log(application_id);
+ });
+ $(document).on('click', '#add_follow_up', function ()
+ {
+
+       var note=$('#note').val();
+       var date=$('#date').val();
+       if(application_id > 0){
+         $.ajaxSetup({headers:
+             {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+             });
+
+             $.ajax({
+                     type: "post",
+                     url: "{{route('consultant.application.followup.store')}}",
+                     data: {application_id:application_id,note:note,date:date},
+                     success: function (result) {
+                         console.log('success');
+                        //  alert('Follow Up created Successfully');
+                         $('#alert_add').append('<div class="container"><div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>Follow Up Created Successfully.</strong></div></div>')
+                     }
+                 });
+       }
+
+             $('#followUpModal').modal('hide');
+             document.getElementById("basic-form").reset();
+     });
+
+
+ </script>
 @stop
