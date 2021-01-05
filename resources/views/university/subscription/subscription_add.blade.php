@@ -135,9 +135,7 @@
     package_time=$(this).attr('customPackage');
 
 
-   var html=`
-   <div class="row clearfix">
-
+   var html=`<div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
             <div class="body">
