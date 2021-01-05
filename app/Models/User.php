@@ -81,5 +81,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
-
+    public function consultantPrMigrationCountry()
+    {
+        return $this->hasOne(ConsultantPrMigrationCountry::class,'user_id');
+    }
 }

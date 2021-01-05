@@ -24,7 +24,10 @@ class ConsultantProfileController extends Controller
     {
 $id = Auth()->user()->id;
         $user=User::where('id',$id)->first();
-        return view('consultant.profile')->with('user',$user)->with('countries',Country::all());
+        $cc =auth()->user()->consultantPrMigrationCountry->country_id;
+
+        $consultantCountries=json_decode($cc);
+        return view('consultant.profile',compact('consultantCountries'))->with('user',$user)->with('countries',Country::all());
     }
 
     public function profileStore(Request $request)

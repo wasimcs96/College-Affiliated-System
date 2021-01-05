@@ -18,13 +18,14 @@ class ConsultantApplicationController extends Controller
 {
    public function index()
    {
-     return view('consultant.application.application');
+     $applications = Application::orderBy('created_at', 'DESC')->get();
+     return view('consultant.application.application')->with('applications', $applications);
    }
 
    public function applicationCreate($id)
    {
        $application = Application::where('id',$id)->get()->first();
-    
+
     $book = $application->booking->enquiry;
     $bookings = json_decode($book,true);
     $i = 0;
@@ -48,7 +49,7 @@ class ConsultantApplicationController extends Controller
    public function applicationApply(Request $request)
    {
        $id = $request->appliedUniversityRowId;
-    
+
        $university = ApplicationAppliedUniversity::find($id);
        $university->Is_applied = 1;
        $university->save();
@@ -60,7 +61,7 @@ class ConsultantApplicationController extends Controller
     public function applicationAccepted(Request $request)
    {
        $id = $request->appliedUniversityRowIdAccepted;
-    
+
        $university = ApplicationAppliedUniversity::find($id);
        $university->is_accepeted = 1;
        $university->save();
@@ -77,16 +78,16 @@ class ConsultantApplicationController extends Controller
         $university->is_complete =1;
         $university->fees =$fees;
         $university->save();
- 
+
         return response('success');
- 
+
      }
 
     public function applicationApprovel(Request $request)
     {
         if ($request->modalDate) {
-            
-        
+
+
         $id = $request->appliedUniversityRowIdApproval;
         $date=date("Y-m-d",strtotime($request->modalDate));
         $university = ApplicationAppliedUniversity::find($id);
@@ -95,7 +96,7 @@ class ConsultantApplicationController extends Controller
         $university->save();
     }
     else {
-         
+
         $id = $request->appliedUniversityRowIdApproval;
 
         $university = ApplicationAppliedUniversity::find($id);
@@ -103,6 +104,6 @@ class ConsultantApplicationController extends Controller
         $university->save();
     }
         return response('success');
- 
+
      }
 }

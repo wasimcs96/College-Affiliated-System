@@ -11,7 +11,7 @@ class UniversityPremiumController extends Controller
     public function index()
     {
 
-        $packages=Package::where('package_type', 1)->get();
+        $packages=Package::where('package_type', 1)->orderBy('updated_at', 'DESC')->get();
         return view('university.go_premium')->with('packages',$packages);
     }
 }

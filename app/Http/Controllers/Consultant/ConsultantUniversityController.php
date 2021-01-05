@@ -12,6 +12,7 @@ class ConsultantUniversityController extends Controller
     public function index()
     {
         $universities = auth()->user()->consultant->consultantUniversity;
+        // $universities = University::orderBy('created_at', 'DESC')->get();
 
         return view('consultant.university.university')->with('universities',$universities);
     }
