@@ -89,7 +89,7 @@
 <script src="{{ asset('assets/vendor/dropify/js/dropify.js') }}"></script>
 
 <script src="{{ asset('assets/js/pages/forms/dropify.js') }}"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 
 <script>
     $('.dropify-frrr').dropify({
@@ -110,68 +110,132 @@
     </script>
 
 
-    <script>
-    var options = {
-        "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
-        "amount": "{{Session::get('amount')}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        "currency": "INR",
-        "name":"{{Session::get('name')}}",
-        "description": "Test Transaction",
-        "image": "https://example.com/your_logo",
-        "order_id": "{{Session::get('orderId')}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        "handler": function (response){
-
-            $.ajaxSetup({headers:
-                {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-                });
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 
-                 transactionId=response.razorpay_payment_id;
-                 amount="{{Session::get('amount')}}";
-                 userId="{{Session::get('userId')}}";
-                 payment_type="{{Session::get('type')}}"
-                 title="{{Session::get('title')}}"
-                $.ajax({
-                url:"{{ route('transaction.pay') }}",
-                method:"GET",
-                data:{transactionId:transactionId,amount:amount,userId:userId,payment_type:payment_type,title:title},
-                success: function(result){
-               console.log(result);
-                }
-                });
+<script>
+    $(document).on('click', '.chooseplan', function ()
+{
+
+    user_id=$(this).attr('customUser');
+    title=$(this).attr('customTitle');
+    description=$(this).attr('customDescription');
+    amount=$(this).attr('customAmount');
+    payment_type=$(this).attr('customPayment');
 
 
 
+   var html=`<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="body">
+                <div class="row clearfix">
+                    <div class="col-md-3">
+                        <p><b>Plan Type</b></p>
+                        <ul style="list-style-type: none;">
+        <li class="plan-img"> Subscription Plan</li>
+        <li class="price">
 
-        },
-        "prefill": {
-            "name": "Gaurav Kumar",
-            "email": "gaurav.kumar@example.com",
-            "contact": "9999999999"
-        },
-        "notes": {
-            "address": "Razorpay Corporate Office"
-        },
-        "theme": {
-            "color": "#3399cc"
+            <span>Subscription</span>
+        </li>
+        <li></li>
+    </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
+                        <div class="align-center" ><h3 style="float:left; margin-left: -113px;"><span>$</span>${amount}<small>/ mo</small></h3></div>
+                    </div>
+                    <div class="col-md-3">
+                        <p class="align-right"><b style="float: left;">Description</b></p>
+                        <div class="align-left" style="float: left;margin-left: -85px;">${description} </div>
+                    </div>
+                    <div class="col-md-3">
+                        <p class="align-justify"><b >Payment Method</b></p>
+                        <div class="align-justify"> <img style="margin-top: -57px; margin-left: 1px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} "></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`;
+$('#choosedcontent').html(html);
+    $.ajaxSetup({headers:
+        {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    };
-    var rzp1 = new Razorpay(options);
-    rzp1.on('payment.failed', function (response){
-            alert(response.error.code);
-            alert(response.error.description);
-            alert(response.error.source);
-            alert(response.error.step);
-            alert(response.error.reason);
-            alert(response.error.metadata.order_id);
-            alert(response.error.metadata.payment_id);
-    });
-    document.getElementById('rzp-button1').onclick = function(e){
-        rzp1.open();
-        e.preventDefault();
-    }
-    </script>
+        });
 
+        $.ajax({
+        url:"{{ route('subscription.payment') }}",
+        method:"post",
+        data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type},
+        success: function(result){
+            {{-- console.log() --}}
+            var options = {
+                "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
+                "amount": result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name":"{{Session::get('name')}}",
+                "description": "Test Transaction",
+                "image": "https://example.com/your_logo",
+                "order_id": result.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "handler": function (response){
+
+                    $.ajaxSetup({headers:
+                        {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                        });
+
+
+                         transactionId=response.razorpay_payment_id;
+
+                        $.ajax({
+                        url:"{{ route('transaction.pay') }}",
+                        method:"GET",
+                        data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title},
+                        success: function(result){
+                            $('#mdlup').modal('show');
+                        }
+                        });
+
+
+
+
+                },
+
+                "prefill": {
+                    "name": "Gaurav Kumar",
+                    "email": "gaurav.kumar@example.com",
+                    "contact": "9999999999"
+                },
+                "notes": {
+                    "address": "Razorpay Corporate Office"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response){
+                    alert(response.error.code);
+                    alert(response.error.description);
+                    alert(response.error.source);
+                    alert(response.error.step);
+                    alert(response.error.reason);
+                    alert(response.error.metadata.order_id);
+                    alert(response.error.metadata.payment_id);
+            });
+            document.getElementById('rzp-button1').onclick = function(e){
+                rzp1.open();
+                e.preventDefault();
+            }
+        }
+        });
+
+
+
+    })
+</script>
 @stop
+
