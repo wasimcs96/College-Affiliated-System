@@ -11,9 +11,9 @@ class AdminPrmigationController extends Controller
 {
    public function index(){
 
-    $countries=Country::all();
+        $countries = ConsultantPrMigrationCountry::orderBy('updated_at', 'Desc')->get();
 
-       return view('admin.prmigration.prmigration',compact('countries'));
+       return view('admin.prmigration.prmigration', compact('countries'));
    }
 
 //    public function store(Request $request){

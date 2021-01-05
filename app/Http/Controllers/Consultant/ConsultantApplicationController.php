@@ -20,7 +20,8 @@ class ConsultantApplicationController extends Controller
 {
    public function index()
    {
-     return view('consultant.application.application');
+     $applications = Application::orderBy('created_at', 'DESC')->get();
+     return view('consultant.application.application')->with('applications', $applications);
    }
 
    public function applicationCreate($id)

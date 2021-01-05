@@ -16,22 +16,22 @@
                     @csrf
 
 
-                <div class="row clearfix">
-                    {{-- <input type="text" value="{{$au}}" hidden> --}}
-                    <div class="col-lg-4 col-md-12">
-                        <label>Select Countries</label>
-                        <div class="multiselect_div">
-                            <select id="multiselect4-filter" name="country[]" class="multiselect multiselect-custom" multiple="multiple">
-                                @foreach($countries as $country)
-                                <option value="{{$country->countries_id}}">{{$country->countries_name}}</option>
-                                @endforeach
+                    <div class="row clearfix">
+                        {{-- <input type="text" value="{{$au}}" hidden> --}}
+                        <div class="col-lg-4 col-md-12">
+                            <label>Select Countries</label>
+                            <div class="multiselect_div">
+                                <select id="multiselect4-filter" name="country[]" class="multiselect multiselect-custom" multiple="multiple">
+                                    @foreach($countries as $country)
+                                    <option value="{{$country->countries_id}}" <?php if (in_array($country->countries_id, $consultantCountries)) { echo "selected"; } ?>>{{$country->countries_name}}</option>
+                                    @endforeach
 
-                            </select>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </form>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
             </div>
 
 
@@ -74,7 +74,7 @@
 <script src="{{ asset('assets/vendor/jquery-inputmask/jquery.inputmask.bundle.js') }}"></script><!-- Input Mask Plugin Js -->
 <script src="{{ asset('assets/vendor/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/multi-select/js/jquery.multi-select.js') }}"></script><!-- Multi Select Plugin Js -->
-<script src="{{ asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js') }}"></script>
+{{-- <script src="{{ asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js') }}"></script> --}}
 <script src="{{ asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script><!-- Bootstrap Tags Input Plugin Js -->
 <script src="{{ asset('assets/vendor/nouislider/nouislider.js') }}"></script><!-- noUISlider Plugin Js -->
