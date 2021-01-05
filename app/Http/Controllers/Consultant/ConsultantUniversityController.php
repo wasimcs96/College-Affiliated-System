@@ -12,7 +12,6 @@ class ConsultantUniversityController extends Controller
     public function index()
     {
         $universities = auth()->user()->consultant->consultantUniversity;
-
         return view('consultant.university.university')->with('universities',$universities);
     }
 
@@ -25,7 +24,6 @@ class ConsultantUniversityController extends Controller
     public function indexRequest()
     {
         $universities = auth()->user()->consultant->consultantUniversity;
-
         return view('consultant.university.university_request')->with('universities',$universities);
     }
 

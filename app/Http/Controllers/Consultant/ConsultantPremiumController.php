@@ -11,15 +11,9 @@ class ConsultantPremiumController extends Controller
     public function index()
     {
         $cp=auth()->user()->id;
-
-
         $premiums = Order::where('user_id',$cp)->where('payment_type', 1 )->orderBy('updated_at', 'DESC')->get();
-
-// dd($premiums);
-
         return view('consultant.premium.premium',compact('premiums'));
     }
-
 
     public function add()
     {
