@@ -1,17 +1,15 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Admin')
-@section('title', 'Courses')
+@section('parentPageTitle', 'University')
+@section('title', 'Advertisement')
 
 @section('content')
-
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Courses<small>All Courses</small></h2>
+            <h2>Advertisement</h2>
             <ul class="header-dropdown dropdown">
-
+<li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('university.advertisement.add')}}">Add More</a></li>
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <a href="{{route('admin.courses.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>  Add </a>
                 {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                     <ul class="dropdown-menu">
@@ -26,70 +24,57 @@
             <div class="table-responsive">
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
-
                         <tr>
-                            <th> <b>Category</b></th>
-                            <th><b> Name </b></th>
-                            <th><b> Type</b></th>
-                            <th><b>Action<b></th>
-
+                            <th> <b>
+                                Banner Image</b></th>
+                            <th><b> Date </b></th>
+                            {{-- <th><b> E-mail</b></th>
+                            <th><b>Date</b></th>
+                            <th><b>Time Slot</b></th> --}}
+                            <th><b> Status</b></th>
+                            <th><b>Actions</b></th>
                         </tr>
                     </thead>
-                    @if($courses->count() > 0)
-                   <tbody>
-                    @foreach ($courses as $course)
-                        <tr>
-                            <td>{{$course->category->title ?? ''}}</td>
-                             <td>{{$course->name}}</td>
-                            <td>
-                                @if ($course->type  == 0)
+                    <tfoot>
 
-                                    <span class="">UG</span>
-
-                                @elseif($course->type == 1)
-
-                                    <span class="">PG</span>
-
-                                @else
-
-                                    <span class="">Diploma</span>
-
-                                @endif
-                            </td>
-
-
-                            <td style="text-align: center;">
-                            <a href="{{route('admin.courses.show', $course->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View Course" title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
-                            <a href="{{route('admin.courses.edit', $course->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit course" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                            &nbsp;&nbsp;
-
-
-
-                              <a href="{{route('admin.courses.delete', $course->id)}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete Course" data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
-
-                            </td>
-
-                        </tr>
-
-                        @endforeach
+                    </tfoot>
+                    <?php $adid=auth()->user()->id?>
+                        <?php  $rts=App\Models\Advertisement::where('user_id',$adid)->get();
+                    ?>
+                    {{-- {{dd($rts)}} --}}
+                    @if($rts->count() > 0)
                     <tbody>
-                        @else
-                        <tfoot>
-                            <tr>
-                                <td colspan='7' align='center'> <strong>Record Not Available</strong> </td>
-                            </tr>
-                        </tfoot>
-                        @endif
+
+                        @foreach($rts as $rt)
+
+                        <tr>
+                            <td>  <img src="{{asset($rt->banner_image)}}" class="user-photo" alt="User Profile Picture" width="40px" height="40px"></td>
+                            {{-- <td>{{$booking->user->mobile}}</td>
+                            <td>{{$booking->user->email}}</td> --}}
+                            <td>{{$rt->expire_date}}</td>
+                            {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
+                            <td>
+                                {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}
+                                @if($rt->status==0)<div class="btn btn-success">Active</div>@endif
+                                @if($rt->status==1)<div class="btn btn-danger">Expired</div>@endif
+                                @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif
+                            </td>
+                            <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td>
+                        </tr>
+@endforeach
+@else
+
+Records not available
+@endif
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
 </div>
-
-
-
 @stop
+
 @section('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
@@ -105,6 +90,7 @@ tr.shown td.details-control {
 }
 </style>
 @stop
+
 @section('page-script')
 <script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>

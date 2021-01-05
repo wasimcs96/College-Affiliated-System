@@ -34,7 +34,7 @@ class PaymentController extends Controller
         Session::put('type', $type);
         Session::put('title', $title);
 // dd($order->toArray());
-           
+
        $saif=$order->toArray();
         return response($saif);
     }

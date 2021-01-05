@@ -21,7 +21,9 @@ class UniversityProfileController extends Controller
     {
         $id = Auth()->user()->id;
         $user=User::where('id',$id)->first();
-        return view('university.profile')->with('user',$user)->with('countries',Country::all());
+        $docs = auth()->user()->university->default_documents;
+        $documents = json_decode($docs);
+        return view('university.profile')->with('user',$user)->with('countries',Country::all())->with('documents',$documents);;
     }
 
     public function profileStore(Request $request)

@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
+@section('parentPageTitle', 'University')
 @section('title', 'Subscription')
 
 @section('content')
@@ -60,7 +60,7 @@
         <div class="modal-footer">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('consultant.subscription')}}" class="btn btn-primary" id="add_document3">Close</a>
+          <a href="{{route('university.subscription')}}" class="btn btn-primary" id="add_document3">Close</a>
         </div>
         </div>
        </div>

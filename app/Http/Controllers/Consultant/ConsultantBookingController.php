@@ -30,11 +30,12 @@ class ConsultantBookingController extends Controller
        $show = Booking::where('id',$id)->first();
        $enq = $show->enquiry;
        $queries = json_decode($enq,true);
+    //    dd( $queries);
        $i = 0;
        foreach($queries as $query)
        {
-           $university_id[$i] = $query['university'];
-           $course_id[$i] = $query['course'];
+           $university_id[$i] = $query['university'] ?? '';
+           $course_id[$i] = $query['course'] ?? '';
            $i++;
        }
        $university0 =  University::where('id',$university_id[0])->get()->first();
@@ -126,16 +127,14 @@ public function applicationStore(Request $request){
     function fetchCourse(Request $request)
     {
         $fetch=University::where('id',$request->universityid)->first();
-// dd($fetch);
         $courses =  $fetch->UniversityCourse;
         $output='';
         foreach($courses as $row)
         {
          $output .= '<option value="'.$row->course->id.'">'.$row->course->name.'</option>';
         }
-        // dd($output);
         echo $output;
-        // dd();
+
     }
 
 }

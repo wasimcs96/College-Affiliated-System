@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label>Fees</label>
-                        <input type="text"  name="fees" class="form-control" required>
+                        <input type="number"  name="fees" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Course Start Date</label>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <label>Fax Number</label>
-                        <input type="text" name="fax_number" class="form-control" required>
+                        <input type="number" name="fax_number" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Terms & Condition</label>

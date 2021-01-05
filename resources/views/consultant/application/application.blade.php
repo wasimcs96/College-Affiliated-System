@@ -12,11 +12,6 @@
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    {{-- <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul> --}}
                 </li>
             </ul>
         </div>
@@ -32,7 +27,7 @@
                             {{-- <th><b> Universities</b></th> --}}
                             {{-- <th><b> Date</b></th> --}}
                             <th><b> Status</b></th>
-                            <th><b> Actions</b></th>
+                            <th style="text-align: center;"><b> Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -54,7 +49,7 @@
                                 @if($application->status==1)<div class="btn btn-danger">Closed</div>@endif
 
                             </td>
-                            <td><a href="{{route('consultant.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td style="text-align: center;"><a href="{{route('consultant.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 @endforeach
 @else

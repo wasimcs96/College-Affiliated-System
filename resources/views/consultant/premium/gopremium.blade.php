@@ -8,68 +8,100 @@
     @foreach ($packages as $package)
 
     <div class="col-lg-4 cool-md-4 col-sm-12">
-      
+
         <div class="card">
             <ul class="pricing body">
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
                     <h3><span>$</span>{{$package->amount}}<small>/ mo</small></h3>
                     <span>Premium</span>
+                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');
+        $rt=auth()->user()->Premium_expire_date;
+?>
                 </li>
+                <li>{{$package->title}}</li>
+                <hr>
                 <li>{{$package->description}}</li>
                 <input type="text" name="amount" value="{{$package->amount}}" hidden>
                 <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
                 <input type="text" name="payment_type" value="1" hidden>
                 <input type="text" name="title" value="{{$package->title}}" hidden>
-                <li class="plan-btn"><button customDescription="{{$package->description}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="1" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
+                @if($rt>$mytime && $rt != null)
+
+                <li class="plan-btn"><button class="btn btn-round btn-outline-secondary" data-toggle="modal" data-target="#mdlerror">Choose plan</button></li>
+                @else
+                <li class="plan-btn"><button customDescription="{{$package->description}}" customPackage="{{$package->package_time}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="1" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
+
+                @endif
             </ul>
         </div>
-    
+
     </div>
     @endforeach
     {{-- <img style="width: 100px; height: 50px; border-radius: 11px;" id="rzp-button1" src="{{asset('assets/images/razor_pay.jpeg')}} "> --}}
 </div>
-<div class="container" id="choosedcontent">
-  
+<div class="modal fade" id="mdlerror" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-body" style="
+        text-align:center;">
+            <div >
+            <img  style="width:145px"; src="{{asset('frontEnd/assets/images/error.png')}}">
+            </div>
+            <br>
+            <div style="
+            text-align:center;">
+                <h1>You can't buy Plan ! </h1>
+                <h4>Previous Plan is still active</h4>
+            </div>
+        </div>
+        <div class="modal-footer">
+          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+          {{-- <button type= class="btn btn-primary">Submit</button> --}}
+          <a href="{{route('consultant.premium')}}" class="btn btn-primary" id="add_document3">Close</a>
+        </div>
+        </div>
+       </div>
 </div>
-<div class="container">
+{{-- ####################################################ERROR###################### --}}
 
-<br>
+<div class="modal fade" id="mdlup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
-<?php $mytime=Carbon\Carbon::now()->format('Y-m-d');
-        $rt=auth()->user()->Premium_expire_date;
-?>
-
-{{-- @if($rt<$mytime) --}}
-@if (Session::get('amount'))
-<h2 class="text-center" style="font-family: -webkit-pictograph;
-font-weight: unset;"> Pay with Razorpay</h2>
-<hr>
-<div class="align-content-center">
-    <img style="width: 279px; height: 218px; border-radius: 7px; margin-top: -83px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} ">
-
+        <div class="modal-body" style="
+        text-align:center;">
+            <div >
+            <img  style="width:145px"; src="{{asset('frontEnd/assets/images/checkmark.png')}}">
+            </div>
+            <br>
+            <div style="
+            text-align:center;">
+                <h1>Thank You</h1>
+            </div>
+        </div>
+        <div class="modal-footer">
+          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+          {{-- <button type= class="btn btn-primary">Submit</button> --}}
+          <a href="{{route('consultant.premium')}}" class="btn btn-primary" id="add_document3">Close</a>
+        </div>
+        </div>
+       </div>
 </div>
-@endif
-
-{{-- @endif --}}
-</div>
-
+{{-- </div> --}}
 
 @stop
 
 @section('page-styles')
-<style>
-.cntr {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-
-  }
-</style>
 
 @stop
 
 @section('page-script')
+<script src="backend.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+<script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
+
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 
@@ -98,18 +130,56 @@ font-weight: unset;"> Pay with Razorpay</h2>
     description=$(this).attr('customDescription');
     amount=$(this).attr('customAmount');
     payment_type=$(this).attr('customPayment');
+    package_time=$(this).attr('customPackage');
 
 
+   var html=`
+   <div class="row clearfix">
 
-   var html=`<div class="card">
-    <ul class="pricing body">
-        <li class="plan-img">Enjoy Premium Plan</li>
-        <li class="price">
-            <h3><span>$</span>${amount}<small>/ mo</small></h3>
-            <span>Premium</span>
-        </li>
-        <li>${description}</li>
-    </ul>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="body">
+            <div class="row clearfix">
+                <br>
+
+                <div class="col-md-3">
+                    <br>
+
+                    <p><b>Plan Name</b></p>
+                    <ul style="list-style-type: none;margin-left: -40px;">
+    <li class="plan-img">${title}</li>
+
+
+</ul>
+                </div>
+                <div class="col-md-3">
+                    <br>
+
+                    <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
+                    <br>
+                    <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>/${package_time}-mo</small></h5></div>
+                </div>
+                <br>
+
+                <div class="col-md-3">
+                    <br>
+
+                    <p class="align-right"><b style="float: left;">Description</b></p>
+                    <br>
+                    <div class="align-left" style="float: left;     margin-left: -4px;">${description} </div>
+                </div>
+                <br>
+
+                <div class="col-md-3">
+                    <br>
+
+                    <p class="align-justify"><b >Payment Method</b></p>
+                    <div class="align-justify"> <img style="margin-top: -57px; margin-left: 1px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} "></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>`;
 $('#choosedcontent').html(html);
     $.ajaxSetup({headers:
@@ -117,7 +187,7 @@ $('#choosedcontent').html(html);
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
         });
-        
+
         $.ajax({
         url:"{{ route('subscription.payment') }}",
         method:"post",
@@ -133,29 +203,30 @@ $('#choosedcontent').html(html);
                 "image": "https://example.com/your_logo",
                 "order_id": result.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                 "handler": function (response){
-            
+
                     $.ajaxSetup({headers:
                         {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                         });
-            
-            
+
+
                          transactionId=response.razorpay_payment_id;
-                        
+
                         $.ajax({
                         url:"{{ route('transaction.pay') }}",
                         method:"GET",
-                        data:{transactionId:transactionId,amount:amount,userId:userId,payment_type:payment_type,title:title},
+                        data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title},
                         success: function(result){
-                       console.log(result);
+                            $('#mdlup').modal('show');
                         }
                         });
-            
-            
-            
-            
+
+
+
+
                 },
+
                 "prefill": {
                     "name": "Gaurav Kumar",
                     "email": "gaurav.kumar@example.com",
@@ -185,7 +256,7 @@ $('#choosedcontent').html(html);
         }
         });
 
-       
+
 
     })
 </script>

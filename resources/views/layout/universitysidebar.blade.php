@@ -10,10 +10,15 @@
                 <img src="{{ asset(Auth()->user()->profile_image) }}" class="user-photo" alt="User Profile Picture" width="40px" height="40px">
                 @else
                 <img src="{{ asset('assets/images/user.png') }}" class="user-photo" alt="User Profile Picture">
-             @endif            </div>
-            <div class="dropdown">
+                @endif            </div>
+
+                {{-- <div class="row"> --}}
+             <div class="dropdown">
                 <span>Welcome,</span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{auth()->user()->first_name}} </strong></a>
+                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>
+                    {{-- {{auth()->user()->first_name}}  --}}
+                  <?php  $myvalue = auth()->user()->first_name; $arr = explode(' ',trim($myvalue)); echo $arr[0];?>
+                </strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
                     <li><a href="{{route('university.profile')}}"><i class="icon-user"></i>My Profile</a></li>
                     <li class="divider"></li>
@@ -28,6 +33,7 @@
                      </form></li>
                 </ul>
             </div>
+        {{-- </div> --}}
         </div>
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu">

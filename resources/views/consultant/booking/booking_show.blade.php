@@ -23,42 +23,42 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>{{$show->user->first_name}}</td>
+                        <td>{{$show->user->first_name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student Address</th>
-                        <td>{{$show->user->address}}</td>
+                        <td>{{$show->user->address ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>{{$show->user->mobile}}</td>
+                        <td>{{$show->user->mobile ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>{{$show->user->email}}</td>
+                        <td>{{$show->user->email ?? ''}}</td>
                     </tr>
 
 
 
                     <tr>
                         <th scope="row">Student Nationality</th>
-                        <td>{{$show->user->country}}</td>
+                        <td>{{$show->user->country ?? ''}}</td>
                     </tr>
 
                    <tr>
                     <th scope="row">Student University/Course Preference-1</th>
-                    <td>{{$university0->university_name}}/</td>
+                    <td>{{$university0->university_name ?? ''}}/</td>
                 </tr>
 
                 <tr>
                     <th scope="row">Student University/Course Prefrence-2</th>
-                    <td>{{$university1->university_name}}/{{$course1->name}}</td>
+                    <td>{{$university1->university_name ?? ''}}/{{$course1->name ?? ''}}</td>
                 </tr>
                 <tr>
                     <th scope="row">Student University/Course Prefrence-3</th>
-                    <td>{{$university2->university_name}}/{{$course2->name}}</td>
+                    <td>{{$university2->university_name ?? ''}}/{{$course2->name ?? ''}}</td>
                 </tr>
                  <input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>
             </div>
@@ -72,11 +72,11 @@
                 <div id="dec">
 
                 </div>
-                @if($show->status== 0)
+                @if($show->status == 0)
                 <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
                 <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
                 @else
-                @if($show->application->count()>0)
+                @if($show->application == NULL)
                 <a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>
                 @endif
                 @endif

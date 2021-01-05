@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
-@section('title', 'Subscription')
+@section('parentPageTitle', 'University')
+@section('title', 'Go Premium')
 
 @section('content')
 
@@ -13,15 +13,14 @@
             <ul class="pricing body">
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
-                    <h3><span>$</span>{{$package->amount}}<small>/ {{$package->package_time}}-months</small></h3>
-                    {{-- <span>Premium</span> --}}
+                    <h3><span>$</span>{{$package->amount}}<small>/ mo</small></h3>
+                    <span>Premium</span>
                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');
-        $rt=auth()->user()->Subscription_expire_date;
+        $rt=auth()->user()->Premium_expire_date;
 ?>
                 </li>
                 <li>{{$package->title}}</li>
                 <hr>
-
                 <li>{{$package->description}}</li>
                 <input type="text" name="amount" value="{{$package->amount}}" hidden>
                 <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
@@ -60,7 +59,7 @@
         <div class="modal-footer">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('consultant.subscription')}}" class="btn btn-primary" id="add_document3">Close</a>
+          <a href="{{route('university.premium')}}" class="btn btn-primary" id="add_document3">Close</a>
         </div>
         </div>
        </div>
@@ -84,11 +83,12 @@
         <div class="modal-footer">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('consultant.subscription')}}" class="btn btn-primary" id="add_document3">Close</a>
+          <a href="{{route('university.premium')}}" class="btn btn-primary" id="add_document3">Close</a>
         </div>
         </div>
        </div>
 </div>
+{{-- </div> --}}
 
 @stop
 
@@ -101,9 +101,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
 <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
 
-
-
-{{-- ##############################################3 --}}
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 
@@ -138,50 +135,50 @@
    var html=`
    <div class="row clearfix">
 
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="body">
-                <div class="row clearfix">
+<div class="col-lg-12">
+    <div class="card">
+        <div class="body">
+            <div class="row clearfix">
+                <br>
+
+                <div class="col-md-3">
                     <br>
 
-                    <div class="col-md-3">
-                        <br>
-
-                        <p><b>Plan Name</b></p>
-                        <ul style="list-style-type: none;margin-left: -40px;">
-        <li class="plan-img">${title}</li>
+                    <p><b>Plan Name</b></p>
+                    <ul style="list-style-type: none;margin-left: -40px;">
+    <li class="plan-img">${title}</li>
 
 
-    </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <br>
-
-                        <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
-                        <br>
-                        <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>/${package_time}-mo</small></h5></div>
-                    </div>
+</ul>
+                </div>
+                <div class="col-md-3">
                     <br>
 
-                    <div class="col-md-3">
-                        <br>
+                    <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
+                    <br>
+                    <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>/${package_time}-mo</small></h5></div>
+                </div>
+                <br>
 
-                        <p class="align-right"><b style="float: left;">Description</b></p>
-                        <br>
-                        <div class="align-left" style="float: left;     margin-left: -4px;">${description} </div>
-                    </div>
+                <div class="col-md-3">
                     <br>
 
-                    <div class="col-md-3">
-                        <br>
+                    <p class="align-right"><b style="float: left;">Description</b></p>
+                    <br>
+                    <div class="align-left" style="float: left;     margin-left: -4px;">${description} </div>
+                </div>
+                <br>
 
-                        <p class="align-justify"><b >Payment Method</b></p>
-                        <div class="align-justify"> <img style="margin-top: -57px; margin-left: 1px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} "></div>
-                    </div>
+                <div class="col-md-3">
+                    <br>
+
+                    <p class="align-justify"><b >Payment Method</b></p>
+                    <div class="align-justify"> <img style="margin-top: -57px; margin-left: 1px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} "></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>`;
 $('#choosedcontent').html(html);
     $.ajaxSetup({headers:

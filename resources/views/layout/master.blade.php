@@ -12,11 +12,17 @@
     @yield('meta')
 
     @stack('before-styles')
-    <style>
+    {{-- <style>
         .table{
             background-color: #c0c0c0;
         }
-    </style>
+    </style> --}}
+    {{-- <style>
+       td{
+            text-align: center;
+        }
+
+    </style> --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/animate-css/vivify.min.css') }}">
@@ -81,7 +87,7 @@
         <div class="container-fluid">
             <div class="block-header">
                 <div class="row clearfix">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-6 col-sm-12" id="alert_add">
                         <h1>@yield('title')</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
