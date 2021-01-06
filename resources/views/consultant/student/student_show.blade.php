@@ -30,28 +30,28 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>Sufiyan Qureshi</td>
+                        <td>{{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student Address</th>
-                        <td>Sikar,Rajasthan</td>
+                        <td>{{$user->address ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>1234567890</td>
+                        <td>{{$user->mobile ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>email@email.com</td>
+                        <td>{{$user->email ?? ''}}</td>
                     </tr>
 
 
 
                     <tr>
                         <th scope="row">Student Nationality</th>
-                        <td>Indian</td>
+                        <td>{{$user->country ?? ''}}</td>
                     </tr>
 
                     <tr>
@@ -70,7 +70,9 @@
                     </tr>
 
 
+                </tbody>
 
+            </table>
 
 
             </div>
@@ -82,9 +84,7 @@
         {{-- </tr> --}}
 
 
-                    </tbody>
 
-                </table>
                 <div id="res">
 
                 </div>

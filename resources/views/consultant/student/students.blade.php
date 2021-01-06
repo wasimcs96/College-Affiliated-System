@@ -31,10 +31,9 @@
                                 Name</b></th>
                             <th><b> Mobile </b></th>
                             <th><b> E-mail</b></th>
-                            <th><b> Universities</b></th>
-                            <th><b>Date</b></th>
-                            <th><b>
-                                Time</b></th>
+                            <th><b>Sikar</b></th>
+                            <th><b>Country</b></th>
+
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -42,25 +41,28 @@
 
                     </tfoot>
                     <tbody>
-                        {{-- <tr>
-                            <td>Sufiyan</td>
-                            <td>1234567890</td>
-                            <td>email@email.com</td>
-                            <td>3</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('consultant.student.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
-                        </tr>
+                        @if($users->count() > 0)
 
-                        <tr>
-                            <td>Qureshi</td>
-                            <td>1234567890</td>
-                            <td>@email.com</td>
-                            <td>3</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('consultant.student.show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
-                        </tr> --}}
+
+
+                                @foreach ($users as $user)
+                                    @if($user->isClient())
+                                        <tr>
+                                            <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
+                                            {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
+                                            <td>{{$user->mobile ?? ''}}</td>
+                                            <td>{{$user->email ?? ''}}</td>
+                                            <td>{{$user->city ?? ''}}</td>
+                                            <td> {{$user->country ?? ''}} </td>
+                                            <td><a href="{{route('consultant.student.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                            {{-- <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                            <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a> --}}
+                                        </td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+
+                        @endif
 
 
 
