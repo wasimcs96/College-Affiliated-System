@@ -27,27 +27,27 @@ class ConsultantAdvertisementController extends Controller
 
    public function store(Request $request)
    {
-    dd($request->all());
+    // dd($request->all());
 
-    $this->validate($request,[
-        'image'=>'required',
-    ]);
+    // $this->validate($request,[
+    //     'image'=>'required',
+    // ]);
 
 
     $expire=$request->expire_date;
       $new=Carbon::now()->addMonths($expire);
     $dt= $new->format('Y-m-d');
-    if($request->hasFile('image'))
-    {
-        $ad_image = $request->image;
-        $ad_image_new_name = time().$ad_image->getClientOriginalName();
-        $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
-        $newname=Config::get('define.image.advertisement').'/'.$ad_image_new_name;
-    }
-    Advertisement::create([
+    // if($request->hasFile('image'))
+    // {
+    //     $ad_image = $request->image;
+    //     $ad_image_new_name = time().$ad_image->getClientOriginalName();
+    //     $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
+    //     $newname=Config::get('define.image.advertisement').'/'.$ad_image_new_name;
+    // }
+   $as= Advertisement::create([
 
         'user_id'=>auth()->user()->id,
-        'banner_image'=>  $newname,
+        'banner_image'=>$newname ?? '',
         'user_type'=>0,
         'status'=>0,
         'expire_date'=> $dt,

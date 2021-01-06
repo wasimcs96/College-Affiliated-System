@@ -33,13 +33,13 @@
                     <span>Advertisement</span>
                 </li>
                  <li>{{$package->description}}</li>
-               
+                 <input name="image" type="file" class="dropify-frrr" >
                 <input type="text" name="amount" value="{{$package->amount}}" hidden>
                 <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
                 <input type="text" name="payment_type" value="2" hidden>
                 <input type="text" name="title" value="{{$package->title}}" hidden>
                 <input type="hidden" name="expire_date" value="{{ $package->package_time }}"  />
-                <li class="plan-btn"><button customDescription="{{$package->description}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="1" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
+                <li class="plan-btn"><button customDescription="{{$package->description}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="2" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
             </ul>
         </div>
   
@@ -136,9 +136,7 @@
                 <li></li>
             </ul>
                             </div>
-                            <div class="col-md-3">
-                                <input name="image" type="file" class="dropify-frrr" >
-                            </div>
+                           
                             <div class="col-md-3">
                                 <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
                                 <div class="align-center" ><h3 style="float:left; margin-left: -113px;"><span>$</span>${amount}<small>/ mo</small></h3></div>
@@ -156,7 +154,7 @@
                 </div>
             </div>
         </div>`;
-        image=$('input[name="image"]').val()
+       var image=$('input[name="image"]').val()
         $('#choosedcontent').html(html);
             $.ajaxSetup({headers:
                 {
@@ -169,10 +167,10 @@
                 method:"post",
                 data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type,image:image},
                 success: function(result){
-                    {{-- console.log() --}}
+                   
                     var options = {
                         "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
-                        "amount": result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                        "amount":amount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                         "currency": "INR",
                         "name":"{{Session::get('name')}}",
                         "description": "Test Transaction",
