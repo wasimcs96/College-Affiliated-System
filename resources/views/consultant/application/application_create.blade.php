@@ -25,18 +25,18 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                                <form id="basic-form" class="basic-form" method="post" novalidate action="{{route('consultant.application.followup.store')}}">
+                                <form id="basic-form6" class="basic-form" method="post" novalidate action="{{route('consultant.application.followup.store')}}">
                                     @csrf
                                     {{-- <div class="form-group">
                                         <label>Title</label>
                                         <input type="text" class="form-control" name="title" id="title" required>
                                     </div> --}}
                                   <input type="text" name="application_id" value={{$application->id}} hidden>
-                                    <div class="form-group">
+                                    <div class="form-group" id="noteError">
                                         <label style="color:white">Note</label>
                                         <textarea class="form-control" id="note" name="note" rows="5" cols="30" required></textarea>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="dateError">
                                         <label style="color:white">Date</label>
                                         <input  class="form-control" name="date" id="date" required>
                                     </div>
@@ -259,7 +259,7 @@
                                     </div>
                                 </div>
     @endif
-                  <label for="" style="margin-left: 17px;">Upload Document(Image must be of jpeg and png format)</label>
+                  <label for="" style="margin-left: 17px;">Upload Document ( Note: Image must be of jpeg and png format )</label>
                     <input type="file" name="documents[]" class="dropify" multiple>
                     @csrf
                     <br>
@@ -277,12 +277,13 @@
 <div class="col-lg-12">
     <div class="row clearfix">
         <div class="col-md-12">
-            <div class="card">
-                <div class="header">
+            <div class="card" >
+                <div class="header" >
                     <h2>Applied Universities</h2>
                 </div>
 
             <div class="body">
+                <div id="alert_add2"></div>
 @foreach($application->applicationAppliedUniversity as $key=>$applied)
 
 <div class="accordion" id="accordionExample">
@@ -314,6 +315,8 @@
                                   <form id="wizard_with_validation{{$key}}" method="POST">
                                     <h3>Apply in University</h3>
                                     <fieldset>
+                                        <h6> <b>
+                                          Applied University Information</b> </h6>
                                         <div class="table-responsive" >
                                             <table class="table table-hover table-striped" >
 
@@ -330,89 +333,103 @@
                                             </tbody>
                                         </table>
                                     </div>
+
                                     <div class="row clearfix" >
-                                    <div class="col-lg-6 col-md-12">
 
-                                    </div>
+                                        <div class="col-lg-6 col-md-12">
 
-                                    <input type="text" name="university_id" value="{{$applied->university->id}}" hidden>
-                                    <input type="text" name="apply_id" value="{{$applied->id}}" hidden>
+                                        </div>
+
+                                    <input type="text" name="university_id" value="{{$applied->university->id ?? ''}}" hidden>
+                                    <input type="text" name="apply_id" value="{{$applied->id ?? ''}}" hidden>
 
                                     <div class="col-lg-6 col-md-12">
                                     <div class="form-group">
-                                    @if($applied->Is_applied==0) <a href="#" class="btn btn-warning applied" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyModal" style="float: right;margin-top: 69px;">Apply</a>@endif
-                                    @if($applied->Is_applied==1)<div class="btn btn-success" style="float: right;margin-top: 69px;">Applied</div>@endif
+                                    @if($applied->Is_applied==0) <a href="#" class="btn btn-warning applied" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyModal" style="float: right;margin-top: 19px;">Ready to Apply</a>@endif
+                                    @if($applied->Is_applied==1)<div class="btn btn-success" style="float: right;margin-top: 19px;">Applied</div>@endif
                                     </div>
                                     </div>
                                     </div>
                                     </fieldset>
+
                                       <h3>Application Status </h3>
 
                                       <fieldset>
-                                        @if($applied->Is_applied==1)
-                                          <div class="row clearfix" style="display: flow-root;" >
-                                            <h6 style="margin-left: 16px;"> <b>
-                                                Application Status </b> </h6>
-                                                <br/>
-                                             @if ($applied->approved_status == 0)
-                                             <h6 style="margin-left: 16px; color:orange;" > Your Application Status is: Pending </h6>
-
-                                              @endif
-                                              @if ($applied->approved_status == 1)
-
-                                              <div class="form-group">
-                                             <h6 style="margin-left: 16px; color:green;" > Your Application Status is: Approved </h6>
-                                              </div>
-                                              @endif
-                                              @if ($applied->approved_status == 2)
-                                              <div class="form-group">
-                                             <h6 style="margin-left: 16px; color:red;"> Your Application Status is: Cancelled</h6>
-                                              </div>
-                                              @endif
-                                              <div class="form-group" style="float: right;  margin-top: 92px;">
-                                                <a href="#"  class="btn btn-success approvel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#dateModal" style="margin-right: 10px;" >Approve</a>
-
-                                            <a href="#"  class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" >Decline</a>
-                                          </div>
-                                          </div>
-                                        @else
-                                        <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
-                                        @endif
-                                      </fieldset>
-                                      <h3>University Reply</h3>
-                                      <fieldset>
                                     @if($applied->Is_applied==1)
+                                        <h6> <b>
+                                            Application Approval Status</b> </h6>
+                                       <div class="table-responsive" >
+                                           <table class="table table-hover table-striped" >
+
+                                               <tbody>
+
+                                               <tr>
+                                                   <th scope="row">University Name</th>
+                                                   <td>{{$applied->university->university_name ?? ''}}</td>
+                                               </tr>
+                                               <tr>
+                                                   <th scope="row">Course Name</th>
+                                                   <td>{{$applied->course->name ?? ''}}</td>
+                                               </tr>
+                                               <tr>
+                                                <th scope="row">Application Status</th>
+                                                <td id="application1">@if ($applied->approved_status == 0) <span style="color:yellow">Pending</span>@endif
+                                                    @if ($applied->approved_status == 1) <span style="color:green">Approved</span>@endif
+                                                    @if ($applied->approved_status == 2) <span style="color:red">Cancelled</span>@endif</td>
+                                            </tr>
+                                           </tbody>
+                                       </table>
+                                   </div>
+                                   <div class="form-group" style="float: right;  margin-top: 2px; margin-right: -30px;">
+                                    <a href="#"  class="btn btn-success approvel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#dateModal" style="margin-right: 10px;" >Approve</a>
+
+                                <a href="#"  class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" >Decline</a>
+                              </div>
+
+                            @else
+                             <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
+                            @endif
+                                   <div class="col-lg-6 col-md-12">
+
+                                   </div>
+                                      </fieldset>
+                                      <h3>Offer Acceptance</h3>
+                                      <fieldset>
+
+                                    @if($applied->Is_applied==1)
+
                                         @if ($applied->approved_status == 1)
+                                        <h6> <b>
+                                            Offer Acceptance </b> </h6>
                                           <div class="form-group">
                                               <div class="fancy-checkbox">
-                                                  <label><span> <h6> University has accepted your application. Please accept before {{$applied->deadline}} </h6></span></label>
+                                                  <label><span> <p> University has accepted your application. Please accept before <b> {{$applied->deadline}} </b> </p></span></label>
 
                                                 </div>
                                           </div>
                                           <div class="row clearfix">
                                             @if ($applied->is_accepeted == 0)
-                                            <div class="form-group">
+                                            <div class="form-group" style="margin-left: 217px;">
                                                 <h6 style="margin-left: 16px; color:orange">Accept Your Application by clicking the below button</h6>
-                                                  <a style="margin-left: 16px;" href="#"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accept</a>
+                                                  <a style="margin-left: 182px;" href="#"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accept</a>
                                               </div>
 
                                             @endif
                                             @if ($applied->is_accepeted == 1)
                                             <div class="form-group">
-                                                <h6 style="margin-left: 16px; color:green"> Your Application Status is: Approved </h6>
+                                                <h6 style="margin-left: 16px; color:green"> You have <b>Accepted</b> the Application </h6>
                                               </div>
                                             @endif
                                             @if ($applied->is_accepeted == 2)
                                             <div class="form-group">
-                                                <h6 style="margin-left: 16px; color:red"> Your Application Status is: Cancelled </h6>
+                                                <h6 style="margin-left: 16px; color:red"> You have <b>Cancelled</b> the Application </h6>
                                               </div>
                                             @endif
                                         </div>
                                         @else
 
                                         <div class="form-group">
-                                            <h6 style="margin-left: 16px; color:yellow"> Your Application Status is: Not Approved </h6>
-                                        </div>
+                                            <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>                                        </div>
                                           @endif
 
                                     @else
@@ -421,7 +438,7 @@
                                         </fieldset>
                                       <h3>Ready To Fly - Finish</h3>
                                       <fieldset>
-                                        @if($applied->Is_applied==1)
+                                        @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1)
                                         <form action="{{ route('consultant.application.university.update') }}" method="POST" enctype="multipart/form-data" >
                                             @csrf
                                          <input type="text" value="{{$applied->university->id}}" name="uni_id" id="uni_id" hidden>
@@ -446,10 +463,10 @@
                                             </div>
                                             <div class="form-group">
                                                 <?php
-                                                $increase=0;
+
                                                 $appliedUniversity=$applied->university->default_documents;
                                                 $documentSelect = json_decode($appliedUniversity);
-                                                ?>
+                                                $increase=0; ?>
                                                 <label for="documents">Documents</label>
                                                 <br/>
                                                 <div class="dynamic_document" id="dynamic_document2">
@@ -461,7 +478,7 @@
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
 
-                                                        <input type="checkbox" name="document[]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
+                                                        <input type="checkbox" name="doc[]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
 
                                                         <span>{{$value}}</span>
 
@@ -551,11 +568,20 @@
         </div>
         <div class="modal-body">
 
-              <input type="date" id="modalDate" name="date">
+              <form id="basic-form5" class="basic-form" method="post" novalidate action="#">
+                <div class="form-group">
+                    <label for="date">Deadline Date</label>
+                    <div id="modalDateError" >
+                    <input type="text"  class="form-control" id="modalDate" name="date" required>
+                    {{-- <span class="invalid-feedback" role="alert" id="modalDateError">
 
+                    </span> --}}
+                </div>
+                </div>
+            </form>
         </div>
         <div class="modal-footer">
-           <a href="javascript:void(0)" id="applyApprovel" class="btn btn-primary" > Apply </a>
+           <a href="javascript:void(0)" id="applyApprovel" class="btn btn-primary" > Approve </a>
         </div>
     </div>
 </div>
@@ -567,7 +593,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <h5 class="modal-title" id="exampleModalLabel2">Offer Acceptance</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -588,7 +614,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <h5 class="modal-title" id="exampleModalLabel2">Ready to Fly</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -609,7 +635,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <h5 class="modal-title" id="exampleModalLabel2">Update details</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -620,7 +646,7 @@
 
         </div>
         <div class="modal-footer">
-           <a href="javascript:void(0)" id="readyTo2" class="btn btn-primary" >Confirm</a>
+           <a href="javascript:void(0)" id="readyTo2" class="btn btn-primary" >Update</a>
         </div>
     </div>
 </div>
@@ -630,16 +656,19 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <h5 class="modal-title" id="exampleModalLabel2">Cancel Application</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <h4>Are you sure you want to cancel</h4>
+            <h4>Are you sure you want to cancel?</h4>
         </div>
         <div class="modal-footer">
-           <a href="javascript:void(0)" id="applyDecline" class="btn btn-primary" >Apply</a>
+           <a href="javascript:void(0)" id="applyDecline" class="btn btn-danger" >Yes</a>
+           <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">
+            No
+          </button>
         </div>
     </div>
 </div>
@@ -733,7 +762,7 @@
     .iws:hover .closes {
         opacity: 1;
     }
-                    </style>
+</style>
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-steps/jquery.steps.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
 <style>
@@ -775,13 +804,14 @@
     });
 
     $('#add_document3').click(function(){
-      rt=$('#document_name2').val()
+      rt=$('#document_name2').val();
+
       //   console.log(rt);
-      $('#dynamic_document2').append('<label class="control-inline fancy-checkbox" style="margin-left: -4px"><input type="checkbox" name= "document[]" id="document" value="'+rt+'" checked><span>'+rt+'</span></label>')
-      // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
+      $('#dynamic_document2').append('<label class="control-inline fancy-checkbox" style="margin-left: -4px"><input type="checkbox" name= "doc[]" id="document" value="'+rt+'" checked><span>'+rt+'</span></label>')
+      // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet" '+document_row2+'><span>'+rt+'</span></label>')
       $('#documentModal2').modal('hide');
       document.getElementById("basic-form3").reset();
-    //   document_row2++
+    //   document_row2++ ;
     });
 
     $('#upload_document_button').click(function(){
@@ -879,7 +909,12 @@ $(document).on('click', '#apply', function ()
                     url: "{{route('application.apply')}}",
                     data: {appliedUniversityRowId:appliedUniversityRowId},
                     success: function (result) {
+                        $('.applied').html('Applied');
 
+                        $('.applied').addClass('btn btn-success');
+                        $('.applied').removeClass('btn-warning applied');
+                        // $('.applied').css("background-color", "green");
+                        $('#alert_add2').append('<div class="container"><div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>You have applied for the University Successfully.</strong></div></div>')
                         console.log('success');
                     }
                 });
@@ -898,8 +933,17 @@ $(document).on('click', '#apply', function ()
         //  maxDate:"4w"
     });
 });
+
+$(document).ready(function () {
+    $('#modalDate').datepicker({
+        dateFormat: 'mm-dd-yy',
+         minDate: 0,
+        //  maxDate:"4w"
+    });
+});
 </script>
 <script>
+
     var appliedUniversityRowIdApproval='';
      $(document).on('click', '.approvel', function ()
  {
@@ -908,30 +952,58 @@ $(document).on('click', '#apply', function ()
  });
  $(document).on('click', '#applyApprovel', function ()
  {
-
-    var modalDate=$('#modalDate').val()
+    var x = 0;
+    var modalDate=$('#modalDate').val();
+    if( modalDate == '')
+    {
+        $('#modalDateError').html('<input type="text"  class="form-control" id="modalDate" name="date" required><strong><span style="color:red">*Date field is required</span></strong>')
+    }
+    else
+    {
+    // console.log(modalDate);
        if(appliedUniversityRowIdApproval > 0){
          $.ajaxSetup({headers:
              {
                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
              }
              });
-
+            //  $(".invalid-feedback").children("strong").text("");
+            //  $("#basic-form5 input").removeClass("is-invalid");
              $.ajax({
                      type: "post",
                      url: "{{route('application.approval')}}",
                      data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval,modalDate:modalDate},
                      success: function (result) {
+                        $('#alert_add2').append('<div class="container"><div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong> Application Approved Successfully.</strong></div></div>')
 
-                         console.log('success');
+                        $('#application1').html('<span style="color:green">Approved</span>');
+                        // $('#application1').css("margin-left"," 16px");
+                        // $('#application1').css("color","green");
+
+                        x++;
+                        console.log('success');
                      }
+
+            //          error: (response) => {
+            //     if(response.status == 422) {
+            //         let errors = response.responseJSON.errors;
+            //         Object.keys(errors).forEach(function (key) {
+            //             $("#" + key + "Input").addClass("is-invalid");
+            //             $("#" + key + "Error").children("strong").text(errors[key][0]);
+            //         });
+            //     } else {
+            //         window.location.reload();
+            //     }
+            // }
                  });
        }
 
 
              // $(this).text("Pending");
              $('#dateModal').modal('hide');
+             document.getElementById("basic-form5").reset();
              // row++;
+        }
      });
 
 
@@ -945,7 +1017,7 @@ $(document).on('click', '#apply', function ()
  });
  $(document).on('click', '#applyDecline', function ()
  {
-
+var j = 0;
 
        if(appliedUniversityRowIdApproval > 0){
          $.ajaxSetup({headers:
@@ -959,7 +1031,12 @@ $(document).on('click', '#apply', function ()
                      url: "{{route('application.approval')}}",
                      data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval},
                      success: function (result) {
+                        $('#alert_add2').append('<div class="container"><div class="alert alert-danger alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong> Application is Declined.</strong></div></div>')
+                        $('#application1').html('<span style="color:red">Declined</span>');
+                        // $('#application1').css("margin-left"," 16px");
+                        // $('#application1').css("color","red");
 
+                        j++;
                          console.log('success');
                      }
                  });
@@ -967,6 +1044,7 @@ $(document).on('click', '#apply', function ()
 
 
              // $(this).text("Pending");
+
              $('#applyCanceled').modal('hide');
              // row++;
      });
@@ -1021,7 +1099,7 @@ $(document).on('click', '#apply', function ()
  {
     appliedUniversityRowIdReadyToFly=$(this).attr('custom1');
     fees=$('#coursefees').val();
-    documents = document.getElementsByName('document[]');
+    documents = document.getElementsByName('doc[]');
     // console.log(.val());
 
    Array.from(documents).forEach((element)=>{
@@ -1031,9 +1109,6 @@ $(document).on('click', '#apply', function ()
 
 console.log(docs)
 
-    // // documents=$.serialize(docs);
-    // console.log(appliedUniversityRowIdReadyToFly);
-    // console.log(docs);
  });
  $(document).on('click', '#readyTo', function ()
  {
@@ -1057,10 +1132,8 @@ console.log(docs)
                  });
        }
 
-
-             // $(this).text("Pending");
              $('#readyToFly').modal('hide');
-             // row++;
+
      });
 
 
@@ -1100,12 +1173,13 @@ console.log(docs)
 {
    appliedUniversityRowIdReadyToFly=$(this).attr('custom1');
    fees=$('#coursefees').val();
-   documents = document.getElementsByName('document[]');
+   documents = document.getElementsByName('doc[]');
    // console.log(.val());
 
   Array.from(documents).forEach((element)=>{
-    console.log(element.value);
+    // console.log(element.value);
     docs.push(element.value)
+    console.log(docs);
   });
 
 console.log(docs)
@@ -1129,7 +1203,12 @@ $(document).on('click', '#readyTo2', function ()
                     }
                 });
       }
-
+      Array.from(docs).forEach((element)=>{
+    // console.log(element.value);
+    docs.pop(element.value)
+    console.log(docs);
+  });
+            //  docs.clear();
             $('#readyToFly2').modal('hide');
     });
 
@@ -1149,6 +1228,16 @@ $(document).on('click', '#readyTo2', function ()
 
        var note=$('#note').val();
        var date=$('#date').val();
+    if( note == '')
+    {
+        $('#noteError').html('<label style="color:white">Note</label><textarea class="form-control" id="note" name="note" rows="5" cols="30" required></textarea><strong><span style="color:red">*Note field is required</span></strong>')
+    }
+    else if( date == '')
+    {
+        $('#dateError').html('<label style="color:white">Date</label><input  class="form-control" name="date" id="date" required><strong><span style="color:red">*Date field is required</span></strong>')
+    }
+    else
+    {
        if(application_id > 0){
          $.ajaxSetup({headers:
              {
@@ -1163,13 +1252,14 @@ $(document).on('click', '#readyTo2', function ()
                      success: function (result) {
                          console.log('success');
                         //  alert('Follow Up created Successfully');
-                         $('#alert_add').append('<div class="container"><div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>Follow Up Created Successfully.</strong></div></div>')
+                         $('#alert_add').append('<div class="container" style="width: 880px;"><div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>Follow Up Created Successfully.</strong></div></div>')
                      }
                  });
        }
 
              $('#followUpModal').modal('hide');
-             document.getElementsByClassName("basic-form").reset();
+             document.getElementById("basic-form6").reset();
+    }
      });
 
 
