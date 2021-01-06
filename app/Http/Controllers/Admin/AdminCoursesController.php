@@ -15,8 +15,8 @@ class AdminCoursesController extends Controller
      */
      public function index()
      {
-
-         return view('admin.courses.index')->with('courses', Course::all());
+        $courses = Course::orderBy('updated_at', 'DESC')->get();
+         return view('admin.courses.index', compact('courses'));
 
      }
 
@@ -69,7 +69,7 @@ class AdminCoursesController extends Controller
     {
 
          return view('admin.courses.edit')->with('course', $id)->with('categories', Category::all());
-       
+
     }
 
     /**

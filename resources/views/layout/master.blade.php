@@ -87,7 +87,7 @@
         <div class="container-fluid">
             <div class="block-header">
                 <div class="row clearfix">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-6 col-sm-12" id="alert_add">
                         <h1>@yield('title')</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">

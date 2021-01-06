@@ -72,7 +72,8 @@ class AdminPackagesController extends Controller
 
     public function edit(Package $id)
     {
-        return view('admin.packages.edit')->with('packages', $id)->with('package', Package::all());
+        $package = Package::orderBy('updated_at', 'DESC')->get();
+        return view('admin.packages.edit', compact('package'))->with('packages', $id);
     }
 
     /**

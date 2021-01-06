@@ -17,6 +17,7 @@ class AdminUsersController extends Controller
         // dd($id);
         if($id==1)
         {
+
            return view('admin.users.user.index')->with('users', User::all())->with('id',1);
         }
         if($id==2)
