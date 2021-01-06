@@ -24,7 +24,7 @@ class ConsultantPrmigrationController extends Controller
        public function store(Request $request){
         $au=auth()->user()->id;
         $consultant = ConsultantPrMigrationCountry::where('user_id',$au)->get()->first();
-        if($consultant==Null)
+        if($consultant == null)
         {
         $json=json_encode($request->country);
         $prmigration=ConsultantPrMigrationCountry::create([

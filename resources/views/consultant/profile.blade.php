@@ -68,7 +68,7 @@
                             <div class="multiselect_div" style="width: 300px">
                                 <select id="multiselect4-filter" name="country[]" class="multiselect multiselect-custom" multiple="multiple">
                                     @foreach($countries as $country)
-                                    <option value="{{$country->countries_id}}" <?php if (in_array($country->countries_id, $consultantCountries)) { echo "selected"; } ?>>{{$country->countries_name}}</option>
+                                    <option value="{{$country->countries_id}}" <?php if(isset($consultantCountries) && $consultantCountries > 0) { if (in_array($country->countries_id, $consultantCountries)) { echo "selected"; } } ?> >{{$country->countries_name}}</option>
                                     @endforeach
 
                                 </select>
