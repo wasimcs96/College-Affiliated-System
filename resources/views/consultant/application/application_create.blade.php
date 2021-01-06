@@ -25,7 +25,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                                <form id="basic-form" method="post" novalidate action="{{route('consultant.application.followup.store')}}">
+                                <form id="basic-form" class="basic-form" method="post" novalidate action="{{route('consultant.application.followup.store')}}">
                                     @csrf
                                     {{-- <div class="form-group">
                                         <label>Title</label>
@@ -205,7 +205,7 @@
                     <div class="dynamic_document" id="dynamic_document">
                         @foreach($documentSelect as $key => $value)
 
-                        <label class="control-inline fancy-checkbox">
+                        <label class="control-inline fancy-checkbox" style="margin-right: 4px">
                             @if(in_array($value,$documentarray))
                         {{-- <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" multiple> --}}
                             <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked  >
@@ -259,7 +259,7 @@
                                     </div>
                                 </div>
     @endif
-<label for="" style="margin-left: 17px;">Upload Document</label>
+                  <label for="" style="margin-left: 17px;">Upload Document(Image must be of jpeg and png format)</label>
                     <input type="file" name="documents[]" class="dropify" multiple>
                     @csrf
                     <br>
@@ -312,7 +312,7 @@
                               <div class="body wizard_validation">
 
                                   <form id="wizard_with_validation{{$key}}" method="POST">
-                                    <h3>University Information</h3>
+                                    <h3>Apply in University</h3>
                                     <fieldset>
                                         <div class="table-responsive" >
                                             <table class="table table-hover table-striped" >
@@ -330,7 +330,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="row clearfix">
+                                    <div class="row clearfix" >
                                     <div class="col-lg-6 col-md-12">
 
                                     </div>
@@ -346,36 +346,42 @@
                                     </div>
                                     </div>
                                     </fieldset>
-                                      <h3>Application Status</h3>
+                                      <h3>Application Status </h3>
+
                                       <fieldset>
-                                          <div class="row clearfix">
+                                        @if($applied->Is_applied==1)
+                                          <div class="row clearfix" style="display: flow-root;" >
+                                            <h6 style="margin-left: 16px;"> <b>
+                                                Application Status </b> </h6>
+                                                <br/>
                                              @if ($applied->approved_status == 0)
+                                             <h6 style="margin-left: 16px; color:orange;" > Your Application Status is: Pending </h6>
 
-
-                                                  <div class="form-group">
-                                                    <a href="#"  class="btn btn-success approvel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#dateModal" >Approve</a>
-                                                  </div>
-
-
-                                              <div class="form-group">
-                                                <a href="#"  class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" >Decline</a>
-                                              </div>
                                               @endif
                                               @if ($applied->approved_status == 1)
 
                                               <div class="form-group">
-                                             <h6 style="margin-left: 16px;"> Your Application Status is: <button class="btn btn-success">Approved</button> </h6>
+                                             <h6 style="margin-left: 16px; color:green;" > Your Application Status is: Approved </h6>
                                               </div>
                                               @endif
                                               @if ($applied->approved_status == 2)
                                               <div class="form-group">
-                                             <h6 style="margin-left: 16px;"> Your Application Status is: <button class="btn btn-danger">Cancelled</button> </h6>
+                                             <h6 style="margin-left: 16px; color:red;"> Your Application Status is: Cancelled</h6>
                                               </div>
                                               @endif
+                                              <div class="form-group" style="float: right;  margin-top: 92px;">
+                                                <a href="#"  class="btn btn-success approvel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#dateModal" style="margin-right: 10px;" >Approve</a>
+
+                                            <a href="#"  class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" >Decline</a>
                                           </div>
+                                          </div>
+                                        @else
+                                        <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
+                                        @endif
                                       </fieldset>
                                       <h3>University Reply</h3>
                                       <fieldset>
+                                    @if($applied->Is_applied==1)
                                         @if ($applied->approved_status == 1)
                                           <div class="form-group">
                                               <div class="fancy-checkbox">
@@ -386,31 +392,36 @@
                                           <div class="row clearfix">
                                             @if ($applied->is_accepeted == 0)
                                             <div class="form-group">
-                                                <h6 style="margin-left: 16px;">Accept Your Application by clicking the below button</h6>                                                <a style="margin-left: 16px;" href="#"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accept</a>
+                                                <h6 style="margin-left: 16px; color:orange">Accept Your Application by clicking the below button</h6>
+                                                  <a style="margin-left: 16px;" href="#"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accept</a>
                                               </div>
 
                                             @endif
                                             @if ($applied->is_accepeted == 1)
                                             <div class="form-group">
-
-                                                <a style="margin-left: 16px;" href="#"  class="btn btn-success">Accepted</a>
+                                                <h6 style="margin-left: 16px; color:green"> Your Application Status is: Approved </h6>
                                               </div>
                                             @endif
                                             @if ($applied->is_accepeted == 2)
                                             <div class="form-group">
-                                                <a style="margin-left: 16px;" href="#"  class="btn btn-danger">Cancelled</a>
+                                                <h6 style="margin-left: 16px; color:red"> Your Application Status is: Cancelled </h6>
                                               </div>
                                             @endif
                                         </div>
                                         @else
 
-                                        {{-- <div class="form-group">
-                                            <h6 style="margin-left: 16px;"> Your Application Status is: <button class="btn btn-danger">Cancelled</button> </h6>
-                                        </div> --}}
+                                        <div class="form-group">
+                                            <h6 style="margin-left: 16px; color:yellow"> Your Application Status is: Not Approved </h6>
+                                        </div>
                                           @endif
-                                      </fieldset>
+
+                                    @else
+                                          <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
+                                    @endif
+                                        </fieldset>
                                       <h3>Ready To Fly - Finish</h3>
                                       <fieldset>
+                                        @if($applied->Is_applied==1)
                                         <form action="{{ route('consultant.application.university.update') }}" method="POST" enctype="multipart/form-data" >
                                             @csrf
                                          <input type="text" value="{{$applied->university->id}}" name="uni_id" id="uni_id" hidden>
@@ -442,15 +453,15 @@
                                                 <label for="documents">Documents</label>
                                                 <br/>
                                                 <div class="dynamic_document" id="dynamic_document2">
-                                                    @if ($documentSelect)
+                                                    @if (isset($documentSelect))
 
 
                                                     @foreach($documentSelect as $key => $value)
 
-                                                    <label class="control-inline fancy-checkbox">
+                                                    <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
 
-                                                        <input type="checkbox" name="document[]" id="document[{{$increase}}]" value="{{$value}}" checked>
+                                                        <input type="checkbox" name="document[]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
 
                                                         <span>{{$value}}</span>
 
@@ -476,11 +487,13 @@
                                             </form>
                                         </div>
                                         @else
-                                        {{-- <div class="form-group">
-                                            <h6 style="margin-left: 16px;"> Your Application Status is: <button class="btn btn-danger">Cancelled</button> </h6>
-                                        </div> --}}
+                                        <div class="form-group">
+                                            <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
+                                        </div>
                                         @endif
-
+                                        @else
+                                        <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
+                                        @endif
 
                                       </fieldset>
 
@@ -642,7 +655,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form id="basic-form" method="post" novalidate action="#">
+            <form id="basic-form2" class="basic-form" method="post" novalidate action="#">
                 <div class="form-group">
                     <label>Document Name</label>
                     <input type="text" class="form-control" name="document_name" id="document_name" required>
@@ -668,7 +681,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form id="basic-form" method="post" novalidate action="#">
+            <form id="basic-form3" class="basic-form" method="post" novalidate action="#">
                 <div class="form-group">
                     <label>Document Name</label>
                     <input type="text" class="form-control" name="document_name2" id="document_name2" required>
@@ -754,20 +767,20 @@
       $('#add_document2').click(function(){
       rt=$('#document_name').val()
       //   console.log(rt);
-      $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document['+document_row+']" id="document['+document_row+']" value="'+rt+'"><span>'+rt+'</span></label>')
+      $('#dynamic_document').append('<label class="control-inline fancy-checkbox" style="margin-left: -4px"><input type="checkbox" name= "document['+document_row+']" id="document['+document_row+']" value="'+rt+'"  checked><span>'+rt+'</span></label>')
       // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
       $('#documentModal').modal('hide');
-      document.getElementById("basic-form").reset();
-      document_row++
+      document.getElementById("basic-form2").reset();
+       document_row++
     });
 
     $('#add_document3').click(function(){
       rt=$('#document_name2').val()
       //   console.log(rt);
-      $('#dynamic_document2').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document[]" id="document" value="'+rt+'"><span>'+rt+'</span></label>')
+      $('#dynamic_document2').append('<label class="control-inline fancy-checkbox" style="margin-left: -4px"><input type="checkbox" name= "document[]" id="document" value="'+rt+'" checked><span>'+rt+'</span></label>')
       // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
       $('#documentModal2').modal('hide');
-      document.getElementById("basic-form").reset();
+      document.getElementById("basic-form3").reset();
     //   document_row2++
     });
 
@@ -797,7 +810,7 @@ $('.dropify-fr').dropify({
 });
 // $( "#nb" ). load(window. location. href + " #nb" );
 $('#documentModal').modal('hide');
-document.getElementById("basic-form").reset();
+document.getElementsByClassName("basic-form").reset();
     });
 
 
@@ -1156,7 +1169,7 @@ $(document).on('click', '#readyTo2', function ()
        }
 
              $('#followUpModal').modal('hide');
-             document.getElementById("basic-form").reset();
+             document.getElementsByClassName("basic-form").reset();
      });
 
 

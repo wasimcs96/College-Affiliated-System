@@ -27,13 +27,13 @@
                 <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
                 <input type="text" name="payment_type" value="1" hidden>
                 <input type="text" name="title" value="{{$package->title}}" hidden>
-                @if($rt>$mytime && $rt != null)
+                {{-- @if($rt>$mytime && $rt != null) --}}
 
                 <li class="plan-btn"><button class="btn btn-round btn-outline-secondary" data-toggle="modal" data-target="#mdlerror">Choose plan</button></li>
-                @else
+                {{-- @else --}}
                 <li class="plan-btn"><button customDescription="{{$package->description}}" customPackage="{{$package->package_time}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="1" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
 
-                @endif
+                {{-- @endif --}}
             </ul>
         </div>
 
