@@ -32,10 +32,6 @@
                         <th scope="row">Student Name</th>
                         <td>{{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">Student Address</th>
-                        <td>{{$user->address ?? ''}}</td>
-                    </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
@@ -47,6 +43,14 @@
                         <td>{{$user->email ?? ''}}</td>
                     </tr>
 
+                    <tr>
+                        <th scope="row">City</th>
+                        <td>{{$user->city ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Student Address</th>
+                        <td>{{$user->address ?? ''}}</td>
+                    </tr>
 
 
                     <tr>

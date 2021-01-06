@@ -8,7 +8,7 @@
         <div class="header">
             <h2>Advertisement</h2>
             <ul class="header-dropdown dropdown">
-<li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('admin.advertisement.add')}}">Purchase AD</a></li>
+<li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('university.advertisement.add')}}">Purchase AD</a></li>
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
 
             </ul>
