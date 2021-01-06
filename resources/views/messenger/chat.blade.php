@@ -156,10 +156,10 @@
                             <span class="input-group-text"><i class="icon-magnifier"></i></span>
                         </div>
                     </div>
-                    <div class="chat_list">
+                    <div class="">
                     <ul class="right_chat list-unstyled mb-0">
                         @foreach($users as $user)
-                            <li class="online">
+                            <li class="online chat_list">
                                 <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
                                     <div class="media">
                                         <div><img class="media-object " src="../assets/images/xs/avatar3.jpg" alt=""></div>
@@ -325,10 +325,21 @@
 
        e.preventDefault(); // avoid to execute the actual submit of the form.
        // console.log('working');
+       
        // var form = $(this);
        // var url = form.attr('action');
        var id = $('input[name="id"]').val();
        var msd = $('#message').val();
+       document.getElementById('history').innerHTML+=`<li class="right clearfix">
+        <img class="user_pix" src="../assets/images/user.png" alt="avatar">
+        <div class="message">
+            <p>${msd}</p>
+        </div>
+        <span class="data_time"></span>
+    </li>`;
+$('.msg_history').animate({
+height: $('.msg_history').get(0).scrollHeight
+}, 1000);
                          var _token = $('input[name="_token"]').val();
 
        $.ajax({
@@ -338,16 +349,7 @@
               success: function(data)
               {
 
-                  document.getElementById('history').innerHTML+=`<li class="right clearfix">
-                                                <img class="user_pix" src="../assets/images/user.png" alt="avatar">
-                                                <div class="message">
-                                                    <p>${msd}</p>
-                                                </div>
-                                                <span class="data_time"></span>
-                                            </li>`;
-                   $('.msg_history').animate({
-                    height: $('.msg_history').get(0).scrollHeight
-                   }, 1000);
+                  
                         //  $(this).height('auto');
                    // document.getElementById('ms').innerHTML=" ";
                //    console.log(data); // show response from the php script.
@@ -368,11 +370,11 @@
                 // console.log();
                 Array.from(ul).forEach(element => {
                     a=element.getElementsByTagName("div")[0];
-                    b=a.getElementsByTagName("a")[0];
-                    c=b.getElementsByTagName("div")[1];
-                    d=c.getElementsByTagName("h5")[0];
-                    console.log(d);
-                    txtValue = d.innerText;
+                    b=a.getElementsByTagName("div")[1];
+                    c=b.getElementsByTagName("span")[0];
+                    
+                    //console.log(c.innerText);
+                    txtValue = c.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
                         element.style.display = "";
                     } else {
