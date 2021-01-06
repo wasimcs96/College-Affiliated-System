@@ -1,13 +1,13 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Consultant')
-@section('title', 'Application Follow up')
+@section('title', 'See Application Follow up Details')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Application<small>Application Follow up</small></h2>
+            <h2>Application<small>Application Follow up Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -18,45 +18,30 @@
         <div class="body">
             <div class="table-responsive">
                 <table class="table table-striped table-hover dataTable js-exportable">
-                    <thead>
 
-                        <tr>
-                            <th> <b>Student Name</b></th>
-                            {{-- <th> <b>Status</b></th> --}}
-                            <th><b> Note </b></th>
-                            <th><b> Date </b></th>
-                            <th style="text-align: center;"><b> Actions </b></th>
-                        </tr>
-                    </thead>
-                    @if($applications->count() > 0)
-                   <tbody>
-                    @foreach ($applications as $application)
-                        <tr>
-                            <td>{{$application->application->user->first_name ?? ''}} {{$application->application->user->last_name ?? ''}}</td>
-                            {{-- <td>@if($application->application->status==0)<div class="btn btn-warning">In Progress</div>@endif
-                                @if($application->application->status==1)<div class="btn btn-danger">Closed</div>@endif
-                            </td> --}}
-
-                            <td>{{$application->note ?? ''}}</td>
-                            <td>{{$application->date ?? ''}}</td>
-
-                            <td style="text-align: center;">
-                                <a href="{{route('consultant.application.followup.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
-                                <a href="{{route('consultant.application.create',['id'=> $application->application_id])}}" class="btn btn-primary">Go to Application<i class="icon-arrow"></i></a>
-                            </td>
-
-                        </tr>
-
-                        @endforeach
                     <tbody>
-                        @else
-                        <tfoot>
-                            <tr>
-                                <td colspan='7' align='center'> <strong>Record Not Available</strong> </td>
-                            </tr>
-                        </tfoot>
-                        @endif
+
+                        <tr>
+                            <th scope="row">Student Name</th>
+                            <td>{{$applications->application->user->first_name ?? ''}} {{$applications->application->user->last_name ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Note</th>
+                            <td>{{$applications->note ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Date</th>
+                            <td>{{$applications->date ?? ''}}</td>
+                        </tr>
+
+
+                    </tbody>
+
                 </table>
+
+                <a href="{{route('consultant.application.followup')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                <a style="text-align: center;" href="{{route('consultant.application.create',['id'=> $applications->application_id])}}" class="btn btn-primary">Go to Application<i class="icon-arrow"></i></a>
+
             </div>
         </div>
     </div>

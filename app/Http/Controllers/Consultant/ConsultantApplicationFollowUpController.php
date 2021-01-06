@@ -36,7 +36,10 @@ class ConsultantApplicationFollowUpController extends Controller
    public function show($id)
    {
 
-    //
+
+    $application = ApplicationFollowsUp::where('id', $id)->first();
+    // dd($application);
+    return view('consultant.applicationFollowUp.show')->with('applications', $application);
 
    }
 

@@ -291,5 +291,11 @@ Route::post('PR_Migration/store',[
     'as'=>'consultant.prmigration.store'
 ]);
 
+/* Application Follow Up Show */
+Route::get('applications/followup/show/{id}',[
+    'uses' => 'ConsultantApplicationFollowUpController@show',
+    'as' => 'consultant.application.followup.show'
+]);
+
 
 });
