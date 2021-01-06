@@ -60,21 +60,44 @@
       <div class="modal-content">
 
         <div class="modal-body" style="
-        text-align:center;">
-            <div >
-            <img  style="width:145px"; src="{{asset('frontEnd/assets/images/error.png')}}">
-            </div>
-            <br>
+        text-align:center;
+        padding: 0px;
+        ">
             <div style="
-            text-align:center;">
+            padding: 0px;
+            background-color: #fdb719;
+        ">
+            <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/error.png')}}">
+            </div>
+
+            <div style="
+            background-color: white;
+            color: #585550;
+            font-family: sans-serif;
+        ">
                 <h1>You can't buy Plan ! </h1>
-                <h4>Previous Plan is still active</h4>
+                <h4 style="
+
+                margin: 0px;
+                font-size: large;
+                "
+            >Previous Plan is still active</h4>
             </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer"  style="
+        padding: 0px;
+        border: 0px;
+        justify-content: center;
+        background-color: white;
+    ">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('university.premium')}}" class="btn btn-primary" id="add_document3">Close</a>
+          <a href="{{route('university.subscription')}}"  style="border-radius: 62px;
+          background-color: #fdb719;
+          border-color: #fdb719;
+          color: black;
+          font-weight: 500;
+    font-family: sans-serif;" class="btn btn-primary" id="add_document3">Close</a>
         </div>
         </div>
        </div>
@@ -85,26 +108,43 @@
       <div class="modal-content">
 
         <div class="modal-body" style="
-        text-align:center;">
-            <div >
-            <img  style="width:145px"; src="{{asset('frontEnd/assets/images/checkmark.png')}}">
-            </div>
-            <br>
+        text-align:center;
+        padding: 0px;
+        ">
             <div style="
-            text-align:center;">
-                <h1>Thank You</h1>
+            padding: 0px;
+            background-color: #5890ff;
+        ">
+            <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/checkmark.png')}}">
+            </div>
+
+            <div style="
+            text-align:center;
+            background-color: white;
+            color: black;
+            ">
+                <h1 style="
+                margin: 0px;
+                font-family: sans-serif;
+                padding: 18px;
+            ">Thank You</h1>
             </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" style="
+        padding: 6px;
+        background-color: white;
+        border: 0px;
+        justify-content: center;
+    ">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('university.premium')}}" class="btn btn-primary" id="add_document3">Close</a>
+          <a href="{{route('university.subscription')}}" class="btn btn-primary" style="
+          border-radius: 35px;font-weight: 500;
+    font-family: sans-serif;" id="add_document3">Close</a>
         </div>
         </div>
        </div>
 </div>
-{{-- </div> --}}
-
 @stop
 
 @section('page-styles')

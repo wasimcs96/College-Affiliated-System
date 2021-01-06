@@ -3,7 +3,9 @@
 @section('title', 'Subscription')
 
 @section('content')
+<div class="container" id=alert>
 
+</div>
 <div class="row clearfix">
     @foreach ($packages as $package)
 
@@ -25,15 +27,15 @@
                 <li>{{$package->description}}</li>
                 <input type="text" name="amount" value="{{$package->amount}}" hidden>
                 <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
-                <input type="text" name="payment_type" value="1" hidden>
+                <input type="text" name="payment_type" value="0" hidden>
                 <input type="text" name="title" value="{{$package->title}}" hidden>
-                {{-- @if($rt>$mytime && $rt != null) --}}
+                @if($rt>$mytime && $rt != null)
 
                 <li class="plan-btn"><button class="btn btn-round btn-outline-secondary" data-toggle="modal" data-target="#mdlerror">Choose plan</button></li>
-                {{-- @else --}}
-                <li class="plan-btn"><button customDescription="{{$package->description}}" customPackage="{{$package->package_time}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="1" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
+                @else
+                <li class="plan-btn"><button customDescription="{{$package->description}}" customPackage="{{$package->package_time}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="0" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
 
-                {{-- @endif --}}
+                @endif
             </ul>
         </div>
 
@@ -55,27 +57,49 @@
 
 </div>
 
-
 <div class="modal fade" id="mdlerror" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
 
         <div class="modal-body" style="
-        text-align:center;">
-            <div >
-            <img  style="width:145px"; src="{{asset('frontEnd/assets/images/error.png')}}">
-            </div>
-            <br>
+        text-align:center;
+        padding: 0px;
+        ">
             <div style="
-            text-align:center;">
+            padding: 0px;
+            background-color: #fdb719;
+        ">
+            <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/error.png')}}">
+            </div>
+
+            <div style="
+            background-color: white;
+            color: #585550;
+            font-family: sans-serif;
+        ">
                 <h1>You can't buy Plan ! </h1>
-                <h4>Previous Plan is still active</h4>
+                <h4 style="
+
+                margin: 0px;
+                font-size: large;
+                "
+            >Previous Plan is still active</h4>
             </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer"  style="
+        padding: 0px;
+        border: 0px;
+        justify-content: center;
+        background-color: white;
+    ">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('consultant.subscription')}}" class="btn btn-primary" id="add_document3">Close</a>
+          <a href="{{route('consultant.subscription')}}"  style="border-radius: 62px;
+          background-color: #fdb719;
+          border-color: #fdb719;
+          color: black;
+          font-weight: 500;
+    font-family: sans-serif;" class="btn btn-primary" id="add_document3">Close</a>
         </div>
         </div>
        </div>
@@ -86,25 +110,43 @@
       <div class="modal-content">
 
         <div class="modal-body" style="
-        text-align:center;">
-            <div >
-            <img  style="width:145px"; src="{{asset('frontEnd/assets/images/checkmark.png')}}">
-            </div>
-            <br>
+        text-align:center;
+        padding: 0px;
+        ">
             <div style="
-            text-align:center;">
-                <h1>Thank You</h1>
+            padding: 0px;
+            background-color: #5890ff;
+        ">
+            <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/checkmark.png')}}">
+            </div>
+
+            <div style="
+            text-align:center;
+            background-color: white;
+            color: black;
+            ">
+                <h1 style="
+                margin: 0px;
+                font-family: sans-serif;
+                padding: 18px;
+            ">Thank You</h1>
             </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" style="
+        padding: 6px;
+        background-color: white;
+        border: 0px;
+        justify-content: center;
+    ">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('consultant.subscription')}}" class="btn btn-primary" id="add_document3">Close</a>
+          <a href="{{route('consultant.subscription')}}" class="btn btn-primary" style="
+          border-radius: 35px;font-weight: 500;
+    font-family: sans-serif;" id="add_document3">Close</a>
         </div>
         </div>
        </div>
 </div>
-
 @stop
 
 @section('page-styles')
