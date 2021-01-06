@@ -54,7 +54,7 @@
                         <td>{{$user->country ?? ''}}</td>
                     </tr>
 
-                    <tr>
+                    {{-- <tr>
                         <th scope="row">Student University Prefrence-1</th>
                         <td>RTU</td>
                     </tr>
@@ -67,7 +67,7 @@
                     <tr>
                         <th scope="row">Student University Prefrence-3</th>
                         <td>CTU</td>
-                    </tr>
+                    </tr> --}}
 
 
                 </tbody>
@@ -92,8 +92,8 @@
                 <div id="dec">
 
                 </div>
-                {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a> --}}
+
+                <a href="{{route('consultant.students')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>
