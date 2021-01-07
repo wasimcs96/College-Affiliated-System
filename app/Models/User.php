@@ -68,6 +68,16 @@ class User extends Authenticatable
         return $this->hasMany(UniversityCourse::class,'user_id');
     }
 
+    public function universityMedia()
+    {
+        return $this->hasMany(UniversityMedia::class,'user_id');
+    }
+
+    public function universityConsultants()
+    {
+        return $this->hasMany(UniversityConsultant::class,'university_id');
+    }
+
     public function booking()
     {
         return $this->hasMany(Booking::class);
@@ -86,9 +96,9 @@ class User extends Authenticatable
         return $this->hasOne(ConsultantPrMigrationCountry::class,'user_id');
     }
 
-    public function consultantUniversity()
+    public function consultantUniversities()
     {
-        return $this->hasMany(UniversityConsultant::class);
+        return $this->hasMany(UniversityConsultant::class,'consultant_id');
     }
 
     public function consultantUniversityClient()
