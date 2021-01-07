@@ -335,15 +335,16 @@
                 </div><!-- end filter-wrap -->
             </div><!-- end col-lg-12 --> --}}
         </div><!-- end row -->
-        @foreach($consultants as $consultant)
 
+        @foreach($consultants as $consultant)
+        @if($consultant->isConsultant())
         <div class="row">
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
 
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
-                             <img src="{{asset($consultant->user->profile_image)}}" alt="car-img">
+                             <img src="{{asset($consultant->profile_image)}}" alt="car-img">
                         </a>
                         <span class="badge">Top Ranked</span>
                         {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
@@ -352,7 +353,7 @@
                     </div>
                     <div class="card-body">
                         {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
-                        <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->user->first_name}} {{$consultant->user->last_name}}</a></h3>
+                        <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->first_name}} {{$consultant->last_name}}</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -367,7 +368,7 @@
                         <div class="card-price d-flex align-items-center justify-content-between">
                             <p>
                                 <span class="price__num">Country</span>
-                                <span class="price__text">{{$consultant->user->country}}</span>
+                                <span class="price__text">{{$consultant->country}}</span>
                             </p>
                             <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
@@ -376,7 +377,9 @@
             </div><!-- end col-lg-4 -->
 
         </div><!-- end row -->
+        @endif
         @endforeach
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="btn-box mt-3 text-center">

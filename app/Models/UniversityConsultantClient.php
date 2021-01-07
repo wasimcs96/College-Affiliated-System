@@ -10,4 +10,14 @@ class UniversityConsultantClient extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function universityClient()
+    {
+        return $this->belongsTo(User::class,'university_id');
+    }
+
+    public function consultantClient()
+    {
+        return $this->belongsTo(User::class,'university_id');
+    }
 }
