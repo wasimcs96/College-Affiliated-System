@@ -32,7 +32,7 @@
                 @else
                 <li class="plan-btn"><button customDescription="{{$package->description}}" customPackage="{{$package->package_time}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="1" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
 
-                  @endif
+                 @endif
             </ul>
         </div>
 
