@@ -20,7 +20,8 @@ class UniversityConsultantController extends Controller
 
     public function index()
     {
-        $universityConsultants = auth()->user()->university->universityConsultant;
+        $universityConsultants = auth()->user()->universityConsultant;
+        // dd($universityConsultants);
         return view('university.consultant.consultants', compact('universityConsultants'));
     }
 

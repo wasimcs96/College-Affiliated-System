@@ -39,17 +39,17 @@
                     <tfoot>
 
                     </tfoot>
-                    @if($universityConsultants->count())
+                    @if($universityConsultants ?? ''->count()>0)
                     <tbody>
                         <?php $sno=0;?>
                         @foreach($universityConsultants as $universityConsultant)
                         @if($universityConsultant->status == 0)
                         <tr class="row-{{ $universityConsultant->consultant->id }}">
                             <td> {{ $sno=$sno+1}}. </td>
-                            <td>{{ $universityConsultant->consultant->user->first_name }} {{ $universityConsultant->consultant->user->last_name }}</td>
-                            <td>{{ $universityConsultant->consultant->user->mobile }}</td>
+                            <td>{{ $universityConsultant->user->first_name }} {{ $universityConsultant->consultant->user->last_name }}</td>
+                            <td>{{ $universityConsultant->user->mobile }}</td>
                             <td>
-                                {{ $universityConsultant->consultant->user->email }}
+                                {{ $universityConsultant->user->email }}
                             </td>
 
                             <td> @if($universityConsultant->status == 0)

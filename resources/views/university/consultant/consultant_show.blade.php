@@ -23,18 +23,18 @@
 
                     <tr>
                         <th scope="row"> Name</th>
-                        <td>{{$status->consultant->user->first_name}} {{$status->consultant->user->last_name}}</td>
+                        <td>{{$status->user->first_name}} {{$status->user->last_name}}</td>
                     </tr>
 
 
                     <tr>
                         <th scope="row"> Mobile No.</th>
-                        <td>{{$status->consultant->user->mobile}}</td>
+                        <td>{{$status->user->mobile}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">E-mail</th>
-                        <td>{{$status->consultant->user->email}}</td>
+                        <td>{{$status->user->email}}</td>
                     </tr>
 
                     <tr>
@@ -47,27 +47,27 @@
                     </tr>
                     <tr>
                         <th scope="row">Company Name</th>
-                        <td>{{$status->consultant->company_name}}</td>
+                        <td>{{$status->user->consultant->company_name}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Website</th>
-                        <td>{{$status->consultant->website}}</td>
+                        <td>{{$status->user->consultant->website}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Landline_2</th>
-                        <td>{{$status->consultant->user->landline_2}}</td>
+                        <td>{{$statu->user->landline_2}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Address</th>
-                        <td>{{$status->consultant->user->address}}</td>
+                        <td>{{$status->user->address}}</td>
                     </tr>
                     <tr>
                         <th scope="row">City</th>
-                        <td>{{$status->consultant->user->city}}</td>
+                        <td>{{$status->user->city}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Country</th>
-                        <td>{{$status->consultant->user->country}}</td>
+                        <td>{{$status->user->country}}</td>
                     </tr>
             </div>
         {{-- </tr> --}}
