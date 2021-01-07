@@ -18,4 +18,10 @@ class UniversityMedia extends Model
     {
         return $this->belongsTo(University::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }
