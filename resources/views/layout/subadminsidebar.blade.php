@@ -50,6 +50,8 @@
 
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('subadmin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
 
+                <li class="{{ Request::segment(2) == 'feedback' ? 'active' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messanger</span></a></li>
+
                 <li class="{{ Request::segment(2) == 'general' ? 'active open' : null }}">
                     <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
                     <ul>

@@ -82,6 +82,13 @@
                         </div>
                     </fieldset>
                 </form>
+                <div id="res">
+
+                </div>
+                <br>
+                <div id="dec">
+
+                </div>
             </div>
         </div>
     </div>
@@ -120,7 +127,7 @@
    $("#accept").click(function() {
     $("#accept").remove()
     $("#bac").remove()
-    $("#res").html("<a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#res").html("<a  href='{{route('consultant.booking.application',['id'=> $application->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
     $("#dec").html("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat'>Close</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });

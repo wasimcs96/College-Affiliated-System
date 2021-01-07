@@ -25,27 +25,39 @@
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
-                            <th> <b>
-                              Consultant  Name</b></th>
-                              <th> <b>
-                                University  Name</b></th>
+                            <th><b> Consultant  Name</b></th>
+                            <th><b> University  Name</b></th>
                             <th><b> Booking Date </b></th>
                             <th><b> Status</b></th>
                             <th><b> Actions</b></th>
 
                         </tr>
                     </thead>
-                    <tfoot>
+                    @if($bookings->count() > 0)
 
-                    </tfoot>
                     <tbody>
-                        <tr>
-                            <td>Sufiyan</td>
-                            <td>RTU</td>
-                            <td>2020/30/11</td>
-                            <td> <button class="btn btn-primary btn-flat">Active</button> </td>
-                            <td><a href=" {{route('client.booking_show')}} " class="btn btn-success"><i class="icon-eye"></i></a></td>                        </tr>
+                        @foreach($bookings as $booking)
+                            @if(auth()->user()->id == $booking->client_id)
+                            <tr>
+                                <td>{{$booking->user->first_name}}  {{$booking->user->last_name}} </td>
+                                <td></td>
+                                <td>{{$booking->booking_date}}</td>
 
+
+
+                                <td>@if($booking->status==0)<div class="btn btn-warning">Pending</div>@endif
+                                    @if($booking->status==1)<div class="btn btn-success">Accepted</div>@endif
+                                    @if($booking->status==2)<div class="btn btn-danger">Rejected</div>@endif
+                                    @if($booking->status==3)<div class="btn btn-primary">Walking</div>@endif
+                                </td>
+
+                                <td><a href="{{route('client.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            </tr>
+                            @endif
+                        @endforeach
+
+
+                        @endif
                     </tbody>
                 </table>
             </div>
