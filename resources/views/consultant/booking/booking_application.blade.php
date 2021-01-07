@@ -31,6 +31,7 @@
                                 <input type="text" class="form-control" name="client_id" value="{{$book->client_id}}"id="name" hidden>
                                 <input type="text" class="form-control" name="consultant_id" value="{{$book->consultant_id}}"id="name" hidden>
                                 <input type="text" class="form-control" name="booking_id" value="{{$book->id}}"id="name" hidden>
+                                dd({{$book->consultant_id}});
                                 <div class="form-group">
                                     <label>Student First Name</label>
                                     <input type="text" class="form-control" value="{{$book->user->first_name}}" name="first_name" id="first_name" required>
@@ -80,7 +81,7 @@
                                 </div> --}}
 
                                 <div class="form-group">
-                                    <?php $univers=$book->consultant->consultantUniversity;
+                                    <?php $univers=$book->consultantUniversity;
                                     $increase=0;
                                       ?>
                                     <div class="table-responsive" style="width: 100%; margin-top: 36px;">
@@ -92,7 +93,7 @@
                                                     <select id="university-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control FulNamo" name="university[{{$increase}}]" placeholder="Select University">
                                                     <option value="" selected>University Name</option>
                                                     @foreach($univers as $univer)
-                                                    <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option>
+                                                    <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option>
 
                                                     @endforeach
                                                   </select>

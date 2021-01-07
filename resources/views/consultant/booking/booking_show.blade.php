@@ -48,16 +48,16 @@
                     </tr>
 
                    <tr>
-                    <th scope="row">Student University/Course Preference-1</th>
-                    <td>{{$university0->university_name ?? ''}}/</td>
+                    <th scope="row">Enquiry</th>
+                    <td>{{$university0->university_name ?? ''}}/{{$course1->name ?? ''}}</td>
                 </tr>
 
                 <tr>
-                    <th scope="row">Student University/Course Prefrence-2</th>
+                    <th scope="row"></th>
                     <td>{{$university1->university_name ?? ''}}/{{$course1->name ?? ''}}</td>
                 </tr>
                 <tr>
-                    <th scope="row">Student University/Course Prefrence-3</th>
+                    <th scope="row"></th>
                     <td>{{$university2->university_name ?? ''}}/{{$course2->name ?? ''}}</td>
                 </tr>
                  <input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>

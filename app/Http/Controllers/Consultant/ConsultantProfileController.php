@@ -98,7 +98,7 @@ class ConsultantProfileController extends Controller
                 return $ReturnArray;
             }
             $consultant_id = auth()->user()->id;
-            $consultant_slot = ConsultantAvailableSlots::where('consultant_id',$consultant_id)->first();
+            $consultant_slot = ConsultantAvailableSlots::where('user_id',$consultant_id)->first();
             $startTime = $request->start_time;
             $endTime = $request->end_time;
             //Calling the function
@@ -124,7 +124,7 @@ class ConsultantProfileController extends Controller
                                 break;
                             }
                                 ConsultantAvailableSlots::create([
-                                'consultant_id'=>auth()->user()->id,
+                                'user_id'=>auth()->user()->id,
                                 'week_day'=>$week_day,
                                 'start_slot_time'=>$st,
                                 'end_slot_time'=>$endTimeNew,
@@ -160,7 +160,7 @@ class ConsultantProfileController extends Controller
                                 break;
                             }
                             ConsultantAvailableSlots::create([
-                            'consultant_id'=>auth()->user()->id,
+                            'user_id'=>auth()->user()->id,
                             'week_day'=>$week_day,
                             'start_slot_time'=>$st,
                             'end_slot_time'=>$endTimeNew,

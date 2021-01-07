@@ -29,16 +29,16 @@
 
                     <tr>
                         <th scope="row">University Name</th>
-                        <td>{{$university->university_name}}</td>
+                        <td>{{$university->university_name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">University Website</th>
-                        <td>{{$university->website}}</td>
+                        <td>{{$university->website ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">University Address</th>
-                        <td>{{$university->user->address}}</td>
+                        <td>{{$university->user->address ?? '' }}</td>
                     </tr>
 
                     <tr>
@@ -52,15 +52,15 @@
 
                     <tr>
                         <th scope="row">University Email</th>
-                        <td>{{$university->user->email}}</td>
+                        <td>{{$university->user->email ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">University Mobile Number</th>
-                        <td>{{$university->user->mobile}}</td>
+                        <td>{{$university->user->mobile ?? ''}}</td>
                     </tr>
 
-            </div>
+            {{-- </div> --}}
                     </tr>
 
 
@@ -68,6 +68,7 @@
                     </tbody>
                 </table>
             </div>
+            <a href="{{route('consultant.request_university')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
         </div>
     </div>
 </div>
