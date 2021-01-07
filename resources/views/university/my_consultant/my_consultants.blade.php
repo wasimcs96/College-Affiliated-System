@@ -44,12 +44,12 @@
                         <?php $sno=0;?>
                         @foreach($universityConsultants as $universityConsultant)
                         @if($universityConsultant->status == 1)
-                        <tr class="row-{{ $universityConsultant->consultant->id }}">
+                        <tr class="row-{{ $universityConsultant->userConsultant->id  ?? ''}}">
                             <td> {{ $sno=$sno+1}}. </td>
-                            <td>{{ $universityConsultant->consultant->user->first_name }} {{ $universityConsultant->consultant->user->last_name }}</td>
-                            <td>{{ $universityConsultant->consultant->user->mobile }}</td>
+                            <td>{{ $universityConsultant->userConsultant->first_name  ?? ''}} {{ $universityConsultant->userConsultant->last_name  ?? ''}}</td>
+                            <td>{{ $universityConsultant->userConsultant->mobile  ?? ''}}</td>
                             <td>
-                                {{ $universityConsultant->consultant->user->email }}
+                                {{ $universityConsultant->userConsultant->email  ?? ''}}
                             </td>
 
                             <td> @if($universityConsultant->status == 0)
@@ -58,7 +58,7 @@
                                 <span class="btn btn-info" >Accepted</span>
                               @endif</td>
 
-                            <td style="text-align: center;"><a href="{{route('university.my_consultant_show',['id' => $universityConsultant->consultant->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td style="text-align: center;"><a href="{{route('university.my_consultant_show',['id' => $universityConsultant->userConsultant->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 @endif
                      @endforeach

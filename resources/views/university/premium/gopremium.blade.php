@@ -92,7 +92,7 @@
     ">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('university.subscription')}}"  style="border-radius: 62px;
+          <a href="{{route('university.premium')}}"  style="border-radius: 62px;
           background-color: #fdb719;
           border-color: #fdb719;
           color: black;
@@ -138,7 +138,7 @@
     ">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('university.subscription')}}" class="btn btn-primary" style="
+          <a href="{{route('university.premium')}}" class="btn btn-primary" style="
           border-radius: 35px;font-weight: 500;
     font-family: sans-serif;" id="add_document3">Close</a>
         </div>

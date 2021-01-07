@@ -30,7 +30,7 @@
                         <div class="form-group">
                                   <div id="lightgallery" class="row clearfix lightGallery">
 
-                                <?php $rts=App\Models\UniversityMedia::where('user_id',auth()->user()->id)->get();?>
+                                <?php $rts=auth()->user()->universityMedia?>
                                 {{-- {{dd($rts)}} --}}
                                 @if($rts->count()>0)
                                 @foreach($rts as $rt)

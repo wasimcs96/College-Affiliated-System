@@ -20,7 +20,8 @@ class UniversityConsultantController extends Controller
 
     public function index()
     {
-        $universityConsultants = auth()->user()->universityConsultant;
+        $universityConsultants = auth()->user()->universityConsultants;
+        // dd($universityConsultants);
         // dd($universityConsultants);
         return view('university.consultant.consultants', compact('universityConsultants'));
     }
@@ -48,7 +49,7 @@ class UniversityConsultantController extends Controller
 
     public function myconsultantindex()
     {
-        $universityConsultants =UniversityConsultant::where('user_id',auth()->user()->id)->get() ;
+        $universityConsultants =UniversityConsultant::where('university_id',auth()->user()->id)->get() ;
         // dd($universityConsultant);
         // foreach($universityConsultants as $universityConsultant)
         // {
@@ -68,7 +69,7 @@ class UniversityConsultantController extends Controller
 
     public function myconsultantshow($id)
     {
-        $consultant=Consultant::where('id',$id)->first();
+        $consultant=User::where('id',$id)->first();
         $status = UniversityConsultant::where('consultant_id',$id)->pluck('status')->first();
         $consultant_id = UniversityConsultant::where('consultant_id',$id)->pluck('consultant_id')->first();
         return view('university.my_consultant.my_consultant_show',compact('consultant','status','consultant_id'));

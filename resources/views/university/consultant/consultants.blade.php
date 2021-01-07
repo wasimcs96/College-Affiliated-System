@@ -44,12 +44,12 @@
                         <?php $sno=0;?>
                         @foreach($universityConsultants as $universityConsultant)
                         @if($universityConsultant->status == 0)
-                        <tr class="row-{{ $universityConsultant->consultant->id }}">
+                        <tr class="row-{{ $universityConsultant->userConsultant->id }}">
                             <td> {{ $sno=$sno+1}}. </td>
-                            <td>{{ $universityConsultant->user->first_name }} {{ $universityConsultant->consultant->user->last_name }}</td>
-                            <td>{{ $universityConsultant->user->mobile }}</td>
+                            <td>{{ $universityConsultant->userConsultant->first_name }} {{ $universityConsultant->userConsultant->last_name }}</td>
+                            <td>{{ $universityConsultant->userConsultant->mobile }}</td>
                             <td>
-                                {{ $universityConsultant->user->email }}
+                                {{ $universityConsultant->userConsultant->email }}
                             </td>
 
                             <td> @if($universityConsultant->status == 0)
