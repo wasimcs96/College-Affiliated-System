@@ -30,7 +30,7 @@
 
                     <tr>
                         <th scope="row">Consultant Name</th>
-                        <td>Sufiyan Qureshi</td>
+                        <td>{{$booking->user->first_name}} {{$booking->user->last_name}} </td>
                     </tr>
                     <tr>
                         <th scope="row">University Name</th>
@@ -44,12 +44,16 @@
 
                     <tr>
                         <th scope="row">Booking Date</th>
-                        <td>2020/12/12</td>
+                        <td>{{$booking->booking_date}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Status</th>
-                        <td><button class="btn btn-primary btn-flat">Active</button></td>
+                        <td>@if($booking->status==0)<div class="btn btn-warning">Pending</div>@endif
+                            @if($booking->status==1)<div class="btn btn-success">Accepted</div>@endif
+                            @if($booking->status==2)<div class="btn btn-danger">Rejected</div>@endif
+                            @if($booking->status==3)<div class="btn btn-primary">Walking</div>@endif
+                        </td>
                     </tr>
 
 
@@ -61,10 +65,11 @@
 
         {{-- </tr> --}}
 
-
                     </tbody>
 
                 </table>
+                 <a href="{{route('client.bookings')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+
                 <div id="res">
 
                 </div>
@@ -110,7 +115,7 @@
    $("#accept").click(function() {
     $("#accept").remove()
     $("#bac").remove()
-    $("#res").html("<a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#res").html("<a  href='{{route('consultant.booking.application', ['id'=> $booking->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
     $("#dec").html("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat'>Close</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });

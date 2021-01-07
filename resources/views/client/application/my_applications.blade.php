@@ -26,8 +26,7 @@
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
-                            <th> <b>
-                               Consultant Name</b></th>
+                            <th> <b>Consultant Name</b></th>
                             <th><b>Univesity Name </b></th>
                             <th><b> Applied On</b></th>
                             <th><b> Status</b></th>
@@ -37,16 +36,30 @@
                     <tfoot>
 
                     </tfoot>
+
+                    @if($applications->count() > 0)
+
                     <tbody>
-                        <tr>
-                            <td>Sufiyan</td>
-                            <td>Qureshi</td>
-                            <td>2020/30/11</td>
-                            <td> <button class="btn btn-primary btn-flat">Pending</button> </td>
+                        @foreach($applications as $application)
+                            @if(auth()->user()->id == $application->client_id)
+                            <tr>
+                                <td>{{$application->user->first_name}} </td>
+                               {{-- {{ dd($application->university) }} --}}
+                               <td></td>
+                                {{-- <td>{{$application->consultant->university->university_name}}</td> --}}
+                                <td>{{$application->created_at}}</td>
+                                <td>
+                                    @if($application->status==0)<div class="btn btn-warning">In Progress</div>@endif
+                                    @if($application->status==1)<div class="btn btn-danger">Closed</div>@endif
+                                </td>
 
-                            <td><a href="{{route('client.my_application_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                                <td><a href="{{route('client.application.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            </tr>
+                            @endif
+                        @endforeach
 
-                        </tr>
+
+                        @endif
 
                     </tbody>
                 </table>

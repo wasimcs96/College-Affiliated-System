@@ -336,17 +336,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /* Messenger  */
 
-Route::get('university/messanger', [
+Route::get('messanger', [
     'uses' => 'MessengerController@index',
     'as' => 'messanger'
 ]);
 
-Route::post('university/messanger/fetchData', [
+Route::post('messanger/fetchData', [
     'uses' => 'MessengerController@fetchData',
     'as' => 'messanger.fetchdata'
 ]);
 
-Route::post('university/messanger/sendMessage', [
+Route::post('messanger/sendMessage', [
     'uses' => 'MessengerController@sendMessage',
     'as' => 'messanger.sendmessage'
 ]);
