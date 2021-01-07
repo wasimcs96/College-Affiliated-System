@@ -30,7 +30,7 @@ class UniversityFrontController extends Controller
         if (auth()->user()) {
             # code...
         if (Auth()->User()->isConsultant()) {
-            $universityconsultant = UniversityConsultant::where('university_id',$id)->where('consultant_id',auth()->user()->consultant->id)->first();
+            $universityconsultant = UniversityConsultant::where('user_id',$id)->where('consultant_id',auth()->user()->consultant->id)->first();
             // dd($universityconsultant);
             return view('frontEnd.university.university_detail',compact('universityconsultant'))->with('university',$detail);
         }

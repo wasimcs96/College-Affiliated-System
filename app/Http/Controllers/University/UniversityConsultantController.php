@@ -47,7 +47,7 @@ class UniversityConsultantController extends Controller
 
     public function myconsultantindex()
     {
-        $universityConsultants = auth()->user()->university->universityConsultant;
+        $universityConsultants =UniversityConsultant::where('user_id',auth()->user()->id)->get() ;
         // dd($universityConsultant);
         // foreach($universityConsultants as $universityConsultant)
         // {
