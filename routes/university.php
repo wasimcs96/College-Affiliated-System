@@ -169,7 +169,7 @@ Route::get('services/subscription', [
 
 
 Route::get('subscription/add', [
-    'uses' => 'universitySubscriptionController@add',
+    'uses' => 'UniversitySubscriptionController@add',
     'as' => 'university.subscription.add'
 ]);
 
