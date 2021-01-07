@@ -37,8 +37,9 @@
         </div>
 
     </div>
-    @endforeach
+
     {{-- <img style="width: 100px; height: 50px; border-radius: 11px;" id="rzp-button1" src="{{asset('assets/images/razor_pay.jpeg')}} "> --}}
+    @endforeach
 </div>
 
 <div class="container" id="choosedcontent">

@@ -19,7 +19,7 @@ class ConsultantBookingController extends Controller
 {
    public function index()
    {
-     $book = auth()->user()->consultant->booking;
+     $book = auth()->user()->booking;
     //  $bookings = Booking::orderBy('booking_date', 'DESC')->get();
     //  dd($bookings);
      return view('consultant.booking.bookings')->with('bookings', $book);

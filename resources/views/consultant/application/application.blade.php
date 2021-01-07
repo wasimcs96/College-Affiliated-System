@@ -33,16 +33,19 @@
                     <tfoot>
 
                     </tfoot>
-                    <?php $applications=auth()->user()->consultant->application; ?>
+                    <?php $applications=auth()->user()->consultantApplications;
+
+                    // dd(auth()->user()->consultantApplications);
+                    ?>
                     @if($applications->count() > 0)
                     <tbody>
 
                         @foreach($applications as $application)
 
                         <tr>
-                            <td>{{$application->user->first_name}} </td>
-                            <td>{{$application->user->mobile}}</td>
-                            <td>{{$application->user->email}}</td>
+                            <td>{{$application->user->first_name ?? ''}} </td>
+                            <td>{{$application->user->mobile ?? ''}}</td>
+                            <td>{{$application->user->email ?? ''}}</td>
                             {{-- <td>{{$application->consultant->university->university_name}}</td> --}}
                             {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
                             <td>@if($application->status==0)<div class="btn btn-warning">In Progress</div>@endif

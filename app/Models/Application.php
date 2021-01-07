@@ -8,6 +8,11 @@ class Application extends Model
 {
     protected $fillable = ['booking_id','client_id','consultant_id','note','status','documents'];
 
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class,'client_id');
+    // }
+
     public function user()
     {
         return $this->belongsTo(User::class,'client_id');

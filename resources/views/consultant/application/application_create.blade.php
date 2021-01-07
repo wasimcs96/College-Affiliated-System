@@ -61,28 +61,28 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>{{$application->booking->user->first_name}}</td>
+                        <td>{{$application->booking->user->first_name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student Address</th>
-                        <td>{{$application->booking->user->address}}</td>
+                        <td>{{$application->booking->user->address ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>{{$application->booking->user->mobile}}</td>
+                        <td>{{$application->booking->user->mobile ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>{{$application->booking->user->email}}</td>
+                        <td>{{$application->booking->user->email ?? ''}}</td>
                     </tr>
 
 
 
                     <tr>
                         <th scope="row">Student Country</th>
-                        <td>{{$application->booking->user->country}}</td>
+                        <td>{{$application->booking->user->country ?? ''}}</td>
                     </tr>
                     {{--
                         @foreach($bookings as $booking)
@@ -93,24 +93,24 @@
                         @endforeach --}}
                     <tr>
                         <th scope="row">Student University/Course Preference-1</th>
-                        <td>{{$university0->university_name}}/{{$course0->name}}</td>
+                        <td>{{$university0->university_name ?? ''}}/{{$course0->name ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student University/Course Prefrence-2</th>
-                        <td>{{$university1->university_name}}/{{$course1->name}}</td>
+                        <td>{{$university1->university_name ?? ''}}/{{$course1->name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student University/Course Prefrence-3</th>
-                        <td>{{$university2->university_name}}/{{$course2->name}}</td>
+                        <td>{{$university2->university_name ?? ''}}/{{$course2->name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Date</th>
-                        <td>{{$application->booking->booking_date}}</td>
+                        <td>{{$application->booking->booking_date ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Time-Slot</th>
-                        <td>{{$application->booking->booking_start_time}}-{{$application->booking->booking_end_time}}</td>
+                        <td>{{$application->booking->booking_start_time ?? ''}}-{{$application->booking->booking_end_time ?? ''}}</td>
                     </tr>
            </div>
 
@@ -152,24 +152,24 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>{{$application->user->first_name}} {{$application->user->last_name}}</td>
+                        <td>{{$application->user->first_name ?? ''}} {{$application->user->last_name ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>{{$application->user->mobile}}</td>
+                        <td>{{$application->user->mobile ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>{{$application->user->email}}</td>
+                        <td>{{$application->user->email ?? ''}}</td>
                     </tr>
 
 
 
                     <tr>
                         <th scope="row">Student Country</th>
-                        <td>{{$application->user->country}}</td>
+                        <td>{{$application->user->country ?? ''}}</td>
                     </tr>
                 </div>
 
@@ -441,7 +441,8 @@
                                         @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1)
                                         <form action="{{ route('consultant.application.university.update') }}" method="POST" enctype="multipart/form-data" >
                                             @csrf
-                                         <input type="text" value="{{$applied->university->id}}" name="uni_id" id="uni_id" hidden>
+                                         <input type="text" value="{{$applied->user->id}}" name="uni_id" id="uni_id" hidden>
+                                         dd({{$applied->user->id}});
                                         @if ($applied->is_accepeted == 1)
                                             <div class="row clearfix">
                                                 <div class="col-lg-6 col-md-12">
