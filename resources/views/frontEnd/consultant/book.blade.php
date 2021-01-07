@@ -40,21 +40,21 @@
         <div class="col-lg-12">
            <h3 class="title font-size-24">Selected Consultant</h3>
             <div class="card-item user-card card-item-list mt-4 mb-0">
-                @if($consultant->count()>0)
+                @if(isset($consultant) && $consultant->count()>0)
                 <div class="card-img">
-                    <img src="{{asset($consultant->user->profile_image)}}"alt="user image" class="h-auto">
+                    <img src="{{asset($consultant->profile_image)}}"alt="user image" class="h-auto">
                 </div>
                 <div class="card-body">
-                    <h3 class="card-title">{{$consultant->user->first_name}} {{$consultant->user->last_name}}</h3>
+                    <h3 class="card-title">{{$consultant->first_name ?? ''}} {{$consultant->last_name ?? ''}}</h3>
                     <p class="card-meta">Member since April 2016</p>
                     <div class="d-flex justify-content-between pt-3">
                         <ul class="list-items list-items-2 flex-grow-1">
-                            <li><span>Email:</span>{{$consultant->user->email}}</li>
-                            <li><span>Mobile:</span>{{$consultant->user->mobile}}</li>
+                            <li><span>Email:</span>{{$consultant->email ?? ''}}</li>
+                            <li><span>Mobile:</span>{{$consultant->mobile ?? ''}}</li>
                             {{-- <li><span>Home Airport:</span>Knoxville, TN 37920, USA</li> --}}
-                            <li><span>Address:</span>{{$consultant->user->address}}</li>
-                            <li><span>Website:</span><a href="#">{{$consultant->website}}</a></li>
-                            <li><span>Working Week Days:</span>{{$consultant->working_week_days}}</li>
+                            <li><span>Address:</span>{{$consultant->address ?? ''}}</li>
+                            <li><span>Website:</span><a href="#">{{$consultant->consultant->website ?? ''}}</a></li>
+                            <li><span>Working Week Days:</span>{{$consultant->consultant->working_week_days ?? ''}}</li>
                             {{-- <a href="#"> <span class="btn btn-primary" style="margin-top: 10px;">Change Consultant</span></a> --}}
                         </ul>
 
@@ -132,7 +132,6 @@ return $output;
 ?>
 {{-- #######################TIMESLOT#################### --}}
 <?php $univers=$consultant->consultantUniversity;
-
 ?>
 <div class="col-md-12">
 <table id="bannewrImages" class="table table-striped table-bordered table-hover" >
@@ -159,16 +158,16 @@ $inc = 0;
         <select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[][university]" required>
 <?php $un=$consultant->consultantUniversity?>
      @foreach($un as $uns)
-<option value="{{$uns->university->id}}"
-    @if($uns->university->id==$universityid) selected @endif >
-    {{-- {{ $t->title }} --}} {{$uns->university->university_name}}
+<option value="{{$uns->userUniversity->id}}"
+    @if($uns->userUniversity->id==$universityid) selected @endif >
+    {{-- {{ $t->title }} --}} {{$uns->userUniversity->university->university_name}}
 </option>
 @endforeach
         </select>
     </td>
     <td>
         <select required class="form-control"  id="tl-'+image_row+'" name="banner_images[][course]">
-        <?php $courses = $uns->university->universityCourse?>
+        <?php $courses = $uns->userUniversity->universityCourse?>
         @foreach($courses as $course)
        <option value="{{$course->course->id}}">{{$course->course->name}}</option>
        @endforeach
@@ -435,7 +434,7 @@ function addImage(language_id) {
 html = '<tr id="imageBox-' + image_row + '" class="imageBox">';
 
 
-html += ' <td class="text-center filetype" data-row_id='+image_row+'><select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][university]"> <option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td>';
+html += ' <td class="text-center filetype" data-row_id='+image_row+'><select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][university]"> <option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option><?php }?></select></td>';
 html += ' <td class="text-left" id="tc-'+image_row+'" >'
 html +='<select required class="form-control" id="tl-'+image_row+'" name="banner_images['+image_row+'][course]"></select>';
 html +='</td>';

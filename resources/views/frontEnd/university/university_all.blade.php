@@ -361,6 +361,7 @@
         </div><!-- end row -->
         <div class="row">
             @foreach($universities as $university)
+            @if($university->isUniversity())
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img">
@@ -368,9 +369,7 @@
                         {{-- @php
                         print_r($university->user->profile_image);
                     @endphp --}}
-                            <img src="
-                            {{asset($university->user->profile_image)}}
-                            "   alt="university-img" width="368px" height="230px">
+                            <img src="{{asset($university->profile_image)}}" alt="university-img" width="368px" height="230px">
                         </a>
                         {{-- <span class="badge">Top Ranked</span> --}}
                         {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
@@ -383,7 +382,7 @@
                         Private
                     @else Govenment</p>
                     @endif
-                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university_name }}</a></h3>
+                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name }}</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
@@ -405,6 +404,7 @@
                     </div>
                 </div><!-- end card-item -->
             </div>
+            @endif
             @endforeach
 
         </div><!-- end row -->
