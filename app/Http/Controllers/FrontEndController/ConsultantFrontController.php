@@ -24,7 +24,7 @@ class ConsultantFrontController extends Controller
 
     public function index_all()
     {
-        return view('frontEnd.consultant.consultant_all')->with('consultants',Consultant::all());
+        return view('frontEnd.consultant.consultant_all')->with('consultants',User::all());
     }
 
     public function index_single($id)
