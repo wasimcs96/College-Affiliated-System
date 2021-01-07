@@ -11,16 +11,16 @@
                         <img src="{{asset('frontEnd/assets/images/team7.jpg')}}"alt="user image" class="h-auto">
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">{{$consultant->user->first_name}} {{$consultant->user->last_name}}</h3>
+                        <h3 class="card-title">{{$consultant->first_name}} {{$consultant->last_name}}</h3>
                         <p class="card-meta">Member since April 2016</p>
                         <div class="d-flex justify-content-between pt-3">
                             <ul class="list-items list-items-2 flex-grow-1">
-                                <li><span>Email:</span>{{$consultant->user->email}}</li>
-                                <li><span>Mobile:</span>{{$consultant->user->mobile}}</li>
+                                <li><span>Email:</span>{{$consultant->email}}</li>
+                                <li><span>Mobile:</span>{{$consultant->mobile}}</li>
                                 {{-- <li><span>Paypal Email:</span>contact@techydevs.com</li> --}}
                                 {{-- <li><span>Home Airport:</span>Knoxville, TN 37920, USA</li> --}}
-                                <li><span>Address:</span>{{$consultant->user->address}}</li>
-                                <li><span>Website:</span><a href="#">{{$consultant->website}}</a></li>
+                                <li><span>Address:</span>{{$consultant->address}}</li>
+                                <li><span>Website:</span><a href="#">{{$consultant->consultant->website}}</a></li>
                                 <a href="{{route('consultant_book',['id'=>$consultant->id])}}"> <span class="btn btn-primary" style="margin-top: 10px;">Book Now</span></a></li>
                             </ul>
                              {{-- <ul class="list-items flex-grow-1">

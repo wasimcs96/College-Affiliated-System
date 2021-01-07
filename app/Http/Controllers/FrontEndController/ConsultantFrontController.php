@@ -29,7 +29,7 @@ class ConsultantFrontController extends Controller
 
     public function index_single($id)
     {
-        $consultant = Consultant::find($id);
+        $consultant = User::find($id);
         return view('frontEnd.consultant.consultant_detail')->with('consultant', $consultant);
     }
 
@@ -38,7 +38,7 @@ class ConsultantFrontController extends Controller
         // dd($request->all());
         $universityid = $request->get('universityid');
         $consultantid = $request->get('consultantid');
-        $consultant = Consultant::find($consultantid);
+        $consultant = User::find($consultantid);
         return view('frontEnd.consultant.book',compact('universityid'))->with('consultant', $consultant)->with('countries',Country::all());
 
     }
@@ -57,7 +57,7 @@ class ConsultantFrontController extends Controller
 
             $vr=date('w',$dt);
 
-            $data = ConsultantAvailableSlots::where('consultant_id',$consultantid)->where('week_day',$vr)->get();
+            $data = ConsultantAvailableSlots::where('user_id',$consultantid)->where('week_day',$vr)->get();
 
 
             $output='';
@@ -73,8 +73,8 @@ class ConsultantFrontController extends Controller
 
     function fetch_Course(Request $request)
     {
-        $fetch=University::where('id',$request->universityid)->first();
-        $courses =  $fetch->UniversityCourse;
+        $fetch=User::where('id',$request->universityid)->first();
+        $courses =  $fetch->universityCourse;
 
 
         $output='';
@@ -89,7 +89,7 @@ class ConsultantFrontController extends Controller
 
     public function book_store(Request $request)
     {
-
+dd($request->all());
         $this->validate($request,[
         'start_time'=>'required',
         'booking_date'=>'required',

@@ -24,7 +24,7 @@
     START BREADCRUMB AREA
 ================================= -->
 
-    <section class="breadcrumb-area bread-bg-4 py-0" style="background-image: url('{{asset($university->user->profile_image)}}');">
+    <section class="breadcrumb-area bread-bg-4 py-0" style="background-image: url('{{asset($university->profile_image)}}');">
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row">
@@ -35,7 +35,7 @@
                                data-speed="700">
                                 <i class="la la-video-camera mr-2"></i>Video
                             </a>
-                            <a class="theme-btn" data-src="{{asset($university->user->profile_image)}}"
+                            <a class="theme-btn" data-src="{{asset($university->profile_image)}}"
                                data-fancybox="gallery"
                                data-caption="Showing image - 01"
                                data-speed="700">
@@ -94,19 +94,17 @@
                         {{-- <li> --}}
                             <?php
                             $consultant = DB::table('university_consultants')
-                                      ->where('user_id', '=', $university->id)
-
-                                      ->get();
-                                $consults = DB::table('consultants')
-
-                                            ->get();
+                                      ->where('university_id', '=', $university->id)->where('consultant_id','=',auth()->user()->id)
+                                      ->get()->first();
+                                $consults = DB::table('consultants')->get();
                                      ?>
 
 
+{{-- {{dd($consultant)}} --}}
 @if(auth()->user())
                        @if (Auth()->User()->isConsultant())
-                                         @if ($universityconsultant)
-                                         @if ($universityconsultant->status == 1)
+                                         @if (isset($consultant) && $consultant->count()>0)
+                                         @if ($consultant->status == 1 )
                                  <div class="btn btn-success">
                                     All Ready a Consultant
                                 </div>
@@ -118,7 +116,7 @@
 
                                          @else
                                          <input type="text" name="unviersity_id"  value="{{$university->id}}" hidden>
-                                         <input type="text" name="consultant_id"  value="{{auth()->user()->consultant->id}}" hidden>
+                                         <input type="text" name="consultant_id"  value="{{auth()->user()->id}}" hidden>
                                          <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
                                          <a class="btn btn-primary cs" custom1="{{$university->id}}" href="javascript:void(0);"
@@ -142,9 +140,9 @@
                     <div class="single-content-wrap padding-top-60px">
                         <div id="description" class="page-scroll">
                             <div class="single-content-item pb-4">
-                                <h3 class="title font-size-26">{{$university->university_name}}</h3>
+                                <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}</h3>
                                 <div class="d-flex flex-wrap align-items-center pt-2">
-                                    <p class="mr-2">University Type:       @if($university->type==0)
+                                    <p class="mr-2">University Type:       @if($university->university->type==0 ?? '' )
                                         Private
                                     @else Govenment</p>
                                     @endif
@@ -538,7 +536,7 @@
                         </div><!-- end itinerary -->
                         <div  class="page-scroll">
                             {{-- <!-- end single-content-item --> --}}
-                            @if ($university->universityConsultant)
+                            @if (isset($university->universityConsultant))
                             <?php $universityconsultant=$university->universityConsultant; ?>
                             <div class="section-block" id="staterooms"></div>
                             <div class="single-content-item padding-top-40px padding-bottom-40px">
@@ -548,14 +546,14 @@
                                     <div class="cabin-type-item d-flex pt-4">
                                         <div class="cabin-type-img flex-shrink-0">
                                             <img    style=" width: 152px;
-                                            height: 115px;" src="{{asset($consultant->consultant->user->profile_image)}}" alt="">
+                                            height: 115px;" src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
                                         </div>
                                        <div class="cabin-type-detail">
-                                            <h3 class="title">{{$consultant->consultant->company_name}}</h3>
+                                            {{-- <h3 class="title">{{$consultant->consultant->company_name}}</h3> --}}
                                            <ul class="list-items pt-2 pb-2">
                                                <li><span>Admission Done:</span>139</li>
                                                <li><span>affiliated since:</span>2000</li>
-                                        <li><span>Location:</span>{{$consultant->consultant->user->address}}.</li>
+                                        <li><span>Location:</span>{{$consultant->userConsultant->address}}.</li>
                                            </ul>
                                        </div>
                                        <div class="cabin-price">
@@ -573,10 +571,10 @@
                                            <div class="custom-checkbox mb-0">
                                                <input type="checkbox" id="chb2">
                                                @if(auth()->user())
-<form action="{{route('consultant_book')}}" method="POST">
+<form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
     @csrf
     <input type="text" name="universityid" value="{{$university->id}}" hidden>
-    <input type="text" name="consultantid" value="{{$consultant->consultant->id}}" hidden>
+    <input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
 
                                            {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
                                            <button type="submit" class="theme-btn theme-btn-small">Book Now</button>
@@ -973,14 +971,15 @@
                               </div>
                             <div class="sidebar-list">
                                 <ul class="list-items">
-@foreach($universityconsultant as $consultant)
+            @foreach($universityconsultant as $consultant)
                                     <li><div class="author-content d-flex">
                                         <div class="author-img">
-                                            <a href="#"><img src="{{asset($consultant->consultant->user->profile_image)}}" alt="testimonial image"></a>
+                                            <a href="#"><img src="{{asset($consultant->userConsultant->profile_image)}}" alt="testimonial image"></a>
                                         </div>
                                         <div class="author-bio">
-                                            <h4 class="author__title"><a href="#">{{$consultant->consultant->company_name}}</a></h4>
-                                            <span class="author__meta">Member Since {{$consultant->consultant->created_at}}</span>
+                                            {{-- {{dd($consultant)}} --}}
+                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->consultant->company_name}}</a></h4>
+                                            <span class="author__meta">Member Since {{$consultant->userConsultant->consultant->created_at}}</span>
                                             <span class="ratings d-flex align-items-center">
                                                      <i class="la la-star"></i>
                                                      <i class="la la-star"></i>
@@ -991,10 +990,11 @@
                                                 </span>
                                             <div>
                                                 @if(auth()->user())
-                                                <form action="{{route('consultant_book')}}" method="POST">
+                                                <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
                                                     @csrf
                                                     <input type="text" name="universityid" value="{{$university->id}}" hidden>
-                                                    <input type="text" name="consultantid" value="{{$consultant->consultant->id}}" hidden>
+                                                    {{-- {{dd($university->id)}} --}}
+                                                    <input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
 
                                                                                            {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
                                                                                            <button type="submit" class="theme-btn theme-btn-small">Book Now</button>

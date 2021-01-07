@@ -19,18 +19,18 @@ class UniversityFrontController extends Controller
 {
     public function index()
     {
-       return view('frontEnd.university.university_all')->with('universities',University::all());
+       return view('frontEnd.university.university_all')->with('universities',User::all());
      }
 
      public function detail($id)
      {
-
-        $detail = University::find($id);
-
+// dd($id);
+        $detail = User::find($id);
+// dd(auth()->user()->id);
         if (auth()->user()) {
             # code...
         if (Auth()->User()->isConsultant()) {
-            $universityconsultant = UniversityConsultant::where('user_id',$id)->where('consultant_id',auth()->user()->consultant->id)->first();
+            $universityconsultant = UniversityConsultant::where('consultant_id',auth()->user()->id)->first();
             // dd($universityconsultant);
             return view('frontEnd.university.university_detail',compact('universityconsultant'))->with('university',$detail);
         }
