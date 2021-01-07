@@ -97,7 +97,7 @@ class ConsultantProfileController extends Controller
                 }
                 return $ReturnArray;
             }
-            $consultant_id = auth()->user()->consultant->id;
+            $consultant_id = auth()->user()->id;
             $consultant_slot = ConsultantAvailableSlots::where('consultant_id',$consultant_id)->first();
             $startTime = $request->start_time;
             $endTime = $request->end_time;
@@ -124,7 +124,7 @@ class ConsultantProfileController extends Controller
                                 break;
                             }
                                 ConsultantAvailableSlots::create([
-                                'consultant_id'=>auth()->user()->consultant->id,
+                                'consultant_id'=>auth()->user()->id,
                                 'week_day'=>$week_day,
                                 'start_slot_time'=>$st,
                                 'end_slot_time'=>$endTimeNew,
@@ -137,7 +137,7 @@ class ConsultantProfileController extends Controller
 
                 else
                 {
-                    $consultant_delete =auth()->user()->consultant->consultantSlots;
+                    $consultant_delete =auth()->user()->consultantSlots;
                     foreach ($consultant_delete as $key => $value)
                     {
                            $value->delete();
@@ -160,7 +160,7 @@ class ConsultantProfileController extends Controller
                                 break;
                             }
                             ConsultantAvailableSlots::create([
-                            'consultant_id'=>auth()->user()->consultant->id,
+                            'consultant_id'=>auth()->user()->id,
                             'week_day'=>$week_day,
                             'start_slot_time'=>$st,
                             'end_slot_time'=>$endTimeNew,

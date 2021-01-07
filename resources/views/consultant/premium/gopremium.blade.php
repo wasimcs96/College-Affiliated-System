@@ -32,13 +32,14 @@
                 @else
                 <li class="plan-btn"><button customDescription="{{$package->description}}" customPackage="{{$package->package_time}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="1" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
 
-                {{--  @endif
+                  @endif
             </ul>
         </div>
 
     </div>
-    @endforeach
+
     {{-- <img style="width: 100px; height: 50px; border-radius: 11px;" id="rzp-button1" src="{{asset('assets/images/razor_pay.jpeg')}} "> --}}
+    @endforeach
 </div>
 
 <div class="container" id="choosedcontent">
