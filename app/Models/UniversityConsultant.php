@@ -19,7 +19,11 @@ class UniversityConsultant extends Model
     // {
     //     return $this->belongsTo(University::class);
     // }
-
+public function user()
+{
+    return $this->belongsTo(User::class);
+    
+}
     public function userUniversity()
     {
         return $this->belongsTo(User::class,'university_id');

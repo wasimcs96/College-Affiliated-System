@@ -30,18 +30,18 @@
 
                     <tr>
                         <th scope="row"> Name</th>
-                        <td>{{$consultant->user->first_name}} {{$consultant->user->last_name}}</td>
+                        <td>{{$consultant->first_name  ?? ''}} {{$consultant->last_name  ?? ''}}</td>
                     </tr>
 
 
                     <tr>
                         <th scope="row"> Mobile No.</th>
-                        <td>{{$consultant->user->mobile}}</td>
+                        <td>{{$consultant->mobile  ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">E-mail</th>
-                        <td>{{$consultant->user->email}}</td>
+                        <td>{{$consultant->email  ?? ''}}</td>
                     </tr>
 
                     <tr>
@@ -54,31 +54,31 @@
                     </tr>
                     <tr>
                         <th scope="row">Company Name</th>
-                        <td>{{$consultant->company_name}}</td>
+                        <td>{{$consultant->consultant->company_name  ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Website</th>
-                        <td>{{$consultant->website}}</td>
+                        <td>{{$consultant->consultant->website  ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Landline_1</th>
-                        <td>{{$consultant->user->landline_1}}</td>
+                        <td>{{$consultant->landline_1  ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Landline_2</th>
-                        <td>{{$consultant->user->landline_2}}</td>
+                        <td>{{$consultant->landline_2 ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Address</th>
-                        <td>{{$consultant->user->address}}</td>
+                        <td>{{$consultant->address  ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">City</th>
-                        <td>{{$consultant->user->city}}</td>
+                        <td>{{$consultant->city  ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Country</th>
-                        <td>{{$consultant->user->country}}</td>
+                        <td>{{$consultant->country  ?? ''}}</td>
                     </tr>
 
 
