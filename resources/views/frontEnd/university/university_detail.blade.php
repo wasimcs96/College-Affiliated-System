@@ -100,17 +100,17 @@
                                      ?>
 
 
-{{-- {{dd($consultant)}} --}}
+{{-- {{dd($universityconsultant)}} --}}
 @if(auth()->user())
                        @if (Auth()->User()->isConsultant())
-                                         @if (isset($consultant) && $consultant->count()>0)
-                                         @if ($consultant->status == 1 )
+                       @if ($universityconsultant)
+                       @if ($universityconsultant->status == 1)
                                  <div class="btn btn-success">
-                                    All Ready a Consultant
+                                    You are affiliated
                                 </div>
 
                                              @else
-                                             <a class="btn btn-primary" style="color:white; " id="btn5">
+                                             <a class="btn btn-primary" data-toggle="modal" data-target="#mdlwait" style="color:white; " id="btn5">
                                                  Pending</a>
                                          @endif
 
@@ -122,6 +122,7 @@
                                          <a class="btn btn-primary cs" custom1="{{$university->id}}" href="javascript:void(0);"
                                          @if(!auth()->user()) data-toggle="modal" data-target="#loginPopupForm" @else id="submitClass" @endif
                                          ><i class="las la-user-plus mr-2"></i>Be a Consultant </a>
+
                                         @endif
 
 @endif
@@ -542,6 +543,7 @@
                             <div class="single-content-item padding-top-40px padding-bottom-40px">
                                 <h2 class="title font-size-23" >Select a Consutant </h2>
                                 @foreach($universityconsultant as $consultant)
+                                @if($consultant->status == 1)
                                 <div class="cabin-type padding-top-30px">
                                     <div class="cabin-type-item d-flex pt-4">
                                         <div class="cabin-type-img flex-shrink-0">
@@ -587,101 +589,11 @@
                                        </div>
                                     </div><!-- end cabin-type-item -->
                                 </div><!-- end cabin-type -->
+                                @else
+                               <h4 class="mt-5" style="text-align:center;"> No consultant Affiliated</h4 >
+                                @endif
                                 @endforeach
-                                {{-- <div class="cabin-type padding-top-30px">
-                                    <div class="cabin-type-item d-flex pt-4">
-                                        <div class="cabin-type-img flex-shrink-0">
-                                            <img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}" alt="">
-                                        </div>
-                                        <div class="cabin-type-detail">
-                                            <h3 class="title">Paterocio manseni</h3>
-                                            <ul class="list-items pt-2 pb-2">
-                                                <li><span>Admission Done:</span>139</li>
-                                                <li><span>affiliated since:</span>2000</li>
-                                                <li><span>Location:</span>Dalal street New delhi.</li>
-                                            </ul>
-                                        </div>
-                                        <div class="cabin-price">
-                                            <ul><li>
-                                             <span class="ratings ">
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star-o"></i>
-                                             </span></li>
-                                                <li> <span class="ml-2">305 Reviews</span>
-                                           </li>
-                                            </ul>
-                                            <div class="custom-checkbox mb-0">
-                                                <input type="checkbox" id="chb2">
-                                            <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
-                                        </div>
-                                    </div><!-- end cabin-type-item -->
-                                </div><!-- end cabin-type --> --}}
-                                {{-- <div class="cabin-type padding-top-30px">
 
-                                    <div class="cabin-type-item d-flex pt-4">
-                                        <div class="cabin-type-img flex-shrink-0">
-                                            <img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}" alt="">
-                                        </div>
-                                        <div class="cabin-type-detail">
-                                            <h3 class="title">Titus</h3>
-                                            <ul class="list-items pt-2 pb-2">
-                                                <li><span>Admission Done:</span>139</li>
-                                                <li><span>affiliated since:</span>2000</li>
-                                                <li><span>Location:</span>Dalal street New delhi.</li>
-                                            </ul>
-                                        </div>
-                                        <div class="cabin-price">
-                                            <ul><li>
-                                             <span class="ratings ">
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star-o"></i>
-                                             </span></li>
-                                                <li> <span class="ml-2">305 Reviews</span>
-                                           </li>
-                                            </ul>
-                                            <div class="custom-checkbox mb-0">
-                                                <input type="checkbox" id="chb2">
-                                            <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
-                                        </div>
-                                    </div><!-- end cabin-type-item -->
-                                </div><!-- end cabin-type --> --}}
-                                {{-- <div class="cabin-type padding-top-30px">
-                                    <div class="cabin-type-item d-flex pt-4">
-                                        <div class="cabin-type-img flex-shrink-0">
-                                            <img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}" alt="">
-                                        </div>
-                                        <div class="cabin-type-detail">
-                                            <h3 class="title">cardinal thomas</h3>
-                                            <ul class="list-items pt-2 pb-2">
-                                                <li><span>Admission Done:</span>139</li>
-                                                <li><span>affiliated since:</span>2000</li>
-                                                <li><span>Location:</span>Dalal street New delhi.</li>
-                                            </ul>
-                                        </div>
-                                        <div class="cabin-price">
-                                            <ul><li>
-                                             <span class="ratings ">
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star-o"></i>
-                                             </span></li>
-                                                <li> <span class="ml-2">305 Reviews</span>
-                                           </li>
-                                            </ul>
-                                            <div class="custom-checkbox mb-0">
-                                                <input type="checkbox" id="chb2">
-                                            <a href="#"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a>                                           </div>
-                                        </div>
-                                    </div><!-- end cabin-type-item -->
-                                </div><!-- end cabin-type --> --}}
                             </div>
                             @endif<!-- end single-content-item -->
                             <p class="font-size-14 line-height-26 padding-bottom-40px"><strong class="text-black">Please note:</strong>Above Consultants are affiliated to this University.</p>
@@ -1011,6 +923,8 @@
                             </div><!-- end sidebar-list -->
                         </div><!-- end sidebar-widget -->
                         @endif
+
+
                         <div class="sidebar-widget single-content-widget">
                             <h3 class="title stroke-shape">Enquiry Form</h3>
                             <div class="enquiry-forum">
@@ -1078,29 +992,7 @@
                                 </ul>
                             </div><!-- end sidebar-list -->
                         </div><!-- end sidebar-widget -->
-                        {{-- <div class="sidebar-widget single-content-widget">
-                            <h3 class="title stroke-shape">Organized by</h3>
-                            <div class="author-content d-flex">
-                                <div class="author-img">
-                                    <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                </div>
-                                <div class="author-bio">
-                                    <h4 class="author__title"><a href="#">royalconsultancies</a></h4>
-                                    <span class="author__meta">Member Since 2017</span>
-                                    <span class="ratings d-flex align-items-center">
-                                             <i class="la la-star"></i>
-                                             <i class="la la-star"></i>
-                                             <i class="la la-star"></i>
-                                             <i class="la la-star"></i>
-                                             <i class="la la-star-o"></i>
-                                             <span class="ml-2">305 Reviews</span>
-                                        </span>
-                                    <div class="btn-box pt-3">
-                                        <a href="#" class="theme-btn theme-btn-small theme-btn-transparent">Ask a Question</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- end sidebar-widget --> --}}
+
                     </div><!-- end sidebar -->
                     {{-- @endif --}}
                 </div><!-- end col-lg-4 -->
@@ -1159,7 +1051,98 @@
 <div id="back-to-top">
     <i class="la la-angle-up" title="Go top"></i>
 </div>
+                        {{-- ####################################################ERROR###################### --}}
 
+<div class="modal fade" id="mdlwait" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-body" style="
+        text-align:center;
+        padding: 0px;
+        ">
+            <div style="
+            padding: 0px;
+            background-color: white;
+        ">
+            <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/wait.png')}}">
+            </div>
+
+            <div style="
+            background-color: #52b1b1;
+            color: #585550;
+            font-family: sans-serif;
+        ">
+                <h1 style=" margin: 0px;
+                font-family: sans-serif;
+                padding: 18px;
+                color: #323435;"> Wait  ! </h1>
+
+                <h4 style="color: dimgrey;margin: 0px;font-size: large;">Your Request is in Waiting. Have patience</h4>
+            </div>
+        </div>
+        <div class="modal-footer"  style="
+        padding: 0px;
+        border: 0px;
+        justify-content: center;
+        background-color: #52b1b1;
+    ">
+          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+          {{-- <button type= class="btn btn-primary">Submit</button> --}}
+          <a href="{{route('consultant.dashboard')}}"  style=" border-radius: 35px;font-weight: 500; font-family: sans-serif;margin: 11px; margin-top: 30px;  background-color: white; border-color:white; " class="btn btn-warning" id="add_document3">Close</a>
+        </div>
+        </div>
+       </div>
+</div>
+{{-- ####################################################ERROR###################### --}}
+                        <div class="modal fade" id="mdlup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+
+                                <div class="modal-body" style="
+                                text-align:center;
+                                padding: 0px;
+                                ">
+                                    <div style="
+                                    padding: 0px;
+                                    background-color: #5890ff;
+                                ">
+                                    <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/checkmark.png')}}">
+                                    </div>
+
+                                    <div style="
+                                    text-align:center;
+                                    background-color: white;
+                                    color: black;
+                                    ">
+                                        <h3 style="
+                                        margin: 0px;
+                                        font-family: sans-serif;
+                                        padding: 18px;
+                                        color: #323435;
+                                    ">Your Request have been sent </h3>
+                                         <h4 style="
+                                        color: dimgrey;
+                                         margin: 0px;
+                                         font-size: large;
+                                         "
+                                     >Have patience Wait for Respond</h4>
+                                    </div>
+                                </div>
+                                <div class="modal-footer" style="
+                                padding: 6px;
+                                background-color: white;
+                                border: 0px;
+                                justify-content: center;
+                            ">
+                                  {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                                  {{-- <button type= class="btn btn-primary">Submit</button> --}}
+                                  <a href="{{route('consultant.dashboard')}}" class="btn btn-primary" style=" border-radius: 35px;font-weight: 500; font-family: sans-serif;margin: 11px; margin-top: 30px;" id="add_document3">Close</a>
+                                </div>
+                                </div>
+                               </div>
+                        </div>
+                        {{-- ############################################## MODELLLLLLLLL END --}}
 @endsection
 @section('per_page_script')
 <script>
@@ -1183,10 +1166,10 @@ headers: {
                 url: "{{route('university_consultant')}}",
                 data: {university_id:university_id,consultant_id:consultant_id},
                 success: function (result) {
-                    console.log('success');
+                    $('#mdlup').modal('show');
                 }
             });
-            $(this).text("Pending");
+            $(this).replaceWith(`<a class="btn btn-primary"  data-toggle="modal" data-target="mdlerror" style="color:white; " id="btn5">Pending</a>`);
             // console.log(university_id,consultant_id,_token);
 
         });
