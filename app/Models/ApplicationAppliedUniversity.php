@@ -13,6 +13,11 @@ class ApplicationAppliedUniversity extends Model
         return $this->belongsTo(University::class,'university_id');
     }
 
+    public function userUniversity()
+    {
+        return $this->belongsTo(User::class,'university_id');
+    }
+
     public function course()
     {
         return $this->belongsTo(Course::class,'course_id');

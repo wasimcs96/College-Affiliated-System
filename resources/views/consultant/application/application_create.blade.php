@@ -274,6 +274,8 @@
 </div>
 </div>
 @if(isset($application->applicationAppliedUniversity))
+
+
 <div class="col-lg-12">
     <div class="row clearfix">
         <div class="col-md-12">
@@ -292,7 +294,7 @@
         <div class="card-header" id="headingTwo">
           <h2 class="mb-0">
             <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapse-{{$key}}">
-              University Form-{{$applied->university->university_name ?? ''}}
+              University Form-{{$applied->userUniversity->university->university_name ?? ''}}
             </button>
           </h2>
         </div>
@@ -324,7 +326,7 @@
 
                                                 <tr>
                                                     <th scope="row">University Name</th>
-                                                    <td>{{$applied->university->university_name ?? ''}}</td>
+                                                    <td>{{$applied->userUniversity->university->university_name ?? ''}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Course Name</th>
@@ -340,7 +342,7 @@
 
                                         </div>
 
-                                    <input type="text" name="university_id" value="{{$applied->university->id ?? ''}}" hidden>
+                                    <input type="text" name="university_id" value="{{$applied->userUniversity->id ?? ''}}" hidden>
                                     <input type="text" name="apply_id" value="{{$applied->id ?? ''}}" hidden>
 
                                     <div class="col-lg-6 col-md-12">
@@ -365,7 +367,7 @@
 
                                                <tr>
                                                    <th scope="row">University Name</th>
-                                                   <td>{{$applied->university->university_name ?? ''}}</td>
+                                                   <td>{{$applied->userUniversity->university->university_name ?? ''}}</td>
                                                </tr>
                                                <tr>
                                                    <th scope="row">Course Name</th>
@@ -438,16 +440,17 @@
                                         </fieldset>
                                       <h3>Ready To Fly - Finish</h3>
                                       <fieldset>
-                                        @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1)
+                                        {{-- @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1) --}}
                                         <form action="{{ route('consultant.application.university.update') }}" method="POST" enctype="multipart/form-data" >
                                             @csrf
-                                         <input type="text" value="{{$applied->user->id}}" name="uni_id" id="uni_id" hidden>
-                                         dd({{$applied->user->id}});
+                                         <input type="text" value="{{$applied->userUniversity->id}}" name="uni_id" id="uni_id" hidden>
+                                         {{-- {{ dd($applied->userUniversity->id) }} --}}
+                                        
                                         @if ($applied->is_accepeted == 1)
                                             <div class="row clearfix">
                                                 <div class="col-lg-6 col-md-12">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" value="@if(isset($applied->university->university_name)){{$applied->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
+                                                        <input type="text" class="form-control" value="@if(isset($applied->userUniversity->university->university_name)){{$applied->userUniversity->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12">
@@ -465,7 +468,7 @@
                                             <div class="form-group">
                                                 <?php
 
-                                                $appliedUniversity=$applied->university->default_documents;
+                                                $appliedUniversity=$applied->userUniversity->university->default_documents;
                                                 $documentSelect = json_decode($appliedUniversity);
                                                 $increase=0; ?>
                                                 <label for="documents">Documents</label>
@@ -509,9 +512,10 @@
                                             <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
                                         </div>
                                         @endif
-                                        @else
+                                        
+                                        {{-- @else
                                         <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
-                                        @endif
+                                        @endif --}}
 
                                       </fieldset>
 

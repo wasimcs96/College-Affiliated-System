@@ -43,9 +43,9 @@
                         @if($university->status == 1)
                         <tr class="row-{{ $university->id }}">
                             <td>{{ $sno=$sno+1}}.</td>
-                            <td>{{$university->university->university_name}}</td>
-                            <td>{{$university->university->website}}</td>
-                            <td>@if($university->university->type==0)
+                            <td>{{$university->userUniversity->university->university_name ?? ''}}</td>
+                            <td>{{$university->userUniversity->university->website ?? ''}}</td>
+                            <td>@if($university->userUniversity->university->type==0 ?? '')
                                 <span class="btn btn-warning" >Private</span>
                                 @else
                                 <span class="btn btn-info" >Government</span>
@@ -53,13 +53,13 @@
                             {{-- <td> {{$university->university->user->address}}</td>
                             <td>Indian</td>--}}
                             <td>
-                            <a href="{{route('consultant.university.show',['id'=>$university->university->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <a href="{{route('consultant.university.show',['id'=>$university->userUniversity->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
                         @endif
                         @endforeach
+                    </tbody>
                     @else
                     No Record Available
-                    </tbody>
                 @endif
                 </table>
             </div>

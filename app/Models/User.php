@@ -73,7 +73,7 @@ class User extends Authenticatable
         return $this->hasMany(UniversityMedia::class,'user_id');
     }
 
-    public function universityConsultants()
+    public function universityConsultant()
     {
         return $this->hasMany(UniversityConsultant::class,'university_id');
     }
@@ -84,9 +84,31 @@ class User extends Authenticatable
         return $this->hasMany(UniversityConsultantClient::class,'user_id');
     }
 
-    public function booking()
+    public function consultantBooking()
     {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(Booking::class,'consultant_id');
+    }
+
+    public function clientBooking()
+    {
+        return $this->hasMany(Booking::class,'client_id');
+        
+    }
+
+    public function clientApplication()
+    {
+        return $this->hasMany(Application::class,'client_id');
+        
+    }
+    public function consultantApplication()
+    {
+        return $this->hasMany(Application::class,'consultant_id');
+        
+    }
+    public function bookingApplication()
+    {
+        return $this->hasMany(Application::class,'booking_id');
+        
     }
 
     public function order()
@@ -99,7 +121,7 @@ class User extends Authenticatable
         return $this->hasOne(ConsultantPrMigrationCountry::class,'user_id');
     }
 
-    public function consultantUniversities()
+    public function consultantUniversity()
     {
         return $this->hasMany(UniversityConsultant::class,'consultant_id');
     }
@@ -111,7 +133,7 @@ class User extends Authenticatable
 
     public function consultantSlots()
     {
-        return $this->hasMany(ConsultantAvailableSlots::class,'consultant_id');
+        return $this->hasMany(ConsultantAvailableSlots::class,'user_id');
     }
 
     public function consultantApplications()
