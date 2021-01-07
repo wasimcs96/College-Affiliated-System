@@ -94,7 +94,7 @@
                         {{-- <li> --}}
                             <?php
                             $consultant = DB::table('university_consultants')
-                                      ->where('university_id', '=', $university->id)
+                                      ->where('user_id', '=', $university->id)
 
                                       ->get();
                                 $consults = DB::table('consultants')

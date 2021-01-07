@@ -26,11 +26,12 @@
 @csrf
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12">
-                        @if(!empty(auth()->user()->university->universityMedia) && auth()->user()->university->universityMedia != null)
+                        {{-- @if(!empty(auth()->user()->universityMedia) && auth()->user()->universityMedia != null) --}}
                         <div class="form-group">
                                   <div id="lightgallery" class="row clearfix lightGallery">
 
-                                <?php $rts=auth()->user()->university->universityMedia;?>
+                                <?php $rts=App\Models\UniversityMedia::where('user_id',auth()->user()->id)->get();?>
+                                {{-- {{dd($rts)}} --}}
                                 @if($rts->count()>0)
                                 @foreach($rts as $rt)
                                 @if ($rt->file_type==0)
@@ -64,10 +65,10 @@
                               </div>
 
                                 </div>
-@endif
+{{-- @endif --}}
 <label>University Image</label>
 
-<input name="images[]" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-frrr" multiple>
+<input name="images[]" value=""type="file" class="dropify-frrr" multiple>
 <small><b>Please Note:</b> Image Dimension Should be in (min_width:872.13|min_height:302|max_width=1024|max_height=640)</small>
                         </div>
                     </div>
