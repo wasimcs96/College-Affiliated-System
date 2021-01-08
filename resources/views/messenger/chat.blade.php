@@ -6,7 +6,7 @@
 <style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        .container{max-width:1170px; margin:auto;}
+        .container{max-width:900px; margin:auto;}
     img{ max-width:100%;}
     .inbox_people {
       background: #f8f8f8 none repeat scroll 0 0;
@@ -28,7 +28,7 @@
       text-align: right;
       width: 60%; padding:
     }
-    .headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
+    /* .headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;} */
 
     .recent_heading h4 {
       color: #05728f;
@@ -162,7 +162,12 @@
                             <li class="online chat_list">
                                 <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
                                     <div class="media">
-                                        <div><img class="media-object " src="../assets/images/xs/avatar3.jpg" alt=""></div>
+                                        <div><img class="media-object " src= "@if(isset($user->profile_image))
+                                        {{asset($user->profile_image)}}
+                                        @else
+                                       {{asset('assets/images/xs/avatar4.jpg')}}
+                                        @endif
+                                        " alt=""></div>
                                         <div class="media-body chat_ib" id="cs">
                                             <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
                                             @if($user->message != null)
@@ -183,58 +188,50 @@
                     </ul>
                     </div>
                 </div>
-                <div class="chatapp_body">
-                    <div class="chat-header clearfix">
-                        <div class="row clearfix">
-                            <div class="col-lg-12">
-                                <div class="chat-about">
-                                    <h6 class="m-b-0" id="hed">Select User</h6>
+                
+                    <div class="chatapp_body" style="margin-right: 0px;">
+                        <div class="chat-header clearfix">
+                            <div class="row clearfix">
+                                <div class="col-lg-12">
+                                    <div class="chat-about">
+                                        <h6 class="m-b-0" id="hed">Select User</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="chat-history ">
-                        <ul class="message_data msg_history" id="history">
-                            <li class="right clearfix">
-                                <img class="user_pix" src="../assets/images/xs/avatar7.jpg" alt="avatar">
-                                <div class="message">
+                        <div class="content-scroll">
+                        <div class="chat-history ">
+                            <ul class="message_data msg_history" id="history">
+                                <li class="right clearfix">
+                                    <img class="user_pix" src="{{asset('assets/images/xs/avatar8.jpg')}}" alt="avatar">
+                                    <div class="message">
+                                        <p></p>
+                                    </div>
+                                    <span class="data_time"></span>
+                                </li>
+                                <li class="left clearfix">
+                                    <img class="user_pix" src="{{asset('assets/images/user.png')}}" alt="avatar">
+                                    <div class="message">
                                     <p></p>
-                                </div>
-                                <span class="data_time"></span>
-                            </li>
-                            <li class="left clearfix">
-                                <img class="user_pix" src="../assets/images/user.png" alt="avatar">
-                                <div class="message">
-                                   <p></p>
-                                </div>
-                                <span class="data_time"></span>
-                            </li>
+                                    </div>
+                                    <span class="data_time"></span>
+                                </li>
 
-                        </ul>
+                            </ul>
+                        </div>
+                        <div class="chat-message clearfix" id="btn">
+                            {{-- <div class="input-group mb-0" id="btn target" > --}}
+                                <form class="input-group mb-0" id="target">
+                                    <textarea type="text" row="" id="message" name="message" class="form-control" placeholder="Enter text here..."></textarea>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <button class="btn btn-link" id="bt" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            {{-- </div> --}}
+                        </div>
                     </div>
-                    <div class="chat-message clearfix" id="btn">
-                        {{-- <div class="input-group mb-0" id="btn target" > --}}
-                            <form class="input-group mb-0" id="target">
-                                <textarea type="text" row="" id="message" name="message" class="form-control" placeholder="Enter text here..."></textarea>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <button class="btn btn-link" id="bt" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                                    </span>
-                                </div>
-                            </form>
-                        {{-- </div> --}}
-                    </div>
-                </div>
-                <div class="chatapp_detail text-center vivify pullLeft delay-150">
-                    <div class="profile-image"><img src="../assets/images/user.png" class="rounded-circle mb-3" alt=""></div>
-                    <h5 class="mb-0">Louis Pierce</h5>
-                    <small class="text-muted">Address: </small>
-                    <p> San Francisco</p>
-                    <small class="text-muted">Email address: </small>
-                    <p>louispierce@example.com</p>
-                    <small class="text-muted">Mobile: </small>
-                    <p>+ 202-222-2121</p>
-                    <button class="btn btn-round btn-success">View Profile</button>
                 </div>
             </div>
         </div>
@@ -284,7 +281,7 @@
                               (re.messages).forEach(element => {
                                   if (element.send_by == 0) {
                                       html+=` <li class="right clearfix">
-                                <img class="user_pix" src="../assets/images/xs/avatar7.jpg" alt="avatar">
+                                <img class="user_pix" src="{{asset('assets/images/xs/avatar5.jpg')}}" alt="avatar">
                                 <div class="message">
                                     <p>${element.message}</p>
                                 </div>
@@ -294,7 +291,7 @@
                                   else{
 
                                         html+=` <li class="left clearfix">
-                                                <img class="user_pix" src="../assets/images/user.png" alt="avatar">
+                                                <img class="user_pix" src="{{asset('assets/images/user.png')}}" alt="avatar">
                                                 <div class="message">
                                                     <p>${element.message}</p>
                                                 </div>
@@ -325,21 +322,22 @@
 
        e.preventDefault(); // avoid to execute the actual submit of the form.
        // console.log('working');
-       
+
        // var form = $(this);
        // var url = form.attr('action');
        var id = $('input[name="id"]').val();
        var msd = $('#message').val();
        document.getElementById('history').innerHTML+=`<li class="right clearfix">
-        <img class="user_pix" src="../assets/images/user.png" alt="avatar">
+        <img class="user_pix" src="{{asset('assets/images/user.png')}}" alt="avatar">
         <div class="message">
             <p>${msd}</p>
         </div>
         <span class="data_time"></span>
     </li>`;
-$('.msg_history').animate({
-height: $('.msg_history').get(0).scrollHeight
-}, 1000);
+
+$(".msg_history").stop().animate({
+     scrollTop: $(".msg_history")[0].scrollHeight
+     }, 1000);
                          var _token = $('input[name="_token"]').val();
 
        $.ajax({
@@ -349,7 +347,7 @@ height: $('.msg_history').get(0).scrollHeight
               success: function(data)
               {
 
-                  
+
                         //  $(this).height('auto');
                    // document.getElementById('ms').innerHTML=" ";
                //    console.log(data); // show response from the php script.
@@ -372,7 +370,7 @@ height: $('.msg_history').get(0).scrollHeight
                     a=element.getElementsByTagName("div")[0];
                     b=a.getElementsByTagName("div")[1];
                     c=b.getElementsByTagName("span")[0];
-                    
+
                     //console.log(c.innerText);
                     txtValue = c.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
