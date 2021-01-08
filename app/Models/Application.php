@@ -30,7 +30,7 @@ class Application extends Model
 
     public function booking()
     {
-        return $this->belongsTo(Booking::class);
+        return $this->belongsTo(Booking::class,'booking_id');
     }
 
     public function applicationAppliedUniversity()

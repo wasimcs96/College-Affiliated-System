@@ -93,16 +93,16 @@
                         @endforeach --}}
                     <tr>
                         <th scope="row">Student University/Course Preference-1</th>
-                        <td>{{$university0->university_name ?? ''}}/{{$course0->name ?? ''}}</td>
+                        <td>{{$university0->university->university_name ?? ''}}/{{$course0->name ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student University/Course Prefrence-2</th>
-                        <td>{{$university1->university_name ?? ''}}/{{$course1->name ?? ''}}</td>
+                        <td>{{$university1->university->university_name ?? ''}}/{{$course1->name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student University/Course Prefrence-3</th>
-                        <td>{{$university2->university_name ?? ''}}/{{$course2->name ?? ''}}</td>
+                        <td>{{$university2->university->university_name ?? ''}}/{{$course2->name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Date</th>
@@ -445,7 +445,7 @@
                                             @csrf
                                          <input type="text" value="{{$applied->userUniversity->id}}" name="uni_id" id="uni_id" hidden>
                                          {{-- {{ dd($applied->userUniversity->id) }} --}}
-                                        
+
                                         @if ($applied->is_accepeted == 1)
                                             <div class="row clearfix">
                                                 <div class="col-lg-6 col-md-12">
@@ -512,7 +512,7 @@
                                             <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
                                         </div>
                                         @endif
-                                        
+
                                         {{-- @else
                                         <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
                                         @endif --}}
@@ -921,6 +921,7 @@ $(document).on('click', '#apply', function ()
                         // $('.applied').css("background-color", "green");
                         $('#alert_add2').append('<div class="container"><div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>You have applied for the University Successfully.</strong></div></div>')
                         console.log('success');
+                        location.reload();
                     }
                 });
       }
@@ -987,6 +988,7 @@ $(document).ready(function () {
 
                         x++;
                         console.log('success');
+                        location.reload();
                      }
 
             //          error: (response) => {
@@ -1043,6 +1045,7 @@ var j = 0;
 
                         j++;
                          console.log('success');
+                         location.reload();
                      }
                  });
        }
@@ -1081,6 +1084,7 @@ var j = 0;
                      success: function (result) {
 
                          console.log('success');
+                         location.reload();
                      }
                  });
        }
@@ -1133,6 +1137,7 @@ console.log(docs)
                      success: function (result) {
 
                          console.log('success');
+                         location.reload();
                      }
                  });
        }
@@ -1205,6 +1210,7 @@ $(document).on('click', '#readyTo2', function ()
                     success: function (result) {
 
                         console.log('success');
+                        location.reload();
                     }
                 });
       }

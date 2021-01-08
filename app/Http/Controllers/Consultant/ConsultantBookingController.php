@@ -12,6 +12,7 @@ use App\Models\Application;
 use App\Models\ApplicationAppliedUniversity;
 use App\Models\University;
 use App\Models\Course;
+use App\Models\User;
 use App\Models\ApplicationDocument;
 
 
@@ -126,14 +127,15 @@ public function applicationStore(Request $request){
 
     function fetchCourse(Request $request)
     {
-        $fetch=University::where('id',$request->universityid)->first();
-        $courses =  $fetch->UniversityCourse;
+        $fetch=User::where('id',$request->universityid)->first();
+        $courses =  $fetch->universityCourse;
         $output='';
         foreach($courses as $row)
         {
-         $output .= '<option value="'.$row->course->id.'">'.$row->course->name.'</option>';
+         $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
         }
         echo $output;
+
 
     }
 

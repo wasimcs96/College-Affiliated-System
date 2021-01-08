@@ -11,6 +11,7 @@ use App\Models\Booking;
 use App\Models\Application;
 use App\Models\ApplicationDocument;
 use App\Models\Course;
+use App\Models\User;
 use App\Models\University;
 use Config;
 use App\Models\ApplicationAppliedUniversity;
@@ -26,20 +27,24 @@ class ConsultantApplicationController extends Controller
 
    public function applicationCreate($id)
    {
+    //    dd($id);
        $application = Application::where('id',$id)->get()->first();
 
     $book = $application->booking->enquiry;
     $bookings = json_decode($book,true);
+    // dd($bookings);
     $i = 0;
+    // dd(json_decode($book,true));
     foreach($bookings as $booking)
     {
-        $university_id[$i] = $booking['university'];
-        $course_id[$i] = $booking['course'];
+        // dd($booking);
+        $university_id[$i] = $booking['university'] ?? '';
+         $course_id[$i] = $booking['course'] ?? '';
         $i++;
     }
-    $university0 =  University::where('id',$university_id[0])->get()->first();
-    $university1 =  University::where('id',$university_id[1])->get()->first();
-    $university2 =  University::where('id',$university_id[2])->get()->first();
+    $university0 =  User::where('id',$university_id[0])->get()->first();
+    $university1 =  User::where('id',$university_id[1])->get()->first();
+    $university2 =  User::where('id',$university_id[2])->get()->first();
 
     $course0 = Course::where('id',$course_id[0])->get()->first();
     $course1 = Course::where('id',$course_id[1])->get()->first();
@@ -64,12 +69,12 @@ class ConsultantApplicationController extends Controller
     //    dd($application->documents);
        $application->save();
 
-       foreach($application->applicationAppliedUniversity as $key=>$applied)
-       {
-          $storeUniversityDocument = ApplicationAppliedUniversity::find($applied->id);
-          $storeUniversityDocument->documents = $jsonApplicationStore;
-          $storeUniversityDocument->save();
-       }
+    //    foreach($application->applicationAppliedUniversity as $key=>$applied)
+    //    {
+    //       $storeUniversityDocument = ApplicationAppliedUniversity::find($applied->id);
+    //       $storeUniversityDocument->documents = $jsonApplicationStore;
+    //       $storeUniversityDocument->save();
+    //    }
        $documentes = collect($request->documents);
                foreach($documentes as $doc)
                {
@@ -172,10 +177,10 @@ class ConsultantApplicationController extends Controller
         $university->fees =$fees;
         $university->save();
 
-        $university_id = $request->uni_id;
-        $default_document = University::find($university_id);
-        $default_document->default_documents = $document;
-        $default_document->save();
+        // $university_id = $request->uni_id;
+        // $default_document = University::find($university_id);
+        // $default_document->default_documents = $document;
+        // $default_document->save();
 
         return response('success');
     }
