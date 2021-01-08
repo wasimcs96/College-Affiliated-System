@@ -34,7 +34,7 @@ class ConsultantAdvertisementController extends Controller
     // ]);
 
 
-    $expire=$request->expire_date;
+    $expire=$request->package_time;
       $new=Carbon::now()->addMonths($expire);
     $dt= $new->format('Y-m-d');
     // if($request->hasFile('image'))

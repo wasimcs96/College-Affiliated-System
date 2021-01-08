@@ -24,11 +24,11 @@ class UniversityAdvertisementController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
 
-     $expire=$request->expire_date;
-     $new=Carbon::now()->addMonths($expire);
-     $dt= $new->format('Y-m-d');
+        $expire=$request->package_time;
+        $new=Carbon::now()->addMonths($expire);
+      $dt= $new->format('Y-m-d');
 
 
     //  if($request->hasFile('image'))
