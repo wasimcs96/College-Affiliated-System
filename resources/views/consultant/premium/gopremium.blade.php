@@ -246,7 +246,7 @@ $('#choosedcontent').html(html);
         $.ajax({
         url:"{{ route('subscription.payment') }}",
         method:"post",
-        data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type},
+        data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type,package_time:package_time},
         success: function(result){
             {{-- console.log() --}}
             var options = {

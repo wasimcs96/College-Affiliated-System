@@ -226,7 +226,7 @@
                 $.ajax({
                 url:"{{route('consultant.advertisement.store')}}",
                 method:"post",
-                data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type,image:image},
+                data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type,image:image,package_time:package_time},
                 success: function(result){
 
                     var options = {

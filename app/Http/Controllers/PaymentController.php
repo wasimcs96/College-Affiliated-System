@@ -7,7 +7,7 @@ use Razorpay\Api\Api;
 use Session;
 use  App\Models\Order;
 use  App\Models\OrderItem;
-
+use Carbon\Carbon;
 class PaymentController extends Controller
 {
     //409ACfFYI6hON1ZmCThrD7nN
@@ -21,6 +21,20 @@ class PaymentController extends Controller
         $userId = $request->user_id;
         $type = $request->payment_type;
         $title = $request->title ?? '';
+        $time=$request->package_time;
+        $user=auth()->user();
+        // dd(Carbon::now()->addMonth($time));
+        if ($request->payment_type == 0) {
+            $user->Subscription_expire_date=Carbon::now()->addMonths($time);
+        $user->save();
+        }
+       
+        if ($request->payment_type == 1) {
+            $user->Premium_expire_date=Carbon::now()->addMonths($time);
+        $user->save();
+        }
+
+
         $name = auth()->user()->first_name . (auth()->user()->id);
         $order  = $api->order->create([
             'receipt'         => $title,

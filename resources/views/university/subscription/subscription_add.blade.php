@@ -24,6 +24,7 @@
 
                 <li>{{$package->description}}</li>
                 <input type="text" name="amount" value="{{$package->amount}}" hidden>
+                <input type="text" name="amount" value="{{$package->package_time}}" hidden>
                 <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
                 <input type="text" name="payment_type" value="0" hidden>
                 <input type="text" name="title" value="{{$package->title}}" hidden>
@@ -250,7 +251,7 @@ $('#choosedcontent').html(html);
         $.ajax({
         url:"{{ route('subscription.payment') }}",
         method:"post",
-        data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type},
+        data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type,package_time:package_time},
         success: function(result){
             {{-- console.log() --}}
             var options = {
