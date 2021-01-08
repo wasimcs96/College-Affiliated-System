@@ -573,6 +573,7 @@
                                            <div class="custom-checkbox mb-0">
                                                <input type="checkbox" id="chb2">
                                                @if(auth()->user())
+
 <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
     @csrf
     <input type="text" name="universityid" value="{{$university->id}}" hidden>
