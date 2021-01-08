@@ -22,4 +22,9 @@ class Booking extends Model
     {
         return $this->hasOne(Application::class);
     }
+
+    public function userConsultant()
+    {
+        return $this->belongsTo(User::class,'consultant_id');
+    }
 }

@@ -31,7 +31,7 @@
                                 <input type="text" class="form-control" name="client_id" value="{{$book->client_id}}"id="name" hidden>
                                 <input type="text" class="form-control" name="consultant_id" value="{{$book->consultant_id}}"id="name" hidden>
                                 <input type="text" class="form-control" name="booking_id" value="{{$book->id}}"id="name" hidden>
-                                dd({{$book->consultant_id}});
+                                {{-- dd({{$book->consultant_id}}); --}}
                                 <div class="form-group">
                                     <label>Student First Name</label>
                                     <input type="text" class="form-control" value="{{$book->user->first_name}}" name="first_name" id="first_name" required>
@@ -81,7 +81,7 @@
                                 </div> --}}
 
                                 <div class="form-group">
-                                    <?php $univers=$book->consultantUniversity;
+                                    <?php $univers=$book->userConsultant->consultantUniversity;
                                     $increase=0;
                                       ?>
                                     <div class="table-responsive" style="width: 100%; margin-top: 36px;">
@@ -207,7 +207,7 @@
 // console.log(table_row);
       $('#add').click(function(){
              i++;
-           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td class="university" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="university-'+table_row+'" name="university['+table_row+']" class="form-control"><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->university->id}}">{{$univer->university->university_name}}</option><?php }?></select></td><td ><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control"></select></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td class="university" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="university-'+table_row+'" name="university['+table_row+']" class="form-control"><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option><?php }?></select></td><td ><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control"></select></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
            r=$('#dynamic_field .dynamic-added').length;
             if(r==3){
                 $('#add').prop('disabled', true);

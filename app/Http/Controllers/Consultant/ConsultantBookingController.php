@@ -12,6 +12,7 @@ use App\Models\Application;
 use App\Models\ApplicationAppliedUniversity;
 use App\Models\University;
 use App\Models\Course;
+use App\Models\User;
 use App\Models\ApplicationDocument;
 
 
@@ -36,16 +37,19 @@ class ConsultantBookingController extends Controller
        {
            $university_id[$i] = $query['university'] ?? '';
            $course_id[$i] = $query['course'] ?? '';
+           $university[$i] =  User::where('id',$university_id[$i])->get()->first();
+           $course[$i] = Course::where('id',$course_id[$i])->get()->first();
+           $i++;
            $i++;
        }
-       $university0 =  University::where('id',$university_id[0])->get()->first();
-       $university1 =  University::where('id',$university_id[1])->get()->first();
-       $university2 =  University::where('id',$university_id[2])->get()->first();
+    //    $university0 =  University::where('id',$university_id[0])->get()->first();
+    //    $university1 =  University::where('id',$university_id[1])->get()->first();
+    //    $university2 =  University::where('id',$university_id[2])->get()->first();
 
-       $course0 = Course::where('id',$course_id[0])->get()->first();
-       $course1 = Course::where('id',$course_id[1])->get()->first();
-       $course2 = Course::where('id',$course_id[2])->get()->first();
-       return view('consultant.booking.booking_show',compact('show','university0','university1','university2','course0','course1','course2'));
+    //    $course0 = Course::where('id',$course_id[0])->get()->first();
+    //    $course1 = Course::where('id',$course_id[1])->get()->first();
+    //    $course2 = Course::where('id',$course_id[2])->get()->first();
+       return view('consultant.booking.booking_show',compact('show','university','course'));
    }
 
    public function accept(Request $request)
@@ -126,14 +130,15 @@ public function applicationStore(Request $request){
 
     function fetchCourse(Request $request)
     {
-        $fetch=University::where('id',$request->universityid)->first();
-        $courses =  $fetch->UniversityCourse;
+        $fetch=User::where('id',$request->universityid)->first();
+        $courses =  $fetch->universityCourse;
         $output='';
         foreach($courses as $row)
         {
-         $output .= '<option value="'.$row->course->id.'">'.$row->course->name.'</option>';
+         $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
         }
         echo $output;
+
 
     }
 

@@ -38,7 +38,9 @@
                     <tfoot>
 
                     </tfoot>
-                    <?php $bookings=auth()->user()->consultantBooking; ?>
+                    <?php $bookings=auth()->user()->consultantBooking;
+                     ?>
+                    {{-- {{ dd($bookings) }} --}}
                     @if($bookings->count() > 0)
                     <tbody>
 

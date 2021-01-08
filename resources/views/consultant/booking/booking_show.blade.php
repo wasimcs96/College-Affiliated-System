@@ -47,19 +47,25 @@
                         <td>{{$show->user->country ?? ''}}</td>
                     </tr>
 
-                   <tr>
+                   {{-- <tr>
                     <th scope="row">Enquiry</th>
-                    <td>{{$university0->university_name ?? ''}}/{{$course1->name ?? ''}}</td>
+                    <td>{{$university[0]->university_name ?? ''}}/{{$course[0]->name ?? ''}}</td>
                 </tr>
 
                 <tr>
                     <th scope="row"></th>
-                    <td>{{$university1->university_name ?? ''}}/{{$course1->name ?? ''}}</td>
+                    <td>{{$university[1]->university_name ?? ''}}/{{$course[1]->name ?? ''}}</td>
                 </tr>
                 <tr>
                     <th scope="row"></th>
-                    <td>{{$university2->university_name ?? ''}}/{{$course2->name ?? ''}}</td>
-                </tr>
+                    <td>{{$university[2]->university_name ?? ''}}/{{$course[2]->name ?? ''}}</td>
+                </tr> --}}
+                @foreach($university as $key=> $uni)
+                    <tr>
+                        <th scope="row">Student University/Course Preference-{{$key + 1}}</th>
+                        <td>{{$uni->university->university_name }}/{{$course[$key]->name ?? ''}}</td>
+                    </tr>
+@endforeach
                  <input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>
             </div>
                     </tbody>
@@ -76,9 +82,9 @@
                 <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
                 <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
                 @else
-                @if($show->application == NULL)
+                {{-- @if($show->application == NULL) --}}
                 <a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>
-                @endif
+                {{-- @endif --}}
                 @endif
             </div>
         </div>
