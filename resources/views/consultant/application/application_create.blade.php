@@ -91,19 +91,20 @@
                         <td>{{$booking['course']}}</td>
                     </tr>{{$course0->name}}
                         @endforeach --}}
+                        @foreach($university as $key=> $uni)
                     <tr>
-                        <th scope="row">Student University/Course Preference-1</th>
-                        <td>{{$university0->university->university_name ?? ''}}/{{$course0->name ?? ''}}</td>
+                        <th scope="row">Student University/Course Preference-{{$key + 1}}</th>
+                        <td>{{$uni->university->university_name }}/{{$course[$key]->name ?? ''}}</td>
                     </tr>
-
-                    <tr>
+@endforeach
+                    {{-- <tr>
                         <th scope="row">Student University/Course Prefrence-2</th>
-                        <td>{{$university1->university->university_name ?? ''}}/{{$course1->name ?? ''}}</td>
+                        <td>{{$university[1]->university->university_name}}/{{$course[1]->name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student University/Course Prefrence-3</th>
-                        <td>{{$university2->university->university_name ?? ''}}/{{$course2->name ?? ''}}</td>
-                    </tr>
+                        <td>{{$university[2]->university->university_name ?? ''}}/{{$course[2]->name ?? ''}}</td>
+                    </tr> --}}
                     <tr>
                         <th scope="row">Date</th>
                         <td>{{$application->booking->booking_date ?? ''}}</td>

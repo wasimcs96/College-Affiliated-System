@@ -40,17 +40,15 @@ class ConsultantApplicationController extends Controller
         // dd($booking);
         $university_id[$i] = $booking['university'] ?? '';
          $course_id[$i] = $booking['course'] ?? '';
+
+        $university[$i] =  User::where('id',$university_id[$i])->get()->first();
+        $course[$i] = Course::where('id',$course_id[$i])->get()->first();
+        // dd($university[0]);
         $i++;
     }
-    $university0 =  User::where('id',$university_id[0])->get()->first();
-    $university1 =  User::where('id',$university_id[1])->get()->first();
-    $university2 =  User::where('id',$university_id[2])->get()->first();
 
-    $course0 = Course::where('id',$course_id[0])->get()->first();
-    $course1 = Course::where('id',$course_id[1])->get()->first();
-    $course2 = Course::where('id',$course_id[2])->get()->first();
 
-       return view('consultant.application.application_create',compact('application','university0','university1','university2','course0','course1','course2'));
+       return view('consultant.application.application_create',compact('application','university','course'));
    }
 
    public function documentStore(Request $request)
