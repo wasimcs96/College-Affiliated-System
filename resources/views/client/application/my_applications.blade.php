@@ -43,10 +43,10 @@
                         @foreach($applications as $application)
                             @if(auth()->user()->id == $application->client_id)
                             <tr>
-                                <td>{{$application->user->first_name}} </td>
+                                <td>{{$application->user->first_name}} {{$application->user->last_name}} </td>
                                {{-- {{ dd($application->university) }} --}}
                                <td></td>
-                                {{-- <td>{{$application->consultant->university->university_name}}</td> --}}
+
                                 <td>{{$application->created_at}}</td>
                                 <td>
                                     @if($application->status==0)<div class="btn btn-warning">In Progress</div>@endif

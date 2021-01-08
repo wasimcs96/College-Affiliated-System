@@ -26,27 +26,6 @@
                 <table class="table table-hover table-striped">
 
                     <tbody>
-
-
-                    <tr>
-                        <th scope="row">Consultant Name</th>
-                        <td>{{$booking->user->first_name}} {{$booking->user->last_name}} </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">University Name</th>
-                        <td>RTU</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Course Name</th>
-                        <td>B.Tech</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Booking Date</th>
-                        <td>{{$booking->booking_date}}</td>
-                    </tr>
-
                     <tr>
                         <th scope="row">Status</th>
                         <td>@if($booking->status==0)<div class="btn btn-warning">Pending</div>@endif
