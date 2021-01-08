@@ -67,12 +67,12 @@ class ConsultantApplicationController extends Controller
     //    dd($application->documents);
        $application->save();
 
-    //    foreach($application->applicationAppliedUniversity as $key=>$applied)
-    //    {
-    //       $storeUniversityDocument = ApplicationAppliedUniversity::find($applied->id);
-    //       $storeUniversityDocument->documents = $jsonApplicationStore;
-    //       $storeUniversityDocument->save();
-    //    }
+       foreach($application->applicationAppliedUniversity as $key=>$applied)
+       {
+          $storeUniversityDocument = ApplicationAppliedUniversity::find($applied->id);
+          $storeUniversityDocument->documents = $jsonApplicationStore;
+          $storeUniversityDocument->save();
+       }
        $documentes = collect($request->documents);
                foreach($documentes as $doc)
                {
