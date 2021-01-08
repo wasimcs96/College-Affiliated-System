@@ -36,15 +36,19 @@ class ConsultantFrontController extends Controller
     public function book(Request $request)
     {
         // dd($request->all());
+
         $universityid = $request->get('universityid');
         $consultantid = $request->get('consultantid');
+
         $consultant = User::find($consultantid);
-        return view('frontEnd.consultant.book',compact('universityid'))->with('consultant', $consultant)->with('countries',Country::all());
+// dd($consultant);
+        return view('frontEnd.consultant.book',compact('universityid','consultant'))->with('countries',Country::all());
 
     }
 
     function slots(Request $request)
     {
+        // dd($request->all());
 
 
         $dat=date('m-d-Y');
@@ -89,7 +93,7 @@ class ConsultantFrontController extends Controller
 
     public function book_store(Request $request)
     {
-dd($request->all());
+// dd($request->all());
         $this->validate($request,[
         'start_time'=>'required',
         'booking_date'=>'required',

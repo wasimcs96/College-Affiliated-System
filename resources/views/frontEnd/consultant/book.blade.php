@@ -34,6 +34,7 @@
 <svg class="bread-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><polygon points="100 0 50 10 0 0 0 10 100 10"></polygon></svg>
 </div><!-- end bread-svg -->
 </section>
+{{-- {{dd($consultant)}} --}}
 
 <div class="container">
     <div class="row">
@@ -82,7 +83,7 @@
 <div class="tab-content">
 <div class="tab-pane fade show active" id="credit-card" role="tabpanel" aria-labelledby="credit-card-tab">
 <div class="contact-form-action">
-<form action="{{route('consultant_book.store')}}" method="POST">
+<form action="{{route('consultant.book.store')}}" method="POST">
 @csrf
 
 <div class="row col-lg-12" style="margin-bottom: -34px;">
@@ -104,7 +105,7 @@ font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
 <select class="form-control" id="starttime" name="start_time" style="height: 50px;" >
 <option value="">Select Start Time</option>
 {{$times=$consultant->consultantSlots}}
-
+{{-- {{dd($times)}} --}}
 </select>
 </div><br><br>
 <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
@@ -155,7 +156,7 @@ $inc = 0;
 
 <tr>
     <td class="text-center filetype"  data-row_id='+image_row+'>
-        <select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[][university]" required>
+        <select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[][university]" disabled>
 <?php $un=$consultant->consultantUniversity?>
      @foreach($un as $uns)
 <option value="{{$uns->userUniversity->id}}"
@@ -447,7 +448,7 @@ html += ' <td class="text-left"><button type="button" onclick="$(\'#imageBox-' +
 html += '</tr>';
 $('table#bannewrImages tbody').append(html);
 r=$('#bannewrImages .imageBox').length;
-if(r==2){
+if(r==4){
 $('#bst').prop('disabled', true);
 }
 image_row++;

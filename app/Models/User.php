@@ -92,23 +92,23 @@ class User extends Authenticatable
     public function clientBooking()
     {
         return $this->hasMany(Booking::class,'client_id');
-        
+
     }
 
     public function clientApplication()
     {
         return $this->hasMany(Application::class,'client_id');
-        
+
     }
     public function consultantApplication()
     {
         return $this->hasMany(Application::class,'consultant_id');
-        
+
     }
     public function bookingApplication()
     {
         return $this->hasMany(Application::class,'booking_id');
-        
+
     }
 
     public function order()
@@ -133,7 +133,7 @@ class User extends Authenticatable
 
     public function consultantSlots()
     {
-        return $this->hasMany(ConsultantAvailableSlots::class,'user_id');
+        return $this->hasMany(ConsultantAvailableSlots::class);
     }
 
     public function consultantApplications()

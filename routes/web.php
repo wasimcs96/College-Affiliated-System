@@ -61,9 +61,9 @@ Route::post('consultant/book/{id}',[
     'as' => 'consultant_book'
 ]);
 
-Route::post('consultant/book/store',[
+Route::post('client/consultant/booking/confirm',[
     'uses' => 'FrontEndController\ConsultantFrontController@book_store',
-    'as' => 'consultant_book.store'
+    'as' => 'consultant.book.store'
 ]);
 
 Route::get('/fetch/course',[
