@@ -6,7 +6,7 @@
     <div class="sidebar-scroll">
         <div class="user-account">
             <div class="user_div">
-                @if(isset(Auth()->user()->profile_image))
+                @if(isset(Auth()->user()->profile_image) && file_exists(Auth()->user()->profile_image))
                 <img src="{{ asset(Auth()->user()->profile_image) }}" class="user-photo" alt="User Profile Picture" width="40px" height="40px">
                 @else
                 <img src="{{ asset('assets/images/user.png') }}" class="user-photo" alt="User Profile Picture">

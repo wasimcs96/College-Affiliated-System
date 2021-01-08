@@ -60,12 +60,15 @@
                     <th scope="row"></th>
                     <td>{{$university[2]->university_name ?? ''}}/{{$course[2]->name ?? ''}}</td>
                 </tr> --}}
+                <?php $i = 1?>
                 @foreach($university as $key=> $uni)
+
                     <tr>
-                        <th scope="row">Student University/Course Preference-{{$key + 1}}</th>
-                        <td>{{$uni->university->university_name }}/{{$course[$key]->name ?? ''}}</td>
+                        <th scope="row">Student University / Course Preference-{{$i}}</th>
+                        <td>{{$uni->university->university_name }} / {{$course[$key]->name ?? ''}}</td>
                     </tr>
-@endforeach
+                <?php $i++ ?>
+                @endforeach
                  <input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>
             </div>
                     </tbody>

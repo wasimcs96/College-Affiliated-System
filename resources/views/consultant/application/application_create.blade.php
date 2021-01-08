@@ -31,7 +31,7 @@
                                         <label>Title</label>
                                         <input type="text" class="form-control" name="title" id="title" required>
                                     </div> --}}
-                                  <input type="text" name="application_id" value={{$application->id}} hidden>
+                                  <input type="text" name="application_id" value={{$application->id ?? ''}} hidden>
                                     <div class="form-group" id="noteError">
                                         <label style="color:white">Note</label>
                                         <textarea class="form-control" id="note" name="note" rows="5" cols="30" required></textarea>
@@ -84,29 +84,16 @@
                         <th scope="row">Student Country</th>
                         <td>{{$application->booking->user->country ?? ''}}</td>
                     </tr>
-                    {{--
-                        @foreach($bookings as $booking)
-                    <tr>
-                        <th scope="row">Student University {{$booking['university']}} </th>
-                        <td>{{$booking['course']}}</td>
-                    </tr>{{$course0->name}}
-                        @endforeach --}}
-                        @foreach($university as $key=> $uni)
+
+                @foreach($university as $key=> $uni)
                     <tr>
                         <th scope="row">Student University/Course Preference-{{$key + 1}}</th>
-                        <td>{{$uni->university->university_name }}/{{$course[$key]->name ?? ''}}</td>
+                        <td>{{$uni->university->university_name ?? '' }}/{{$course[$key]->name ?? ''}}</td>
                     </tr>
-@endforeach
-                    {{-- <tr>
-                        <th scope="row">Student University/Course Prefrence-2</th>
-                        <td>{{$university[1]->university->university_name}}/{{$course[1]->name ?? ''}}</td>
-                    </tr>
+                @endforeach
+
                     <tr>
-                        <th scope="row">Student University/Course Prefrence-3</th>
-                        <td>{{$university[2]->university->university_name ?? ''}}/{{$course[2]->name ?? ''}}</td>
-                    </tr> --}}
-                    <tr>
-                        <th scope="row">Date</th>
+                        <th scope="row">Booking Date</th>
                         <td>{{$application->booking->booking_date ?? ''}}</td>
                     </tr>
                     <tr>
@@ -239,7 +226,7 @@
                                       <div style="margin-left:24px;" id="documentid{{$rt->id}}">
                                       <input type="text" class="" value="{{$rt->id}}" name="document_id" hidden>
                                         <div class="img-responsive iws">
-                                            <a class="light-link" href="{{asset($rt->file)}}"><img  class="img-fluid rounded" src="{{asset($rt->file)}}"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
+                                            <a class="light-link" href="{{asset($rt->file)}}"><img  class="img-fluid rounded" src="@if(isset($rt->file)){{asset($rt->file)}}@endif"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
                                             <div class="card-body">
                                                 <a href="{{asset($rt->file)}}" class="btn btn-primary" target="_blank" download style="margin-left: 19px;">
                                                     <i class="fa fa-download"></i> Download
@@ -376,9 +363,9 @@
                                                </tr>
                                                <tr>
                                                 <th scope="row">Application Status</th>
-                                                <td id="application1">@if ($applied->approved_status == 0) <span style="color:yellow">Pending</span>@endif
-                                                    @if ($applied->approved_status == 1) <span style="color:green">Approved</span>@endif
-                                                    @if ($applied->approved_status == 2) <span style="color:red">Cancelled</span>@endif</td>
+                                                <td id="application1">@if ($applied->approved_status == 0 ?? '') <span style="color:yellow">Pending</span>@endif
+                                                    @if ($applied->approved_status == 1 ?? '') <span style="color:green">Approved</span>@endif
+                                                    @if ($applied->approved_status == 2 ?? '') <span style="color:red">Cancelled</span>@endif</td>
                                             </tr>
                                            </tbody>
                                        </table>

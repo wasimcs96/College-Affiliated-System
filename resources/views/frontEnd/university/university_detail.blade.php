@@ -548,14 +548,14 @@
                                     <div class="cabin-type-item d-flex pt-4">
                                         <div class="cabin-type-img flex-shrink-0">
                                             <img    style=" width: 152px;
-                                            height: 115px;" src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
+                                            height: 115px;" src="@if(isset($consultant->userConsultant->profile_image))  {{asset($consultant->userConsultant->profile_image)}} @endif" alt="">
                                         </div>
                                        <div class="cabin-type-detail">
                                             {{-- <h3 class="title">{{$consultant->consultant->company_name}}</h3> --}}
                                            <ul class="list-items pt-2 pb-2">
                                                <li><span>Admission Done:</span>139</li>
                                                <li><span>affiliated since:</span>2000</li>
-                                        <li><span>Location:</span>{{$consultant->userConsultant->address}}.</li>
+                                        <li><span>Location:</span>{{$consultant->userConsultant->address ?? ''}}.</li>
                                            </ul>
                                        </div>
                                        <div class="cabin-price">
