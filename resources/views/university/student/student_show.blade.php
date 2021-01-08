@@ -1,15 +1,13 @@
 @extends('layout.master')
 @section('parentPageTitle', 'University')
-@section('title', 'See Student')
+@section('title', 'See Student Detail')
 
 @section('content')
-
-
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>My Bookings<small>Booking Details</small></h2>
+            <h2>Registered Student<small>Detail of Student</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -32,34 +30,53 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>Sufiyan Qureshi</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Student Address</th>
-                        <td>Sikar,Rajasthan</td>
+                        <td>{{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>1234567890</td>
+                        <td>{{$user->mobile ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>email@email.com</td>
+                        <td>{{$user->email ?? ''}}</td>
                     </tr>
 
+                    <tr>
+                        <th scope="row">City</th>
+                        <td>{{$user->city ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Student Address</th>
+                        <td>{{$user->address ?? ''}}</td>
+                    </tr>
 
 
                     <tr>
                         <th scope="row">Student Nationality</th>
-                        <td>Indian</td>
+                        <td>{{$user->country ?? ''}}</td>
+                    </tr>
+
+                    {{-- <tr>
+                        <th scope="row">Student University Prefrence-1</th>
+                        <td>RTU</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Consultant of Student</th>
-                        <td>Sufiyan Qureshi</td>
+                        <th scope="row">Student University Prefrence-2</th>
+                        <td>BTU</td>
                     </tr>
+
+                    <tr>
+                        <th scope="row">Student University Prefrence-3</th>
+                        <td>CTU</td>
+                    </tr> --}}
+
+
+                </tbody>
+
+            </table>
 
 
             </div>
@@ -71,9 +88,7 @@
         {{-- </tr> --}}
 
 
-                    </tbody>
 
-                </table>
                 <div id="res">
 
                 </div>
@@ -81,12 +96,15 @@
                 <div id="dec">
 
                 </div>
-                <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('university.students')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+
+                <a href="{{route('university.students')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>
 </div>
+
+</section>
+
 
 
 
@@ -112,14 +130,14 @@
         });
     });
 </script>
-<script>
-    $("#accept").click(function() {
-     $("#accept").remove()
-     $("#bac").remove()
-     $("#res").html("<a  href='{{route('university.student.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
-     $("#dec").html("<a href='{{route('university.students')}}' class='btn btn-danger btn-flat'>Close</a>")
-     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
- });
+{{-- <script>
+   $("#accept").click(function() {
+    $("#accept").remove()
+    $("#bac").remove()
+    $("#res").html("<a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#dec").html("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat'>Close</a>")
+    // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
+});
 
- </script>
+</script> --}}
 @stop

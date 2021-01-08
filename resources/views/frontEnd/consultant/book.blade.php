@@ -93,7 +93,7 @@
 font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
 <div class="form-group">
 <span class="las la-calendar-alt form-icon"></span>
-<input class="form-control" id="date" name="booking_date" placeholder="Date">
+<input class="form-control" id="date" name="booking_date" placeholder="Date" required>
 </div>
 </div>
 </div>
@@ -102,7 +102,7 @@ font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
 <div class="form-group">
 <label for="start_time">Select Booking Time</label>
 <?php get_times( $default = '00:00', $interval = '+30 minutes' ); ?>
-<select class="form-control" id="starttime" name="start_time" style="height: 50px;" >
+<select class="form-control" id="starttime" name="start_time" style="height: 50px;" required>
 <option value="">Select Start Time</option>
 {{$times=$consultant->consultantSlots}}
 {{-- {{dd($times)}} --}}

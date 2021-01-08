@@ -634,10 +634,12 @@
                         </ol>
                         <div class="carousel-inner">
                             <?php
-                                $universities = DB::table('universities') ->get();
+                                $universities = DB::table('users') ->get();
                                 ?>
+
 @if($universities->count()>0)
                             @foreach($universities as $key => $university)
+                            {{-- @if($university->isUniversity()) --}}
                             {{-- {{dd($university->id)}} --}}
                             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
 
@@ -650,12 +652,13 @@
                             </p>
                             </div>
                         </div>
+                        {{-- @endif --}}
                           @endforeach
                           @else
                           <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
 
-                          @endif
-
+                          {{-- @endif --}}
+@endif
                         </div>
                         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

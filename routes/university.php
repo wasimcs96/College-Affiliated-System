@@ -12,17 +12,27 @@ Route::get('dashboard',function(){
 })->name('university.dashboard');
 
    /* Students Section */
-Route::get('students',function(){
-    return view('university.student.students');
-})->name('university.students');
+// Route::get('students',function(){
+//     return view('university.student.students');
+// })->name('university.students');
+Route::get('university/students',[
+    'uses' => 'UniversityStudentController@index',
+    'as' => 'university.students',
+]);
 
-Route::get('student_show',function(){
-    return view('university.student.student_show');
-})->name('university.student.show');
+Route::get('university/students/detail{id}',[
+    'uses' => 'UniversityStudentController@show',
+    'as' => 'university.student.show',
+]);
 
-Route::get('student_application',function(){
-    return view('university.student.student_application');
-})->name('university.student.application');
+
+// Route::get('student_show',function(){
+//     return view('university.student.student_show');
+// })->name('university.student.show');
+
+// Route::get('student_application',function(){
+//     return view('university.student.student_application');
+// })->name('university.student.application');
 
 
   /* Courses Section */
@@ -31,9 +41,9 @@ Route::get('student_application',function(){
 // })->name('university.courses');
 
 /* services Section */
-Route::get('services',function(){
-    return view('university.services');
-})->name('university.services');
+// Route::get('services',function(){
+//     return view('university.services');
+// })->name('university.services');
 
 /* My Consultant Section */
 
