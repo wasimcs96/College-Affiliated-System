@@ -28,9 +28,11 @@
                             <th><b> Package Discription</b></th>
                             <th><b>Amount</b></th>
                             <th><b>Transaction Id </b></th>
-                             {{--  <th><b>Date</b></th>
-                            <th><b>Time Slot</b></th> --}}
+                            <th><b>Start Date</b></th>
+                            <th><b>End Date</b></th>
+                            <th><b>Purchased Date</b></th>
                             <th><b> Status</b></th>
+
                             {{-- <th><b>Actions</b></th> --}}
                         </tr>
                     </thead>
@@ -39,34 +41,37 @@
                     </tfoot>
 
                     {{-- {{dd($rts)}} --}}
+                    <?php $subscriptions= auth()->user()->order;
+
+                    ?>
                     @if($subscriptions->count() > 0)
                     <tbody>
+                                            @foreach($subscriptions as $subscription)
 
-                        @foreach($subscriptions as $subscription)
-                        <?php $orders=$subscription->OrderItem?>
-@foreach($orders as $order)
-                        <tr>
-                            <td>{{$order->Item_title}}</td>
-                            <td>{{$subscription->amount}}$</td>
-                            {{-- <td>{{$rt->expire_date}}</td> --}}
-                            {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
-                            <td>{{$subscription->transaction_id}}</td>
-                            <td>
+                                            @if($subscription->payment_type == 0)
+                                            <tr>
+                                                <td>{{$subscription->OrderItem[0]->Item_title}}</td>
+                                                <td>{{$subscription->amount}}$</td>
+                                                <td>{{$subscription->transaction_id}}</td>
+                                                <td>{{$subscription->userPurchasedPlans[0]->start_date}}</td>
+                                                <td>{{$subscription->userPurchasedPlans[0]->end_date}}</td>
+                                                <td>{{$subscription->created_at}}</td>
+                                                <td>
+                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                                    @if($subscription->userPurchasedPlans[0]->end_date > $mytime)<div class="btn btn-success">Actived</div>@endif
 
-                                @if($subscription->status==0)<div class="btn btn-warning">Pending</div>@endif
-                                {{-- @if($subscription->expire_date>$mytime)<div class="btn btn-success">Active</div>@endif
-                                @if($subscription->expire_date<$mytime)<div class="btn btn-danger">Expired</div>@endif --}}
-                                @if($subscription->status==1)<div class="btn btn-primary">Inactive</div>@endif
-                            </td>
-                            {{-- <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td> --}}
-                        </tr>
-@endforeach
-@endforeach
-</tbody>
-@else
+                                                    @if($subscription->userPurchasedPlans[0]->end_date < $mytime)<div class="btn btn-danger">Expired</div>@endif
+                                                </td>
+                                                {{-- <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td> --}}
+                                            </tr>
+                                            @endif
 
-Records not available
-@endif
+                    @endforeach
+                    </tbody>
+                    @else
+
+                    Records not available
+                    @endif
 
                 </table>
             </div>

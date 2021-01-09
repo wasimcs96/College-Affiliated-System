@@ -29,8 +29,7 @@
             <ul class="pricing body">
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
-                    <h3><span>$</span> {{$package->amount}}<small>/ mo</small></h3>
-                    <span>Advertisement</span>
+                    <h3><span>$</span>{{$package->amount}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>                    <span>Advertisement</span>
                 </li>
                 <li>{{$package->title}}</li>
                 <hr>
@@ -191,7 +190,7 @@
 
                     <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
                     <br>
-                    <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>/${package_time}-mo</small></h5></div>
+                    <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
                 </div>
                 <br>
 
@@ -251,7 +250,7 @@
                                 $.ajax({
                                 url:"{{ route('transaction.pay') }}",
                                 method:"GET",
-                                data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title},
+                                data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title,package_time:package_time},
                                 success: function(result){
                                     $('#mdlup').modal('show');
                                 }

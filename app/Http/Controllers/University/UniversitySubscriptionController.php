@@ -11,13 +11,13 @@ class UniversitySubscriptionController extends Controller
     public function index()
     {
 
-        $ua=auth()->user()->id;
+        // $ua=auth()->user()->id;
 // dd($ua);
         // dd($subscriptions);
-        $subscriptions= Order::where('user_id',$ua)->where('payment_type', 0 )->orderBy('updated_at', 'DESC')->get();
+        // $subscriptions= Order::where('user_id',$ua)->where('payment_type', 0 )->orderBy('updated_at', 'DESC')->get();
         // dd($subscriptions);
 
-        return view('university.subscription.subscription',compact('subscriptions'));
+        return view('university.subscription.subscription');
     }
 
     public function add()

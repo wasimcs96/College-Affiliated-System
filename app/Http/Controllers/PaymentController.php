@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advertisement;
 use Illuminate\Http\Request;
 use Razorpay\Api\Api;
 use Session;
 use  App\Models\Order;
 use  App\Models\OrderItem;
+use App\Models\UserPurchasedPlans;
 use Carbon\Carbon;
 class PaymentController extends Controller
 {
@@ -28,7 +30,7 @@ class PaymentController extends Controller
             $user->Subscription_expire_date=Carbon::now()->addMonths($time);
         $user->save();
         }
-       
+
         if ($request->payment_type == 1) {
             $user->Premium_expire_date=Carbon::now()->addMonths($time);
         $user->save();
@@ -72,6 +74,22 @@ class PaymentController extends Controller
             'item_title' => $request->title,
         ]);
 
+if($request->payment_type == 2){
+    $ad = Advertisement::where('user_id',$request->userId)->orderBy('created_at','desc')->first();
+    // dd($ad);
+    $ad->order_id = $orderID;
+    $ad->status = 1;
+    $ad->save();
+}
+
+            $start=Carbon::now();
+            $end=$request->package_time;
+        UserPurchasedPlans::create([
+            'order_id' => $orderID,
+            'item_title' => $request->title,
+            'start_date' => $start,
+            'end_date' => Carbon::now()->addMonths($end)
+        ]);
 
 
         return "success";

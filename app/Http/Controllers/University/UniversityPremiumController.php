@@ -10,14 +10,14 @@ class UniversityPremiumController extends Controller
 {
     public function index()
     {
-        $cp=auth()->user()->id;
+        // $cp=auth()->user()->id;
 
 
-        $premiums = Order::where('user_id',$cp)->where('payment_type', 1 )->orderBy('updated_at', 'DESC')->get();
+        // $premiums = Order::where('user_id',$cp)->where('payment_type', 1 )->orderBy('updated_at', 'DESC')->get();
 
 // dd($premiums);
 
-        return view('university.premium.premium',compact('premiums'));
+        return view('university.premium.premium');
     }
 
 
