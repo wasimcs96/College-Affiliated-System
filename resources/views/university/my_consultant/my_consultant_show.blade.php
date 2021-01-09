@@ -45,14 +45,6 @@
                     </tr>
 
                     <tr>
-                        <th scope="row">Status</th>
-                        <td>@if($status == 0)
-                            <span class="btn btn-warning" >Pending</span>
-                            @else
-                            <span class="btn btn-info" >Accepted</span>
-                          @endif</td>
-                    </tr>
-                    <tr>
                         <th scope="row">Company Name</th>
                         <td>{{$consultant->consultant->company_name  ?? ''}}</td>
                     </tr>
@@ -79,6 +71,14 @@
                     <tr>
                         <th scope="row">Country</th>
                         <td>{{$consultant->country  ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Status</th>
+                        <td>@if($status == 0)
+                            <span class="btn btn-warning" >Pending</span>
+                            @else
+                            <span class="btn btn-info" >Accepted</span>
+                          @endif</td>
                     </tr>
 
 

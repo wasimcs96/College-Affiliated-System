@@ -52,20 +52,7 @@
                             <td>{{$courses->end_date}}</td>
                         </tr>
 
-                        <tr>
-                            <th scope="row">Fax Number</th>
-                            <td>{{$courses->fax_number}}</td>
-                        </tr>
 
-                        <tr>
-                            <th scope="row">Terms & Condition</th>
-                            <td>{{$courses->term_conditions}}</td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Privacy_Policy</th>
-                            <td>{{$courses->privacy_policy}}</td>
-                        </tr>
                     </tbody>
 
                 </table>

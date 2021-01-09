@@ -33,7 +33,7 @@
                             <th><b>Fees</b></th>
                             <th><b>Start Date</b></th>
                             <th><b>End Date</b></th>
-                            <th><b>Actions</b></th>
+                            <th style="text-align: center;"><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>

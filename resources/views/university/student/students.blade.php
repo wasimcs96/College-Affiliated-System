@@ -28,13 +28,13 @@
                     <thead>
                         <tr>
                             <th> <b>
-                                Name</b></th>
-                            <th><b> Mobile </b></th>
-                            <th><b> E-mail</b></th>
-                            <th><b>Sikar</b></th>
-                            <th><b>Country</b></th>
+                               Student Name</b></th>
+                            <th><b>Student Mobile </b></th>
+                            <th><b>Student E-mail</b></th>
+                            <th><b>Student City</b></th>
+                            <th><b>Student Country</b></th>
 
-                            <th><b>Actions</b></th>
+                            <th style="text-align: center;"><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -46,20 +46,23 @@
 
 
                                 @foreach ($users as $user)
-                                    @if($user->isClient())
-                                        <tr>
-                                            <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
-                                            {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
-                                            <td>{{$user->mobile ?? ''}}</td>
-                                            <td>{{$user->email ?? ''}}</td>
-                                            <td>{{$user->city ?? ''}}</td>
-                                            <td> {{$user->country ?? ''}} </td>
-                                            <td><a href="{{route('university.student.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
-                                            {{-- <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a> --}}
-                                        </td>
-                                        </tr>
-                                    @endif
+                               @foreach ($user->application as $student)
+                               {{-- {{dd($key)}} --}}
+                               {{-- @if($user->isClient()) --}}
+                               <tr>
+                                   <td> {{$student->user->first_name }} {{$student->user->last_name}}</td>
+                                   {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
+                                   <td>{{$student->user->mobile ?? ''}}</td>
+                                   <td>{{$student->user->email ?? ''}}</td>
+                                   <td>{{$student->user->city ?? ''}}</td>
+                                   <td> {{$student->user->country ?? ''}} </td>
+                                   <td style="text-align: center;"><a href="{{route('university.student.show',['id' => $student->user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                    {{-- <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                    <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a> --}}
+                                </td>
+                            </tr>
+                            {{-- @endif --}}
+                            @endforeach
                                 @endforeach
 
                         @endif

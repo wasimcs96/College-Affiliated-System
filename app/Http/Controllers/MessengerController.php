@@ -10,10 +10,25 @@ class MessengerController extends Controller
 {
 
     public function index(){
-
+        $auth=auth()->user();
+        if($auth->isAdmin()){
+            $usertype=0;
+        }
+        if($auth->isUniversity()){
+            $usertype=1;
+        }
+        if($auth->isConsultant()){
+            $usertype=2;
+        }
+        if($auth->isClient()){
+            $usertype=3;
+        }
+        if($auth->isSubAdmin()){
+            $usertype=4;
+        }
+        return view('messenger.chat',compact('usertype'))->with('users', User::all());
         // $users=User::where('status','=',1)->with(["message"])->orderBY("first_name", "ASC")->get();
         //dd($users);
-        return view('messenger.chat')->with('users', User::all());
     }
 
     public function fetchData(Request $request){

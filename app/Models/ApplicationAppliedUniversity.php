@@ -28,5 +28,10 @@ class ApplicationAppliedUniversity extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function application()
+    {
+        return $this->hasMany(Application::class,'id');
+    }
+
 
 }
