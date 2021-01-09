@@ -40,18 +40,6 @@
                         <input type="date" name="end_date" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Fax Number</label>
-                        <input type="number" name="fax_number" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Terms & Condition</label>
-                        <textarea class="form-control" name="term_conditions" rows="5" cols="30" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Privacy Policy</label>
-                        <textarea class="form-control" name="privacy_policy" rows="5" cols="30" required></textarea>
-                    </div>
-                    <div class="form-group">
                                 Upload Media
                            <div class="body"id="nb"  >
                               <input type="file" name="image[]"class="dropify" multiple>

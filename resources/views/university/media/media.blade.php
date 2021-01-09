@@ -44,7 +44,7 @@
                                         <br>
 
                                         <div class="card-body">
-                                            <span class="closes" custom2="{{$rt->id}}"  title="Delete" ><a href="#" id="deleteRecord" custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
+                                            <span class="closes" custom2="{{$rt->id}}"  title="Delete" ><a href="javascript:void(0)" id="deleteRecord" custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
 
                                         </div>
                                     </div>

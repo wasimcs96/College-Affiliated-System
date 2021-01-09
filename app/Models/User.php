@@ -141,4 +141,8 @@ class User extends Authenticatable
         return $this->hasMany(Application::class,'consultant_id');
     }
 
+    public function applicationAppliedUniversity()
+    {
+        return $this->hasMany(ApplicationAppliedUniversity::class,'university_id');
+    }
 }

@@ -15,12 +15,12 @@ Route::get('dashboard',function(){
 // Route::get('students',function(){
 //     return view('university.student.students');
 // })->name('university.students');
-Route::get('university/students',[
+Route::get('students',[
     'uses' => 'UniversityStudentController@index',
     'as' => 'university.students',
 ]);
 
-Route::get('university/students/detail{id}',[
+Route::get('students/detail{id}',[
     'uses' => 'UniversityStudentController@show',
     'as' => 'university.student.show',
 ]);
@@ -53,12 +53,12 @@ Route::get('my_consultants',[
     'as' => 'university.my_consultants',
 ]);
 
-Route::get('my_consultant/show/{id}',[
+Route::get('my_consultants/show/{id}',[
     'uses' => 'UniversityConsultantController@myconsultantshow',
     'as' => 'university.my_consultant_show',
 ]);
 
-Route::get('my_consultant_application',function(){
+Route::get('my_consultants/application',function(){
     return view('university.my_consultant.my_consultant_application');
 })->name('university.my_consultant_application');
 
@@ -68,24 +68,24 @@ Route::get('consultants',[
     'as' => 'university.consultants',
 ]);
 
-Route::get('consultant/show/{id}',[
+Route::get('consultants/show/{id}',[
     'uses' => 'UniversityConsultantController@show',
     'as' => 'university.consultant_show',
 ]);
 
-Route::get('consultant/show/accept/{id}',[
+Route::get('consultants/show/accept/{id}',[
     'uses' => 'UniversityConsultantController@accept',
     'as' => 'university.consultant_accept',
 ]);
 
-Route::get('consultant_application',function(){
+Route::get('consultants/consultant_application',function(){
     return view('university.consultant.consultant_application');
 })->name('university.consultant_application');
 
 /* gopremium Section */
-Route::get('service/gopremium',function(){
-    return view('university.go_premium');
-})->name('university.go_premium');
+// Route::get('service/gopremium',function(){
+//     return view('university.go_premium');
+// })->name('university.go_premium');
 
 /* adevents Section */
 Route::get('adevents',function(){
@@ -113,7 +113,7 @@ Route::get('courses',[
     'as' => 'university.courses'
 ]);
 
-Route::get('add_course',[
+Route::get('courses/add_course',[
     'uses' => 'UniversityCoursesController@create',
     'as' => 'university.add_course'
 ]);
@@ -178,7 +178,7 @@ Route::get('services/subscription', [
 ]);
 
 
-Route::get('subscription/add', [
+Route::get('services/subscription/add', [
     'uses' => 'UniversitySubscriptionController@add',
     'as' => 'university.subscription.add'
 ]);
@@ -188,7 +188,7 @@ Route::get('services/premium', [
     'uses' => 'UniversityPremiumController@index',
     'as' => 'university.premium'
 ]);
-Route::get('premium/add', [
+Route::get('services/premium/add', [
     'uses' => 'UniversityPremiumController@add',
     'as' => 'university.gopremium'
 ]);
@@ -198,13 +198,13 @@ Route::get('premium/add', [
     'as' => 'university.advertisement'
 ]);
 
-Route::get('advertisements/add', [
+Route::get('services/advertisements/add', [
     'uses' => 'UniversityAdvertisementController@add',
     'as' => 'university.advertisement.add'
 ]);
 
 
-Route::post('advertisements/store', [
+Route::post('services/advertisements/store', [
     'uses' => 'UniversityAdvertisementController@store',
     'as' => 'university.advertisement.store'
 ]);

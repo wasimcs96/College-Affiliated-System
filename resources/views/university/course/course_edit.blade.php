@@ -41,18 +41,6 @@
                         <label>Course End Date</label>
                         <input type="date" name="end_date" value="{{$universitycourse->end_date}}" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label>Fax Number</label>
-                        <input type="number" name="fax_number" value="{{$universitycourse->fax_number}}" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Terms & Condition</label>
-                        <textarea class="form-control" name="term_conditions" rows="5" cols="30" required>{{$universitycourse->term_conditions}} </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Privacy Policy</label>
-                        <textarea class="form-control" name="privacy_policy" rows="5" cols="30" required>{{$universitycourse->privacy_policy}}</textarea>
-                    </div>
                     <input type="hidden" value="{{$universitycourse->id}}" name="university_course_id">
                     <!--  Show Uploaded Image   -->
 
@@ -74,7 +62,7 @@
                                                                     right: 0;"><i class="fa fa-times" aria-hidden="true"></i></h5></a> --}}
 
                                                                 <span class="closes"  custom2="{{$rt->id}}" title="Delete">
-                                                                    <a href="#"  custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" onclick="deleteRecord()" >&times;</a></span>
+                                                                    <a href="javascript:void(0)"  custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" onclick="deleteRecord()" >&times;</a></span>
                                                             </div>
                                                         </div>
                                                 </div>

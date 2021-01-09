@@ -199,7 +199,7 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             {{-- <label for="profile_image">Profile Image</label> --}}
-                            <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-fr"  required>
+                            <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-fr"  >
                         </div>
                     </div>
                 </div>

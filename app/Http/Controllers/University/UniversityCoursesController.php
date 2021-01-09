@@ -51,9 +51,7 @@ class UniversityCoursesController extends Controller
             'fees' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'fax_number' => 'required',
-            'term_conditions' => 'required',
-            'privacy_policy' => 'required'
+
         ]);
         $course = UniversityCourse::create($request->all());
         $images=collect($request->image);
@@ -185,7 +183,7 @@ class UniversityCoursesController extends Controller
         }
 
 
-        
+
     }
 
 }
