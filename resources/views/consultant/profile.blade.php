@@ -10,7 +10,7 @@
             <div class="profile-header d-flex justify-content-between justify-content-center">
                 <div class="d-flex">
                     <div class="mr-3">
-                        @if(isset(Auth()->user()->profile_image))
+                        @if(isset(Auth()->user()->profile_image) && file_exists(Auth()->user()->profile_image))
                         <img src="{{ asset(Auth()->user()->profile_image) }}" class="rounded" alt="">
                         @else
                         <img src="{{ asset('assets/images/user.png') }}" class="user-photo" alt="User Profile Picture">
@@ -154,13 +154,13 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="landline_1">Landline 1</label>
-                            <input type="text" value="@if(isset(Auth()->user()->landline_1)){{Auth()->user()->landline_1}}@endif" name="landline_1" class="form-control" placeholder="Landline1" required>
+                            <input type="text" value="@if(isset(Auth()->user()->landline_1)){{Auth()->user()->landline_1}}@endif" name="landline_1" class="form-control" placeholder="Landline1" >
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="landline_2">Landline 2</label>
-                            <input type="text" value="@if(isset(Auth()->user()->landline_2)){{Auth()->user()->landline_2}}@endif"  name="landline_2" class="form-control" placeholder="Landline2" required>
+                            <input type="text" value="@if(isset(Auth()->user()->landline_2)){{Auth()->user()->landline_2}}@endif"  name="landline_2" class="form-control" placeholder="Landline2" >
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
@@ -207,7 +207,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
                                 </div>
-                                <input name="website" type="text" class="form-control" value="@if(isset(auth()->user()->consultant->website)){{auth()->user()->consultant->website}}@endif" placeholder="http://" required>
+                                <input name="website" type="text" class="form-control" value="@if(isset(auth()->user()->consultant->website)){{auth()->user()->consultant->website}}@endif" placeholder="http://" >
                             </div>
                         </div>
                     </div>
@@ -257,7 +257,7 @@
                     <div class="form-group">
                         <label for="start_time">Select Start Time</label>
                         <?php get_times( $default = '00:00', $interval = '+30 minutes' ); ?>
-                        <select class="form-control" id="starttime" name="start_time" onchange="setEndTime(this.value)" required>
+                        <select class="form-control" id="starttime" name="start_time" onchange="setEndTime(this.value)">
                         <option value="">Select Start Time</option>
                         <?php echo get_times(); ?></select>
                     </div><br><br>
@@ -266,7 +266,7 @@
                     <div class="form-group">
                         <label for="exampleInputCity1">Select End Time</label>
                         <?php get_times( $default = '00:00', $interval = '+30 minutes' )?>
-                        <select class="form-control" id="endtime" name="end_time" disabled required>
+                        <select class="form-control" id="endtime" name="end_time" disabled>
                         <option value="">Select End Time</option>
                         <?php echo get_times(); ?></select>
                     </div>

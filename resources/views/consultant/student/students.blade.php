@@ -12,14 +12,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li>
+
             </ul>
         </div>
         <div class="body">
@@ -31,7 +24,7 @@
                                 Name</b></th>
                             <th><b> Mobile </b></th>
                             <th><b> E-mail</b></th>
-                            <th><b>Sikar</b></th>
+                            <th><b>City</b></th>
                             <th><b>Country</b></th>
 
                             <th><b>Actions</b></th>
@@ -42,8 +35,6 @@
                     </tfoot>
                     <tbody>
                         @if($users->count() > 0)
-
-
 
                                 @foreach ($users as $user)
                                     @if($user->isClient())

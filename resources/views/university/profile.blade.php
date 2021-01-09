@@ -10,7 +10,7 @@
             <div class="profile-header d-flex justify-content-between justify-content-center">
                 <div class="d-flex">
                     <div class="mr-3">
-                      @if(isset(Auth()->user()->profile_image))
+                      @if(isset(Auth()->user()->profile_image) && file_exists(Auth()->user()->profile_image))
                         <img src="{{ asset(Auth()->user()->profile_image) }}" class="rounded" alt="">
                         @else
                         <img src="{{ asset('assets/images/user.png') }}" class="user-photo" alt="User Profile Picture">
