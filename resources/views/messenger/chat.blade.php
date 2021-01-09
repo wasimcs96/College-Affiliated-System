@@ -158,19 +158,19 @@
                     </div>
                     <div class="">
                     <ul class="right_chat list-unstyled mb-0">
+                        <?php $auth=auth()->user()?>
                         @foreach($users as $user)
-                        @if($usertype==0 && !$user->isAdmin())
+                        @if($auth->isAdmin() && !$user->isAdmin())
 
                         {{-- @if() --}}
                         <li class="online chat_list">
                             <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
                                 <div class="media">
-                                    <div><img class="media-object " src= "@if(isset(Auth()->user()->profile_image) && file_exists(Auth()->user()->profile_image))
-                                    {{asset($user->profile_image)}}
-                                    @else
-                                   {{asset('assets/images/xs/avatar4.jpg')}}
-                                    @endif
-                                    " alt=""></div>
+                                    <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
+                                        <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                        @else
+                                        <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                        @endif</div>
                                     <div class="media-body chat_ib" id="cs">
                                         <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
                                         @if($user->message != null)
@@ -188,18 +188,17 @@
                             </a>
                         </li>
                         @endif
-                        @if($usertype==4 && !$user->isSubAdmin())
+                        @if($auth->isSubAdmin() && !$user->isSubAdmin())
 
                         {{-- @if() --}}
                         <li class="online chat_list">
                             <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
                                 <div class="media">
-                                    <div><img class="media-object " src= "@if(isset(Auth()->user()->profile_image) && file_exists(Auth()->user()->profile_image))
-                                    {{asset($user->profile_image)}}
-                                    @else
-                                   {{asset('assets/images/xs/avatar4.jpg')}}
-                                    @endif
-                                    " alt=""></div>
+                                    <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
+                                        <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                        @else
+                                        <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                        @endif</div>
                                     <div class="media-body chat_ib" id="cs">
                                         <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
                                         @if($user->message != null)
@@ -217,18 +216,17 @@
                             </a>
                         </li>
                         @endif
-                            @if($usertype==1 && !$user->isUniversity())
+                            @if($auth->isUniversity() && !$user->isUniversity())
 
                             {{-- @if() --}}
                             <li class="online chat_list">
                                 <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
                                     <div class="media">
-                                        <div><img class="media-object " src= "@if(isset(Auth()->user()->profile_image) && file_exists(Auth()->user()->profile_image))
-                                        {{asset($user->profile_image)}}
-                                        @else
-                                       {{asset('assets/images/xs/avatar4.jpg')}}
-                                        @endif
-                                        " alt=""></div>
+                                        <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
+                                            <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                            @else
+                                            <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                            @endif</div>
                                         <div class="media-body chat_ib" id="cs">
                                             <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
                                             @if($user->message != null)
@@ -246,18 +244,17 @@
                                 </a>
                             </li>
                             @endif
-                            @if($usertype==2 && !$user->isConsultant())
+                            @if($auth->isConsultant() && !$user->isConsultant())
 
                             {{-- @if() --}}
                             <li class="online chat_list">
                                 <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
                                     <div class="media">
-                                        <div><img class="media-object " src= "@if(isset(Auth()->user()->profile_image) && file_exists(Auth()->user()->profile_image))
-                                        {{asset($user->profile_image)}}
-                                        @else
-                                       {{asset('assets/images/xs/avatar4.jpg')}}
-                                        @endif
-                                        " alt=""></div>
+                                        <div> @if(isset($user->profile_image) && file_exists($user->profile_image))
+                                            <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                            @else
+                                            <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                            @endif</div>
                                         <div class="media-body chat_ib" id="cs">
                                             <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
                                             @if($user->message != null)
@@ -275,18 +272,19 @@
                                 </a>
                             </li>
                             @endif
-                            @if($usertype==3 && !$user->isClient())
+                            @if($auth->isClient() && !$user->isClient())
 
                             {{-- @if() --}}
                             <li class="online chat_list">
                                 <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
                                     <div class="media">
-                                        <div><img class="media-object " src= "@if(isset(Auth()->user()->profile_image) && file_exists(Auth()->user()->profile_image))
-                                        {{asset($user->profile_image)}}
-                                        @else
-                                       {{asset('assets/images/xs/avatar4.jpg')}}
-                                        @endif
-                                        " alt=""></div>
+                                        <div>
+                                            @if(isset($user->profile_image) && file_exists($user->profile_image))
+                                            <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                            @else
+                                            <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                            @endif
+                                    </div>
                                         <div class="media-body chat_ib" id="cs">
                                             <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
                                             @if($user->message != null)
@@ -323,14 +321,22 @@
                         <div class="chat-history ">
                             <ul class="message_data msg_history" id="history">
                                 <li class="right clearfix">
-                                    <img class="user_pix" src="{{asset('assets/images/xs/avatar8.jpg')}}" alt="avatar">
+                                    @if(isset($user->profile_image) && file_exists($user->profile_image))
+                                    <img  class="user_pix" src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                    @else
+                                    <img  class="user_pix" src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                    @endif
                                     <div class="message">
                                         <p></p>
                                     </div>
                                     <span class="data_time"></span>
                                 </li>
                                 <li class="left clearfix">
-                                    <img class="user_pix" src="{{asset('assets/images/user.png')}}" alt="avatar">
+                                    @if(isset($user->profile_image) && file_exists($user->profile_image))
+                                    <img  class="user_pix" src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                    @else
+                                    <img  class="user_pix" src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                    @endif
                                     <div class="message">
                                     <p></p>
                                     </div>
