@@ -75,18 +75,21 @@
                                                     <label class="label-text">Country</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
+
                                                         <select class="select-contain-select">
-                                                            <option value="1" selected>India</option>
-                                                            <option value="2">USA</option>
-                                                            <option value="3">UK</option>
-                                                            <option value="4">KSA</option>
-                                                            <option value="5">UAE</option>
-                                                            <option value="6">Russia</option>
-                                                            <option value="7">China</option>
+                                                            <?php $countries = App\Models\Country::all();?>
+                                                            @if($countries->count() > 0)
+                                                                @foreach($countries as $country)
+                                                                <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
+                                                                @endforeach
+                                                            @else
 
+                                                                <option value="">Currently Unavailable</option>
 
+                                                            @endif
 
                                                         </select>
+
                                                     </div>
                                                     </div>
                                                 </div>
@@ -97,14 +100,18 @@
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
                                                             <select class="select-contain-select">
-                                                                <option value="1" selected>ATU</option>
-                                                                <option value="2">BTU</option>
-                                                                <option value="3">CTU</option>
-                                                                <option value="4">DTU</option>
-                                                                <option value="5">ETU</option>
-                                                                <option value="6">FTU</option>
-                                                                <option value="7">GTU</option>
 
+                                                                <?php $universities = App\Models\University::all();?>
+                                                                @if($universities->count() > 0)
+
+                                                                @foreach($universities as $university)
+                                                                <option value="{{$university->id}}" selected>{{$university->university_name}}</option>
+                                                                @endforeach
+                                                                @else
+
+                                                                <option value="">Currently Unavailable</option>
+
+                                                            @endif
 
 
                                                             </select>
@@ -287,15 +294,17 @@
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                 <select class="select-contain-select">
-                                                    <option value="1" selected>India</option>
-                                                    <option value="2">USA</option>
-                                                    <option value="3">UK</option>
-                                                    <option value="4">KSA</option>
-                                                    <option value="5">UAE</option>
-                                                    <option value="6">Russia</option>
-                                                    <option value="7">China</option>
+                                                    <?php $countries = App\Models\Country::all();?>
+                                                    @if($countries->count() > 0)
+                                                    @foreach($countries as $country)
+                                                    <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
+                                                    @endforeach
 
+                                                    @else
 
+                                                        <option value="">Currently Unavailable</option>
+
+                                                    @endif
 
                                                 </select>
                                             </div>
@@ -392,18 +401,21 @@
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select">
-                                                        <option value="1" selected>India</option>
-                                                        <option value="2">USA</option>
-                                                        <option value="3">UK</option>
-                                                        <option value="4">KSA</option>
-                                                        <option value="5">UAE</option>
-                                                        <option value="6">Russia</option>
-                                                        <option value="7">China</option>
+                                                        <?php $countries = App\Models\Country::all();?>
+                                                        @if($countries->count() > 0)
+                                                         @foreach($countries as $country)
+                                                            <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
+                                                         @endforeach
 
+                                                        @else
 
+                                                            <option value="">Currently Unavailable</option>
+
+                                                        @endif
 
                                                     </select>
-                                                </div>                                            </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
                                     <div class="col-lg-4 col-sm-2 pr-0">
@@ -494,15 +506,17 @@
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select">
-                                                        <option value="1" selected>India</option>
-                                                        <option value="2">USA</option>
-                                                        <option value="3">UK</option>
-                                                        <option value="4">KSA</option>
-                                                        <option value="5">UAE</option>
-                                                        <option value="6">Russia</option>
-                                                        <option value="7">China</option>
+                                                        <?php $countries = App\Models\Country::all();?>
+                                                        @if($countries->count() > 0)
+                                                                @foreach($countries as $country)
+                                                                <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
+                                                                @endforeach
 
+                                                                @else
 
+                                                                <option value="">Currently Unavailable</option>
+
+                                                            @endif
 
                                                     </select>
                                                 </div>                                            </div>
@@ -797,275 +811,34 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="section-heading text-center">
-                                        <h2 class="sec__title">Browse by Discpiline</h2>
+                                        <h2 class="sec__title">Browse by Discipline</h2>
                                     </div><!-- end section-heading -->
                                 </div><!-- end col-lg-12 -->
                             </div><!-- end row -->
+                            <?php $categories = App\Models\Category::all() ?>
+                            @if($categories->count() > 0)
                             <div class="row padding-top-80px">
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-book-medical"></i>                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Medical</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-chart-line"></i>                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Managment</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-tools"></i>                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Engineering</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-flask"></i>                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Science</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-palette"></i>                                                                                </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Arts</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="lar la-money-bill-alt"></i>
+
+                                     @foreach($categories as $category)
+                                    <div class="col-lg-2 responsive-column">
+                                        <div class="icon-box icon-layout-4">
+                                            <div class="info-icon">
+                                                <i class="las la-book-medical"></i>
                                             </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Commerce</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-book"></i>
-                                                </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Education</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-capsules"></i>
-                                                </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Pharmacy</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div>
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-gavel"></i>                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Law</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-user-nurse"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Paramedical</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-tshirt"></i>
-                                         </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Design</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-tractor"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Agriculture</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-building"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Architecture</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-desktop"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Animation</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-tooth"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Dental</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-plane"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Aviation</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div>
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-laptop-code"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Computer Application</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-microphone"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Mass Communication</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-paw"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Vetenary Science</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <div class="col-lg-2 responsive-column">
-                                    <div class="icon-box icon-layout-4">
-                                        <div class="info-icon">
-                                            <i class="las la-concierge-bell"></i>
-                                        </div><!-- end info-icon-->
-                                        <div class="info-content">
-                                            <h4 class="info__title"><a href="{{route('course_detail')}}">Hotel Managment</a></h4>
-                                            {{-- <p class="info__desc">
-                                               Pellentesque ac turpis egestas, varius justo et, condimentum augue nerrowe.
-                                            </p> --}}
-                                        </div><!-- end info-content -->
-                                    </div><!-- end icon-box -->
-                                </div><!-- end col-lg-3 -->
-                                <!-- end col-lg-3 -->
+                                            <div class="info-content">
+                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
+
+                                            </div><!-- end info-content -->
+                                        </div><!-- end icon-box -->
+                                    </div><!-- end col-lg-2 -->
+                                    @endforeach
+
                             </div><!-- end row -->
-                            {{-- <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="tab-content-info mt-n4 d-flex justify-content-between align-items-center">
-                                        <p class="font-size-15">Do not hesitate to contact us for better help and service.</p>
-                                        <a href="contact.html" class="btn-text font-size-15">Contact us <i class="la la-arrow-right ml-1"></i></a>
-                                    </div><!-- end tab-content-info -->
-                                </div>
-                            </div> --}}
+                            @else
+                            <div>
+                              <h4 style="margin-top: 50px;"">Discipline Unavailable</h4>
+                            </div>
+                            @endif
                         </div><!-- end container -->
                     </section>
 
@@ -1703,17 +1476,33 @@
         </div><!-- end row -->
         <div class="counter-box counter-box-2 margin-top-60px mb-0">
             <div class="row">
+
+                <?php $users = App\Models\User::whereHas('roles', function($q){
+                    $q->where('name', 'client');
+                })->count();
+                $university = App\Models\User::whereHas('roles', function($q){
+                    $q->where('name', 'university');
+                })->count();
+                $consultant = App\Models\User::whereHas('roles', function($q){
+                    $q->where('name', 'consultant');
+                })->count();
+
+                ?>
+
                 <div class="col-lg-3 responsive-column">
                     <div class="counter-item counter-item-layout-2 d-flex">
                         <div class="counter-icon flex-shrink-0">
                             <i class="la la-users"></i>
                         </div>
                         <div class="counter-content">
-                            <div>
-                                <span class="counter" data-from="0" data-to="2000"  data-refresh-interval="6">0</span>
-                                <span class="count-symbol">+</span>
-                            </div>
-                            <p class="counter__title"> Satisfied Students </p>
+
+                                <div>
+                                    <span class="counter" data-from="0" data-to="{{$users}}"  data-refresh-interval="6">0</span>
+                                    <span class="count-symbol">+</span>
+                                </div>
+                                <p class="counter__title"> Satisfied Students </p>
+
+
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
@@ -1724,10 +1513,10 @@
                         </div>
                         <div class="counter-content">
                             <div>
-                                <span class="counter" data-from="0" data-to="35"  data-refresh-interval="6">0</span>
-                                <span class="count-symbol">k</span>
+                                <span class="counter" data-from="0" data-to="{{$university}}"  data-refresh-interval="6">0</span>
+                                <span class="count-symbol">+</span>
                             </div>
-                            <p class="counter__title">Collages</p>
+                            <p class="counter__title">Universitys</p>
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
@@ -1738,7 +1527,7 @@
                         </div>
                         <div class="counter-content">
                             <div>
-                                <span class="counter" data-from="0" data-to="4000"  data-refresh-interval="6">0</span>
+                                <span class="counter" data-from="0" data-to="{{$consultant}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
                             </div>
                             <p class="counter__title">Consultants</p>
@@ -1751,9 +1540,12 @@
                             <i class="la la-check-circle"></i>
                         </div>
                         <div class="counter-content">
+                            <?php $bookings = DB::table('bookings')->count(); ?>
+                            {{-- <? //php $bookings = DB::table('bookings')->where('status', 1)->count(); ?> --}}
+                            {{-- {{dd($bookings)}} --}}
                             <div>
-                                <span class="counter" data-from="0" data-to="402"  data-refresh-interval="6">0</span>
-                                <span class="count-symbol">k</span>
+                                <span class="counter" data-from="0" data-to="{{$bookings}}"  data-refresh-interval="6">0</span>
+                                <span class="count-symbol">+</span>
                             </div>
                             <p class="counter__title">Booking</p>
                         </div><!-- end counter-content -->
