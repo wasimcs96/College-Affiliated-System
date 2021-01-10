@@ -35,7 +35,7 @@ class Application extends Model
 
     public function applicationAppliedUniversity()
     {
-        return $this->hasMany(ApplicationAppliedUniversity::class);
+        return $this->hasMany(ApplicationAppliedUniversity::class,'application_id');
     }
 
     public function applicationDocument()
