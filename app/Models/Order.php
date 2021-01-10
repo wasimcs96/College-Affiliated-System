@@ -15,11 +15,21 @@ class Order extends Model
 
     public function OrderItem()
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->hasMany(OrderItem::class,'order_id');
     }
 
     public function consultant()
     {
        return $this->belongsTo(Consultant::class);
+    }
+
+    public function userPurchasedPlans()
+    {
+        return $this->hasMany(UserPurchasedPlans::class,'order_id');
+    }
+
+    public function advertisement()
+    {
+        return $this->hasmany(Advertisement::class,'order_id');
     }
 }

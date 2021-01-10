@@ -48,7 +48,7 @@ Route::get('booking',[
 //   return view('consultant.booking.booking_show');
 // })->name('consultant.booking.show');
 
-Route::get('show/{id}',[
+Route::get('booking/show/{id}',[
     'uses'=>'ConsultantBookingController@show',
     'as'=>'consultant.booking.show'
 ]);
@@ -169,7 +169,7 @@ Route::get('associated_university',[
 //     return view('consultant.university.university_show');
 // })->name('consultant.university.show');
 
-Route::get('university/show/{id}',[
+Route::get('associated_university/university/show/{id}',[
     'uses'=>'ConsultantUniversityController@show',
     'as'=>'consultant.university.show'
 ]);
@@ -201,7 +201,7 @@ Route::get('services/subscription', [
     'as' => 'consultant.subscription'
 ]);
 
-Route::get('subscription/add', [
+Route::get('services/subscription/add', [
     'uses' => 'ConsultantSubscriptionController@add',
     'as' => 'consultant.subscription.add'
 ]);
@@ -212,7 +212,7 @@ Route::get('services/premium', [
     'as' => 'consultant.premium'
 ]);
 
-Route::get('premium/add', [
+Route::get('services/premium/add', [
     'uses' => 'ConsultantPremiumController@add',
     'as' => 'consultant.gopremium'
 ]);
@@ -223,7 +223,7 @@ Route::get('premium/add', [
     'as' => 'consultant.advertisement'
 ]);
 
-Route::get('advertisements/add', [
+Route::get('services/advertisements/add', [
     'uses' => 'ConsultantAdvertisementController@add',
     'as' => 'consultant.advertisement.add'
 ]);

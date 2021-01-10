@@ -15,8 +15,8 @@
             <ul class="pricing body">
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
-                    <h3><span>$</span>{{$package->amount}}<small>/ {{$package->package_time}}-months</small></h3>
-                    {{-- <span>Premium</span> --}}
+                    <h3><span>$</span>{{$package->amount}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>
+                                        {{-- <span>Premium</span> --}}
                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');
         $rt=auth()->user()->Subscription_expire_date;
 ?>
@@ -216,7 +216,7 @@
 
                         <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
                         <br>
-                        <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>/${package_time}-mo</small></h5></div>
+                        <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
                     </div>
                     <br>
 
@@ -275,7 +275,7 @@ $('#choosedcontent').html(html);
                         $.ajax({
                         url:"{{ route('transaction.pay') }}",
                         method:"GET",
-                        data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title},
+                        data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title,package_time:package_time},
                         success: function(result){
                             $('#mdlup').modal('show');
                         }

@@ -19,38 +19,43 @@
                     <thead>
                         <tr>
                             <th><b>Banner Image</b></th>
-                            <th><b> Date </b></th>
+                            <th><b>Transaction Id</b></th>
+                            <th><b>Start Date </b></th>
+                            <th><b>Expire Date</b></th>
+                            <th><b>Created Date</b></th>
                             <th><b> Status</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
-                    <?php $adid=auth()->user()->id?>
-                        <?php  $rts=App\Models\Advertisement::where('user_id',$adid)->orderBy('updated_at', 'DESC')->get();
+                    <?php  $rts= auth()->user()->order;
                     ?>
-                    {{-- {{dd($rts)}} --}}
                     @if($rts->count() > 0)
                     <tbody>
 
-                        @foreach($rts as $rt)
+                        @foreach($rts as $key => $rt)
+                    @if($rt->payment_type == 2)
 
+                        {{-- {{dd($rt->advertisement)}} --}}
                         <tr>
-                            <td>  <img src="{{asset($rt->banner_image)}}" class="user-photo" alt="Banner image" width="40px" height="40px"></td>
-                            {{-- <td>{{$booking->user->mobile}}</td>
-                            <td>{{$booking->user->email}}</td> --}}
-                            <td>{{$rt->expire_date}}</td>
-                            {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
-                            <td>
-                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                            <td>  <img src="{{asset($rt->advertisement[$key]->banner_image)}}" class="user-photo" alt="Banner image" width="40px" height="40px"></td>
+                             <td>{{$rt->transaction_id}}</td>
+                           {{-- <td>{{$booking->user->email}}</td> --}}
+                            <td>{{$rt->userPurchasedPlans[$key]->start_date}}</td>
+                            <td>{{$rt->userPurchasedPlans[$key]->end_date}}</td>
+                            <td>{{$rt->created_at}}</td>
 
+                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                <td>
                                 {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}
-                                @if($rt->expire_date>$mytime)<div class="btn btn-success">Active</div>@endif
-                                @if($rt->expire_date<$mytime)<div class="btn btn-danger">Expired</div>@endif
-                                @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif
+                                @if($rt->advertisement[$key]->expire_date>$mytime)<div class="btn btn-success">Actived</div>@endif
+                                @if($rt->advertisement[$key]->expire_date<$mytime)<div class="btn btn-danger">Expired</div>@endif
+                                {{-- @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif --}}
                             </td>
                             {{-- <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td> --}}
                         </tr>
+                        @endif
 @endforeach
 @else
 

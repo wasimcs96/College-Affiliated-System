@@ -28,8 +28,9 @@
                             <th><b> Package Discription</b></th>
                             <th><b>Amount</b></th>
                             <th><b>Transaction Id </b></th>
-                             {{--  <th><b>Date</b></th>
-                            <th><b>Time Slot</b></th> --}}
+                            <th><b>Start Date</b></th>
+                            <th><b>End Date</b></th>
+                            <th><b>Purchased Date</b></th>
                             <th><b> Status</b></th>
                             {{-- <th><b>Actions</b></th> --}}
                         </tr>
@@ -39,28 +40,31 @@
                     </tfoot>
 
                     {{-- {{dd($rts)}} --}}
-                    @if($premiums->count() > 0)
-                    <tbody>
+                    <?php $premiums= auth()->user()->order;
 
-                        @foreach($premiums as $premium)
-                        <?php $orders= $premium->OrderItem?>
-@foreach($orders as $order)
+?>
+@if($premiums->count() > 0)
+<tbody>
+                        @foreach($premiums as $key => $premium)
+
+                        @if($premium->payment_type == 1)
                         <tr>
-                            <td>{{$order->Item_title}}</td>
+                            <td>{{$premium->OrderItem[0]->Item_title}}</td>
                             <td>{{$premium->amount}}$</td>
-                            {{-- <td>{{$rt->expire_date}}</td> --}}
-                            {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
                             <td>{{$premium->transaction_id}}</td>
+                            <td>{{$premium->userPurchasedPlans[0]->start_date}}</td>
+                            <td>{{$premium->userPurchasedPlans[0]->end_date}}</td>
+                            <td>{{$premium->created_at}}</td>
                             <td>
+                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                @if($premium->userPurchasedPlans[0]->end_date > $mytime)<div class="btn btn-success">Actived</div>@endif
 
-                                @if($premium->status==0)<div class="btn btn-warning">Pending</div>@endif
-                                {{-- @if($subscription->expire_date>$mytime)<div class="btn btn-success">Active</div>@endif
-                                @if($subscription->expire_date<$mytime)<div class="btn btn-danger">Expired</div>@endif --}}
-                                @if($premium->status==1)<div class="btn btn-primary">Inactive</div>@endif
+                                @if($premium->userPurchasedPlans[0]->end_date < $mytime)<div class="btn btn-danger">Expired</div>@endif
                             </td>
                             {{-- <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td> --}}
                         </tr>
-@endforeach
+                        @endif
+
 @endforeach
 </tbody>
 @else
