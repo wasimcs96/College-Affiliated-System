@@ -222,7 +222,7 @@
                         <div class="chat-message clearfix" id="btn">
                             {{-- <div class="input-group mb-0" id="btn target" > --}}
                                 <form class="input-group mb-0" id="target">
-                                    <textarea type="text" row="" id="message" name="message" class="form-control" placeholder="Enter text here..."></textarea>
+                                    <textarea type="text" row="" id="message" name="message id" class="form-control" placeholder="Enter text here..."></textarea>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                             <button class="btn btn-link" id="bt" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
@@ -326,6 +326,7 @@
        // var form = $(this);
        // var url = form.attr('action');
        var id = $('input[name="id"]').val();
+       
        var msd = $('#message').val();
        document.getElementById('history').innerHTML+=`<li class="right clearfix">
         <img class="user_pix" src="{{asset('assets/images/user.png')}}" alt="avatar">
