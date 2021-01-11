@@ -105,6 +105,15 @@ class ConsultantApplicationController extends Controller
        $id = $request->appliedUniversityRowIdAccepted;
 
        $university = ApplicationAppliedUniversity::find($id);
+
+    //    $docDefault = $university->userUniversity->university->default_documents;
+    //    $documentDefault = json_decode($docDefault);
+
+    //    $documentDefault = json_encode($documentDefault);
+    //    $documentVisa = Config::get('define.visa');
+    //    dd($documentVisa,$documentVisa);
+    //    $documentVisa2 = json_encode($documentVisa);
+    //    $university->documents = array_merge($documentVisa,$documentDefault2);
        $university->is_accepeted = 1;
        $university->save();
        return response('success');
@@ -124,10 +133,10 @@ class ConsultantApplicationController extends Controller
         $university->fees =$fees;
         $university->save();
 
-        $university_id = $request->uni_id;
-        $default_document = University::find($university_id);
-        $default_document->default_documents = $document;
-        $default_document->save();
+        // $university_id = $request->uni_id;
+        // $default_document = University::find($university_id);
+        // $default_document->default_documents = $document;
+        // $default_document->save();
 
         return response('success');
 
@@ -166,15 +175,32 @@ class ConsultantApplicationController extends Controller
 
     public function universityUpdate(Request $request)
     {
-        $id = $request->appliedUniversityRowIdReadyToFly;
-        $fees = $request->fees;
-        $doc = $request->docs;
-        $document = json_encode($doc);
-        $university = ApplicationAppliedUniversity::find($id);
-        $university->documents = $document;
-        $university->fees =$fees;
-        $university->save();
-
+        // dd($request->apply_id);
+        if($request->hiddenValue == 4)
+        {
+             $id = $request->apply_id;
+             $fees = $request->fees;
+             $docs = $request->doc;
+             $document = json_encode($docs);
+             $university = ApplicationAppliedUniversity::find($id);
+             $university->documents = $document;
+             $university->fees =$fees;
+             $university->save();
+             return redirect()->back()->with('success','Document Updated Successfully');
+        }
+        else
+        {
+            $id = $request->apply_id;
+            $fees = $request->fees;
+            $docs = $request->doc;
+            $document = json_encode($docs);
+            $university = ApplicationAppliedUniversity::find($id);
+            $university->is_complete =1;
+            $university->documents = $document;
+            $university->fees =$fees;
+            $university->save();
+            return redirect()->back()->with('success','Application Process is Completed Successfully');
+        }
         // $university_id = $request->uni_id;
         // $default_document = University::find($university_id);
         // $default_document->default_documents = $document;

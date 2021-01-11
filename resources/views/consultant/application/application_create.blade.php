@@ -306,7 +306,11 @@
                               </div>
                               <div class="body wizard_validation">
 
-                                  <form id="wizard_with_validation{{$key}}" method="POST">
+                                  <form id="wizard_with_validation{{$key}}" action="{{ route('consultant.application.update.university') }}"" method="POST">
+                                   @csrf
+                                   <div id="addInput">
+
+                                   </div>
                                     <h3>Apply in University</h3>
                                     <fieldset>
                                         <h6> <b>
@@ -333,7 +337,6 @@
                                         <div class="col-lg-6 col-md-12">
 
                                         </div>
-
                                     <input type="text" name="university_id" value="{{$applied->userUniversity->id ?? ''}}" hidden>
                                     <input type="text" name="apply_id" value="{{$applied->id ?? ''}}" hidden>
 
@@ -351,7 +354,7 @@
                                       <fieldset>
                                     @if($applied->Is_applied==1)
                                         <h6> <b>
-                                            Application Approval Status</b> </h6>
+                                            University Approval Status</b> </h6>
                                        <div class="table-responsive" >
                                            <table class="table table-hover table-striped" >
 
@@ -433,37 +436,101 @@
                                     @endif
                                         </fieldset>
                                       <h3>Ready To Fly - Finish</h3>
-                                      <fieldset>
-                                        {{-- @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1) --}}
-                                        <form action="{{ route('consultant.application.university.update') }}" method="POST" enctype="multipart/form-data" >
-                                            @csrf
-                                         <input type="text" value="{{$applied->userUniversity->id}}" name="uni_id" id="uni_id" hidden>
-                                         {{-- {{ dd($applied->userUniversity->id) }} --}}
+                                            <fieldset>
+                                                     {{-- @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1) --}}
+                                                     {{-- {{ dd($applied->userUniversity->id) }} --}}
+                                                    {{-- <form action="{{ url('application/update/university') }}" method="POST" enctype="multipart/form-data" > --}}
+                                                        <div class="table-responsive" >
+                                                            <table class="table table-hover table-striped" >
 
-                                        @if ($applied->is_accepeted == 1)
-                                            <div class="row clearfix">
-                                                <div class="col-lg-6 col-md-12">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" value="@if(isset($applied->userUniversity->university->university_name)){{$applied->userUniversity->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
-                                                    </div>
-                                                </div>
+                                                                <tbody>
 
-                                                <div class="col-lg-6 col-md-12">
-                                            <div class="form-group">
-                                                <label for="">Course Fees</label>
-                                                <input type="text"  class="form-control" id="coursefees"  value="{{$applied->fees}}" />
-                                              </div>
-                                            </div>
-                                @if({ {$applied->userUniversity->university->default_documents ?? ''}})
+                                                                <tr>
+                                                                    <th scope="row">University Name</th>
+                                                                    <td>{{$applied->userUniversity->university->university_name ?? ''}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Course Name</th>
+                                                                    <td>{{$applied->course->name ?? ''}}</td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                        <div class="row clearfix">
+                                                          <input type="text"  name="appliedUniversityRowIdReadyToFly" value="{{ $applied->id }}" hidden>
+                                                            @if ($applied->is_accepeted == 1)
+
+                                                            {{-- <div class="col-lg-6 col-md-12">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" value="@if(isset($applied->userUniversity->university->university_name)){{$applied->userUniversity->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-12">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
+                                                                </div>
+                                                            </div> --}}
+
+                                                            <div class="col-lg-3 col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="">Course Fees</label>
+                                                            <input type="text"  class="form-control" id="coursefees"  value="{{$applied->fees}}" />
+                                                          </div>
+                                                        </div>
+                                                     {{-- {{ dd($applied->documents) }} --}}
+                                    <div class="col-lg-9 col-md-12">
+                                            @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')
                                             <div class="form-group">
                                                 <?php
+                                                $docDefault = $applied->userUniversity->university->default_documents;
+                                                $documentDefault = json_decode($docDefault);
+                                                $documentVisa = Config::get('define.visa');
+                                                $increase=0; ?>
+                                                <label for="documents">Documents</label>
+                                                <br/>
+                                                <div class="dynamic_document" >
+                                                    @if (isset($documentDefault))
 
-                                                $appliedUniversity=$applied->userUniversity->university->default_documents;
+                                                    @foreach($documentDefault as $key => $value)
+
+                                                    <label class="control-inline fancy-checkbox" style="margin-right: 4px" id="dynamic_document2">
+
+                                                        <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
+                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
+
+                                                        <span>{{$key}}</span>
+
+                                                        @php $increase++ @endphp
+                                                        @endforeach
+                                                    </label>
+                                                    @endif
+                                                    @if (isset($documentVisa))
+
+
+                                                    @foreach($documentVisa as $key => $value)
+
+                                                    <label class="control-inline fancy-checkbox" style="margin-right: 4px">
+                                                        <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
+
+                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
+
+                                                        <span>{{$key}}</span>
+
+                                                        @php $increase++ @endphp
+                                                        @endforeach
+                                                    </label>
+                                                    @endif
+                                                </div>
+
+                                                <button type="button" name="adddocument" id="add_document_university" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
+
+                                              </div>
+                                            @else
+                                            <div class="form-group">
+                                                <?php
+                                                $appliedUniversity=$applied->documents;
                                                 $documentSelect = json_decode($appliedUniversity);
                                                 $increase=0; ?>
                                                 <label for="documents">Documents</label>
@@ -476,10 +543,10 @@
 
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
+                                                        <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
+                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" @if($value == 1) checked @endif style="margin-right: 4px">
 
-                                                        <input type="checkbox" name="doc[]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
-
-                                                        <span>{{$value}}</span>
+                                                        <span>{{$key}}</span>
 
                                                         @php $increase++ @endphp
                                                         @endforeach
@@ -490,32 +557,35 @@
                                                 <button type="button" name="adddocument" id="add_document_university" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
 
                                               </div>
-                                @endif
-                                            <div class="col-lg-6 col-md-12">
-                                                <div class="form-group">
-                                                    @if($applied->is_complete==0)
-                                                    <button type="button" name="adddocument" id="rtf2" custom1="{{$applied->id}}"  class="btn btn-primary readytof2" data-toggle="modal" data-target="#readyToFly2" class="btn btn-primary">Update</button>
+                                              @endif
+                                            </div>
+                                                        <div class="col-lg-6 col-md-12">
+                                                            <div class="form-group">
+                                                                @if($applied->is_complete==0)
+                                                                <button type="submit" class="btn btn-primary" id="rtf4" >Update</button>
 
-                                                    <button type="button" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof" data-toggle="modal" data-target="#readyToFly" > Ready to fly</button>
-                                                   @else
-                                                   <button type="button" name="adddocument" id="rtf3" class="btn btn-success">Completed</button>
-                                                @endif
-                                                </div>
-                                            </form>
-                                        </div>
-                                        @else
-                                        <div class="form-group">
-                                            <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
-                                        </div>
-                                        @endif
+                                                                {{-- <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof" data-toggle="modal" data-target="#readyToFly" > Ready to fly</button> --}}
+                                                                <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof"  > Ready to fly</button>
+                                                                @else
+                                                               <button type="button" name="adddocument" id="rtf3" class="btn btn-success">Completed</button>
+                                                            @endif
+                                                            </div>
+                                                        </div>
 
-                                        {{-- @else
-                                        <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
-                                        @endif --}}
 
-                                      </fieldset>
+                                                    @else
+                                                    <div class="form-group">
+                                                        <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
+                                                    </div>
 
-                                  </form>
+                                                    @endif
+
+                                                        </div>
+                                                    {{-- </form> --}}
+
+
+                                            </fieldset>
+                                        </form>
                               </div>
                           </div>
                       </div>
@@ -813,7 +883,7 @@
       rt=$('#document_name2').val();
 
       //   console.log(rt);
-      $('#dynamic_document2').append('<label class="control-inline fancy-checkbox" style="margin-left: -4px"><input type="checkbox" name= "doc[]" id="document" value="'+rt+'" checked><span>'+rt+'</span></label>')
+      $('#dynamic_document2').append('<label class="control-inline fancy-checkbox" style="margin-left: -4px"><input type="hidden" name="doc['+rt+']" value="0"  hidden><input type="checkbox" name= "doc['+rt+']" value="1"><span>'+rt+'</span></label>')
       // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet" '+document_row2+'><span>'+rt+'</span></label>')
       $('#documentModal2').modal('hide');
       document.getElementById("basic-form3").reset();
@@ -1206,7 +1276,7 @@ $(document).on('click', '#readyTo2', function ()
 
             $.ajax({
                     type: "post",
-                    url: "{{route('consultant.application.university.update')}}",
+                    url: "{{route('consultant.application.update.university')}}",
                     data: {appliedUniversityRowIdReadyToFly:appliedUniversityRowIdReadyToFly,fees:fees,docs:docs,uni_id:uni_id},
                     success: function (result) {
 
@@ -1275,5 +1345,16 @@ $(document).on('click', '#readyTo2', function ()
      });
 
 
+ </script>
+ <script>
+      $(document).on('click', '#rtf', function ()
+ {
+    $('#addInput').append('<input type="text" name="hiddenValue" value="3"  hidden>');
+ });
+
+ $(document).on('click', '#rtf4', function ()
+ {
+    $('#addInput').append('<input type="text" name="hiddenValue" value="4"  hidden>');
+ });
  </script>
 @stop
