@@ -10,7 +10,7 @@ class Category extends Model
 
 
 
-    protected $fillable = ['parent_id', 'title', 'slug', 'status',];
+    protected $fillable = ['parent_id', 'title', 'slug', 'status','banner'];
 
 
 
