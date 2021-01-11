@@ -16,14 +16,14 @@ Route::get('dashboard',function(){
 // Route::get('students',function(){
 //     return view('consultant.student.students');
 // })->name('consultant.students');
-Route::get('student',[
+Route::get('students',[
     'uses'=>'ConsultantStudentController@index',
     'as'=>'consultant.students'
 ]);
 // Route::get('student_show',function(){
 //     return view('consultant.student.student_show');
 // })->name('consultant.student.show');
-Route::get('student/detail/{id}',[
+Route::get('students/detail/{id}',[
     'uses'=>'ConsultantStudentController@show',
     'as'=>'consultant.student.show'
 ]);

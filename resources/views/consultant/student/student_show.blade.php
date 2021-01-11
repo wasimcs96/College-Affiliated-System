@@ -7,18 +7,11 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Registered Student<small>Detail of Student</small></h2>
+            <h2>My Bookings<small>Booking Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li> --}}
+
             </ul>
         </div>
         <div class="body">
@@ -30,65 +23,41 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>{{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
+                        <td>{{$show->user->first_name ?? ''}} {{$show->user->last_name ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Student Address</th>
+                        <td>{{$show->user->address ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>{{$user->mobile ?? ''}}</td>
+                        <td>{{$show->user->mobile ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>{{$user->email ?? ''}}</td>
+                        <td>{{$show->user->email ?? ''}}</td>
                     </tr>
-
-                    <tr>
-                        <th scope="row">City</th>
-                        <td>{{$user->city ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Student Address</th>
-                        <td>{{$user->address ?? ''}}</td>
-                    </tr>
-
 
                     <tr>
                         <th scope="row">Student Nationality</th>
-                        <td>{{$user->country ?? ''}}</td>
-                    </tr>
-
-                    {{-- <tr>
-                        <th scope="row">Student University Prefrence-1</th>
-                        <td>RTU</td>
+                        <td>{{$show->user->country ?? ''}}</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student University Prefrence-2</th>
-                        <td>BTU</td>
+                        <th scope="row">Student Booking Status</th>
+                        <td>@if($show->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
+                            @if($show->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
+                            @if($show->status==2 ?? '')<div class="btn btn-danger">Rejected</div>@endif
+                            @if($show->status==3 ?? '')<div class="btn btn-primary">Walking</div>@endif
+                        </td>
                     </tr>
-
-                    <tr>
-                        <th scope="row">Student University Prefrence-3</th>
-                        <td>CTU</td>
-                    </tr> --}}
-
-
-                </tbody>
-
-            </table>
-
 
             </div>
+                    </tbody>
 
-
-
-
-
-        {{-- </tr> --}}
-
-
-
+                </table>
                 <div id="res">
 
                 </div>
@@ -130,14 +99,28 @@
         });
     });
 </script>
-{{-- <script>
+<script>
    $("#accept").click(function() {
+    var booking_id = $('input[name="booking_id"]').val();
+    $.ajaxSetup({
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+}
+});
+            $.ajax({
+                type: "post",
+                url: "{{route('consultant.booking.accept')}}",
+                data: {booking_id:booking_id},
+                success: function (result) {
+                    console.log('success');
+                }
+            });
     $("#accept").remove()
     $("#bac").remove()
-    $("#res").html("<a  href='{{route('consultant.booking.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#res").html("<a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
     $("#dec").html("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat'>Close</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
 
-</script> --}}
+</script>
 @stop

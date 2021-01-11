@@ -1,18 +1,15 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Consultant')
-@section('title', 'Students')
+@section('title', 'Student')
 
 @section('content')
-
-
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Students<small>All related students</small></h2>
+            <h2>Students<small>All Students</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-
             </ul>
         </div>
         <div class="body">
@@ -26,37 +23,37 @@
                             <th><b> E-mail</b></th>
                             <th><b>City</b></th>
                             <th><b>Country</b></th>
-
+                            <th><b> Status</b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
+                    <?php $bookings=auth()->user()->consultantBooking;
+                     ?>
+                    {{-- {{ dd($bookings) }} --}}
+                    @if($bookings->count() > 0)
                     <tbody>
-                        @if($users->count() > 0)
 
-                                @foreach ($users as $user)
-                                    @if($user->isClient())
-                                        <tr>
-                                            <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
-                                            {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
-                                            <td>{{$user->mobile ?? ''}}</td>
-                                            <td>{{$user->email ?? ''}}</td>
-                                            <td>{{$user->city ?? ''}}</td>
-                                            <td> {{$user->country ?? ''}} </td>
-                                            <td><a href="{{route('consultant.student.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
-                                            {{-- <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a> --}}
-                                        </td>
-                                        </tr>
-                                    @endif
-                                @endforeach
+                        @foreach($bookings as $booking)
 
-                        @endif
+                        <tr>
+                            <td>{{$booking->user->first_name ?? ''}} </td>
+                            <td>{{$booking->user->mobile ?? ''}}</td>
+                            <td>{{$booking->user->email ?? ''}}</td>
+                            <td>{{$booking->user->city ?? ''}}</td>
+                            <td>{{$booking->user->country ?? ''}}</td>
+                            <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
+                                @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
+                                @if($booking->status==2 ?? '')<div class="btn btn-danger">Rejected</div>@endif
+                                @if($booking->status==3 ?? '')<div class="btn btn-primary">Walking</div>@endif
+                            </td>
+                            <td style="text-align: center;"><a href="{{route('consultant.student.show',['id'=> $booking->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                        </tr>
+@endforeach
 
-
-
+@endif
                     </tbody>
                 </table>
             </div>
@@ -64,10 +61,6 @@
     </div>
 </div>
 </div>
-
-
-
-
 @stop
 
 @section('page-styles')
@@ -87,7 +80,6 @@ tr.shown td.details-control {
 @stop
 
 @section('page-script')
-
 <script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
@@ -98,17 +90,4 @@ tr.shown td.details-control {
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
-<script>
-    $(function() {
-        // (Optional) Active an item if it has the class "is-active"
-        $(".accordion2 > .accordion-item.is-active").children(".accordion-panel").slideDown();
-
-        $(".accordion2 > .accordion-item").click(function() {
-            // Cancel the siblings
-            $(this).siblings(".accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
-            // Toggle the item
-            $(this).toggleClass("is-active").children(".accordion-panel").slideToggle("ease-out");
-        });
-    });
-</script>
 @stop
