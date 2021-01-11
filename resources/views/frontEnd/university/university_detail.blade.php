@@ -92,12 +92,7 @@
                             <li><a data-scroll="faq" href="#faq" class="scroll-link">FAQ</a></li>
                             <li><a data-scroll="reviews" href="#reviews" class="scroll-link">Reviews</a></li>
                         {{-- <li> --}}
-                            <?php
-                            $consultant = DB::table('university_consultants')
-                                      ->where('university_id', '=', $university->id)->where('consultant_id','=',auth()->user()->id)
-                                      ->get()->first();
-                                $consults = DB::table('consultants')->get();
-                                     ?>
+
 
 
 {{-- {{dd($universityconsultant)}} --}}
@@ -186,316 +181,7 @@
                                     </div><!-- end col-lg-6 -->
                                 </div><!-- end row -->
                             </div><!-- end single-content-item -->
-                            {{-- <div class="single-content-item padding-bottom-40px">
-                                <h3 class="title font-size-20 d-flex align-items-center justify-content-between">
-                                    What's Included
-                                    <a class="btn collapse-btn theme-btn-hover-gray font-size-15" data-toggle="collapse" href="#viewIncludedExample" role="button" aria-expanded="false" aria-controls="viewIncludedExample">
-                                        View<i class="la la-angle-down ml-1"></i>
-                                    </a>
-                                </h3>
-                                <div class="collapse" id="viewIncludedExample">
-                                    <div class="cruise-included-feature-wrap">
-                                        <div class="cruise-include-feature pt-3">
-                                            <h3 class="title font-size-15 font-weight-medium pb-2">Included</h3>
-                                            <p class="pb-3 font-size-15">Unless otherwise indicated on your itinerary, a Holland America Line includes the following on final confirmation. Taxes and fees are typically not included in the advertised price, but included in your final booking prices.</p>
-                                            <ul class="list-items">
-                                                <li><i class="la la-check text-success mr-2"></i>Your choice of inside, oceanview, balcony or suite accommodations</li>
-                                                <li><i class="la la-check text-success mr-2"></i>All meals onboard including 24 hour room service</li>
-                                                <li><i class="la la-check text-success mr-2"></i>Coffee, tea, milk, juice and non-bottled water</li>
-                                                <li><i class="la la-check text-success mr-2"></i>Onboard entertainment including shows, discos, comedy clubs, bars, lounges, etc.</li>
-                                                <li><i class="la la-check text-success mr-2"></i>Age appropriate kids programming for toddlers, kids, and teens.</li>
-                                                <li><i class="la la-check text-success mr-2"></i>Use of all fitness facilities, pools, hot tubs, sports courts, etc.</li>
-                                                <li><i class="la la-check text-success mr-2"></i>Taxes and Fees (included in the final price but typically not advertised price)</li>
-                                            </ul>
-                                        </div>
-                                        <div class="cruise-include-feature pt-3">
-                                            <h3 class="title font-size-15 font-weight-medium pb-2">Not Included</h3>
-                                            <p class="pb-3 font-size-15">Unless otherwise indicated above or on your final confirmation, your cruise price does not include:</p>
-                                            <ul class="list-items">
-                                                <li><i class="la la-times text-danger mr-2"></i>Airfare and transfers to the ship</li>
-                                                <li><i class="la la-times text-danger mr-2"></i>Gratuities</li>
-                                                <li><i class="la la-times text-danger mr-2"></i>Casino gambling or Bingo</li>
-                                                <li><i class="la la-times text-danger mr-2"></i>Meals in any alternative or special dining restaurants or venues</li>
-                                                <li><i class="la la-times text-danger mr-2"></i>Soft drinks, bottled water, specialty coffees, or alcoholic beverages including beer, wine, spirits.</li>
-                                                <li><i class="la la-times text-danger mr-2"></i>Shore Excursions and sightseeing tours</li>
-                                                <li><i class="la la-times text-danger mr-2"></i>Spa or Salon Services</li>
-                                                <li><i class="la la-times text-danger mr-2"></i>Items of a personal nature like souvenirs, photos</li>
-                                                <li><i class="la la-times text-danger mr-2"></i>Internet access</li>
-                                                <li><i class="la la-times text-danger mr-2"></i>Travel Insurance (recommended)</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end single-content-item --> --}}
-                            {{-- <div class="single-content-item">
-                                <h3 class="title font-size-20 d-flex align-items-center justify-content-between">
-                                    University Amenities
-                                    <a class="btn collapse-btn theme-btn-hover-gray font-size-15" data-toggle="collapse" href="#viewAmenitiesExample" role="button" aria-expanded="false" aria-controls="viewAmenitiesExample">
-                                        View Amenities<i class="la la-angle-down ml-1"></i>
-                                    </a>
-                                </h3>
-                                <div class="collapse" id="viewAmenitiesExample">
-                                    <div class="row pt-4">
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-glass"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Bars and Lounges</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Bars and Lounges</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Disco / Night Club</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Library</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Piano Bar</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Wine / Champagne Bar</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-music"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Entertainment and Nightlife</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Bars and Lounges</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Broadway / Las Vegas Style Productions</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Disco / Night Club</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Movie Theater / Cinema</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Piano Bar</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-users"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Groups and Meetings</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Business Center</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Conference / Meeting Rooms</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Private Dining Room</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-wifi"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Internet and Communications</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Computer Classes</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Internet Center</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-users"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Kids and Family</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Age Group Specific Youth Programs</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Arcade / Video Games</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Childrens' Play Area</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Connecting Staterooms</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Dedicated Teen Center</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Family Staterooms</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Group Babysitting</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Private Babysitting</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Sports Court</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Teen Staff</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Youth Staff</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-gear"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Other Facilities and Services</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Concierge Desk</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Dry Cleaning / Laundry Service</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Elevators</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Infirmary / Medical Center</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Self Service Laundry</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-swimming-pool"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Pools & Hot Tubs</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Hot Tubs</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Outdoor Pool</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Solarium</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-cutlery"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Restaurants and Dining</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Culinary Programs</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Private Dining Room</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Special Diets</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Specialty Restaurants</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-bars"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Shipboard Activities</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Shopping</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Arcade / Video Games</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Basketball</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Card Room / Game Room</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Casino</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Computer Classes</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Culinary Programs</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Movie Theater / Cinema</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Sports Court</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Tennis</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-spa"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Spas and Wellness</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Beauty Salon</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Full Service Spa</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Health / Nutrition Evaluations</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Medspa Services</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Sauna / Steam Room</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Yoga</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-wheelchair"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Special Needs</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Accessible Gaming</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Accessible Public Areas</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Accessible Showrooms</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Accessible Staterooms</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Accessible Tendering</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Auditory Assistance (TTY/TTD)</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Braille Signage</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Close Captioned TV</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Decks with Ramps</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Elevators to Accommodate Wheelchairs </li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Oxygen</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Sharps Disposal</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Special Diets</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Visual Assistance (Visually Impaired) </li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Wheelchairs Accepted </li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-gamepad"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Sports and Fitness</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Aerobics</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Basketball</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Fitness Center / Gym</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Health / Nutrition Evaluations</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Jogging Track</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Pilates</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Sauna / Steam Room</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Sports Court</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Tennis</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Yoga</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-bed"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Staterooms and Suites</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Accessible Staterooms</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Concierge Services</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Connecting Staterooms</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Exclusive Suite Area</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Family Staterooms</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>In-Room Movies</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>In-Room Safe</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Priority Check-In & Boarding for Suite Guests</li>
-                                                        <li><i class="la la-check mr-2 text-success"></i>Refrigerator in Staterooms</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                        <div class="col-lg-6 responsive-column">
-                                            <div class="single-tour-feature d-flex mb-3">
-                                                <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                                                    <i class="la la-lightbulb"></i>
-                                                </div>
-                                                <div class="single-feature-titles">
-                                                    <h3 class="title font-size-15 font-weight-medium pb-2">Weddings & Special Occasions</h3>
-                                                    <ul class="list-items">
-                                                        <li><i class="la la-check mr-2 text-success"></i>Private Dining Room</li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- end single-tour-feature -->
-                                        </div><!-- end col-lg-6 -->
-                                    </div><!-- end row -->
-                                </div>
-                            </div><!-- end single-content-item --> --}}
+
                         </div><!-- end description -->
                         <div id="itinerary" class="page-scroll">
                             <div class="section-block margin-top-40px"></div>
@@ -572,7 +258,7 @@
                                            </ul>
                                            <div class="custom-checkbox mb-0">
                                                <input type="checkbox" id="chb2">
-                                               @if(auth()->user())
+                                               @if(auth()->user()->isClient())
 
 <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
     @csrf
@@ -585,7 +271,12 @@
 </form>
                                          @else
                                          <button type="submit" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Book Now</button>
+{{--
+                                         @if(!auth()->user()->isClient())
+                                         <button type="submit" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Detail</button>
+                                         @endif --}}
 @endif
+
                                         </div>
                                        </div>
                                     </div><!-- end cabin-type-item -->

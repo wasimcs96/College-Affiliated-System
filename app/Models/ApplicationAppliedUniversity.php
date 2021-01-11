@@ -30,7 +30,7 @@ class ApplicationAppliedUniversity extends Model
 
     public function application()
     {
-        return $this->hasMany(Application::class,'id');
+        return $this->belongsTo(Application::class);
     }
 
 
