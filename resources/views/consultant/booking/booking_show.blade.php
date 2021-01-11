@@ -23,7 +23,7 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>{{$show->user->first_name ?? ''}}</td>
+                        <td>{{$show->user->first_name ?? ''}} {{$show->user->last_name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student Address</th>

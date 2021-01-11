@@ -40,7 +40,7 @@ class ConsultantBookingController extends Controller
            $university[$i] =  User::where('id',$university_id[$i])->get()->first();
            $course[$i] = Course::where('id',$course_id[$i])->get()->first();
            $i++;
-           $i++;
+
        }
     //    $university0 =  University::where('id',$university_id[0])->get()->first();
     //    $university1 =  University::where('id',$university_id[1])->get()->first();
@@ -75,7 +75,7 @@ public function application($id)
 
 
 public function applicationStore(Request $request){
-    // dd($request->all());
+    // dd($request->document);
     $clientExists = Application::where('client_id',$request->client_id)->first();
     if($clientExists==null){
     $jsonApplication = $request->document;
@@ -99,7 +99,7 @@ public function applicationStore(Request $request){
         'university_id' => $univers,
         'course_id' => $request->course[$key],
         'application_id' => $store->id,
-        'documents' =>$jsonApplicationStore,
+        // 'documents' =>$jsonApplicationStore,
 
         ]);
 

@@ -34,52 +34,17 @@
                                 {{-- dd({{$book->consultant_id}}); --}}
                                 <div class="form-group">
                                     <label>Student First Name</label>
-                                    <input type="text" class="form-control" value="{{$book->user->first_name}}" name="first_name" id="first_name" required>
+                                    <input type="text" class="form-control" value="{{$book->user->first_name}}" name="first_name" id="first_name" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label>Student Last Name</label>
-                                    <input type="text" class="form-control" value="{{$book->user->last_name}}" name="last_name" id="last_name" required>
+                                    <input type="text" class="form-control" value="{{$book->user->last_name}}" name="last_name" id="last_name" disabled>
                                 </div>
-                                {{-- <div class="form-group">
-                                    <label>Mother Name</label>
-                                    <input type="text" class="form-control" name="mother_name" id="mother_name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mobile</label>
-                                    <input type="number" class="form-control" name="mobile" id="mobile" required>
-                                </div> --}}
                                 <div class="form-group">
                                     <label>Note</label>
                                     <textarea class="form-control" rows="5" name="note" cols="30" required></textarea>
                                 </div>
-
-
-                                {{-- <div class="form-group">
-                                    <label for="selectmore">Select Universities and Courses</label>
-                                    <table class="table table-bordered" id="dynamic_field">
-                                        <tr class="dynamic-added">
-                                            <td > <select id="inputState" class="form-control FulNamo" >
-                                                <option selected>Choose University</option>
-
-                                            @foreach($universities as $key => $value)
-                                                <option value={{$value->university_name}}>{{$value->university_name}}</option>
-                                            @endforeach
-                                              </select></td>
-                                              <td> <select class="form-control FulNamo"  id="inputGroupSelect01">
-                                                <option selected>Choose Course</option>
-                                                <option value="1">B.Tech</option>
-                                                <option value="2">MBA</option>
-                                                <option value="3">MBBS</option>
-                                              </select></td>
-                                            <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i> </button></td>
-                                        </tr>
-                                    </table>
-                                </div> --}}
-
+<div id="documentHtml"></div>
                                 <div class="form-group">
                                     <?php $univers=$book->userConsultant->consultantUniversity;
                                     $increase=0;
@@ -120,14 +85,14 @@
                                      <br/>
                                     <div class="dynamic_document" id="dynamic_document">
                                         @foreach($documentarray as $key => $value)
-                                        <label class="control-inline fancy-checkbox">
-                                        {{-- <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" multiple> --}}
-                                            <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" required >
-
-                                            <span>{{$value}}</span>
+                                            <label class="control-inline fancy-checkbox">
+                                            <input type="hidden" name="document[{{$key}}]" value="0" hidden>
+                                            <input class="checkbox" type="checkbox" name="document[{{$key}}]" value="{{$value}}" customValue="{{$value}}" checked>
+                                            <span>{{$key}}</span>
+                                            </label>
+                                            {{-- {{ dd($key,$value) }} --}}
                                             @php $inc++ @endphp
-                                            @endforeach
-                                        </label>
+                                        @endforeach
                                     </div>
 
                                     <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
@@ -157,7 +122,7 @@
                         </button>
                 </div>
                 <div class="modal-body">
-                    <form id="basic-form" method="post" novalidate action="#">
+                    <form id="basic-form2" method="post" novalidate action="#">
                         <div class="form-group">
                             <label>Document Name</label>
                             <input type="text" class="form-control" name="document_name" id="document_name" required>
@@ -219,9 +184,9 @@
     $('#add_document2').click(function(){
     rt=$('#document_name').val()
     //   console.log(rt);
-    $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document['+document_row+']" value="'+rt+'"><span>'+rt+'</span></label>')
+    $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="hidden" name="document['+rt+']" value="0"  hidden><input type="checkbox" customValue="'+rt+'" name= "document['+rt+']" value="1" class="checkbox"><span>'+rt+'</span></label>')
     $('#documentModal').modal('hide');
-    document.getElementById("basic-form").reset();
+    document.getElementById("basic-form2").reset();
     document_row++;
     });
 
@@ -317,5 +282,29 @@ $(function() {
 
 </script>
 
+<script>
+    $(document).on('click', '.checkbox', function(){
+        //    var document = $(this).attr("customValue");
+           var value1 = 1;
+           var value0 = 0;
+           var documents = [];
+           var docs = []
+           $('.checkbox').each(function(){
+         if($(this).is(":checked"))
+         {
+            documents.push({document:$(this).attr("customValue"),value:value1});
 
+         }
+         else
+         {
+            documents.push({document:$(this).attr("customValue"),value:value0});
+
+         }
+       });
+       docs = JSON.stringify(documents);
+          console.log(docs);
+        //   console.log(value1);
+          $('#basic-form').append('<input  class="form-control" value="'+docs+'" name="docs" id="docs" hidden>')
+      });
+</script>
 @stop

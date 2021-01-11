@@ -85,6 +85,11 @@
                         <td>{{$application->booking->user->country ?? ''}}</td>
                     </tr>
 
+                    <tr>
+                        <th scope="row">Booking Note</th>
+                        <td>{{$application->booking->comments ?? ''}}</td>
+                    </tr>
+
                 @foreach($university as $key=> $uni)
                     <tr>
                         <th scope="row">Student University/Course Preference-{{$key + 1}}</th>
@@ -191,36 +196,35 @@
                     <label for="documents">Documents</label>
                     <br/>
                     <div class="dynamic_document" id="dynamic_document">
-                        @foreach($documentSelect as $key => $value)
+                        @foreach($documentSelect ?? '' as $key => $value)
 
-                        <label class="control-inline fancy-checkbox" style="margin-right: 4px">
-                            @if(in_array($value,$documentarray))
-                        {{-- <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" multiple> --}}
-                            <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked  >
+                            <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
-                            <span>{{$value}}</span>
-                            @else
-                            <input type="checkbox" name="document[{{$inc}}]" value="{{$value}}" checked  >
+                             <input type="hidden" name="document[{{$key}}]" value="0" hidden>
+                             <input type="checkbox" name="document[{{$key}}]" value="1" @if($value == 1) checked @endif >
 
-                            <span>{{$value}}</span>
-                            @endif
+                            <span>{{$key}}</span>
+
                             @php $inc++ @endphp
-                            @endforeach
-                        </label>
+                           </label>
+                        @endforeach
+
                     </div>
                     <input type="text" value="{{$application->id}}" name="app_id" hidden>
                     {{-- <input type="text" value="{{$application->applicationAppliedUniversity->id}}" name="app_university_id" hidden> --}}
                     <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
                     <p id="error-checkbox3"></p>
-                    <label for="uploaded_documents">Uploaded Documents</label>
+
                     <div class="row clearfix">
                         <div class="col-lg-12 col-md-12">
                             @if(!empty($application->applicationDocument) && $application->applicationDocument != null)
                             <div class="form-group">
+                                <?php $rts=$application->applicationDocument;?>
+                                @if($rts->count()>0)
+                                <label for="uploaded_documents">Uploaded Documents</label>
                                       <div id="lightgallery" class="row clearfix lightGallery">
 
-                                    <?php $rts=$application->applicationDocument;?>
-                                    @if($rts->count()>0)
+
                                     @foreach($rts as $rt)
 
                                       <div style="margin-left:24px;" id="documentid{{$rt->id}}">
@@ -231,15 +235,15 @@
                                                 <a href="{{asset($rt->file)}}" class="btn btn-primary" target="_blank" download style="margin-left: 19px;">
                                                     <i class="fa fa-download"></i> Download
                                                 </a>
-                                                <span class="closes" custom2="{{$rt->id}}"  title="Delete" ><a href="#" id="deleteRecord" custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
+                                                <span class="closes" custom2="{{$rt->id}}"  title="Delete" ><a href="javascript:void(0);" id="deleteRecord" custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
                                             </div>
 
                                         </div>
                                       </div>
 
                                       @endforeach
-                                      @else
-                                      <h2 class="mt-5" style="text-align: center"> No Media Available</h2>
+                                      {{-- @else
+                                      <h2 class="mt-5" style="text-align: center;font-family: emoji;"> No Media Available</h2> --}}
                                       @endif
 
                                   </div>
@@ -371,9 +375,11 @@
                                        </table>
                                    </div>
                                    <div class="form-group" style="float: right;  margin-top: 2px; margin-right: -30px;">
-                                    <a href="#"  class="btn btn-success approvel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#dateModal" style="margin-right: 10px;" >Approve</a>
 
-                                <a href="#"  class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" >Decline</a>
+                                    <button type="button"  id="rtf2" custom1="{{$applied->id}}"  class="btn btn-success approvel" data-toggle="modal" data-target="#dateModal" style="margin-right: 10px;" @if ($applied->approved_status == 1 ?? '') disabled @endif>Accept</button>
+
+
+                                <button type="button" id="rtf2" custom1="{{$applied->id}}" class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" @if ($applied->approved_status == 2 ?? '') disabled @endif>Decline</button>
                               </div>
 
                             @else
@@ -393,7 +399,7 @@
                                             Offer Acceptance </b> </h6>
                                           <div class="form-group">
                                               <div class="fancy-checkbox">
-                                                  <label><span> <p> University has accepted your application. Please accept before <b> {{$applied->deadline}} </b> </p></span></label>
+                                                  <label><span> <p> @if ($applied->is_accepeted == 0) University has accepted your application. Please accept before <b> {{$applied->deadline}} </b>@else @endif </p></span></label>
 
                                                 </div>
                                           </div>
@@ -401,7 +407,7 @@
                                             @if ($applied->is_accepeted == 0)
                                             <div class="form-group" style="margin-left: 217px;">
                                                 <h6 style="margin-left: 16px; color:orange">Accept Your Application by clicking the below button</h6>
-                                                  <a style="margin-left: 182px;" href="#"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accept</a>
+                                                  <a style="margin-left: 182px;" href="javascript:void(0);"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accept</a>
                                               </div>
 
                                             @endif
@@ -453,6 +459,7 @@
                                                 <input type="text"  class="form-control" id="coursefees"  value="{{$applied->fees}}" />
                                               </div>
                                             </div>
+                                @if({ {$applied->userUniversity->university->default_documents ?? ''}})
                                             <div class="form-group">
                                                 <?php
 
@@ -482,7 +489,8 @@
 
                                                 <button type="button" name="adddocument" id="add_document_university" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
 
-                                            </div>
+                                              </div>
+                                @endif
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
                                                     @if($applied->is_complete==0)
@@ -587,9 +595,11 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel2">Offer Acceptance</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+
+            {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button> --}}
+
         </div>
         <div class="modal-body">
 
@@ -598,6 +608,9 @@
         </div>
         <div class="modal-footer">
            <a href="javascript:void(0)" id="applyAccepted" class="btn btn-primary" >Confirm</a>
+           <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">
+            No
+          </button>
         </div>
     </div>
 </div>
@@ -789,7 +802,7 @@
       $('#add_document2').click(function(){
       rt=$('#document_name').val()
       //   console.log(rt);
-      $('#dynamic_document').append('<label class="control-inline fancy-checkbox" style="margin-left: -4px"><input type="checkbox" name= "document['+document_row+']" id="document['+document_row+']" value="'+rt+'"  checked><span>'+rt+'</span></label>')
+      $('#dynamic_document').append('<label class="control-inline fancy-checkbox" style="margin-left: -4px"><input type="hidden" name="document['+rt+']" value="0"  hidden><input type="checkbox" customValue="'+rt+'" name= "document['+rt+']" value="1" class="checkbox"><span>'+rt+'</span></label>')
       // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
       $('#documentModal').modal('hide');
       document.getElementById("basic-form2").reset();
@@ -930,7 +943,7 @@ $(document).on('click', '#apply', function ()
 
 $(document).ready(function () {
     $('#modalDate').datepicker({
-        dateFormat: 'mm-dd-yy',
+        dateFormat: 'yy-mm-dd',
          minDate: 0,
         //  maxDate:"4w"
     });
