@@ -28,6 +28,7 @@
                     <thead>
 
                         <tr>
+                            <th> <b>Category Image</b></th>
                             <th> <b>Parent Category</b></th>
                             <th><b> Title </b></th>
                             <th><b> Slug</b></th>
@@ -39,7 +40,9 @@
                    <tbody>
                     @foreach ($categories as $category)
                         <tr>
-
+<td><img style="
+    width: 36px;
+" src="{{asset($category->banner ?? '')}}"></td>
                             <td>{{$category->parent_category->title ?? ''}}</td>
                             <td>
                                {{$category->title}}

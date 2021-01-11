@@ -30,7 +30,7 @@
                             <h2>Form</h2>
                         </div>
                         <div class="body">
-                            <form id="basic-form" method="post" novalidate action="{{route('admin.category.store')}}">
+                            <form id="basic-form" method="post" novalidate action="{{route('admin.category.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="title">Parent Category</label>
@@ -58,7 +58,13 @@
                                         <option value="0">InActive</option>
                                     </select>
                                </div>
+                               <div class="form-group">
+                                Upload Category Image
+                           <div class="body"id="nb"  >
+                              <input type="file" name="image"class="dropify" >
+                           </div>
 
+                    </div>
                                 <br>
                                 <button type="submit" class="btn btn-primary">Add Category</button>
                             </form>
@@ -72,6 +78,42 @@
 
 @stop
 @section('page-styles')
+<style>
+
+
+    .iws {
+        position: relative;
+        display: inline-block;
+
+        font-size: 0;
+    }
+    .iws .closes {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        z-index: 6;
+        background-color:#22252a;
+        padding: 4px 3px;
+
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+
+        text-align: center;
+        font-size: 22px;
+        line-height: 10px;
+        border-radius: 50%;
+        border:1px solid #22252a;
+    }
+    .iws:hover .closes {
+        opacity: 1;
+    }
+                    </style>
+                <link rel="stylesheet" href="{{ asset('assets/vendor/light-gallery/css/lightgallery.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
+
+
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
@@ -87,6 +129,60 @@ tr.shown td.details-control {
 </style>
 @stop
 @section('page-script')
+
+<script src="{{ asset('assets/bundles/lightgallery.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/pages/medias/image-gallery.js') }}"></script>
+
+<script src="{{ asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+
+<script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/vendor/dropify/js/dropify.js') }}"></script>
+
+<script src="{{ asset('assets/js/pages/forms/dropify.js') }}"></script>
+
+
+<script>
+    $('.dropify-frrr').dropify({
+        messages: {
+            default: 'Upload Image',
+            replace: 'Upload  Image',
+            remove: 'Cancel',
+            error: 'Sorry,the file is too large'
+        }
+    });
+</script>
+
+<script>
+var media_id=""
+
+
+
+$('.closes').click(function(){
+
+
+    var media_id = $(this).attr('custom2');
+console.log(media_id);
+document.getElementById(media_id).style.display="none";
+console.log(media_id);
+        $.ajaxSetup({
+         headers: {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+            });
+            $.ajax({
+                type: "post",
+                url: "{{route('media.destroy')}}",
+                data: {media_id: media_id},
+                success: function (result) {
+                    console.log('success');
+
+                }
+            });
+
+
+
+});
+ </script>
 <script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>

@@ -23,10 +23,16 @@
         </div>
         <div class="body">
             <div class="table-responsive" >
+                <div class="container "style=" text-align:center; margin-bottom:16px;">
+                    <img style="width: 127px; text-align:center;" src="{{asset($category->banner)}}" >
+                </div>
                 <table class="table table-hover table-striped">
 
                     <tbody>
-
+                        {{-- <tr>
+                            <th scope="row">Category image</th>
+                            <td>{{$category->banner ?? ''}}</td>
+                        </tr> --}}
                     <tr>
                         <th scope="row">Parent Category</th>
                         <td>{{$category->parent_category->title ?? ''}}</td>

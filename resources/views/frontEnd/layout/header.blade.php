@@ -196,7 +196,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#">PR/Migration </a>
+                                        <a href="{{route('Prmigration')}}">PR/Migration </a>
                                         {{-- <ul class="dropdown-menu-item">
                                             <li><a href="cruises.html">Loan</a></li>
                                             <li><a href="cruises-list.html">Blog</a></li>

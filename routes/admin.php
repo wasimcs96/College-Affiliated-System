@@ -52,9 +52,18 @@ Route::get('booking/consultant',function(){
 //     return view('admin.general.contact');
 // })->name('admin.general.contact');
 
-Route::get('general/about',function(){
-   return view('admin.general.about');
-})->name('admin.general.about');
+// Route::get('general/about',function(){
+//    return view('admin.general.about');
+// })->name('admin.general.about');
+Route::get('general/about',[
+    'uses' => 'AdminAboutController@index',
+    'as' => 'admin.general.about'
+ ]);
+
+ Route::post('general/about/store',[
+    'uses' => 'AdminAboutController@store',
+    'as' => 'admin.about.store'
+ ]);
 
 Route::get('general/terms&condition',function(){
    return view('admin.general.terms');
