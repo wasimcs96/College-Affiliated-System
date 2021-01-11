@@ -258,6 +258,7 @@
                                            </ul>
                                            <div class="custom-checkbox mb-0">
                                                <input type="checkbox" id="chb2">
+                                               @if(auth()->user())
                                                @if(auth()->user()->isClient())
 
 <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
@@ -270,12 +271,11 @@
 
 </form>
                                          @else
+                                      <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Detail</label></a>
+                                         @endif
+                                         @else
                                          <button type="submit" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Book Now</button>
-{{--
-                                         @if(!auth()->user()->isClient())
-                                         <button type="submit" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Detail</button>
-                                         @endif --}}
-@endif
+                                         @endif
 
                                         </div>
                                        </div>
@@ -594,19 +594,25 @@
                                                 </span>
                                             <div>
                                                 @if(auth()->user())
-                                                <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
-                                                    @csrf
-                                                    <input type="text" name="universityid" value="{{$university->id}}" hidden>
-                                                    {{-- {{dd($university->id)}} --}}
-                                                    <input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
+                                                @if(auth()->user()->isClient())
 
-                                                                                           {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
-                                                                                           <button type="submit" class="theme-btn theme-btn-small">Book Now</button>
+ <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
+     @csrf
+     <input type="text" name="universityid" value="{{$university->id}}" hidden>
+     <input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
 
-                                                </form>
-                                                                                         @else
-                                                                                         <button type="submit" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Book Now</button>
-                                                @endif                                            </div>
+                                            {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
+                                            <button type="submit" class="theme-btn theme-btn-small">Book Now</button>
+
+ </form>
+                                          @else
+                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Detail</label></a>
+                                          @endif
+                                          @else
+                                          <button type="submit" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Book Now</button>
+                                          @endif
+
+                                            </div>
                                         </div>
                                     </div></li>
 @endforeach

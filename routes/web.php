@@ -351,3 +351,7 @@ Route::post('messenger/sendMessage', [
     'as' => 'messanger.sendmessage'
 ]);
 
+Route::get('prmigration', [
+    'uses' => 'FrontEndController\PrMigrationFrontController@index',
+    'as' => 'Prmigration'
+]);

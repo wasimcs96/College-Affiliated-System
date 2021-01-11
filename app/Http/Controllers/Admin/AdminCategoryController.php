@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Config;
 use App\Models\Category;
 
 /**
@@ -52,9 +53,22 @@ class AdminCategoryController extends Controller
             'title' => 'required',
             'slug' => 'required',
             'status' => 'required'
-        ]);
 
-         Category::create($request->all());
+        ]);
+// dd($request->image);
+        $image=$request->image;
+        $name= time().$image->getClientOriginalName();
+        $st= $image->move(Config::get('define.image.category_media'),$name);
+        $newname= Config::get('define.image.category_media').'/'.$name;
+
+         Category::create([
+             'title'=> $request->title,
+             'slug'=> $request->slug,
+             'status' => $request->status,
+             'parent_id'=>$request->parent_id,
+             'banner'=> $newname,
+
+         ]);
         // dd($category);
 
         return redirect()->route('admin.category')->with('success', 'Category has been saved Successfully');
@@ -89,10 +103,19 @@ class AdminCategoryController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request, Category $id)
-    {
-// dd($request->)
-        $id->update($request->all());
+    public function update(Request $request, $id)
+    {   $image=$request->image;
+        $name= time().$image->getClientOriginalName();
+        $st= $image->move(Config::get('define.image.category_media'),$name);
+        $newname= Config::get('define.image.category_media').'/'.$name;
+
+        $update= Category::find($id);
+        $update->title = $request->title;
+        $update->slug = $request->slug;
+        $update->status = $request->status;
+        $update->parent_id = $request->parent_id;
+        $update->banner = $newname;
+        $update->save();
         return redirect()->route('admin.category')->with('success', 'Category updated Succefully.');
     }
 
