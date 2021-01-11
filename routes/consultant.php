@@ -261,10 +261,21 @@ Route::post('application/readytofly',[
     'as' => 'application.readytofly'
 ]);
 
-Route::post('application/university/update',[
+// Route::post('application/university/update',[
+//     'uses' =>'ConsultantApplicationController@universityUpdate',
+//     'as'=>'consultant.application.university.update'
+// ]);
+
+Route::post('application/update/university',[
     'uses' =>'ConsultantApplicationController@universityUpdate',
-    'as'=>'consultant.application.university.update'
+    'as'=>'consultant.application.update.university'
 ]);
+
+// Route::post('application/update/univerehjdfbihdbhjsdfsity/update',[
+
+//     'as'=>'consultant.application.update.university.update'
+// ]);
+
 /* Application Follow Up */
 Route::get('applications/followup',[
     'uses' => 'ConsultantApplicationFollowUpController@index',
