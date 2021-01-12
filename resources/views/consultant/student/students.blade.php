@@ -36,8 +36,8 @@
                     @if($bookings->count() > 0)
                     <tbody>
 
-                        @foreach($bookings as $booking)
-
+                @foreach($bookings as $booking)
+                    @if($booking->status==1 || $booking->status==2 || $booking->status==3)
                         <tr>
                             <td>{{$booking->user->first_name ?? ''}} </td>
                             <td>{{$booking->user->mobile ?? ''}}</td>
@@ -51,7 +51,8 @@
                             </td>
                             <td style="text-align: center;"><a href="{{route('consultant.student.show',['id'=> $booking->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
-@endforeach
+                    @endif
+                @endforeach
 
 @endif
                     </tbody>
