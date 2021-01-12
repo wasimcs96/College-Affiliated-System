@@ -44,7 +44,7 @@ class ConsultantAdvertisementController extends Controller
         $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
         $newname=Config::get('define.image.advertisement').'/'.$ad_image_new_name;
     }
-    dd($newname);
+    // dd($newname);
    $as= Advertisement::create([
 
         'user_id'=>auth()->user()->id,
