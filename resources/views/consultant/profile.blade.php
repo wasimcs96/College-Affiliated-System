@@ -241,6 +241,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-12 col-md-21">
+                        <div class="form-group">
+                            <div id="locationField">
+                                <input class="form-control"
+                                  id="autocomplete"
+                                  placeholder="Enter your address"
+                                  onFocus="geolocate()"
+                                  type="text"
+                                />
+                              </div>
+                        </div>
+                    </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="start_time">Selected Start Time</label>
@@ -297,6 +309,7 @@
                     </div>
 
                 </div>
+               
             <button type="submit" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
             <button type="data-dismiss" class="btn btn-round btn-default ">Cancel</button>
             </form>
