@@ -400,6 +400,23 @@
                                         @if ($applied->approved_status == 1)
                                         <h6> <b>
                                             Offer Acceptance </b> </h6>
+                                            <div class="table-responsive" >
+                                                <table class="table table-hover table-striped" >
+
+                                                    <tbody>
+
+                                                    <tr>
+                                                        <th scope="row">University Name</th>
+                                                        <td>{{$applied->userUniversity->university->university_name ?? ''}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Course Name</th>
+                                                        <td>{{$applied->course->name ?? ''}}</td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
                                           <div class="form-group">
                                               <div class="fancy-checkbox">
                                                   <label><span> <p> @if ($applied->is_accepeted == 0) University has accepted your application. Please accept before <b> {{$applied->deadline}} </b>@else @endif </p></span></label>
