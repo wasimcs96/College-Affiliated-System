@@ -24,7 +24,7 @@
     @foreach ($packages as $package)
 
     <div class="col-lg-4 cool-md-4 col-sm-12">
-<form action="{{route('consultant.advertisement.store')}}" id="frm" enctype="multipart/form-data" method="POST">
+<form action="{{route('consultant.advertisement.store')}}" id="frm-{{$package->id}}" enctype="multipart/form-data" method="POST">
 @csrf
 
         <div class="card">
@@ -160,13 +160,14 @@
     <script>
         $(document).on('click', '.chooseplan', function ()
     {
-    
+    var package_id='';
         user_id=$(this).attr('customUser');
         title=$(this).attr('customTitle');
         description=$(this).attr('customDescription');
         amount=$(this).attr('customAmount');
         payment_type=$(this).attr('customPayment');
         package_time=$(this).attr('customPackage');
+        package_id=$(this).attr('customId');
     var orderId='';
     
        var html=`<div class="row clearfix">
@@ -253,8 +254,8 @@
                             data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title,package_time:package_time},
                             success: function(result){
                                 //console.log(result)
-                                $('#frm').append(`<input type="text" name="orderId" value="${result}" hidden>`);
-                                $('#frm').submit();
+                                $(`#frm-${package_id}`).append(`<input type="text" name="orderId" value="${result}" hidden>`);
+                                $(`#frm-${package_id}`).submit();
                                 $('#mdlup').modal('show');
                             }
                             });
