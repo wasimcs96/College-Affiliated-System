@@ -253,6 +253,7 @@
                                 data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title,package_time:package_time},
                                 success: function(result){
                                     $('#mdlup').modal('show');
+                                    console.log("sdss");
                                 }
                                 });
 

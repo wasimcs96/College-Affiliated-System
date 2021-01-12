@@ -157,7 +157,7 @@
 @stop
 
 @section('page-script')
-<script src="backend.js" charset="utf-8"></script>
+{{-- <script src="backend.js" charset="utf-8"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
 <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
 
