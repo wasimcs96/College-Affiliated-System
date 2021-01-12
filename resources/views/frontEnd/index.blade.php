@@ -56,11 +56,11 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center" id="tour-tab" data-toggle="tab" href="#tour" role="tab" aria-controls="tour" aria-selected="false">
                                     <i class="la la-globe mr-1"></i>Abroad
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div><!-- end section-tab -->
                     <div class="tab-content search-fields-container" id="myTabContent">
@@ -70,14 +70,14 @@
                                 <div class="tab-pane fade show active" id="one-way" role="tabpanel" aria-labelledby="one-way-tab">
                                     <div class="contact-form-action">
                                         <form action="#" class="row align-items-center">
-                                            <div class="col-lg-2 col-sm-6 pr-0">
+                                            {{-- <div class="col-lg-2 col-sm-6 pr-0">
                                                 <div class="input-box">
                                                     <label class="label-text">Country</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
 
                                                         <select class="select-contain-select">
-                                                            <?php $countries = App\Models\Country::all();?>
+
                                                             @if($countries->count() > 0)
                                                                 @foreach($countries as $country)
                                                                 <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
@@ -93,15 +93,14 @@
                                                     </div>
                                                     </div>
                                                 </div>
-                                            </div><!-- end col-lg-3 -->
-                                            <div class="col-lg-4 col-sm-2 pr-0">
+                                            </div><!-- end col-lg-3 --> --}}
+                                            {{-- <div class="col-lg-4 col-sm-2 pr-0">
                                                 <div class="input-box">
                                                     <label class="label-text">University</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
                                                             <select class="select-contain-select">
 
-                                                                <?php $universities = App\Models\University::all();?>
                                                                 @if($universities->count() > 0)
 
                                                                 @foreach($universities as $university)
@@ -118,41 +117,57 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div><!-- end col-lg-3 --> --}}
+                                            <div class="col-lg-4 col-sm-2 pr-0">
+                                                <div class="input-box">
+                                                    <?php $courses= App\Models\Course::all(); ?>
+                                                    <label class="label-text">Courses Name</label>
+                                                    <div class="form-group">
+                                                        <div class="select-contain w-auto">
+                                                            <select class="select-contain-select">
+                                                                @foreach($courses as $course)
+                                                                <option value="1" selected>{{$course->name}}</option>
+
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div><!-- end col-lg-3 -->
-                                            <div class="col-lg-2 col-sm-2 pr-0">
+                                            <div class="col-lg-4 col-sm-2 pr-0">
+                                                <div class="input-box">
+                                                    <label class="label-text">Category</label>
+                                                    <div class="form-group">
+                                                        <div class="select-contain w-auto">
+                                                            <select class="select-contain-select">
+                                                                <option value="1" selected>UG</option>
+
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-sm-2 pr-0">
                                                 <div class="input-box">
                                                     <label class="label-text">Courses Type</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
                                                             <select class="select-contain-select">
+                                                                {{-- @foreach($courses as $course) --}}
                                                                 <option value="1" selected>UG</option>
-                                                                <option value="2">PG</option>
+                                                                <option value="1" selected>PG</option>
+
+                                                                <option value="1" selected>diploma</option>
+
+                                                               {{-- @endforeach --}}
 
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div><!-- end col-lg-3 -->
-                                            <div class="col-lg-2 col-sm-2 pr-0">
-                                                <div class="input-box">
-                                                    <label class="label-text">Courses Name</label>
-                                                    <div class="form-group">
-                                                        <div class="select-contain w-auto">
-                                                            <select class="select-contain-select">
-                                                                <option value="1" selected>Mtech</option>
-                                                                <option value="2">Btech</option>
-                                                                <option value="3">Ctech</option>
-                                                                <option value="4">Dtech</option>
-                                                                <option value="5">Etech</option>
-                                                                <option value="6">Ftech</option>
-                                                                <option value="7">Gtech</option>
-
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-3 -->
-                                            <div class="col-lg-2 col-sm-2">
+                                            {{-- <div class="col-lg-2 col-sm-2">
                                                 <div class="input-box">
                                                     <label class="label-text">Duration</label>
                                                     <div class="form-group">
@@ -168,7 +183,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div><!-- end col-lg-3 -->
+                                            </div><!-- end col-lg-3 --> --}}
                                             <div class="col-lg-2">
                                                 <a href="flight-search-result.html" class="theme-btn w-100 text-center margin-top-20px">Search Now</a>
                                             </div>
@@ -478,85 +493,7 @@
                             </div>
                         </div><!-- end tab-pane -->
                       <!-- end tab-pane -->
-                        <div class="tab-pane fade" id="tour" role="tabpanel" aria-labelledby="tour-tab">
-                            <div class="contact-form-action">
-                                <form action="#" class="row align-items-center">
-                                    <div class="col-lg-4 col-sm-2">
-                                        <div class="input-box">
-                                            <label class="label-text"> Consultant Name</label>
-                                            <div class="form-group">
-                                                <input class=" form-control" type="text" name="Consultant Name " Placeholder="Search Consultant by Name">
 
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-4 col-sm-2">
-                                        <div class="input-box">
-                                            <label class="label-text"> University Name</label>
-                                            <div class="form-group">
-                                                <input class=" form-control" type="text" name="Consultant Name " Placeholder="Search Consultant by Name">
-
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-2 col-sm-6 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">Country</label>
-                                            <div class="form-group">
-                                                <span class="la la-map-marker form-icon"></span>
-                                                <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <?php $countries = App\Models\Country::all();?>
-                                                        @if($countries->count() > 0)
-                                                                @foreach($countries as $country)
-                                                                <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
-                                                                @endforeach
-
-                                                                @else
-
-                                                                <option value="">Currently Unavailable</option>
-
-                                                            @endif
-
-                                                    </select>
-                                                </div>                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-4 -->
-
-                                    <div class="col-lg-2 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">Course</label>
-                                            <div class="form-group">
-                                                <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1200AM">Btech</option>
-                                                        <option value="1230AM">Btech</option>
-                                                        <option value="0100AM">Btech</option>
-                                                        <option value="0130AM">Btech</option>
-                                                        <option value="0200AM">Btech</option>
-                                                        <option value="0230AM">Btech</option>
-                                                        <option value="0300AM">Btech</option>
-                                                        <option value="0330AM">Btech</option>
-                                                        <option value="0400AM">Btech</option>
-                                                        <option value="0430AM">Btech</option>
-                                                        <option value="0500AM">Btech</option>
-                                                        <option value="0530AM">Btech</option>
-                                                        <option value="0600AM">Btech</option>
-                                                        <option value="0630AM">Btech</option>
-                                                        <option value="0700AM">dfgdfg</option>
-                                                        <option value="0730AM">Btech</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="btn-box pt-3">
-                                <a href="tour-search-result.html" class="theme-btn">Search Now</a>
-                            </div>
-                        </div><!-- end tab-pane -->
                     </div>
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
