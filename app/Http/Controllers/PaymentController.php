@@ -17,7 +17,7 @@ class PaymentController extends Controller
 
     function payment(Request $request)
     {
-// dd($request->all());
+
         $api = new Api('rzp_test_6PaQ95AP7ZPT1S', '409ACfFYI6hON1ZmCThrD7nN');
         $amount = $request->amount;
         $userId = $request->user_id;
@@ -74,16 +74,11 @@ class PaymentController extends Controller
             'item_title' => $request->title,
         ]);
 
-if($request->payment_type == 2){
-    $ad = Advertisement::where('user_id',$request->userId)->orderBy('created_at','desc')->first();
-    // dd($ad);
-    $ad->order_id = $orderID;
-    $ad->status = 1;
-    $ad->save();
-}
+
 
             $start=Carbon::now();
             $end=$request->package_time;
+
         UserPurchasedPlans::create([
             'order_id' => $orderID,
             'item_title' => $request->title,
@@ -92,6 +87,6 @@ if($request->payment_type == 2){
         ]);
 
 
-        return "success";
+        return response($orderID);
     }
 }
