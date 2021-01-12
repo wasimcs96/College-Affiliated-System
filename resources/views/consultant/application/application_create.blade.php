@@ -473,14 +473,14 @@
                                                                 </div>
                                                             </div> --}}
 
-                                                            <div class="col-lg-3 col-md-12">
+                                                            <div class="col-lg-12 col-md-12">
                                                         <div class="form-group">
                                                             <label for="">Course Fees</label>
                                                             <input type="text"  class="form-control" id="coursefees"  value="{{$applied->fees}}" />
                                                           </div>
                                                         </div>
                                                      {{-- {{ dd($applied->documents) }} --}}
-                                    <div class="col-lg-9 col-md-12">
+                                    <div class="col-lg-12 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')
                                             <div class="form-group">
                                                 <?php
@@ -503,8 +503,9 @@
                                                         <span>{{$key}}</span>
 
                                                         @php $increase++ @endphp
-                                                        @endforeach
+
                                                     </label>
+                                                    @endforeach
                                                     @endif
                                                     @if (isset($documentVisa))
 
@@ -519,8 +520,9 @@
                                                         <span>{{$key}}</span>
 
                                                         @php $increase++ @endphp
-                                                        @endforeach
+
                                                     </label>
+                                                    @endforeach
                                                     @endif
                                                 </div>
 
@@ -549,8 +551,9 @@
                                                         <span>{{$key}}</span>
 
                                                         @php $increase++ @endphp
-                                                        @endforeach
+
                                                     </label>
+                                                    @endforeach
                                                     @endif
                                                 </div>
 
@@ -872,7 +875,7 @@
       $('#add_document2').click(function(){
       rt=$('#document_name').val()
       //   console.log(rt);
-      $('#dynamic_document').append('<label class="control-inline fancy-checkbox" style="margin-left: -4px"><input type="hidden" name="document['+rt+']" value="0"  hidden><input type="checkbox" customValue="'+rt+'" name= "document['+rt+']" value="1" class="checkbox"><span>'+rt+'</span></label>')
+      $('#dynamic_document').append('<label class="control-inline fancy-checkbox" style="margin-left: 1px;"><input type="hidden" name="document['+rt+']" value="0"  hidden><input type="checkbox" customValue="'+rt+'" name= "document['+rt+']" value="1" class="checkbox"><span>'+rt+'</span></label>')
       // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
       $('#documentModal').modal('hide');
       document.getElementById("basic-form2").reset();
@@ -883,7 +886,7 @@
       rt=$('#document_name2').val();
 
       //   console.log(rt);
-      $('#dynamic_document2').append('<label class="control-inline fancy-checkbox" style="margin-left: -4px"><input type="hidden" name="doc['+rt+']" value="0"  hidden><input type="checkbox" name= "doc['+rt+']" value="1"><span>'+rt+'</span></label>')
+      $('#dynamic_document2').append('<label class="control-inline fancy-checkbox" style="margin-left: 1px;"><input type="hidden" name="doc['+rt+']" value="0"  hidden><input type="checkbox" name= "doc['+rt+']" value="1"><span>'+rt+'</span></label>')
       // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet" '+document_row2+'><span>'+rt+'</span></label>')
       $('#documentModal2').modal('hide');
       document.getElementById("basic-form3").reset();

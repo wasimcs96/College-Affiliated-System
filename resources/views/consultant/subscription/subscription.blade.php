@@ -58,7 +58,7 @@
                                                 <td>{{$subscription->created_at}}</td>
                                                 <td>
                                                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
-                                                    @if($subscription->userPurchasedPlans[0]->end_date > $mytime)<div class="btn btn-success">Actived</div>@endif
+                                                    @if($subscription->userPurchasedPlans[0]->end_date > $mytime)<div class="btn btn-success">Activated</div>@endif
 
                                                     @if($subscription->userPurchasedPlans[0]->end_date < $mytime)<div class="btn btn-danger">Expired</div>@endif
                                                 </td>

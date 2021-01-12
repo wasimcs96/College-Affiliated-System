@@ -50,7 +50,7 @@
                                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                 <td>
                                 {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}
-                                @if($rt->advertisement[$key]->expire_date>$mytime)<div class="btn btn-success">Actived</div>@endif
+                                @if($rt->advertisement[$key]->expire_date>$mytime)<div class="btn btn-success">Activated</div>@endif
                                 @if($rt->advertisement[$key]->expire_date<$mytime)<div class="btn btn-danger">Expired</div>@endif
                                 {{-- @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif --}}
                             </td>
