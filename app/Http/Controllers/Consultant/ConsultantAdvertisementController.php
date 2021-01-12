@@ -27,36 +27,37 @@ class ConsultantAdvertisementController extends Controller
 
    public function store(Request $request)
    {
-    // dd($request->all());
-
-    // $this->validate($request,[
-    //     'image'=>'required',
-    // ]);
-
+      
+//    dd($request->all());
+   // dd($request->file('image'));
 
     $expire=$request->package_time;
       $new=Carbon::now()->addMonths($expire);
     $dt= $new->format('Y-m-d');
-    if($request->hasFile('image'))
+     if($request->hasFile('image'))
     {
-        $ad_image = $request->image;
-        $ad_image_new_name = time().$ad_image->getClientOriginalName();
-        $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
-        $newname=Config::get('define.image.advertisement').'/'.$ad_image_new_name;
-    }
-    dd($newname);
+       
+        
+       $ad_image = $request->file('image');
+       $ad_image_new_name = time().$ad_image->getClientOriginalName();
+       $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
+       $newname=Config::get('define.image.advertisement').'/'.$ad_image_new_name;
+     }
+       
+
    $as= Advertisement::create([
 
         'user_id'=>auth()->user()->id,
         'banner_image'=>$newname ?? '',
         'user_type'=>0,
-        'status'=>0,
+        'status'=>1,
         'expire_date'=> $dt,
+        'order_id'=>$request->orderId
     ]);
 
-       $new=new PaymentController();
-       $new->payment($request);
-
+      // $new=new PaymentController();
+       //$new->payment($request);
+//dd($new);
        return redirect()->route('consultant.advertisement')->with('success','Advertisement updated successfully');
    }
 }
