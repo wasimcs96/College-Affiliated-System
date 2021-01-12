@@ -22,44 +22,43 @@
                             <th><b>Transaction Id</b></th>
                             <th><b>Start Date </b></th>
                             <th><b>Expire Date</b></th>
-                            <th><b>Created Date</b></th>
+                            {{-- <th><b>Created Date</b></th> --}}
                             <th><b> Status</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
-                    <?php  $rts= auth()->user()->order;
+
+                        <?php  $rts= auth()->user()->advertisement;
                     ?>
                     @if($rts->count() > 0)
                     <tbody>
-
+{{-- {{dd($rts)}} --}}
                         @foreach($rts as $key => $rt)
-                    @if($rt->payment_type == 2)
+                    {{-- @if($rt->payment_type == 2) --}}
 
                         {{-- {{dd($rt->advertisement)}} --}}
                         <tr>
-                            <td>  <img src="{{asset($rt->advertisement[$key]->banner_image)}}" class="user-photo" alt="Banner image" width="40px" height="40px"></td>
-                             <td>{{$rt->transaction_id}}</td>
-                           {{-- <td>{{$booking->user->email}}</td> --}}
-                            <td>{{$rt->userPurchasedPlans[$key]->start_date}}</td>
-                            <td>{{$rt->userPurchasedPlans[$key]->end_date}}</td>
-                            <td>{{$rt->created_at}}</td>
+                            <td>  <img src="{{asset($rt->banner_image ?? '')}}" class="user-photo" alt="Banner image" width="40px" height="40px"></td>
+                             <td>{{$rt->order->transaction_id ?? ''}}</td>
+
+                            <td>{{$rt->created_at ?? ''}}</td>
+                            <td>{{$rt->expire_date ?? ''}}</td>
+                            {{-- <td>{{$rt->created_at}}</td> --}}
 
                                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                 <td>
                                 {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}
-                                @if($rt->advertisement[$key]->expire_date>$mytime)<div class="btn btn-success">Activated</div>@endif
-                                @if($rt->advertisement[$key]->expire_date<$mytime)<div class="btn btn-danger">Expired</div>@endif
+                                @if($rt->expire_date>$mytime)<div class="btn btn-success">Activated</div>@endif
+                                @if($rt->expire_date<$mytime)<div class="btn btn-danger">Expired</div>@endif
                                 {{-- @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif --}}
                             </td>
                             {{-- <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td> --}}
                         </tr>
-                        @endif
+                        {{-- @endif --}}
 @endforeach
-@else
 
-Records not available
 @endif
                     </tbody>
                 </table>
