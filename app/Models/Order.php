@@ -25,7 +25,7 @@ class Order extends Model
 
     public function userPurchasedPlans()
     {
-        return $this->hasMany(UserPurchasedPlan::class,'order_id');
+        return $this->hasMany(UserPurchasedPlans::class,'order_id');
     }
 
     public function advertisement()

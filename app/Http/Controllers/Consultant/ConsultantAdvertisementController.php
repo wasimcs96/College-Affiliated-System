@@ -37,13 +37,14 @@ class ConsultantAdvertisementController extends Controller
     $expire=$request->package_time;
       $new=Carbon::now()->addMonths($expire);
     $dt= $new->format('Y-m-d');
-    // if($request->hasFile('image'))
-    // {
-    //     $ad_image = $request->image;
-    //     $ad_image_new_name = time().$ad_image->getClientOriginalName();
-    //     $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
-    //     $newname=Config::get('define.image.advertisement').'/'.$ad_image_new_name;
-    // }
+    if($request->hasFile('image'))
+    {
+        $ad_image = $request->image;
+        $ad_image_new_name = time().$ad_image->getClientOriginalName();
+        $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
+        $newname=Config::get('define.image.advertisement').'/'.$ad_image_new_name;
+    }
+    dd($newname);
    $as= Advertisement::create([
 
         'user_id'=>auth()->user()->id,
