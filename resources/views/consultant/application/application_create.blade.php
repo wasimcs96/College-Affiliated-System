@@ -413,7 +413,18 @@
                                                         <th scope="row">Course Name</th>
                                                         <td>{{$applied->course->name ?? ''}}</td>
                                                     </tr>
-
+                                                    @if ($applied->is_accepeted == 1)
+                                                    <tr>
+                                                        <th scope="row">Offer Acceptance</th>
+                                                        <td><span style="color:green">Accepted</span></td>
+                                                    </tr>
+                                                    @endif
+                                                    @if ($applied->is_accepeted == 2)
+                                                    <tr>
+                                                        <th scope="row">Offer Acceptance</th>
+                                                        <td><span style="color:red">Declined</span></td>
+                                                    </tr>
+                                                    @endif
                                                 </tbody>
                                             </table>
                                         </div>
@@ -427,11 +438,11 @@
                                             @if ($applied->is_accepeted == 0)
                                             <div class="form-group" style="margin-left: 217px;">
                                                 <h6 style="margin-left: 16px; color:orange">Accept Your Application by clicking the below button</h6>
-                                                  <a style="margin-left: 182px;" href="javascript:void(0);"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#Accepted">Accept</a>
+                                                  <a style="margin-left: 182px;" href="javascript:void(0);"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#acceptedModal">Accept</a>
                                               </div>
 
                                             @endif
-                                            @if ($applied->is_accepeted == 1)
+                                            {{-- @if ($applied->is_accepeted == 1)
                                             <div class="form-group">
                                                 <h6 style="margin-left: 16px; color:green"> You have <b>Accepted</b> the Application </h6>
                                               </div>
@@ -440,7 +451,7 @@
                                             <div class="form-group">
                                                 <h6 style="margin-left: 16px; color:red"> You have <b>Cancelled</b> the Application </h6>
                                               </div>
-                                            @endif
+                                            @endif --}}
                                         </div>
                                         @else
 
@@ -457,6 +468,7 @@
                                                      {{-- @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1) --}}
                                                      {{-- {{ dd($applied->userUniversity->id) }} --}}
                                                     {{-- <form action="{{ url('application/update/university') }}" method="POST" enctype="multipart/form-data" > --}}
+                                                    @if ($applied->is_accepeted == 1)
                                                         <div class="table-responsive" >
                                                             <table class="table table-hover table-striped" >
 
@@ -477,7 +489,7 @@
 
                                                         <div class="row clearfix">
                                                           <input type="text"  name="appliedUniversityRowIdReadyToFly" value="{{ $applied->id }}" hidden>
-                                                            @if ($applied->is_accepeted == 1)
+
 
                                                             {{-- <div class="col-lg-6 col-md-12">
                                                                 <div class="form-group">
@@ -490,14 +502,14 @@
                                                                 </div>
                                                             </div> --}}
 
-                                                            <div class="col-lg-12 col-md-12">
+                                                            <div class="col-lg-2 col-md-12">
                                                         <div class="form-group">
                                                             <label for="">Course Fees</label>
                                                             <input type="text"  class="form-control" id="coursefees"  value="{{$applied->fees}}" />
                                                           </div>
                                                         </div>
                                                      {{-- {{ dd($applied->documents) }} --}}
-                                    <div class="col-lg-12 col-md-12">
+                                    <div class="col-lg-10 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')
                                             <div class="form-group">
                                                 <?php
@@ -563,7 +575,7 @@
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
                                                         <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
-                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" @if($value == 1) checked @endif style="margin-right: 4px">
+                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="1" @if($value == 1) checked @endif style="margin-right: 4px">
 
                                                         <span>{{$key}}</span>
 
@@ -598,12 +610,12 @@
                                                         <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
                                                     </div>
 
-                                                    @endif
+
 
                                                         </div>
                                                     {{-- </form> --}}
 
-
+                                                    @endif
                                             </fieldset>
                                         </form>
                               </div>
@@ -631,7 +643,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel2">Apply for Application</h5>
+          <h5 class="modal-title" id="exampleModalLabel2">Apply for University</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -678,17 +690,36 @@
 </div>
 </div>
 
+{{-- <div class="modal fade" id="acceptedModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Apply for University</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
 
+                  <h4> Are you sure you want to apply for this University?</h4>
 
-<div class="modal fade" id="Accepted" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        </div>
+        <div class="modal-footer">
+           <a href="javascript:void(0)"  class="btn btn-primary" id="apply"> Apply </a>
+        </div>
+    </div>
+</div>
+</div> --}}
+
+<div class="modal fade" id="acceptedModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel2">Offer Acceptance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
 
-            {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button> --}}
 
         </div>
         <div class="modal-body">
@@ -698,9 +729,10 @@
         </div>
         <div class="modal-footer">
            <a href="javascript:void(0)" id="applyAccepted" class="btn btn-primary" >Confirm</a>
-           <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">
+           <a href="javascript:void(0)" id="declineAccepted" class="btn btn-danger" >Decline</a>
+           {{-- <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">
             No
-          </button>
+          </button> --}}
         </div>
     </div>
 </div>
@@ -758,7 +790,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <h4>Are you sure you want to cancel?</h4>
+            <h4>Are you sure you want to cancel the application?</h4>
         </div>
         <div class="modal-footer">
            <a href="javascript:void(0)" id="applyDecline" class="btn btn-danger" >Yes</a>
@@ -1157,7 +1189,7 @@ var j = 0;
     appliedUniversityRowIdAccepted=$(this).attr('custom1');
  console.log(appliedUniversityRowIdAccepted);
  });
- $(document).on('click', '#Accepted', function ()
+ $(document).on('click', '#applyAccepted', function ()
  {
 
 
@@ -1182,7 +1214,36 @@ var j = 0;
 
 
              // $(this).text("Pending");
-             $('#Accepted').modal('hide');
+             $('#acceptedModal').modal('hide');
+             // row++;
+     });
+
+     $(document).on('click', '#declineAccepted', function ()
+ {
+
+
+       if(appliedUniversityRowIdAccepted > 0){
+         $.ajaxSetup({headers:
+             {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+             });
+
+             $.ajax({
+                     type: "post",
+                     url: "{{route('consultant.application.offer.decline')}}",
+                     data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted},
+                     success: function (result) {
+
+                         console.log('success');
+                         location.reload();
+                     }
+                 });
+       }
+
+
+             // $(this).text("Pending");
+             $('#acceptedModal').modal('hide');
              // row++;
      });
 

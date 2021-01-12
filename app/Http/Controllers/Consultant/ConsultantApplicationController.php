@@ -209,4 +209,15 @@ class ConsultantApplicationController extends Controller
         return response('success');
     }
 
+    public function offerDecline(Request $request)
+    {
+        $id = $request->appliedUniversityRowIdAccepted;
+
+        $university = ApplicationAppliedUniversity::find($id);
+
+        $university->is_accepeted = 2;
+        $university->save();
+        return response('success');
+
+     }
 }

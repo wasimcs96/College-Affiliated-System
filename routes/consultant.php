@@ -149,6 +149,11 @@ Route::post('application/document/delete',[
     'as'=>'consultant.application.document.destroy'
 ]);
 
+Route::post('application/offer/decline',[
+    'uses' => 'ConsultantApplicationController@offerDecline',
+    'as'=>'consultant.application.offer.decline'
+]);
+
 // Route::get('application/create/',function(){
 //     return view('consultant.application.application_create');
 // })->name('consultant.application.create');
