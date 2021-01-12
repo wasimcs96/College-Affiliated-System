@@ -24,6 +24,8 @@
     @foreach ($packages as $package)
 
     <div class="col-lg-4 cool-md-4 col-sm-12">
+<form action="{{route('university.advertisement.store')}}" id="frm-{{$package->id}}" enctype="multipart/form-data" method="POST">
+@csrf
 
         <div class="card">
             <ul class="pricing body">
@@ -35,18 +37,18 @@
                 <hr>
 
                  <li>{{$package->description}}</li>
-                 <input name="image" type="file" class="dropify-frrr" >
+                <input name="image" id="photo-{{$package->id}}" type="file" class="dropify-frrr" >
                 <input type="text" name="amount" value="{{$package->amount}}" hidden>
                 <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
                 <input type="text" name="payment_type" value="2" hidden>
                 <input type="text" name="title" value="{{$package->title}}" hidden>
-                <input type="hidden" name="expire_date" value="{{ $package->package_time }}"  />
+                <input type="hidden" name="expire_date" value="{{ $package->package_time }}"/>
 
-                <li class="plan-btn"><button customDescription="{{$package->description}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPackage="{{$package->package_time}}" customPayment="2" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
+                <li class="plan-btn"><a href="javascript:void(0);" customId="{{$package->id}}"  customDescription="{{$package->description}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPackage="{{$package->package_time}}" customPayment="2" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</a></li>
 
             </ul>
         </div>
-
+    </form>
 
     </div>
 
@@ -157,143 +159,144 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
         $(document).on('click', '.chooseplan', function ()
-        {
+    {
+    var package_id='';
+        user_id=$(this).attr('customUser');
+        title=$(this).attr('customTitle');
+        description=$(this).attr('customDescription');
+        amount=$(this).attr('customAmount');
+        payment_type=$(this).attr('customPayment');
+        package_time=$(this).attr('customPackage');
+        package_id=$(this).attr('customId');
+    var orderId='';
 
-            user_id=$(this).attr('customUser');
-            title=$(this).attr('customTitle');
-            description=$(this).attr('customDescription');
-            amount=$(this).attr('customAmount');
-            payment_type=$(this).attr('customPayment');
-            package_time=$(this).attr('customPackage');
+       var html=`<div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body">
+                    <div class="row clearfix">
+                        <br>
+
+                        <div class="col-md-3">
+                            <br>
+
+                            <p><b>Plan Name</b></p>
+                            <ul style="list-style-type: none;margin-left: -40px;">
+            <li class="plan-img">${title}</li>
 
 
-           var html=`<div class="row clearfix">
+        </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <br>
 
-<div class="col-lg-12">
-    <div class="card">
-        <div class="body">
-            <div class="row clearfix">
-                <br>
+                            <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
+                            <br>
+                            <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
+                        </div>
+                        <br>
 
-                <div class="col-md-3">
-                    <br>
+                        <div class="col-md-3">
+                            <br>
 
-                    <p><b>Plan Name</b></p>
-                    <ul style="list-style-type: none;margin-left: -40px;">
-    <li class="plan-img">${title}</li>
+                            <p class="align-right"><b style="float: left;">Description</b></p>
+                            <br>
+                            <div class="align-left" style="float: left;     margin-left: -4px;">${description} </div>
+                        </div>
+                        <br>
 
+                        <div class="col-md-3">
+                            <br>
 
-</ul>
-                </div>
-                <div class="col-md-3">
-                    <br>
-
-                    <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
-                    <br>
-                    <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
-                </div>
-                <br>
-
-                <div class="col-md-3">
-                    <br>
-
-                    <p class="align-right"><b style="float: left;">Description</b></p>
-                    <br>
-                    <div class="align-left" style="float: left;     margin-left: -4px;">${description} </div>
-                </div>
-                <br>
-
-                <div class="col-md-3">
-                    <br>
-
-                    <p class="align-justify"><b >Payment Method</b></p>
-                    <div class="align-justify"> <img style="margin-top: -57px; margin-left: 1px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} "></div>
+                            <p class="align-justify"><b >Payment Method</b></p>
+                            <div class="align-justify"> <img style="margin-top: -57px; margin-left: 1px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} "></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</div>`;
-       var image=$('input[name="image"]').val()
-        $('#choosedcontent').html(html);
-            $.ajaxSetup({headers:
-                {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-                });
+    </div>`;
+    $('#choosedcontent').html(html);
+        $.ajaxSetup({headers:
+            {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
 
-                $.ajax({
-                url:"{{route('university.advertisement.store')}}",
-                method:"post",
-                data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type,image:image,package_time:package_time},
-                success: function(result){
+            $.ajax({
+            url:"{{ route('subscription.payment') }}",
+            method:"post",
+            data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type,package_time:package_time},
+            success: function(result){
+                orderId=result.id
+                var options = {
+                    "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
+                    "amount": result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                    "currency": "INR",
+                    "name":"{{Session::get('name')}}",
+                    "description": "Test Transaction",
+                    "image": "https://example.com/your_logo",
+                    "order_id": result.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                    "handler": function (response){
 
-                    var options = {
-                        "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
-                        "amount":amount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-                        "currency": "INR",
-                        "name":"{{Session::get('name')}}",
-                        "description": "Test Transaction",
-                        "image": "https://example.com/your_logo",
-                        "order_id": result.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                        "handler": function (response){
-
-                            $.ajaxSetup({headers:
-                                {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                }
-                                });
+                        $.ajaxSetup({headers:
+                            {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                            });
 
 
-                                 transactionId=response.razorpay_payment_id;
+                             transactionId=response.razorpay_payment_id;
 
-                                $.ajax({
-                                url:"{{ route('transaction.pay') }}",
-                                method:"GET",
-                                data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title,package_time:package_time},
-                                success: function(result){
-                                    $('#mdlup').modal('show');
-                                    console.log("sdss");
-                                }
-                                });
-
+                            $.ajax({
+                            url:"{{ route('transaction.pay') }}",
+                            method:"GET",
+                            data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title,package_time:package_time},
+                            success: function(result){
+                                //console.log(result)
+                                $(`#frm-${package_id}`).append(`<input type="text" name="orderId" value="${result}" hidden>`);
+                                $(`#frm-${package_id}`).submit();
+                                $('#mdlup').modal('show');
+                            }
+                            });
 
 
 
-                        },
 
-                        "prefill": {
-                            "name": "Gaurav Kumar",
-                            "email": "gaurav.kumar@example.com",
-                            "contact": "9999999999"
-                        },
-                        "notes": {
-                            "address": "Razorpay Corporate Office"
-                        },
-                        "theme": {
-                            "color": "#3399cc"
-                        }
-                    };
-                    var rzp1 = new Razorpay(options);
-                    rzp1.on('payment.failed', function (response){
-                            alert(response.error.code);
-                            alert(response.error.description);
-                            alert(response.error.source);
-                            alert(response.error.step);
-                            alert(response.error.reason);
-                            alert(response.error.metadata.order_id);
-                            alert(response.error.metadata.payment_id);
-                    });
-                    document.getElementById('rzp-button1').onclick = function(e){
-                        rzp1.open();
-                        e.preventDefault();
+                    },
+
+                    "prefill": {
+                        "name": "Gaurav Kumar",
+                        "email": "gaurav.kumar@example.com",
+                        "contact": "9999999999"
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#3399cc"
                     }
-                }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.on('payment.failed', function (response){
+                        alert(response.error.code);
+                        alert(response.error.description);
+                        alert(response.error.source);
+                        alert(response.error.step);
+                        alert(response.error.reason);
+                        alert(response.error.metadata.order_id);
+                        alert(response.error.metadata.payment_id);
                 });
+                document.getElementById('rzp-button1').onclick = function(e){
+                    rzp1.open();
+                    e.preventDefault();
+                }
+            }
+            });
 
 
 
-            })
+        })
     </script>
 
 @stop
