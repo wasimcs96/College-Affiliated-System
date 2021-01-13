@@ -355,3 +355,8 @@ Route::get('prmigration', [
     'uses' => 'FrontEndController\PrMigrationFrontController@index',
     'as' => 'Prmigration'
 ]);
+
+Route::post('prmigration/searchresult',[
+    'uses'=> 'FrontEndController\PrMigrationFrontController@search',
+    'as' => 'Prmigration.search.result'
+]);

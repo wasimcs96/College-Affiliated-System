@@ -142,10 +142,15 @@
         @if($consultant->isConsultant())
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
-                    <div class="card-img">
+                    <div class="card-img" style="text-align: center;">
 
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
-                             <img src="{{asset($consultant->profile_image)}}" alt="car-img">
+                            @if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
+                                                <img style=" width: 152px;
+                                                height: 115px;" src="{{$consultant->profile_image}}" alt="">
+                                                    @else
+                                                    <img style=" width: 152px; height: 152px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif
                         </a>
                         <span class="badge">Top Ranked</span>
                         {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
@@ -162,8 +167,8 @@
                         </div>
                         <div class="card-attributes">
                             <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Admission Done"><i class="la la-users"></i><span>24</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="la la-suitcase"></i><span>15</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-users"></i><span>{{$consultant->consultantBooking->count()}}</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>{{$consultant->consultantUniversity->count()}}</span></li>
                             </ul>
                         </div>
                         <div class="card-price d-flex align-items-center justify-content-between">

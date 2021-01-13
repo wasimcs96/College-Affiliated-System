@@ -170,7 +170,7 @@
                             <a href="car-list.html" data-toggle="tooltip" data-placement="top" title="List View"><i class="la la-th-list"></i></a>
                         </div>
                     </div><!-- end filter-top -->
-                    <div class="filter-bar d-flex align-items-center justify-content-between">
+                    {{-- <div class="filter-bar d-flex align-items-center justify-content-between">
                         <div class="filter-bar-filter d-flex flex-wrap align-items-center">
                             <div class="filter-option">
                                 <h3 class="title font-size-16">Filter by:</h3>
@@ -355,7 +355,7 @@
                                 <option value="7">A to Z</option>
                             </select>
                         </div><!-- end select-contain -->
-                    </div><!-- end filter-bar -->
+                    </div><!-- end filter-bar --> --}}
                 </div><!-- end filter-wrap -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
@@ -378,9 +378,10 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">
-                            @if($university->type==0)
+                            @if($university->university->type==0)
                         Private
-                    @else Govenment</p>
+                    @else
+                    Govenment</p>
                     @endif
                         <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name }}</a></h3>
                         <div class="card-rating">
@@ -390,15 +391,15 @@
                         </div>
                         <div class="card-attributes">
                             <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Students"><i class="la la-users"></i><span>4000</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-suitcase"></i><span>16</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$university->universityCourse->count()}}</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-users"></i><span>{{$university->universityConsultant->count()}}</span></li>
                             </ul>
                         </div>
                         <div class="card-price d-flex align-items-center justify-content-between">
-                            <p>
+                            {{-- <p>
                                 <span class="price__num">$2300</span>
                                 <span class="price__text">Total fees</span>
-                            </p>
+                            </p> --}}
                             <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>

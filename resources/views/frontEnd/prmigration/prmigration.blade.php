@@ -14,9 +14,9 @@
                         </div>
                         <div class="search-fields-container margin-top-30px">
                             <div class="contact-form-action">
-                                <form action="#" class="row">
-
-                                    <div class="col-lg-4 col-sm-2">
+                                <form action="{{route('Prmigration.search.result')}}" method="POST" class="row">
+@csrf
+                                    {{-- <div class="col-lg-4 col-sm-2">
                                         <div class="input-box">
                                             <label class="label-text">Name</label>
                                             <div class="form-group">
@@ -24,29 +24,31 @@
 
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-2 col-sm-6 pr-0">
+                                    </div> --}}
+                                    <div class="col-lg-6 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1" selected>India</option>
-                                                        <option value="2">USA</option>
-                                                        <option value="3">UK</option>
-                                                        <option value="4">KSA</option>
-                                                        <option value="5">UAE</option>
-                                                        <option value="6">Russia</option>
-                                                        <option value="7">China</option>
+                                                    <select  name="country" class="select-contain-select">
+                                                        <?php $countries = App\Models\Country::all();?>
+                                                        @if($countries->count() > 0)
+                                                         @foreach($countries as $country)
+                                                            <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
+                                                         @endforeach
 
+                                                        @else
 
+                                                            <option value="">Currently Unavailable</option>
+
+                                                        @endif
 
                                                     </select>
                                                 </div>                                            </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-4 col-sm-2 pr-0">
+                                    {{-- <div class="col-lg-4 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">University </label>
                                             <div class="form-group">
@@ -66,8 +68,8 @@
                                                     </select>
                                                 </div>                                            </div>
                                         </div>
-                                    </div><!-- end col-lg-2 -->
-                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                    </div><!-- end col-lg-2 --> --}}
+                                    {{-- <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Courses</label>
                                             <div class="form-group">
@@ -96,7 +98,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div><!-- end col-lg-3 -->
+                                    </div><!-- end col-lg-3 --> --}}
                                     {{-- <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Drop-off Date</label>
@@ -107,12 +109,12 @@
                                         </div>
                                     </div><!-- end col-lg-2 --> --}}
                                     <!-- end col-lg-3 -->
+                                    <div class="btn-box pt-3 col-lg-2" style="margin-top: 20px;">
+                                        <button class="theme-btn" type="submit">Search Now</button>
+                                    </div>
                                 </form>
                             </div><!-- end contact-form-action -->
 
-                            <div class="btn-box pt-3">
-                                <button class="theme-btn" type="button">Search Now</button>
-                            </div>
                         </div><!-- end search-fields-container -->
                     </div><!-- end search-result-content -->
                 </div><!-- end col-lg-12 -->

@@ -158,25 +158,31 @@
                                 <div class="row pt-4">
                                     <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
-                                            <li><span>Estabilished:</span>29 years ago</li>
-                                            <li><span>Since:</span>01/01/2017</li>
-                                            <li><span>Admission Opens:</span>19/09/20</li>
-                                            <li><span>Campus:</span>93,558 grt</li>
-                                            <li><span>Courses:</span>965 ft</li>
-                                            <li><span>Opening time:</span>105 ft</li>
+                                            <li><span>Country:</span>{{$university->country}}</li>
+                                            <li><span>City:</span>{{$university->city}}</li>
+                                            {{-- <li><span>Admission Opens:</span>19/09/20</li>
+                                            <li><span>Campus:</span>93,558 grt</li> --}}
+                                            <li><span>University Type:</span> @if($university->university->type==0 ?? '' )
+                                                Private
+                                                @else Govenment</p>
+                                                @endif</li>
+                                            {{-- <li><span>Opening time:</span>105 ft</li>
                                             <li><span>Closeing time:</span>28 ft</li>
-                                            <li><span>brachs</span>22.5 knots</li>
+                                            <li><span>brachs</span>22.5 knots</li> --}}
                                         </ul><!-- end list-items -->
                                     </div><!-- end col-lg-6 -->
                                    <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
-                                            <li><span>Consultants:</span>23,400</li>
-                                            <li><span>Total Staff:</span>9,078 crew</li>
+                                            <li><span>Courses:</span>{{$university->universityCourse->count()}}</li>
+
+                                            <li><span>Consultants:</span>{{$university->universityConsultant->count()}}</li>
+                                            <li><span>Website:</span>{{$university->university->website}}</li>
+                                            {{-- <li><span>Total Staff:</span>9,078 crew</li>
                                             <li><span>Counsellor:</span>Italian</li>
                                             <li><span>Hostels:</span>International</li>
                                             <li><span>affiliated collages:</span>International</li>
-                                            <li><span>Registry:</span>Panama</li>
-                                            <li><span>University Type:</span>Managment</li>
+                                            <li><span>Registry:</span>Panama</li> --}}
+
                                         </ul><!-- end list-items -->
                                     </div><!-- end col-lg-6 -->
                                 </div><!-- end row -->
@@ -191,9 +197,9 @@
                                    <table class="table">
                                        <thead>
                                            <tr>
-                                               <th scope="col">tenure</th>
+                                               <th scope="col">Type</th>
                                                <th scope="col">Course</th>
-                                               <th scope="col">Branch no.</th>
+                                               <th scope="col">1st Year Fees</th>
                                                <th scope="col">Action</th>
                                            </tr>
                                        </thead>
@@ -201,14 +207,17 @@
                                            <?php $courses=$university->universityCourse?>
                                           @foreach($courses as $course)
                                            <tr>
-                                               <th scope="row">4 years</th>
+                                               <th scope="row">@if($course->course->type == 0) UG @endif
+                                                @if($course->course->type == 1) PG @endif
+                                                @if($course->course->type == 2) Diploma @endif
+                                            </th>
                                                <td>
                                                    <div class="table-content d-flex align-items-center">
                                                        <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0">
                                                        <h3 class="title">{{$course->course->name}}</h3>
                                                    </div>
                                                </td>
-                                               <td>5</td>
+                                               <td>{{$course->fees}}</td>
                                                <td> <div>
                                                 <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
                                             </div></td>
@@ -233,14 +242,18 @@
                                 <div class="cabin-type padding-top-30px">
                                     <div class="cabin-type-item d-flex pt-4">
                                         <div class="cabin-type-img flex-shrink-0">
-                                            <img    style=" width: 152px;
-                                            height: 115px;" src="@if(isset($consultant->userConsultant->profile_image))  {{asset($consultant->userConsultant->profile_image)}} @endif" alt="">
+                                            @if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
+                                            <img style=" width: 152px;
+                                            height: 115px;" src="{{$consultant->userConsultant->profile_image}}" alt="">
+                                                @else
+                                                <img style=" width: 152px; height: 115px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                @endif
                                         </div>
                                        <div class="cabin-type-detail">
                                             {{-- <h3 class="title">{{$consultant->consultant->company_name}}</h3> --}}
                                            <ul class="list-items pt-2 pb-2">
-                                               <li><span>Admission Done:</span>139</li>
-                                               <li><span>affiliated since:</span>2000</li>
+                                               <li><span>On Going Applications:</span>{{$consultant->userConsultant->consultantBooking->count()}}</li>
+                                               <li><span>Affiliated Since:{!! "&nbsp;" !!}{{$consultant->created_at->format('Y','M','D')}}</span></li>
                                         <li><span>Location:</span>{{$consultant->userConsultant->address ?? ''}}.</li>
                                            </ul>
                                        </div>
@@ -578,7 +591,12 @@
             @foreach($universityconsultant as $consultant)
                                     <li><div class="author-content d-flex">
                                         <div class="author-img">
-                                            <a href="#"><img src="{{asset($consultant->userConsultant->profile_image)}}" alt="testimonial image"></a>
+                                            <a href="#">@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
+                                                <img style=" width: 70px;
+                                                height: 70px;" src="{{$consultant->userConsultant->profile_image}}" alt="">
+                                                    @else
+                                                    <img style=" width: 70px; height: 70px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif</a>
                                         </div>
                                         <div class="author-bio">
                                             {{-- {{dd($consultant)}} --}}
@@ -623,7 +641,7 @@
                         @endif
 
 
-                        <div class="sidebar-widget single-content-widget">
+                        {{-- <div class="sidebar-widget single-content-widget">
                             <h3 class="title stroke-shape">Enquiry Form</h3>
                             <div class="enquiry-forum">
                                 <div class="form-box">
@@ -668,8 +686,8 @@
                                     </div><!-- end form-content -->
                                 </div><!-- end form-box -->
                             </div><!-- end enquiry-forum -->
-                        </div><!-- end sidebar-widget -->
-                        <div class="sidebar-widget single-content-widget">
+                        </div><!-- end sidebar-widget --> --}}
+                        {{-- <div class="sidebar-widget single-content-widget">
                             <h3 class="title stroke-shape">Why Book With Us?</h3>
                             <div class="sidebar-list">
                                 <ul class="list-items">
@@ -679,8 +697,8 @@
                                     <li><i class="la la-file-text icon-element mr-2"></i>Free Travel Insureance</li>
                                 </ul>
                             </div><!-- end sidebar-list -->
-                        </div><!-- end sidebar-widget -->
-                        <div class="sidebar-widget single-content-widget">
+                        </div><!-- end sidebar-widget --> --}}
+                        {{-- <div class="sidebar-widget single-content-widget">
                             <h3 class="title stroke-shape">Get a Question?</h3>
                             <p class="font-size-14 line-height-24">Do not hesitate to give us a call. We are an expert team and we are happy to talk to you.</p>
                             <div class="sidebar-list pt-3">
@@ -689,7 +707,7 @@
                                     <li><i class="la la-envelope icon-element mr-2"></i><a href="mailto:info@dc.com">info@dc.com</a></li>
                                 </ul>
                             </div><!-- end sidebar-list -->
-                        </div><!-- end sidebar-widget -->
+                        </div><!-- end sidebar-widget --> --}}
 
                     </div><!-- end sidebar -->
                     {{-- @endif --}}
