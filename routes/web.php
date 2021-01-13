@@ -14,6 +14,11 @@ Route::get('university/detail/{id}',[
     'as' => 'university_detail'
 ]);
 
+Route::get('course/fetch/universitys',[
+    'uses' => 'FrontEndController\UniversityFilterController@filter',
+    'as' => 'university_fetch'
+]);
+
 Route::post('university/consultant',[
     'uses' => 'FrontEndController\UniversityFrontController@consultant',
     'as' => 'university_consultant'

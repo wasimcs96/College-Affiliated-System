@@ -4,6 +4,9 @@
 
 
 @section('content')
+<div id="al">
+
+</div>
 <div class="col-lg-12 col-md-7">
     <div class="card">
        <div class="header">

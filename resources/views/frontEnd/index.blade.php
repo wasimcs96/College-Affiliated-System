@@ -120,11 +120,25 @@
                                             </div><!-- end col-lg-3 --> --}}
                                             <div class="col-lg-4 col-sm-2 pr-0">
                                                 <div class="input-box">
-                                                    <label class="label-text">Category</label>
+                                                    <label class="label-text" id="ali">Category</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select class="select-contain-select">
-                                                                <option value="1" selected>UG</option>
+                                                            <select id="categoryselect" class="select-contain-select">
+                                                                <option value="">
+                                                                    Select Categories
+                                                                </option>
+                                                                <?php $categories = App\Models\Category::all();?>
+                                                    @if($categories->count() > 0)
+                                                    @foreach($categories as $category)
+                                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                                    @endforeach
+
+                                                    @else
+
+                                                        <option value="">Currently Unavailable</option>
+
+                                                    @endif
+                                                              
 
 
                                                             </select>
@@ -132,34 +146,52 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-sm-2 pr-0">
-                                                <div class="input-box">
-                                        <label class="label-text">Courses Name</label>
-                                        <div class="form-group">
-                                            <span class="las la-book form-icon"></span>
-                                            <input class="form-control" type="text" placeholder="Course Name">
-                                        </div>
-                                                </div>
-                                            </div><!-- end col-lg-3 -->
+                                           <!-- end col-lg-3 -->
                                             <div class="col-lg-4 col-sm-2 pr-0">
                                                 <div class="input-box">
                                                     <label class="label-text">Courses Type</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select class="select-contain-select">
-                                                                {{-- @foreach($courses as $course) --}}
-                                                                <option value="1" selected>UG</option>
-                                                                <option value="1" selected>PG</option>
-
-                                                                <option value="1" selected>diploma</option>
-
-                                                               {{-- @endforeach --}}
+                                                            <select id="typeselect" class="select-contain-select">
+                                                                <option value="">
+                                                                    Select Type
+                                                                </option>
+                                                                <?php $courses = App\Models\Course::all(); 
+                                                                $type=[
+                                                                    0=>"UG",
+                                                                    1=>"PG",
+                                                                    2=>"Diploma"
+                                                                ];
+                                                                ?>
+                                                                @foreach($type as $key=>$course)
+                                                                <option value="{{$key}}">
+                                                                    {{$course}}
+                                                                </option>
+                                                              
+                                                               @endforeach
 
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div><!-- end col-lg-3 -->
+                                            <div class="col-lg-4 col-sm-2 pr-0">
+                                                <div class="input-box">
+                                                    <label class="label-text">Courses</label>
+                                                    <div class="form-group">
+                                                        <div class="select-contain w-auto">
+                                                            <select id="selectcourse" class="select-contain-select">
+                                                                <option value="">
+                                                                    Select Course
+                                                                </option>
+                                                              
+                                                               
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             {{-- <div class="col-lg-2 col-sm-2">
                                                 <div class="input-box">
                                                     <label class="label-text">Duration</label>
@@ -2146,6 +2178,50 @@
        START FOOTER AREA
 ================================= -->
 @endsection
-{{-- @section('per_page_script')
-<script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
-@endsection --}}
+ @section('per_page_script')
+{{-- <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script> --}}
+rt=$('#categoryselect').val();
+
+<script>
+    $(document).on('change', '#typeselect', function ()
+    {
+    typeselect = $(this).val();
+    categoryselect=$('#categoryselect').val();
+
+    function isEmpty(val){
+        return (val === undefined || val == null || val.length <= 0) ? true : false;
+    }
+
+
+    if (isEmpty(categoryselect)){
+        $(`#ali`).html(`<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Please select the Category First
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>`)
+    }
+    else{
+
+    
+    $.ajaxSetup({headers:
+    {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+   
+    $.ajax({
+    url:"{{ route('university_fetch') }}",
+    method:"GET",
+    data:{typeselect:typeselect,categoryselect:categoryselect},
+    success: function(result){
+        //console.log(result)
+$('#selectcourse').html(result);
+    }
+    });
+}
+    
+    });
+    
+    </script>
+@endsection
