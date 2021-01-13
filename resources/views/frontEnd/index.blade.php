@@ -2094,7 +2094,8 @@
             </div><!-- end col-lg-6 -->
             <div class="col-lg-6">
                 <div class="mobile-img">
-                    <img src="{{ asset('frontEnd/assets/images/mobile-app.png') }}" alt="mobile-img">
+                    {{-- <img src="{{ asset('frontEnd/assets/images/mobile-app.png') }}" alt="mobile-img"> --}}
+                    <img src="{{ asset('frontEnd/assets/images/contactus.gif') }}" alt="mobile-img">
                 </div>
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->

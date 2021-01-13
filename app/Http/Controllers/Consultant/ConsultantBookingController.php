@@ -76,6 +76,20 @@ class ConsultantBookingController extends Controller
 //      return view('consultant.booking.booking_show');
    }
 
+   public function decline(Request $request)
+
+   {
+// dd($request->all());
+        $booking = Booking::find($request->booking_id);
+    //    dd($booking);
+
+        $booking->status = 3;
+        $booking->save();
+        return response('success');
+
+//      return view('consultant.booking.booking_show');
+   }
+
 public function application($id)
 {
     $book = Booking::where('id',$id)->get()->first();
@@ -88,6 +102,9 @@ public function application($id)
 public function applicationStore(Request $request){
     // dd($request->document);
     $clientExists = Application::where('client_id',$request->client_id)->first();
+    $bookingStatus = Booking::where('id',$request->booking_id)->first();
+    $bookingStatus->status = 2;
+    $bookingStatus->save();
     if($clientExists==null){
     $jsonApplication = $request->document;
     $jsonApplicationStore = json_encode($jsonApplication);
