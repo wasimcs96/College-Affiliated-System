@@ -61,7 +61,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Country</th>
-                        <td>{{$user->country ?? ''}}</td>
+                        <td>{{$user->country->countries_name ?? ''}}</td>
                     </tr>
             </div>
 

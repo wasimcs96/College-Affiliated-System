@@ -11,4 +11,9 @@ class Country extends Model
         return $this->hasMany(ConsultantPrMigrationCountry::class);
     }
 
+    public function user()
+    {
+        return $this->hasMany(User::class,'countries_id');
+    }
+
 }

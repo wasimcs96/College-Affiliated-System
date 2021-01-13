@@ -49,6 +49,7 @@ $id = Auth()->user()->id;
             $user->fill($request->all());
             $user->latitude = $data->latitude;
             $user->longitude = $data->longitude;
+            $user->countries_id = $request->countries_id;
             $user->save();
 
              return redirect()->route('client.profile')->with('success','Profile Updated successfully');

@@ -45,7 +45,7 @@
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
                                             <td>{{$user->city ?? ''}}</td>
-                                            <td> {{$user->country ?? ''}} </td>
+                                            <td> {{$user->country->countries_name ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>

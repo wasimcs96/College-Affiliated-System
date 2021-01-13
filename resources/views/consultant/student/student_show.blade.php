@@ -42,7 +42,7 @@
 
                     <tr>
                         <th scope="row">Student Nationality</th>
-                        <td>{{$show->user->country ?? ''}}</td>
+                        <td>{{$show->user->country->countries_name ?? ''}}</td>
                     </tr>
 
                     <tr>

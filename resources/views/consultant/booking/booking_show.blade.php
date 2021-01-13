@@ -44,7 +44,7 @@
 
                     <tr>
                         <th scope="row">Student Nationality</th>
-                        <td>{{$show->user->country ?? ''}}</td>
+                        <td>{{$show->user->country->countries_name ?? ''}}</td>
                     </tr>
 
                    {{-- <tr>
@@ -61,6 +61,7 @@
                     <td>{{$university[2]->university_name ?? ''}}/{{$course[2]->name ?? ''}}</td>
                 </tr> --}}
                 <?php $i = 1?>
+                @if(isset($university) && $university != '')
                 @foreach($university as $key=> $uni)
 
                     <tr>
@@ -69,6 +70,7 @@
                     </tr>
                 <?php $i++ ?>
                 @endforeach
+                @endif
                  <input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>
             </div>
                     </tbody>

@@ -55,9 +55,7 @@
                             <td style="text-align: center;"><a href="{{route('consultant.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 @endforeach
-@else
 
-Records not available
 @endif
                     </tbody>
                 </table>

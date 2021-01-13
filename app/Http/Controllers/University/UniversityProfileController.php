@@ -56,6 +56,7 @@ class UniversityProfileController extends Controller
               $user->last_name=$request->university_name;
               $user->latitude = $data->latitude;
               $user->longitude = $data->longitude;
+              $user->countries_id = $request->countries_id;
              $user->save();
               $university=auth()->user()->university;
 

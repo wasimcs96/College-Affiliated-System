@@ -47,6 +47,8 @@ class AdminUsersController extends Controller
     {
         // $id = Package::find($id);
         $id->update($request->all());
+        $id->countries_id = $request->country;
+        $id->save();
         return redirect()->route('admin.users',['id' => $request->parameter_id])->with('success', 'User updated Succefully.');
     }
 
