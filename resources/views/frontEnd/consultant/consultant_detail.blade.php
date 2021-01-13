@@ -8,11 +8,16 @@
                <h3 class="title font-size-24">Consultant  Information</h3>
                 <div class="card-item user-card card-item-list mt-4 mb-0">
                     <div class="card-img">
-                        <img src="{{asset('frontEnd/assets/images/team7.jpg')}}"alt="user image" class="h-auto">
+                        @if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
+                                                <img style=" width: 152px;
+                                                height: 115px;" src="{{$consultant->userConsultant->profile_image}}" alt="">
+                                                    @else
+                                                    <img style=" width: 298px; height: 276px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">{{$consultant->first_name}} {{$consultant->last_name}}</h3>
-                        <p class="card-meta">Member since April 2016</p>
+                        <p class="card-meta">Member since : {{$consultant->created_at->format('Y')}}</p>
                         <div class="d-flex justify-content-between pt-3">
                             <ul class="list-items list-items-2 flex-grow-1">
                                 <li><span>Email:</span>{{$consultant->email}}</li>
