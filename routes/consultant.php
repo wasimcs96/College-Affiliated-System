@@ -72,6 +72,11 @@ Route::post('booking/accept',[
     'as'=>'consultant.booking.accept'
 ]);
 
+Route::post('booking/decline',[
+    'uses'=>'ConsultantBookingController@decline',
+    'as'=>'consultant.booking.decline'
+]);
+
 /* applied Section */
 Route::get('applied',function(){
     return view('consultant.applied');
@@ -302,6 +307,12 @@ Route::post('applications/followup/store',[
     'as' => 'consultant.application.followup.store'
 ]);
 
+Route::get('applications/followup/show/{id}',[
+    'uses' => 'ConsultantApplicationFollowUpController@show',
+    'as' => 'consultant.application.followup.show'
+]);
+
+/* PR Migration */
 Route::get('PR_Migration',[
     'uses'=>'ConsultantPrmigrationController@index',
     'as'=>'consultant.prmigration'
@@ -312,10 +323,20 @@ Route::post('PR_Migration/store',[
     'as'=>'consultant.prmigration.store'
 ]);
 
-/* Application Follow Up Show */
-Route::get('applications/followup/show/{id}',[
-    'uses' => 'ConsultantApplicationFollowUpController@show',
-    'as' => 'consultant.application.followup.show'
+/* Booking Follow Up Show */
+Route::get('bookings/follow_up',[
+    'uses' => 'ConsultantBookingFollowUpController@index',
+    'as' => 'consultant.booking.followup'
+]);
+
+Route::post('bookings/follow_up/store',[
+    'uses' => 'ConsultantBookingFollowUpController@store',
+    'as' => 'consultant.booking.followup.store'
+]);
+
+Route::get('bookings/follow_up/show/{id}',[
+    'uses' => 'ConsultantBookingFollowUpController@show',
+    'as' => 'consultant.booking.followup.show'
 ]);
 
 

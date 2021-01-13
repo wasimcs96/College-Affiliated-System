@@ -41,6 +41,7 @@
                 <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('consultant.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
                 <li class="{{ Request::segment(2) == 'students' ? 'active' : null }}"><a href="{{route('consultant.students')}}"><i class="icon-users"></i><span>Students</span></a></li>
                 <li class="{{ Request::segment(2) == 'booking' ? 'active' : null }}"><a href="{{route('consultant.bookings')}}"><i class="fa fa-list"></i><span>Bookings</span></a></li>
+                <li class="{{ Request::segment(3) == 'follow_up' ? 'active' : null }}"><a href="{{route('consultant.booking.followup')}}"><i class="fa fa-list"></i><span>Booking Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('consultant.application')}}"><i class="icon-notebook"></i><span>Application</span></a></li>
                 <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="{{route('consultant.application.followup')}}"><i class="icon-notebook"></i><span>Application Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'associated_university' ? 'active' : null }}"><a href="{{route('consultant.associated_university')}}"><i class="icon-graduation"></i><span>Associated University</span></a></li>

@@ -255,15 +255,13 @@
                     <input type="file" name="documents[]" class="dropify" multiple>
                     @csrf
                     <br>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
         </form>
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 @if(isset($application->applicationAppliedUniversity))
 
@@ -638,6 +636,9 @@
 </div>
 </div>
 @endif
+</div>
+</div>
+
 
 <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
