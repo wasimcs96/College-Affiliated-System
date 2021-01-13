@@ -158,7 +158,8 @@
                                 <div class="row pt-4">
                                     <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
-                                            <li><span>Country:</span>{{$university->country}}</li>
+                                
+                                            <li><span>Country:</span>{{$university->country->countries_name}}</li>
                                             <li><span>City:</span>{{$university->city}}</li>
                                             {{-- <li><span>Admission Opens:</span>19/09/20</li>
                                             <li><span>Campus:</span>93,558 grt</li> --}}
@@ -244,7 +245,7 @@
                                         <div class="cabin-type-img flex-shrink-0">
                                             @if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
                                             <img style=" width: 152px;
-                                            height: 115px;" src="{{$consultant->userConsultant->profile_image}}" alt="">
+                                            height: 115px;" src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
                                                 @else
                                                 <img style=" width: 152px; height: 115px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                 @endif
@@ -593,7 +594,7 @@
                                         <div class="author-img">
                                             <a href="#">@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
                                                 <img style=" width: 70px;
-                                                height: 70px;" src="{{$consultant->userConsultant->profile_image}}" alt="">
+                                                height: 70px;" src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
                                                     @else
                                                     <img style=" width: 70px; height: 70px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif</a>

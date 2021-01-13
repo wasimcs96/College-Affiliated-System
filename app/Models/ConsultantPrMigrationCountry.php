@@ -12,5 +12,9 @@ class ConsultantPrMigrationCountry extends Model
     {
         return $this->belongsTo(Country::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 
 }

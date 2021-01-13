@@ -147,7 +147,7 @@
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
                             @if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
                                                 <img style=" width: 152px;
-                                                height: 115px;" src="{{$consultant->profile_image}}" alt="">
+                                                height: 115px;" src="{{asset($consultant->profile_image)}}" alt="">
                                                     @else
                                                     <img style=" width: 152px; height: 152px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif

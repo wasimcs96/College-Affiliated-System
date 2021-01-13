@@ -364,12 +364,20 @@
             @if($university->isUniversity())
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
-                    <div class="card-img">
+                    <div class="card-img"  style="
+                    width: 368px;
+                    height: 212px;
+                ">
                     <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-block">
                         {{-- @php
                         print_r($university->user->profile_image);
                     @endphp --}}
-                            <img src="{{asset($university->profile_image)}}" alt="university-img" width="368px" height="230px">
+                            {{-- <img src="{{asset($university->profile_image)}}" alt="university-img" > --}}
+                            @if(isset($university->profile_image) && file_exists($university->profile_image))
+                            <img style=" width=368px; height=213px;" src="{{asset($university->profile_image)}}" alt="">
+                                @else
+                                <img style=" width: 368px; height: 213px;" src="{{asset('frontEnd/assets/images/university.jpg')}}" >
+                                @endif
                         </a>
                         {{-- <span class="badge">Top Ranked</span> --}}
                         {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
