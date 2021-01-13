@@ -16,7 +16,8 @@ class ConsultantPrmigrationController extends Controller
             $countries=Country::all();
             $cc =auth()->user()->consultantPrMigrationCountry->country_id;
 
-            $consultantCountries=json_decode($cc);
+            $consultantCountries=explode(",",$cc);
+
             //  dd($consultantCountries);
             return view('consultant.prmigration.prmigration',compact('countries', 'consultantCountries'));
        }
@@ -26,17 +27,19 @@ class ConsultantPrmigrationController extends Controller
         $consultant = ConsultantPrMigrationCountry::where('user_id',$au)->get()->first();
         if($consultant == null)
         {
-        $json=json_encode($request->country);
+        // $json=json_encode($request->country);
+        $json= collect($request->country)->implode(',');
+        // dd($json);
         $prmigration=ConsultantPrMigrationCountry::create([
         'user_id' => $au ,
         'country_id'=> $json,
         ]);
             $countries=Country::all();
-            return  view('consultant.prmigration.prmigration',compact('countries'))->with('Success');
+            return redirect(compact('countries'))->back()->with('success', 'Profile Updated Succefully.');
         }
         else
         {
-            $json=json_encode($request->country);
+            $json=collect($request->country)->implode(',');
             $consultant->country_id = $json;
             $consultant->save();
 

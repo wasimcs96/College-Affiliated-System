@@ -35,7 +35,7 @@
                                                         <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
-                                                            <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
+                                                            <option value="{{$country->countries_id}}">{{$country->countries_name}}</option>
                                                          @endforeach
 
                                                         @else
@@ -109,7 +109,7 @@
                                         </div>
                                     </div><!-- end col-lg-2 --> --}}
                                     <!-- end col-lg-3 -->
-                                    <div class="btn-box pt-3 col-lg-2" style="margin-top: 20px;">
+                                    <div class="btn-box pt-3 col-lg-2" style="margin-top: 22px;">
                                         <button class="theme-btn" type="submit">Search Now</button>
                                     </div>
                                 </form>
@@ -136,248 +136,62 @@
     <div class="container">
 
         <div class="row">
-            {{-- <div class="col-lg-12">
-                <div class="filter-wrap margin-bottom-30px">
-                    <div class="filter-top d-flex align-items-center justify-content-between pb-4">
-                        <div>
-                            <h3 class="title font-size-24">New York: 44 Cars found</h3>
-                            <p class="font-size-14"><span class="mr-1 pt-1">Study with confidence:</span>No University Found</p>
-                        </div>
-                        <div class="layout-view d-flex align-items-center">
-                            <a href="car-grid.html" data-toggle="tooltip" data-placement="top" title="Grid View" class="active"><i class="la la-th-large"></i></a>
-                            <a href="car-list.html" data-toggle="tooltip" data-placement="top" title="List View"><i class="la la-th-list"></i></a>
-                        </div>
-                    </div><!-- end filter-top -->
-                    <div class="filter-bar d-flex align-items-center justify-content-between">
-                        <div class="filter-bar-filter d-flex flex-wrap align-items-center">
-                            <div class="filter-option">
-                                <h3 class="title font-size-16">Filter by:</h3>
-                            </div>
-                            <div class="filter-option">
-                                <div class="dropdown dropdown-contain">
-                                    <a class="dropdown-toggle dropdown-btn dropdown--btn" href="#" role="button" data-toggle="dropdown">
-                                        Location
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-wrap">
-                                        <div class="dropdown-item">
-                                            <div class="checkbox-wrap">
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb1">
-                                                    <label for="catChb1">Bombay</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb2">
-                                                    <label for="catChb2">Rajasthan</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb3">
-                                                    <label for="catChb3">USA</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb4">
-                                                    <label for="catChb4">Canada</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb5">
-                                                    <label for="catChb5">Kanpur</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb6">
-                                                    <label for="catChb6">Frace</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb7">
-                                                    <label for="catChb7">China</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb8">
-                                                    <label for="catChb8">Cambodia</label>
-                                                </div>
-                                            </div>
-                                        </div><!-- end dropdown-item -->
-                                    </div><!-- end dropdown-menu -->
-                                </div><!-- end dropdown -->
-                            </div>
-                            <div class="filter-option">
-                                <div class="dropdown dropdown-contain">
-                                    <a class="dropdown-toggle dropdown-btn dropdown--btn" href="#" role="button" data-toggle="dropdown">
-                                        Review Score
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-wrap">
-                                        <div class="dropdown-item">
-                                            <div class="checkbox-wrap">
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="r1">
-                                                    <label for="r1">
-                                                        <span class="ratings d-flex align-items-center">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <span class="color-text-3 font-size-13 ml-1">(55.590)</span>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="r2">
-                                                    <label for="r2">
-                                                        <span class="ratings d-flex align-items-center">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <span class="color-text-3 font-size-13 ml-1">(40.590)</span>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="r3">
-                                                    <label for="r3">
-                                                        <span class="ratings d-flex align-items-center">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <span class="color-text-3 font-size-13 ml-1">(23.590)</span>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="r4">
-                                                    <label for="r4">
-                                                        <span class="ratings d-flex align-items-center">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <span class="color-text-3 font-size-13 ml-1">(12.590)</span>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="r5">
-                                                    <label for="r5">
-                                                        <span class="ratings d-flex align-items-center">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <span class="color-text-3 font-size-13 ml-1">(590)</span>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div><!-- end dropdown-item -->
-                                    </div><!-- end dropdown-menu -->
-                                </div><!-- end dropdown -->
-                            </div>
-                            <div class="filter-option">
-                                <div class="dropdown dropdown-contain">
-                                    <a class="dropdown-toggle dropdown-btn dropdown--btn" href="#" role="button" data-toggle="dropdown">
-                                        Categories
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-wrap">
-                                        <div class="dropdown-item">
-                                            <div class="checkbox-wrap">
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb1">
-                                                    <label for="catChb1">Managment</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb2">
-                                                    <label for="catChb2">Technology</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb3">
-                                                    <label for="catChb3">Medical</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb4">
-                                                    <label for="catChb4">Arts</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb5">
-                                                    <label for="catChb5">Law</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb6">
-                                                    <label for="catChb6">Commerce</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb7">
-                                                    <label for="catChb7">Design</label>
-                                                </div>
-                                                <div class="custom-checkbox">
-                                                    <input type="checkbox" id="catChb8">
-                                                    <label for="catChb8">Science</label>
-                                                </div>
-                                            </div>
-                                        </div><!-- end dropdown-item -->
-                                    </div><!-- end dropdown-menu -->
-                                </div><!-- end dropdown -->
-                            </div>
-                        </div><!-- end filter-bar-filter -->
-                        <div class="select-contain">
-                            <select class="select-contain-select">
-                                <option value="1">Short by default</option>
-                                <option value="2">New Car</option>
-                                <option value="3">Popular Car</option>
-                                <option value="4">Popular Cruise</option>
-                                <option value="5">Price: low to high</option>
-                                <option value="6">Price: high to low</option>
-                                <option value="7">A to Z</option>
-                            </select>
-                        </div><!-- end select-contain -->
-                    </div><!-- end filter-bar -->
-                </div><!-- end filter-wrap -->
-            </div><!-- end col-lg-12 --> --}}
+
         </div><!-- end row -->
 
         <div class="row">
+
         @foreach($consultants as $consultant)
+        @if($consultant == !null)
         @if($consultant->isConsultant())
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item car-card border">
-                    <div class="card-img">
+        <div class="col-lg-4 responsive-column">
+            <div class="card-item car-card border">
+                <div class="card-img" style="text-align: center;">
 
-                        <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
-                             <img src="{{asset($consultant->profile_image)}}" alt="car-img">
-                        </a>
-                        <span class="badge">Top Ranked</span>
-                        {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                            <i class="la la-heart-o"></i>
-                        </div> --}}
+                    <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
+                        @if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
+                                            <img style=" width: 152px;
+                                            height: 115px;" src="{{$consultant->profile_image}}" alt="">
+                                                @else
+                                                <img style=" width: 152px; height: 152px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                @endif
+                    </a>
+                    <span class="badge">Top Ranked</span>
+                    {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
+                        <i class="la la-heart-o"></i>
+                    </div> --}}
+                </div>
+                <div class="card-body">
+                    {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
+                    <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->first_name}} {{$consultant->last_name}}</a></h3>
+                    <div class="card-rating">
+                        <span class="badge text-white">4.4/5</span>
+                        <span class="review__text">Average</span>
+                        <span class="rating__text">(30 Reviews)</span>
                     </div>
-                    <div class="card-body">
-                        {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
-                        <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->first_name}} {{$consultant->last_name}}</a></h3>
-                        <div class="card-rating">
-                            <span class="badge text-white">4.4/5</span>
-                            <span class="review__text">Average</span>
-                            <span class="rating__text">(30 Reviews)</span>
-                        </div>
-                        <div class="card-attributes">
-                            <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Admission Done"><i class="la la-users"></i><span>24</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="la la-suitcase"></i><span>15</span></li>
-                            </ul>
-                        </div>
-                        <div class="card-price d-flex align-items-center justify-content-between">
-                            <p>
-                                <span class="price__num">Country</span>
-                                <span class="price__text">{{$consultant->country->countries_name}}</span>
-                            </p>
-                            <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                        </div>
+                    <div class="card-attributes">
+                        <ul class="d-flex align-items-center">
+                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-users"></i><span>{{$consultant->consultantBooking->count()}}</span></li>
+                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>{{$consultant->consultantUniversity->count()}}</span></li>
+                        </ul>
                     </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
+                    <div class="card-price d-flex align-items-center justify-content-between">
+                        <p>
+                            <span class="price__num">Country</span>
+                            <span class="price__text">{{$consultant->country->countries_name}}</span>
+                        </p>
+                        <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                    </div>
+                </div>
+            </div><!-- end card-item -->
+        </div><!-- end col-lg-4 -->
 
+            @endif
+            @else
+            <div class="container">
+            <h1 style="text-align:center;"> No Consultant Available for Selected Country !</h1>
+            <h4 style="text-align:center; margin-top:15px;">Please Select Another Country</h4>
+            </div>
             @endif
             @endforeach
         </div><!-- end row -->

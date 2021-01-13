@@ -10,7 +10,7 @@
                     <div class="card-img">
                         @if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
                                                 <img style=" width: 152px;
-                                                height: 115px;" src="{{$consultant->userConsultant->profile_image}}" alt="">
+                                                height: 115px;" src="{{($consultant->userConsultant->profile_image)}}" alt="">
                                                     @else
                                                     <img style=" width: 298px; height: 276px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif

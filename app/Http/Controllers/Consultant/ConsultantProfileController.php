@@ -26,7 +26,7 @@ class ConsultantProfileController extends Controller
         $user=User::where('id',$id)->first();
         $cc =auth()->user()->consultantPrMigrationCountry->country_id ?? '';
 
-        $consultantCountries=json_decode($cc);
+        $consultantCountries=explode(",",$cc);
         return view('consultant.profile',compact('consultantCountries'))->with('user',$user)->with('countries',Country::all());
     }
 
