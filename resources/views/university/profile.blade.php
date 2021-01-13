@@ -68,7 +68,7 @@
                                 @if(isset($documents))
                                     @foreach($documents as $key => $value)
                                        <label class="control-inline fancy-checkbox">
-                                       <input type="hidden" name="document[{{$key}}]" value="0" hidden>
+                                       {{-- <input type="hidden" name="document[{{$key}}]" value="0" hidden> --}}
                                        <input type="checkbox" name= "document[{{$key}}]" value="1" checked><span>{{$key}}</span></label>
                                        @php $inc++ @endphp
 
@@ -296,7 +296,7 @@ $(".deleteRecord").click(function(){
         var document_row = {{$inc}} ;
         $('#add_document2').click(function(){
         rt=$('#document_name').val()
-        $('#dynamic_document').append('<label class="control-inline fancy-checkbox"> <input type="hidden" name="document['+rt+']" value="0" hidden><input type="checkbox" name= "document['+rt+']" value="1" checked><span>'+rt+'</span></label>')
+        $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document['+rt+']" value="1" checked><span>'+rt+'</span></label>')
         $('#documentModal').modal('hide');
         document.getElementById("basic-form").reset();
         document_row++;

@@ -30,6 +30,6 @@ class Order extends Model
 
     public function advertisement()
     {
-        return $this->hasmany(Advertisement::class,'order_id');
+        return $this->hasMany(Advertisement::class,'order_id');
     }
 }

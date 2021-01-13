@@ -120,22 +120,6 @@
                                             </div><!-- end col-lg-3 --> --}}
                                             <div class="col-lg-4 col-sm-2 pr-0">
                                                 <div class="input-box">
-                                                    <?php $courses= App\Models\Course::all(); ?>
-                                                    <label class="label-text">Courses Name</label>
-                                                    <div class="form-group">
-                                                        <div class="select-contain w-auto">
-                                                            <select class="select-contain-select">
-                                                                @foreach($courses as $course)
-                                                                <option value="1" selected>{{$course->name}}</option>
-
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-3 -->
-                                            <div class="col-lg-4 col-sm-2 pr-0">
-                                                <div class="input-box">
                                                     <label class="label-text">Category</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
@@ -148,6 +132,15 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-lg-4 col-sm-2 pr-0">
+                                                <div class="input-box">
+                                        <label class="label-text">Courses Name</label>
+                                        <div class="form-group">
+                                            <span class="las la-book form-icon"></span>
+                                            <input class="form-control" type="text" placeholder="Course Name">
+                                        </div>
+                                                </div>
+                                            </div><!-- end col-lg-3 -->
                                             <div class="col-lg-4 col-sm-2 pr-0">
                                                 <div class="input-box">
                                                     <label class="label-text">Courses Type</label>
@@ -191,118 +184,12 @@
                                     </div>
                                 </div><!-- end tab-pane -->
                                 <!-- end tab-pane -->
-                                <div class="tab-pane fade multi-flight-wrap" id="multi-city" role="tabpanel" aria-labelledby="multi-city-tab">
-                                    <div class="contact-form-action multi-flight-field d-flex align-items-center">
-                                        <form action="#" class="row flex-grow-1 align-items-center">
-                                            <div class="col-lg-4 pr-0">
-                                                <div class="input-box">
-                                                    <label class="label-text">Flying from</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-map-marker form-icon"></span>
-                                                        <input class="form-control" type="text" placeholder="City or airport">
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-3 -->
-                                            <div class="col-lg-4 pr-0">
-                                                <div class="input-box">
-                                                    <label class="label-text">Flying to</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-map-marker form-icon"></span>
-                                                        <input class="form-control" type="text" placeholder="City or airport">
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-3 -->
-                                            <div class="col-lg-4">
-                                                <div class="input-box">
-                                                    <label class="label-text">Departing</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-calendar form-icon"></span>
-                                                        <input class="date-range form-control date-multi-picker" type="text" name="daterange-single" value="04/28/2020">
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-3 -->
-                                        </form>
-                                        <div class="multi-flight-delete-wrap pt-3 pl-3">
-                                            <button class="multi-flight-remove" type="button"><i class="la la-remove"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-3 pr-0">
-                                            <div class="form-group">
-                                                <button class="theme-btn add-flight-btn margin-top-40px w-100" type="button"><i class="la la-plus mr-1"></i>Add another flight</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 pr-0">
-                                            <div class="input-box">
-                                                <label class="label-text">Passengers</label>
-                                                <div class="form-group">
-                                                    <div class="dropdown dropdown-contain">
-                                                        <a class="dropdown-toggle dropdown-btn" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                                                            <span>Passengers <span class="qtyTotal guestTotal_4">0</span></span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-wrap">
-                                                            <div class="dropdown-item">
-                                                                <div class="qty-box d-flex align-items-center justify-content-between">
-                                                                    <label>Adults</label>
-                                                                    <div class="qtyBtn d-flex align-items-center">
-                                                                        <input type="text" name="qtyInput" value="0">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="dropdown-item">
-                                                                <div class="qty-box d-flex align-items-center justify-content-between">
-                                                                    <label>Children</label>
-                                                                    <div class="qtyBtn d-flex align-items-center">
-                                                                        <input type="text" name="qtyInput" value="0">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="dropdown-item">
-                                                                <div class="qty-box d-flex align-items-center justify-content-between">
-                                                                    <label>Infants</label>
-                                                                    <div class="qtyBtn d-flex align-items-center">
-                                                                        <input type="text" name="qtyInput" value="0">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- end dropdown -->
-                                                </div>
-                                            </div>
-                                        </div><!-- end col-lg-3 -->
-                                        <div class="col-lg-3 pr-0">
-                                            <div class="input-box">
-                                                <label class="label-text">Coach</label>
-                                                <div class="form-group">
-                                                    <div class="select-contain w-auto">
-                                                        <select class="select-contain-select">
-                                                            <option value="1" selected>Economy</option>
-                                                            <option value="2">Business</option>
-                                                            <option value="3">First class</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- end col-lg-3 -->
-                                        <div class="col-lg-3">
-                                            <a href="flight-search-result.html" class="theme-btn w-100 text-center margin-top-20px">Search Now</a>
-                                        </div>
-                                    </div>
-                                </div><!-- end tab-pane -->
+                              <!-- end tab-pane -->
                             </div>
                         </div><!-- end tab-pane -->
                         <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
                             <div class="contact-form-action">
                                 <form action="#" class="row align-items-center">
-                                    <div class="col-lg-4 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">University Name</label>
-                                            <div class="form-group">
-                                                <span class="la la-map-marker form-icon"></span>
-                                                <input class="form-control" type="text" placeholder="University">
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-3 -->
                                     <div class="col-lg-2 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
@@ -326,21 +213,30 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
+                                    <div class="col-lg-4 col-sm-2 pr-0">
+                                        <div class="input-box">
+                                            <label class="label-text">University Name</label>
+                                            <div class="form-group">
+                                                <span class="las la-university form-icon"></span>
+                                                <input class="form-control" type="text" placeholder="University">
+                                            </div>
+                                        </div>
+                                    </div><!-- end col-lg-3 -->
                                     <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Course Type</label>
+                                            <label class="label-text">University Type</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select">
-                                                        <option value="1200AM">PG</option>
-                                                        <option value="1230AM">UG</option>
+                                                        <option value="1200AM">Private</option>
+                                                        <option value="1230AM">Government</option>
 
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
-                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                    {{-- <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Course</label>
                                             <div class="form-group">
@@ -366,8 +262,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div><!-- end col-lg-3 -->
-
+                                    </div><!-- end col-lg-3 --> --}}
+{{--
                             <div class="col-lg-2 col-sm-2">
                                 <div class="input-box">
                                     <label class="label-text">Duration</label>
@@ -388,27 +284,18 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- end checkmark-wrap -->
+                            </div><!-- end checkmark-wrap --> --}}
 
-                        </form>
+                            <div class="btn-box col-lg-2">
+                                <a href="hotel-search-result.html" style="margin-top: 20px" class="theme-btn">Search Now</a>
                             </div>
-                            <div class="btn-box">
-                                <a href="hotel-search-result.html" class="theme-btn">Search Now</a>
+                        </form>
                             </div>
                         </div><!-- end tab-pane -->
                  <!-- end tab-pane -->
                         <div class="tab-pane fade" id="car" role="tabpanel" aria-labelledby="car-tab">
                             <div class="contact-form-action">
                                 <form action="#" class="row align-items-center">
-                                    <div class="col-lg-4 col-sm-2">
-                                        <div class="input-box">
-                                            <label class="label-text">Name</label>
-                                            <div class="form-group">
-                                                <input class=" form-control" type="text" name="Consultant Name " Placeholder="Search Consultant by Name">
-
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-4 -->
                                     <div class="col-lg-2 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
@@ -433,7 +320,16 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-4 col-sm-2 pr-0">
+                                    <div class="col-lg-4 col-sm-2">
+                                        <div class="input-box">
+                                            <label class="label-text">Consultant Name</label>
+                                            <div class="form-group">
+                                                <input class=" form-control" type="text" name="Consultant Name " Placeholder="Search Consultant by Name">
+
+                                            </div>
+                                        </div>
+                                    </div><!-- end col-lg-4 -->
+                                    {{-- <div class="col-lg-4 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">University </label>
                                             <div class="form-group">
@@ -453,8 +349,8 @@
                                                     </select>
                                                 </div>                                            </div>
                                         </div>
-                                    </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                    </div><!-- end col-lg-4 --> --}}
+                                    {{-- <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Courses</label>
                                             <div class="form-group">
@@ -483,14 +379,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div> --}}
+                                    <div class="btn-box pt-3 col-lg-2">
+                                        <a href="car-search-result.html" class="theme-btn">Search Now</a>
                                     </div>
                                 </form>
                                <!-- end row -->
                             </div>
                            <!-- end advanced-wrap -->
-                            <div class="btn-box pt-3">
-                                <a href="car-search-result.html" class="theme-btn">Search Now</a>
-                            </div>
                         </div><!-- end tab-pane -->
                       <!-- end tab-pane -->
 

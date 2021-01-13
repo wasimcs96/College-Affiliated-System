@@ -24,31 +24,34 @@ class UniversityAdvertisementController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
 
-        $expire=$request->package_time;
-        $new=Carbon::now()->addMonths($expire);
-      $dt= $new->format('Y-m-d');
+//    dd($request->all());
+   // dd($request->file('image'));
 
+   $expire=$request->package_time;
+   $new=Carbon::now()->addMonths($expire);
+ $dt= $new->format('Y-m-d');
+  if($request->hasFile('image'))
+ {
+     $ad_image = $request->image;
+     $ad_image_new_name = time().$ad_image->getClientOriginalName();
+     $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
+     $newname=Config::get('define.image.advertisement').'/'.$ad_image_new_name;
+ }
+ // dd($newname);
+$as= Advertisement::create([
 
-    //  if($request->hasFile('image'))
-    //  {
-    //      $ad_image = $request->image;
-    //      $ad_image_new_name = time().$ad_image->getClientOriginalName();
-    //      $ad_image->move(Config::get('define.image.advertisement'),$ad_image_new_name);
-    //      $newname=Config::get('define.image.advertisement').'/'.$ad_image_new_name;
-    //  }
-    Advertisement::create([
+     'user_id'=>auth()->user()->id,
+     'banner_image'=>$newname ?? '',
+     'user_type'=>1,
+     'status'=>1,
+     'expire_date'=> $dt,
+     'order_id'=>$request->orderId
+ ]);
 
-         'user_id'=>auth()->user()->id,
-         'banner_image'=>  $newname ?? '',
-         'user_type'=>1,
-         'status'=>0,
-         'expire_date'=> $dt,
-     ]);
-     $new=new PaymentController();
-     $new->payment($request);
-
+   // $new=new PaymentController();
+    //$new->payment($request);
+//dd($new);
      return redirect()->route('university.advertisement')->with('success','Advertisement updated successfully');
     }
 
