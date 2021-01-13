@@ -82,7 +82,7 @@
 
                     <tr>
                         <th scope="row">Student Country</th>
-                        <td>{{$application->booking->user->country ?? ''}}</td>
+                        <td>{{$application->booking->user->country->countries_name ?? ''}}</td>
                     </tr>
 
                     <tr>
@@ -162,7 +162,7 @@
 
                     <tr>
                         <th scope="row">Student Country</th>
-                        <td>{{$application->user->country ?? ''}}</td>
+                        <td>{{$application->user->country->countries_name ?? ''}}</td>
                     </tr>
                 </div>
 
@@ -306,15 +306,55 @@
                               </div>
                               <div class="body wizard_validation">
 
-                                  <form id="wizard_with_validation{{$key}}" action="{{ route('consultant.application.update.university') }}"" method="POST">
-                                   @csrf
-                                   <div id="addInput">
+                                <form id="wizard_with_validation{{$key}}" action="{{ route('consultant.application.update.university') }}"" method="POST">
+                                    @csrf
+                                    <div id="addInput">
 
-                                   </div>
-                                    <h3>Apply in University</h3>
-                                    <fieldset>
-                                        <h6> <b>
-                                          Applied University Information</b> </h6>
+                                    </div>
+                                     <h3>Apply in University</h3>
+                                     <fieldset>
+                                         <h6> <b>
+                                           Applied University Information</b> </h6>
+                                         <div class="table-responsive" >
+                                             <table class="table table-hover table-striped" >
+
+                                                 <tbody>
+
+                                                 <tr>
+                                                     <th scope="row">University Name</th>
+                                                     <td>{{$applied->userUniversity->university->university_name ?? ''}}</td>
+                                                 </tr>
+                                                 <tr>
+                                                     <th scope="row">Course Name</th>
+                                                     <td>{{$applied->course->name ?? ''}}</td>
+                                                 </tr>
+                                             </tbody>
+                                         </table>
+                                     </div>
+
+                                     <div class="row clearfix" >
+
+                                         <div class="col-lg-6 col-md-12">
+
+                                         </div>
+                                     <input type="text" name="university_id" value="{{$applied->userUniversity->id ?? ''}}" hidden>
+                                     <input type="text" name="apply_id" value="{{$applied->id ?? ''}}" hidden>
+
+                                     <div class="col-lg-6 col-md-12">
+                                     <div class="form-group">
+                                     @if($applied->Is_applied==0) <a href="javascript:void(0);" class="btn btn-warning applied" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyModal" style="float: right;margin-top: 19px;">Ready to Apply</a>@endif
+                                     @if($applied->Is_applied==1)<div class="btn btn-success" style="float: right;margin-top: 19px;">Applied</div>@endif
+                                     </div>
+                                     </div>
+                                     </div>
+                                     </fieldset>
+
+                                       <h3>Application Status </h3>
+
+                                       <fieldset>
+                                     @if($applied->Is_applied==1)
+                                         <h6> <b>
+                                             University Approval Status</b> </h6>
                                         <div class="table-responsive" >
                                             <table class="table table-hover table-striped" >
 
@@ -328,188 +368,148 @@
                                                     <th scope="row">Course Name</th>
                                                     <td>{{$applied->course->name ?? ''}}</td>
                                                 </tr>
+                                                <tr>
+                                                 <th scope="row">Application Status</th>
+                                                 <td id="application1">@if ($applied->approved_status == 0 ?? '') <span style="color:yellow">Pending</span>@endif
+                                                     @if ($applied->approved_status == 1 ?? '') <span style="color:green">Approved</span>@endif
+                                                     @if ($applied->approved_status == 2 ?? '') <span style="color:red">Cancelled</span>@endif</td>
+                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="form-group" style="float: right;  margin-top: 2px; margin-right: -30px;">
 
-                                    <div class="row clearfix" >
+                                     <button type="button"  id="rtf2" custom1="{{$applied->id}}"  class="btn btn-success approvel" data-toggle="modal" data-target="#dateModal" style="margin-right: 10px;" @if ($applied->approved_status == 1 ?? '') disabled @endif>Accept</button>
 
-                                        <div class="col-lg-6 col-md-12">
 
-                                        </div>
-                                    <input type="text" name="university_id" value="{{$applied->userUniversity->id ?? ''}}" hidden>
-                                    <input type="text" name="apply_id" value="{{$applied->id ?? ''}}" hidden>
+                                 <button type="button" id="rtf2" custom1="{{$applied->id}}" class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" @if ($applied->approved_status == 2 ?? '') disabled @endif>Decline</button>
+                               </div>
 
+                             @else
+                              <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
+                             @endif
                                     <div class="col-lg-6 col-md-12">
-                                    <div class="form-group">
-                                    @if($applied->Is_applied==0) <a href="#" class="btn btn-warning applied" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyModal" style="float: right;margin-top: 19px;">Ready to Apply</a>@endif
-                                    @if($applied->Is_applied==1)<div class="btn btn-success" style="float: right;margin-top: 19px;">Applied</div>@endif
+
                                     </div>
-                                    </div>
-                                    </div>
-                                    </fieldset>
+                                       </fieldset>
+                                       <h3>Offer Acceptance</h3>
+                                       <fieldset>
 
-                                      <h3>Application Status </h3>
+                                     @if($applied->Is_applied==1)
 
-                                      <fieldset>
-                                    @if($applied->Is_applied==1)
-                                        <h6> <b>
-                                            University Approval Status</b> </h6>
-                                       <div class="table-responsive" >
-                                           <table class="table table-hover table-striped" >
+                                         @if ($applied->approved_status == 1)
+                                         <h6> <b>
+                                             Offer Acceptance </b> </h6>
+                                             <div class="table-responsive" >
+                                                 <table class="table table-hover table-striped" >
 
-                                               <tbody>
+                                                     <tbody>
 
-                                               <tr>
-                                                   <th scope="row">University Name</th>
-                                                   <td>{{$applied->userUniversity->university->university_name ?? ''}}</td>
-                                               </tr>
-                                               <tr>
-                                                   <th scope="row">Course Name</th>
-                                                   <td>{{$applied->course->name ?? ''}}</td>
-                                               </tr>
-                                               <tr>
-                                                <th scope="row">Application Status</th>
-                                                <td id="application1">@if ($applied->approved_status == 0 ?? '') <span style="color:yellow">Pending</span>@endif
-                                                    @if ($applied->approved_status == 1 ?? '') <span style="color:green">Approved</span>@endif
-                                                    @if ($applied->approved_status == 2 ?? '') <span style="color:red">Cancelled</span>@endif</td>
-                                            </tr>
-                                           </tbody>
-                                       </table>
-                                   </div>
-                                   <div class="form-group" style="float: right;  margin-top: 2px; margin-right: -30px;">
+                                                     <tr>
+                                                         <th scope="row">University Name</th>
+                                                         <td>{{$applied->userUniversity->university->university_name ?? ''}}</td>
+                                                     </tr>
+                                                     <tr>
+                                                         <th scope="row">Course Name</th>
+                                                         <td>{{$applied->course->name ?? ''}}</td>
+                                                     </tr>
+                                                     @if ($applied->is_accepeted == 1)
+                                                     <tr>
+                                                         <th scope="row">Offer Acceptance</th>
+                                                         <td><span style="color:green">Accepted</span></td>
+                                                     </tr>
+                                                     @endif
+                                                     @if ($applied->is_accepeted == 2)
+                                                     <tr>
+                                                         <th scope="row">Offer Acceptance</th>
+                                                         <td><span style="color:red">Declined</span></td>
+                                                     </tr>
+                                                     @endif
+                                                 </tbody>
+                                             </table>
+                                         </div>
+                                           <div class="form-group">
+                                               <div class="fancy-checkbox">
+                                                   <label><span> <p> @if ($applied->is_accepeted == 0) University has accepted your application. Please accept before <b> {{$applied->deadline}} </b>@else @endif </p></span></label>
 
-                                    <button type="button"  id="rtf2" custom1="{{$applied->id}}"  class="btn btn-success approvel" data-toggle="modal" data-target="#dateModal" style="margin-right: 10px;" @if ($applied->approved_status == 1 ?? '') disabled @endif>Accept</button>
+                                                 </div>
+                                           </div>
+                                           <div class="row clearfix">
+                                             @if ($applied->is_accepeted == 0)
+                                             <div class="form-group" style="margin-left: 217px;">
+                                                 <h6 style="margin-left: 16px; color:orange">Accept Your Application by clicking the below button</h6>
+                                                   <a style="margin-left: 182px;" href="javascript:void(0);"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#acceptedModal">Accept</a>
+                                               </div>
 
+                                             @endif
+                                             {{-- @if ($applied->is_accepeted == 1)
+                                             <div class="form-group">
+                                                 <h6 style="margin-left: 16px; color:green"> You have <b>Accepted</b> the Application </h6>
+                                               </div>
+                                             @endif
+                                             @if ($applied->is_accepeted == 2)
+                                             <div class="form-group">
+                                                 <h6 style="margin-left: 16px; color:red"> You have <b>Cancelled</b> the Application </h6>
+                                               </div>
+                                             @endif --}}
+                                         </div>
+                                         @else
 
-                                <button type="button" id="rtf2" custom1="{{$applied->id}}" class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" @if ($applied->approved_status == 2 ?? '') disabled @endif>Decline</button>
-                              </div>
+                                         <div class="form-group">
+                                             <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>                                        </div>
+                                           @endif
 
-                            @else
-                             <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
-                            @endif
-                                   <div class="col-lg-6 col-md-12">
+                                     @else
+                                           <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
+                                     @endif
+                                         </fieldset>
+                                       <h3>Ready To Fly - Finish</h3>
+                                       <fieldset>
+                                        {{-- @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1) --}}
+                                        {{-- {{ dd($applied->userUniversity->id) }} --}}
+                                       {{-- <form action="{{ url('application/update/university') }}" method="POST" enctype="multipart/form-data" > --}}
+                                       @if ($applied->is_accepeted == 1)
+                                           <div class="table-responsive" >
+                                               <table class="table table-hover table-striped" >
 
-                                   </div>
-                                      </fieldset>
-                                      <h3>Offer Acceptance</h3>
-                                      <fieldset>
+                                                   <tbody>
 
-                                    @if($applied->Is_applied==1)
+                                                   <tr>
+                                                       <th scope="row">University Name</th>
+                                                       <td>{{$applied->userUniversity->university->university_name ?? ''}}</td>
+                                                   </tr>
+                                                   <tr>
+                                                       <th scope="row">Course Name</th>
+                                                       <td>{{$applied->course->name ?? ''}}</td>
+                                                   </tr>
 
-                                        @if ($applied->approved_status == 1)
-                                        <h6> <b>
-                                            Offer Acceptance </b> </h6>
-                                            <div class="table-responsive" >
-                                                <table class="table table-hover table-striped" >
+                                               </tbody>
+                                           </table>
+                                       </div>
 
-                                                    <tbody>
-
-                                                    <tr>
-                                                        <th scope="row">University Name</th>
-                                                        <td>{{$applied->userUniversity->university->university_name ?? ''}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Course Name</th>
-                                                        <td>{{$applied->course->name ?? ''}}</td>
-                                                    </tr>
-                                                    @if ($applied->is_accepeted == 1)
-                                                    <tr>
-                                                        <th scope="row">Offer Acceptance</th>
-                                                        <td><span style="color:green">Accepted</span></td>
-                                                    </tr>
-                                                    @endif
-                                                    @if ($applied->is_accepeted == 2)
-                                                    <tr>
-                                                        <th scope="row">Offer Acceptance</th>
-                                                        <td><span style="color:red">Declined</span></td>
-                                                    </tr>
-                                                    @endif
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                          <div class="form-group">
-                                              <div class="fancy-checkbox">
-                                                  <label><span> <p> @if ($applied->is_accepeted == 0) University has accepted your application. Please accept before <b> {{$applied->deadline}} </b>@else @endif </p></span></label>
-
-                                                </div>
-                                          </div>
-                                          <div class="row clearfix">
-                                            @if ($applied->is_accepeted == 0)
-                                            <div class="form-group" style="margin-left: 217px;">
-                                                <h6 style="margin-left: 16px; color:orange">Accept Your Application by clicking the below button</h6>
-                                                  <a style="margin-left: 182px;" href="javascript:void(0);"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#acceptedModal">Accept</a>
-                                              </div>
-
-                                            @endif
-                                            {{-- @if ($applied->is_accepeted == 1)
-                                            <div class="form-group">
-                                                <h6 style="margin-left: 16px; color:green"> You have <b>Accepted</b> the Application </h6>
-                                              </div>
-                                            @endif
-                                            @if ($applied->is_accepeted == 2)
-                                            <div class="form-group">
-                                                <h6 style="margin-left: 16px; color:red"> You have <b>Cancelled</b> the Application </h6>
-                                              </div>
-                                            @endif --}}
-                                        </div>
-                                        @else
-
-                                        <div class="form-group">
-                                            <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>                                        </div>
-                                          @endif
-
-                                    @else
-                                          <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
-                                    @endif
-                                        </fieldset>
-                                      <h3>Ready To Fly - Finish</h3>
-                                            <fieldset>
-                                                     {{-- @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1) --}}
-                                                     {{-- {{ dd($applied->userUniversity->id) }} --}}
-                                                    {{-- <form action="{{ url('application/update/university') }}" method="POST" enctype="multipart/form-data" > --}}
-                                                    @if ($applied->is_accepeted == 1)
-                                                        <div class="table-responsive" >
-                                                            <table class="table table-hover table-striped" >
-
-                                                                <tbody>
-
-                                                                <tr>
-                                                                    <th scope="row">University Name</th>
-                                                                    <td>{{$applied->userUniversity->university->university_name ?? ''}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">Course Name</th>
-                                                                    <td>{{$applied->course->name ?? ''}}</td>
-                                                                </tr>
-
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-
-                                                        <div class="row clearfix">
-                                                          <input type="text"  name="appliedUniversityRowIdReadyToFly" value="{{ $applied->id }}" hidden>
+                                           <div class="row clearfix">
+                                             <input type="text"  name="appliedUniversityRowIdReadyToFly" value="{{ $applied->id }}" hidden>
 
 
-                                                            {{-- <div class="col-lg-6 col-md-12">
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control" value="@if(isset($applied->userUniversity->university->university_name)){{$applied->userUniversity->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-12">
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
-                                                                </div>
-                                                            </div> --}}
+                                               {{-- <div class="col-lg-6 col-md-12">
+                                                   <div class="form-group">
+                                                       <input type="text" class="form-control" value="@if(isset($applied->userUniversity->university->university_name)){{$applied->userUniversity->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
+                                                   </div>
+                                               </div>
+                                               <div class="col-lg-6 col-md-12">
+                                                   <div class="form-group">
+                                                       <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
+                                                   </div>
+                                               </div> --}}
 
-                                                            <div class="col-lg-2 col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="">Course Fees</label>
-                                                            <input type="text"  class="form-control" id="coursefees"  value="{{$applied->fees}}" />
-                                                          </div>
-                                                        </div>
-                                                     {{-- {{ dd($applied->documents) }} --}}
-                                    <div class="col-lg-10 col-md-12">
+                                               <div class="col-lg-2 col-md-12">
+                                           <div class="form-group">
+                                               <label for="">Course Fees</label>
+                                               <input type="text"  class="form-control" id="coursefees"  value="{{$applied->fees}}" />
+                                             </div>
+                                           </div>
+                                        {{-- {{ dd($applied->documents) }} --}}
+                                        <div class="col-lg-10 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')
                                             <div class="form-group">
                                                 <?php
@@ -590,40 +590,39 @@
 
                                               </div>
                                               @endif
-                                            </div>
-                                                        <div class="col-lg-6 col-md-12">
-                                                            <div class="form-group">
-                                                                @if($applied->is_complete==0)
-                                                                <button type="submit" class="btn btn-primary" id="rtf4" >Update</button>
+                                             </div>
+                                             <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    @if($applied->is_complete==0)
+                                                    <button type="submit" class="btn btn-primary" id="rtf4" >Update</button>
 
-                                                                {{-- <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof" data-toggle="modal" data-target="#readyToFly" > Ready to fly</button> --}}
-                                                                <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof"  > Ready to fly</button>
-                                                                @else
-                                                               <button type="button" name="adddocument" id="rtf3" class="btn btn-success">Completed</button>
-                                                            @endif
-                                                            </div>
-                                                        </div>
-
-
+                                                    {{-- <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof" data-toggle="modal" data-target="#readyToFly" > Ready to fly</button> --}}
+                                                    <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof"  > Ready to fly</button>
                                                     @else
-                                                    <div class="form-group">
-                                                        <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
-                                                    </div>
+                                                   <button type="button" name="adddocument" id="rtf3" class="btn btn-success">Completed</button>
+                                                @endif
+                                                </div>
+                                            </div>
+
+
+                                       @else
+                                       <div class="form-group">
+                                           <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
+                                       </div>
 
 
 
-                                                        </div>
-                                                    {{-- </form> --}}
 
-                                                    @endif
-                                            </fieldset>
-                                        </form>
+
+                                       @endif
+                               </fieldset>
+                                         </form>
                               </div>
                           </div>
                       </div>
                   </div>
-
-              </div>        </div>
+                </div>
+              </div>
         </div>
       </div>
 
@@ -633,6 +632,7 @@
 
 
   @endforeach
+</div>
 </div>
 </div>
 </div>

@@ -55,6 +55,7 @@ class ConsultantProfileController extends Controller
                     $user->fill($request->all());
                     $user->latitude = $data->latitude;
                     $user->longitude = $data->longitude;
+                    $user->countries_id = $request->countries_id;
                     $user->save();
                 $consultant = Consultant::where('user_id',$id)->first();
             if ($consultant == null)

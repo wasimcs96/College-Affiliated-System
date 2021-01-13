@@ -169,7 +169,7 @@
                         <div class="card-price d-flex align-items-center justify-content-between">
                             <p>
                                 <span class="price__num">Country</span>
-                                <span class="price__text">{{$consultant->country}}</span>
+                                <span class="price__text">{{$consultant->country->countries_name}}</span>
                             </p>
                             <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>

@@ -150,4 +150,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Advertisement::class,'user_id');
     }
+
+    public function country()
+    {
+        return $this->hasOne(Country::class,'countries_id');
+    }
 }

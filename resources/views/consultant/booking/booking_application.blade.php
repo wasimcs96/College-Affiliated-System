@@ -53,19 +53,26 @@
                                         <label for="name">Select University</label>
                                         <table class="table table-bordered" id="dynamic_field">
                                             <tr class="dynamic-added" >
-
-                                                <td class="university" data-row_id="{{$increase}}">
-                                                    <select id="university-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control FulNamo" name="university[{{$increase}}]" placeholder="Select University">
-                                                    <option value="" selected>University Name</option>
-                                                    @foreach($univers as $univer)
-                                                    <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option>
-
+                                                <td class="country" data-row_id="{{$increase}}">
+                                                    <select id="country-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="country[{{$increase}}]" placeholder="Select Country">
+                                                    <option value="" selected>Country Name</option>
+                                                    @foreach($countries as $country)
+                                                    <option value="{{$country->countries_id}}">{{$country->countries_name}}</option>
                                                     @endforeach
                                                   </select>
                                                 </td>
-                                                  <td id="">
-                                                      <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control FulNamo" >
+                                                <td class="university" data-row_id="{{$increase}}">
+                                                    <select id="university-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="university[{{$increase}}]" placeholder="Select University">
+                                                     <option value="" selected>University Name</option>
+                                                  {{--  @foreach($univers as $univer)
+                                                    <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option>
 
+                                                    @endforeach--}}
+                                                  </select>
+                                                </td>
+                                                  <td id="">
+                                                      <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control" >
+                                                        <option value="" selected>Course Name</option>
                                                     {{-- @foreach($courses as $course)
                                                    <option value="{{$course->id}}">{{$course->name}}</option>
                                                    @endforeach --}}
@@ -172,8 +179,9 @@
 // console.log(table_row);
       $('#add').click(function(){
              i++;
-           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td class="university" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="university-'+table_row+'" name="university['+table_row+']" class="form-control"><option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option><?php }?></select></td><td ><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control"></select></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td class="country" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="country-'+table_row+'" name="country['+table_row+']" class="form-control"><option selected>Choose Country</option><?php foreach($countries as $country){?> <option value="{{$country->countries_id}}">{{$country->countries_name}}</option><?php }?></select></td><td class="university" data-row_id='+table_row+'><select id="university-'+table_row+'" custom1="'+table_row+'"  name="university['+table_row+']" class="form-control"><option value="" selected>University Name</option></select></td><td ><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control"><option value="" selected>Course Name</option></select></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
            r=$('#dynamic_field .dynamic-added').length;
+
             if(r==3){
                 $('#add').prop('disabled', true);
             }
@@ -258,6 +266,31 @@ $(function() {
 });
 </script>
 <script>
+    $(document).on('change', '.country', function ()
+                   {
+                          dt  = $(this).data("row_id");
+
+                          $.ajaxSetup({headers:
+                           {
+                               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                           }
+                           });
+                           countryid=$('#country-'+dt+'').val();
+                           console.log(countryid);
+                                 $.ajax({
+                                     url:"{{ route('fetch.university_application') }}",
+                                     method:"GET",
+                                     data:{countryid:countryid,dt:dt},
+                                     success: function(result){
+                                     $('#university-'+dt+'').html(result);
+                                     console.log('success');
+                                   }
+                                   });
+
+                       });
+
+</script>
+<script>
      $(document).on('change', '.university', function ()
                     {
                            dt  = $(this).data("row_id");
@@ -281,6 +314,7 @@ $(function() {
                         });
 
 </script>
+
 
 <script>
     $(document).on('click', '.checkbox', function(){

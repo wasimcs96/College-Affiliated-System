@@ -13,6 +13,7 @@ use App\Models\ApplicationAppliedUniversity;
 use App\Models\University;
 use App\Models\Course;
 use App\Models\User;
+use App\Models\Country;
 use App\Models\ApplicationDocument;
 
 
@@ -29,19 +30,28 @@ class ConsultantBookingController extends Controller
    public function show($id)
    {
        $show = Booking::where('id',$id)->first();
+       $university = [];
+       $course = [];
        $enq = $show->enquiry;
        $queries = json_decode($enq,true);
-    //    dd( $queries);
-       $i = 0;
-       foreach($queries as $query)
-       {
-           $university_id[$i] = $query['university'] ?? '';
-           $course_id[$i] = $query['course'] ?? '';
-           $university[$i] =  User::where('id',$university_id[$i])->get()->first();
-           $course[$i] = Course::where('id',$course_id[$i])->get()->first();
-           $i++;
 
-       }
+       $i = 0;
+    //    dd($queries);
+       if(isset($queries))
+       {
+            foreach($queries as $query)
+            {
+
+                $university_id[$i] = $query['university'] ?? '';
+                $course_id[$i] = $query['course'] ?? '';
+                $university[$i] =  User::where('id',$university_id[$i])->get()->first();
+                // dd($university);
+                $course[$i] = Course::where('id',$course_id[$i])->get()->first();
+                $i++;
+
+            }
+        }
+
     //    $university0 =  University::where('id',$university_id[0])->get()->first();
     //    $university1 =  University::where('id',$university_id[1])->get()->first();
     //    $university2 =  University::where('id',$university_id[2])->get()->first();
@@ -70,7 +80,8 @@ public function application($id)
 {
     $book = Booking::where('id',$id)->get()->first();
     $courses = Course::all();
-    return view('consultant.booking.booking_application',compact('book','courses'));
+    $countries = Country::all();
+    return view('consultant.booking.booking_application',compact('book','courses','countries'));
 }
 
 
@@ -99,6 +110,7 @@ public function applicationStore(Request $request){
         'university_id' => $univers,
         'course_id' => $request->course[$key],
         'application_id' => $store->id,
+        'country_id' => $request->country[$key],
         // 'documents' =>$jsonApplicationStore,
 
         ]);
@@ -130,16 +142,36 @@ public function applicationStore(Request $request){
 
     function fetchCourse(Request $request)
     {
+        // dd($request->all());
         $fetch=User::where('id',$request->universityid)->first();
         $courses =  $fetch->universityCourse;
-        $output='';
+        $output='<option value="" selected>Course Name</option>';
         foreach($courses as $row)
         {
          $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
         }
         echo $output;
+    }
 
+    function fetchUniversity(Request $request)
+    {
+        // dd($request->all());
+        $fetch=Country::where('countries_id',$request->countryid)->first();
+        // dd($fetch);
+        $universities = User::where('countries_id',$request->countryid)->get();
+        //   dd( $universities->get()->toArray());
+        $output='<option value="" selected>University Name</option>';
+        foreach($universities as $university)
+        {
+        if($university->isUniversity())
+            {
 
+              $output .= '<option value="'.$university->id.'">'.$university->first_name.'</option>';
+
+            }
+        }
+        // dd($output);
+        echo $output;
     }
 
 }

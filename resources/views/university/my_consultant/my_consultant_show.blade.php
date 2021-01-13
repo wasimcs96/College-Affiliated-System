@@ -70,7 +70,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Country</th>
-                        <td>{{$consultant->country  ?? ''}}</td>
+                        <td>{{$consultant->country->countries_name  ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Status</th>

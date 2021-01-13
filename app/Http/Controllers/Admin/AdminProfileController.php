@@ -49,6 +49,7 @@ class AdminProfileController extends Controller
               $user->fill($request->all());
               $user->latitude = $data->latitude;
               $user->longitude = $data->longitude;
+              $user->countries_id = $request->countries_id;
               $user->save();
 
             //   $admin = Admin::create([

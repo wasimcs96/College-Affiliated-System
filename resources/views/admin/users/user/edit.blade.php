@@ -60,7 +60,7 @@
                                         <option value="">-- Select Country --</option>
                                         @if($countries->count() > 0)
                                                 @foreach($countries as $country)
-                                                    <option value="{{$country->countries_name}}"  <?php if($user->country == $country->countries_name) { echo "selected"; } ?>>{{$country->countries_name}}</option>
+                                                    <option value="{{$country->countries_id}}"  <?php if($user->countries_id == $country->countries_id) { echo "selected"; } ?>>{{$country->countries_name}}</option>
                                                 @endforeach
                                         @else
                                                 <option value="Data Not Available" >Data Not Available</option>

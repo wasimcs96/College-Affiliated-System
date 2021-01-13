@@ -123,11 +123,11 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="country">Country</label>
-                            <select name="country" class="form-control">
+                            <select name="countries_id" class="form-control">
                                 <option value="">-- Select Country --</option>
                                 @if($countries->count() > 0)
                                 @foreach($countries as $country)
-                                <option value="{{$country->countries_name}}"  <?php if(Auth()->user()->country == $country->countries_name) { echo "selected"; } ?>>{{$country->countries_name}}</option>
+                                <option value="{{$country->countries_id}}"  <?php if(Auth()->user()->countries_id == $country->countries_id) { echo "selected"; } ?>>{{$country->countries_name}}</option>
                                         @endforeach
                                         @else
                                         <option value="Data Not Available" >Data Not Available</option>

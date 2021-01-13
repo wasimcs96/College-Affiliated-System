@@ -55,7 +55,7 @@
 
                     <tr>
                         <th scope="row">Student Nationality</th>
-                        <td>{{$user->country ?? ''}}</td>
+                        <td>{{$user->country->countries_name ?? ''}}</td>
                     </tr>
 
                     {{-- <tr>

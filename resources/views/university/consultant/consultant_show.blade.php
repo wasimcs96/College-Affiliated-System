@@ -59,7 +59,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Country</th>
-                        <td>{{$status->userConsultant->country}}</td>
+                        <td>{{$status->userConsultant->country->countries_name}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Status</th>
