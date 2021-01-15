@@ -68,19 +68,17 @@
                             @if($show->status==3)<div class="btn btn-primary">Walking</div>@endif
                         </td>
                     </tr>
-                   <tr>
-                    <th>Enquiry</th>
-                    <td>{{$university0->university_name}}/{{$course0->name}}</td>
-                </tr>
+                    <?php $i = 1?>
+                    @if(isset($university) && $university != '')
+                    @foreach($university as $key=> $uni)
 
-                <tr>
-                    <th scope="row" style="background-color: #2c2f33;"></th>
-                    <td  style="background-color: #2c2f33;">{{$university1->university_name}}/{{$course1->name}}</td>
-                </tr>
-                <tr>
-                    <th scope="row"></th>
-                    <td>{{$university2->university_name}}/{{$course2->name}}</td>
-                </tr>
+                        <tr>
+                            <th scope="row">Student University / Course Preference-{{$i}}</th>
+                            <td>{{$uni->university->university_name ?? ''}} / {{$course[$key]->name ?? ''}}</td>
+                        </tr>
+                    <?php $i++ ?>
+                    @endforeach
+                    @endif
 
 
 <input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>

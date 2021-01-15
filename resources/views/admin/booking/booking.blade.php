@@ -39,23 +39,23 @@
 
                     </tfoot>
 
-                    @if($books->count() > 0)
+                    @if($bookings->count() > 0)
                     <tbody>
 
-                        @foreach($books as $book)
+                        @foreach($bookings as $booking)
                         <tr>
-                            <td>{{$book->user->first_name}}</td>
-                            <td>{{$book->consultant->user->first_name}}</td>
-                            <td>{{$book->booking_date}}</td>
+                            <td>{{$booking->user->first_name}} {{$booking->user->last_name}}</td>
+                            <td>{{$booking->userConsultant->first_name}} {{$booking->userConsultant->last_name}}</td>
+                            <td>{{$booking->booking_date}}</td>
                             {{-- <td>tru</td>--}}
-                            <td>{{$book->booking_start_time}}-{{$book->booking_end_time}}</td>
+                            <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td>
                             {{-- <td>2020/30/11</td> --}}
-                            <td>@if($book->status==0)<div class="btn btn-warning">Pending</div>@endif
-                                @if($book->status==1)<div class="btn btn-success">Accepted</div>@endif
-                                @if($book->status==2)<div class="btn btn-danger">Rejected</div>@endif
-                                @if($book->status==3)<div class="btn btn-primary">Walking</div>@endif
+                            <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
+                                @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
+                                @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
+                                @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
                             </td>
-                            <td style="text-align: center;"><a href="{{route('admin.booking_show',['id'=>$book->id])}}" class="btn btn-success"><i class="fa fa-edit"></i></a></td>
+                            <td style="text-align: center;"><a href="{{route('admin.booking_show',['id'=>$booking->id])}}" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
                         </tr>
 
 @endforeach
