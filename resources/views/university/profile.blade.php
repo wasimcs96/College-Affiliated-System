@@ -46,7 +46,14 @@
                 <hr>
                 <small class="text-muted">Mobile: </small>
                 <p>@if(isset(Auth()->user()->mobile)){{Auth()->user()->mobile}}@endif</p>
-
+                @if(file_exists(Auth()->user()->university->brochure))
+                <hr>
+                <small class="text-muted">See Brochure: </small>
+            <p> <a href="{{asset(auth()->user()->university->brochure)}}" class="btn btn-primary" target="blank">See</a></p>
+                <hr>
+                <small class="text-muted">Download Brochure: </small>
+                <p><a href="{{asset(auth()->user()->university->brochure)}}" class="btn btn-primary"  download>Download</a></p>
+@endif
             </div>
         </div>
         <div class="card">
@@ -68,10 +75,8 @@
                                 @if(isset($documents))
                                     @foreach($documents as $key => $value)
                                        <label class="control-inline fancy-checkbox">
-                                       {{-- <input type="hidden" name="document[{{$key}}]" value="0" hidden> --}}
                                        <input type="checkbox" name= "document[{{$key}}]" value="1" checked><span>{{$key}}</span></label>
                                        @php $inc++ @endphp
-
                                     @endforeach
                                 @endif
 
@@ -81,8 +86,10 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
+
         </div>
     </div>
+
 
 
     <div class="col-xl-8 col-lg-8 col-md-7">
@@ -131,6 +138,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                         <label for="mobile">University Mobile</label>
@@ -197,15 +205,25 @@
                         </div>
                     </div>
 
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label for="brochure">Upload Brochure</label>
+                            <div class="input-group">
+                                <input type="file" name="brochure" accept="application/pdf" />
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            {{-- <label for="profile_image">Profile Image</label> --}}
-                            <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif"type="file" class="dropify-fr"  >
+                            <label for="profile_image">Upload Profile Image</label>
+                            <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif" type="file" class="dropify-fr"  >
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
+
+            <button type="submit" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
             <button type="data-dismiss" class="btn btn-round btn-default ">Cancel</button>
             </form>
             </div>
@@ -290,21 +308,24 @@ $(".deleteRecord").click(function(){
 });
 
 </script>
+
 <script type="text/javascript">
-    $(document).ready(function(){
-        var i=0;
-        var document_row = {{$inc}} ;
-        $('#add_document2').click(function(){
-        rt=$('#document_name').val()
-        $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name= "document['+rt+']" value="1" checked><span>'+rt+'</span></label>')
-        $('#documentModal').modal('hide');
-        document.getElementById("basic-form").reset();
-        document_row++;
-    });
+     $(document).ready(function(){
+      var i=0;
+      var document_row = {{$inc}} ;
 
 
+
+    $('#add_document2').click(function(){
+    rt=$('#document_name').val()
+    //   console.log(rt);
+    $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="hidden" name="document['+rt+']" value="0"  hidden><input type="checkbox" customValue="'+rt+'" name= "document['+rt+']" value="1" class="checkbox"><span>'+rt+'</span></label>')
+    $('#documentModal').modal('hide');
+    document.getElementById("basic-form").reset();
+    document_row++;
     });
+
+    });
+
 </script>
 @stop
-
-
