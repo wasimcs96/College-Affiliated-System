@@ -14,33 +14,62 @@
                         </div>
                         <div class="search-fields-container margin-top-30px">
                             <div class="contact-form-action">
-                                <form action="#" class="row">
+                                <form action="{{route('universities_inner_fetch.universities')}}" method="POST" class="row">
+                                    @csrf
                                     <div class="col-lg-4 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">University Name</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
-                                                <input class="form-control" type="text" placeholder="University">
+                                                <input class="form-control" type="text" name="keyword" placeholder="University">
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                    <div class="col-lg-2 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text"> Country</label>
+                                            <label class="label-text">Country</label>
                                             <div class="form-group">
-                                                <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
+                                                <div class="select-contain w-auto">
+                                                <select class="select-contain-select" name="countries_id">
+                                                    <?php $countries = App\Models\Country::all();?>
+                                                    @if($countries->count() > 0)
+                                                    @foreach($countries as $country)
+                                                    <option value="{{$country->countries_id}}" @if(isset($countrycoming) && $countrycoming == $country->countries_id) selected @endif>{{$country->countries_name}}</option>
+                                                    @endforeach
+
+                                                    @else
+
+                                                        <option value="">Currently Unavailable</option>
+
+                                                    @endif
+
+                                                </select>
+                                            </div>
                                             </div>
                                         </div>
-                                    </div><!-- end col-lg-2 -->
+                                    </div><!-- end col-lg-3 -->
                                     <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Course Type</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1200AM">PG</option>
-                                                        <option value="1230AM">UG</option>
+                                                    <select id="typeselect" name="type" class="select-contain-select">
+                                                        <option value="">
+                                                            Select Type
+                                                        </option>
+                                                        <?php $courses = App\Models\Course::all(); 
+                                                        $type=[
+                                                            0=>"UG",
+                                                            1=>"PG",
+                                                            2=>"Diploma"
+                                                        ];
+                                                        ?>
+                                                        @foreach($type as $key=>$course)
+                                                        <option value="{{$key}}" @if(isset($typecoming) && $typecoming == $key) selected @endif>
+                                                            {{$course}}
+                                                        </option>
+                                                      
+                                                       @endforeach
 
                                                     </select>
                                                 </div>
@@ -52,92 +81,26 @@
                                             <label class="label-text">Course</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1200AM">Btech</option>
-                                                        <option value="1230AM">Btech</option>
-                                                        <option value="0100AM">Btech</option>
-                                                        <option value="0130AM">Btech</option>
-                                                        <option value="0200AM">Btech</option>
-                                                        <option value="0230AM">Btech</option>
-                                                        <option value="0300AM">Btech</option>
-                                                        <option value="0330AM">Btech</option>
-                                                        <option value="0400AM">Btech</option>
-                                                        <option value="0430AM">Btech</option>
-                                                        <option value="0500AM">Btech</option>
-                                                        <option value="0530AM">Btech</option>
-                                                        <option value="0600AM">Btech</option>
-                                                        <option value="0630AM">Btech</option>
-                                                        <option value="0700AM">dfgdfg</option>
-                                                        <option value="0730AM">Btech</option>
+                                                    <select class="select-contain-select" name="course_id">
+                                                    @foreach ($courses as $item)
+                                                    <option value="{{$item->id}}" @if(isset($course_id) && $course_id == $item->id) selected @endif>{{$item->name}}</option>
+                                                    
+                                                    @endforeach
+                                                        
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
                                    <!-- end col-lg-2 -->
-                                    <div class="col-lg-2 col-sm-2">
-                                        <div class="input-box">
-                                            <label class="label-text">Duration</label>
-                                            <div class="form-group">
-                                                <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-
-
-                                                        <option value="0700AM">6 months</option>
-                                                        <option value="0730AM">1 Years</option>
-                                                        <option value="0800AM">2 Years</option>
-                                                        <option value="0830AM">3 Years</option>
-                                                        <option value="0900AM" selected="">4 Years</option>
-                                                        <option value="0930AM">5 years</option>
-
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-3 -->
-                                </form>
+                                    
+                            
                             </div><!-- end contact-form-action -->
-                            {{-- <div class="advanced-wrap">
-                                <a class="btn collapse-btn theme-btn-hover-gray font-size-15" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
-                                    More option <i class="la la-angle-down ml-1"></i>
-                                </a>
-                                <div class="pt-3 collapse" id="collapseTwo">
-                                    <div class="slider-range-wrap ">
-                                        <div class="price-slider-amount padding-bottom-20px">
-                                            <label for="amount" class="filter__label">Price:</label>
-                                            <input type="text" id="amount" class="amounts" readonly>
-                                        </div><!-- end price-slider-amount -->
-                                        <div id="slider-range"></div><!-- end slider-range -->
-                                    </div><!-- end slider-range-wrap -->
-                                    <div class="checkbox-wrap padding-top-30px">
-                                        <h3 class="title font-size-15 pb-3">Car Categories</h3>
-                                        <div class="custom-checkbox d-inline-block mr-4">
-                                            <input type="checkbox" id="c1">
-                                            <label for="c1">Convertibles</label>
-                                        </div>
-                                        <div class="custom-checkbox d-inline-block mr-4">
-                                            <input type="checkbox" id="c2">
-                                            <label for="c2">Coupes</label>
-                                        </div>
-                                        <div class="custom-checkbox d-inline-block mr-4">
-                                            <input type="checkbox" id="c3">
-                                            <label for="c3">Hatchbacks</label>
-                                        </div>
-                                        <div class="custom-checkbox d-inline-block mr-4">
-                                            <input type="checkbox" id="c4">
-                                            <label for="c4">Minivans</label>
-                                        </div>
-                                        <div class="custom-checkbox d-inline-block mr-4">
-                                            <input type="checkbox" id="c5">
-                                            <label for="c5">SUVs</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
+                           
                             <div class="btn-box pt-3">
-                                <button class="theme-btn" type="button">Search Now</button>
+                                <button class="theme-btn" type="submit">Search Now</button>
                             </div>
+                        </form>
                         </div><!-- end search-fields-container -->
                     </div><!-- end search-result-content -->
                 </div><!-- end col-lg-12 -->
