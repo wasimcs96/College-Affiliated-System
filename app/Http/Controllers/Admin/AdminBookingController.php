@@ -11,8 +11,8 @@ class AdminBookingController extends Controller
 {
  Public function index(){
 
-    $books= Booking::orderBy('updated_at', 'DESC')->get();
-    return view('admin.booking.booking',compact('books'));
+    $bookings= Booking::orderBy('updated_at', 'DESC')->where('booking_for',0)->get();
+    return view('admin.booking.booking',compact('bookings'));
  }
 
 
@@ -21,22 +21,22 @@ class AdminBookingController extends Controller
     // dd($id);
      $show = Booking::where('id',$id)->first();
      $enq = $show->enquiry;
-     $queries = json_decode($enq,true);
+     $enquires = json_decode($book,true);
+     // dd($bookings);
      $i = 0;
-     foreach($queries as $query)
+     // dd(json_decode($book,true));
+     foreach($enquires as $enquiry)
      {
-         $university_id[$i] = $query['university'];
-         $course_id[$i] = $query['course'];
+         // dd($booking);
+         $university_id[$i] = $enquiry['university'] ?? '';
+          $course_id[$i] = $enquiry['course'] ?? '';
+
+         $university[$i] =  User::where('id',$university_id[$i])->get()->first();
+         $course[$i] = Course::where('id',$course_id[$i])->get()->first();
+         // dd($university[0]);
          $i++;
      }
-     $university0 =  University::where('id',$university_id[0])->get()->first();
-     $university1 =  University::where('id',$university_id[1])->get()->first();
-     $university2 =  University::where('id',$university_id[2])->get()->first();
-
-     $course0 = Course::where('id',$course_id[0])->get()->first();
-     $course1 = Course::where('id',$course_id[1])->get()->first();
-     $course2 = Course::where('id',$course_id[2])->get()->first();
-     return view('admin.booking.booking_show',compact('show','university0','university1','university2','course0','course1','course2'));
+     return view('admin.booking.booking_show',compact('show','university','course'));
  }
 
         public function accept(Request $request)
