@@ -69,7 +69,8 @@
                             <div class="tab-content" id="myTabContent3">
                                 <div class="tab-pane fade show active" id="one-way" role="tabpanel" aria-labelledby="one-way-tab">
                                     <div class="contact-form-action">
-                                        <form action="#" class="row align-items-center">
+                                        <form action="{{route('university_fetch.coursewise')}}" method="POST" class="row align-items-center">
+                                            @csrf
                                             {{-- <div class="col-lg-2 col-sm-6 pr-0">
                                                 <div class="input-box">
                                                     <label class="label-text">Country</label>
@@ -123,7 +124,7 @@
                                                     <label class="label-text" id="ali">Category</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select id="categoryselect" class="select-contain-select">
+                                                            <select id="categoryselect" name="category" class="select-contain-select" required>
                                                                 <option value="">
                                                                     Select Categories
                                                                 </option>
@@ -152,7 +153,7 @@
                                                     <label class="label-text">Courses Type</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select id="typeselect" class="select-contain-select">
+                                                            <select id="typeselect" name="type" class="select-contain-select" required>
                                                                 <option value="">
                                                                     Select Type
                                                                 </option>
@@ -180,10 +181,8 @@
                                                     <label class="label-text">Courses</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select id="selectcourse" class="select-contain-select">
-                                                                <option value="">
-                                                                    Select Course
-                                                                </option>
+                                                            <select id="selectcourse" name="course_id" class="form-control ert" required>
+                                                                <option value="" selected>Select Course</option>
                                                               
                                                                
 
@@ -192,25 +191,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{-- <div class="col-lg-2 col-sm-2">
-                                                <div class="input-box">
-                                                    <label class="label-text">Duration</label>
-                                                    <div class="form-group">
-                                                        <div class="select-contain w-auto">
-                                                            <select class="select-contain-select">
-                                                                <option value="1">1 Year</option>
-                                                                <option value="2">2 Years</option>
-                                                                <option value="3">3 Years</option>
-                                                                <option value="4">4 Years</option>
-                                                                <option value="5">5 Years</option>
-
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-3 --> --}}
+                                          
                                             <div class="col-lg-2">
-                                                <a href="flight-search-result.html" class="theme-btn w-100 text-center margin-top-20px">Search Now</a>
+                                                <button type="submit"  class="theme-btn w-100 text-center margin-top-20px">Search Now</button>
                                             </div>
                                         </form>
                                     </div>
@@ -221,17 +204,18 @@
                         </div><!-- end tab-pane -->
                         <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
                             <div class="contact-form-action">
-                                <form action="#" class="row align-items-center">
+                                <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                    @csrf
                                     <div class="col-lg-2 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
-                                                <select class="select-contain-select">
+                                                <select class="select-contain-select" name="countries_id" required>
                                                     <?php $countries = App\Models\Country::all();?>
                                                     @if($countries->count() > 0)
                                                     @foreach($countries as $country)
-                                                    <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
+                                                    <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
                                                     @endforeach
 
                                                     @else
@@ -245,24 +229,16 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
-                                    <div class="col-lg-4 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">University Name</label>
-                                            <div class="form-group">
-                                                <span class="las la-university form-icon"></span>
-                                                <input class="form-control" type="text" placeholder="University">
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-3 -->
+                                   
                                     <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">University Type</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1200AM">Private</option>
-                                                        <option value="1230AM">Government</option>
-
+                                                    <select class="select-contain-select" name="type">
+                                                        <option value="" selected>Select Type</option>
+                                                        <option value="0">Private</option>
+                                                        <option value="1">Government</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -319,7 +295,7 @@
                             </div><!-- end checkmark-wrap --> --}}
 
                             <div class="btn-box col-lg-2">
-                                <a href="hotel-search-result.html" style="margin-top: 20px" class="theme-btn">Search Now</a>
+                                <button type="submit" style="margin-top: 20px" class="theme-btn">Search Now</button>
                             </div>
                         </form>
                             </div>
@@ -327,14 +303,15 @@
                  <!-- end tab-pane -->
                         <div class="tab-pane fade" id="car" role="tabpanel" aria-labelledby="car-tab">
                             <div class="contact-form-action">
-                                <form action="#" class="row align-items-center">
+                                <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" class="row align-items-center">
+                                    @csrf
                                     <div class="col-lg-2 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
+                                                    <select class="select-contain-select" id="salazar" name="countries_id">
                                                         <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
@@ -352,36 +329,22 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-4 col-sm-2">
+                  
+                                   <div class="col-lg-4 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Consultant Name</label>
-                                            <div class="form-group">
-                                                <input class=" form-control" type="text" name="Consultant Name " Placeholder="Search Consultant by Name">
-
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-4 -->
-                                    {{-- <div class="col-lg-4 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">University </label>
+                                            <label class="label-text">Universities</label>
                                             <div class="form-group">
 
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1" selected>ATU</option>
-                                                        <option value="2">BTU</option>
-                                                        <option value="3">CTU</option>
-                                                        <option value="4">DTU</option>
-                                                        <option value="5">ETU</option>
-                                                        <option value="6">FTU</option>
-                                                        <option value="7">GTU</option>
+                                                    <select class="form-control tyt" name="univercity_id">
+                                                        <option value="" selected>Select University</option>
 
 
 
                                                     </select>
                                                 </div>                                            </div>
                                         </div>
-                                    </div><!-- end col-lg-4 --> --}}
+                                    </div><!-- end col-lg-4 -->
                                     {{-- <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Courses</label>
@@ -413,7 +376,7 @@
                                         </div>
                                     </div> --}}
                                     <div class="btn-box pt-3 col-lg-2">
-                                        <a href="car-search-result.html" class="theme-btn">Search Now</a>
+                                        <button type="submit" class="theme-btn">Search Now</button>
                                     </div>
                                 </form>
                                <!-- end row -->
@@ -2216,13 +2179,45 @@ rt=$('#categoryselect').val();
     method:"GET",
     data:{typeselect:typeselect,categoryselect:categoryselect},
     success: function(result){
-        //console.log(result)
-$('#selectcourse').html(result);
+        console.log(result)
+       
+$(".ert").html(result)
     }
     });
 }
     
     });
     
+    </script>
+    <script>
+        $(document).on('change', '#salazar', function ()
+        {
+        countryId = $(this).val();
+       
+    
+       
+    
+    
+    
+        
+        $.ajaxSetup({headers:
+        {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+       
+        $.ajax({
+        url:"{{ route('university_fetch_selected.countrywise') }}",
+        method:"POST",
+        data:{countryId:countryId},
+        success: function(result){
+            console.log(result)
+           
+    $(".tyt").html(result)
+        }
+        });
+    
+        
+        });
     </script>
 @endsection
