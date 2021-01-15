@@ -47,33 +47,25 @@
                         <td>{{$show->user->country->countries_name ?? ''}}</td>
                     </tr>
 
-                   {{-- <tr>
-                    <th scope="row">Enquiry</th>
-                    <td>{{$university[0]->university_name ?? ''}}/{{$course[0]->name ?? ''}}</td>
-                </tr>
-
-                <tr>
-                    <th scope="row"></th>
-                    <td>{{$university[1]->university_name ?? ''}}/{{$course[1]->name ?? ''}}</td>
-                </tr>
-                <tr>
-                    <th scope="row"></th>
-                    <td>{{$university[2]->university_name ?? ''}}/{{$course[2]->name ?? ''}}</td>
-                </tr> --}}
-                <?php $i = 1?>
-                @if(isset($university) && $university != '')
-                @foreach($university as $key=> $uni)
+                    <tr>
+                    <th scope="row">PR Migration</th>
+                    <td>{{$show->country->countries_name}}</td>
+                    </tr>
 
                     <tr>
-                        <th scope="row">Student University / Course Preference-{{$i}}</th>
-                        <td>{{$uni->university->university_name ?? ''}} / {{$course[$key]->name ?? ''}}</td>
-                    </tr>
-                <?php $i++ ?>
-                @endforeach
-                @endif
+                        <th scope="row">Status</th>
+                        <td>@if($show->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
+                            @if($show->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
+                            @if($show->status==2 ?? '')<div class="btn btn-danger">Rejected</div>@endif
+                            @if($show->status==3 ?? '')<div class="btn btn-primary">Walking</div>@endif
+                        </td>
+                        </tr>
+
+            </tbody>
+               </table>
                  <input type="text" class="" value="{{$show->id}}" name="booking_id" hidden>
             </div>
-                    </tbody>
+
 
                 </table>
                 <div id="res">
@@ -85,11 +77,9 @@
                 </div>
                 @if($show->status == 0)
                 <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                <a href="{{route('consultant.prmigration')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
                 @else
-                {{-- @if($show->application == NULL) --}}
-                <a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>
-                {{-- @endif --}}
+                <a href="{{route('consultant.prmigration')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
                 @endif
             </div>
         </div>
@@ -133,7 +123,7 @@ headers: {
 });
             $.ajax({
                 type: "post",
-                url: "{{route('consultant.booking.accept')}}",
+                url: "{{route('consultant.prmigration.accept')}}",
                 data: {booking_id:booking_id},
                 success: function (result) {
                     console.log('success');
@@ -141,8 +131,8 @@ headers: {
             });
     $("#accept").remove()
     $("#bac").remove()
-    $("#res").html("<a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
-    $("#dec").html("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat'>Close</a>")
+
+    $("#dec").html("<a href='{{route('consultant.prmigration')}}' class='btn btn-danger btn-flat'>Close</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
 

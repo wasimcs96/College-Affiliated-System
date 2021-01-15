@@ -180,7 +180,7 @@
                             <span class="price__num">Country</span>
                             <span class="price__text">{{$consultant->country->countries_name}}</span>
                         </p>
-                        <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                        <a href="{{route('prmigration.book',['id' => $consultant->id])}}" class="btn btn-primary">Book Now<i class="la la-angle-right"></i></a>
                     </div>
                 </div>
             </div><!-- end card-item -->

@@ -480,17 +480,21 @@
                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <?php
-                                $universities = DB::table('users') ->get();
-                                ?>
 
+                            <?php
+                            $universities = App\Models\User::get();
+                            ?>
 @if($universities->count()>0)
                             @foreach($universities as $key => $university)
+                            {{-- {{dd($university)}} --}}
                             {{-- @if($university->isUniversity()) --}}
-                            {{-- {{dd($university->id)}} --}}
                             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-
-                            <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="...">
+                                @if(isset($university->profile_image) && file_exists($university->profile_image))
+                                <img  src="{{asset($university->profile_image)}}" alt="" class="d-block w-100">
+                                    @else
+                                    <img  src="{{asset('frontEnd/assets/images/university.jpg')}} " class="d-block w-100">
+                                    @endif
+                            {{-- <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="..."> --}}
                             <div class="carousel-caption d-none d-md-block">
                               <h5>
                                   {{-- {{$university->university_name}} --}}
@@ -521,14 +525,15 @@
 
             <div class="col-lg-6">
                 <div class="section-heading ">
-<?php $consultants = DB::table('consultants')->get();
-?>
+
                     <h4> Featured Consultants</h4>
                     <hr>
-
+                    <?php $consultants = App\Models\User::get();
+                    ?>
+                    @if($consultants->count()>0)
                     <div class="testimonial-carousel carousel-action">
-                        @if($consultants->count()>0)
                         @foreach($consultants as $consultant)
+                        @if($consultant->isConsultant())
                         <div class="testimonial-card">
 
                             <div class="author-content d-flex align-items-center">
@@ -539,8 +544,8 @@
                                    <a href="{{route('consultant_detail',['id' => $consultant->id])}}"> <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image"></a>
                                 </div>
                                 <div class="author-bio">
-                                    <a href="{{route('consultant_detail',['id' => $consultant->id])}}"><h4 class="author__title">{{$consultant->company_name}}</h4></a>
-                                    <span class="author__meta">{{$consultant->company_name}}</span>
+                                    <a href="{{route('consultant_detail',['id' => $consultant->id])}}"><h4 class="author__title">{{$consultant->first_name}}</h4></a>
+                                    <span class="author__meta">{{$consultant->last_name}}</span>
                                     <span class="ratings d-flex align-items-center">
                                         <i class="la la-star"></i>
                                         <i class="la la-star"></i>
@@ -555,12 +560,13 @@
                             </div>
 
                         </div><!-- end testimonial-card -->
+                        @endif
                         @endforeach
+                    </div><!-- end testimonial-carousel -->
 @else
 <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
 @endif
 
-                    </div><!-- end testimonial-carousel -->
 
             </div><!-- end col-lg-8 -->
         </div>

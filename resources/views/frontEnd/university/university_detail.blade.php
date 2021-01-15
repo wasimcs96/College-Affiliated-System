@@ -158,7 +158,7 @@
                                 <div class="row pt-4">
                                     <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
-                                
+
                                             <li><span>Country:</span>{{$university->country->countries_name}}</li>
                                             <li><span>City:</span>{{$university->city}}</li>
                                             {{-- <li><span>Admission Opens:</span>19/09/20</li>

@@ -71,7 +71,21 @@ Route::post('booking/accept',[
     'uses'=>'ConsultantBookingController@accept',
     'as'=>'consultant.booking.accept'
 ]);
+/* PRMIGRATION Section #######################################*/
+Route::get('prmigration',[
+    'uses'=>'ConsultantPrmigrationController@prindex',
+    'as'=>'consultant.prmigration'
+]);
 
+Route::get('prmigration/show/{id}',[
+    'uses'=>'ConsultantPrmigrationController@prshow',
+    'as'=>'prmigration.booking.show'
+]);
+
+Route::post('prmigration/accept',[
+    'uses'=>'ConsultantPrmigrationController@accept',
+    'as'=>'consultant.prmigration.accept'
+]);
 /* applied Section */
 Route::get('applied',function(){
     return view('consultant.applied');

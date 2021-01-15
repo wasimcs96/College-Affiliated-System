@@ -16,4 +16,9 @@ class Country extends Model
         return $this->hasMany(User::class,'countries_id');
     }
 
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class,'countries_id');
+    }
+
 }
