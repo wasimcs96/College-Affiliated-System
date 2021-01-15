@@ -29,14 +29,15 @@ class UniversityProfileController extends Controller
     public function profileStore(Request $request)
     {
         // dd($request->all());
+
         $this->validate($request,[
             'university_name'=>'required',
 
             'email' => 'required|email',
              'mobile'=>'numeric|required',
-            'landline_1'=>'required',
-            'landline_2' => 'required',
-            'website' => 'required|url',
+            // 'landline_1'=>'required',
+            // 'landline_2' => 'required',
+            // 'website' => 'required|url',
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);

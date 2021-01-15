@@ -43,9 +43,8 @@
                     {{-- {{ dd($bookings) }} --}}
                     @if($bookings->count() > 0)
                     <tbody>
-
                         @foreach($bookings as $booking)
-
+                        @if($booking->booking_for == 0)
                         <tr>
                             <td>{{$booking->user->first_name ?? ''}} </td>
                             <td>{{$booking->user->mobile ?? ''}}</td>
@@ -59,9 +58,9 @@
                             </td>
                             <td style="text-align: center;"><a href="{{route('consultant.booking.show',['id'=> $booking->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
-@endforeach
-
-@endif
+                        @endif
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>

@@ -66,13 +66,13 @@
                     @csrf
                 <div class="row clearfix">
 
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="first_name">First Name</label>
                             <input type="text" value="@if(isset(Auth()->user()->first_name)){{Auth()->user()->first_name}}@endif" name="first_name" class="form-control" placeholder="First Name">
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="last_name">Last Name</label>
                             <input type="text" value="@if(isset(Auth()->user()->last_name)){{Auth()->user()->last_name}}@endif" name="last_name" class="form-control" placeholder="Last Name">
