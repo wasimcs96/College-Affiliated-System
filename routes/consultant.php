@@ -71,11 +71,6 @@ Route::post('booking/accept',[
     'uses'=>'ConsultantBookingController@accept',
     'as'=>'consultant.booking.accept'
 ]);
-/* PRMIGRATION Section #######################################*/
-Route::get('prmigration',[
-    'uses'=>'ConsultantPrmigrationController@prindex',
-    'as'=>'consultant.prmigration'
-]);
 
 Route::post('booking/decline',[
     'uses'=>'ConsultantBookingController@decline',
@@ -344,5 +339,20 @@ Route::get('bookings/follow_up/show/{id}',[
     'as' => 'consultant.booking.followup.show'
 ]);
 
+/* PRMIGRATION Section #######################################*/
+Route::get('prmigration',[
+    'uses'=>'ConsultantPrmigrationController@prindex',
+    'as'=>'consultant.prmigration'
+]);
+
+Route::get('prmigration/show/{id}',[
+    'uses'=>'ConsultantPrmigrationController@prshow',
+    'as'=>'prmigration.booking.show'
+]);
+
+Route::post('prmigration/accept',[
+    'uses'=>'ConsultantPrmigrationController@accept',
+    'as'=>'consultant.prmigration.accept'
+]);
 
 });
