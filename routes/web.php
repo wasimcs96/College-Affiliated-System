@@ -25,6 +25,41 @@ Route::get('university/detail/{id}',[
     'as' => 'university_detail'
 ]);
 
+Route::get('course/fetch/universitys',[
+    'uses' => 'FrontEndController\UniversityFilterController@filter',
+    'as' => 'university_fetch'
+]);
+
+
+Route::post('fetch/course/university/coursewise',[
+    'uses' => 'FrontEndController\UniversityFilterController@courseWiseUniversity',
+    'as' => 'university_fetch.coursewise'
+]);
+
+
+Route::post('fetch/university/countrywise',[
+    'uses' => 'FrontEndController\UniversityFilterController@countryWiseUniversity',
+    'as' => 'university_fetch.countrywise'
+]);
+
+
+Route::post('fetch/university/selectedcountrywise',[
+    'uses' => 'FrontEndController\UniversityFilterController@countrySelected',
+    'as' => 'university_fetch_selected.countrywise'
+]);
+
+
+
+Route::post('fetch/consultants/universitywise',[
+    'uses' => 'FrontEndController\UniversityFilterController@universityWiseConsultant',
+    'as' => 'consultant_fetch_selected.universitywise'
+]);
+
+Route::post('fetch/universities/innerfilter',[
+    'uses' => 'FrontEndController\UniversityFilterController@universitiesInnerFilter',
+    'as' => 'universities_inner_fetch.universities'
+]);
+
 Route::post('university/consultant',[
     'uses' => 'FrontEndController\UniversityFrontController@consultant',
     'as' => 'university_consultant'

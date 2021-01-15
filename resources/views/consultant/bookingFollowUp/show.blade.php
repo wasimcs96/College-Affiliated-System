@@ -1,70 +1,56 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Consultant')
-@section('title', 'Student')
+@section('title', 'See Booking Follow up Details')
 
 @section('content')
+
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Students<small>All Students</small></h2>
+            <h2>Application<small>Application Follow up Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+                {{-- <a href="{{route('consultant.application.followup.create')}}"class="btn btn-primary"><i class="fa fa-plus"></i>Add </a> --}}
+
             </ul>
         </div>
         <div class="body">
             <div class="table-responsive">
                 <table class="table table-striped table-hover dataTable js-exportable">
-                    <thead>
-                        <tr>
-                            <th> <b>
-                                Name</b></th>
-                            <th><b> Mobile </b></th>
-                            <th><b> E-mail</b></th>
-                            <th><b>City</b></th>
-                            <th><b>Country</b></th>
-                            <th><b> Status</b></th>
-                            <th><b>Actions</b></th>
-                        </tr>
-                    </thead>
-                    <tfoot>
 
-                    </tfoot>
-                    <?php $bookings=auth()->user()->consultantBooking;
-                     ?>
-                    {{-- {{ dd($bookings) }} --}}
-                    @if($bookings->count() > 0)
                     <tbody>
 
-                @foreach($bookings as $booking)
-                    @if($booking->status==1 || $booking->status==2 || $booking->status==3)
                         <tr>
-                            <td>{{$booking->user->first_name ?? ''}} </td>
-                            <td>{{$booking->user->mobile ?? ''}}</td>
-                            <td>{{$booking->user->email ?? ''}}</td>
-                            <td>{{$booking->user->city ?? ''}}</td>
-                            <td>{{$booking->user->country->countries_name ?? ''}}</td>
-                            <td> <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
-                                @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
-                                @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
-                                @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
-                            </td>
-                            </td>
-                            <td style="text-align: center;"><a href="{{route('consultant.student.show',['id'=> $booking->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <th scope="row">Student Name</th>
+                            <td>{{$booking->application->user->first_name ?? ''}} {{$booking->application->user->last_name ?? ''}}</td>
                         </tr>
-                    @endif
-                @endforeach
+                        <tr>
+                            <th scope="row">Note</th>
+                            <td>{{$booking->note ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Date</th>
+                            <td>{{$booking->date ?? ''}}</td>
+                        </tr>
 
-@endif
+
                     </tbody>
+
                 </table>
+
+                <a href="{{route('consultant.booking.followup')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                <a style="text-align: center;" href="{{route('consultant.booking.show',['id'=> $booking->booking_id])}}" class="btn btn-primary">Go to Booking<i class="icon-arrow"></i></a>
+
             </div>
         </div>
     </div>
 </div>
 </div>
-@stop
 
+
+
+@stop
 @section('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
@@ -80,7 +66,6 @@ tr.shown td.details-control {
 }
 </style>
 @stop
-
 @section('page-script')
 <script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>

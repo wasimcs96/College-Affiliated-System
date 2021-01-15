@@ -61,18 +61,37 @@ Route::get('applications', [
     'as' => 'client.applications'
 ]);
 
-Route::get('application/show/{id}', [
+Route::get('applications/show/{id}', [
     'uses' => 'ClientApplicationController@show',
     'as' => 'client.application.show'
 ]);
 
+Route::post('application/accepted',[
+    'uses' => 'ClientApplicationController@applicationAccepted',
+    'as' => 'client.application.offer.accepted'
+]);
+
+Route::post('application/offer/decline',[
+    'uses' => 'ClientApplicationController@offerDecline',
+    'as'=>'client.application.offer.decline'
+]);
+
+Route::post('application/document/store',[
+    'uses'=>'ClientApplicationController@documentStore',
+    'as'=>'client.application.document.store'
+]);
+
+Route::post('application/document/delete',[
+    'uses' =>'ClientApplicationController@documentDestroy',
+    'as'=>'client.application.document.destroy'
+]);
 /* Booking Section */
 Route::get('bookings', [
     'uses' => 'ClientBookingController@index',
     'as' => 'client.bookings'
 ]);
 
-Route::get('booking/show/{id}', [
+Route::get('bookings/show/{id}', [
     'uses' => 'ClientBookingController@show',
     'as' => 'client.booking.show'
 ]);

@@ -175,7 +175,7 @@ class ConsultantApplicationController extends Controller
 
     public function universityUpdate(Request $request)
     {
-        // dd($request->apply_id);
+        //  dd($request->all());
         if($request->hiddenValue == 4)
         {
              $id = $request->apply_id;
@@ -186,9 +186,9 @@ class ConsultantApplicationController extends Controller
              $university->documents = $document;
              $university->fees =$fees;
              $university->save();
-             return redirect()->back()->with('success','Document Updated Successfully');
+             return redirect()->back()->with('success','Application Updated Successfully');
         }
-        else
+        if($request->hiddenValue == 3)
         {
             $id = $request->apply_id;
             $fees = $request->fees;

@@ -1,75 +1,66 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Consultant')
-@section('title', 'Booking')
+@section('title', 'Booking Follow up')
 
 @section('content')
+
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Bookings<small>All booking requests</small></h2>
+            <h2>Booking<small>Booking Follow up</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li> --}}
+                {{-- <a href="{{route('consultant.application.followup.create')}}"class="btn btn-primary"><i class="fa fa-plus"></i>Add </a> --}}
+
             </ul>
         </div>
         <div class="body">
             <div class="table-responsive">
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
+
                         <tr>
-                            <th> <b>
-                                Name</b></th>
-                            <th><b> Mobile </b></th>
-                            <th><b> E-mail</b></th>
-                            <th><b>Date</b></th>
-                            <th><b>Time Slot</b></th>
-                            <th><b> Status</b></th>
-                            <th><b>Actions</b></th>
+                            <th> <b>Student Name</b></th>
+                            {{-- <th> <b>Status</b></th> --}}
+                            <th><b> Note </b></th>
+                            <th><b> Date </b></th>
+                            <th style="text-align: center;"><b> Actions </b></th>
                         </tr>
                     </thead>
-                    <tfoot>
-
-                    </tfoot>
-                    <?php $bookings=auth()->user()->consultantBooking;
-                     ?>
-                    {{-- {{ dd($bookings) }} --}}
                     @if($bookings->count() > 0)
-                    <tbody>
-                        @foreach($bookings as $booking)
-@if($booking->booking_for == 0)
+                   <tbody>
+                    @foreach ($bookings as $booking)
                         <tr>
-                            <td>{{$booking->user->first_name ?? ''}} </td>
-                            <td>{{$booking->user->mobile ?? ''}}</td>
-                            <td>{{$booking->user->email ?? ''}}</td>
-                            <td>{{$booking->booking_date ?? ''}}</td>
-                            <td>{{$booking->booking_start_time ?? ''}}-{{$booking->booking_end_time ?? ''}}</td>
-                            <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
-                                @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
-                                @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
-                                @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
+                            <td>{{$booking->booking->user->first_name ?? ''}} {{$booking->booking->user->last_name ?? ''}}</td>
+                            {{-- <td>@if($booking->application->status==0)<div class="btn btn-warning">In Progress</div>@endif
+                                @if($booking->application->status==1)<div class="btn btn-danger">Closed</div>@endif
+                            </td> --}}
+
+                            <td>{{$booking->note ?? ''}}</td>
+                            <td>{{$booking->date ?? ''}}</td>
+
+                            <td style="text-align: center;">
+                                <a href="{{route('consultant.booking.followup.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                <a href="{{route('consultant.booking.show',['id'=> $booking->booking_id])}}" class="btn btn-primary">Go to Booking<i class="icon-arrow"></i></a>
                             </td>
-                            <td style="text-align: center;"><a href="{{route('consultant.booking.show',['id'=> $booking->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+
                         </tr>
-                        @endif
+
                         @endforeach
-                    @endif
-                    </tbody>
+                    <tbody>
+
+                        @endif
                 </table>
             </div>
         </div>
     </div>
 </div>
 </div>
-@stop
 
+
+
+@stop
 @section('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
@@ -85,7 +76,6 @@ tr.shown td.details-control {
 }
 </style>
 @stop
-
 @section('page-script')
 <script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>

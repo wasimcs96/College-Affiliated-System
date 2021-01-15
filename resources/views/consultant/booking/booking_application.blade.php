@@ -54,7 +54,7 @@
                                         <table class="table table-bordered" id="dynamic_field">
                                             <tr class="dynamic-added" >
                                                 <td class="country" data-row_id="{{$increase}}">
-                                                    <select id="country-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="country[{{$increase}}]" placeholder="Select Country">
+                                                    <select id="country-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="country[{{$increase}}]" placeholder="Select Country" required>
                                                     <option value="" selected>Country Name</option>
                                                     @foreach($countries as $country)
                                                     <option value="{{$country->countries_id}}">{{$country->countries_name}}</option>
@@ -62,7 +62,7 @@
                                                   </select>
                                                 </td>
                                                 <td class="university" data-row_id="{{$increase}}">
-                                                    <select id="university-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="university[{{$increase}}]" placeholder="Select University">
+                                                    <select id="university-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="university[{{$increase}}]" placeholder="Select University" required>
                                                      <option value="" selected>University Name</option>
                                                   {{--  @foreach($univers as $univer)
                                                     <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option>
@@ -71,7 +71,7 @@
                                                   </select>
                                                 </td>
                                                   <td id="">
-                                                      <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control" >
+                                                      <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control" required>
                                                         <option value="" selected>Course Name</option>
                                                     {{-- @foreach($courses as $course)
                                                    <option value="{{$course->id}}">{{$course->name}}</option>
@@ -179,7 +179,7 @@
 // console.log(table_row);
       $('#add').click(function(){
              i++;
-           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td class="country" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="country-'+table_row+'" name="country['+table_row+']" class="form-control"><option selected>Choose Country</option><?php foreach($countries as $country){?> <option value="{{$country->countries_id}}">{{$country->countries_name}}</option><?php }?></select></td><td class="university" data-row_id='+table_row+'><select id="university-'+table_row+'" custom1="'+table_row+'"  name="university['+table_row+']" class="form-control"><option value="" selected>University Name</option></select></td><td ><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control"><option value="" selected>Course Name</option></select></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td class="country" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="country-'+table_row+'" name="country['+table_row+']" class="form-control" required><option selected>Choose Country</option><?php foreach($countries as $country){?> <option value="{{$country->countries_id}}">{{$country->countries_name}}</option><?php }?></select></td><td class="university" data-row_id='+table_row+'><select id="university-'+table_row+'" custom1="'+table_row+'"  name="university['+table_row+']" class="form-control" required><option value="" selected>University Name</option></select></td><td ><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control" required><option value="" selected>Course Name</option></select></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
            r=$('#dynamic_field .dynamic-added').length;
 
             if(r==3){

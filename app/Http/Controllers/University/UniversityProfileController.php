@@ -28,15 +28,16 @@ class UniversityProfileController extends Controller
 
     public function profileStore(Request $request)
     {
-        // dd($request);
+        // dd($request->all());
+
         $this->validate($request,[
             'university_name'=>'required',
 
             'email' => 'required|email',
              'mobile'=>'numeric|required',
-            'landline_1'=>'required',
-            'landline_2' => 'required',
-            'website' => 'required|url',
+            // 'landline_1'=>'required',
+            // 'landline_2' => 'required',
+            // 'website' => 'required|url',
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);
@@ -64,8 +65,17 @@ class UniversityProfileController extends Controller
                  'user_id'=>$user->id,
                  'university_name'=>$request->university_name,
                  'website'=>$request->website,
-                 'type'=>$request->type
+                 'type'=>$request->type,
+                //  'brochure'=>$request->brochure
              ]);
+
+             if($request->hasFile('brochure'))
+             {
+                 $brochure = $request->brochure;
+                 $brochure_new_name = time().$brochure->getClientOriginalName();
+                 $brochure->move(Config::get('define.brochure.brochure'),$brochure_new_name);
+                 $university->brochure = Config::get('define.brochure.brochure').'/'.$brochure_new_name;
+             }
 
              $university->save();
 

@@ -26,7 +26,6 @@
                     <thead>
                         <tr>
                             <th><b> Consultant  Name</b></th>
-                            <th><b> University  Name</b></th>
                             <th><b> Booking Date </b></th>
                             <th><b> Status</b></th>
                             <th><b> Actions</b></th>
@@ -39,17 +38,17 @@
                         @foreach($bookings as $booking)
                             @if(auth()->user()->id == $booking->client_id)
                             <tr>
-                                <td>{{$booking->user->first_name}}  {{$booking->user->last_name}} </td>
-                                <td></td>
-                                <td>{{$booking->booking_date}}</td>
+                                <td>{{$booking->userConsultant->first_name ?? ''}}  {{$booking->userConsultant->last_name ?? ''}} </td>
+
+                                <td>{{$booking->booking_date ?? ''}}</td>
 
 
 
-                                <td>@if($booking->status==0)<div class="btn btn-warning">Pending</div>@endif
-                                    @if($booking->status==1)<div class="btn btn-success">Accepted</div>@endif
-                                    @if($booking->status==2)<div class="btn btn-danger">Rejected</div>@endif
-                                    @if($booking->status==3)<div class="btn btn-primary">Walking</div>@endif
-                                </td>
+                                 <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
+                                @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
+                                @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
+                                @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
+                            </td>
 
                                 <td><a href="{{route('client.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                             </tr>

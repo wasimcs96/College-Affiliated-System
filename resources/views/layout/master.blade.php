@@ -14,7 +14,7 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1jKOFLhfQoZD3xJISSPnSW9-4SyYPpjY&callback=initAutocomplete&libraries=places&v=weekly"
       defer
     ></script>
-  
+
     <script>
       // This sample uses the Autocomplete widget to help the user select a
       // place, then it retrieves the address components associated with that
