@@ -230,7 +230,7 @@
                                       <div style="margin-left:24px;" id="documentid{{$rt->id}}">
                                       <input type="text" class="" value="{{$rt->id}}" name="document_id" hidden>
                                         <div class="img-responsive iws">
-                                            <a class="light-link" href="{{asset($rt->file)}}"><img  class="img-fluid rounded" src="@if(isset($rt->file)){{asset($rt->file)}}@endif"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
+                                            <a class="light-link" href="{{asset($rt->file)}}"><img  class="img-fluid rounded" src="@if(isset($rt->file) && file_exists($rt->file)){{asset($rt->file)}}@endif"  alt="" style="position: relative;   display: inline-block;  width:200px; height:142.82px;"></a>
                                             <div class="card-body">
                                                 <a href="{{asset($rt->file)}}" class="btn btn-primary" target="_blank" download style="margin-left: 19px;">
                                                     <i class="fa fa-download"></i> Download

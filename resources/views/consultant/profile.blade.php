@@ -246,6 +246,7 @@
                             <div id="locationField">
                                 <input class="form-control"
                                   id="autocomplete"
+                                  name="googleAddress"
                                   placeholder="Enter your address"
                                   onFocus="geolocate()"
                                   type="text"
@@ -253,7 +254,7 @@
                               </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
+                    {{-- <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="start_time">Selected Start Time</label>
                             <input type="text" value="@if(isset(auth()->user()->consultant->start_time)){{auth()->user()->consultant->start_time}}@endif" name="nothing" class="form-control" disabled>
@@ -264,13 +265,13 @@
                             <label for="start_time">Selected End Time</label>
                             <input type="text" value="@if(isset(auth()->user()->consultant->end_time)){{auth()->user()->consultant->end_time}}@endif" name="nothing" class="form-control" disabled>
                         </div>
-                    </div>
+                    </div> --}}
                 <div class="col-lg-6 col-md-12">
                     <div class="form-group">
                         <label for="start_time">Select Start Time</label>
                         <?php get_times( $default = '00:00', $interval = '+30 minutes' ); ?>
                         <select class="form-control" id="starttime" name="start_time" onchange="setEndTime(this.value)">
-                        <option value="">Select Start Time</option>
+                        <option value="{{auth()->user()->consultant->start_time ?? ''}}">@if(isset(auth()->user()->consultant->start_time)){{auth()->user()->consultant->start_time}} @else Select Start Time @endif </option>
                         <?php echo get_times(); ?></select>
                     </div><br><br>
                 </div>
@@ -279,7 +280,7 @@
                         <label for="exampleInputCity1">Select End Time</label>
                         <?php get_times( $default = '00:00', $interval = '+30 minutes' )?>
                         <select class="form-control" id="endtime" name="end_time" disabled>
-                        <option value="">Select End Time</option>
+                        <option value="{{auth()->user()->consultant->end_time ?? ''}}">@if(isset(auth()->user()->consultant->end_time)){{auth()->user()->consultant->end_time}} @else Select End Time @endif</option>
                         <?php echo get_times(); ?></select>
                     </div>
                 </div>
@@ -304,12 +305,13 @@
                       ?>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
+                            <label for="profile_image">Upload Profile Image</label>
                             <input value="@if(isset(Auth()->user()->profile_image)){{Auth()->user()->profile_image}}@endif"  name="profile_image" type="file" class="dropify-fr" >
                         </div>
                     </div>
 
                 </div>
-               
+
             <button type="submit" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
             <button type="data-dismiss" class="btn btn-round btn-default ">Cancel</button>
             </form>

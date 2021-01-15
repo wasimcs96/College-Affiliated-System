@@ -26,36 +26,64 @@
                 <table class="table table-hover table-striped">
 
                     <tbody>
+
+
                     <tr>
-                        <th scope="row">Status</th>
-                        <td>@if($booking->status==0)<div class="btn btn-warning">Pending</div>@endif
-                            @if($booking->status==1)<div class="btn btn-success">Accepted</div>@endif
-                            @if($booking->status==2)<div class="btn btn-danger">Rejected</div>@endif
-                            @if($booking->status==3)<div class="btn btn-primary">Walking</div>@endif
+                        <th scope="row">Consultant Name</th>
+                        <td>{{$booking->userConsultant->first_name ?? ''}} {{$booking->userConsultant->last_name ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Consultant Address</th>
+                        <td>{{$booking->userConsultant->address ?? ''}}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Consultant Mobile No.</th>
+                        <td>{{$booking->userConsultant->mobile ?? ''}}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Consultant E-mail</th>
+                        <td>{{$booking->userConsultant->email ?? ''}}</td>
+                    </tr>
+
+
+                    <tr>
+                        <th scope="row">Consultant Nationality</th>
+                        <td>{{$booking->userConsultant->country->countries_name ?? ''}}</td>
+                    </tr>
+                    @foreach($university as $key=> $uni)
+                    <tr>
+                        <th scope="row">My University/Course Preference-{{$key + 1}}</th>
+                        <td>{{$uni->university->university_name ?? '' }}/{{$course[$key]->name ?? ''}}</td>
+                    </tr>
+                    @endforeach
+                    <tr>
+                        <th scope="row">Booking Time-Slot</th>
+                        <td>{{$booking->booking_start_time ?? ''}}-{{$booking->booking_end_time ?? ''}}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Booking Date</th>
+                        <td>{{$booking->booking_date ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Booking Status</th>
+                        <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
+                            @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
+                            @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
+                            @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
                         </td>
                     </tr>
 
 
             </div>
-
-
-
-
-
-        {{-- </tr> --}}
-
                     </tbody>
 
                 </table>
                  <a href="{{route('client.bookings')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
 
-                <div id="res">
 
-                </div>
-                <br>
-                <div id="dec">
-
-                </div>
                 {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
                 <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a> --}}
             </div>

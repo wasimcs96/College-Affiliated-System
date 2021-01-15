@@ -27,7 +27,6 @@
                     <thead>
                         <tr>
                             <th> <b>Consultant Name</b></th>
-                            <th><b>Univesity Name </b></th>
                             <th><b> Applied On</b></th>
                             <th><b> Status</b></th>
                             <th><b>Actions</b></th>
@@ -45,7 +44,7 @@
                             <tr>
                                 <td>{{$application->user->first_name}} {{$application->user->last_name}} </td>
                                {{-- {{ dd($application->university) }} --}}
-                               <td></td>
+
 
                                 <td>{{$application->created_at}}</td>
                                 <td>

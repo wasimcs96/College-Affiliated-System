@@ -43,23 +43,20 @@
 
 
                     <tr>
-                        <th scope="row">Student Nationality</th>
+                        <th scope="row">Student Country</th>
                         <td>{{$show->user->country->countries_name ?? ''}}</td>
                     </tr>
 
-                   {{-- <tr>
-                    <th scope="row">Enquiry</th>
-                    <td>{{$university[0]->university_name ?? ''}}/{{$course[0]->name ?? ''}}</td>
-                </tr>
+                    <tr>
+                        <th scope="row">Booking Date</th>
+                        <td>{{$show->booking_date ?? ''}}</td>
+                    </tr>
 
-                <tr>
-                    <th scope="row"></th>
-                    <td>{{$university[1]->university_name ?? ''}}/{{$course[1]->name ?? ''}}</td>
-                </tr>
-                <tr>
-                    <th scope="row"></th>
-                    <td>{{$university[2]->university_name ?? ''}}/{{$course[2]->name ?? ''}}</td>
-                </tr> --}}
+                    <tr>
+                        <th scope="row">Booking Time Slot</th>
+                        <td>{{$booking->booking_start_time ?? ''}}-{{$booking->booking_end_time ?? ''}}</td>
+                    </tr>
+
                 <?php $i = 1?>
                 @if(isset($university) && $university != '')
                 @foreach($university as $key=> $uni)

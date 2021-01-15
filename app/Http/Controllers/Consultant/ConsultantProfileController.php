@@ -32,6 +32,8 @@ class ConsultantProfileController extends Controller
 
     public function profileStore(Request $request)
     {
+        // dd($request->all());
+        // dd(getcookie(curlock));
         $this->validate($request,[
             'first_name'=>'required',
             'last_name'=>'required',
