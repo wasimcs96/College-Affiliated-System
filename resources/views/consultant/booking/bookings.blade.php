@@ -44,7 +44,7 @@
                     @if($bookings->count() > 0)
                     <tbody>
                         @foreach($bookings as $booking)
-                        @if($booking->booking_for == 0)
+@if($booking->booking_for == 0)
                         <tr>
                             <td>{{$booking->user->first_name ?? ''}} </td>
                             <td>{{$booking->user->mobile ?? ''}}</td>

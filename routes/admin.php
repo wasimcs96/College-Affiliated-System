@@ -333,6 +333,8 @@ Route::get('/', function () {
     return view('frontEnd.index');
 })->name('front');
 
+
+
 // Booking Routes ###########################
 
 Route::get('booking',[

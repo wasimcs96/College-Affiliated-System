@@ -71,6 +71,11 @@ Route::post('booking/accept',[
     'uses'=>'ConsultantBookingController@accept',
     'as'=>'consultant.booking.accept'
 ]);
+/* PRMIGRATION Section #######################################*/
+Route::get('prmigration',[
+    'uses'=>'ConsultantPrmigrationController@prindex',
+    'as'=>'consultant.prmigration'
+]);
 
 Route::post('booking/decline',[
     'uses'=>'ConsultantBookingController@decline',

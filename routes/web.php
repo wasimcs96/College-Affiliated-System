@@ -1,8 +1,19 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('front');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('front');
+
+// Route::get('/', function () {
+//         return view('frontEnd.index');
+//     })->name('front');
+
+
+    // Route::get('/',[
+    //     'uses'=>'FrontEndController\FrontEndController@index',
+    //     'as'=>'front'
+    // ]);
+
 // ######################univerisity all###################################
 Route::get('university/all',[
     'uses'=>'FrontEndController\UniversityFrontController@index',
@@ -394,4 +405,19 @@ Route::get('prmigration', [
 Route::post('prmigration/searchresult',[
     'uses'=> 'FrontEndController\PrMigrationFrontController@search',
     'as' => 'Prmigration.search.result'
+]);
+
+Route::get('prmigration/book/{id}', [
+    'uses' => 'FrontEndController\PrMigrationFrontController@book',
+    'as' => 'prmigration.book'
+]);
+
+Route::post('prmigration/slots',[
+    'uses' => 'FrontEndController\PrMigrationFrontController@slots',
+    'as' => 'prmigration.slots.avail'
+]);
+
+Route::post('prmigration/consultant/booking/confirm',[
+    'uses' => 'FrontEndController\PrmigrationFrontController@book_store',
+    'as' => 'prmigration.book.store'
 ]);
