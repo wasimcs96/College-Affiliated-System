@@ -304,7 +304,7 @@
                               </div>
                               <div class="body wizard_validation">
 
-                                <form id="wizard_with_validation{{$key}}" action="{{ route('consultant.application.update.university') }}"" method="POST">
+                                <form id="wizard_with_validation{{$key}}" action="{{ route('consultant.application.update.university') }}" method="POST" class="addInput">
                                     @csrf
                                     <div id="addInput">
 
@@ -467,6 +467,8 @@
                                         {{-- {{ dd($applied->userUniversity->id) }} --}}
                                        {{-- <form action="{{ url('application/update/university') }}" method="POST" enctype="multipart/form-data" > --}}
                                        @if ($applied->is_accepeted == 1)
+                                       <h6> <b>
+                                        Ready to Fly </b> </h6>
                                            <div class="table-responsive" >
                                                <table class="table table-hover table-striped" >
 
@@ -499,11 +501,10 @@
                                                        <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
                                                    </div>
                                                </div> --}}
-
                                                <div class="col-lg-2 col-md-12">
                                            <div class="form-group">
                                                <label for="">Course Fees</label>
-                                               <input type="text"  class="form-control" id="coursefees"  value="{{$applied->fees}}" />
+                                               <input type="text" name="fees" class="form-control" id="coursefees" @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$applied->userUniversity->universityCourse[$key]->fees}}" @else value="{{$applied->fees ?? ''}}" @endif />
                                              </div>
                                            </div>
                                         {{-- {{ dd($applied->documents) }} --}}
@@ -535,7 +536,6 @@
                                                     @endforeach
                                                     @endif
                                                     @if (isset($documentVisa))
-
 
                                                     @foreach($documentVisa as $key => $value)
 
@@ -1431,12 +1431,14 @@ $(document).on('click', '#readyTo2', function ()
  <script>
       $(document).on('click', '#rtf', function ()
  {
-    $('#addInput').append('<input type="text" name="hiddenValue" value="3"  hidden>');
+    $('.addInput').append('<input type="text" name="hiddenValue" value="3"  hidden>');
+    // console.log('1');
  });
 
  $(document).on('click', '#rtf4', function ()
  {
-    $('#addInput').append('<input type="text" name="hiddenValue" value="4"  hidden>');
+    $('.addInput').append('<input type="text" name="hiddenValue" value="4"  hidden>');
+    // console.log('1dfhjs');
  });
  </script>
 @stop
