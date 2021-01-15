@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
+@section('parentPageTitle', 'Admin')
 @section('title', 'Advertisement')
 
 @section('content')
@@ -19,18 +19,18 @@
                     <thead>
                         <tr>
                             <th><b>Banner Image</b></th>
-                            <th><b>Transaction Id</b></th>
-                            <th><b>Start Date </b></th>
-                            <th><b>Expire Date</b></th>
+                            <th><b>User Name</b></th>
+                            <th><b>User type </b></th>
                             <th><b>Purchased Date</b></th>
                             <th><b> Status</b></th>
+                            <th><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
 
-                        <?php  $rts= auth()->user()->advertisement;
+                        <?php  $rts=App\Models\Advertisement::all();
                     ?>
                     @if($rts->count() > 0)
                     <tbody>
@@ -41,10 +41,11 @@
                         {{-- {{dd($rt->advertisement)}} --}}
                         <tr>
                             <td>  <img src="{{asset($rt->banner_image ?? '')}}" class="user-photo" alt="Banner image" width="40px" height="40px"></td>
-                             <td>{{$rt->order->transaction_id ?? ''}}</td>
+                             <td>{{$rt->user->first_name ?? ''}}</td>
 
-                            <td>{{$rt->created_at->format("Y-m-d") ?? ''}}</td>
-                            <td>{{$rt->expire_date ?? ''}}</td>
+                            <td>@if($rt->user->isConsultant() ?? '') Consultant @endif
+                            @if($rt->user->isUniversity() ?? '') Univeristy @endif</td>
+                            {{-- <td>{{$rt->expire_date ?? ''}}</td> --}}
                             <td>{{$rt->time_period}}</td>
 
                                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
@@ -53,8 +54,10 @@
                                 @if($rt->expire_date>$mytime)<div class="btn btn-success">Activated</div>@endif
                                 @if($rt->expire_date<$mytime && $rt->expire_date == !null)<div class="btn btn-danger">Expired</div>@endif
                                 @if($rt->expire_date == null)<div class="btn btn-warning">Pending</div>@endif
+                                {{-- @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif --}}
                             </td>
-                            {{-- <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td> --}}
+                            <td><a  href="{{route('advertisement_manager.update',['id'=>$rt->id])}}" class="btn btn-success"><i class="icon-check"></i></a>
+                                <a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td>
                         </tr>
                         {{-- @endif --}}
 @endforeach

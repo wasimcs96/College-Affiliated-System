@@ -353,7 +353,7 @@ Route::post('booking/accept',[
 
 // PR Migartion #####################
 
-Route::get('PR_Migration',[
+Route::get('pr_Migration',[
     'uses'=>'AdminPrmigationController@index',
     'as'=>'admin.prmigration'
 ]);
@@ -361,4 +361,15 @@ Route::get('PR_Migration',[
 Route::post('PR_Migration/store',[
     'uses'=>'AdminPrmigationController@store',
     'as'=>'admin.prmigration.store'
+]);
+
+// Advertisement ################################
+
+Route::get('admin/advertisement',[
+    'uses'=>'AdminAdvertisementController@index',
+    'as'=>'admin.advertisement_manager'
+]);
+Route::get('admin/advertisement/update,{id}',[
+    'uses'=>'AdminAdvertisementController@update',
+    'as'=>'advertisement_manager.update'
 ]);
