@@ -28,7 +28,7 @@ class UniversityAdvertisementController extends Controller
 //    dd($request->all());
    // dd($request->file('image'));
 
-   $expire=$request->package_time;
+   $expire=$request->expire_date;
    $new=Carbon::now()->addMonths($expire);
  $dt= $new->format('Y-m-d');
   if($request->hasFile('image'))
@@ -44,8 +44,8 @@ $as= Advertisement::create([
      'user_id'=>auth()->user()->id,
      'banner_image'=>$newname ?? '',
      'user_type'=>1,
-     'status'=>1,
-     'expire_date'=> $dt,
+     'status'=>0,
+     'time_period'=> $expire,
      'order_id'=>$request->orderId
  ]);
 
