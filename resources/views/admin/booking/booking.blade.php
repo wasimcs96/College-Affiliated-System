@@ -55,7 +55,7 @@
                                 @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
                                 @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
                             </td>
-                            <td style="text-align: center;"><a href="{{route('admin.booking_show',['id'=>$booking->id])}}" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
+                            <td style="text-align: center;"><a href="{{route('admin.booking.show',['id'=>$booking->id])}}" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
                         </tr>
 
 @endforeach

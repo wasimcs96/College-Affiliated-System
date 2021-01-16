@@ -42,4 +42,9 @@ class Application extends Model
     {
         return $this->hasMany(ApplicationDocument::class);
     }
+
+    public function userConsultant()
+    {
+        return $this->belongsTo(User::class,'consultant_id');
+    }
 }

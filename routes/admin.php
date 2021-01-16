@@ -18,33 +18,6 @@ Route::get('dashboard',function(){
 Route::get('mypage/index','MypageController@index')->name('mypage.index');
 
 
-// ####################application#############
-Route::get('application',function(){
-    return view('admin.application.application');
-})->name('admin.application');
-
-
-//#############################Applicaiton show routes###############################################
-// Route::get('application/university/show',function(){
-//     return view('admin.application.university_show');
-// })->name('admin.application.university_show');
-
-Route::get('application/show',function(){
-   return view('admin.application.application_show');
-})->name('admin.application.application_show');
-
-Route::get('application/application',function(){
-   return view('admin.application.application_application');
-})->name('admin.application.application_application');
-
-Route::get('application/create',function(){
-   return view('admin.application.application_create');
-})->name('admin.application.application_create');
-
-Route::get('booking/consultant',function(){
-   return view('admin.booking.consultant');
-})->name('admin.booking.consultant');
-
 
 // #################General Routes####################
 
@@ -325,15 +298,21 @@ Route::get('users/delete/{id}',[
     'as' => 'admin.user.delete'
 ]);
 
+/* Booking Follow Up Show */
+Route::get('bookings/follow_up',[
+    'uses' => 'AdminBookingFollowUpController@index',
+    'as' => 'admin.booking.followup'
+]);
 
+Route::post('bookings/follow_up/store',[
+    'uses' => 'AdminBookingFollowUpController@store',
+    'as' => 'admin.booking.followup.store'
+]);
 
-});
-
-Route::get('/', function () {
-    return view('frontEnd.index');
-})->name('front');
-
-
+Route::get('bookings/follow_up/show/{id}',[
+    'uses' => 'AdminBookingFollowUpController@show',
+    'as' => 'admin.booking.followup.show'
+]);
 
 // Booking Routes ###########################
 
@@ -342,9 +321,9 @@ Route::get('booking',[
     'as'=>'admin.booking'
 ]);
 
-Route::get('booking/{id}',[
+Route::get('booking/show/{id}',[
     'uses'=>'AdminBookingController@show',
-    'as'=>'admin.booking_show'
+    'as'=>'admin.booking.show'
 ]);
 Route::post('booking/accept',[
     'uses'=>'AdminBookingController@accept',
@@ -363,13 +342,87 @@ Route::post('PR_Migration/store',[
     'as'=>'admin.prmigration.store'
 ]);
 
-// Advertisement ################################
+/* Application Routes */
+Route::get('application',[
+    'uses'=>'AdminApplicationController@index',
+    'as'=>'admin.application'
+]);
 
-Route::get('admin/advertisement',[
-    'uses'=>'AdminAdvertisementController@index',
-    'as'=>'admin.advertisement_manager'
+Route::get('application/show/{id}',[
+    'uses'=>'AdminApplicationController@applicationCreate',
+    'as'=>'admin.application.create'
 ]);
-Route::post('admin/advertisement/update',[
-    'uses'=>'AdminAdvertisementController@update',
-    'as'=>'advertisement_manager.update'
+
+Route::post('application/document/store',[
+    'uses'=>'AdminApplicationController@documentStore',
+    'as'=>'admin.application.document'
 ]);
+
+Route::post('application/document/delete',[
+    'uses' =>'AdminApplicationController@destroy',
+    'as'=>'admin.application.document.destroy'
+]);
+
+Route::post('application/offer/decline',[
+    'uses' => 'AdminApplicationController@offerDecline',
+    'as'=>'admin.application.offer.decline'
+]);
+
+
+/* Application Apply */
+Route::post('application/apply',[
+    'uses' => 'AdminApplicationController@applicationApply',
+    'as' => 'admin.application.apply'
+]);
+
+Route::post('application/approval',[
+    'uses' => 'AdminApplicationController@applicationApprovel',
+    'as' => 'admin.application.approval'
+]);
+
+Route::post('application/accepted',[
+    'uses' => 'AdminApplicationController@applicationAccepted',
+    'as' => 'admin.application.accepted'
+]);
+
+Route::post('application/readytofly',[
+    'uses' => 'AdminApplicationController@applicationReady',
+    'as' => 'admin.application.readytofly'
+]);
+
+Route::post('application/update/university',[
+    'uses' =>'AdminApplicationController@universityUpdate',
+    'as'=>'admin.application.update.university'
+]);
+
+
+/* Application Follow Up */
+Route::get('applications/followup',[
+    'uses' => 'AdminApplicationFollowUpController@index',
+    'as' => 'admin.application.followup'
+]);
+
+Route::get('applications/followup/create',[
+    'uses' => 'AdminApplicationFollowUpController@create',
+    'as' => 'admin.application.followup.create'
+]);
+
+Route::post('applications/followup/store',[
+    'uses' => 'AdminApplicationFollowUpController@store',
+    'as' => 'admin.application.followup.store'
+]);
+
+Route::get('applications/followup/show/{id}',[
+    'uses' => 'AdminApplicationFollowUpController@show',
+    'as' => 'admin.application.followup.show'
+]);
+
+});
+
+Route::get('/', function () {
+    return view('frontEnd.index');
+})->name('front');
+
+
+
+
