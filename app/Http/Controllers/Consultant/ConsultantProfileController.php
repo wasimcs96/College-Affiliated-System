@@ -34,6 +34,17 @@ class ConsultantProfileController extends Controller
     {
         // dd($request->all());
         // dd(getcookie(curlock));
+         //Formatted address
+         $ata=[];
+         $formattedAddr = str_replace(' ','+',$request->googleAddress);
+         //Send request and receive json data by address
+         $geocodeFromAddr = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC1jKOFLhfQoZD3xJISSPnSW9-4SyYPpjY&address='.$formattedAddr.'&sensor=false'); 
+         $output = json_decode($geocodeFromAddr);
+         //Get latitude and longitute from json data
+         $ata['latitude']  = $output->results[0]->geometry->location->lat; 
+         $ata['longitude'] = $output->results[0]->geometry->location->lng;
+        //  dd($data);
+         //Return latitude and longitude of the given address
         $this->validate($request,[
             'first_name'=>'required',
             'last_name'=>'required',
@@ -55,8 +66,8 @@ class ConsultantProfileController extends Controller
                 }
 
                     $user->fill($request->all());
-                    $user->latitude = $data->latitude;
-                    $user->longitude = $data->longitude;
+                    $user->latitude = $ata['latitude'];
+                    $user->longitude =  $ata['longitude'];
                     $user->countries_id = $request->countries_id;
                     $user->save();
                 $consultant = Consultant::where('user_id',$id)->first();

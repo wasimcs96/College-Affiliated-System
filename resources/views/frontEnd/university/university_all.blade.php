@@ -32,6 +32,9 @@
                                                 <div class="select-contain w-auto">
                                                 <select class="select-contain-select" name="countries_id">
                                                     <?php $countries = App\Models\Country::all();?>
+                                                    <option value="">
+                                                        Select Country
+                                                    </option>
                                                     @if($countries->count() > 0)
                                                     @foreach($countries as $country)
                                                     <option value="{{$country->countries_id}}" @if(isset($countrycoming) && $countrycoming == $country->countries_id) selected @endif>{{$country->countries_name}}</option>
@@ -64,6 +67,7 @@
                                                             2=>"Diploma"
                                                         ];
                                                         ?>
+                                                        
                                                         @foreach($type as $key=>$course)
                                                         <option value="{{$key}}" @if(isset($typecoming) && $typecoming == $key) selected @endif>
                                                             {{$course}}
@@ -82,6 +86,9 @@
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select" name="course_id">
+                                                        <option value="">
+                                                            Select Course
+                                                        </option>
                                                     @foreach ($courses as $item)
                                                     <option value="{{$item->id}}" @if(isset($course_id) && $course_id == $item->id) selected @endif>{{$item->name}}</option>
                                                     
