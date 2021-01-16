@@ -73,9 +73,9 @@ echo $output;
 
     public function universitiesInnerFilter(Request $request){
 
-     
+    
      $universities=[];
-    //  if ($request->keyword != null) {
+      if ($request->keyword != null) {
         $keyword=$request->keyword;
      
         $users=User::with(['university' => function($q) use ($keyword){
@@ -90,7 +90,33 @@ echo $output;
        $universities[$key]=$user;
        }
        }
-    //  }
+      }
+
+      else{
+          if ($request->countries_id != null) {
+             $query=User::where('countries_id',$request->countries_id);
+             if ($request->type != null) {
+                 $tape=$request->type;
+                $query->with(['university' => function($q) use ($tape){
+                    $q->where('type', '=', $tape);
+                }]);
+             }
+             if ($request->course_id != null) {
+                $course_id=$request->course_id;
+               $query->with(['universityCourse' => function($q) use ($course_id){
+                   $q->where('course_id', '=', $course_id);
+               }]);
+            }
+           $rtd=$query->get();
+        //    dd($rtd);
+            foreach($rtd as $key => $que){
+            //   dd($que);
+            if ($que->university != null) {
+                $universities[$key]=$que;
+            }
+            }
+          }
+      }
 
     
   

@@ -332,7 +332,7 @@ Route::post('booking/accept',[
 
 // PR Migartion #####################
 
-Route::get('PR_Migration',[
+Route::get('pr_Migration',[
     'uses'=>'AdminPrmigationController@index',
     'as'=>'admin.prmigration'
 ]);
