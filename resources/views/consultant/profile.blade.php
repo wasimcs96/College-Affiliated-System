@@ -250,7 +250,7 @@
                                   placeholder="Enter your address"
                                   onFocus="geolocate()"
                                   type="text"
-                                />
+                                 required/>
                               </div>
                         </div>
                     </div>
