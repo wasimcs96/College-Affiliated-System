@@ -21,7 +21,7 @@
                             <th><b>Banner Image</b></th>
                             <th><b>Transaction Id</b></th>
                             <th><b>Start Date </b></th>
-                            <th><b>Expire Date</b></th>
+                            <th><b>End Date</b></th>
                             <th><b>Purchased Date</b></th>
                             <th><b> Status</b></th>
                         </tr>
