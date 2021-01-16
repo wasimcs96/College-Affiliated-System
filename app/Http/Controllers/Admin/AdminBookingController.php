@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\University;
 use App\Models\Course;
+use App\Models\User;
 class AdminBookingController extends Controller
 {
  Public function index(){
@@ -19,9 +20,9 @@ class AdminBookingController extends Controller
  public function show($id)
  {
     // dd($id);
-     $show = Booking::where('id',$id)->first();
-     $enq = $show->enquiry;
-     $enquires = json_decode($book,true);
+     $booking = Booking::where('id',$id)->first();
+     $enq = $booking->enquiry;
+     $enquires = json_decode($enq,true);
      // dd($bookings);
      $i = 0;
      // dd(json_decode($book,true));
@@ -36,7 +37,7 @@ class AdminBookingController extends Controller
          // dd($university[0]);
          $i++;
      }
-     return view('admin.booking.booking_show',compact('show','university','course'));
+     return view('admin.booking.booking_show',compact('booking','university','course'));
  }
 
         public function accept(Request $request)

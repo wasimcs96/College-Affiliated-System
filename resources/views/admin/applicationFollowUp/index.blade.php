@@ -1,70 +1,65 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
-@section('title', 'Application')
+@section('parentPageTitle', 'Admin')
+@section('title', 'Application Follow up')
 
 @section('content')
+
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Applications<small>All application created</small></h2>
+            <h2>Application<small>Application Follow up</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                </li>
+                {{-- <a href="{{route('consultant.application.followup.create')}}"class="btn btn-primary"><i class="fa fa-plus"></i>Add </a> --}}
+
             </ul>
         </div>
         <div class="body">
             <div class="table-responsive">
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
+
                         <tr>
-                            <th> <b>
-                                Name</b></th>
-                            <th><b> Mobile </b></th>
-                            <th><b> E-mail</b></th>
-                            {{-- <th><b> Universities</b></th> --}}
-                            {{-- <th><b> Date</b></th> --}}
-                            <th><b> Status</b></th>
-                            <th style="text-align: center;"><b> Actions</b></th>
+                            <th> <b>Student Name</b></th>
+                            {{-- <th> <b>Status</b></th> --}}
+                            <th><b> Note </b></th>
+                            <th><b> Date </b></th>
+                            <th style="text-align: center;"><b> Actions </b></th>
                         </tr>
                     </thead>
-                    <tfoot>
-
-                    </tfoot>
-
                     @if($applications->count() > 0)
-                    <tbody>
-
-                        @foreach($applications as $application)
-                        @foreach($application->applicationAppliedUniversity as $apply)
-                        @if($apply->university_id == auth()->user()->id)
+                   <tbody>
+                    @foreach ($applications as $application)
                         <tr>
-                            <td>{{$application->user->first_name ?? ''}} {{$application->user->last_name ?? ''}}</td>
-                            <td>{{$application->user->mobile ?? ''}}</td>
-                            <td>{{$application->user->email ?? ''}}</td>
-                            {{-- <td>{{$application->consultant->university->university_name}}</td> --}}
-                            {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
-                            <td>@if($application->status==0)<div class="btn btn-warning">In Progress</div>@endif
-                                @if($application->status==1)<div class="btn btn-danger">Closed</div>@endif
+                            <td>{{$application->application->user->first_name ?? ''}} {{$application->application->user->last_name ?? ''}}</td>
+                            {{-- <td>@if($application->application->status==0)<div class="btn btn-warning">In Progress</div>@endif
+                                @if($application->application->status==1)<div class="btn btn-danger">Closed</div>@endif
+                            </td> --}}
 
+                            <td>{{$application->note ?? ''}}</td>
+                            <td>{{$application->date ?? ''}}</td>
+
+                            <td style="text-align: center;">
+                                <a href="{{route('admin.application.followup.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                <a href="{{route('admin.application.create',['id'=> $application->application_id])}}" class="btn btn-primary">Go to Application<i class="icon-arrow"></i></a>
                             </td>
-                            <td style="text-align: center;"><a href="{{route('admin.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+
                         </tr>
-                        @endif
+
                         @endforeach
-                        @endforeach
+                    <tbody>
                         @endif
-                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
 </div>
-@stop
 
+
+
+@stop
 @section('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
@@ -80,7 +75,6 @@ tr.shown td.details-control {
 }
 </style>
 @stop
-
 @section('page-script')
 <script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
