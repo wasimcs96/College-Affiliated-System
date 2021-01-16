@@ -27,13 +27,13 @@ class ConsultantAdvertisementController extends Controller
 
    public function store(Request $request)
    {
-      
+
 //    dd($request->all());
    // dd($request->file('image'));
 
-    $expire=$request->package_time;
-      $new=Carbon::now()->addMonths($expire);
-    $dt= $new->format('Y-m-d');
+    // $expire=$request->package_time;
+    //   $new=Carbon::now()->addMonths($expire);
+    $dt= Carbon::now()->format('Y-m-d');
      if($request->hasFile('image'))
     {
         $ad_image = $request->image;
@@ -47,8 +47,8 @@ class ConsultantAdvertisementController extends Controller
         'user_id'=>auth()->user()->id,
         'banner_image'=>$newname ?? '',
         'user_type'=>0,
-        'status'=>1,
-        'expire_date'=> $dt,
+        'status'=>0,
+        'time_period'=> $dt,
         'order_id'=>$request->orderId
     ]);
 
