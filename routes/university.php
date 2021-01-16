@@ -244,4 +244,15 @@ Route::post('document/store',[
     'as'=>'university.document.store'
 ]);
 
+/* Application Routes */
+Route::get('application',[
+    'uses'=>'UniversityApplicationController@index',
+    'as'=>'university.application'
+]);
+
+Route::get('application/show/{id}',[
+    'uses'=>'UniversityApplicationController@applicationCreate',
+    'as'=>'university.application.create'
+]);
+
 });

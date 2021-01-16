@@ -58,8 +58,9 @@
                     </ul>
                 </li>
                 <li class="{{ Request::segment(1) == 'booking' ? 'active' : null }}"><a href="{{route('admin.booking')}}"><i class="icon-list"></i><span>Bookings</span></a></li>
-                <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('admin.application')}}"><i class="fa fa-sticky-note" aria-hidden="true"></i><span>Applications</span></a></li>
-
+                <li class="{{ Request::segment(3) == 'follow_up' ? 'active' : null }}"><a href="{{route('admin.booking.followup')}}"><i class="fa fa-list"></i><span>Booking Follow Up</span></a></li>
+                <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('admin.application')}}"><i class="icon-notebook"></i><span>Application</span></a></li>
+                <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="{{route('admin.application.followup')}}"><i class="fa fa-sticky-note"></i><span>Application Follow Up</span></a></li>
 
                 {{-- <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('admin.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li> --}}
 
