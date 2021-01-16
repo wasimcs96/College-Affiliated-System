@@ -369,7 +369,7 @@ Route::get('admin/advertisement',[
     'uses'=>'AdminAdvertisementController@index',
     'as'=>'admin.advertisement_manager'
 ]);
-Route::get('admin/advertisement/update,{id}',[
+Route::post('admin/advertisement/update',[
     'uses'=>'AdminAdvertisementController@update',
     'as'=>'advertisement_manager.update'
 ]);

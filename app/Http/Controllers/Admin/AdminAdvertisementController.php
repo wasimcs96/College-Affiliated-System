@@ -13,16 +13,20 @@ class AdminAdvertisementController extends Controller
         return view('admin.advertisement_manager.advertisement');
     }
 
-    public function Update($id)
+    public function update(Request $request)
     {
+        // dd($request->time_period);
         //  $expire=$request->package_time;
-          $new=Carbon::now()->addMonths(6);
-        $dt= $new->format('Y-m-d');
+        $sd=Carbon::now()->format('Y-m-d');
+          $new=Carbon::now()->addMonths($request->time_period);
+          $dt= $new->format('Y-m-d');
+        $id=$request->rtid;
+        // dd($id);
         $booking = Advertisement::find($id);
         //    dd($booking);
-
             $booking->status = 1;
             $booking->expire_date = $dt;
+            $booking->start_date = $sd;
             $booking->save();
             // return response('success');
 
