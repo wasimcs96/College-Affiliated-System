@@ -417,6 +417,18 @@ Route::get('applications/followup/show/{id}',[
     'as' => 'admin.application.followup.show'
 ]);
 
+
+// Advertisement ################################
+
+Route::get('admin/advertisement',[
+    'uses'=>'AdminAdvertisementController@index',
+    'as'=>'admin.advertisement_manager'
+]);
+Route::post('admin/advertisement/update',[
+    'uses'=>'AdminAdvertisementController@update',
+    'as'=>'advertisement_manager.update'
+]);
+
 });
 
 Route::get('/', function () {
