@@ -278,6 +278,38 @@
                 <div id="alert_add2"></div>
 @foreach($application->applicationAppliedUniversity as $key=>$applied)
 
+
+@if($applied->Is_applied==1)
+<style>
+    #wizard_with_validation{{$key}}-t-0{
+        background-color: green;
+    }
+</style>
+@endif
+@if($applied->approved_status==1)
+<style>
+    #wizard_with_validation{{$key}}-t-1{
+        background-color: green;
+    }
+</style>
+@endif
+@if($applied->is_accepeted==1)
+<style>
+    #wizard_with_validation{{$key}}-t-2{
+        background-color: green;
+    }
+</style>
+@endif
+@if($applied->is_complete==1)
+<style>
+    #wizard_with_validation{{$key}}-t-3{
+        background-color: green;
+    }
+</style>
+@endif
+
+
+
 <div class="accordion" id="accordionExample">
 
     <div class="card">
@@ -504,10 +536,12 @@
                                                <div class="col-lg-2 col-md-12">
                                            <div class="form-group">
                                                <label for="">Course Fees</label>
-                                               <input type="text" name="fees" class="form-control" id="coursefees" @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$applied->userUniversity->universityCourse[$key]->fees}}" @else value="{{$applied->fees ?? ''}}" @endif />
+                                               <?php $coursedetails=\App\Models\UniversityCourse::where('user_id',$applied->university_id)->where('course_id',$applied->course_id)->first(); ?>
+
+                                               <input type="text" name="fees" class="form-control" id="coursefees" @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="" @else value="{{$coursedetails->fees}}" @endif />
                                              </div>
                                            </div>
-                                        {{-- {{ dd($applied->documents) }} --}}
+                                     
                                         <div class="col-lg-10 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')
                                             <div class="form-group">
@@ -934,13 +968,9 @@
 
     $('#add_document3').click(function(){
       rt=$('#document_name2').val();
-
-      //   console.log(rt);
       $('#dynamic_document2').append('<label class="control-inline fancy-checkbox" style="margin-left: 1px;"><input type="hidden" name="doc['+rt+']" value="0"  hidden><input type="checkbox" name= "doc['+rt+']" value="1"><span>'+rt+'</span></label>')
-      // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet" '+document_row2+'><span>'+rt+'</span></label>')
       $('#documentModal2').modal('hide');
       document.getElementById("basic-form3").reset();
-    //   document_row2++ ;
     });
 
     $('#upload_document_button').click(function(){
