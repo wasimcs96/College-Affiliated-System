@@ -31,9 +31,9 @@ class ConsultantAdvertisementController extends Controller
 //    dd($request->all());
    // dd($request->file('image'));
 
-    // $expire=$request->package_time;
+    $expire=$request->expire_date;
     //   $new=Carbon::now()->addMonths($expire);
-    $dt= Carbon::now()->format('Y-m-d');
+    // $dt= Carbon::now()->format('Y-m-d');
      if($request->hasFile('image'))
     {
         $ad_image = $request->image;
@@ -48,7 +48,7 @@ class ConsultantAdvertisementController extends Controller
         'banner_image'=>$newname ?? '',
         'user_type'=>0,
         'status'=>0,
-        'time_period'=> $dt,
+        'time_period'=> $expire,
         'order_id'=>$request->orderId
     ]);
 
