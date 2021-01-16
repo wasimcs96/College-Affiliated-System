@@ -286,21 +286,21 @@
     }
 </style>
 @endif
-@if($applied->approved_status==1)
+@if($applied->approved_status==1 && $applied->Is_applied==1)
 <style>
     #wizard_with_validation{{$key}}-t-1{
         background-color: green;
     }
 </style>
 @endif
-@if($applied->is_accepeted==1)
+@if($applied->is_accepeted==1 && $applied->approved_status==1 && $applied->Is_applied==1)
 <style>
     #wizard_with_validation{{$key}}-t-2{
         background-color: green;
     }
 </style>
 @endif
-@if($applied->is_complete==1)
+@if($applied->is_complete==1 && $applied->is_accepeted==1 && $applied->approved_status==1 && $applied->Is_applied==1)
 <style>
     #wizard_with_validation{{$key}}-t-3{
         background-color: green;
@@ -472,16 +472,7 @@
                                                </div>
 
                                              @endif
-                                             {{-- @if ($applied->is_accepeted == 1)
-                                             <div class="form-group">
-                                                 <h6 style="margin-left: 16px; color:green"> You have <b>Accepted</b> the Application </h6>
-                                               </div>
-                                             @endif
-                                             @if ($applied->is_accepeted == 2)
-                                             <div class="form-group">
-                                                 <h6 style="margin-left: 16px; color:red"> You have <b>Cancelled</b> the Application </h6>
-                                               </div>
-                                             @endif --}}
+                                            
                                          </div>
                                          @else
 
@@ -495,9 +486,7 @@
                                          </fieldset>
                                        <h3>Ready To Fly - Finish</h3>
                                        <fieldset>
-                                        {{-- @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1) --}}
-                                        {{-- {{ dd($applied->userUniversity->id) }} --}}
-                                       {{-- <form action="{{ url('application/update/university') }}" method="POST" enctype="multipart/form-data" > --}}
+                                       
                                        @if ($applied->is_accepeted == 1)
                                        <h6> <b>
                                         Ready to Fly </b> </h6>
@@ -555,14 +544,14 @@
                                                 <div class="dynamic_document" >
                                                     @if (isset($documentDefault))
 
-                                                    @foreach($documentDefault as $key => $value)
+                                                    @foreach($documentDefault as $dockey => $value)
 
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px" id="dynamic_document2">
 
-                                                        <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
-                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
+                                                        <input type="hidden" name="doc[{{$dockey}}]" value="0" hidden>
+                                                        <input type="checkbox" name="doc[{{$dockey}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
 
-                                                        <span>{{$key}}</span>
+                                                        <span>{{$dockey}}</span>
 
                                                         @php $increase++ @endphp
 
@@ -571,14 +560,14 @@
                                                     @endif
                                                     @if (isset($documentVisa))
 
-                                                    @foreach($documentVisa as $key => $value)
+                                                    @foreach($documentVisa as $htkey => $htvalue)
 
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
-                                                        <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
+                                                        <input type="hidden" name="doc[{{$htkey}}]" value="0" hidden>
 
-                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
+                                                        <input type="checkbox" name="doc[{{$htkey}}]" id="document[{{$increase}}]" value="{{$htvalue}}" checked style="margin-right: 4px">
 
-                                                        <span>{{$key}}</span>
+                                                        <span>{{$htkey}}</span>
 
                                                         @php $increase++ @endphp
 
@@ -587,7 +576,7 @@
                                                     @endif
                                                 </div>
 
-                                                <button type="button" name="adddocument" id="add_document_university" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
+                                                <button type="button"  name="adddocument" id="add_document_university" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
 
                                               </div>
                                             @else
@@ -602,14 +591,14 @@
                                                     @if (isset($documentSelect))
 
 
-                                                    @foreach($documentSelect as $key => $value)
+                                                    @foreach($documentSelect as $rtkey => $rtvalue)
 
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
-                                                        <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
-                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="1" @if($value == 1) checked @endif style="margin-right: 4px">
+                                                        <input type="hidden" name="doc[{{$rtkey}}]" value="0" hidden>
+                                                        <input type="checkbox" name="doc[{{$rtkey}}]" id="document[{{$increase}}]" value="1" @if($rtvalue == 1) checked @endif style="margin-right: 4px">
 
-                                                        <span>{{$key}}</span>
+                                                        <span>{{$rtkey}}</span>
 
                                                         @php $increase++ @endphp
 
@@ -954,7 +943,7 @@
       var postURL = "<?php echo url('addmore'); ?>";
       var i=1;
       var document_row = {{$inc}} ;
-
+      var newval='';
       clc=0;
       $('#add_document2').click(function(){
       rt=$('#document_name').val()
@@ -971,6 +960,7 @@
       $('#dynamic_document2').append('<label class="control-inline fancy-checkbox" style="margin-left: 1px;"><input type="hidden" name="doc['+rt+']" value="0"  hidden><input type="checkbox" name= "doc['+rt+']" value="1"><span>'+rt+'</span></label>')
       $('#documentModal2').modal('hide');
       document.getElementById("basic-form3").reset();
+      
     });
 
     $('#upload_document_button').click(function(){
