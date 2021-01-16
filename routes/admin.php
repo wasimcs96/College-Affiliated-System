@@ -327,9 +327,10 @@ Route::get('users/delete/{id}',[
 
 
 
+});
 
 Route::get('/', function () {
-   return view('frontEnd.index');
+    return view('frontEnd.index');
 })->name('front');
 
 
@@ -337,42 +338,28 @@ Route::get('/', function () {
 // Booking Routes ###########################
 
 Route::get('booking',[
-   'uses'=>'AdminBookingController@index',
-   'as'=>'admin.booking'
-   ]);
-
-   Route::get('booking/{id}',[
-      'uses'=>'AdminBookingController@show',
-      'as'=>'admin.booking_show'
-      ]);
-      Route::post('booking/accept',[
-         'uses'=>'AdminBookingController@accept',
-         'as'=>'admin.booking.accept'
-         ]);
-
-         // PR Migartion #####################
-
-         Route::get('pr_Migration',[
-            'uses'=>'AdminPrmigationController@index',
-            'as'=>'admin.prmigration'
-            ]);
-
-            Route::post('PR_Migration/store',[
-               'uses'=>'AdminPrmigationController@store',
-               'as'=>'admin.prmigration.store'
-               ]);
-
-
-// Advertisement ################################
-
-Route::get('advertisement',[
-   'uses'=>'AdminAdvertisementController@index',
-   'as'=>'admin.advertisement_manager'
-]);
-Route::post('advertisement/update',[
-   'uses'=>'AdminAdvertisementController@update',
-   'as'=>'advertisement_manager.update'
+    'uses'=>'AdminBookingController@index',
+    'as'=>'admin.booking'
 ]);
 
+Route::get('booking/{id}',[
+    'uses'=>'AdminBookingController@show',
+    'as'=>'admin.booking_show'
+]);
+Route::post('booking/accept',[
+    'uses'=>'AdminBookingController@accept',
+    'as'=>'admin.booking.accept'
+]);
 
-            });
+// PR Migartion #####################
+
+Route::get('pr_Migration',[
+    'uses'=>'AdminPrmigationController@index',
+    'as'=>'admin.prmigration'
+]);
+
+Route::post('PR_Migration/store',[
+    'uses'=>'AdminPrmigationController@store',
+    'as'=>'admin.prmigration.store'
+]);
+
