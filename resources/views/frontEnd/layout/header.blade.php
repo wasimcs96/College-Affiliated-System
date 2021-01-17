@@ -213,6 +213,8 @@
                                             <li><a href="{{route('blog_all')}}">Blog</a></li>
                                             <li><a href="{{route('contact')}}">Contact Us</a></li>
                                             <li><a href="{{route('about')}}">About Us</a></li>
+                                            <li><a href="{{route('faq.front')}}">FAQ</a></li>
+
                                         </ul>
                                     </li>
                                 </ul>

@@ -421,3 +421,8 @@ Route::post('prmigration/consultant/booking/confirm',[
     'uses' => 'FrontEndController\PrmigrationFrontController@book_store',
     'as' => 'prmigration.book.store'
 ]);
+
+Route::get('frequently/asked/question',[
+    'uses'=>'FrontEndController\faqFrontController@index',
+    'as'=>'faq.front'
+]);
