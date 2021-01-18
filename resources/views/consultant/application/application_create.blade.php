@@ -472,7 +472,7 @@
                                                </div>
 
                                              @endif
-                                            
+
                                          </div>
                                          @else
 
@@ -484,12 +484,12 @@
                                            <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
                                      @endif
                                          </fieldset>
-                                       <h3>Ready To Fly - Finish</h3>
+                                       <h3>Applied For Visa - Finish</h3>
                                        <fieldset>
-                                       
+
                                        @if ($applied->is_accepeted == 1)
                                        <h6> <b>
-                                        Ready to Fly </b> </h6>
+                                        Applied For Visa </b> </h6>
                                            <div class="table-responsive" >
                                                <table class="table table-hover table-striped" >
 
@@ -507,7 +507,8 @@
                                                </tbody>
                                            </table>
                                        </div>
-
+                                       <h6> <b>
+                                        Visa Documents</b> </h6>
                                            <div class="row clearfix">
                                              <input type="text"  name="appliedUniversityRowIdReadyToFly" value="{{ $applied->id }}" hidden>
 
@@ -530,7 +531,7 @@
                                                <input type="text" name="fees" class="form-control" id="coursefees" @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="" @else value="{{$coursedetails->fees}}" @endif />
                                              </div>
                                            </div>
-                                     
+
                                         <div class="col-lg-10 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')
                                             <div class="form-group">
@@ -541,12 +542,12 @@
                                                 $increase=0; ?>
                                                 <label for="documents">Documents</label>
                                                 <br/>
-                                                <div class="dynamic_document" >
+                                                <div class="dynamic_document" id="dynamic_document-{{$key}}">
                                                     @if (isset($documentDefault))
 
                                                     @foreach($documentDefault as $dockey => $value)
 
-                                                    <label class="control-inline fancy-checkbox" style="margin-right: 4px" id="dynamic_document2">
+                                                    <label class="control-inline fancy-checkbox" style="margin-right: 4px" >
 
                                                         <input type="hidden" name="doc[{{$dockey}}]" value="0" hidden>
                                                         <input type="checkbox" name="doc[{{$dockey}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
@@ -576,7 +577,7 @@
                                                     @endif
                                                 </div>
 
-                                                <button type="button"  name="adddocument" id="add_document_university" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
+                                                <button type="button" customDoc="{{$key}}"  name="adddocument " id="add_document_university" class="btn btn-primary btn-m add_document_university" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
 
                                               </div>
                                             @else
@@ -587,7 +588,7 @@
                                                 $increase=0; ?>
                                                 <label for="documents">Documents</label>
                                                 <br/>
-                                                <div class="dynamic_document" id="dynamic_document2">
+                                                <div class="dynamic_document" id="dynamic_document-{{$key}}">
                                                     @if (isset($documentSelect))
 
 
@@ -607,7 +608,7 @@
                                                     @endif
                                                 </div>
 
-                                                <button type="button" name="adddocument" id="add_document_university" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
+                                                <button type="button" customDoc="{{$key}}" name="adddocument" id="add_document_university" class="btn btn-primary btn-m add_document_university" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
 
                                               </div>
                                               @endif
@@ -837,7 +838,7 @@
         </div>
         <div class="modal-body">
             <form id="basic-form2" class="basic-form" method="post" novalidate action="#">
-                <div class="form-group">
+                <div class="form-group" id="documentError">
                     <label>Document Name</label>
                     <input type="text" class="form-control" name="document_name" id="document_name" required>
                 </div>
@@ -863,7 +864,7 @@
         </div>
         <div class="modal-body">
             <form id="basic-form3" class="basic-form" method="post" novalidate action="#">
-                <div class="form-group">
+                <div class="form-group" id="document2Error">
                     <label>Document Name</label>
                     <input type="text" class="form-control" name="document_name2" id="document_name2" required>
                 </div>
@@ -943,26 +944,46 @@
       var postURL = "<?php echo url('addmore'); ?>";
       var i=1;
       var document_row = {{$inc}} ;
-      var newval='';
+    //   var newval='';
       clc=0;
       $('#add_document2').click(function(){
       rt=$('#document_name').val()
       //   console.log(rt);
+      if(rt=='')
+      {
+        $('#documentError').html(' <label>Document Name</label><input type="text" class="form-control" name="document_name" id="document_name" required><strong><span style="color:red">*This field is required</span></strong>')
+      }
+      else
+      {
       $('#dynamic_document').append('<label class="control-inline fancy-checkbox" style="margin-left: 1px;"><input type="hidden" name="document['+rt+']" value="0"  hidden><input type="checkbox" customValue="'+rt+'" name= "document['+rt+']" value="1" class="checkbox"><span>'+rt+'</span></label>')
       // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
       $('#documentModal').modal('hide');
       document.getElementById("basic-form2").reset();
        document_row++
+      }
     });
+
+    $('.add_document_university').click(function(){
+
+    // var id = '';
+    newval = $(this).attr('customDoc');
+    console.log(newval);
 
     $('#add_document3').click(function(){
-      rt=$('#document_name2').val();
-      $('#dynamic_document2').append('<label class="control-inline fancy-checkbox" style="margin-left: 1px;"><input type="hidden" name="doc['+rt+']" value="0"  hidden><input type="checkbox" name= "doc['+rt+']" value="1"><span>'+rt+'</span></label>')
+      docName=$('#document_name2').val();
+      if(docName=='')
+      {
+        $('#document2Error').html(' <label>Document Name</label><input type="text" class="form-control" name="document_name2" id="document_name2" required><strong><span style="color:red">*This field is required</span></strong>')
+      }
+      else
+      {
+      $('#dynamic_document-'+newval+'').append('<label class="control-inline fancy-checkbox" style="margin-left: 1px;"><input type="hidden" name="doc['+docName+']" value="0"  hidden><input type="checkbox" customValue="'+docName+'" name= "doc['+docName+']" value="1" class="checkbox"><span>'+docName+'</span></label>')
       $('#documentModal2').modal('hide');
       document.getElementById("basic-form3").reset();
-      
+      newval = '';
+      }
     });
-
+});
     $('#upload_document_button').click(function(){
     //   rt=$('#document_name').val()
     //   console.log(rt);
@@ -1281,13 +1302,13 @@ var j = 0;
  {
     appliedUniversityRowIdReadyToFly=$(this).attr('custom1');
     fees=$('#coursefees').val();
-    documents = document.getElementsByName('doc[]');
-    // console.log(.val());
+//     documents = document.getElementsByName('doc[]');
+//     // console.log(.val());
 
-   Array.from(documents).forEach((element)=>{
-     console.log(element.value);
-     docs.push(element.value)
-   });
+//    Array.from(documents).forEach((element)=>{
+//      console.log(element.value);
+//      docs.push(element.value)
+//    });
 
 console.log(docs)
 
@@ -1356,14 +1377,14 @@ console.log(docs)
 {
    appliedUniversityRowIdReadyToFly=$(this).attr('custom1');
    fees=$('#coursefees').val();
-   documents = document.getElementsByName('doc[]');
+//    documents = document.getElementsByName('doc[]');
    // console.log(.val());
 
-  Array.from(documents).forEach((element)=>{
-    // console.log(element.value);
-    docs.push(element.value)
-    console.log(docs);
-  });
+//   Array.from(documents).forEach((element)=>{
+//     // console.log(element.value);
+//     docs.push(element.value)
+//     console.log(docs);
+//   });
 
 console.log(docs)
 });

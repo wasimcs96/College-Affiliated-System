@@ -46,14 +46,14 @@
                 <hr>
                 <small class="text-muted">Mobile: </small>
                 <p>@if(isset(Auth()->user()->mobile)){{Auth()->user()->mobile}}@endif</p>
-                @if(file_exists(Auth()->user()->university->brochure))
+                {{-- @if(file_exists(Auth()->user()->university->brochure))
                 <hr>
                 <small class="text-muted">See Brochure: </small>
             <p> <a href="{{asset(auth()->user()->university->brochure)}}" class="btn btn-primary" target="blank">See</a></p>
                 <hr>
                 <small class="text-muted">Download Brochure: </small>
                 <p><a href="{{asset(auth()->user()->university->brochure)}}" class="btn btn-primary"  download>Download</a></p>
-@endif
+                @endif --}}
             </div>
         </div>
         <div class="card">
@@ -211,6 +211,10 @@
                             <div class="input-group">
                                 <input type="file" name="brochure" accept="application/pdf" />
                             </div>
+                            <br>
+                            @if(file_exists(Auth()->user()->university->brochure))
+                               <a href="{{asset(auth()->user()->university->brochure)}}" class="btn btn-primary" target="blank">Uploaded Brochure</a>
+                            @endif
                         </div>
                     </div>
 

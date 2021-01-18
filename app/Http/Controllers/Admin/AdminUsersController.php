@@ -6,9 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Route;
 // use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Models\Package;
 use App\Models\User;
 use App\Models\Country;
+use App\Models\Consultant;
+use App\Models\University;
 
 class AdminUsersController extends Controller
 {
@@ -30,6 +35,12 @@ class AdminUsersController extends Controller
            return view('admin.users.user.index')->with('users', User::all())->with('id',3);
         }
     }
+
+    public function add()
+    {
+        return view('admin.users.user.add');
+    }
+
     public function show($id)
     {
         // dd($request->all());
@@ -41,6 +52,70 @@ class AdminUsersController extends Controller
     {
         $user = User::where('id',$id)->first();
         return view('admin.users.user.edit')->with('user', $user)->with('countries',Country::all());
+    }
+
+    public function store(Request $request)
+    {
+// dd($request->all());
+
+            $request->validate([
+            'first_name'=>['required', 'string', 'max:255'],
+            'last_name'=>['required', 'string', 'max:255'],
+            'email' => ['required','unique:users'],
+            'password'=>['required', 'string', 'min:6'],
+            'role' => ['required'],
+            'mobile' => ['required','min:6','unique:users','numeric'],
+             ]);
+        // dd($role);
+        $role = $request->role;
+       if($role==3){
+        User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'password' => Hash::make($request->password),
+        ])->assignRole('client');
+        return view('admin.users.user.index')->with('users', User::all())->with('id',1);
+       }
+       if($role==2){
+           $user=User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'password' => Hash::make($request->password),
+        ])->assignRole('university');
+        University::create([
+            'user_id'=>$user->id,
+
+        ]);
+        return view('admin.users.user.index')->with('users', User::all())->with('id',3);
+
+       }
+       if($role==4){
+        $user=User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'password' => Hash::make($request->password),
+        ])->assignRole('consultant');
+        Consultant::create([
+            'user_id'=>$user->id,
+        ]);
+        return view('admin.users.user.index')->with('users', User::all())->with('id',2);
+       }
+       if($role==5){
+        return User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'password' => Hash::make($request->password),
+        ])->assignRole('subAdmin');
+       }
+
     }
 
     public function update(Request $request, User $id)

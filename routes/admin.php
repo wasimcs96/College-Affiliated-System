@@ -420,13 +420,24 @@ Route::get('applications/followup/show/{id}',[
 
 // Advertisement ################################
 
-Route::get('admin/advertisement',[
+Route::get('advertisement',[
     'uses'=>'AdminAdvertisementController@index',
     'as'=>'admin.advertisement_manager'
 ]);
-Route::post('admin/advertisement/update',[
+Route::post('advertisement/update',[
     'uses'=>'AdminAdvertisementController@update',
     'as'=>'advertisement_manager.update'
+]);
+
+
+/* Add User */
+Route::get('users/user/add',[
+    'uses'=>'AdminUsersController@add',
+    'as'=>'admin.user.add'
+]);
+Route::post('users/user/store',[
+    'uses'=>'AdminUsersController@store',
+    'as'=>'admin.user.store'
 ]);
 
 });
