@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-content">
                         <div class="section-heading">
-                            <h2 class="sec__title line-height-50">Digital Colf.com is Your Trusted <br> Technical Companion.</h2>
+                            <h2 class="sec__title line-height-50">Education Portal is Your Trusted <br> Education Companion.</h2>
                         </div>
                     </div><!-- end breadcrumb-content -->
                 </div><!-- end col-lg-12 -->
@@ -25,7 +25,7 @@
 <!-- ================================
     START INFO AREA
 ================================= -->
-<section class="info-area padding-top-100px padding-bottom-70px">
+{{-- <section class="info-area padding-top-100px padding-bottom-70px">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 responsive-column">
@@ -69,7 +69,7 @@
             </div><!-- end col-lg-4 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section><!-- end info-area -->
+</section><!-- end info-area --> --}}
 <!-- ================================
     END INFO AREA
 ================================= -->
@@ -82,17 +82,18 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="section-heading margin-bottom-40px">
-                    <h2 class="sec__title">About Us</h2>
-                    <h4 class="title font-size-16 line-height-26 pt-4 pb-2">Since 2002, Digital Colf has been revolutionising the Technical industry. Metasearch for Technical? No one was doing it. Until we did.</h4>
-                    <p class="sec__desc font-size-16 pb-3">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-                    <p class="sec__desc font-size-16 pb-3">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-                    <p class="sec__desc font-size-16">Vivamus a mauris vel nunc tristique volutpat. Aenean eu faucibus enim. Aenean blandit arcu lectus, in cursus elit porttitor non. Curabitur risus eros, </p>
+                    <?php $about=App\Models\Page::where('page_type',0)->first() ?>
+                    <h2 class="sec__title">{{$about->title}}</h2>
+                    <h4 class="title font-size-16 line-height-26 pt-4 pb-2">{!! $about->short_description !!}</h4>
+                    <p class="sec__desc font-size-16 pb-3">{!! $about->description !!}</p>
+                    {{-- <p class="sec__desc font-size-16 pb-3">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p> --}}
+                    {{-- <p class="sec__desc font-size-16">Vivamus a mauris vel nunc tristique volutpat. Aenean eu faucibus enim. Aenean blandit arcu lectus, in cursus elit porttitor non. Curabitur risus eros, </p> --}}
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-6 -->
             <div class="col-lg-5 ml-auto">
                 <div class="image-box about-img-box">
-                    <img src="{{asset('frontEnd/assets/images/img24.jpg')}}" alt="about-img" class="img__item img__item-1">
-                    <img src="{{asset('frontEnd/assets/images/img25.jpg')}}" alt="about-img" class="img__item img__item-2">
+                    <img src="{{asset($about->banner)}}" alt="about-img" class="img__item img__item-1">
+                    <img src="{{asset($about->banner)}}" alt="about-img" class="img__item img__item-2">
                 </div>
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
@@ -105,7 +106,7 @@
 <!-- ================================
     STAR FUNFACT AREA
 ================================= -->
-<section class="funfact-area padding-bottom-70px">
+{{-- <section class="funfact-area padding-bottom-70px">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -175,7 +176,7 @@
             </div><!-- end row -->
         </div><!-- end counter-box -->
     </div><!-- end container -->
-</section>
+</section> --}}
 <!-- ================================
     END FUNFACT AREA
 ================================= -->
@@ -183,7 +184,7 @@
 <!-- ================================
        START TESTIMONIAL AREA
 ================================= -->
-<section class="testimonial-area section-bg section-padding">
+{{-- <section class="testimonial-area section-bg section-padding">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-4">
@@ -284,7 +285,7 @@
             </div><!-- end col-lg-8 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section><!-- end testimonial-area -->
+</section><!-- end testimonial-area --> --}}
 <!-- ================================
        START TESTIMONIAL AREA
 ================================= -->
@@ -292,7 +293,7 @@
 <!-- ================================
     START INFO AREA
 ================================= -->
-<section class="info-area padding-top-100px padding-bottom-60px text-center">
+{{-- <section class="info-area padding-top-100px padding-bottom-60px text-center">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -412,7 +413,7 @@
             </div><!-- end col-lg-4 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section><!-- end info-area -->
+</section><!-- end info-area --> --}}
 <!-- ================================
     END INFO AREA
 ================================= -->
@@ -420,7 +421,7 @@
 <!-- ================================
     START CTA AREA
 ================================= -->
-<section class="cta-area cta-bg-2 bg-fixed section-padding text-center">
+{{-- <section class="cta-area cta-bg-2 bg-fixed section-padding text-center">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -436,5 +437,5 @@
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section>
+</section> --}}
 @endsection

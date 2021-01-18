@@ -9,7 +9,7 @@
                         <div class="section-heading">
                             <h2 class="sec__title">How Can We Help You Today?</h2>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-lg-6 mx-auto">
                                 <div class="contact-form-action pt-4">
                                     <form action="#">
@@ -24,7 +24,7 @@
                                     <a href="#">getting started</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div><!-- end breadcrumb-content -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
@@ -34,7 +34,7 @@
         <svg class="bread-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><polygon points="100 0 50 10 0 0 0 10 100 10"></polygon></svg>
     </div><!-- end bread-svg -->
 </section><!-- end breadcrumb-area -->
-<section class="faq-area padding-top-100px padding-bottom-70px text-center">
+{{-- <section class="faq-area padding-top-100px padding-bottom-70px text-center">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 responsive-column">
@@ -164,12 +164,15 @@
                     </a>
                 </div>
             </div><!-- end col-lg-3 -->
+
+
+
             <div class="col-lg-3 responsive-column">
                 <div class="icon-box faq-icon-box">
                     <a href="#" class="d-block">
                         <svg class="info-svg" version="1.1" id="Capa_3" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
                             <g>
-                                <g>
+                            <g>
                                     <path d="M444.033,406.871c-1.859-1.86-4.439-2.929-7.068-2.929c-2.629,0-5.209,1.069-7.068,2.929
                                         c-1.859,1.859-2.929,4.439-2.929,7.068s1.07,5.209,2.929,7.067c1.859,1.859,4.439,2.93,7.068,2.93c2.629,0,5.209-1.07,7.068-2.93
                                         c1.87-1.859,2.929-4.438,2.929-7.067S445.903,408.73,444.033,406.871z"></path>
@@ -491,7 +494,7 @@
             </div><!-- end col-lg-3 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section>
+</section> --}}
 
 <section class="faq-area section-bg padding-top-100px padding-bottom-60px">
     <div class="container">
@@ -502,387 +505,32 @@
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
+
+        <?php $faqs=App\Models\Page::where('page_type',1)->get() ?>
+        {{-- {{dd($faqs)}} --}}
         <div class="row padding-top-60px">
+            @foreach($faqs as $faq)
+
             <div class="col-lg-6">
                 <div class="faq-item mb-5">
-                    <h3 class="title font-weight-bold">Cancellations</h3>
+                    <h3 class="title font-weight-bold">{{$faq->title}}</h3>
                     <ul class="toggle-menu list-items list--items-2 pt-4">
                         <li>
                             <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Can I cancel my booking?
+                                {!! $faq->short_description !!}
                                 <i class="la la-angle-down"></i>
                             </a>
                             <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                If I need to cancel my booking, will I pay a fee?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Can I cancel or change my dates for a non-refundable booking?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                How do I know if my booking was cancelled?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Where can I find my property's cancellation policy?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
+                                <li class="line-height-26">{!! $faq->description !!}</li>
+                                <li class="line-height-26"><img src="{{asset($faq->banner)}}" height="150px" width="190px"></li>
                             </ul>
                         </li>
                     </ul>
+
                 </div><!-- end faq-item -->
             </div><!-- end col-lg-6 -->
-             <div class="col-lg-6">
-                <div class="faq-item mb-5">
-                    <h3 class="title font-weight-bold">Payment</h3>
-                    <ul class="toggle-menu list-items list--items-2 pt-4">
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                What payment methods are accepted?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Can I pay with a deposit, or prepayment?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                I’ve been charged. Do I need to do anything?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Where can I see the payment policy for my booking?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Why do I need to provide my card details?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- end faq-item -->
-            </div><!-- end col-lg-6 -->
-            <div class="col-lg-6">
-                <div class="faq-item mb-5">
-                    <h3 class="title font-weight-bold">Booking details</h3>
-                    <ul class="toggle-menu list-items list--items-2 pt-4">
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                How do I get more information about the room or property's facilities?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Is it possible to get an extra bed or cot for a child?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                How can I get an invoice?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                I can't find my confirmation email. What should I do?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Will I pay the full price for my children?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- end faq-item -->
-            </div><!-- end col-lg-6 -->
-             <div class="col-lg-6">
-                <div class="faq-item mb-5">
-                    <h3 class="title font-weight-bold">Communications</h3>
-                    <ul class="toggle-menu list-items list--items-2 pt-4">
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                What is the Booking Assistant?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Where can I find the Booking Assistant?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                How can the Booking Assistant help me?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Where does the Booking Assistant get information?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Can I use the Booking Assistant in my language?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- end faq-item -->
-            </div><!-- end col-lg-6 -->
-            <div class="col-lg-6">
-                <div class="faq-item mb-5">
-                    <h3 class="title font-weight-bold">Room types</h3>
-                    <ul class="toggle-menu list-items list--items-2 pt-4">
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                What's the difference between a Double room and a Twin room?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                What do "non-refundable" and "free cancellation" mean?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Can I request an extra bed in my room and will there be extra costs?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Is it possible to get an extra bed or cot for a child?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- end faq-item -->
-            </div><!-- end col-lg-6 -->
-             <div class="col-lg-6">
-                <div class="faq-item mb-5">
-                    <h3 class="title font-weight-bold">Pricing</h3>
-                    <ul class="toggle-menu list-items list--items-2 pt-4">
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Is breakfast included in the price?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                What does the price include?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Are taxes included in the price?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Do I pay a reservation fee to Tripstar.com?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- end faq-item -->
-            </div><!-- end col-lg-6 -->
-            <div class="col-lg-6">
-                <div class="faq-item mb-5">
-                    <h3 class="title font-weight-bold">Credit cards</h3>
-                    <ul class="toggle-menu list-items list--items-2 pt-4">
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Can I use a debit card to complete my reservation?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Can I make a reservation without a credit card?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Why do I need to give my credit card details?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                Can I make a reservation for myself using someone else’s credit card?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- end faq-item -->
-            </div><!-- end col-lg-6 -->
-             <div class="col-lg-6">
-                <div class="faq-item mb-5">
-                    <h3 class="title font-weight-bold">Security and awareness</h3>
-                    <ul class="toggle-menu list-items list--items-2 pt-4">
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                What is social engineering?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                How can I avoid social engineering attempts?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                I was recently asked to pay using my gift card over the phone. Is that okay?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle-menu-icon d-flex justify-content-between align-items-center">
-                                I think I have been the victim of a scam. What should I do?
-                                <i class="la la-angle-down"></i>
-                            </a>
-                            <ul class="toggle-drop-menu pt-2">
-                                <li class="line-height-26">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- end faq-item -->
-            </div><!-- end col-lg-6 -->
+            @endforeach
+
         </div><!-- end row -->
     </div><!-- end container -->
 </section>
@@ -893,13 +541,13 @@
             <div class="col-lg-7">
                 <div class="section-heading">
                     <h2 class="sec__title font-size-30 text-white">Couldn't Find a Solution?</h2>
-                    <p class="sec__desc text-white pt-1">Submit a ticket to our support desk.</p>
+                    {{-- <p class="sec__desc text-white pt-1">.</p> --}}
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-7 -->
             <div class="col-lg-5">
-                <div class="btn-box btn--box text-right">
+                {{-- <div class="btn-box btn--box text-right">
                     <a href="#" class="theme-btn border-0">Submit a Ticket</a>
-                </div><!-- end btn-box -->
+                </div><!-- end btn-box --> --}}
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
     </div><!-- end container -->
