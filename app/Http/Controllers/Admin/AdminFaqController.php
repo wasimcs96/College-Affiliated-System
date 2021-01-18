@@ -19,7 +19,7 @@ class AdminFaqController extends Controller
        $image=$request->image;
        $profile_image_new_name = time().$image->getClientOriginalName();
        $image->move(Config::get('define.image.page_banner'),$profile_image_new_name);
-       $user=$image = Config::get('define.image.page_banner').'/'.$profile_image_new_name;
+       $image = Config::get('define.image.page_banner').'/'.$profile_image_new_name;
 // dd($request->all());
     Page::create([
         'title'=>$request->title,
@@ -33,6 +33,6 @@ class AdminFaqController extends Controller
     ]);
 
 
-    return view('admin.general.faq');
+    return view('admin.general.faq')->with('success','FAQ added  Successfully.');
    }
 }

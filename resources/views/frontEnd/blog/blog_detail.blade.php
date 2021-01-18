@@ -44,27 +44,28 @@
             <div class="col-lg-8">
                 <div class="card-item blog-card blog-card-layout-2 blog-single-card mb-5">
                     <div class="card-img before-none">
-                        <img src="{{asset('frontEnd/assets/images/img20.jpg')}}" alt="blog-img">
+                        <img src="{{asset($detail->main_image)}}" alt="blog-img">
                     </div>
                     <div class="card-body px-0 pb-0">
-                        <div class="post-categories">
+                        {{-- <div class="post-categories">
                             <a href="#" class="badge">Travel</a>
                             <a href="#" class="badge">lifestyle</a>
-                        </div>
-                        <h3 class="card-title font-size-28">When Traveling Avoid Expensive Hotels &amp; Resorts</h3>
+                        </div> --}}
+                        <h3 class="card-title font-size-28">{{$detail->title}}</h3>
                         <p class="card-meta pb-3">
-                            <span class="post__author">By <a href="#" class="text-gray">John Doe</a></span>
+                            <span class="post__author">Updated {!! "&nbsp;" !!}<a href="#" class="text-gray">at</a></span>
                             <span class="post-dot"></span>
-                            <span class="post__date"> 1 January, 2020</span>
+                            <span class="post__date"> {{$detail->updated_at}}</span>
+                            {{-- <span class="post-dot"></span> --}}
+                            {{-- <span class="post__time"><a href="#" class="text-gray">4 Comments</a></span>
                             <span class="post-dot"></span>
-                            <span class="post__time"><a href="#" class="text-gray">4 Comments</a></span>
-                            <span class="post-dot"></span>
-                            <span class="post__time"><a href="#" class="text-gray">202 Likes</a></span>
+                            <span class="post__time"><a href="#" class="text-gray">202 Likes</a></span> --}}
                         </p>
                         <div class="section-block"></div>
-                        <p class="card-text py-3">Simple point-and-shoot digital cameras can give surprising quality when they have the right lenses and sensors. Because they are totally automatic in focus and exposure, they just have to be pointed at a subject and clicked. They have limited capabilities for controlling the image</p>
-                        <p class="card-text pb-3">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</p>
-                        <div class="photo-block-gallery">
+                        {!! $detail->content !!}
+                        {{-- <p class="card-text py-3">Simple point-and-shoot digital cameras can give surprising quality when they have the right lenses and sensors. Because they are totally automatic in focus and exposure, they just have to be pointed at a subject and clicked. They have limited capabilities for controlling the image</p> --}}
+                        {{-- <p class="card-text pb-3">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</p> --}}
+                        {{-- <div class="photo-block-gallery">
                             <h3 class="title pb-2">Travelling Highlight</h3>
                             <p class="card-text pb-4">Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
                             <div class="row">
@@ -119,9 +120,9 @@
                                     </div>
                                 </div><!-- end col-lg-6 -->
                             </div><!-- end row -->
-                        </div>
-                        <p class="card-text padding-bottom-35px">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-                        <div class="blockquote-item margin-bottom-35px">
+                        </div> --}}
+                        {{-- <p class="card-text padding-bottom-35px">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p> --}}
+                        {{-- <div class="blockquote-item margin-bottom-35px">
                             <blockquote class="mb-0">
                                 <p class="blockquote__text">
                                     Creativity is just connecting things. When you ask creative people how
@@ -132,20 +133,20 @@
                                 </p>
                                 <h4 class="blockquote__meta">- Steve Jobs <span>Founder of Apple Inc.</span></h4>
                             </blockquote>
-                        </div>
-                        <h3 class="title">Make better travel decisions</h3>
-                        <p class="card-text pt-3 pb-4">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper</p>
-                        <div class="section-block"></div>
-                        <h3 class="title pt-4">Getting Started</h3>
-                        <p class="card-text py-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem eaque ipsa quae ab illo inventore incididunt ut labore et dolore magna Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price.</p>
+                        </div> --}}
+                        {{-- <h3 class="title">Make better travel decisions</h3> --}}
+                        {{-- <p class="card-text pt-3 pb-4">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper</p> --}}
+                        {{-- <div class="section-block"></div> --}}
+                        {{-- <h3 class="title pt-4">Getting Started</h3> --}}
+                        {{-- <p class="card-text py-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem eaque ipsa quae ab illo inventore incididunt ut labore et dolore magna Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price.</p>
                         <p class="card-text pb-4">However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed</p>
-                        <div class="section-block"></div>
+                        <div class="section-block"></div> --}}
                         <div class="post-tag-wrap d-flex align-items-center justify-content-between py-4">
-                            <ul class="tag-list">
+                            {{-- <ul class="tag-list">
                                 <li><a href="#">Tour</a></li>
                                 <li><a href="#">Nature</a></li>
                                 <li><a href="#">Beaches</a></li>
-                            </ul>
+                            </ul> --}}
                             <div class="post-share">
                                 <ul>
                                     <li>
@@ -203,7 +204,7 @@
                                             <a href="#" class="badge">Travel</a>
                                             <a href="#" class="badge">lifestyle</a>
                                         </div>
-                                        <h3 class="card-title line-height-26"><a href="{{route('blog_detail')}}">When Traveling Avoid Expensive Hotels & Resorts</a></h3>
+                                        <h3 class="card-title line-height-26"><a href="{{route('blog_detail', $detail->id)}}">When Traveling Avoid Expensive Hotels & Resorts</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 January, 2020</span>
                                             <span class="post-dot"></span>
@@ -246,7 +247,7 @@
                                         <div class="post-categories">
                                             <a href="#" class="badge">Video</a>
                                         </div>
-                                        <h3 class="card-title line-height-26"><a href="{{route('blog_detail')}}">My Best Travel Tips: The Ultimate Travel Guide</a></h3>
+                                        <h3 class="card-title line-height-26"><a href="{{route('blog_detail', $detail->id)}}">My Best Travel Tips: The Ultimate Travel Guide</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 February, 2020</span>
                                             <span class="post-dot"></span>
@@ -505,12 +506,12 @@
                             <div class="tab-pane " id="recent" role="tabpanel" aria-labelledby="recent-tab">
                                 <div class="card-item card-item-list recent-post-card">
                                     <div class="card-img">
-                                        <a href="{{route('blog_detail')}}" class="d-block">
+                                        <a href="{{route('blog_detail', $detail->id)}}" class="d-block">
                                             <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="blog-img">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title"><a href="{{route('blog_detail')}}">Pack wisely before traveling</a></h3>
+                                        <h3 class="card-title"><a href="{{route('blog_detail', $detail->id)}}">Pack wisely before traveling</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 March, 2020</span>
                                             <span class="post-dot"></span>
@@ -520,12 +521,12 @@
                                 </div><!-- end card-item -->
                                 <div class="card-item card-item-list recent-post-card">
                                     <div class="card-img">
-                                        <a href="{{route('blog_detail')}}" class="d-block">
+                                        <a href="{{route('blog_detail', $detail->id)}}" class="d-block">
                                             <img src="{{asset('frontEnd/assets/images/small-img5.jpg')}}" alt="blog-img">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title"><a href="{{route('blog_detail')}}">Change your place and get the fresh air</a></h3>
+                                        <h3 class="card-title"><a href="{{route('blog_detail', $detail->id)}}">Change your place and get the fresh air</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 March, 2020</span>
                                             <span class="post-dot"></span>
@@ -535,12 +536,12 @@
                                 </div><!-- end card-item -->
                                 <div class="card-item card-item-list recent-post-card mb-0">
                                     <div class="card-img">
-                                        <a href="{{route('blog_detail')}}" class="d-block">
+                                        <a href="{{route('blog_detail', $detail->id)}}" class="d-block">
                                             <img src="{{asset('frontEnd/assets/images/small-img6.jpg')}}" alt="blog-img">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title"><a href="{{route('blog_detail')}}">Introducing this amazing city</a></h3>
+                                        <h3 class="card-title"><a href="{{route('blog_detail', $detail->id)}}">Introducing this amazing city</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 March, 2020</span>
                                             <span class="post-dot"></span>
@@ -552,12 +553,12 @@
                             <div class="tab-pane fade show active" id="popular" role="tabpanel" aria-labelledby="popular-tab">
                                 <div class="card-item card-item-list recent-post-card">
                                     <div class="card-img">
-                                        <a href="{{route('blog_detail')}}" class="d-block">
+                                        <a href="{{route('blog_detail', $detail->id)}}" class="d-block">
                                             <img src="{{asset('frontEnd/assets/images/small-img7.jpg')}}" alt="blog-img">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title"><a href="{{route('blog_detail')}}">The Castle on the Cliff: Majestic, Magic</a></h3>
+                                        <h3 class="card-title"><a href="{{route('blog_detail', $detail->id)}}">The Castle on the Cliff: Majestic, Magic</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 March, 2020</span>
                                             <span class="post-dot"></span>
@@ -567,12 +568,12 @@
                                 </div><!-- end card-item -->
                                 <div class="card-item card-item-list recent-post-card">
                                     <div class="card-img">
-                                        <a href="{{route('blog_detail')}}" class="d-block">
+                                        <a href="{{route('blog_detail', $detail->id)}}" class="d-block">
                                             <img src="{{asset('frontEnd/assets/images/small-img8.jpg')}}" alt="blog-img">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title"><a href="{{route('blog_detail')}}">Change your place and get the fresh air</a></h3>
+                                        <h3 class="card-title"><a href="{{route('blog_detail', $detail->id)}}">Change your place and get the fresh air</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 March, 2020</span>
                                             <span class="post-dot"></span>
@@ -582,12 +583,12 @@
                                 </div><!-- end card-item -->
                                 <div class="card-item card-item-list recent-post-card mb-0">
                                     <div class="card-img">
-                                        <a href="{{route('blog_detail')}}" class="d-block">
+                                        <a href="{{route('blog_detail', $detail->id)}}" class="d-block">
                                             <img src="{{asset('frontEnd/assets/images/small-img9.jpg')}}" alt="blog-img">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title"><a href="{{route('blog_detail')}}">All Aboard the Rocky Mountaineer</a></h3>
+                                        <h3 class="card-title"><a href="{{route('blog_detail', $detail->id)}}">All Aboard the Rocky Mountaineer</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 March, 2020</span>
                                             <span class="post-dot"></span>
@@ -599,12 +600,12 @@
                             <div class="tab-pane " id="new" role="tabpanel" aria-labelledby="new-tab">
                                 <div class="card-item card-item-list recent-post-card">
                                     <div class="card-img">
-                                        <a href="{{route('blog_detail')}}" class="d-block">
+                                        <a href="{{route('blog_detail', $detail->id)}}" class="d-block">
                                             <img src="{{asset('frontEnd/assets/images/small-img7.jpg')}}" alt="blog-img">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title"><a href="{{route('blog_detail')}}">The Castle on the Cliff: Majestic, Magic</a></h3>
+                                        <h3 class="card-title"><a href="{{route('blog_detail', $detail->id)}}">The Castle on the Cliff: Majestic, Magic</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 March, 2020</span>
                                             <span class="post-dot"></span>
@@ -614,12 +615,12 @@
                                 </div><!-- end card-item -->
                                 <div class="card-item card-item-list recent-post-card">
                                     <div class="card-img">
-                                        <a href="{{route('blog_detail')}}" class="d-block">
+                                        <a href="{{route('blog_detail', $detail->id)}}" class="d-block">
                                             <img src="{{asset('frontEnd/assets/images/small-img8.jpg')}}" alt="blog-img">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title"><a href="{{route('blog_detail')}}">Change your place and get the fresh air</a></h3>
+                                        <h3 class="card-title"><a href="{{route('blog_detail', $detail->id)}}">Change your place and get the fresh air</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 March, 2020</span>
                                             <span class="post-dot"></span>
@@ -629,12 +630,12 @@
                                 </div><!-- end card-item -->
                                 <div class="card-item card-item-list recent-post-card mb-0">
                                     <div class="card-img">
-                                        <a href="{{route('blog_detail')}}" class="d-block">
+                                        <a href="{{route('blog_detail', $detail->id)}}" class="d-block">
                                             <img src="{{asset('frontEnd/assets/images/small-img9.jpg')}}" alt="blog-img">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                        <h3 class="card-title"><a href="{{route('blog_detail')}}">All Aboard the Rocky Mountaineer</a></h3>
+                                        <h3 class="card-title"><a href="{{route('blog_detail', $detail->id)}}">All Aboard the Rocky Mountaineer</a></h3>
                                         <p class="card-meta">
                                             <span class="post__date"> 1 March, 2020</span>
                                             <span class="post-dot"></span>
