@@ -78,12 +78,6 @@ class RegisterController extends Controller
         ])->assignRole('subadmin');
        }
 
-
-       University::create([
-        'user_id'=>$data->id,
-
-    ]);
-
     }
 
     public function showRegistrationForm()

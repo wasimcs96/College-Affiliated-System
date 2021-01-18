@@ -10,7 +10,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-
+                <a href="{{route('admin.user.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>  Add User </a>
             </ul>
         </div>
         <div class="body">
@@ -65,7 +65,7 @@
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
                                             <td>{{$user->city ?? ''}}</td>
-                                            <td> {{$user->country ?? ''}} </td>
+                                            <td> {{$user->country->countries_name ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
@@ -85,7 +85,7 @@
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
                                             <td>{{$user->city ?? ''}}</td>
-                                            <td> {{$user->country ?? ''}} </td>
+                                            <td> {{$user->country->countries_name ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>

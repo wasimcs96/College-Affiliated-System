@@ -33,7 +33,7 @@ class AdminProfileController extends Controller
          'mobile'=>'numeric|required',
             'landline_1'=>'required',
             'landline_2' => 'required',
-            'website' => '',
+
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);

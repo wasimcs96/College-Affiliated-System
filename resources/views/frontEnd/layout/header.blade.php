@@ -228,15 +228,25 @@
                             @endif
 
                             @if(Auth()->user()->isConsultant())
+                            <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                            @if(auth()->user()->Subscription_expire_date<$mytime || auth()->user()->Subscription_expire_date==NULL)
+                            <a href="{{ route('consultant.subscription') }}" class="theme-btn ">Dashboard</a>
+                            @else
                         <a href="{{ route('consultant.dashboard') }}" class="theme-btn ">Dashboard</a>
                             @endif
+                           @endif
 
                             @if(Auth()->user()->isClient())
                         <a href="{{ route('client.dashboard') }}" class="theme-btn ">Dashboard</a>
                             @endif
 
                             @if(Auth()->user()->isUniversity())
-                        <a href="{{ route('university.dashboard') }}" class="theme-btn ">Dashboard</a>
+                            <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                            @if(auth()->user()->Subscription_expire_date<$mytime || auth()->user()->Subscription_expire_date==NULL)
+                            <a href="{{ route('university.subscription') }}" class="theme-btn ">Dashboard</a>
+                            @else
+                           <a href="{{ route('university.dashboard') }}" class="theme-btn ">Dashboard</a>
+                            @endif
                             @endif
 
                             @if(Auth()->user()->isSubadmin())

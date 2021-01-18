@@ -31,7 +31,7 @@ $id = Auth()->user()->id;
             'last_name'=>'required',
             'email' => 'required|email',
             'mobile'=>'numeric|required',
-            'website' => 'required|url',
+            // 'website' => 'required|url',
              ]);
             $id = Auth()->user()->id;
             $user = User::find($id);

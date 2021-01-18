@@ -38,8 +38,7 @@
                     <tbody>
 
                         @foreach($applications as $application)
-                        @foreach($application->applicationAppliedUniversity as $apply)
-                        @if($apply->university_id == auth()->user()->id)
+
                         <tr>
                             <td>{{$application->user->first_name ?? ''}} {{$application->user->last_name ?? ''}}</td>
                             <td>{{$application->user->mobile ?? ''}}</td>
@@ -52,8 +51,7 @@
                             </td>
                             <td style="text-align: center;"><a href="{{route('admin.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
-                        @endif
-                        @endforeach
+
                         @endforeach
                         @endif
                     </tbody>

@@ -235,7 +235,34 @@
             <div class="body">
                 <div id="alert_add2"></div>
 @foreach($application->applicationAppliedUniversity as $key=>$applied)
-
+@if($applied->Is_applied==1)
+<style>
+    #wizard_with_validation{{$key}}-t-0{
+        background-color: green;
+    }
+</style>
+@endif
+@if($applied->approved_status==1 && $applied->Is_applied==1)
+<style>
+    #wizard_with_validation{{$key}}-t-1{
+        background-color: green;
+    }
+</style>
+@endif
+@if($applied->is_accepeted==1 && $applied->approved_status==1 && $applied->Is_applied==1)
+<style>
+    #wizard_with_validation{{$key}}-t-2{
+        background-color: green;
+    }
+</style>
+@endif
+@if($applied->is_complete==1 && $applied->is_accepeted==1 && $applied->approved_status==1 && $applied->Is_applied==1)
+<style>
+    #wizard_with_validation{{$key}}-t-3{
+        background-color: green;
+    }
+</style>
+@endif
 <div class="accordion" id="accordionExample">
 
     <div class="card">
@@ -419,14 +446,14 @@
                                            <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
                                      @endif
                                          </fieldset>
-                                       <h3>Ready To Fly - Finish</h3>
+                                       <h3>Applied For Visa - Finish</h3>
                                        <fieldset>
                                         {{-- @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1) --}}
                                         {{-- {{ dd($applied->userUniversity->id) }} --}}
                                        {{-- <form action="{{ url('application/update/university') }}" method="POST" enctype="multipart/form-data" > --}}
                                        @if ($applied->is_accepeted == 1)
                                        <h6> <b>
-                                        Ready to Fly </b> </h6>
+                                        Applied For Visa </b> </h6>
                                            <div class="table-responsive" >
                                                <table class="table table-hover table-striped" >
 
@@ -444,7 +471,8 @@
                                                </tbody>
                                            </table>
                                        </div>
-
+                                       <h6> <b>
+                                        Visa Documents</b> </h6>
                                            <div class="row clearfix">
                                              <input type="text"  name="appliedUniversityRowIdReadyToFly" value="{{ $applied->id }}" hidden>
 

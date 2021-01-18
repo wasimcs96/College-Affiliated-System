@@ -45,7 +45,7 @@
                 <li class="{{ Request::segment(2) == 'category' ? 'active' : null }}"><a href="{{route('admin.category')}}"><i class="icon-notebook"></i><span>Categories</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'courses' ? 'active' : null }}"><a href="{{route('admin.courses')}}"><i class="fa fa-book" aria-hidden="true"></i><span>Courses</span></a></li>
-
+                {{-- <li class="{{ Request::segment(2) == 'user' ? 'active' : null }}"><a href="{{route('admin.user.add')}}"><i class="icon-users"></i><span>Add Users</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'users' ? 'active open' : null }}">
                     <a href="#Users" class="has-arrow"><i class="fa fa-users"></i><span>Users</span></a>
                     <ul>
@@ -61,12 +61,11 @@
                 <li class="{{ Request::segment(3) == 'follow_up' ? 'active' : null }}"><a href="{{route('admin.booking.followup')}}"><i class="fa fa-list"></i><span>Booking Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('admin.application')}}"><i class="icon-notebook"></i><span>Application</span></a></li>
                 <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="{{route('admin.application.followup')}}"><i class="fa fa-sticky-note"></i><span>Application Follow Up</span></a></li>
-
                 {{-- <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('admin.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li> --}}
 
                 <li class="{{ Request::segment(2) == 'packages' ? 'active' : null }}"><a href="{{route('admin.packages')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>Packages</span></a></li>
 
-                <li class="{{ Request::segment(2) == 'Advertisement' ? 'active' : null }}"><a href="{{route('admin.advertisement_manager')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>Advertisement Manager</span></a></li>
+                <li class="{{ Request::segment(2) == 'Advertisement' ? 'active' : null }}"><a href="{{route('admin.advertisement_manager')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>Ad Manager</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
                 <li class="{{ Request::segment(2) === 'chat' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>

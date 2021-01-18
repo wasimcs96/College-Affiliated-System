@@ -22,6 +22,7 @@ class AdminApplicationController extends Controller
    public function index()
    {
      $applications = Application::orderBy('created_at', 'DESC')->get();
+    //  dd($applications);
      return view('admin.application.application')->with('applications', $applications);
    }
 

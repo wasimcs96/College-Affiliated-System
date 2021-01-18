@@ -25,7 +25,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                                <form id="basic-form6" class="basic-form" method="post" novalidate action="{{route('admin.application.followup.store')}}">
+                                <form id="basic-form6" class="basic-form" method="post" novalidate action="{{route('consultant.application.followup.store')}}">
                                     @csrf
                                     {{-- <div class="form-group">
                                         <label>Title</label>
@@ -105,26 +105,6 @@
                         <th scope="row">Time-Slot</th>
                         <td>{{$application->booking->booking_start_time ?? ''}}-{{$application->booking->booking_end_time ?? ''}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">Consultant Name</th>
-                        <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Country</th>
-                        <td>{{$application->userConsultant->country->countries_name ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Mobile </th>
-                        <td>{{$application->userConsultant->mobile ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Email </th>
-                        <td>{{$application->userConsultant->email ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Company </th>
-                        <td>{{$application->userConsultant->mobile ?? ''}}</td>
-                    </tr>
            </div>
 
         {{-- </tr> --}}
@@ -139,7 +119,7 @@
 
                 </div> --}}
                 {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('admin.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a> --}}
+                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a> --}}
             </div>
         </div>
     </div>
@@ -177,29 +157,12 @@
                         <th scope="row">Student E-mail</th>
                         <td>{{$application->user->email ?? ''}}</td>
                     </tr>
+
+
+
                     <tr>
                         <th scope="row">Student Country</th>
                         <td>{{$application->user->country->countries_name ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Name</th>
-                        <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Country</th>
-                        <td>{{$application->userConsultant->country->countries_name ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Mobile </th>
-                        <td>{{$application->userConsultant->mobile ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Mobile </th>
-                        <td>{{$application->userConsultant->email ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Company </th>
-                        <td>{{$application->userConsultant->mobile ?? ''}}</td>
                     </tr>
                 </div>
 
@@ -222,7 +185,7 @@
                 </div>
 
             <div class="body">
-                <form action="{{ route('admin.application.document')}}" method="POST" enctype="multipart/form-data" >
+                <form action="{{ route('consultant.application.document')}}" method="POST" enctype="multipart/form-data" >
                     @csrf
 
                 <div class="form-group">
@@ -249,7 +212,7 @@
                     </div>
                     <input type="text" value="{{$application->id}}" name="app_id" hidden>
                     {{-- <input type="text" value="{{$application->applicationAppliedUniversity->id}}" name="app_university_id" hidden> --}}
-                    <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
+                    {{-- <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button> --}}
                     <p id="error-checkbox3"></p>
 
                     <div class="row clearfix">
@@ -272,7 +235,7 @@
                                                 <a href="{{asset($rt->file)}}" class="btn btn-primary" target="_blank" download style="margin-left: 19px;">
                                                     <i class="fa fa-download"></i> Download
                                                 </a>
-                                                <span class="closes" custom2="{{$rt->id}}"  title="Delete" ><a href="javascript:void(0);" id="deleteRecord" custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" >&times;</a></span>
+                                                {{-- <span class="closes" custom2="{{$rt->id}}"  title="Delete" ><a href="javascript:void(0);" id="deleteRecord" custom1="{{$rt->id}}" data-id="{{auth()->user()->id}}" >&times;</a></span> --}}
                                             </div>
 
                                         </div>
@@ -288,11 +251,11 @@
                                     </div>
                                 </div>
     @endif
-                  <label for="" style="margin-left: 17px;">Upload Document ( Note: Image must be of jpeg and png format )</label>
+                  {{-- <label for="" style="margin-left: 17px;">Upload Document ( Note: Image must be of jpeg and png format )</label>
                     <input type="file" name="documents[]" class="dropify" multiple>
                     @csrf
                     <br>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Update</button> --}}
                 </div>
             </div>
         </form>
@@ -314,6 +277,38 @@
             <div class="body">
                 <div id="alert_add2"></div>
 @foreach($application->applicationAppliedUniversity as $key=>$applied)
+
+
+@if($applied->Is_applied==1)
+<style>
+    #wizard_with_validation{{$key}}-t-0{
+        background-color: green;
+    }
+</style>
+@endif
+@if($applied->approved_status==1 && $applied->Is_applied==1)
+<style>
+    #wizard_with_validation{{$key}}-t-1{
+        background-color: green;
+    }
+</style>
+@endif
+@if($applied->is_accepeted==1 && $applied->approved_status==1 && $applied->Is_applied==1)
+<style>
+    #wizard_with_validation{{$key}}-t-2{
+        background-color: green;
+    }
+</style>
+@endif
+@if($applied->is_complete==1 && $applied->is_accepeted==1 && $applied->approved_status==1 && $applied->Is_applied==1)
+<style>
+    #wizard_with_validation{{$key}}-t-3{
+        background-color: green;
+    }
+</style>
+@endif
+
+
 
 <div class="accordion" id="accordionExample">
 
@@ -341,7 +336,7 @@
                               </div>
                               <div class="body wizard_validation">
 
-                                <form id="wizard_with_validation{{$key}}" action="{{ route('admin.application.update.university') }}" method="POST" class="addInput">
+                                <form id="wizard_with_validation{{$key}}" action="{{ route('consultant.application.update.university') }}" method="POST" class="addInput">
                                     @csrf
                                     <div id="addInput">
 
@@ -375,12 +370,12 @@
                                      <input type="text" name="university_id" value="{{$applied->userUniversity->id ?? ''}}" hidden>
                                      <input type="text" name="apply_id" value="{{$applied->id ?? ''}}" hidden>
 
-                                     <div class="col-lg-6 col-md-12">
+                                     {{-- <div class="col-lg-6 col-md-12">
                                      <div class="form-group">
                                      @if($applied->Is_applied==0) <a href="javascript:void(0);" class="btn btn-warning applied" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyModal" style="float: right;margin-top: 19px;">Ready to Apply</a>@endif
                                      @if($applied->Is_applied==1)<div class="btn btn-success" style="float: right;margin-top: 19px;">Applied</div>@endif
                                      </div>
-                                     </div>
+                                     </div> --}}
                                      </div>
                                      </fieldset>
 
@@ -412,13 +407,13 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="form-group" style="float: right;  margin-top: 2px; margin-right: -30px;">
+                                    {{-- <div class="form-group" style="float: right;  margin-top: 2px; margin-right: -30px;">
 
                                      <button type="button"  id="rtf2" custom1="{{$applied->id}}"  class="btn btn-success approvel" data-toggle="modal" data-target="#dateModal" style="margin-right: 10px;" @if ($applied->approved_status == 1 ?? '') disabled @endif>Accept</button>
 
 
                                  <button type="button" id="rtf2" custom1="{{$applied->id}}" class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" @if ($applied->approved_status == 2 ?? '') disabled @endif>Decline</button>
-                               </div>
+                               </div> --}}
 
                              @else
                               <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
@@ -469,7 +464,7 @@
 
                                                  </div>
                                            </div>
-                                           <div class="row clearfix">
+                                           {{-- <div class="row clearfix">
                                              @if ($applied->is_accepeted == 0)
                                              <div class="form-group" style="margin-left: 217px;">
                                                  <h6 style="margin-left: 16px; color:orange">Accept Your Application by clicking the below button</h6>
@@ -477,17 +472,8 @@
                                                </div>
 
                                              @endif
-                                             {{-- @if ($applied->is_accepeted == 1)
-                                             <div class="form-group">
-                                                 <h6 style="margin-left: 16px; color:green"> You have <b>Accepted</b> the Application </h6>
-                                               </div>
-                                             @endif
-                                             @if ($applied->is_accepeted == 2)
-                                             <div class="form-group">
-                                                 <h6 style="margin-left: 16px; color:red"> You have <b>Cancelled</b> the Application </h6>
-                                               </div>
-                                             @endif --}}
-                                         </div>
+
+                                         </div> --}}
                                          @else
 
                                          <div class="form-group">
@@ -498,14 +484,12 @@
                                            <div class="content-center" style="text-align: center; margin-top: 100px;"> <h5> No Actions Available </h5></div>
                                      @endif
                                          </fieldset>
-                                       <h3>Ready To Fly - Finish</h3>
+                                       <h3>Applied For Visa - Finish</h3>
                                        <fieldset>
-                                        {{-- @if($applied->Is_applied==1 && $applied->is_accepted == 1 && $applied->approved_status == 1) --}}
-                                        {{-- {{ dd($applied->userUniversity->id) }} --}}
-                                       {{-- <form action="{{ url('application/update/university') }}" method="POST" enctype="multipart/form-data" > --}}
+
                                        @if ($applied->is_accepeted == 1)
                                        <h6> <b>
-                                        Ready to Fly </b> </h6>
+                                        Applied For Visa </b> </h6>
                                            <div class="table-responsive" >
                                                <table class="table table-hover table-striped" >
 
@@ -523,7 +507,8 @@
                                                </tbody>
                                            </table>
                                        </div>
-
+                                       <h6> <b>
+                                        Visa Documents</b> </h6>
                                            <div class="row clearfix">
                                              <input type="text"  name="appliedUniversityRowIdReadyToFly" value="{{ $applied->id }}" hidden>
 
@@ -541,10 +526,12 @@
                                                <div class="col-lg-2 col-md-12">
                                            <div class="form-group">
                                                <label for="">Course Fees</label>
-                                               <input type="text" name="fees" class="form-control" id="coursefees" @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$applied->userUniversity->universityCourse[$key]->fees}}" @else value="{{$applied->fees ?? ''}}" @endif />
+                                               <?php $coursedetails=\App\Models\UniversityCourse::where('user_id',$applied->university_id)->where('course_id',$applied->course_id)->first(); ?>
+
+                                               <input type="text" name="fees" class="form-control" id="coursefees" @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="" @else value="{{$coursedetails->fees}}" @endif />
                                              </div>
                                            </div>
-                                        {{-- {{ dd($applied->documents) }} --}}
+
                                         <div class="col-lg-10 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')
                                             <div class="form-group">
@@ -555,17 +542,17 @@
                                                 $increase=0; ?>
                                                 <label for="documents">Documents</label>
                                                 <br/>
-                                                <div class="dynamic_document" id="dynamic_document-{{$applied->userUniversity->id}}">
+                                                <div class="dynamic_document" id="dynamic_document-{{$key}}">
                                                     @if (isset($documentDefault))
 
-                                                    @foreach($documentDefault as $key => $value)
+                                                    @foreach($documentDefault as $dockey => $value)
 
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px" >
 
-                                                        <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
-                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
+                                                        <input type="hidden" name="doc[{{$dockey}}]" value="0" hidden>
+                                                        <input type="checkbox" name="doc[{{$dockey}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
 
-                                                        <span>{{$key}}</span>
+                                                        <span>{{$dockey}}</span>
 
                                                         @php $increase++ @endphp
 
@@ -574,14 +561,14 @@
                                                     @endif
                                                     @if (isset($documentVisa))
 
-                                                    @foreach($documentVisa as $key => $value)
+                                                    @foreach($documentVisa as $htkey => $htvalue)
 
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
-                                                        <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
+                                                        <input type="hidden" name="doc[{{$htkey}}]" value="0" hidden>
 
-                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
+                                                        <input type="checkbox" name="doc[{{$htkey}}]" id="document[{{$increase}}]" value="{{$htvalue}}" checked style="margin-right: 4px">
 
-                                                        <span>{{$key}}</span>
+                                                        <span>{{$htkey}}</span>
 
                                                         @php $increase++ @endphp
 
@@ -590,7 +577,7 @@
                                                     @endif
                                                 </div>
 
-                                                <button type="button" customButton="{{$applied->userUniversity->id}}" name="adddocument" id="add_document_university" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
+                                                {{-- <button type="button" customDoc="{{$key}}"  name="adddocument " id="add_document_university" class="btn btn-primary btn-m add_document_university" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button> --}}
 
                                               </div>
                                             @else
@@ -605,14 +592,14 @@
                                                     @if (isset($documentSelect))
 
 
-                                                    @foreach($documentSelect as $key => $value)
+                                                    @foreach($documentSelect as $rtkey => $rtvalue)
 
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
-                                                        <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
-                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="1" @if($value == 1) checked @endif style="margin-right: 4px">
+                                                        <input type="hidden" name="doc[{{$rtkey}}]" value="0" hidden>
+                                                        <input type="checkbox" name="doc[{{$rtkey}}]" id="document[{{$increase}}]" value="1" @if($rtvalue == 1) checked @endif style="margin-right: 4px">
 
-                                                        <span>{{$key}}</span>
+                                                        <span>{{$rtkey}}</span>
 
                                                         @php $increase++ @endphp
 
@@ -621,23 +608,23 @@
                                                     @endif
                                                 </div>
 
-                                                <button type="button" customButton="{{$applied->userUniversity->id}}" name="adddocument" id="add_document_university" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
+                                                {{-- <button type="button" customDoc="{{$key}}" name="adddocument" id="add_document_university" class="btn btn-primary btn-m add_document_university" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button> --}}
 
                                               </div>
                                               @endif
                                              </div>
-                                             <div class="col-lg-6 col-md-12">
+                                             {{-- <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
                                                     @if($applied->is_complete==0)
                                                     <button type="submit" class="btn btn-primary" id="rtf4" >Update</button>
 
-                                                    {{-- <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof" data-toggle="modal" data-target="#readyToFly" > Ready to fly</button> --}}
+                                                    <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof" data-toggle="modal" data-target="#readyToFly" > Ready to fly</button>
                                                     <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof"  > Ready to fly</button>
                                                     @else
                                                    <button type="button" name="adddocument" id="rtf3" class="btn btn-success">Completed</button>
                                                 @endif
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
 
                                        @else
@@ -727,6 +714,27 @@
     </div>
 </div>
 </div>
+
+{{-- <div class="modal fade" id="acceptedModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Apply for University</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+                  <h4> Are you sure you want to apply for this University?</h4>
+
+        </div>
+        <div class="modal-footer">
+           <a href="javascript:void(0)"  class="btn btn-primary" id="apply"> Apply </a>
+        </div>
+    </div>
+</div>
+</div> --}}
 
 <div class="modal fade" id="acceptedModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
@@ -830,7 +838,7 @@
         </div>
         <div class="modal-body">
             <form id="basic-form2" class="basic-form" method="post" novalidate action="#">
-                <div class="form-group">
+                <div class="form-group" id="documentError">
                     <label>Document Name</label>
                     <input type="text" class="form-control" name="document_name" id="document_name" required>
                 </div>
@@ -856,7 +864,7 @@
         </div>
         <div class="modal-body">
             <form id="basic-form3" class="basic-form" method="post" novalidate action="#">
-                <div class="form-group">
+                <div class="form-group" id="document2Error">
                     <label>Document Name</label>
                     <input type="text" class="form-control" name="document_name2" id="document_name2" required>
                 </div>
@@ -936,33 +944,46 @@
       var postURL = "<?php echo url('addmore'); ?>";
       var i=1;
       var document_row = {{$inc}} ;
-      var row = {{$increase}};
-
+    //   var newval='';
       clc=0;
       $('#add_document2').click(function(){
       rt=$('#document_name').val()
       //   console.log(rt);
+      if(rt=='')
+      {
+        $('#documentError').html(' <label>Document Name</label><input type="text" class="form-control" name="document_name" id="document_name" required><strong><span style="color:red">*This field is required</span></strong>')
+      }
+      else
+      {
       $('#dynamic_document').append('<label class="control-inline fancy-checkbox" style="margin-left: 1px;"><input type="hidden" name="document['+rt+']" value="0"  hidden><input type="checkbox" customValue="'+rt+'" name= "document['+rt+']" value="1" class="checkbox"><span>'+rt+'</span></label>')
       // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet"><span>'+rt+'</span></label>')
       $('#documentModal').modal('hide');
       document.getElementById("basic-form2").reset();
-       document_row++;
+       document_row++
+      }
     });
+
+    $('.add_document_university').click(function(){
+
+    // var id = '';
+    newval = $(this).attr('customDoc');
+    console.log(newval);
 
     $('#add_document3').click(function(){
-      rt=$('#document_name2').val();
-
-      //   console.log(rt);
-      $('#dynamic_document-'+id+'').append('<label class="control-inline fancy-checkbox" style="margin-left: 1px;"><input type="hidden" name="doc['+rt+']" value="0"  hidden><input type="checkbox" name= "doc['+rt+']" value="1"><span>'+rt+'</span></label>')
-      // $('#dynamic_document').append('<label class="control-inline fancy-checkbox"><input type="checkbox" name="12marksheet" '+document_row2+'><span>'+rt+'</span></label>')
+      docName=$('#document_name2').val();
+      if(docName=='')
+      {
+        $('#document2Error').html(' <label>Document Name</label><input type="text" class="form-control" name="document_name2" id="document_name2" required><strong><span style="color:red">*This field is required</span></strong>')
+      }
+      else
+      {
+      $('#dynamic_document-'+newval+'').append('<label class="control-inline fancy-checkbox" style="margin-left: 1px;"><input type="hidden" name="doc['+docName+']" value="0"  hidden><input type="checkbox" customValue="'+docName+'" name= "doc['+docName+']" value="1" class="checkbox"><span>'+docName+'</span></label>')
       $('#documentModal2').modal('hide');
-      console.log('ahjdhfshf');
       document.getElementById("basic-form3").reset();
-    //   document_row2++ ;
-     row++;
+      newval = '';
+      }
     });
-
-
+});
     $('#upload_document_button').click(function(){
     //   rt=$('#document_name').val()
     //   console.log(rt);
@@ -1055,7 +1076,7 @@ $(document).on('click', '#apply', function ()
 
             $.ajax({
                     type: "post",
-                    url: "{{route('admin.application.apply')}}",
+                    url: "{{route('application.apply')}}",
                     data: {appliedUniversityRowId:appliedUniversityRowId},
                     success: function (result) {
                         $('.applied').html('Applied');
@@ -1121,7 +1142,7 @@ $(document).ready(function () {
             //  $("#basic-form5 input").removeClass("is-invalid");
              $.ajax({
                      type: "post",
-                     url: "{{route('admin.application.approval')}}",
+                     url: "{{route('application.approval')}}",
                      data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval,modalDate:modalDate},
                      success: function (result) {
                         $('#alert_add2').append('<div class="container"><div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong> Application Approved Successfully.</strong></div></div>')
@@ -1179,7 +1200,7 @@ var j = 0;
 
              $.ajax({
                      type: "post",
-                     url: "{{route('admin.application.approval')}}",
+                     url: "{{route('application.approval')}}",
                      data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval},
                      success: function (result) {
                         $('#alert_add2').append('<div class="container"><div class="alert alert-danger alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong> Application is Declined.</strong></div></div>')
@@ -1223,7 +1244,7 @@ var j = 0;
 
              $.ajax({
                      type: "post",
-                     url: "{{route('admin.application.accepted')}}",
+                     url: "{{route('application.accepted')}}",
                      data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted},
                      success: function (result) {
 
@@ -1252,7 +1273,7 @@ var j = 0;
 
              $.ajax({
                      type: "post",
-                     url: "{{route('admin.application.offer.decline')}}",
+                     url: "{{route('consultant.application.offer.decline')}}",
                      data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted},
                      success: function (result) {
 
@@ -1281,13 +1302,13 @@ var j = 0;
  {
     appliedUniversityRowIdReadyToFly=$(this).attr('custom1');
     fees=$('#coursefees').val();
-    documents = document.getElementsByName('doc[]');
-    // console.log(.val());
+//     documents = document.getElementsByName('doc[]');
+//     // console.log(.val());
 
-   Array.from(documents).forEach((element)=>{
-     console.log(element.value);
-     docs.push(element.value)
-   });
+//    Array.from(documents).forEach((element)=>{
+//      console.log(element.value);
+//      docs.push(element.value)
+//    });
 
 console.log(docs)
 
@@ -1305,7 +1326,7 @@ console.log(docs)
 
              $.ajax({
                      type: "post",
-                     url: "{{route('admin.application.readytofly')}}",
+                     url: "{{route('application.readytofly')}}",
                      data: {appliedUniversityRowIdReadyToFly:appliedUniversityRowIdReadyToFly,fees:fees,docs:docs,uni_id:uni_id},
                      success: function (result) {
 
@@ -1335,7 +1356,7 @@ console.log(docs)
                     });
                 $.ajax({
                             type: "post",
-                            url: "{{route('admin.application.document.destroy')}}",
+                            url: "{{route('consultant.application.document.destroy')}}",
                             data: {document_id: document_id},
                             success: function (result)
                             {
@@ -1356,14 +1377,14 @@ console.log(docs)
 {
    appliedUniversityRowIdReadyToFly=$(this).attr('custom1');
    fees=$('#coursefees').val();
-   documents = document.getElementsByName('doc[]');
+//    documents = document.getElementsByName('doc[]');
    // console.log(.val());
 
-  Array.from(documents).forEach((element)=>{
-    // console.log(element.value);
-    docs.push(element.value)
-    console.log(docs);
-  });
+//   Array.from(documents).forEach((element)=>{
+//     // console.log(element.value);
+//     docs.push(element.value)
+//     console.log(docs);
+//   });
 
 console.log(docs)
 });
@@ -1378,7 +1399,7 @@ $(document).on('click', '#readyTo2', function ()
 
             $.ajax({
                     type: "post",
-                    url: "{{route('admin.application.update.university')}}",
+                    url: "{{route('consultant.application.update.university')}}",
                     data: {appliedUniversityRowIdReadyToFly:appliedUniversityRowIdReadyToFly,fees:fees,docs:docs,uni_id:uni_id},
                     success: function (result) {
 
@@ -1431,7 +1452,7 @@ $(document).on('click', '#readyTo2', function ()
 
              $.ajax({
                      type: "post",
-                     url: "{{route('admin.application.followup.store')}}",
+                     url: "{{route('consultant.application.followup.store')}}",
                      data: {application_id:application_id,note:note,date:date},
                      success: function (result) {
                          console.log('success');
