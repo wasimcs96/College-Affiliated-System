@@ -33,10 +33,19 @@ Route::get('general/about',[
     'as' => 'admin.general.about'
  ]);
 
- Route::post('general/about/store',[
-    'uses' => 'AdminAboutController@store',
-    'as' => 'admin.about.store'
- ]);
+Route::post('general/about/store',[
+     'uses' => 'AdminAboutController@store',
+     'as' => 'admin.about.store'
+     ]);
+
+Route::get('general/faq',[
+    'uses' => 'AdminFaqController@index',
+    'as' => 'admin.general.faq'
+     ]);
+Route::post('general/faq/store',[
+    'uses' => 'AdminFaqController@store',
+    'as' => 'admin.faq.store'
+         ]);
 
 Route::get('general/terms&condition',function(){
    return view('admin.general.terms');

@@ -77,9 +77,11 @@
                 <li class="{{ Request::segment(2) == 'general' ? 'active open' : null }}">
                     <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
                     <ul>
+                        <li class="{{ Request::segment(3) == 'faq' ? 'active' : null }}"><a href="{{route('admin.general.faq')}}">Manage FAQ</a></li>
                         <li class="{{ Request::segment(3) == 'about' ? 'active' : null }}"><a href="{{route('admin.general.about')}}">Manage About Us</a></li>
                         <li class="{{ Request::segment(3) == 'terms&condition' ? 'active' : null }}"><a href="{{route('admin.general.terms')}}">Manage Terms & Conditions</a></li>
                         <li class="{{ Request::segment(3) == 'privacy_policy' ? 'active' : null }}"><a href="{{route('admin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
+                        <li class="{{ Request::segment(3) == 'blog' ? 'active' : null }}"><a href="{{route('admin.general.blog')}}">Blog</a></li>
                     </ul>
                 </li>
 
