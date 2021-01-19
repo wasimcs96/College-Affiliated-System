@@ -194,9 +194,14 @@ Route::get('home', 'UserController@index')->name('home');
 
 
 
-Route::get('index', function(){
-    return view('frontEnd.index');
-})->name('frontend.index');
+// Route::get('index', function(){
+//     return view('frontEnd.index');
+// })->name('frontend.index');
+
+Route::get('index',[
+    'uses'=>'FrontEndController\FrontEndController@index',
+    'as'=>'frontend.index'
+]);
 
 Route::get('recoverpassword',function(){
     return view('frontEnd.recover');

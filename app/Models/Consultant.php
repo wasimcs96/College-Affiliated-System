@@ -13,6 +13,7 @@ class Consultant extends Model
         'user_id',
         'company_name',
         'website',
+        'about_me',
         'working_week_days',
         'start_time',
         'end_time',

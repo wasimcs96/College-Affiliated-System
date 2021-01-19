@@ -46,32 +46,36 @@
             <div class="col-lg-9">
                 <h3 class="title font-size-24">Affiliated University</h3>
                 <div class="section-tab section-tab-3 pt-4 pb-5">
+                    <?php $countries=App\Models\Country::limit(4)->get()?>
+                    {{-- {{dd($country)}} --}}
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        @foreach($countries as $country)
                         <li class="nav-item">
-                            <a class="nav-link active" id="my-hotel-tab" data-toggle="tab" href="#my-hotel" role="tab" aria-controls="my-hotel" aria-selected="true">
-                                Managment
+                            <a class="nav-link " id="my-hotel-tab" data-toggle="tab" href="#{{$country->countries_id}}" role="tab" aria-controls="my-hotel" aria-selected="true">
+                               {{$country->countries_name}}
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="my-tour-tab" data-toggle="tab" href="#my-tour" role="tab" aria-controls="my-tour" aria-selected="false">
+                        @endforeach
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" id="my-tour-tab" data-toggle="tab" href="#{{$country->countries_id}}" role="tab" aria-controls="my-tour" aria-selected="false">
                                 Technology
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="my-activity-tab" data-toggle="tab" href="#my-activity" role="tab" aria-controls="my-activity" aria-selected="false">
+                        </li> --}}
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" id="my-activity-tab" data-toggle="tab" href="#{{$country->countries_id}}" role="tab" aria-controls="my-activity" aria-selected="false">
                                 Arts
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="my-car-tab" data-toggle="tab" href="#my-car" role="tab" aria-controls="my-car" aria-selected="false">
+                        </li> --}}
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" id="my-car-tab" data-toggle="tab" href="#{{$country->countries_id}}" role="tab" aria-controls="my-car" aria-selected="false">
                                 Commerce
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a class="nav-link" id="my-flight-tab" data-toggle="tab" href="#my-flight" role="tab" aria-controls="my-flight" aria-selected="false">
                                 Science
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- <li class="nav-item">
                             <a class="nav-link" id="my-review-tab" data-toggle="tab" href="#my-review" role="tab" aria-controls="my-review" aria-selected="false">
                                 Reviews

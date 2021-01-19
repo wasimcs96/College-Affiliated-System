@@ -19,11 +19,13 @@ class FrontEndController extends Controller
 
     public function index()
      {
-         $consultants = User::get()->isConsultant();
-dd($consultants);
+         $consultants = User::get();
+        // dd($consultants);
         $universities = User::get();
 
-        return view('frontEnd.index',compact('universities'))->with('consultants','universities');
+        // $consultants =$consultant->isConsultant();
+        // $universities = $university->isUniversity();
+        return view('frontEnd.index',compact('universities','consultants'));
 
      }
 

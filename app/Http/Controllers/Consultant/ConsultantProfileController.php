@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config as FacadesConfig;
 
 class ConsultantProfileController extends Controller
 {
@@ -38,10 +39,10 @@ class ConsultantProfileController extends Controller
          $ata=[];
          $formattedAddr = str_replace(' ','+',$request->googleAddress);
          //Send request and receive json data by address
-         $geocodeFromAddr = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC1jKOFLhfQoZD3xJISSPnSW9-4SyYPpjY&address='.$formattedAddr.'&sensor=false'); 
+         $geocodeFromAddr = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC1jKOFLhfQoZD3xJISSPnSW9-4SyYPpjY&address='.$formattedAddr.'&sensor=false');
          $output = json_decode($geocodeFromAddr);
          //Get latitude and longitute from json data
-         $ata['latitude']  = $output->results[0]->geometry->location->lat; 
+         $ata['latitude']  = $output->results[0]->geometry->location->lat;
          $ata['longitude'] = $output->results[0]->geometry->location->lng;
         //  dd($data);
          //Return latitude and longitude of the given address
@@ -49,7 +50,8 @@ class ConsultantProfileController extends Controller
             'first_name'=>'required',
             'last_name'=>'required',
             'email' => 'required|email',
-            'mobile'=>'numeric|required'
+            'mobile'=>'numeric|required',
+            'about_me'=>'required',
              ]);
              $id = Auth()->user()->id;
              $user = User::find($id);
@@ -80,6 +82,7 @@ class ConsultantProfileController extends Controller
                     'start_time' => $request->start_time,
                     'end_time' => $request->end_time,
                     'website' => $request->website,
+                    'about_me'=>$request->about_me,
                      ]);
 
                 }
