@@ -3749,7 +3749,7 @@ var Editor = /** @class */ (function () {
             })(idx);
             this.context.memo('help.formatH' + idx, this.lang.help['formatH' + idx]);
         }
-        
+
         this.insertParagraph = this.wrapCommand(function () {
             _this.typing.insertParagraph(_this.editable);
         });
@@ -7083,7 +7083,7 @@ $$1.summernote = $$1.extend($$1.summernote, {
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
             ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
+            ['insert', ['link']],
             ['view', ['fullscreen', 'codeview', 'help']]
         ],
         // popover
@@ -7287,7 +7287,7 @@ $(function() {
             alert('You have pasted something to the editor');
         }
     });
-    
+
     $('.inline-editor').summernote({
         airMode: true
     });

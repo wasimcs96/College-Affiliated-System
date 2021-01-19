@@ -8,17 +8,17 @@
                 <div class="col-lg-6">
                     <div class="breadcrumb-content">
                         <div class="section-heading">
-                            <h2 class="sec__title">Blog Sidebar</h2>
+                            <h2 class="sec__title">Blogs</h2>
                         </div>
                     </div><!-- end breadcrumb-content -->
                 </div><!-- end col-lg-6 -->
                 <div class="col-lg-6">
                     <div class="breadcrumb-list">
-                        <ul class="list-items d-flex justify-content-end">
+                        {{-- <ul class="list-items d-flex justify-content-end">
                             <li><a href="index.html">Home</a></li>
                             <li>Blog</li>
                             <li>Blog Sidebar</li>
-                        </ul>
+                        </ul> --}}
                     </div><!-- end breadcrumb-list -->
                 </div><!-- end col-lg-6 -->
             </div><!-- end row -->
@@ -38,54 +38,51 @@
 <section class="card-area section--padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="row">
-                    <?php $blogs=App\Models\Blog::get();?>
+                    <?php $blogs=App\Models\Blog::orderBy('serial_number', 'ASC')->get();?>
                     @foreach($blogs as $blog)
-                    <div class="col-lg-6 responsive-column">
+                @if($blog->status == 1 ?? '')
+                    <div class="col-lg-4 responsive-column">
                         <div class="card-item blog-card">
+                            <a href="{{route('blog_detail', $blog->id ?? '')}}">
                             <div class="card-img">
-                                <img style="height: 231.25px; width: 370px;" src="{{asset($blog->main_image)}}" alt="blog-img">
+                                <a href="{{route('blog_detail', $blog->id ?? '')}}">
+                        <img style="height: 231.25px; width: 370px;" src="{{asset($blog->main_image ?? '')}}" alt="blog-img">
+                                </a>
                                 <div class="post-format icon-element">
-                                    <i class="la la-photo"></i>
+                                    <a href="{{route('blog_detail', $blog->id ?? '')}}"> <i class="la la-photo"></i></a>
                                 </div>
                                 <div class="card-body">
                                     <div class="post-categories">
                                         {{-- <a href="#" class="badge">{{$blog->title}}</a> --}}
                                         {{-- <a href="#" class="badge">lifestyle</a> --}}
                                     </div>
-                                    <h3 class="card-title line-height-26"><a href="{{route('blog_detail', $blog->id)}}">{{$blog->title}}</a></h3>
+                                    <h3 class="card-title line-height-26"><a href="{{route('blog_detail', $blog->id ?? '')}}">{{$blog->title}}</a></h3>
                                     <p class="card-meta">
-                                        <span class="post__time">Uploaded At</span>
-                                        <span class="post-dot"></span>
-                                        <span class="post__date">{{$blog->updated_at}}</span>
+                                        <?php
+                                            $myvalue =$blog->short_description ?? '';
+                                            if (strlen($myvalue) > 140)
+                                                {
+                                                    $myvalue = substr($myvalue, 0, 80);
+                                                    $myvalue = explode(' ', $myvalue);
+                                                    array_pop($myvalue); // remove last word from array
+                                                    $myvalue = implode(' ', $myvalue);
+                                                    // $myvalue = $myvalue . ' ...';
+                                                } ?>
+                                        {{-- <span class="post__time">Uploaded At</span> --}}
+                                        {{-- <span class="post-dot"></span> --}}
+                                        <a href="{{route('blog_detail', $blog->id ?? '')}}"> <span class="post__date">
+                                            {{-- @if($arr->count() > 2) --}}
+                                       <?php echo ($myvalue . '...')?> </span></a>
                                     </p>
                                 </div>
                             </div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <div class="author-content d-flex align-items-center">
-                                    <div class="author-img">
-                                        <img src="{{asset('frontEnd/assets/images/small-team1.jpg')}}" alt="testimonial image">
-                                    </div>
-                                    <div class="author-bio">
-                                        <a href="#" class="author__title">Leroy Bell</a>
-                                    </div>
-                                </div>
-                                <div class="post-share">
-                                    <ul>
-                                        <li>
-                                            <i class="la la-share icon-element"></i>
-                                            <ul class="post-share-dropdown d-flex align-items-center">
-                                                <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                                                <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                                                <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        </a>
+
                         </div><!-- end card-item -->
                     </div><!-- end col-lg-6 -->
+                    @endif
                     @endforeach
                <!-- end col-lg-6 -->
 

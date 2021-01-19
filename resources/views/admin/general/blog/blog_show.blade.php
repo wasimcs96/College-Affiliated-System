@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Admin')
-@section('title', 'Courses')
+@section('title', 'Blog Post')
 
 @section('content')
 
@@ -29,31 +29,35 @@
 
                              <tr>
                         <th><b>Main Image</b></th>
-                        <td><img src="{{asset($show->main_image)}}" width="80px"; height="80px;"></td>
+                        <td><img src="{{asset($show->main_image ?? '')}}" width="80px"; height="80px;"></td>
                     </tr>
                     <tr>
                         <th scope="row">Blog Title</th>
-                        <td>{{$show->title}}</td>
+                        <td>{{$show->title ?? ''}}</td>
                     </tr>
 
 
                     <tr>
                         <th><b>Serial Number</b></th>
-                        <td>{!! $show->serial_number !!}</td>
+                        <td>{{ $show->serial_number ?? ''}}</td>
                     </tr>
 
+                    <tr>
+                        <th><b>Short Description</b></th>
+                        <td>{{ $show->short_description ?? ''}}</td>
+                    </tr>
 
 
                     <tr>
                         <th><b>Status</b></th>
                         <td>
 
-                             @if ($show->status  == 1)
+                             @if ($show->status  == 1 ?? '')
 
                                     <button class="btn btn-success">Active</button>
                                     {{-- @endif --}}
 
-                                @elseif($show->status == 0)
+                                @elseif($show->status == 0 ?? '')
 
                                  <button class="btn btn-danger">InActive</button>
                                 @endif
@@ -71,9 +75,9 @@
                 </div>
                 <div>
                     <h4>Blog Content</h4>
-                {!! $show->content !!}
+                {!! $show->content ?? '' !!}
                 </div>
-                <a href="{{route('admin.general.blog')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                <a href="{{route('admin.general.blog')}}" id="bac" style="margin-top: 14px;margin-bottom: 14px;" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>

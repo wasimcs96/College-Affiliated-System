@@ -21,11 +21,11 @@
                 </div><!-- end col-lg-6 -->
                 <div class="col-lg-6">
                     <div class="breadcrumb-list">
-                        <ul class="list-items d-flex justify-content-end">
+                        {{-- <ul class="list-items d-flex justify-content-end">
                             <li><a href="index.html">Home</a></li>
                             <li>Pages</li>
                             <li>Contact us</li>
-                        </ul>
+                        </ul> --}}
                     </div><!-- end breadcrumb-list -->
                 </div><!-- end col-lg-6 -->
             </div><!-- end row -->
@@ -53,13 +53,14 @@
                     </div><!-- form-title-wrap -->
                     <div class="form-content ">
                         <div class="contact-form-action">
-                            <form method="post" class="row">
+                            <form action="{{route('front.contact.store')}}" method="post" class="row">
+                                @csrf
                                 <div class="col-lg-6 responsive-column">
                                     <div class="input-box">
                                         <label class="label-text">Your Name</label>
                                         <div class="form-group">
                                             <span class="la la-user form-icon"></span>
-                                            <input class="form-control" type="text" name="text" placeholder="Your name">
+                                            <input class="form-control" type="text" name="user_name" placeholder="Your name">
                                         </div>
                                     </div>
                                 </div><!-- end col-lg-6 -->
@@ -91,7 +92,7 @@
                                 </div><!-- end col-lg-12 --> --}}
                                 <div class="col-lg-12">
                                     <div class="btn-box">
-                                        <button type="button" class="theme-btn">Send Message</button>
+                                        <button type="submit" class="theme-btn">Send Message</button>
                                     </div>
                                 </div><!-- end col-lg-12 -->
                             </form>

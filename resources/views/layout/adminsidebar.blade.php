@@ -81,6 +81,7 @@
                         <li class="{{ Request::segment(3) == 'terms&condition' ? 'active' : null }}"><a href="{{route('admin.general.terms')}}">Manage Terms & Conditions</a></li>
                         <li class="{{ Request::segment(3) == 'privacy_policy' ? 'active' : null }}"><a href="{{route('admin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
                         <li class="{{ Request::segment(3) == 'blog' ? 'active' : null }}"><a href="{{route('admin.general.blog')}}">Blog</a></li>
+                        <li class="{{ Request::segment(3) == 'contact' ? 'active' : null }}"><a href="{{route('admin.contact.index')}}">Contact Manager</a></li>
                     </ul>
                 </li>
 
