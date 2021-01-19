@@ -41,8 +41,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'longitude',
         'city',
         'country',
-        'provider',
-        'provider_id'
+        'google',
+        'facebook',
+        'linkedin'
 
     ];
 

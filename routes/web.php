@@ -134,23 +134,13 @@ Route::post('/slots',[
 // })->name('university_all');
 
 /* blog routes*/
-// Route::get('blog_all',function(){
-//     return view('frontEnd.blog.blog_all');
-// })->name('blog_all');
+Route::get('blog_all',function(){
+    return view('frontEnd.blog.blog_all');
+})->name('blog_all');
 
-Route::get('blog_all',[
-    'uses' => 'FrontEndController\BlogFrontController@index',
-    'as' => 'blog_all'
-]);
-
-// Route::get('blog_detail',function(){
-//     return view('frontEnd.blog.blog_detail');
-// })->name('blog_detail');
-
-Route::get('blog_detail/{id}',[
-    'uses' => 'FrontEndController\BlogFrontController@detail',
-    'as' => 'blog_detail'
-]);
+Route::get('blog_detail',function(){
+    return view('frontEnd.blog.blog_detail');
+})->name('blog_detail');
 
 // ######## loan route
 Route::get('loan',function(){
