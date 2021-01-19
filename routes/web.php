@@ -48,7 +48,9 @@ Route::post('fetch/university/selectedcountrywise',[
     'as' => 'university_fetch_selected.countrywise'
 ]);
 
-
+Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::post('fetch/consultants/universitywise',[
     'uses' => 'FrontEndController\UniversityFilterController@universityWiseConsultant',
@@ -426,3 +428,5 @@ Route::get('frequently/asked/question',[
     'uses'=>'FrontEndController\faqFrontController@index',
     'as'=>'faq.front'
 ]);
+Route::get('login/{provider}', 'SocialController@redirect');
+Route::get('login/{provider}/callback','SocialController@Callback');
