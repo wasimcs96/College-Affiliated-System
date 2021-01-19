@@ -8,10 +8,20 @@
     <div class="card">
         <div class="header">
             <h2>Courses<small>All Courses</small></h2>
+            {{-- <div class="card-body">
+                <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" class="form-control">
+                    <br>
+                    <button class="btn btn-success">Import User Data</button>
+                    <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a>
+                </form>
+            </div> --}}
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <a href="{{route('admin.courses.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>  Add </a>
+                <a href="{{route('admin.courses.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>  Add Course</a>
+
                 {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                     <ul class="dropdown-menu">
