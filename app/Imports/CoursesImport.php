@@ -22,13 +22,13 @@ class CoursesImport implements ToModel
         // ]);
 
         return new UniversityCourse([
-            'id' => $row[0],
-            'course_id' => $row[1],
-            'user_id' => $row[2],
-            'description' => $row[3],
-            'fees' => $row[4],
-            'start_date' => date("Y-m-d",strtotime($row[5])),
-            'end_date' => date("Y-m-d",strtotime($row[6])),
+            // 'id' => $row[0],
+            'course_id' => $row[0],
+            'user_id' => auth()->user()->id,
+            'description' => $row[1],
+            'fees' => $row[2],
+            'start_date' => date("Y-m-d",strtotime($row[3])),
+            'end_date' => date("Y-m-d",strtotime($row[4])),
         ]);
     }
 }
