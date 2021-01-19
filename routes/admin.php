@@ -47,6 +47,44 @@ Route::post('general/faq/store',[
     'as' => 'admin.faq.store'
          ]);
 
+Route::get('general/blog',[
+    'uses' => 'AdminBlogController@index',
+    'as' => 'admin.general.blog'
+        ]);
+
+Route::get('general/blog/add',[
+    'uses' => 'AdminBlogController@add',
+    'as' => 'admin.blog.add'
+        ]);
+
+Route::post('general/blog/store',[
+    'uses' => 'AdminBlogController@store',
+    'as' => 'admin.blog.store'
+        ]);
+
+
+Route::get('general/blog/show/{id}',[
+    'uses' => 'AdminBlogController@show',
+    'as' => 'admin.blog.show'
+        ]);
+
+Route::get('general/blog/edit{id}',[
+    'uses' => 'AdminBlogController@edit',
+    'as' => 'admin.blog.edit'
+        ]);
+
+Route::post('general/blog/update',[
+    'uses' => 'AdminBlogController@update',
+    'as' => 'admin.blog.update'
+        ]);
+
+Route::get('general/blog/delete/{id}',[
+    'uses' => 'AdminBlogController@delete',
+    'as' => 'admin.blog.delete'
+        ]);
+
+
+
 Route::get('general/terms&condition',function(){
    return view('admin.general.terms');
 })->name('admin.general.terms');
