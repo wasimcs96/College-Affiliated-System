@@ -48,7 +48,9 @@ Route::post('fetch/university/selectedcountrywise',[
     'as' => 'university_fetch_selected.countrywise'
 ]);
 
-
+Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::post('fetch/consultants/universitywise',[
     'uses' => 'FrontEndController\UniversityFilterController@universityWiseConsultant',
@@ -132,13 +134,23 @@ Route::post('/slots',[
 // })->name('university_all');
 
 /* blog routes*/
-Route::get('blog_all',function(){
-    return view('frontEnd.blog.blog_all');
-})->name('blog_all');
+// Route::get('blog_all',function(){
+//     return view('frontEnd.blog.blog_all');
+// })->name('blog_all');
 
-Route::get('blog_detail',function(){
-    return view('frontEnd.blog.blog_detail');
-})->name('blog_detail');
+Route::get('blog_all',[
+    'uses' => 'FrontEndController\BlogFrontController@index',
+    'as' => 'blog_all'
+]);
+
+// Route::get('blog_detail',function(){
+//     return view('frontEnd.blog.blog_detail');
+// })->name('blog_detail');
+
+Route::get('blog_detail/{id}',[
+    'uses' => 'FrontEndController\BlogFrontController@detail',
+    'as' => 'blog_detail'
+]);
 
 // ######## loan route
 Route::get('loan',function(){
@@ -426,3 +438,5 @@ Route::get('frequently/asked/question',[
     'uses'=>'FrontEndController\faqFrontController@index',
     'as'=>'faq.front'
 ]);
+Route::get('login/{provider}', 'SocialController@redirect');
+Route::get('login/{provider}/callback','SocialController@Callback');
