@@ -18,19 +18,35 @@ class SocialController extends Controller
 
     public function Callback($provider){
         $userSocial =   Socialite::driver($provider)->stateless()->user();
-        $users       =   User::where(['email' => $userSocial->getEmail()])->first();
-if($users){
+        $users       =   User::where([$provider => $userSocial->getId()])->first();
+        
+       if($users){
             Auth::login($users);
             return redirect('/');
         }else{
-$user = User::create([
-                'first_name'          => $userSocial->getName(),
-                'email'         => $userSocial->getEmail(),
-                'profile_image'         => $userSocial->getAvatar(),
-                'provider_id'   => $userSocial->getId(),
-                'provider'      => $provider,
-            ]);
-         return redirect()->route('/');
+            $checkMail=User::where(['email' => $userSocial->getEmail()])->first();
+            if($checkMail){
+                $checkMail->$provider=$userSocial->getId();
+                $checkMail->save();
+            }
+           else {
+            $checkMail=$this->newUser($userSocial,$provider);
         }
+        Auth::login($checkMail);
+         return redirect()->route('front');
+        }
+}
+
+
+
+public function newUser($userSocial,$provider){
+    $user = User::create([
+        'first_name'          => $userSocial->getName() ?? '',
+        'email'         => $userSocial->getEmail() ?? '',
+        'profile_image'         => $userSocial->getAvatar() ?? '',
+        $provider   => $userSocial->getId(),
+        //'provider'      => $provider,
+    ]);
+    return $user;
 }
 }
