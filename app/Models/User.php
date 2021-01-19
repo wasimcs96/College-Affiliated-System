@@ -4,13 +4,14 @@ namespace App\Models;
 use App\Models\Method\RoleMethod;
 use App\Models\Method\UserMethod;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\UniversityConsultantClient;
 use App\Models\Order;
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, HasRoles,UserMethod;
 
@@ -39,7 +40,9 @@ class User extends Authenticatable
         'latitude',
         'longitude',
         'city',
-        'country'
+        'country',
+        'provider',
+        'provider_id'
 
     ];
 
