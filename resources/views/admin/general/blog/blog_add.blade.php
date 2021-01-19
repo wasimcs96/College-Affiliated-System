@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('parentPageTitle', 'admin')
-@section('title', 'FAQ')
+@section('title', 'Add Blog Post')
 
 @section('content')
 
@@ -36,11 +36,16 @@
                             <label for="content">Question</label><br>
                             <input type="text" class="form-control" name="short_description"  maxlength="100" required>
                         </div> --}}
-
-
+                        <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label>Short Description</label>
+                            <textarea  id="content" name="short_description" rows="10" cols="10" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group col-lg-6">
                            <label for="content">Blog Content</label><br>
-                           <textarea class="summernote" id="content" name="content" rows="10" cols="10" class="form-control" style="width:693px"required></textarea>
-
+                           <textarea  id="content" class="summernote" name="content" rows="10" cols="10" class="form-control" required></textarea>
+                    </div>
+                    </div>
                            <div class="form-group">
                             <br>   <label for="content">Main Image</label><br>
                        <div class="body"id="nb"  >
@@ -63,10 +68,16 @@
 
 @stop
 
+
 @section('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/vendor/summernote/dist/summernote.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
+<style>
+    .note-group-select-from-files {
+  display: none;
+}
+</style>
 
 @stop
 

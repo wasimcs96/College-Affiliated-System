@@ -84,6 +84,28 @@ Route::get('general/blog/delete/{id}',[
         ]);
 
 
+// ###########################CONTACT
+
+
+Route::get('general/contact/all',[
+    'uses' => 'AdminContactController@index',
+    'as' => 'admin.contact.index'
+        ]);
+
+Route::get('general/contact/delete/{id}',[
+    'uses' => 'AdminContactController@delete',
+    'as' => 'admin.contact.delete'
+        ]);
+
+Route::get('general/contact/reply/{id}',[
+    'uses' => 'AdminContactController@reply',
+    'as' => 'admin.contact.reply'
+        ]);
+
+Route::get('general/contact/show/{id}',[
+    'uses' => 'AdminContactController@show',
+    'as' => 'admin.contact.show'
+        ]);
 
 Route::get('general/terms&condition',function(){
    return view('admin.general.terms');

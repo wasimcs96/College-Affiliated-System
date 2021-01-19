@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('parentPageTitle', 'admin')
-@section('title', 'FAQ')
+@section('title', 'Edit Blog Post')
 
 @section('content')
 
@@ -15,12 +15,12 @@
                         <div class="row">
                         <div class="form-group col-lg-4">
                             <label>Blog Title</label>
-                            <input type="text" class="form-control" value="{{$edit->title}}" name="title" id="name" required>
+                            <input type="text" class="form-control" value="{{$edit->title ?? ''}}" name="title" id="name" required>
                         </div>
-                        <input type="hidden" name="blog_id" value="{{$edit->id}}">
+                        <input type="hidden" name="blog_id" value="{{$edit->id ?? ''}}">
                         <div class="form-group col-lg-4">
                             <label>Serial Number</label>
-                            <input type="text" class="form-control" value="{{$edit->serial_number}}"name="serial_number" id="name" required>
+                            <input type="text" class="form-control" value="{{$edit->serial_number ?? ''}}"name="serial_number" id="name" required>
                         </div>
 
                         <div class="form-group col-lg-4">
@@ -37,10 +37,13 @@
                             <label for="content">Question</label><br>
                             <input type="text" class="form-control" name="short_description"  maxlength="100" required>
                         </div> --}}
-
+                        <div class="form-group col-lg-12">
+                            <label>Short Description</label>
+                            <input type="text" class="form-control" name="short_description" id="name" required>
+                        </div>
 
                            <label for="content">Blog Content</label><br>
-                           <textarea class="summernote" id="content" name="content" rows="10" cols="10" class="form-control" style="width:693px"required>{{$edit->content}}</textarea>
+                           <textarea class="summernote" id="content" name="content" rows="10" cols="10" class="form-control" style="width:693px"required>{{$edit->content ?? ''}}</textarea>
 
                            <div class="form-group">
                             <br>   <label for="content">Main Image</label><br>

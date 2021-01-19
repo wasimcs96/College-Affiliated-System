@@ -1,17 +1,17 @@
 @extends('layout.master')
 @section('parentPageTitle', 'Admin')
-@section('title', 'Blogs')
+@section('title', 'Contact')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Blog Detail<small>All Blog Posts</small></h2>
+            <h2>Contact <small>All Contact Messages</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-               <li><a  style="color: white;" href="{{route('admin.blog.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>{!! "&nbsp;"!!}Add</a></li>
+               {{-- <li><a  style="color: white;" href="{{route('admin.blog.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>{!! "&nbsp;"!!}Add</a></li> --}}
                 {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                     <ul class="dropdown-menu">
@@ -28,52 +28,41 @@
                     <thead>
 
                         <tr>
-                            <th> <b>Main Image</b></th>
-                            <th> <b>Title</b></th>
+                            <th> <b>User Name</b></th>
+                            <th> <b>Email</b></th>
                             {{-- <th><b>Content</b></th> --}}
-                            <th><b>Serial Number</b></th>
-                            <th><b>Status</b></th>
+                            <th><b>Message</b></th>
+                            {{-- <th><b>Status</b></th> --}}
                             <th style="text-align: center;"><b>Action<b></th>
 
                         </tr>
                     </thead>
-                    <?php $blogs=App\Models\Blog::get(); ?>
-                    @if($blogs->count() > 0)
+                    <?php $contacts=App\Models\Contact::get(); ?>
+                    @if($contacts->count() > 0)
                    <tbody>
-                    @foreach ($blogs as $blog)
+                    @foreach ($contacts as $contact)
                         <tr>
-                            <td><img style="height: 56px;width: 56px;" src="{{asset($blog->main_image ?? '')}}"></td>
-                            <td>{{$blog->title ?? ''}}</td>
+                            {{-- <td><img style="height: 56px;width: 56px;" src="{{asset($blog->main_image ?? '')}}"></td> --}}
+                            <td>{{$contact->name ?? ''}}</td>
 
 
                              {{-- <td>{{$blog->content ?? ''}}</td> --}}
 
-                             <td>{{$blog->serial_number ?? ''}}</td>
+                             <td>{{$contact->email ?? ''}}</td>
+
+                             <td>{{$contact->message ?? ''}}</td>
 
 
-                            <td>
-                                @if ($blog->status  == 1 ?? '')
-
-                                <button class="btn btn-success">Active</button>
-                                {{-- @endif --}}
-
-                            @elseif($blog->status == 0 ?? '')
-
-                             <button class="btn btn-danger">InActive</button>
-                            @endif
-
-
-                            </td>
 
 
                             <td style="text-align: center;">
-                            <a href="{{route('admin.blog.show', $blog->id ?? '')}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View Course" title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
-                            <a href="{{route('admin.blog.edit', $blog->id ?? '')}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit course" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="{{route('admin.contact.show', $contact->id ?? '')}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View Course" title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
+                            <a href="{{route('admin.contact.reply', $contact->id ?? '')}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit course" title="" data-original-title="reply"><i class="fa fa-edit"></i></a>
                             &nbsp;&nbsp;
 
 
 
-                              <a href="{{route('admin.blog.delete', $blog->id ?? '')}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete Course" data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
+                              <a href="{{route('admin.contact.delete', $contact->id ?? '')}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete request" data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
 
                             </td>
 

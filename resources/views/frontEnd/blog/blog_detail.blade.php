@@ -11,17 +11,17 @@
                 <div class="col-lg-6">
                     <div class="breadcrumb-content">
                         <div class="section-heading">
-                            <h2 class="sec__title">Blog Details</h2>
+                            <h2 class="sec__title">{{$detail->title}}</h2>
                         </div>
                     </div><!-- end breadcrumb-content -->
                 </div><!-- end col-lg-6 -->
                 <div class="col-lg-6">
                     <div class="breadcrumb-list">
-                        <ul class="list-items d-flex justify-content-end">
+                        {{-- <ul class="list-items d-flex justify-content-end">
                             <li><a href="index.html">Home</a></li>
                             <li>Blog</li>
                             <li>Blog Details</li>
-                        </ul>
+                        </ul> --}}
                     </div><!-- end breadcrumb-list -->
                 </div><!-- end col-lg-6 -->
             </div><!-- end row -->
@@ -41,155 +41,49 @@
 <section class="card-area section--padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="card-item blog-card blog-card-layout-2 blog-single-card mb-5">
                     <div class="card-img before-none">
-                        <img src="{{asset($detail->main_image)}}" alt="blog-img">
+                        <img src="{{asset($detail->main_image ?? '')}}" alt="blog-img">
                     </div>
                     <div class="card-body px-0 pb-0">
                         {{-- <div class="post-categories">
                             <a href="#" class="badge">Travel</a>
                             <a href="#" class="badge">lifestyle</a>
                         </div> --}}
-                        <h3 class="card-title font-size-28">{{$detail->title}}</h3>
+                        <h3 class="card-title font-size-28">{{$detail->title ?? ''}}</h3>
                         <p class="card-meta pb-3">
                             <span class="post__author">Updated {!! "&nbsp;" !!}<a href="#" class="text-gray">at</a></span>
                             <span class="post-dot"></span>
-                            <span class="post__date"> {{$detail->updated_at}}</span>
+                            <span class="post__date"> {{$detail->updated_at ?? ''}}</span>
                             {{-- <span class="post-dot"></span> --}}
                             {{-- <span class="post__time"><a href="#" class="text-gray">4 Comments</a></span>
                             <span class="post-dot"></span>
                             <span class="post__time"><a href="#" class="text-gray">202 Likes</a></span> --}}
                         </p>
                         <div class="section-block"></div>
-                        {!! $detail->content !!}
-                        {{-- <p class="card-text py-3">Simple point-and-shoot digital cameras can give surprising quality when they have the right lenses and sensors. Because they are totally automatic in focus and exposure, they just have to be pointed at a subject and clicked. They have limited capabilities for controlling the image</p> --}}
-                        {{-- <p class="card-text pb-3">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</p> --}}
-                        {{-- <div class="photo-block-gallery">
-                            <h3 class="title pb-2">Travelling Highlight</h3>
-                            <p class="card-text pb-4">Quodsi sanctus pro eu, ne audire scripserit quo. Vel an enim offendit salutandi, in eos quod omnes epicurei, ex veri qualisque scriptorem mei.</p>
-                            <div class="row">
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="photo-block-item">
-                                        <a href="{{asset('frontEnd/assets/images/destination-img2.jpg')}}"
-                                           data-fancybox="gallery"
-                                           data-caption="Showing image - 01"
-                                           data-speed="700">
-                                            <img src="{{asset('frontEnd/assets/images/destination-img2.jpg')}}" alt="img">
-                                        </a>
-                                    </div>
-                                </div><!-- end col-lg-4 -->
-                                 <div class="col-lg-4 responsive-column">
-                                    <div class="photo-block-item">
-                                        <a href="images/destination-img3.jpg"
-                                           data-fancybox="gallery"
-                                           data-caption="Showing image - 02"
-                                           data-speed="700">
-                                            <img src="{{asset('frontEnd/assets/images/destination-img3.jpg')}}" alt="img">
-                                        </a>
-                                    </div>
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="photo-block-item">
-                                        <a href="images/destination-img4.jpg"
-                                           data-fancybox="gallery"
-                                           data-caption="Showing image - 03"
-                                           data-speed="700">
-                                            <img src="{{asset('frontEnd/assets/images/destination-img4.jpg')}}" alt="img">
-                                        </a>
-                                    </div>
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-6 responsive-column">
-                                    <div class="photo-block-item">
-                                        <a href="images/destination-img5.jpg"
-                                           data-fancybox="gallery"
-                                           data-caption="Showing image - 04"
-                                           data-speed="700">
-                                            <img src="{{asset('frontEnd/assets/images/destination-img5.jpg')}}" alt="img">
-                                        </a>
-                                    </div>
-                                </div><!-- end col-lg-6 -->
-                                 <div class="col-lg-6 responsive-column">
-                                    <div class="photo-block-item">
-                                        <a href="images/destination-img6.jpg"
-                                           data-fancybox="gallery"
-                                           data-caption="Showing image - 05"
-                                           data-speed="700">
-                                            <img src="{{asset('frontEnd/assets/images/destination-img6.jpg')}}" alt="img">
-                                        </a>
-                                    </div>
-                                </div><!-- end col-lg-6 -->
-                            </div><!-- end row -->
-                        </div> --}}
-                        {{-- <p class="card-text padding-bottom-35px">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p> --}}
-                        {{-- <div class="blockquote-item margin-bottom-35px">
-                            <blockquote class="mb-0">
-                                <p class="blockquote__text">
-                                    Creativity is just connecting things. When you ask creative people how
-                                    they did something, they feel a little guilty because they didn't really do it,
-                                    they just saw something. It seemed obvious to them after a while.
-                                    That's because they were able to connect experiences they've had
-                                    and synthesize new things.
-                                </p>
-                                <h4 class="blockquote__meta">- Steve Jobs <span>Founder of Apple Inc.</span></h4>
-                            </blockquote>
-                        </div> --}}
-                        {{-- <h3 class="title">Make better travel decisions</h3> --}}
-                        {{-- <p class="card-text pt-3 pb-4">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper</p> --}}
-                        {{-- <div class="section-block"></div> --}}
-                        {{-- <h3 class="title pt-4">Getting Started</h3> --}}
-                        {{-- <p class="card-text py-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem eaque ipsa quae ab illo inventore incididunt ut labore et dolore magna Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price.</p>
-                        <p class="card-text pb-4">However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed</p>
-                        <div class="section-block"></div> --}}
-                        <div class="post-tag-wrap d-flex align-items-center justify-content-between py-4">
-                            {{-- <ul class="tag-list">
-                                <li><a href="#">Tour</a></li>
-                                <li><a href="#">Nature</a></li>
-                                <li><a href="#">Beaches</a></li>
-                            </ul> --}}
-                            <div class="post-share">
-                                <ul>
-                                    <li>
-                                        <i class="la la-share icon-element"></i>
-                                        <ul class="post-share-dropdown d-flex align-items-center">
-                                            <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                                            <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        {!! $detail->content ?? '' !!}
+
+
                         <div class="section-block"></div>
                         <div class="post-navigation d-flex justify-content-between py-4">
-                            <a href="#" class="btn theme-btn-hover-gray line-height-35"><i class="la la-arrow-left mr-2"></i>The best hotels in Europe: 2020</a>
-                            <a href="#" class="btn theme-btn-hover-gray line-height-35">The 10 best flight journeys in the world<i class="la la-arrow-right ml-2"></i></a>
+@if($prev)
+                            <a href="{{route('blog_detail', $prev->id ?? '')}}" class="btn theme-btn-hover-gray line-height-35"><i class="la la-arrow-left mr-2"></i>Previous Post</a>
+                            @else
+                            <a href="javascript:void(0)" class="btn theme-btn-hover-gray line-height-35"><i class="la la-arrow-left mr-2"></i>No More Result</a>
+                            @endif
+                            @if($next)
+                            <a href="{{route('blog_detail', $next->id ?? '')}}" class="btn theme-btn-hover-gray line-height-35"> Next Post<i class="la la-arrow-right ml-2"></i></a>
+                            @else
+                            <a href="#" class="btn theme-btn-hover-gray line-height-35">No More Result<i class="la la-arrow-right mr-2"></i></a>
+                            @endif
                         </div>
                         <div class="section-block"></div>
-                        <div class="post-author-wrap">
-                            <div class="author-content pt-5">
-                                <div class="d-flex">
-                                    <div class="author-img author-img-md mr-4">
-                                        <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                    </div>
-                                    <div class="author-bio">
-                                        <h4 class="author__title"><a href="#">DC</a></h4>
-                                        <span class="author__meta">About the Author</span>
-                                        <p class="author__text pt-1">Donec vehicula nunc in turpis rutrum porta. Nullam lacinia ante non turpis aliquam mattis. Pellentesque luctus leo eget metus egestas egestas.</p>
-                                        <ul class="social-profile pt-3">
-                                            <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                                            <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                                            <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div><!-- end card-item -->
                 <div class="section-block"></div>
-                <div class="related-posts pt-5 pb-4">
+                {{-- <div class="related-posts pt-5 pb-4">
                     <h3 class="title">Related Posts</h3>
                     <div class="row pt-4">
                         <div class="col-lg-6 responsive-column">
@@ -280,9 +174,9 @@
                             </div><!-- end card-item -->
                         </div><!-- end col-lg-6 -->
                     </div><!-- end row -->
-                </div>
+                </div> --}}
                 <div class="section-block"></div>
-                <div class="comments-list pt-5">
+                {{-- <div class="comments-list pt-5">
                     <h3 class="title">Showing 3 Comments</h3>
                     <div class="comment pt-5">
                         <div class="comment-avatar">
@@ -350,8 +244,8 @@
                     <div class="btn-box load-more text-center">
                         <button class="theme-btn theme-btn-small theme-btn-transparent" type="button">Load More Comment</button>
                     </div>
-                </div><!-- end comments-list -->
-                <div class="comment-forum pt-5">
+                </div><!-- end comments-list --> --}}
+                {{-- <div class="comment-forum pt-5">
                     <div class="form-box">
                         <div class="form-title-wrap">
                             <h3 class="title">Add a Comment</h3>
@@ -406,9 +300,9 @@
                             </div><!-- end contact-form-action -->
                         </div><!-- end form-content -->
                     </div><!-- end form-box -->
-                </div><!-- end comment-forum -->
+                </div><!-- end comment-forum --> --}}
             </div><!-- end col-lg-8 -->
-            <div class="col-lg-4">
+            {{-- <div class="col-lg-4">
                 <div class="sidebar mb-0">
                     <div class="sidebar-widget">
                         <h3 class="title stroke-shape">Search Post</h3>
@@ -693,7 +587,7 @@
                         </ul>
                     </div><!-- end sidebar-widget -->
                 </div><!-- end sidebar -->
-            </div><!-- end col-lg-4 -->
+            </div><!-- end col-lg-4 --> --}}
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end card-area -->
@@ -705,7 +599,7 @@
 <!-- ================================
     START CTA AREA
 ================================= -->
-<!-- end cta-area --> --}}
+<!-- end cta-area -->
 <!-- ================================
     END CTA AREA
 ================================= -->
@@ -713,7 +607,7 @@
 <!-- ================================
        START FOOTER AREA
 ================================= -->
-<!-- end footer-area --> --}}
+<!-- end footer-area -->
 <!-- ================================
        START FOOTER AREA
 ================================= -->

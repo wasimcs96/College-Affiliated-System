@@ -23,11 +23,12 @@ class AdminBlogController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        if($request->hasFile('image')){
         $image=$request->image;
        $profile_image_new_name = time().$image->getClientOriginalName();
        $image->move(Config::get('define.image.blog_image'),$profile_image_new_name);
        $banner = Config::get('define.image.blog_image').'/'.$profile_image_new_name;
-
+        }
         Blog::create([
             'title'=>$request->title,
             'content'=>$request->content,
@@ -35,6 +36,7 @@ class AdminBlogController extends Controller
             'status'=>$request->type,
             'slug'=> Str::slug($request->title),
             'main_image'=>$banner,
+            'short_description'=>$request->short_description,
         ]);
         return view ('admin.general.blog.blog_all')->with('success','Blog post added Successfully');
     }
@@ -53,17 +55,20 @@ class AdminBlogController extends Controller
 
     public function update(Request $request)
     {
+        $update = Blog::find($request->blog_id);
+        if($request->hasFile('image')){
         $image=$request->image;
         $profile_image_new_name = time().$image->getClientOriginalName();
         $image->move(Config::get('define.image.blog_image'),$profile_image_new_name);
         $banner = Config::get('define.image.blog_image').'/'.$profile_image_new_name;
+        $update->main_image =$banner;
+    }
 
-        $update = Blog::find($request->blog_id);
         $update->title = $request->title;
         $update->content = $request->content;
         $update->serial_number =$request->serial_number;
         $update->status =$request->type;
-        $update->main_image =$banner;
+        $update->short_description = $request->short_description;
         $update->save();
         return view ('admin.general.blog.blog_all')->with('success','Blog post added Successfully');
 
