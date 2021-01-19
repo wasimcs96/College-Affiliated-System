@@ -254,5 +254,11 @@ Route::get('application/show/{id}',[
     'uses'=>'UniversityApplicationController@applicationCreate',
     'as'=>'university.application.create'
 ]);
+/* Import Routes */
+
+Route::get('export', 'UniversityExcelController@export')->name('export');
+Route::get('importExportView', 'UniversityExcelController@importExportView');
+Route::post('import', 'UniversityExcelController@import')->name('import');
+
 
 });

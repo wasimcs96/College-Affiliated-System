@@ -57,7 +57,7 @@
                         <li class="{{ Request::segment(3) == '3' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>3])}}">University</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(1) == 'booking' ? 'active' : null }}"><a href="{{route('admin.booking')}}"><i class="icon-list"></i><span>Bookings</span></a></li>
+                <li class="{{ Request::segment(2) == 'booking' ? 'active' : null }}"><a href="{{route('admin.booking')}}"><i class="icon-list"></i><span>Bookings</span></a></li>
                 <li class="{{ Request::segment(3) == 'follow_up' ? 'active' : null }}"><a href="{{route('admin.booking.followup')}}"><i class="fa fa-list"></i><span>Booking Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('admin.application')}}"><i class="icon-notebook"></i><span>Application</span></a></li>
                 <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="{{route('admin.application.followup')}}"><i class="fa fa-sticky-note"></i><span>Application Follow Up</span></a></li>
@@ -65,7 +65,7 @@
 
                 <li class="{{ Request::segment(2) == 'packages' ? 'active' : null }}"><a href="{{route('admin.packages')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>Packages</span></a></li>
 
-                <li class="{{ Request::segment(2) == 'Advertisement' ? 'active' : null }}"><a href="{{route('admin.advertisement_manager')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>Ad Manager</span></a></li>
+                <li class="{{ Request::segment(2) == 'advertisement' ? 'active' : null }}"><a href="{{route('admin.advertisement_manager')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>Ad Manager</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
                 <li class="{{ Request::segment(2) === 'chat' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
