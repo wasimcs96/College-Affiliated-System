@@ -487,9 +487,9 @@ Route::post('users/user/store',[
     'as'=>'admin.user.store'
 ]);
 
-// Route::get('export', 'AdminExcelController@export')->name('export');
-// Route::get('importExportView', 'AdminExcelController@importExportView');
-// Route::post('import', 'AdminExcelController@import')->name('import');
+Route::get('export', 'AdminExcelController@export')->name('export');
+Route::get('importExportView', 'AdminExcelController@importExportView');
+Route::post('import', 'AdminExcelController@import')->name('adminImport');
  });
 
 Route::get('/', function () {
