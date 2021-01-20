@@ -11,24 +11,7 @@
             <form method="POST" id="registerForm" action="{{ route('register') }}">
                     @csrf
 
-                    <div class="form-group row">
-
-
-                        <div class="col-md-12">
-                            <select id="role" name="role" class="form-control" required>
-                                <option value="">Choose your account Type</option>
-                                <option value="2">University</option>
-                                <option value="3">Student</option>
-                                <option value="4">Consultant</option>
-                                <option value="5">SubAdmin</option>
-
-
-                                </select>
-                            <span class="invalid-feedback" role="alert" id="roleError">
-                                <strong></strong>
-                            </span>
-                        </div>
-                    </div>
+                 
 
                     <div class="form-group row" id="nm">
 

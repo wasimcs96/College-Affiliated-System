@@ -445,7 +445,7 @@ Route::get('frequently/asked/question',[
 Route::get('login/{provider}', 'SocialController@redirect');
 Route::get('login/{provider}/callback','SocialController@Callback');
 
-Route::post('consultant/university/country/fetch',[
-    'uses'=>'FrontEndController\ConsultantFrontController@fetch',
-    'as'=>'consultant.front.countryuniveristy'
+Route::post('consultant/inner/filter',[
+    'uses'=>'FrontEndController\UniversityFilterController@consultantsInnerFilter',
+    'as'=>'consultant.inner.filter'
 ]);

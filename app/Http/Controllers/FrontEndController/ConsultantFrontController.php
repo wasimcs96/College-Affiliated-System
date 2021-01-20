@@ -24,6 +24,7 @@ class ConsultantFrontController extends Controller
 
     public function index_all()
     {
+        $universities=User::all();
         return view('frontEnd.consultant.consultant_all')->with('consultants',User::all());
     }
 

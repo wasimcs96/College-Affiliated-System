@@ -14,13 +14,13 @@
                         </div>
                         <div class="search-fields-container margin-top-30px">
                             <div class="contact-form-action">
-                                <form action="#" class="row">
-
+                                <form action="{{ route('consultant.inner.filter') }}" method="POST" class="row">
+@csrf
                                     <div class="col-lg-4 col-sm-2">
                                         <div class="input-box">
                                             <label class="label-text">Name</label>
                                             <div class="form-group">
-                                                <input class=" form-control" type="text" name="Consultant Name " Placeholder="Search Consultant by Name">
+                                                <input class=" form-control" type="text" name="keyword" Placeholder="Search Consultant by Name">
 
                                             </div>
                                         </div>
@@ -31,72 +31,27 @@
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1" selected>India</option>
-                                                        <option value="2">USA</option>
-                                                        <option value="3">UK</option>
-                                                        <option value="4">KSA</option>
-                                                        <option value="5">UAE</option>
-                                                        <option value="6">Russia</option>
-                                                        <option value="7">China</option>
-
-
-
+                                                    <select class="select-contain-select" name="countries_id">
+                                                        <?php $countries = App\Models\Country::all();?>
+                                                        <option value="">
+                                                            Select Country
+                                                        </option>
+                                                        @if($countries->count() > 0)
+                                                        @foreach($countries as $country)
+                                                        <option value="{{$country->countries_id}}" @if(isset($countrycoming) && $countrycoming == $country->countries_id) selected @endif>{{$country->countries_name}}</option>
+                                                        @endforeach
+    
+                                                        @else
+    
+                                                            <option value="">Currently Unavailable</option>
+    
+                                                        @endif
+    
                                                     </select>
                                                 </div>                                            </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-4 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">University </label>
-                                            <div class="form-group">
-
-                                                <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1" selected>ATU</option>
-                                                        <option value="2">BTU</option>
-                                                        <option value="3">CTU</option>
-                                                        <option value="4">DTU</option>
-                                                        <option value="5">ETU</option>
-                                                        <option value="6">FTU</option>
-                                                        <option value="7">GTU</option>
-
-
-
-                                                    </select>
-                                                </div>                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-2 -->
-                                    <div class="col-lg-2 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">Courses</label>
-                                            <div class="form-group">
-                                                <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1200AM">Btech</option>
-                                                        <option value="1230AM">Btech</option>
-                                                        <option value="0100AM">Btech</option>
-                                                        <option value="0130AM">Btech</option>
-                                                        <option value="0200AM">Btech</option>
-                                                        <option value="0230AM">Btech</option>
-                                                        <option value="0300AM">Btech</option>
-                                                        <option value="0330AM">Btech</option>
-                                                        <option value="0400AM">Btech</option>
-                                                        <option value="0430AM">Btech</option>
-                                                        <option value="0500AM">Btech</option>
-                                                        <option value="0530AM">Btech</option>
-                                                        <option value="0600AM">Btech</option>
-                                                        <option value="0630AM">Btech</option>
-
-                                                        <option value="0730AM">Btech</option>
-
-                                                        <option value="0900AM" selected>Mtech</option>
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-3 -->
+                                   
                                     {{-- <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Drop-off Date</label>
@@ -107,12 +62,13 @@
                                         </div>
                                     </div><!-- end col-lg-2 --> --}}
                                     <!-- end col-lg-3 -->
-                                </form>
+                                
                             </div><!-- end contact-form-action -->
 
                             <div class="btn-box pt-3">
-                                <button class="theme-btn" type="button">Search Now</button>
+                                <button class="theme-btn" type="submit">Search Now</button>
                             </div>
+                        </form>    
                         </div><!-- end search-fields-container -->
                     </div><!-- end search-result-content -->
                 </div><!-- end col-lg-12 -->

@@ -40,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'latitude',
         'longitude',
         'city',
-        'country',
+        'countries_id',
         'google',
         'facebook',
         'linkedin'
@@ -157,6 +157,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function country()
     {
-        return $this->hasOne(Country::class,'countries_id');
+        return $this->belongsTo(Country::class,'countries_id');
     }
 }

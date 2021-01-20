@@ -47,6 +47,9 @@ public function newUser($userSocial,$provider){
         $provider   => $userSocial->getId(),
         //'provider'      => $provider,
     ]);
+   
+    $user->assignRole('client');
+
     return $user;
 }
 }
