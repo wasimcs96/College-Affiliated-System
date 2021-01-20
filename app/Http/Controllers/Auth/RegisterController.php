@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
+
     use RegistersUsers;
 
     protected $redirectTo = '/index';
@@ -25,7 +26,6 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-             'role' => ['required'],
              'mobile' => ['required','min:6','unique:users','numeric'],
         ]);
     }
@@ -33,9 +33,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        $role = $data['role'];
-        // dd($role);
-       if($role==3){
+       
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -43,40 +41,10 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ])->assignRole('client');
-       }
-       if($role==2){
-           $user=User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'mobile' => $data['mobile'],
-            'password' => Hash::make($data['password']),
-        ])->assignRole('university');
-        University::create([
-            'user_id'=>$user->id,
-
-        ]);
-        return $user;
-
-       }
-       if($role==4){
-        return User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'mobile' => $data['mobile'],
-            'password' => Hash::make($data['password']),
-        ])->assignRole('consultant');
-       }
-       if($role==5){
-        return User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'mobile' => $data['mobile'],
-            'password' => Hash::make($data['password']),
-        ])->assignRole('subadmin');
-       }
+       
+      
+     
+    
 
     }
 
