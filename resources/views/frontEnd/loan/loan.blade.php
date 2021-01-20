@@ -164,7 +164,7 @@ a:hover{
                                                  <span class="ml-2">305 Reviews</span>
                                             </span>
                                         <div>
-                                        <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                        <a href="#" class="btn btn-primary text-light">Book Now</a>
                                         </div>
                                     </div>
                                 </div></li>

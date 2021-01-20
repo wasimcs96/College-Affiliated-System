@@ -30,7 +30,10 @@ class ConsultantFrontController extends Controller
     public function index_single($id)
     {
         $consultant = User::find($id);
-        return view('frontEnd.consultant.consultant_detail')->with('consultant', $consultant);
+
+        $consultantUniversity = UniversityConsultant::where('consultant_id',$consultant->id)->paginate(1);
+
+        return view('frontEnd.consultant.consultant_detail',compact('consultantUniversity'))->with('consultant', $consultant);
     }
 
     public function book(Request $request)
@@ -128,5 +131,52 @@ class ConsultantFrontController extends Controller
 
     }
 
+    public function fetch(Request $request)
+    {
+        $universities=User::where('countries_id',$request->universitycountry)->get();
+        // dd($countryuniversity->all());
+        // $universities = User::where('countries_id',$request->countryid)->get();
+        //   dd( $universities->get()->toArray());
+        $output='';
+        foreach($universities as $university)
+        {
+        if($university->isUniversity())
+            {
+
+                $profile=$university->profile_image;
+
+              $output .='<div class="card-img">
+              <a href="'.route('university_detail',['id'=>$university->id]).'" class="d-block">
+                  <img src="'.asset($profile).'" alt="hotel-img">
+
+              </a>
+              <span class="badge">Featured </span>
+          </div>
+          <div class="card-body">
+              <h3 class="card-title"><a href="'.route('university_detail',['id'=>$university->id]).'">'.$university->first_name.'</a></h3>
+              <p class="card-meta">'.$university->last_name.'</p>
+              <div class="card-rating d-flex align-items-center pt-1">
+                  <span class="rating__text">University star</span>
+                  <span class="ratings d-flex align-items-center mx-2">
+                      <i class="la la-star"></i>
+                      <i class="la la-star"></i>
+                      <i class="la la-star"></i>
+                      <i class="la la-star"></i>
+                      <i class="la la-star"></i>
+                  </span>
+                  <span class="rating__text">5 of 5</span>
+              </div>
+              <div class="card-price d-flex align-items-center justify-content-between">
+                  <p>
+
+                  </p>
+                  <a href="'.route('university_detail',['id'=>$university->id]).'" class="theme-btn theme-btn-small">Book Now</a>
+              </div>
+          </div>';
+
+            }
+        }
+        echo $output;
+    }
 
 }
