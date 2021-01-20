@@ -8,6 +8,7 @@ use App\Models\ConsultantPrMigrationCountry;
 use DB;
 use App\Models\User;
 use App\models\Booking;
+use App\models\ConsultantDues;
 use App\Models\ConsultantAvailableSlots;
 
 class PrMigrationFrontController extends Controller
@@ -32,11 +33,7 @@ class PrMigrationFrontController extends Controller
             $us= User::find($value->user_id);
                 $consultants[$key]= $us;
         }
-            // dd($total);
-                // dd($consultants);
-                // $ex=explode(",",$consultants);
-                // dd($ex);
-                // $consultants=ConsultantPrMigrationCountry::where('country_id',$request->country)->get();
+
             return view('frontEnd.prmigration.prmigration',compact('consultants'));
         }
 
@@ -103,15 +100,58 @@ class PrMigrationFrontController extends Controller
             'booking_end_time'=>$end_time,
             'client_id'=>$request->client_id,
             'consultant_id'=>$request->cid,
-            'country_id'=>$request->country,
+            'countries_id'=>$request->country,
 
             'booking_date'=>$bookind_date,
             // 'comments'=>$request->comment,
             'status'=>0,
             'booking_for'=>1,
             ]);
+            $type=1;
+            $slug='pr-amount';
+            $consultant_id=$request->cid;
+            $check = $this->consultantDue($type,$slug,$consultant_id);
             return redirect()->route('client.dashboard')->with('success','Your Application have been Submitted Successfully');
 
+    }
+
+    public function consultantDue($amountType,$slug,$consultant_id)
+    {
+        $consultant = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get()->first();
+
+        $alreadyDue = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get('due_amount')->first();
+        $alreadyClient = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get('temp_client_count')->first();
+
+        $dueAmount = DB::table('settings')->where('slug',$slug)->get('config_value')->first();
+
+
+        if($consultant==null)
+        {
+           // dd(auth()->user()->id);
+          $newConsultant = ConsultantDues::create([
+
+               'due_amount' => $dueAmount->config_value,
+               'paid_amount' => 0,
+               'consultant_id' => auth()->user()->id,
+               'total_client_count' => 1,
+               'temp_client_count' => 1,
+               'due_amount_type' => $amountType
+           ]);
+
+           return response('success');
+        }
+        else
+        {
+            $consultant->consultant_id = $consultant_id;
+            $consultant->due_amount = $dueAmount->config_value+$alreadyDue->due_amount;
+            $consultant->paid_amount = 0;
+            $consultant->total_client_count = $alreadyClient->temp_client_count+1;
+            $consultant->temp_client_count = $alreadyClient->temp_client_count+1;
+            $consultant->due_amount_type = 0;
+            $consultant->save();
+            return $consultant;
+        }
+       return response('success');
     }
 
 }

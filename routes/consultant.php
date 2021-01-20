@@ -355,4 +355,20 @@ Route::post('prmigration/accept',[
     'as'=>'consultant.prmigration.accept'
 ]);
 
+/* Dues Section */
+Route::get('dues',[
+    'uses'=>'ConsultantDuesController@index',
+    'as'=>'consultant.dues'
+]);
+
+// Route::get('prmigration/show/{id}',[
+//     'uses'=>'ConsultantPrmigrationController@prshow',
+//     'as'=>'prmigration.booking.show'
+// ]);
+
+// Route::post('prmigration/accept',[
+//     'uses'=>'ConsultantPrmigrationController@accept',
+//     'as'=>'consultant.prmigration.accept'
+// ]);
+
 });

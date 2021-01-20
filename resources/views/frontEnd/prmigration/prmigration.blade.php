@@ -14,7 +14,7 @@
                         </div>
                         <div class="search-fields-container margin-top-30px">
                             <div class="contact-form-action">
-                                <form action="{{route('Prmigration.search.result')}}" method="POST" class="row">
+                                <form action="{{route('prmigration.search.result')}}" method="POST" class="row">
 @csrf
                                     {{-- <div class="col-lg-4 col-sm-2">
                                         <div class="input-box">
@@ -178,7 +178,11 @@
                     <div class="card-price d-flex align-items-center justify-content-between">
                         <p>
                             <span class="price__num">Country</span>
-                            <span class="price__text">{{$consultant->country->countries_name}}</span>
+                            @if(isset($consultant->countries_id))
+                            <?php $country = DB::table('countries')->where('countries_id',$consultant->countries_id)->get()->first();?>
+                            @endif
+                            <td> {{$country->countries_name ?? ''}} </td>
+                            {{-- <span class="price__text">{{$consultant->country->countries_name}}</span> --}}
                         </p>
                         <a href="{{route('prmigration.book',['id' => $consultant->id])}}" class="btn btn-primary">Book Now<i class="la la-angle-right"></i></a>
                     </div>

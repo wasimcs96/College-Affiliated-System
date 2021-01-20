@@ -13,6 +13,8 @@ use App\Models\ApplicationDocument;
 use App\Models\Course;
 use App\Models\User;
 use App\Models\University;
+use App\Models\ConsultantDues;
+use DB;
 use Config;
 use App\Models\ApplicationAppliedUniversity;
 use date;
@@ -103,19 +105,18 @@ class ConsultantApplicationController extends Controller
     public function applicationAccepted(Request $request)
    {
        $id = $request->appliedUniversityRowIdAccepted;
-
+       $application_id = $request->applicationId;
        $university = ApplicationAppliedUniversity::find($id);
 
-    //    $docDefault = $university->userUniversity->university->default_documents;
-    //    $documentDefault = json_decode($docDefault);
-
-    //    $documentDefault = json_encode($documentDefault);
-    //    $documentVisa = Config::get('define.visa');
-    //    dd($documentVisa,$documentVisa);
-    //    $documentVisa2 = json_encode($documentVisa);
-    //    $university->documents = array_merge($documentVisa,$documentDefault2);
        $university->is_accepeted = 1;
        $university->save();
+       $application = Application::where('id',$application_id)->where('is_commission_id',1);
+       if($application==NULL)
+       {
+       $type=0;
+       $slug='visa-amount';
+       $check = $this->consultantDue($type,$slug);
+       }
        return response('success');
 
     }
@@ -219,5 +220,44 @@ class ConsultantApplicationController extends Controller
         $university->save();
         return response('success');
 
+     }
+
+        public function consultantDue($amountType,$slug)
+     {
+         $consultant = ConsultantDues::where('consultant_id',auth()->user()->id)->where('due_amount_type',0)->get()->first();
+
+         $alreadyDue = ConsultantDues::where('consultant_id',auth()->user()->id)->where('due_amount_type',0)->get('due_amount')->first();
+         $alreadyClient = ConsultantDues::where('consultant_id',auth()->user()->id)->where('due_amount_type',0)->get('temp_client_count')->first();
+
+         $dueAmount = DB::table('settings')->where('slug',$slug)->get('config_value')->first();
+
+
+         if($consultant==null)
+         {
+            // dd(auth()->user()->id);
+           $newConsultant = ConsultantDues::create([
+
+                'due_amount' => $dueAmount->config_value,
+                'paid_amount' => 0,
+                'consultant_id' => auth()->user()->id,
+                'total_client_count' => 1,
+                'temp_client_count' => 1,
+                'due_amount_type' => $amountType
+            ]);
+
+            return response('success');
+         }
+         else
+         {
+             $consultant->consultant_id = auth()->user()->id;
+             $consultant->due_amount = $dueAmount->config_value+$alreadyDue->due_amount;
+             $consultant->paid_amount = 0;
+             $consultant->total_client_count = $alreadyClient->temp_client_count+1;
+             $consultant->temp_client_count = $alreadyClient->temp_client_count+1;
+             $consultant->due_amount_type = 0;
+             $consultant->save();
+             return $consultant;
+         }
+        return response('success');
      }
 }

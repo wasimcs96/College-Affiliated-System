@@ -47,7 +47,8 @@
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-notebook"></i><span>Application</span></a></li>
                 <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-notebook"></i><span>Application Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'associated_university' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-graduation"></i><span>Associated University</span></a></li>
-                <li class="{{ Request::segment(1) === 'messenger' ? 'active open' : null }}"><a href="javascript:void(0);"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                <li class="{{ Request::segment(2) == 'dues' ? 'active open' : null }}"><a href="javascript:void(0);"><i class="icon-cash"></i><span>My Dues</span></a></li>
+                <li class="{{ Request::segment(1) == 'messenger' ? 'active open' : null }}"><a href="javascript:void(0);"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
 
                 {{-- <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('admin.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'services' ? 'active open' : null }}">
@@ -81,7 +82,8 @@
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('consultant.application')}}"><i class="icon-notebook"></i><span>Application</span></a></li>
                 <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="{{route('consultant.application.followup')}}"><i class="icon-notebook"></i><span>Application Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'associated_university' ? 'active' : null }}"><a href="{{route('consultant.associated_university')}}"><i class="icon-graduation"></i><span>Associated University</span></a></li>
-                <li class="{{ Request::segment(1) === 'messenger' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                <li class="{{ Request::segment(2) == 'dues' ? 'active open' : null }}"><a href="{{route('consultant.dues')}}"><i class="icon-cash"></i><span>My Dues</span></a></li>
+                <li class="{{ Request::segment(1) == 'messenger' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
 
                 {{-- <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('admin.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'services' ? 'active open' : null }}">
