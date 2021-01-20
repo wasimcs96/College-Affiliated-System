@@ -31,7 +31,7 @@
                                         <label>Title</label>
                                         <input type="text" class="form-control" name="title" id="title" required>
                                     </div> --}}
-                                  <input type="text" name="application_id" value={{$application->id ?? ''}} hidden>
+                                  <input type="text" name="application_id" value={{$application->id ?? ''}} id="application_id" hidden>
                                     <div class="form-group" id="noteError">
                                         <label style="color:white">Note</label>
                                         <textarea class="form-control" id="note" name="note" rows="5" cols="30" required></textarea>
@@ -1233,10 +1233,12 @@ var j = 0;
 
  </script>
  <script>
+    var applicationId='';
     var appliedUniversityRowIdAccepted='';
      $(document).on('click', '.accepted', function ()
  {
     appliedUniversityRowIdAccepted=$(this).attr('custom1');
+    applicationId=$('#application_id').val()
  console.log(appliedUniversityRowIdAccepted);
  });
  $(document).on('click', '#applyAccepted', function ()
@@ -1253,11 +1255,11 @@ var j = 0;
              $.ajax({
                      type: "post",
                      url: "{{route('application.accepted')}}",
-                     data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted},
+                     data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted,applicationId:applicationId},
                      success: function (result) {
 
                          console.log('success');
-                         location.reload();
+                        //  location.reload();
                      }
                  });
        }

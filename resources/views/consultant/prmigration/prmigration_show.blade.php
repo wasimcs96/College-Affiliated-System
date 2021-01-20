@@ -44,12 +44,15 @@
 
                     <tr>
                         <th scope="row">Student Nationality</th>
-                        <td>{{$show->user->country->countries_name ?? ''}}</td>
+                        @if(isset($show->user->countries_id))
+                        <?php $country = DB::table('countries')->where('countries_id',$show->user->countries_id)->get()->first();?>
+                        @endif
+                        <td> {{$country->countries_name ?? ''}} </td>
                     </tr>
 
                     <tr>
                     <th scope="row">PR Migration</th>
-                    <td>{{$show->country->countries_name}}</td>
+                    {{-- <td>{{$show->country->countries_name}}</td> --}}
                     </tr>
 
                     <tr>
