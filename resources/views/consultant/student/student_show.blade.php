@@ -41,8 +41,12 @@
                     </tr>
 
                     <tr>
-                        <th scope="row">Student Nationality</th>
-                        <td>{{$show->user->country->countries_name ?? ''}}</td>
+                        <th scope="row">Student Country</th>
+                        @if(isset($show->user->countries_id))
+                        <?php $country = DB::table('countries')->where('countries_id',$show->user->countries_id)->get()->first();?>
+                        @endif
+                        <td> {{$country->countries_name ?? ''}} </td>
+                        {{-- <td>{{$show->user->country->countries_name ?? ''}}</td> --}}
                     </tr>
 
                     <tr>

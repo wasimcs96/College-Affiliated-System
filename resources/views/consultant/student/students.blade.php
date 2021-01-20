@@ -43,7 +43,11 @@
                             <td>{{$booking->user->mobile ?? ''}}</td>
                             <td>{{$booking->user->email ?? ''}}</td>
                             <td>{{$booking->user->city ?? ''}}</td>
-                            <td>{{$booking->user->country->countries_name ?? ''}}</td>
+                            @if(isset($booking->user->countries_id))
+                            <?php $country = DB::table('countries')->where('countries_id',$booking->user->countries_id)->get()->first();?>
+                            @endif
+                            <td> {{$country->countries_name ?? ''}} </td>
+                            {{-- <td>{{$booking->user->country->countries_name ?? ''}}</td> --}}
                             <td> <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
                                 @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
                                 @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif

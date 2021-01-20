@@ -45,7 +45,11 @@
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
                                             <td>{{$user->city ?? ''}}</td>
-                                            <td> {{$user->country->countries_name ?? ''}} </td>
+                                            {{-- {{dd($user->countries_id->country)}} --}}
+                                            @if(isset($user->countries_id))
+                                            <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
+                                            @endif
+                                            <td> {{$country->countries_name ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
@@ -65,7 +69,10 @@
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
                                             <td>{{$user->city ?? ''}}</td>
-                                            <td> {{$user->country->countries_name ?? ''}} </td>
+                                            @if(isset($user->countries_id))
+                                            <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
+                                            @endif
+                                            <td> {{$country->countries_name ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
@@ -85,7 +92,10 @@
                                             <td>{{$user->mobile ?? ''}}</td>
                                             <td>{{$user->email ?? ''}}</td>
                                             <td>{{$user->city ?? ''}}</td>
-                                            <td> {{$user->country->countries_name ?? ''}} </td>
+                                            @if(isset($user->countries_id))
+                                            <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
+                                            @endif
+                                            <td> {{$country->countries_name ?? ''}} </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>

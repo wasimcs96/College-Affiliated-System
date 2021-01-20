@@ -61,7 +61,10 @@
                     </tr>
                     <tr>
                         <th scope="row">Country</th>
-                        <td>{{$user->country->countries_name ?? ''}}</td>
+                        @if(isset($user->countries_id))
+                        <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
+                        @endif
+                        <td>{{$country->countries_name ?? ''}}</td>
                     </tr>
             </div>
 

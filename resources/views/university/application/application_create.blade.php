@@ -61,28 +61,32 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>{{$application->booking->user->first_name ?? ''}}</td>
+                        <td>{{$application->user->first_name ?? ''}} {{$application->user->last_name ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student Address</th>
-                        <td>{{$application->booking->user->address ?? ''}}</td>
+                        <td>{{$application->user->address ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>{{$application->booking->user->mobile ?? ''}}</td>
+                        <td>{{$application->user->mobile ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>{{$application->booking->user->email ?? ''}}</td>
+                        <td>{{$application->user->email ?? ''}}</td>
                     </tr>
 
 
 
                     <tr>
                         <th scope="row">Student Country</th>
-                        <td>{{$application->booking->user->country->countries_name ?? ''}}</td>
+                        @if(isset($application->user->countries_id))
+                        <?php $country = DB::table('countries')->where('countries_id',$application->user->countries_id)->get()->first();?>
+                        @endif
+                        <td> {{$country->countries_name ?? ''}} </td>
+                        {{-- <td>{{$application->booking->user->country->countries_name ?? ''}}</td> --}}
                     </tr>
 
                     <tr>
@@ -162,7 +166,10 @@
 
                     <tr>
                         <th scope="row">Student Country</th>
-                        <td>{{$application->user->country->countries_name ?? ''}}</td>
+                        @if(isset($application->user->countries_id))
+                        <?php $country = DB::table('countries')->where('countries_id',$application->user->countries_id)->get()->first();?>
+                        @endif
+                        <td> {{$country->countries_name ?? ''}} </td>
                     </tr>
                 </div>
 

@@ -82,7 +82,10 @@
 
                     <tr>
                         <th scope="row">Student Country</th>
-                        <td>{{$application->booking->user->country->countries_name ?? ''}}</td>
+                        @if(isset($application->booking->user->countries_id))
+                           <?php $country = DB::table('countries')->where('countries_id',$application->booking->user->countries_id)->get()->first();?>
+                        @endif
+                        <td> {{$country->countries_name ?? ''}} </td>
                     </tr>
 
                     <tr>
@@ -111,7 +114,10 @@
                     </tr>
                     <tr>
                         <th scope="row">Consultant Country</th>
-                        <td>{{$application->userConsultant->country->countries_name ?? ''}}</td>
+                        @if(isset($application->userConsultant->countries_id))
+                            <?php $country = DB::table('countries')->where('countries_id',$application->userConsultant->countries_id)->get()->first();?>
+                        @endif
+                        <td> {{$country->countries_name ?? ''}} </td>
                     </tr>
                     <tr>
                         <th scope="row">Consultant Mobile </th>
@@ -179,7 +185,10 @@
                     </tr>
                     <tr>
                         <th scope="row">Student Country</th>
-                        <td>{{$application->user->country->countries_name ?? ''}}</td>
+                        @if(isset($application->user->countries_id))
+                            <?php $country = DB::table('countries')->where('countries_id',$application->user->countries_id)->get()->first();?>
+                        @endif
+                        <td> {{$country->countries_name ?? ''}} </td>
                     </tr>
                     <tr>
                         <th scope="row">Consultant Name</th>
@@ -187,14 +196,17 @@
                     </tr>
                     <tr>
                         <th scope="row">Consultant Country</th>
-                        <td>{{$application->userConsultant->country->countries_name ?? ''}}</td>
+                        @if(isset($application->userConsultant->countries_id))
+                            <?php $country = DB::table('countries')->where('countries_id',$application->userConsultant->countries_id)->get()->first();?>
+                        @endif
+                        <td> {{$country->countries_name ?? ''}} </td>
                     </tr>
                     <tr>
                         <th scope="row">Consultant Mobile </th>
                         <td>{{$application->userConsultant->mobile ?? ''}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Consultant Mobile </th>
+                        <th scope="row">Consultant Email </th>
                         <td>{{$application->userConsultant->email ?? ''}}</td>
                     </tr>
                     <tr>
