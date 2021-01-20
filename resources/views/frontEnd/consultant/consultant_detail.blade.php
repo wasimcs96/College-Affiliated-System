@@ -26,6 +26,8 @@
                                 {{-- <li><span>Home Airport:</span>Knoxville, TN 37920, USA</li> --}}
                                 <li><span>Address:</span>{{$consultant->address}}</li>
                                 <li><span>Website:</span><a href="#">{{$consultant->consultant->website}}</a></li>
+                                <li><span>About Me:</span>{{$consultant->consultant->about_me}}</li>
+
                                 <a href="{{route('consultant_book',['id'=>$consultant->id])}}"> <span class="btn btn-primary" style="margin-top: 10px;">Book Now</span></a></li>
                             </ul>
                              {{-- <ul class="list-items flex-grow-1">

@@ -60,19 +60,19 @@
                                                         <option value="">
                                                             Select Type
                                                         </option>
-                                                        <?php $courses = App\Models\Course::all(); 
+                                                        <?php $courses = App\Models\Course::all();
                                                         $type=[
                                                             0=>"UG",
                                                             1=>"PG",
                                                             2=>"Diploma"
                                                         ];
                                                         ?>
-                                                        
+
                                                         @foreach($type as $key=>$course)
                                                         <option value="{{$key}}" @if(isset($typecoming) && $typecoming == $key) selected @endif>
                                                             {{$course}}
                                                         </option>
-                                                      
+
                                                        @endforeach
 
                                                     </select>
@@ -91,19 +91,19 @@
                                                         </option>
                                                     @foreach ($courses as $item)
                                                     <option value="{{$item->id}}" @if(isset($course_id) && $course_id == $item->id) selected @endif>{{$item->name}}</option>
-                                                    
+
                                                     @endforeach
-                                                        
+
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
                                    <!-- end col-lg-2 -->
-                                    
-                            
+
+
                             </div><!-- end contact-form-action -->
-                           
+
                             <div class="btn-box pt-3">
                                 <button class="theme-btn" type="submit">Search Now</button>
                             </div>
@@ -356,12 +356,15 @@
                     </div>
                     <div class="card-body">
                         <p class="card-meta">
-                            @if($university->university->type==0)
+                            @if(isset($university->university->type))
+                             @if($university->university->type==0)
                         Private
                     @else
                     Govenment</p>
                     @endif
-                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name }}</a></h3>
+                    @endif
+
+                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a></h3>
                         <div class="card-rating">
                             <span class="badge text-white">4.4/5</span>
                             <span class="review__text">Average</span>
