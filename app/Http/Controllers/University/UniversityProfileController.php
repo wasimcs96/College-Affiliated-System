@@ -66,6 +66,7 @@ class UniversityProfileController extends Controller
                  'university_name'=>$request->university_name,
                  'website'=>$request->website,
                  'type'=>$request->type,
+                 'countries_id'=>$request->countries_id,
                 //  'brochure'=>$request->brochure
              ]);
 
