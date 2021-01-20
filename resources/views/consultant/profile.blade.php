@@ -200,6 +200,14 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label for="address">Describe Yourself</label>
+                            <textarea rows="4"  type="text" name="about_me" class="form-control" placeholder="Address" required>@if(isset(Auth()->user()->consultant->about_me)){{Auth()->user()->consultant->about_me}}@endif</textarea>
+                        </div>
+                    </div>
+
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="website">Website</label>

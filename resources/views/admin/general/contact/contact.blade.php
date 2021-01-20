@@ -33,7 +33,7 @@
                             {{-- <th><b>Content</b></th> --}}
                             <th><b>Message</b></th>
                             {{-- <th><b>Status</b></th> --}}
-                            <th style="text-align: center;"><b>Action<b></th>
+                            {{-- <th style="text-align: center;"><b>Action<b></th> --}}
 
                         </tr>
                     </thead>
@@ -55,7 +55,7 @@
 
 
 
-                            <td style="text-align: center;">
+                            {{-- <td style="text-align: center;">
                             <a href="{{route('admin.contact.show', $contact->id ?? '')}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View Course" title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
                             <a href="{{route('admin.contact.reply', $contact->id ?? '')}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit course" title="" data-original-title="reply"><i class="fa fa-edit"></i></a>
                             &nbsp;&nbsp;
@@ -64,7 +64,7 @@
 
                               <a href="{{route('admin.contact.delete', $contact->id ?? '')}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete request" data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
 
-                            </td>
+                            </td> --}}
 
                         </tr>
 

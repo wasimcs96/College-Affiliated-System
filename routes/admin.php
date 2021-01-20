@@ -514,10 +514,13 @@ Route::get('importExportView', 'AdminExcelController@importExportView');
 Route::post('import', 'AdminExcelController@import')->name('adminImport');
  });
 
-Route::get('/', function () {
-    return view('frontEnd.index');
-})->name('front');
+// Route::get('/', function () {
+//     return view('frontEnd.index');
+// })->name('front');
 
-
+Route::post('/',[
+    'uses'=>'FrontEndController@index',
+    'as'=>'front'
+]);
 
 

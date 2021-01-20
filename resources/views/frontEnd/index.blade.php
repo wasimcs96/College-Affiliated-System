@@ -139,7 +139,7 @@
                                                         <option value="">Currently Unavailable</option>
 
                                                     @endif
-                                                              
+
 
 
                                                             </select>
@@ -157,7 +157,7 @@
                                                                 <option value="">
                                                                     Select Type
                                                                 </option>
-                                                                <?php $courses = App\Models\Course::all(); 
+                                                                <?php $courses = App\Models\Course::all();
                                                                 $type=[
                                                                     0=>"UG",
                                                                     1=>"PG",
@@ -168,7 +168,7 @@
                                                                 <option value="{{$key}}">
                                                                     {{$course}}
                                                                 </option>
-                                                              
+
                                                                @endforeach
 
                                                             </select>
@@ -183,15 +183,15 @@
                                                         <div class="select-contain w-auto">
                                                             <select id="selectcourse" name="course_id" class="form-control ert" required>
                                                                 <option value="" selected>Select Course</option>
-                                                              
-                                                               
+
+
 
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                          
+
                                             <div class="col-lg-2">
                                                 <button type="submit"  class="theme-btn w-100 text-center margin-top-20px">Search Now</button>
                                             </div>
@@ -229,7 +229,7 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
-                                   
+
                                     <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">University Type</label>
@@ -329,7 +329,7 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                  
+
                                    <div class="col-lg-4 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Universities</label>
@@ -476,9 +476,7 @@
                         </ol>
                         <div class="carousel-inner">
 
-                            <?php
-                            $universities = App\Models\User::get();
-                            ?>
+
 @if($universities->count()>0)
                             @foreach($universities as $key => $university)
                             {{-- {{dd($university)}} --}}
@@ -536,7 +534,12 @@
                                     {{-- @php
                                         print_r($consultant->user);
                                     @endphp --}}
-                                   <a href="{{route('consultant_detail',['id' => $consultant->id])}}"> <img src="{{ asset('frontEnd/assets/images/team8.jpg') }}" alt="testimonial image"></a>
+                                   <a href="{{route('consultant_detail',['id' => $consultant->id])}}">
+                                    @if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
+                                    <img src="{{ asset($consultant->profile_image) }}" alt="testimonial image">
+                                        @else
+                                        <img style="" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                        @endif </a>
                                 </div>
                                 <div class="author-bio">
                                     <a href="{{route('consultant_detail',['id' => $consultant->id])}}"><h4 class="author__title">{{$consultant->first_name}}</h4></a>
@@ -551,7 +554,17 @@
                                 </div>
                             </div>
                             <div class="testi-desc-box">
-                                <p class="testi__desc">Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat</p><a  class="btn btn-primary" href="{{route('consultant_detail',['id'=>$consultant->id])}}">Details</a>
+                                <?php
+                                $myvalue =$consultant->consultant->about_me ?? '';
+                                if (strlen($myvalue) > 140)
+                                    {
+                                        $myvalue = substr($myvalue, 0, 140);
+                                        $myvalue = explode(' ', $myvalue);
+                                        array_pop($myvalue); // remove last word from array
+                                        $myvalue = implode(' ', $myvalue);
+                                        // $myvalue = $myvalue . ' ...';
+                                    } ?>
+                                <p class="testi__desc"><?php echo ($myvalue . '...')?></p><a  class="btn btn-primary" href="{{route('consultant_detail',['id'=>$consultant->id])}}">Details</a>
                             </div>
 
                         </div><!-- end testimonial-card -->
@@ -1918,56 +1931,57 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading text-center">
-                    <h2 class="sec__title line-height-55">Latest News & Articles <br> You Might Like</h2>
+                    <h2 class="sec__title line-height-55">Latest Blogs & Articles <br> You Might Like</h2>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         <div class="row padding-top-50px">
+            <?php $blogs=App\Models\Blog::where('status',1)->limit(3)->get()?>
+
+            @foreach($blogs as $blog)
+            {{-- @if($blog->status == 1) --}}
             <div class="col-lg-4 responsive-column">
                 <div class="card-item blog-card">
+                    <a href="{{route('blog_detail', $blog->id ?? '')}}">
                     <div class="card-img">
-                        <img src="{{ asset('frontEnd/assets/images/blog-img.jpg') }}" alt="blog-img">
+                        <a href="{{route('blog_detail', $blog->id ?? '')}}">
+                <img style="height: 231.25px; width: 370px;" src="{{asset($blog->main_image ?? '')}}" alt="blog-img">
+                        </a>
                         <div class="post-format icon-element">
-                            <i class="la la-photo"></i>
+                            <a href="{{route('blog_detail', $blog->id ?? '')}}"> <i class="la la-photo"></i></a>
                         </div>
                         <div class="card-body">
                             <div class="post-categories">
-                                <a href="#" class="badge">Travel</a>
-                                <a href="#" class="badge">lifestyle</a>
+                                {{-- <a href="#" class="badge">{{$blog->title}}</a> --}}
+                                {{-- <a href="#" class="badge">lifestyle</a> --}}
                             </div>
-                            <h3 class="card-title line-height-26"><a href="blog-single.html">When Learning Avoid Expensive Universities & Courses</a></h3>
+                            <h3 class="card-title line-height-26"><a href="{{route('blog_detail', $blog->id ?? '')}}">{{$blog->title}}</a></h3>
                             <p class="card-meta">
-                                <span class="post__date"> 1 January, 2020</span>
-                                <span class="post-dot"></span>
-                                <span class="post__time">5 Mins read</span>
+                                <?php
+                                    $myvalue =$blog->short_description ?? '';
+                                    if (strlen($myvalue) > 140)
+                                        {
+                                            $myvalue = substr($myvalue, 0, 80);
+                                            $myvalue = explode(' ', $myvalue);
+                                            array_pop($myvalue); // remove last word from array
+                                            $myvalue = implode(' ', $myvalue);
+                                            // $myvalue = $myvalue . ' ...';
+                                        } ?>
+                                {{-- <span class="post__time">Uploaded At</span> --}}
+                                {{-- <span class="post-dot"></span> --}}
+                                <a href="{{route('blog_detail', $blog->id ?? '')}}"> <span class="post__date">
+                                    {{-- @if($arr->count() > 2) --}}
+                               <?php echo ($myvalue . '...')?> </span></a>
                             </p>
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <div class="author-content d-flex align-items-center">
-                            <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/small-team1.jpg') }}" alt="testimonial image">
-                            </div>
-                            <div class="author-bio">
-                                <a href="#" class="author__title">Leroy Bell</a>
-                            </div>
-                        </div>
-                        <div class="post-share">
-                            <ul>
-                                <li>
-                                    <i class="la la-share icon-element"></i>
-                                    <ul class="post-share-dropdown d-flex align-items-center">
-                                        <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                                        <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                </a>
+
                 </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
+            </div>
+            {{-- @endif --}}
+            @endforeach<!-- end col-lg-4 -->
+            {{-- <div class="col-lg-4 responsive-column">
                 <div class="card-item blog-card">
                     <div class="card-img">
                         <img src="{{ asset('frontEnd/assets/images/blog-img2.jpg') }}" alt="blog-img">
@@ -2009,8 +2023,8 @@
                         </div>
                     </div>
                 </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
+            </div><!-- end col-lg-4 --> --}}
+            {{-- <div class="col-lg-4 responsive-column">
                 <div class="card-item blog-card">
                     <div class="card-img">
                         <img src="{{ asset('frontEnd/assets/images/blog-img3.jpg') }}" alt="blog-img">
@@ -2052,12 +2066,12 @@
                         </div>
                     </div>
                 </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
+            </div><!-- end col-lg-4 --> --}}
         </div><!-- end row -->
         <div class="row">
             <div class="col-lg-12">
                 <div class="btn-box text-center pt-4">
-                    <a href="blog-grid.html" class="theme-btn">Read More Post</a>
+                    <a href="{{route('blog_all')}}" class="theme-btn">Read More Post</a>
                 </div>
             </div>
         </div>
@@ -2173,57 +2187,57 @@ rt=$('#categoryselect').val();
     }
     else{
 
-    
+
     $.ajaxSetup({headers:
     {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
     });
-   
+
     $.ajax({
     url:"{{ route('university_fetch') }}",
     method:"GET",
     data:{typeselect:typeselect,categoryselect:categoryselect},
     success: function(result){
         console.log(result)
-       
+
 $(".ert").html(result)
     }
     });
 }
-    
+
     });
-    
+
     </script>
     <script>
         $(document).on('change', '#salazar', function ()
         {
         countryId = $(this).val();
-       
-    
-       
-    
-    
-    
-        
+
+
+
+
+
+
+
         $.ajaxSetup({headers:
         {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
         });
-       
+
         $.ajax({
         url:"{{ route('university_fetch_selected.countrywise') }}",
         method:"POST",
         data:{countryId:countryId},
         success: function(result){
             console.log(result)
-           
+
     $(".tyt").html(result)
         }
         });
-    
-        
+
+
         });
     </script>
 @endsection
