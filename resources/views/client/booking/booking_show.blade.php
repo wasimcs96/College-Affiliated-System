@@ -49,8 +49,12 @@
 
 
                     <tr>
-                        <th scope="row">Consultant Nationality</th>
-                        <td>{{$booking->userConsultant->country->countries_name ?? ''}}</td>
+                        <th scope="row">Consultant Country</th>
+                        @if(isset($booking->userConsultant->countries_id))
+                        <?php $country = DB::table('countries')->where('countries_id',$booking->userConsultant->countries_id)->get()->first();?>
+                        @endif
+                        <td> {{$country->countries_name ?? ''}} </td>
+                        {{-- <td>{{$booking->userConsultant->country->countries_name ?? ''}}</td> --}}
                     </tr>
                     @foreach($university as $key=> $uni)
                     <tr>
