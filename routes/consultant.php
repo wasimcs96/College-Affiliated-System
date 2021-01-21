@@ -362,10 +362,6 @@ Route::post('dues/pay',[
     'as'=>'consultant.dues.pay'
 ]);
 
-Route::post('dues/pay/pr',[
-    'uses'=>'ConsultantDuesController@pay',
-    'as'=>'consultant.dues.pay.pr'
-]);
 // Route::get('prmigration/show/{id}',[
 //     'uses'=>'ConsultantPrmigrationController@prshow',
 //     'as'=>'prmigration.booking.show'
@@ -376,4 +372,10 @@ Route::post('dues/pay/pr',[
 //     'as'=>'consultant.prmigration.accept'
 // ]);
 
+/*Consultant Add University */
+
+Route::post('application/add/university',[
+    'uses' =>'ConsultantApplicationController@universityAdd',
+    'as'=>'consultant.application.add.university'
+]);
 });

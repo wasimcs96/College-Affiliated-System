@@ -11,6 +11,7 @@ use App\Models\Booking;
 use App\Models\Application;
 use App\Models\ApplicationDocument;
 use App\Models\Course;
+use App\Models\Country;
 use App\Models\User;
 use App\Models\University;
 use App\Models\ConsultantDues;
@@ -50,7 +51,7 @@ class ConsultantApplicationController extends Controller
     }
 
 
-       return view('consultant.application.application_create',compact('application','university','course'));
+       return view('consultant.application.application_create',compact('application','university','course'))->with('countries',Country::all());
    }
 
    public function documentStore(Request $request)
@@ -265,4 +266,26 @@ class ConsultantApplicationController extends Controller
          }
         return response('success');
      }
+
+     public function universityAdd(Request $request)
+    {
+        // dd($request->all());
+        $this->validate($request,[
+            'university_id'=>'required',
+            'course_id'=>'required',
+            'application_id' => 'required',
+            'country_id'=>'required',
+             ]);
+            $storeUniversity = ApplicationAppliedUniversity::create([
+            'university_id' => $request->university,
+            'course_id' => $request->course,
+            'application_id' => $request->application_id,
+            'country_id' => $request->country,
+            // 'documents' =>$jsonApplicationStore,
+
+            ]);
+        return redirect()->back()->with('success','University Added Successfully');
+
+     }
+
 }

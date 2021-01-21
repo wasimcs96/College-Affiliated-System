@@ -182,7 +182,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 <div class="col-lg-12">
     <div class="row clearfix">
@@ -674,8 +674,71 @@
 </div>
 </div>
 @endif
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="header">
+            <h2>Add University<small>
+                {{-- <h6>Booking Details of Sufiyan Qureshi</h6></b> --}}
+                </small></h2>
+            {{-- <ul class="header-dropdown dropdown">
+
+                <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+            </ul> --}}
+        </div>
+        <div class="body">
+            <form action="{{ route('consultant.application.add.university')}}"  id="basic-form" method="POST" novalidate enctype="multipart/form-data">
+            @csrf
+                <div class="form-group">
+                <input type="text" class="form-control" name="client_id" value="{{$application->user->id}}"id="name" hidden>
+                <input type="text" class="form-control" name="consultant_id" value="{{$application->userConsultant_id}}"id="name" hidden>
+                <input type="text" class="form-control" name="application_id" value="{{$application->id}}"id="name" hidden>
+                <div class="table-responsive" style="width: 100%; margin-top: 36px;">
+                    <label for="name">Select University</label>
+                    <table class="table table-bordered" id="dynamic_field">
+                        <tr class="dynamic-added" >
+                            <td class="country" data-row_id="{{$increase}}">
+                                <select id="country-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="country" placeholder="Select Country" required>
+                                <option value="">Select Country Name</option>
+                                @foreach($countries as $country)
+                                <option value="{{$country->countries_id}}">{{$country->countries_name}}</option>
+                                @endforeach
+                              </select>
+                            </td>
+                            <td class="university" data-row_id="{{$increase}}">
+                                <select id="university-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="university" placeholder="Select University" required>
+                                 <option value="">Select University Name</option>
+                              {{--  @foreach($univers as $univer)
+                                <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option>
+
+                                @endforeach--}}
+                              </select>
+                            </td>
+                              <td id="">
+                                  <select id="course-{{$increase}}" name="course" class="form-control" required>
+                                    <option value="">Select Course Name</option>
+                                {{-- @foreach($courses as $course)
+                               <option value="{{$course->id}}">{{$course->name}}</option>
+                               @endforeach --}}
+                             </select></td>
+                            {{-- <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i></button></td> --}}
+                            @php $increase++ @endphp
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add University</button>
+        </form>
+        </div>
+    </div>
 </div>
 </div>
+
+
+</div>
+
+
+
 
 
 <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -1498,4 +1561,53 @@ $(document).on('click', '#readyTo2', function ()
     // console.log('1dfhjs');
  });
  </script>
+ <script>
+    $(document).on('change', '.country', function ()
+                   {
+                          dt  = $(this).data("row_id");
+
+                          $.ajaxSetup({headers:
+                           {
+                               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                           }
+                           });
+                           countryid=$('#country-'+dt+'').val();
+                           console.log(countryid);
+                                 $.ajax({
+                                     url:"{{ route('fetch.university_application') }}",
+                                     method:"GET",
+                                     data:{countryid:countryid,dt:dt},
+                                     success: function(result){
+                                     $('#university-'+dt+'').html(result);
+                                     console.log('success');
+                                   }
+                                   });
+
+                       });
+
+</script>
+<script>
+     $(document).on('change', '.university', function ()
+                    {
+                           dt  = $(this).data("row_id");
+
+                           $.ajaxSetup({headers:
+                            {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                            });
+                            universityid=$('#university-'+dt+'').val();
+                            console.log(universityid);
+                                  $.ajax({
+                                      url:"{{ route('fetch.course_application') }}",
+                                      method:"GET",
+                                      data:{universityid:universityid,dt:dt},
+                                      success: function(result){
+                                      $('#course-'+dt+'').html(result);
+                                    }
+                                    });
+
+                        });
+
+</script>
 @stop
