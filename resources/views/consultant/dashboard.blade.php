@@ -10,7 +10,7 @@
     <div class="col-lg-9 col-md-12 col-sm-12">
         <div class="row clearfix">
             <div class="col-lg-6 col-md-6">
-                <div class="card-wrapper flip-left">
+                <div class="card-wrapper">
                     <div class="card s-widget-top">
                         <div class="front p-3 px-4">
                             <div>Income status</div>
@@ -20,10 +20,10 @@
                                 <div class="ml-auto">0%</div>
                             </div>
                         </div>
-                        <div class="back p-3 px-4 bg-info text-center">
+                        {{-- <div class="back p-3 px-4 bg-info text-center">
                             <p class="text-light">This Week</p>
                             <span id="minibar-chart2" class="mini-bar-chart"></span>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

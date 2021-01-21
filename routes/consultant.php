@@ -351,7 +351,7 @@ Route::post('prmigration/accept',[
 ]);
 
 /* Dues Section */
-Route::get('dues',[
+Route::get('dues/{id}',[
     'uses'=>'ConsultantDuesController@index',
     'as'=>'consultant.dues'
 ]);
@@ -360,6 +360,11 @@ Route::get('dues',[
 Route::post('dues/pay',[
     'uses'=>'ConsultantDuesController@pay',
     'as'=>'consultant.dues.pay'
+]);
+
+Route::post('dues/pay/pr',[
+    'uses'=>'ConsultantDuesController@pay',
+    'as'=>'consultant.dues.pay.pr'
 ]);
 // Route::get('prmigration/show/{id}',[
 //     'uses'=>'ConsultantPrmigrationController@prshow',
