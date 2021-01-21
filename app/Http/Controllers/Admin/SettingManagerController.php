@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use App\Models\Setting;
-use App\Http\Requests\LogoRequest;
+use App\Requests\LogoRequest;
 use App\Requests\GeneralRequest;
 /**
  * Setting Controller

@@ -1,7 +1,8 @@
-@extends('admin.layouts.master')
-@section('title', 'Website Logo and fav icon')
+@extends('layout.master')
+@section('parentPageTitle', 'Admin')
+@section('title', 'Logo Settings')
+
 @section('content')
-@include('admin.layouts.flash.alert')
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
@@ -224,7 +225,7 @@
 @stop
 
 
-@section('per_page_style')
+@section('page-styles')
     <style>
         .btn-file {
             position: relative;
@@ -251,7 +252,17 @@
         }
     </style>
 @stop
-@section('per_page_script')
+@section('page-script')
+<script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
+
+<script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
     <script>
 
         $(document).on('click','.button-upload', function () {
