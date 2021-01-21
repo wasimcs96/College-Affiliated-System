@@ -11,22 +11,24 @@ use App\Http\Controllers\PaymentController;
 
 class ConsultantDuesController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $dues = ConsultantDues::where('due_amount_type',0)->get()->first();
-        $prDues = ConsultantDues::where('due_amount_type',1)->get()->first();
-        return view('consultant.dues.index')->with('dues',$dues)->with('prDues',$prDues);
+        if($id==1)
+        {
+            $dues = ConsultantDues::where('due_amount_type',0)->get()->first();
+            return view('consultant.dues.index')->with('dues',$dues)->with('id',1);
+        }
+        if($id==2)
+        {
+            $prDues = ConsultantDues::where('due_amount_type',1)->get()->first();
+            return view('consultant.dues.index')->with('prDues',$prDues)->with('id',2);
+        }
+
     }
 
-    public function add()
-    {
-        $packages = Package::where('package_type', 1)->get();
-        return view('consultant.premium.gopremium')->with('packages', $packages);
-    }
     public function pay(Request $request)
     {
         $amount = $request->amount;
-
         $pay = new PaymentController();
         $res = $pay->payment($request);
         return view('consultant.dues.pay')->with('order_detail', $res);

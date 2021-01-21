@@ -3,76 +3,161 @@
 @section('title', 'See Dues Detail')
 
 @section('content')
-
-<div class="col-lg-12">
-    <div class="card">
-        <div class="header">
-            <h2>My Dues<small>Dues Details</small></h2>
-            <ul class="header-dropdown dropdown">
-
-                <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-            </ul>
-        </div>
-        @if(isset($dues))
-        <div class="body">
-            <div class="table-responsive" >
-                <form action="{{route('consultant.dues.pay')}}" method="POST">
-@csrf
-               
-                <table class="table table-hover table-striped">
-
-                    <tbody>
-                    <tr>
-                        <th scope="row">Total Due Amount</th>
-                        <input type="text" name="amount" value="{{$dues->due_amount ?? ''}}" hidden>
-                        <input type="text" name="payment_type" value="3" hidden>
-                        <input type="text" name="title" value="paydue" hidden>
-                        <td> <button class="btn btn-flat btn-danger"> Rs.{{$dues->due_amount ?? ''}} </button>  </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Total Clients</th>
-                        <input type="text" name="clients_total" value="{{$dues->temp_client_count ?? ''}}" hidden>
-                        <td> <button class="btn btn-flat btn-warning"> {{$dues->temp_client_count ?? ''}} </button> </td>
-                    </tr>
-
-                    </tbody>
-
-                </table>
-                <button  type="submit" class="btn btn-success btn-flat">Pay</button>
-            </form>
+@if($id == 1)
+<h6>Total Payment<small style="margin-left:3px;">Payment Details</small></h6>
+<div class="row clearfix">
+    <input type="text" name="amount" value="{{$dues->due_amount*100 ?? ''}}" hidden>
+    <input type="text" name="payment_type" value="3" hidden>
+    <input type="text" name="title" value="paydue" hidden>
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="body">
+                <div class="d-flex align-items-center">
+                    <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
+                    <div class="ml-4">
+                        <span>Total Payment</span>
+                        <h4 class="mb-0 font-weight-medium">{{$dues->paid_amount ?? ''}}</h4>
+                    </div>
+                </div>
             </div>
-
         </div>
-        @endif
-        @if(isset($prDues))
-        <div class="body">
-            <div class="table-responsive" >
-                <table class="table table-hover table-striped">
-
-                    <tbody>
-                    <tr>
-                        <th scope="row">Total PR Due Amount</th>
-                        <td> <button class="btn btn-flat btn-danger"> Rs.{{$prDues->due_amount}} </button>  </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Total Clients</th>
-                        <td> <button class="btn btn-flat btn-warning"> {{$prDues->temp_client_count}} </button> </td>
-                    </tr>
-
-                    </tbody>
-
-                </table>
-                <a  href="{{route('consultant.dues.pay')}}" class="btn btn-success btn-flat">Pay</a>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="body">
+                <div class="d-flex align-items-center">
+                    <div class="icon-in-bg bg-orange text-white rounded-circle"><i class="fa fa-users"></i></div>
+                    <div class="ml-4">
+                        <span>Total Clients</span>
+                        <h4 class="mb-0 font-weight-medium">{{$dues->total_client_count ?? ''}}</h4>
+                    </div>
+                </div>
             </div>
-
         </div>
-        @endif
     </div>
 </div>
+<form action="{{route('consultant.dues.pay')}}" method="POST">
+<h6>Total Dues<small style="margin-left:3px;">Dues Details</small></h6>
+<div class="row clearfix">
+    <input type="text" name="amount" value="{{$dues->due_amount*100 ?? ''}}" hidden>
+    <input type="text" name="payment_type" value="3" hidden>
+    <input type="text" name="title" value="paydue" hidden>
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="body">
+                <div class="d-flex align-items-center">
+                    <div class="icon-in-bg bg-azura text-white rounded-circle"><i class="fa fa-credit-card"></i></div>                    <div class="ml-4">
+                        <span>Total Dues</span>
+                        <h4 class="mb-0 font-weight-medium">{{$dues->due_amount ?? ''}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="body">
+                <div class="d-flex align-items-center">
+                    <div class="icon-in-bg bg-orange text-white rounded-circle"><i class="fa fa-users"></i></div>
+                    <div class="ml-4">
+                        <span>Total Clients</span>
+                        <h4 class="mb-0 font-weight-medium">{{$dues->temp_client_count ?? ''}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- <div class="col-lg-6 col-md-6">
+    <div class="card">
+        <div class="body"> --}}
+            <div class="d-flex align-items-center">
+                <button  type="submit" class="btn btn-success btn-flat btn-lg text-center">Pay Dues</button>
+            </div>
+       {{-- </div>
+    </div>
+</div> --}}
 
-</section>
+</form>
+@endif
 
+@if($id==2)
+<h6>Total Payment<small style="margin-left:3px;">Payment Details</small></h6>
+<div class="row clearfix">
+    <input type="text" name="amount" value="{{$prDues->due_amount*100 ?? ''}}" hidden>
+    <input type="text" name="payment_type" value="3" hidden>
+    <input type="text" name="title" value="paydue" hidden>
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="body">
+                <div class="d-flex align-items-center">
+                    <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
+                    <div class="ml-4">
+                        <span>Total Payment</span>
+                        <h4 class="mb-0 font-weight-medium">{{$prDues->paid_amount ?? ''}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="body">
+                <div class="d-flex align-items-center">
+                    <div class="icon-in-bg bg-orange text-white rounded-circle"><i class="fa fa-users"></i></div>
+                    <div class="ml-4">
+                        <span>Total Clients</span>
+                        <h4 class="mb-0 font-weight-medium">{{$prDues->total_client_count ?? ''}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="{{route('consultant.dues.pay')}}" method="POST">
+<h6>Total Dues<small style="margin-left:3px;">Dues Details</small></h6>
+<div class="row clearfix">
+    <input type="text" name="amount" value="{{$prDues->due_amount*100 ?? ''}}" hidden>
+    <input type="text" name="payment_type" value="4" hidden>
+    <input type="text" name="title" value="paydue" hidden>
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="body">
+                <div class="d-flex align-items-center">
+                    <div class="icon-in-bg bg-azura text-white rounded-circle"><i class="fa fa-credit-card"></i></div>                    <div class="ml-4">
+                        <span>Total Dues</span>
+                        <h4 class="mb-0 font-weight-medium">{{$prDues->due_amount ?? ''}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="body">
+                <div class="d-flex align-items-center">
+                    <div class="icon-in-bg bg-orange text-white rounded-circle"><i class="fa fa-users"></i></div>
+                    <div class="ml-4">
+                        <span>Total Clients</span>
+                        <h4 class="mb-0 font-weight-medium">{{$prDues->temp_client_count ?? ''}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- <div class="col-lg-6 col-md-6">
+    <div class="card">
+        <div class="body"> --}}
+            <div class="d-flex align-items-center">
+                <button  type="submit" class="btn btn-success btn-flat btn-lg text-center">Pay Dues</button>
+            </div>
+       {{-- </div>
+    </div>
+</div> --}}
 
+</form>
+@endif
 @stop
 
 @section('page-styles')
