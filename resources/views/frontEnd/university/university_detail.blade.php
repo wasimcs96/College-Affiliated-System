@@ -137,9 +137,9 @@
                             <div class="single-content-item pb-4">
                                 <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}</h3>
                                 <div class="d-flex flex-wrap align-items-center pt-2">
-                                    <p class="mr-2">University Type:       @if($university->university->type==0 ?? '' )
+                                    <p class="mr-2">University Type:       @if(isset($university->university->type)&&($university->university->type==0))
                                         Private
-                                    @else Govenment
+                                        @else Government
                                     @endif</p>
                                 </div>
                                 <div class="d-flex flex-wrap align-items-center pt-2">
@@ -205,10 +205,10 @@
                                             <?php $country = DB::table('countries')->where('countries_id',$university->countries_id)->get()->first();?>
                                             @endif
                                             <li><span>Country:</span>{{$country->countries_name ?? ''}}</li>
-                                            <li><span>City:</span>{{$university->city}}</li>
+                                            <li><span>City:</span>{{$university->city ?? ''}}</li>
                                             {{-- <li><span>Admission Opens:</span>19/09/20</li>
                                             <li><span>Campus:</span>93,558 grt</li> --}}
-                                            <li><span>University Type:</span> @if($university->university->type==0 ?? '' )
+                                            <li><span>University Type:</span> @if(isset($university->university->type)&&($university->university->type==0))
                                                 Private
                                                 @else Govenment</p>
                                                 @endif</li>
