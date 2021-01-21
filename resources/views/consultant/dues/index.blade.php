@@ -24,7 +24,7 @@
                     <tbody>
                     <tr>
                         <th scope="row">Total Due Amount</th>
-                        <input type="text" name="amount" value="{{$dues->due_amount*100 ?? ''}}" hidden>
+                        <input type="text" name="amount" value="{{$dues->due_amount ?? ''}}" hidden>
                         <input type="text" name="payment_type" value="3" hidden>
                         <input type="text" name="title" value="paydue" hidden>
                         <td> <button class="btn btn-flat btn-danger"> Rs.{{$dues->due_amount ?? ''}} </button>  </td>
