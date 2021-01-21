@@ -27,17 +27,26 @@
                 <table class="table table-hover table-striped">
 
                     <tbody>
-
-
-                    <tr>
-                        <th scope="row">Client Name</th>
-                        <td>{{$booking->user->first_name}} {{$booking->user->last_name}}</td>
-                    </tr>
                     <tr>
                         <th scope="row">Consultant Name</th>
-                        <td>{{$booking->userConsultant->first_name}} {{$booking->userConsultant->last_name}}</td>
+                        <td>{{$booking->userConsultant->first_name ?? ''}} {{$booking->userConsultant->last_name ?? ''}}</td>
                     </tr>
-
+                    <tr>
+                        <th scope="row">Consultant Mobile</th>
+                        <td>{{$booking->userConsultant->mobile ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Consultant Email</th>
+                        <td>{{$booking->userConsultant->email ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Consultant Address</th>
+                        <td>{{$booking->userConsultant->address ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Consultant Company</th>
+                        <td>{{$booking->userConsultant->consultant->company_name ?? ''}}</td>
+                    </tr>
                     <tr>
                         <th scope="row">Booking Date</th>
                         <td>{{$booking->booking_date}}</td>
@@ -47,9 +56,6 @@
                         <th scope="row">Time Slot</th>
                         <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td>
                     </tr>
-
-
-
                     <tr>
                         <th scope="row">Booking For</th>
                         <td>
@@ -68,6 +74,10 @@
                             @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
                             @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
                         </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Student Name</th>
+                        <td>{{$booking->user->first_name ?? ''}} {{$booking->user->last_name ?? ''}}</td>
                     </tr>
                     <?php $i = 1?>
                     @if(isset($university) && $university != '')

@@ -97,7 +97,7 @@
                 @foreach($university as $key=> $uni)
                     <tr>
                         <th scope="row">Student University/Course Preference-{{$key + 1}}</th>
-                        <td>{{$uni->university->university_name ?? '' }}/{{$course[$key]->name ?? ''}}</td>
+                        <td>{{$uni->university->university_name ?? '' }} / {{$course[$key]->name ?? ''}}</td>
                     </tr>
                 @endforeach
 
@@ -539,8 +539,14 @@
                                                <input type="text" name="fees" class="form-control" id="coursefees" @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="" @else value="{{$coursedetails->fees}}" @endif />
                                              </div>
                                            </div>
+                                            <div class="col-lg-2 col-md-12">
+                                                <div class="form-group">
+                                                   <label for="">Scholarship</label>
+                                                        <input type="text" name="scholarship" class="form-control" id="scholarship" @if($applied->scholarship=="NULL" || $applied->scholarship=="null" || $applied->scholarship=='') value="" @else value="{{$applied->scholarship}}" @endif />
+                                                </div>
+                                            </div>
 
-                                        <div class="col-lg-10 col-md-12">
+                                        <div class="col-lg-8 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')
                                             <div class="form-group">
                                                 <?php
@@ -1259,7 +1265,7 @@ var j = 0;
                      success: function (result) {
 
                          console.log('success');
-                        //  location.reload();
+                         location.reload();
                      }
                  });
        }

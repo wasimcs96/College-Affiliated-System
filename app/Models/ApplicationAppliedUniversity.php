@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApplicationAppliedUniversity extends Model
 {
-    protected $fillable = ['university_id','consultant_id','documents', 'course_id', 'application_id','country_id', 'note','status','document'];
+    protected $fillable = ['university_id','consultant_id','documents', 'course_id', 'application_id','country_id', 'note','status','document','fees','scholarship'];
 
     public function university()
     {
@@ -23,8 +23,8 @@ class ApplicationAppliedUniversity extends Model
         return $this->belongsTo(Course::class,'course_id');
     }
 
-   
-    
+
+
 
     public function user()
     {

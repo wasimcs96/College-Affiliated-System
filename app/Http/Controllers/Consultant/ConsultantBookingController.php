@@ -45,20 +45,11 @@ class ConsultantBookingController extends Controller
                 $university_id[$i] = $query['university'] ?? '';
                 $course_id[$i] = $query['course'] ?? '';
                 $university[$i] =  User::where('id',$university_id[$i])->get()->first();
-                // dd($university);
                 $course[$i] = Course::where('id',$course_id[$i])->get()->first();
                 $i++;
 
             }
         }
-
-    //    $university0 =  University::where('id',$university_id[0])->get()->first();
-    //    $university1 =  University::where('id',$university_id[1])->get()->first();
-    //    $university2 =  University::where('id',$university_id[2])->get()->first();
-
-    //    $course0 = Course::where('id',$course_id[0])->get()->first();
-    //    $course1 = Course::where('id',$course_id[1])->get()->first();
-    //    $course2 = Course::where('id',$course_id[2])->get()->first();
        return view('consultant.booking.booking_show',compact('show','university','course'));
    }
 

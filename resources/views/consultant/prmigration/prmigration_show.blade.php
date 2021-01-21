@@ -7,7 +7,7 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>My Bookings<small>Booking Details</small></h2>
+            <h2>My PR Bookings<small>PR Booking Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -22,28 +22,26 @@
 
 
                     <tr>
-                        <th scope="row">Student Name</th>
+                        <th scope="row">Client Name</th>
                         <td>{{$show->user->first_name ?? ''}} {{$show->user->last_name ?? ''}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Student Address</th>
+                        <th scope="row">Client Address</th>
                         <td>{{$show->user->address ?? ''}}</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student Mobile No.</th>
+                        <th scope="row">Client Mobile No.</th>
                         <td>{{$show->user->mobile ?? ''}}</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Student E-mail</th>
+                        <th scope="row">Client E-mail</th>
                         <td>{{$show->user->email ?? ''}}</td>
                     </tr>
 
-
-
                     <tr>
-                        <th scope="row">Student Nationality</th>
+                        <th scope="row">Client Country</th>
                         @if(isset($show->user->countries_id))
                         <?php $country = DB::table('countries')->where('countries_id',$show->user->countries_id)->get()->first();?>
                         @endif
@@ -52,7 +50,10 @@
 
                     <tr>
                     <th scope="row">PR Migration</th>
-                    {{-- <td>{{$show->country->countries_name}}</td> --}}
+                    @if(isset($show->user->countries_id))
+                        <?php $prCountry = DB::table('countries')->where('countries_id',$show->countries_id)->get()->first();?>
+                        @endif
+                        <td> {{$prCountry->countries_name ?? ''}} </td>
                     </tr>
 
                     <tr>

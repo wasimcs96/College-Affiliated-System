@@ -286,11 +286,6 @@ Route::post('application/update/university',[
     'as'=>'consultant.application.update.university'
 ]);
 
-// Route::post('application/update/univerehjdfbihdbhjsdfsity/update',[
-
-//     'as'=>'consultant.application.update.university.update'
-// ]);
-
 /* Application Follow Up */
 Route::get('applications/followup',[
     'uses' => 'ConsultantApplicationFollowUpController@index',
