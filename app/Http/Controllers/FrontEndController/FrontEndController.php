@@ -19,9 +19,9 @@ class FrontEndController extends Controller
 
     public function index()
      {
-         $consultants = User::get();
+         $consultants = User::all();
         // dd($consultants);
-        $universities = User::get();
+        $universities = User::all();
 
         // $consultants =$consultant->isConsultant();
         // $universities = $university->isUniversity();

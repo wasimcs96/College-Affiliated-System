@@ -120,9 +120,11 @@ class AdminUsersController extends Controller
 
     public function update(Request $request, User $id)
     {
+
         // $id = Package::find($id);
         $id->update($request->all());
         $id->countries_id = $request->country;
+        $id->rating = $request->rating;
         $id->save();
         return redirect()->route('admin.users',['id' => $request->parameter_id])->with('success', 'User updated Succefully.');
     }

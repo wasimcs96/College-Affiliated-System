@@ -26,6 +26,54 @@
                                 {{-- <li><span>Home Airport:</span>Knoxville, TN 37920, USA</li> --}}
                                 <li><span>Address:</span>{{$consultant->address}}</li>
                                 <li><span>Website:</span><a href="#">{{$consultant->consultant->website}}</a></li>
+                                <li><span>Rating:</span>
+                                     {{-- <div> --}}
+
+                                        <span class="badge badge-warning text-white font-size-16" style="width: fit-content;">@if($consultant->rating == null) - @else{{$consultant->rating ?? ''}}/5 @endif</span>{!!"&nbsp;"!!}
+                                        <span>@if($consultant->rating == 3 ?? '' )
+                                                <span class="ratings ">
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+                                                </span>
+                                        @elseif($consultant->rating == 4 ?? '' )
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star-o"></i>
+                                        </span>
+                                        @elseif($consultant->rating == 5 ?? '' )
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        @elseif($consultant->rating == 1 ?? '' )
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                        </span>
+                                        @elseif($consultant->rating == 2 ?? '' )
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                        </span>
+                                        @endif</span>
+                                    </p>
+                                {{-- </div> --}}
+                            </li>
                                 <li><span>About Me:</span>{{$consultant->consultant->about_me}}</li>
 
                                 <a href="{{route('consultant_book',['id'=>$consultant->id])}}"> <span class="btn btn-primary" style="margin-top: 10px;">Book Now</span></a></li>
@@ -113,9 +161,52 @@
                         <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->university_id])}}">
                             {{$university->userUniversity->university->university_name ?? ''}}</a></h3>
                         <div class="card-rating">
-                            <span class="badge text-white">4.4/5</span>
-                            <span class="review__text">Average</span>
-                            <span class="rating__text">(30 Reviews)</span>
+                            <div class="d-flex flex-wrap align-items-center pt-2">
+                                <p class="mr-2">Rating:</p>
+                                    <span class="badge badge-warning text-white font-size-16">@if($university->userUniversity->rating == null) - @else{{$university->userUniversity->rating ?? ''}}/5 @endif</span>{!!"&nbsp;"!!}
+                                    <span>@if($university->userUniversity->rating == 3 ?? '' )
+                                            <span class="ratings ">
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star-o"></i>
+                                                <i class="la la-star-o"></i>
+                                            </span>
+                                    @elseif($university->userUniversity->rating == 4 ?? '' )
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($university->userUniversity->rating == 5 ?? '' )
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                    </span>
+                                    @elseif($university->userUniversity->rating == 1 ?? '' )
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($university->userUniversity->rating == 2 ?? '' )
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @endif</span>
+                                </p>
+                            </div>
                         </div>
                         <div class="card-attributes">
                             <ul class="d-flex align-items-center">
@@ -130,10 +221,10 @@
                             </ul>
                         </div>
                         <div class="card-price d-flex align-items-center justify-content-between">
-                            {{-- <p>
-                                <span class="price__num">$2300</span>
-                                <span class="price__text">Total fees</span>
-                            </p> --}}
+                            <p>
+                                <span class="price__num">{{$university->userUniversity->university->average_fees}}</span>
+                                <span class="price__text">Average Fees</span>
+                            </p>
                             <a href="{{route('university_detail',['id'=>$university->university_id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
@@ -203,44 +294,5 @@
 @endsection
 
 @section('per_page_script')
-<script>
 
-    var universitycountry='';
-     $(document).on('click', '#countryId', function ()
- {
-    universitycountry=$(this).attr('country_id');
- console.log(universitycountry);
-         $.ajaxSetup({headers:
-             {
-                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-             }
-             });
-            //  $(".invalid-feedback").children("strong").text("");
-            //  $("#basic-form5 input").removeClass("is-invalid");
-             $.ajax({
-                     type: "post",
-                     url: "{{route('consultant.front.countryuniveristy')}}",
-                     data: {universitycountry:universitycountry},
-                     success: function (result) {
-                        console.log(result);
-                        // $('#showUniversity').hide();
-                        $('#country_add2').html(result)
-
-                        // $('#application1').html('<span style="color:green">Approved</span>');
-                        // // $('#application1').css("margin-left"," 16px");
-                        // // $('#application1').css("color","green");
-
-                        // x++;
-                        console.log('success');
-                        // $('#country_add2').style.none(result)
-                        // document.getElementById("showUniversity").style.display = "none";
-
-                        // location.reload();
-                     }
-
-
-     });
-
-    });
- </script>
 @endsection

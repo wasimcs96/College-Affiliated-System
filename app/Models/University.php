@@ -16,7 +16,9 @@ class University extends Model
         'website',
         'user_id',
         'type',
-        'default_documents'
+        'default_documents',
+        'about_me',
+        'average_fees'
 
     ];
 

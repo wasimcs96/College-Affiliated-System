@@ -146,6 +146,9 @@
                             <input type="text" value="@if(isset(auth()->user()->mobile)){{auth()->user()->mobile}}@endif"name="mobile" class="form-control" placeholder="Mobile Number" required>
                         </div>
                     </div>
+
+
+
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="landline_1">Landline 1</label>
@@ -181,6 +184,12 @@
                             <input type="text" name="city"  value="@if(isset(auth()->user()->city)){{auth()->user()->city}}@endif" class="form-control" placeholder="City" required>
                         </div>
                     </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                            <label for="landline_2">Average Fees</label>
+                            <input type="text" name="average_fees" value="@if(isset(auth()->user()->university->average_fess)){{auth()->user()->university->average_fees}}@endif"class="form-control" placeholder="Average Fees" required>
+                        </div>
+                    </div>
                     {{-- <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <textarea rows="4" name="address"  type="text" class="form-control" placeholder="Address">@if(isset(auth()->user()->address_1)){{auth()->user()->address_1}}@endif</textarea>
@@ -202,6 +211,12 @@
                         <div class="form-group">
                             <label for="address">Address</label>
                             <textarea rows="4" name="address"  type="text" class="form-control" placeholder="Address" required>@if(isset(auth()->user()->address)){{auth()->user()->address}}@endif</textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label for="address">Describe Yourself</label>
+                            <textarea rows="4" name="about_me"  type="text" class="form-control" placeholder="Address" required>@if(isset(auth()->user()->university->about_me)){{auth()->user()->university->about_me}}@endif</textarea>
                         </div>
                     </div>
 

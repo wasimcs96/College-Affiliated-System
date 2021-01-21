@@ -21,6 +21,7 @@
         "spatie/laravel-permission": "^2.37",
         "stevebauman/location": "^5.2",
         "yajra/laravel-datatables-oracle": "^9.4"
+
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
