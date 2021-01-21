@@ -89,8 +89,7 @@
                             <li><a data-scroll="description" href="#description" class="scroll-link active">About This University</a></li>
                             <li><a data-scroll="itinerary" href="#itinerary" class="scroll-link">Courses</a></li>
                             <li><a data-scroll="staterooms" href="#staterooms" class="scroll-link">Consultants</a></li>
-                            <li><a data-scroll="faq" href="#faq" class="scroll-link">FAQ</a></li>
-                            <li><a data-scroll="reviews" href="#reviews" class="scroll-link">Reviews</a></li>
+
                         {{-- <li> --}}
 
 
@@ -140,18 +139,60 @@
                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                     <p class="mr-2">University Type:       @if($university->university->type==0 ?? '' )
                                         Private
-                                    @else Govenment</p>
-                                    @endif
-                                    <p>
-                                        <span class="badge badge-warning text-white font-size-16">4.6</span>
-                                        <span>(4,209 Reviews)</span>
+                                    @else Govenment
+                                    @endif</p>
+                                </div>
+                                <div class="d-flex flex-wrap align-items-center pt-2">
+                                    <p class="mr-2">Rating:</p>
+                                        <span class="badge badge-warning text-white font-size-16">{{$university->rating ?? ''}}/5</span>{!!"&nbsp;"!!}
+                                        <span>@if($university->rating == 3 ?? '' )
+                                                <span class="ratings ">
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+                                                </span>
+                                        @elseif($university->rating == 4 ?? '' )
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star-o"></i>
+                                        </span>
+                                        @elseif($university->rating == 5 ?? '' )
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        @elseif($university->rating == 1 ?? '' )
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                        </span>
+                                        @elseif($university->rating == 2 ?? '' )
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                        </span>
+                                        @endif</span>
                                     </p>
                                 </div>
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
                             <div class="single-content-item padding-top-40px padding-bottom-40px">
                                 <h3 class="title font-size-20">Description</h3>
-                                <p class="pt-3">Per consequat adolescens ex, cu nibh commune temporibus vim, ad sumo viris eloquentiam sed. Mea appareat omittantur eloquentiam ad, nam ei quas oportere democritum. Prima causae admodum id est, ei timeam inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
+                                <p class="pt-3">{{$university->university->about_me ?? ''}}</p>
                             </div><!-- end single-content-item -->
                             <div class="single-content-item padding-bottom-30px">
                                 <h3 class="title font-size-20">University  Statistics</h3>
@@ -255,7 +296,7 @@
                                                 @endif
                                         </div>
                                        <div class="cabin-type-detail">
-                                            {{-- <h3 class="title">{{$consultant->consultant->company_name}}</h3> --}}
+                                            <h3 class="title">{{$consultant->userConsultant->consultant->company_name}}</h3>
                                            <ul class="list-items pt-2 pb-2">
                                                <li><span>On Going Applications:</span>{{$consultant->userConsultant->consultantBooking->count()}}</li>
                                                <li><span>Affiliated Since:{!! "&nbsp;" !!}{{$consultant->created_at->format('Y','M','D')}}</span></li>
@@ -264,15 +305,52 @@
                                        </div>
                                        <div class="cabin-price">
                                            <ul><li>
-                                            <span class="ratings ">
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star-o"></i>
-                                            </span></li>
-                                               <li> <span class="ml-2">305 Reviews</span>
-                                          </li>
+                                            <div class="d-flex flex-wrap align-items-center pt-2">
+                                                <p class="mr-2">Rating:</p>
+                                                    <span class="badge badge-warning text-white font-size-16">@if($consultant->userConsultant->rating == null) - @else{{$consultant->userConsultant->rating ?? ''}}/5 @endif</span>{!!"&nbsp;"!!}
+                                                    <span>@if($consultant->userConsultant->rating == 3 ?? '' )
+                                                            <span class="ratings ">
+                                                                <i class="la la-star"></i>
+                                                                <i class="la la-star"></i>
+                                                                <i class="la la-star"></i>
+                                                                <i class="la la-star-o"></i>
+                                                                <i class="la la-star-o"></i>
+                                                            </span>
+                                                    @elseif($consultant->userConsultant->rating == 4 ?? '' )
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star-o"></i>
+                                                    </span>
+                                                    @elseif($consultant->userConsultant->rating == 5 ?? '' )
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                    </span>
+                                                    @elseif($consultant->userConsultant->rating == 1 ?? '' )
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                    </span>
+                                                    @elseif($consultant->userConsultant->rating == 2 ?? '' )
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                    </span>
+                                                    @endif</span>
+                                                </p>
+                                            </div></li>
                                            </ul>
                                            <div class="custom-checkbox mb-0">
                                                <input type="checkbox" id="chb2">
@@ -309,270 +387,8 @@
                             <p class="font-size-14 line-height-26 padding-bottom-40px"><strong class="text-black">Please note:</strong>Above Consultants are affiliated to this University.</p>
                             <div class="section-block"></div>
                         </div>
-                        <div id="reviews" class="page-scroll">
-                            <div class="single-content-item padding-top-40px padding-bottom-40px">
-                                <h3 class="title font-size-20">Reviews</h3>
-                                <div class="review-container padding-top-30px">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-8">
-                                            <div class="review-summary">
-                                                <h2>4.5<span>/5</span></h2>
-                                                <p>Excellent</p>
-                                                <span>Based on 4 reviews</span>
-                                            </div>
-                                        </div><!-- end col-lg-4 -->
-
-                                    </div>
-                                </div>
-                            </div><!-- end single-content-item -->
-                            <div class="section-block"></div>
-                        </div><!-- end reviews -->
-                        <div class="review-box">
-                            <div class="single-content-item padding-top-40px">
-                                <h3 class="title font-size-20">Showing 3 guest reviews</h3>
-                                <div class="comments-list padding-top-50px">
-                                    <div class="comment">
-                                        <div class="comment-avatar">
-                                            <img class="avatar__img" alt="" src="{{asset('frontEnd/assets/images/team8.jpg')}}">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="meta-data">
-                                                <h3 class="comment__author">Jenny Doe</h3>
-                                                <div class="meta-data-inner d-flex">
-                                                    <span class="ratings d-flex align-items-center mr-1">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                    </span>
-                                                    <p class="comment__date">April 5, 2019</p>
-                                                </div>
-                                            </div>
-                                            <p class="comment-content">
-                                                Lorem ipsum dolor sit amet, dolores mandamus moderatius ea ius, sed civibus vivendum imperdiet ei, amet tritani sea id. Ut veri diceret fierent mei, qui facilisi suavitate euripidis
-                                            </p>
-                                            <div class="comment-reply d-flex align-items-center justify-content-between">
-                                                <a class="theme-btn" href="#" data-toggle="modal" data-target="#replayPopupForm">
-                                                    <span class="la la-mail-reply mr-1"></span>Reply
-                                                </a>
-                                                <div class="reviews-reaction">
-                                                    <a href="#" class="comment-like"><i class="la la-thumbs-up"></i> 13</a>
-                                                    <a href="#" class="comment-dislike"><i class="la la-thumbs-down"></i> 2</a>
-                                                    <a href="#" class="comment-love"><i class="la la-heart-o"></i> 5</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end comments -->
-                                    <div class="comment comment-reply-item">
-                                        <div class="comment-avatar">
-                                            <img class="avatar__img" alt="" src="{{asset('frontEnd/assets/images/team9.jpg')}}">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="meta-data">
-                                                <h3 class="comment__author">Jenny Doe</h3>
-                                                <div class="meta-data-inner d-flex">
-                                                    <span class="ratings d-flex align-items-center mr-1">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                    </span>
-                                                    <p class="comment__date">April 5, 2019</p>
-                                                </div>
-                                            </div>
-                                            <p class="comment-content">
-                                                Lorem ipsum dolor sit amet, dolores mandamus moderatius ea ius, sed civibus vivendum imperdiet ei, amet tritani sea id. Ut veri diceret fierent mei, qui facilisi suavitate euripidis
-                                            </p>
-                                            <div class="comment-reply d-flex align-items-center justify-content-between">
-                                                <a class="theme-btn" href="#" data-toggle="modal" data-target="#replayPopupForm">
-                                                    <span class="la la-mail-reply mr-1"></span>Reply
-                                                </a>
-                                                <div class="reviews-reaction">
-                                                    <a href="#" class="comment-like"><i class="la la-thumbs-up"></i> 13</a>
-                                                    <a href="#" class="comment-dislike"><i class="la la-thumbs-down"></i> 2</a>
-                                                    <a href="#" class="comment-love"><i class="la la-heart-o"></i> 5</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end comments -->
-                                    <div class="comment">
-                                        <div class="comment-avatar">
-                                            <img class="avatar__img" alt="" src="{{asset('frontEnd/assets/images/team10.jpg')}}">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="meta-data">
-                                                <h3 class="comment__author">Jenny Doe</h3>
-                                                <div class="meta-data-inner d-flex">
-                                                    <span class="ratings d-flex align-items-center mr-1">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                    </span>
-                                                    <p class="comment__date">April 5, 2019</p>
-                                                </div>
-                                            </div>
-                                            <p class="comment-content">
-                                                Lorem ipsum dolor sit amet, dolores mandamus moderatius ea ius, sed civibus vivendum imperdiet ei, amet tritani sea id. Ut veri diceret fierent mei, qui facilisi suavitate euripidis
-                                            </p>
-                                            <div class="comment-reply d-flex align-items-center justify-content-between">
-                                                <a class="theme-btn" href="#" data-toggle="modal" data-target="#replayPopupForm">
-                                                    <span class="la la-mail-reply mr-1"></span>Reply
-                                                </a>
-                                                <div class="reviews-reaction">
-                                                    <a href="#" class="comment-like"><i class="la la-thumbs-up"></i> 13</a>
-                                                    <a href="#" class="comment-dislike"><i class="la la-thumbs-down"></i> 2</a>
-                                                    <a href="#" class="comment-love"><i class="la la-heart-o"></i> 5</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end comments -->
-                                    <div class="btn-box load-more text-center">
-                                        <button class="theme-btn theme-btn-small theme-btn-transparent" type="button">Load More Review</button>
-                                    </div>
-                                </div><!-- end comments-list -->
-                                <div class="comment-forum padding-top-40px">
-                                    <div class="form-box">
-                                        <div class="form-title-wrap">
-                                            <h3 class="title">Write a Review</h3>
-                                        </div><!-- form-title-wrap -->
-                                        <div class="form-content">
-                                            <div class="rate-option p-2">
-                                                <div class="row">
-                                                    <div class="col-lg-4 responsive-column">
-                                                        <div class="rate-option-item">
-                                                            <label>Service</label>
-                                                            <div class="rate-stars-option">
-                                                                <input type="checkbox" id="lst1" value="1">
-                                                                <label for="lst1"></label>
-                                                                <input type="checkbox" id="lst2" value="2">
-                                                                <label for="lst2"></label>
-                                                                <input type="checkbox" id="lst3" value="3">
-                                                                <label for="lst3"></label>
-                                                                <input type="checkbox" id="lst4" value="4">
-                                                                <label for="lst4"></label>
-                                                                <input type="checkbox" id="lst5" value="5">
-                                                                <label for="lst5"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- col-lg-4 -->
-                                                    <div class="col-lg-4 responsive-column">
-                                                        <div class="rate-option-item">
-                                                            <label>Location</label>
-                                                            <div class="rate-stars-option">
-                                                                <input type="checkbox" id="l1" value="1">
-                                                                <label for="l1"></label>
-                                                                <input type="checkbox" id="l2" value="2">
-                                                                <label for="l2"></label>
-                                                                <input type="checkbox" id="l3" value="3">
-                                                                <label for="l3"></label>
-                                                                <input type="checkbox" id="l4" value="4">
-                                                                <label for="l4"></label>
-                                                                <input type="checkbox" id="l5" value="5">
-                                                                <label for="l5"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- col-lg-4 -->
-                                                    <div class="col-lg-4 responsive-column">
-                                                        <div class="rate-option-item">
-                                                            <label>Value for Money</label>
-                                                            <div class="rate-stars-option">
-                                                                <input type="checkbox" id="vm1" value="1">
-                                                                <label for="vm1"></label>
-                                                                <input type="checkbox" id="vm2" value="2">
-                                                                <label for="vm2"></label>
-                                                                <input type="checkbox" id="vm3" value="3">
-                                                                <label for="vm3"></label>
-                                                                <input type="checkbox" id="vm4" value="4">
-                                                                <label for="vm4"></label>
-                                                                <input type="checkbox" id="vm5" value="5">
-                                                                <label for="vm5"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- col-lg-4 -->
-                                                    <div class="col-lg-4 responsive-column">
-                                                        <div class="rate-option-item">
-                                                            <label>Cleanliness</label>
-                                                            <div class="rate-stars-option">
-                                                                <input type="checkbox" id="cln1" value="1">
-                                                                <label for="cln1"></label>
-                                                                <input type="checkbox" id="cln2" value="2">
-                                                                <label for="cln2"></label>
-                                                                <input type="checkbox" id="cln3" value="3">
-                                                                <label for="cln3"></label>
-                                                                <input type="checkbox" id="cln4" value="4">
-                                                                <label for="cln4"></label>
-                                                                <input type="checkbox" id="cln5" value="5">
-                                                                <label for="cln5"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- col-lg-4 -->
-                                                    <div class="col-lg-4 responsive-column">
-                                                        <div class="rate-option-item">
-                                                            <label>Facilities</label>
-                                                            <div class="rate-stars-option">
-                                                                <input type="checkbox" id="f1" value="1">
-                                                                <label for="f1"></label>
-                                                                <input type="checkbox" id="f2" value="2">
-                                                                <label for="f2"></label>
-                                                                <input type="checkbox" id="f3" value="3">
-                                                                <label for="f3"></label>
-                                                                <input type="checkbox" id="f4" value="4">
-                                                                <label for="f4"></label>
-                                                                <input type="checkbox" id="f5" value="5">
-                                                                <label for="f5"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- col-lg-4 -->
-
-                                                </div><!-- end row -->
-                                            </div><!-- end rate-option -->
-                                            <div class="contact-form-action">
-                                                <form method="post">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="input-box">
-                                                                <label class="label-text">Name</label>
-                                                                <div class="form-group">
-                                                                    <span class="la la-user form-icon"></span>
-                                                                    <input class="form-control" type="text" name="text" placeholder="Your name">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="input-box">
-                                                                <label class="label-text">Email</label>
-                                                                <div class="form-group">
-                                                                    <span class="la la-envelope-o form-icon"></span>
-                                                                    <input class="form-control" type="email" name="email" placeholder="Email address">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <div class="input-box">
-                                                                <label class="label-text">Message</label>
-                                                                <div class="form-group">
-                                                                    <span class="la la-pencil form-icon"></span>
-                                                                    <textarea class="message-control form-control" name="message" placeholder="Write message"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <div class="btn-box">
-                                                                <button type="button" class="theme-btn">Leave a Review</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div><!-- end contact-form-action -->
-                                        </div><!-- end form-content -->
-                                    </div><!-- end form-box -->
-                                </div><!-- end comment-forum -->
-                            </div><!-- end single-content-item -->
-                        </div><!-- end review-box -->
+                        <!-- end reviews -->
+                        <!-- end review-box -->
                     </div><!-- end single-content-wrap -->
                 </div><!-- end col-lg-8 -->
                 <div class="col-lg-4">
@@ -607,14 +423,52 @@
                                             {{-- {{dd($consultant)}} --}}
                                             <h4 class="author__title"><a href="#">{{$consultant->userConsultant->consultant->company_name}}</a></h4>
                                             <span class="author__meta">Member Since {{$consultant->userConsultant->consultant->created_at}}</span>
-                                            <span class="ratings d-flex align-items-center">
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star"></i>
-                                                     <i class="la la-star-o"></i>
-                                                     <span class="ml-2">305 Reviews</span>
-                                                </span>
+                                            <div class="d-flex flex-wrap align-items-center pt-2">
+                                                <p class="mr-2">Rating:</p>
+                                                    <span class="badge badge-warning text-white font-size-16">@if($consultant->userConsultant->rating == null) - @else{{$consultant->userConsultant->rating ?? ''}}/5 @endif</span>{!!"&nbsp;"!!}
+                                                    <span>@if($consultant->userConsultant->rating == 3 ?? '' )
+                                                            <span class="ratings ">
+                                                                <i class="la la-star"></i>
+                                                                <i class="la la-star"></i>
+                                                                <i class="la la-star"></i>
+                                                                <i class="la la-star-o"></i>
+                                                                <i class="la la-star-o"></i>
+                                                            </span>
+                                                    @elseif($consultant->userConsultant->rating == 4 ?? '' )
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star-o"></i>
+                                                    </span>
+                                                    @elseif($consultant->userConsultant->rating == 5 ?? '' )
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                    </span>
+                                                    @elseif($consultant->userConsultant->rating == 1?? '' )
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                    </span>
+                                                    @elseif($consultant->userConsultant->rating == 2 ?? '' )
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                    </span>
+                                                    @endif</span>
+                                                </p>
+                                            </div>
                                             <div>
                                                 @if(auth()->user())
                                                 @if(auth()->user()->isClient())
@@ -644,75 +498,6 @@
                             </div><!-- end sidebar-list -->
                         </div><!-- end sidebar-widget -->
                         @endif
-
-
-                        {{-- <div class="sidebar-widget single-content-widget">
-                            <h3 class="title stroke-shape">Enquiry Form</h3>
-                            <div class="enquiry-forum">
-                                <div class="form-box">
-                                    <div class="form-content">
-                                        <div class="contact-form-action">
-                                            <form method="post">
-                                                <div class="input-box">
-                                                    <label class="label-text">Your Name</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-user form-icon"></span>
-                                                        <input class="form-control" type="text" name="text" placeholder="Your name">
-                                                    </div>
-                                                </div>
-                                                <div class="input-box">
-                                                    <label class="label-text">Your Email</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-envelope-o form-icon"></span>
-                                                        <input class="form-control" type="email" name="email" placeholder="Email address">
-                                                    </div>
-                                                </div>
-                                                <div class="input-box">
-                                                    <label class="label-text">Message</label>
-                                                    <div class="form-group">
-                                                        <span class="la la-pencil form-icon"></span>
-                                                        <textarea class="message-control form-control" name="message" placeholder="Write message"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="input-box">
-                                                    <div class="form-group">
-                                                        <div class="custom-checkbox mb-0">
-                                                            <input type="checkbox" id="agreeChb">
-                                                            <label for="agreeChb">I agree with <a href="#">Terms of Service</a> and
-                                                                <a href="#">Privacy Statement</a></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="btn-box">
-                                                    <button type="button" class="theme-btn">Submit Enquiry</button>
-                                                </div>
-                                            </form>
-                                        </div><!-- end contact-form-action -->
-                                    </div><!-- end form-content -->
-                                </div><!-- end form-box -->
-                            </div><!-- end enquiry-forum -->
-                        </div><!-- end sidebar-widget --> --}}
-                        {{-- <div class="sidebar-widget single-content-widget">
-                            <h3 class="title stroke-shape">Why Book With Us?</h3>
-                            <div class="sidebar-list">
-                                <ul class="list-items">
-                                    <li><i class="la la-dollar icon-element mr-2"></i>No-hassle best price guarantee</li>
-                                    <li><i class="la la-microphone icon-element mr-2"></i>Customer care available 24/7</li>
-                                    <li><i class="la la-thumbs-up icon-element mr-2"></i>Hand-picked Tours & Activities</li>
-                                    <li><i class="la la-file-text icon-element mr-2"></i>Free Travel Insureance</li>
-                                </ul>
-                            </div><!-- end sidebar-list -->
-                        </div><!-- end sidebar-widget --> --}}
-                        {{-- <div class="sidebar-widget single-content-widget">
-                            <h3 class="title stroke-shape">Get a Question?</h3>
-                            <p class="font-size-14 line-height-24">Do not hesitate to give us a call. We are an expert team and we are happy to talk to you.</p>
-                            <div class="sidebar-list pt-3">
-                                <ul class="list-items">
-                                    <li><i class="la la-phone icon-element mr-2"></i><a href="#">+ 61 23 8093 3400</a></li>
-                                    <li><i class="la la-envelope icon-element mr-2"></i><a href="mailto:info@dc.com">info@dc.com</a></li>
-                                </ul>
-                            </div><!-- end sidebar-list -->
-                        </div><!-- end sidebar-widget --> --}}
 
                     </div><!-- end sidebar -->
                     {{-- @endif --}}
@@ -865,6 +650,14 @@
                         </div>
                         {{-- ############################################## MODELLLLLLLLL END --}}
 @endsection
+@section('per_page_style')
+<style>
+    .chckd {
+      color: orange;
+    }
+    </style>
+@endsection
+
 @section('per_page_script')
 <script>
     $(document).ready(function () {

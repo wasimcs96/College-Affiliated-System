@@ -40,18 +40,18 @@
                                                         @foreach($countries as $country)
                                                         <option value="{{$country->countries_id}}" @if(isset($countrycoming) && $countrycoming == $country->countries_id) selected @endif>{{$country->countries_name}}</option>
                                                         @endforeach
-    
+
                                                         @else
-    
+
                                                             <option value="">Currently Unavailable</option>
-    
+
                                                         @endif
-    
+
                                                     </select>
                                                 </div>                                            </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                                   
+
                                     {{-- <div class="col-lg-2 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Drop-off Date</label>
@@ -62,13 +62,13 @@
                                         </div>
                                     </div><!-- end col-lg-2 --> --}}
                                     <!-- end col-lg-3 -->
-                                
+
                             </div><!-- end contact-form-action -->
 
                             <div class="btn-box pt-3">
                                 <button class="theme-btn" type="submit">Search Now</button>
                             </div>
-                        </form>    
+                        </form>
                         </div><!-- end search-fields-container -->
                     </div><!-- end search-result-content -->
                 </div><!-- end col-lg-12 -->
@@ -117,21 +117,65 @@
                         {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
                         <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->first_name}} {{$consultant->last_name}}</a></h3>
                         <div class="card-rating">
-                            <span class="badge text-white">4.4/5</span>
-                            <span class="review__text">Average</span>
-                            <span class="rating__text">(30 Reviews)</span>
+                            <div class="d-flex flex-wrap align-items-center pt-2">
+                                <p class="mr-2">Rating:</p>
+                                    <span class="badge badge-warning text-white font-size-16">@if($consultant->rating == null) - @else{{$consultant->rating ?? ''}}/5 @endif</span>{!!"&nbsp;"!!}
+                                    <span>@if($consultant->rating == 3 ?? '' )
+                                            <span class="ratings ">
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star-o"></i>
+                                                <i class="la la-star-o"></i>
+                                            </span>
+                                    @elseif($consultant->rating == 4 ?? '' )
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($consultant->rating == 5 ?? '' )
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                    </span>
+                                    @elseif($consultant->rating == 1 ?? '' )
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($consultant->rating == 2 ?? '' )
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @endif</span>
+                                </p>
+                            </div>
                         </div>
                         <div class="card-attributes">
                             <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-users"></i><span>{{$consultant->consultantBooking->count()}}</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span>{{$consultant->consultantBooking->count()}}</span></li>
                                 <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>{{$consultant->consultantUniversity->count()}}</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-users"></i><span>{{$consultant->consultantUniversity->count()}}</span></li>
                             </ul>
                         </div>
                         <div class="card-price d-flex align-items-center justify-content-between">
-                            <p>
+                            {{-- <p>
                                 <span class="price__num">Country</span>
                                 <span class="price__text">{{$consultant->country->countries_name}}</span>
-                            </p>
+                            </p> --}}
                             <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>
@@ -142,14 +186,14 @@
             @endforeach
         </div><!-- end row -->
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-12">
                 <div class="btn-box mt-3 text-center">
                     <button type="button" class="theme-btn"><i class="la la-refresh mr-1"></i>Load More</button>
                     <p class="font-size-13 pt-2">Showing 1 - 6 of 44 Cars</p>
                 </div><!-- end btn-box -->
             </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
+        </div><!-- end row --> --}}
     </div><!-- end container -->
 </section><!-- end card-area -->
 <!-- ================================

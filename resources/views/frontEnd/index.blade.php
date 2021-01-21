@@ -457,66 +457,112 @@
 <section class="testimonial-area section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="section-heading">
+
+            <div class="col-lg-12">
+                <div class="section-heading ">
+
                     <h4>Featured University <span style="
                         float: right;
                     "><a  href="{{route('university_all')}}" class="btn btn-primary btn-sm">View all</a></span></h4>
                     <hr>
+                    <?php $universities = App\Models\User::get();
+                    ?>
+                   @if($universities->count()>0)
 
-                    {{-- <p class="sec__desc padding-top-30px">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero
-                    </p>
-                    <div class="btn-box padding-top-35px">
-                        <a href="#" class="theme-btn">Explore All</a>
-                    </div> --}}
-                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        </ol>
-                        <div class="carousel-inner">
+                    <div class="testimonial-carousel carousel-action">
+                        @foreach($universities as $key => $university)
+                        {{-- {{dd($university)}} --}}
+                        @if($university->isUniversity())
+                        <div class="testimonial-card">
+
+                            <div class="author-content d-flex align-items-center">
+                                <div class="author-img">
+                                    {{-- @php
+                                        print_r($consultant->user);
+                                    @endphp --}}
+                                   <a href="{{route('university_detail',['id'=>$university->id])}}">
+                                    @if(isset($university->profile_image) && file_exists($university->profile_image))
+                                    <img  src="{{asset($university->profile_image)}}" alt="" class="d-block w-100">
+                                        @else
+                                        <img  src="{{asset('frontEnd/assets/images/university.jpg')}} " class="d-block w-100">
+                                        @endif</a>
+                                </div>
+                                <div class="author-bio">
+                                    <a href="{{route('university_detail',['id'=>$university->id])}}"><h4 class="author__title">{{$university->university->university_name  ?? ''}}</h4></a>
+                                    {{-- <span class="author__meta">{{$university->userUniversity->type ?? ''}}</span> --}}
+                                    <span class="ratings d-flex align-items-center">
+                                        @if($university->rating == 3 ?? '' )
+
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+
+                                                @elseif($university->rating == 4 ?? '' )
+
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+
+                                                @elseif($university->rating == 5 ?? '' )
+
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+
+                                                @elseif($university->rating == 1 ?? '' )
+
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+                                                </span>
+                                                @elseif($university->rating == 2 ?? '' )
+
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+
+                                                @endif
 
 
-@if($universities->count()>0)
-                            @foreach($universities as $key => $university)
-                            {{-- {{dd($university)}} --}}
-                            {{-- @if($university->isUniversity()) --}}
-                            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                                @if(isset($university->profile_image) && file_exists($university->profile_image))
-                                <img  src="{{asset($university->profile_image)}}" alt="" class="d-block w-100">
-                                    @else
-                                    <img  src="{{asset('frontEnd/assets/images/university.jpg')}} " class="d-block w-100">
-                                    @endif
-                            {{-- <img src="{{ asset('frontEnd/assets/images/bread-bd4.jpeg') }}" class="d-block w-100" alt="..."> --}}
-                            <div class="carousel-caption d-none d-md-block">
-                              <h5>
-                                  {{-- {{$university->university_name}} --}}
-                            </h5>
-                            <p><a class="btn btn-primary" href="{{route('university_detail',['id'=>$university->id])}}" role="button">Visit University</a>
-                            </p>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        {{-- @endif --}}
-                          @endforeach
-                          @else
-                          <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
+                            <div class="testi-desc-box">
+                                <?php
+                                $myvalue =$university->university->about_me ?? '';
+                                if (strlen($myvalue) > 140)
+                                    {
+                                        $myvalue = substr($myvalue, 0, 140);
+                                        $myvalue = explode(' ', $myvalue);
+                                        array_pop($myvalue); // remove last word from array
+                                        $myvalue = implode(' ', $myvalue);
+                                        // $myvalue = $myvalue . ' ...';
+                                    } ?>
+                                <p class="testi__desc"><?php echo ($myvalue . '...')?></p><a  class="btn btn-primary" href="{{route('university_detail',['id'=>$university->id])}}">Details</a>
+                            </div>
 
-                          {{-- @endif --}}
+                        </div><!-- end testimonial-card -->
+                        @endif
+                        @endforeach
+                    </div><!-- end testimonial-carousel -->
+@else
+<h2 class="mt-5" style="text-align: center"> No Data Available</h2>
 @endif
-                        </div>
-                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
-                      </div>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-4 -->
 
-            <div class="col-lg-6">
+
+            </div><!-- end col-lg-8 -->
+        </div>
+            <div class="col-lg-12">
                 <div class="section-heading ">
 
                     <h4> Featured Consultants</h4>
@@ -527,6 +573,7 @@
                     <div class="testimonial-carousel carousel-action">
                         @foreach($consultants as $consultant)
                         @if($consultant->isConsultant())
+
                         <div class="testimonial-card">
 
                             <div class="author-content d-flex align-items-center">
@@ -545,11 +592,49 @@
                                     <a href="{{route('consultant_detail',['id' => $consultant->id])}}"><h4 class="author__title">{{$consultant->first_name}}</h4></a>
                                     <span class="author__meta">{{$consultant->last_name}}</span>
                                     <span class="ratings d-flex align-items-center">
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
-                                        <i class="la la-star"></i>
+                                        @if($consultant->rating == 3 ?? '' )
+
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+
+                                                @elseif($consultant->rating == 4 ?? '' )
+
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+
+                                                @elseif($consultant->rating == 5 ?? '' )
+
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+
+                                                @elseif($consultant->rating == 1 ?? '' )
+
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+
+                                                @elseif($consultant->rating == 2 ?? '' )
+
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+
+                                                @endif
+
+
                                     </span>
                                 </div>
                             </div>
@@ -568,6 +653,7 @@
                             </div>
 
                         </div><!-- end testimonial-card -->
+
                         @endif
                         @endforeach
                     </div><!-- end testimonial-carousel -->
@@ -743,7 +829,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                  RTU
                                                 </a>
                                             </h3>
@@ -751,7 +837,7 @@
                                         <p class="deal__meta">City: Rajasthan</p>
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$22132</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -760,7 +846,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                    BTU
                                                 </a>
                                             </h3>
@@ -769,7 +855,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -778,7 +864,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                     IIT
                                                 </a>
                                             </h3>
@@ -787,7 +873,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -796,7 +882,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                     MIT
                                                 </a>
                                             </h3>
@@ -805,7 +891,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -814,7 +900,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 KANPUR
                                                 </a>
                                             </h3>
@@ -823,7 +909,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -832,7 +918,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 BOMBAY
                                                 </a>
                                             </h3>
@@ -841,7 +927,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -854,7 +940,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 Harvard
                                                 </a>
                                             </h3>
@@ -863,7 +949,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -872,7 +958,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 Cambridge
                                                 </a>
                                             </h3>
@@ -881,7 +967,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -890,7 +976,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                sdfdsgdfsg
                                                 </a>
                                             </h3>
@@ -899,7 +985,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -908,7 +994,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdfkjksddf
                                                 </a>
                                             </h3>
@@ -917,7 +1003,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -926,7 +1012,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdjafsjdfjs
                                                 </a>
                                             </h3>
@@ -935,7 +1021,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -944,7 +1030,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 fsjfjsjf
                                                 </a>
                                             </h3>
@@ -953,7 +1039,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -966,7 +1052,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdfsdkfjlsdajfl
                                                 </a>
                                             </h3>
@@ -975,7 +1061,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -984,7 +1070,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdfghj
                                                 </a>
                                             </h3>
@@ -993,7 +1079,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1002,7 +1088,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 jhgfdf
                                                 </a>
                                             </h3>
@@ -1011,7 +1097,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1020,7 +1106,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sjdfhjskhf
                                                 </a>
                                             </h3>
@@ -1029,7 +1115,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1038,7 +1124,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 jdgkjdfgjdlfgkl
                                                 </a>
                                             </h3>
@@ -1047,7 +1133,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1056,7 +1142,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdjfhskjdhfkj
                                                 </a>
                                             </h3>
@@ -1065,7 +1151,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1078,7 +1164,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 hdfjshdfhdsh
                                                 </a>
                                             </h3>
@@ -1087,7 +1173,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1096,7 +1182,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 fsdfsdfsdf
                                                 </a>
                                             </h3>
@@ -1105,7 +1191,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1114,7 +1200,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdhfsjdfhkshdkfhs
                                                 </a>
                                             </h3>
@@ -1123,7 +1209,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1132,7 +1218,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdfkskldflksf
                                                 </a>
                                             </h3>
@@ -1141,7 +1227,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1150,7 +1236,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                sdjfsjkdhfjkhsdhfs
                                                 </a>
                                             </h3>
@@ -1159,7 +1245,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1168,7 +1254,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdfsdfsdfsd
                                                 </a>
                                             </h3>
@@ -1177,7 +1263,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1190,7 +1276,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdfdsjjdfgjkl
                                                 </a>
                                             </h3>
@@ -1199,7 +1285,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1208,7 +1294,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 dfkdslfksjdj
                                                 </a>
                                             </h3>
@@ -1217,7 +1303,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1226,7 +1312,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                               sdfsdfsdfsd
                                                 </a>
                                             </h3>
@@ -1235,7 +1321,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Feess</span><span class="price__num">$140</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1244,7 +1330,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdfsdfsdfs
                                                 </a>
                                             </h3>
@@ -1253,7 +1339,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1262,7 +1348,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                 sdfsdfsdf
                                                 </a>
                                             </h3>
@@ -1271,7 +1357,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->
@@ -1280,7 +1366,7 @@
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
                                             <h3 class="deal__title">
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-flex align-items-center">
+                                                <a href="#" class="d-flex align-items-center">
                                                sdfsdfsdfsda
                                                 </a>
                                             </h3>
@@ -1289,7 +1375,7 @@
 
                                         <div class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
                                         </div>
                                     </div><!-- end deal-card -->
                                 </div><!-- end col-lg-4 -->

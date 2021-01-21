@@ -90,7 +90,7 @@
                         <li class="{{ Request::segment(3) == 'contact' ? 'active' : null }}"><a href="{{route('admin.contact.index')}}">Contact Manager</a></li>
                     </ul>
                 </li>
-
+                <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('setting.general')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Settings</span></a></li>
                 <li class="{{ Request::segment(2) == 'report' ? 'active open' : null }}">
                     <a href="#Report" class="has-arrow"><i class="icon-book-open"></i><span>Reports</span></a>
                     <ul>
