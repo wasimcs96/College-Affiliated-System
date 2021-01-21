@@ -24,6 +24,7 @@
                             <th><b>End Date</b></th>
                             <th><b>Purchased Date</b></th>
                             <th><b> Status</b></th>
+                            <th><b>Action<b></th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -43,8 +44,8 @@
                             <td style="text-align: center;"> <a href="{{asset($rt->banner_image ?? '')}}" target="_blank"> <img src="{{asset($rt->banner_image ?? '')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"></a></td>
                              <td>{{$rt->order->transaction_id ?? ''}}</td>
 
-                             <td>{{$rt->expire_date ?? ''}}</td>
                              <td>{{$rt->start_date ?? ''}}</td>
+                             <td>{{$rt->expire_date ?? ''}}</td>
                              <td>{{$rt->created_at->format("Y-m-d") ?? ''}}</td>
 
                                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
@@ -54,7 +55,7 @@
                                 @if($rt->expire_date<$mytime && $rt->expire_date == !null)<div class="btn btn-danger">Expired</div>@endif
                                 @if($rt->expire_date == null)<div class="btn btn-warning">Pending</div>@endif
                             </td>
-                            {{-- <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td> --}}
+                            <td><a href="{{route('consultant.advertisement.edit',['id'=>$rt->id])}}" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>
                         </tr>
                         {{-- @endif --}}
 @endforeach

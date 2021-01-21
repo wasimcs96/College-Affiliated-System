@@ -378,4 +378,15 @@ Route::post('application/add/university',[
     'uses' =>'ConsultantApplicationController@universityAdd',
     'as'=>'consultant.application.add.university'
 ]);
+
+Route::get('advertisement/edit/{id}',[
+    'uses' =>'ConsultantAdvertisementController@edit',
+    'as'=>'consultant.advertisement.edit'
+]);
+
+Route::post('advertisement/update',[
+    'uses' =>'ConsultantAdvertisementController@update',
+    'as'=>'consultant.advertisement.update'
+]);
+
 });

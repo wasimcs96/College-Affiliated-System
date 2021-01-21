@@ -281,17 +281,17 @@
 
 @stop
 @section('page-styles')
-<link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
 @stop
 @section('page-script')
 
 <script src="{{ asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
-
-<script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/vendor/dropify/js/dropify.js') }}"></script>
 
 <script src="{{ asset('assets/js/pages/forms/dropify.js') }}"></script>
+
+<script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 
 <script>
     $('.dropify-fr').dropify({
