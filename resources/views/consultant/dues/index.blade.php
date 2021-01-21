@@ -15,22 +15,30 @@
         </div>
         <div class="body">
             <div class="table-responsive" >
+                <form action="{{route('consultant.dues.pay')}}" method="POST">
+@csrf
+               
                 <table class="table table-hover table-striped">
 
                     <tbody>
                     <tr>
                         <th scope="row">Total Due Amount</th>
-                        <td> <button class="btn btn-flat btn-danger"> Rs.{{$dues->due_amount}} </button>  </td>
+                        <input type="text" name="amount" value="{{$dues->due_amount*100 ?? ''}}" hidden>
+                        <input type="text" name="payment_type" value="3" hidden>
+                        <input type="text" name="title" value="paydue" hidden>
+                        <td> <button class="btn btn-flat btn-danger"> Rs.{{$dues->due_amount ?? ''}} </button>  </td>
                     </tr>
                     <tr>
                         <th scope="row">Total Clients</th>
-                        <td> <button class="btn btn-flat btn-warning"> {{$dues->temp_client_count}} </button> </td>
+                        <input type="text" name="clients_total" value="{{$dues->temp_client_count ?? ''}}" hidden>
+                        <td> <button class="btn btn-flat btn-warning"> {{$dues->temp_client_count ?? ''}} </button> </td>
                     </tr>
 
                     </tbody>
 
                 </table>
-                <a  href="{{route('consultant.dues.pay')}}" class="btn btn-success btn-flat">Pay</a>
+                <button  type="submit" class="btn btn-success btn-flat">Pay</button>
+            </form>
             </div>
         </div>
     </div>

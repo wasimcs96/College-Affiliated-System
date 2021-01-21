@@ -20,10 +20,10 @@ class PaymentController extends Controller
 
         $api = new Api('rzp_test_6PaQ95AP7ZPT1S', '409ACfFYI6hON1ZmCThrD7nN');
         $amount = $request->amount;
-        $userId = $request->user_id;
+        $userId = $request->user_id ?? auth()->user()->id;
         $type = $request->payment_type;
         $title = $request->title ?? '';
-        $time=$request->package_time;
+        $time=$request->package_time ?? '';
         $user=auth()->user();
         // dd(Carbon::now()->addMonth($time));
         if ($request->payment_type == 0) {
@@ -49,7 +49,7 @@ class PaymentController extends Controller
         Session::put('userId', $userId);
         Session::put('type', $type);
         Session::put('title', $title);
-
+      
 
        $saif=$order->toArray();
         return response($saif);

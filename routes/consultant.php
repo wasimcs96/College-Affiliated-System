@@ -361,6 +361,11 @@ Route::get('dues',[
     'as'=>'consultant.dues'
 ]);
 
+
+Route::post('dues/pay',[
+    'uses'=>'ConsultantDuesController@pay',
+    'as'=>'consultant.dues.pay'
+]);
 // Route::get('prmigration/show/{id}',[
 //     'uses'=>'ConsultantPrmigrationController@prshow',
 //     'as'=>'prmigration.booking.show'
