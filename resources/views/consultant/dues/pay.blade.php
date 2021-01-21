@@ -65,6 +65,8 @@
 <script>
     var payment_type="{{Session::get('type')}}"
     var amount="{{Session::get('amount')}}"
+    var user_id="{{Session::get('userId')}}"
+    var title="{{Session::get('title')}}"
     var options = {
         "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
         "amount":"{{Session::get('amount')}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -83,7 +85,7 @@
 
 
                  transactionId=response.razorpay_payment_id;
-
+console.log(transactionId);
                 $.ajax({
                 url:"{{ route('transaction.pay') }}",
                 method:"GET",
