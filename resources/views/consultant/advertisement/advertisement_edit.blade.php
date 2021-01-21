@@ -61,10 +61,10 @@
 
                 </table>
             </div>
-            <form action="{{route('consultant.advertisement.update')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('consultant.advertisement.update',$ad->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
         <input name="image" id="photo" type="file" class="dropify-fr" >
-                <input type="hidden" name="adID" value="{{$ad->id}}">
+                {{-- <input type="hidden" name="adID" value="{{$ad->id}}"> --}}
 
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
