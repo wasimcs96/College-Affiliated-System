@@ -39,26 +39,24 @@
             <ul id="main-menu" class="metismenu">
                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
              @if(auth()->user()->Subscription_expire_date<$mytime || auth()->user()->Subscription_expire_date==NULL)
-             <li class="{{ Request::segment(2) == 'dashboard' ? 'active' : null }}"><a href="javascript:void(0);"> <i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+             {{-- <li class="{{ Request::segment(2) == 'dashboard' ? 'active' : null }}"><a href="javascript:void(0);"> <i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
                 <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-user"></i><span>My Profile</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'media' ? 'active' : null }}"><a href="javascript:void(0);"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Media</span></a></li>
 
-                {{-- <li class="{{ Request::segment(2) === 'index2' ? 'active' : null }}"><a href="{{route('dashboard.index2')}}"><i class="icon-diamond"></i><span>Dashboard</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'students' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-users"></i><span>Students</span></a></li>
                 <li class="{{ Request::segment(2) == 'my_consultants' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-user"></i><span>My Consultants</span></a></li>
-                {{-- <li class="{{ Request::segment(2) == 'services' ? 'active' : null }}"><a href="{{route('university.services')}}"><i class="icon-speedometer"></i><span>Services</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'courses' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-notebook"></i><span>Courses</span></a></li>
                 <li class="{{ Request::segment(2) == 'consultants' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-user"></i><span>Consultants Request</span></a></li>
                 <li class="{{ Request::segment(1) === 'messenger' ? 'active open' : null }}"><a href="javascript:void(0);"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
-                <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-notebook"></i><span>Application</span></a></li>
+                <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-notebook"></i><span>Application</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'services' ? 'active open' : null }}">
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>
                     <ul>
-                    <li class="{{ Request::segment(3) == 'premium' ? 'active' : null }}"><a href="javascript:void(0);">Go Premium</a></li>
-                    <li class="{{ Request::segment(3) == 'subscription' ? 'active' : null }}"><a href="{{ route('university.subscription')}}">Subscription</a></li>
+                    {{-- <li class="{{ Request::segment(3) == 'premium' ? 'active' : null }}"><a href="javascript:void(0);">Go Premium</a></li> --}}
+                    <li class="{{ Request::segment(3) == 'subscription' ? 'active' : null }}"><a href="{{ route('university.subscription.add')}}">Subscription</a></li>
 
-                    <li class="{{ Request::segment(3) == 'advertisements' ? 'active' : null }}"><a href="javascript:void(0);"><span>Advertisements</span></a></li>
+                    {{-- <li class="{{ Request::segment(3) == 'advertisements' ? 'active' : null }}"><a href="javascript:void(0);"><span>Advertisements</span></a></li> --}}
                      </ul>
                 </li>
                 {{-- <li class="{{ Request::segment(2) == 'privacy_policy' ? 'active' : null }}"><a href="javascript:void(0);"><i class="fa fa-lock"></i><span>Privacy Policy</span></a></li>

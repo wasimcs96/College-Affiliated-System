@@ -120,7 +120,7 @@ class PrMigrationFrontController extends Controller
         $consultant = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get()->first();
 
         $alreadyDue = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get('due_amount')->first();
-        $alreadyClient = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get('temp_client_count')->first();
+        $alreadyClient = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get()->first();
 
         $dueAmount = DB::table('settings')->where('slug',$slug)->get('config_value')->first();
 
@@ -144,10 +144,10 @@ class PrMigrationFrontController extends Controller
         {
             $consultant->consultant_id = $consultant_id;
             $consultant->due_amount = $dueAmount->config_value+$alreadyDue->due_amount;
-            $consultant->paid_amount = 0;
-            $consultant->total_client_count = $alreadyClient->temp_client_count+1;
+            $consultant->paid_amount = $alreadyClient->paid_amount;
+            $consultant->total_client_count = $alreadyClient->total_client_count+1;
             $consultant->temp_client_count = $alreadyClient->temp_client_count+1;
-            $consultant->due_amount_type = 0;
+            $consultant->due_amount_type = 1;
             $consultant->save();
             return $consultant;
         }

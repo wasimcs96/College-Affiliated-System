@@ -66,7 +66,13 @@
                 <li class="{{ Request::segment(2) == 'packages' ? 'active' : null }}"><a href="{{route('admin.packages')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>Packages</span></a></li>
 
                 <li class="{{ Request::segment(2) == 'advertisement' ? 'active' : null }}"><a href="{{route('admin.advertisement_manager')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>Ad Manager</span></a></li>
-
+                <li class="{{ Request::segment(2) == 'commission' ? 'active open' : null }}">
+                    <a href="#Commission" class="has-arrow"><i class="fa fa-credit-card"></i><span>Commission Manager</span></a>
+                    <ul>
+                        <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('admin.commission',['id'=>1])}}">Visa Commission</a></li>
+                        <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('admin.commission',['id'=>2])}}">PR Commission</a></li>
+                    </ul>
+                </li>
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
                 <li class="{{ Request::segment(2) === 'chat' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
 

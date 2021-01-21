@@ -513,6 +513,21 @@ Route::get('export', 'AdminExcelController@export')->name('export');
 Route::get('importExportView', 'AdminExcelController@importExportView');
 Route::post('import', 'AdminExcelController@import')->name('adminImport');
 
+Route::get('commission/{id}',[
+    'uses' => 'AdminCommissionController@index',
+    'as'=> 'admin.commission'
+]);
+
+Route::get('commission/edit/{id}',[
+    'uses' => 'AdminCommissionController@edit',
+    'as'=> 'admin.commission.edit'
+]);
+
+Route::post('commission/update/{id}',[
+    'uses'=>'AdminCommissionController@update',
+    'as'=> 'admin.commission.update'
+]);
+
 });
 
 // Route::get('/', function () {
