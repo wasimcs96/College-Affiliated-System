@@ -181,9 +181,52 @@
 
                         <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a></h3>
                         <div class="card-rating">
-                            <span class="badge text-white">4.4/5</span>
-                            <span class="review__text">Average</span>
-                            <span class="rating__text">(30 Reviews)</span>
+                            <div class="d-flex flex-wrap align-items-center pt-2">
+                                <p class="mr-2">Rating:</p>
+                                    <span class="badge badge-warning text-white font-size-16">@if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif</span>{!!"&nbsp;"!!}
+                                    <span>@if($university->rating == 3 ?? '' )
+                                            <span class="ratings ">
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star-o"></i>
+                                                <i class="la la-star-o"></i>
+                                            </span>
+                                    @elseif($university->rating == 4)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($university->rating == 5)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                    </span>
+                                    @elseif($university->rating == 1)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($university->rating == 2)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @endif</span>
+                                </p>
+                            </div>
                         </div>
                         <div class="card-attributes">
                             <ul class="d-flex align-items-center">

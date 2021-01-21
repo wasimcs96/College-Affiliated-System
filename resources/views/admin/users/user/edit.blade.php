@@ -67,6 +67,50 @@
                                         @endif
                                     </select>
                                 </div>
+                                @if($user->isConsultant() ||$user->isUniversity())
+                                <div class="form-group">
+                                    <div class="row">
+                        <label for="rating" style="font-size: 16px;margin: 17px;">Add Ratings</label>
+                                <div class="rat">
+
+                                    {{-- <label for="rating">Add Rating</label> --}}
+
+                                    <label>
+                                      <input type="radio" name="rating" value="1" checked/>
+                                      <span class="icn">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="rating" value="2" @if($user->rating == 2) checked @endif/>
+                                      <span class="icn">★</span>
+                                      <span class="icn">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="rating" value="3" @if($user->rating == 3) checked @endif/>
+                                      <span class="icn">★</span>
+                                      <span class="icn">★</span>
+                                      <span class="icn">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="rating" value="4" @if($user->rating == 4) checked @endif/>
+                                      <span class="icn">★</span>
+                                      <span class="icn">★</span>
+                                      <span class="icn">★</span>
+                                      <span class="icn">★</span>
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="rating" value="5" @if($user->rating == 5) checked @endif/>
+                                      <span class="icn">★</span>
+                                      <span class="icn">★</span>
+                                      <span class="icn">★</span>
+                                      <span class="icn">★</span>
+                                      <span class="icn">★</span>
+                                    </label>
+                                                </div>
+                                            </div>
+
+                                            </div>
+                                            @endif
+
                                 @if($user->isClient())
                                 <input type="text" name="parameter_id" value=1 hidden>
                                 @endif
@@ -77,7 +121,7 @@
                                 <input type="text" name="parameter_id" value=3 hidden>
                                 @endif
                                 <br>
-                                <button type="submit" class="btn btn-primary">Update User</button>
+                                <button type="submit" class="btn btn-primary">Update </button>
                             </form>
                         </div>
                     </div>
@@ -87,8 +131,76 @@
     </div>
 </div>
 
+
 @stop
 @section('page-styles')
+<style>
+    .rat {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  font-size: 50px;
+}
+
+.rat label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rat label:last-child {
+  position: static;
+}
+
+.rat label:nth-child(1) {
+  z-index: 5;
+}
+
+.rat label:nth-child(2) {
+  z-index: 4;
+}
+
+.rat label:nth-child(3) {
+  z-index: 3;
+}
+
+.rat label:nth-child(4) {
+  z-index: 2;
+}
+
+.rat label:nth-child(5) {
+  z-index: 1;
+}
+
+.rat label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rat label .icn {
+  float: left;
+  color: transparent;
+}
+
+.rat label:last-child .icn {
+  color: rgb(241, 231, 231);
+}
+
+.rat:not(:hover) label input:checked ~ .icn,
+.rat:hover label:hover input ~ .icn {
+  color: rgb(240, 243, 39);
+}
+
+.rat label input:focus:not(:checked) ~ .icn:last-child {
+  color: rgb(247, 240, 240);
+  text-shadow: 0 0 5px #09f;
+}
+    </style>
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
@@ -104,6 +216,12 @@ tr.shown td.details-control {
 </style>
 @stop
 @section('page-script')
+
+<script>
+    $(':radio').change(function() {
+  console.log('New star rating: ' + this.value);
+});
+</script>
 <script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
