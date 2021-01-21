@@ -208,7 +208,7 @@
                             <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
                              <input type="hidden" name="document[{{$key}}]" value="0" hidden>
-                             <input type="checkbox" name="document[{{$key}}]" value="1" @if($value == 1) checked @endif >
+                             <input type="checkbox" name="document[{{$key}}]" value="1" @if($value == 1) checked @endif disabled>
 
                             <span>{{$key}}</span>
 
@@ -285,6 +285,7 @@
                 <div id="alert_add2"></div>
 @foreach($application->applicationAppliedUniversity as $key=>$applied)
 
+@if($applied->university_id == auth()->user()->id)
 
 @if($applied->Is_applied==1)
 <style>
@@ -557,7 +558,7 @@
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px" >
 
                                                         <input type="hidden" name="doc[{{$dockey}}]" value="0" hidden>
-                                                        <input type="checkbox" name="doc[{{$dockey}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
+                                                        <input type="checkbox" name="doc[{{$dockey}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px" disabled>
 
                                                         <span>{{$dockey}}</span>
 
@@ -573,7 +574,7 @@
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
                                                         <input type="hidden" name="doc[{{$htkey}}]" value="0" hidden>
 
-                                                        <input type="checkbox" name="doc[{{$htkey}}]" id="document[{{$increase}}]" value="{{$htvalue}}" checked style="margin-right: 4px">
+                                                        <input type="checkbox" name="doc[{{$htkey}}]" id="document[{{$increase}}]" value="{{$htvalue}}" checked style="margin-right: 4px" disabled>
 
                                                         <span>{{$htkey}}</span>
 
@@ -604,7 +605,7 @@
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
                                                         <input type="hidden" name="doc[{{$rtkey}}]" value="0" hidden>
-                                                        <input type="checkbox" name="doc[{{$rtkey}}]" id="document[{{$increase}}]" value="1" @if($rtvalue == 1) checked @endif style="margin-right: 4px">
+                                                        <input type="checkbox" name="doc[{{$rtkey}}]" id="document[{{$increase}}]" value="1" @if($rtvalue == 1) checked @endif style="margin-right: 4px" disabled>
 
                                                         <span>{{$rtkey}}</span>
 
@@ -659,7 +660,7 @@
 
 
 
-
+ @endif
   @endforeach
 </div>
 </div>

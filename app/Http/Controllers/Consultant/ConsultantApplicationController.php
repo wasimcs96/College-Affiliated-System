@@ -107,16 +107,19 @@ class ConsultantApplicationController extends Controller
        $id = $request->appliedUniversityRowIdAccepted;
        $application_id = $request->applicationId;
        $university = ApplicationAppliedUniversity::find($id);
-
+       $applicationCommission = Application::find($application_id);
        $university->is_accepeted = 1;
        $university->save();
-       $application = Application::where('id',$application_id)->where('is_commission_id',1);
+       $application = Application::where('id',$application_id)->where('is_commission_add',1)->get()->first();
        if($application==NULL)
        {
        $type=0;
        $slug='visa-amount';
        $check = $this->consultantDue($type,$slug);
+       $applicationCommission->is_commission_add = 1;
+       $applicationCommission->save();
        }
+
        return response('success');
 
     }
@@ -182,10 +185,12 @@ class ConsultantApplicationController extends Controller
              $id = $request->apply_id;
              $fees = $request->fees;
              $docs = $request->doc;
+             $scholarship = $request->scholarship;
              $document = json_encode($docs);
              $university = ApplicationAppliedUniversity::find($id);
              $university->documents = $document;
              $university->fees =$fees;
+             $university->scholarship = $scholarship;
              $university->save();
              return redirect()->back()->with('success','Application Updated Successfully');
         }

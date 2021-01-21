@@ -21,11 +21,14 @@ class AdminBookingController extends Controller
  {
     // dd($id);
      $booking = Booking::where('id',$id)->first();
+     $university = [];
+     $course = [];
      $enq = $booking->enquiry;
      $enquires = json_decode($enq,true);
      // dd($bookings);
      $i = 0;
-     // dd(json_decode($book,true));
+     if(isset($enquires))
+     {
      foreach($enquires as $enquiry)
      {
          // dd($booking);
@@ -37,20 +40,16 @@ class AdminBookingController extends Controller
          // dd($university[0]);
          $i++;
      }
+    }
      return view('admin.booking.booking_show',compact('booking','university','course'));
  }
 
         public function accept(Request $request)
             {
-            // dd($request->all());
                 $booking = Booking::find($request->booking_id);
-            //    dd($booking);
-
                 $booking->status = 1;
                 $booking->save();
                 return response('success');
-
-            //      return view('consultant.booking.booking_show');
             }
 
 }

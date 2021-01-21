@@ -13,8 +13,9 @@ class ConsultantDuesController extends Controller
 {
     public function index()
     {
-        $dues = ConsultantDues::all()->first();
-        return view('consultant.dues.index')->with('dues', $dues);
+        $dues = ConsultantDues::where('due_amount_type',0)->get()->first();
+        $prDues = ConsultantDues::where('due_amount_type',1)->get()->first();
+        return view('consultant.dues.index')->with('dues',$dues)->with('prDues',$prDues);
     }
 
     public function add()
