@@ -530,6 +530,20 @@ Route::get('settings/general/edit/{id}', 'SettingManagerController@editGeneralSe
 Route::patch('settings/general/{id}/edit', 'SettingManagerController@updateGeneralSetting')->name('setting.general.update');
 // #########################################################################
 
+Route::get('commission/{id}',[
+    'uses' => 'AdminCommissionController@index',
+    'as'=> 'admin.commission'
+]);
+
+Route::get('commission/edit/{id}',[
+    'uses' => 'AdminCommissionController@edit',
+    'as'=> 'admin.commission.edit'
+]);
+
+Route::post('commission/update/{id}',[
+    'uses'=>'AdminCommissionController@update',
+    'as'=> 'admin.commission.update'
+]);
 });
 
 Route::get('/', function () {
