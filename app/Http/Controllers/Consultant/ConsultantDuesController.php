@@ -28,9 +28,22 @@ class ConsultantDuesController extends Controller
 
     public function pay(Request $request)
     {
-        $amount = $request->amount;
-        $pay = new PaymentController();
-        $res = $pay->payment($request);
-        return view('consultant.dues.pay')->with('order_detail', $res);
+        $userId = $request->userId;
+        $due_type = $request->due_type;
+        $amount=$request->amount;
+ 
+        $dues = ConsultantDues::where('due_amount_type',$due_type)->where('consultant_id', $userId)->first();
+       
+    
+         if ($dues != null) {
+            $dues->paid_amount= $dues->paid_amount+$amount;
+            $dues->due_amount= $dues->due_amount-$amount;
+            $dues->temp_client_count=0;
+            $dues->save();
+         }
+      
+       
+        
+        return  response("success");
     }
 }
