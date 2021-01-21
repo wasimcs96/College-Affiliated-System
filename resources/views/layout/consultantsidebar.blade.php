@@ -38,7 +38,7 @@
             <ul id="main-menu" class="metismenu">
                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                 @if(auth()->user()->Subscription_expire_date<$mytime || auth()->user()->Subscription_expire_date==NULL)
-                <li class="{{ Request::segment(2) == 'dashboard' ? 'active' : null }}"><a href="javascript:void(0);"> <i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                {{-- <li class="{{ Request::segment(2) == 'dashboard' ? 'active' : null }}"><a href="javascript:void(0);"> <i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
                 <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-user"></i><span>My Profile</span></a></li>
                 <li class="{{ Request::segment(2) == 'students' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-users"></i><span>Students</span></a></li>
                 <li class="{{ Request::segment(2) == 'booking' ? 'active' : null }}"><a href="javascript:void(0);"><i class="fa fa-list"></i><span>Bookings</span></a></li>
@@ -48,21 +48,21 @@
                 <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-notebook"></i><span>Application Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'associated_university' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-graduation"></i><span>Associated University</span></a></li>
                 <li class="{{ Request::segment(2) == 'dues' ? 'active open' : null }}"><a href="javascript:void(0);"><i class="icon-cash"></i><span>My Dues</span></a></li>
-                <li class="{{ Request::segment(1) == 'messenger' ? 'active open' : null }}"><a href="javascript:void(0);"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                <li class="{{ Request::segment(1) == 'messenger' ? 'active open' : null }}"><a href="javascript:void(0);"><i class="icon-bubbles"></i><span>Messenger</span></a></li> --}}
 
                 {{-- <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('admin.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'services' ? 'active open' : null }}">
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>
                     <ul>
-                     <li class="{{ Request::segment(3) == 'premium' ? 'active' : null }}"><a href="javascript:void(0);">Go Premium</a></li>
-                     <li class="{{ Request::segment(3) == 'subscription' ? 'active' : null }}"><a href="{{route('consultant.subscription')}}">Subscription</a></li>
-                     <li class="{{ Request::segment(3) == 'advertisements' ? 'active' : null }}"><a href="javascript:void(0);">Advertisements</a></li>
+                     {{-- <li class="{{ Request::segment(3) == 'premium' ? 'active' : null }}"><a href="javascript:void(0);">Go Premium</a></li> --}}
+                     <li class="{{ Request::segment(3) == 'subscription' ? 'active' : null }}"><a href="{{route('consultant.subscription.add')}}">Subscription</a></li>
+                     {{-- <li class="{{ Request::segment(3) == 'advertisements' ? 'active' : null }}"><a href="javascript:void(0);">Advertisements</a></li> --}}
 
                      </ul>
                 </li>
-                <li class="{{ Request::segment(2) == 'requested_university' ? 'active' : null }}"><a href="javascript:void(0);"><i class="fa fa-university" aria-hidden="true"></i><span>University Request</span></a></li>
+                {{-- <li class="{{ Request::segment(2) == 'requested_university' ? 'active' : null }}"><a href="javascript:void(0);"><i class="fa fa-university" aria-hidden="true"></i><span>University Request</span></a></li>
 
-                <li class="{{ Request::segment(2) == 'feedback' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-bubbles"></i><span>FeedBack</span></a></li>
+                <li class="{{ Request::segment(2) == 'feedback' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-bubbles"></i><span>FeedBack</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'logout' ? 'active' : null }}"><a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
@@ -82,18 +82,14 @@
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('consultant.application')}}"><i class="icon-notebook"></i><span>Application</span></a></li>
                 <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="{{route('consultant.application.followup')}}"><i class="icon-notebook"></i><span>Application Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'associated_university' ? 'active' : null }}"><a href="{{route('consultant.associated_university')}}"><i class="icon-graduation"></i><span>Associated University</span></a></li>
-                <li class="{{ Request::segment(1) == 'messenger' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
                 <li class="{{ Request::segment(2) == 'dues' ? 'active open' : null }}">
                     <a href="#Dues" class="has-arrow"><i class="fa fa-credit-card"></i><span>Dues</span></a>
                     <ul>
-                        {{-- <li class="{{ Request::segment(3) == 'client' ? 'active' : null }}"><a href="{{route('admin.user')}}">Client</a></li> --}}
-                        {{-- <li class="{{ Request::segment(3) == 'consultant' ? 'active' : null }}"><a href="{{route('admin.user.consultant')}}">Consultant</a></li>
-                        <li class="{{ Request::segment(3) == 'university' ? 'active' : null }}"><a href="{{route('admin.user.university')}}">University</a></li> --}}
                         <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('consultant.dues',['id'=>1])}}">Visa</a></li>
                         <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('consultant.dues',['id'=>2])}}">PR Migration</a></li>
-                        {{-- <li class="{{ Request::segment(3) == '3' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>3])}}">University</a></li> --}}
                     </ul>
                 </li>
+                <li class="{{ Request::segment(1) == 'messenger' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
                 {{-- <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('admin.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'services' ? 'active open' : null }}">
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>

@@ -696,17 +696,17 @@
                 <div class="table-responsive" style="width: 100%; margin-top: 36px;">
                     <label for="name">Select University</label>
                     <table class="table table-bordered" id="dynamic_field">
-                        <tr class="dynamic-added" >
-                            <td class="country" data-row_id="{{$increase}}">
-                                <select id="country-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="country" placeholder="Select Country" required>
+                        <tr class="dynamic-added">
+                            <td class="country">
+                                <select id="country"  custom2="" class="form-control " name="country" placeholder="Select Country" required>
                                 <option value="">Select Country Name</option>
                                 @foreach($countries as $country)
                                 <option value="{{$country->countries_id}}">{{$country->countries_name}}</option>
                                 @endforeach
                               </select>
                             </td>
-                            <td class="university" data-row_id="{{$increase}}">
-                                <select id="university-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="university" placeholder="Select University" required>
+                            <td class="university">
+                                <select id="university" custom2="" class="form-control " name="university" placeholder="Select University" required>
                                  <option value="">Select University Name</option>
                               {{--  @foreach($univers as $univer)
                                 <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option>
@@ -715,14 +715,14 @@
                               </select>
                             </td>
                               <td id="">
-                                  <select id="course-{{$increase}}" name="course" class="form-control" required>
+                                  <select id="course" name="course" class="form-control" required>
                                     <option value="">Select Course Name</option>
                                 {{-- @foreach($courses as $course)
                                <option value="{{$course->id}}">{{$course->name}}</option>
                                @endforeach --}}
                              </select></td>
                             {{-- <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i></button></td> --}}
-                            @php $increase++ @endphp
+
                         </tr>
                     </table>
                 </div>

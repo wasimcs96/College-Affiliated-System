@@ -78,7 +78,51 @@
     </div>
 </div> --}}
 
+<div class="container" id="choosedcontent">
 
+</div>
+<div class="modal fade" id="mdlup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-body" style="
+        text-align:center;
+        padding: 0px;
+        ">
+            <div style="
+            padding: 0px;
+            background-color: #5890ff;
+        ">
+            <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/checkmark.png')}}">
+            </div>
+
+            <div style="
+            text-align:center;
+            background-color: white;
+            color: black;
+            ">
+                <h1 style="
+                margin: 0px;
+                font-family: sans-serif;
+                padding: 18px;
+            ">Thank You</h1>
+            </div>
+        </div>
+        <div class="modal-footer" style="
+        padding: 6px;
+        background-color: white;
+        border: 0px;
+        justify-content: center;
+    ">
+          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+          {{-- <button type= class="btn btn-primary">Submit</button> --}}
+          <a href="{{route('consultant.dues',['id'=>$id])}}" class="btn btn-primary" style="
+          border-radius: 35px;font-weight: 500;
+    font-family: sans-serif;" id="add_document3">Close</a>
+        </div>
+        </div>
+       </div>
+</div>
 @endif
 
 @if($id==2)
@@ -151,13 +195,9 @@
         <div class="body"> --}}
             <div class="d-flex align-items-center">
                 <button  customAmount="{{$prDues->due_amount ?? ''}}" customDue="1" customUser="{{auth()->user()->id}}" customPayment="4" customTitle="paydue" class="btn btn-round btn-outline-secondary chooseplan">Pay Dues</button>
-               
-            </div>
-       {{-- </div>
-    </div>
-</div> --}}
 
-@endif
+            </div>
+            <br>
 <div class="container" id="choosedcontent">
 
 </div>
@@ -196,13 +236,14 @@
     ">
           {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
           {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('consultant.subscription')}}" class="btn btn-primary" style="
+          <a href="{{route('consultant.dues',['id'=>$id])}}" class="btn btn-primary" style="
           border-radius: 35px;font-weight: 500;
     font-family: sans-serif;" id="add_document3">Close</a>
         </div>
         </div>
        </div>
 </div>
+@endif
 @stop
 
 @section('page-styles')
@@ -236,7 +277,7 @@
     due_type=$(this).attr('customDue');
     amount=$(this).attr('customAmount');
     payment_type=$(this).attr('customPayment');
-  
+
 
 
    var html=`
@@ -299,7 +340,7 @@ $('#choosedcontent').html(html);
         method:"post",
         data:{user_id:user_id,title:title,amount:amount,payment_type:payment_type},
         success: function(result){
-           
+
             var options = {
                 "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
                 "amount": result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -337,8 +378,8 @@ $('#choosedcontent').html(html);
                                     data:{userId:user_id,due_type:due_type,amount:amount},
                                     success: function(result){
                                         $('#mdlup').modal('show');
-                                       
-                                            
+
+
                                     }
                                     });
 
