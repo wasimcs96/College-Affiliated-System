@@ -286,11 +286,6 @@ Route::post('application/update/university',[
     'as'=>'consultant.application.update.university'
 ]);
 
-// Route::post('application/update/univerehjdfbihdbhjsdfsity/update',[
-
-//     'as'=>'consultant.application.update.university.update'
-// ]);
-
 /* Application Follow Up */
 Route::get('applications/followup',[
     'uses' => 'ConsultantApplicationFollowUpController@index',
@@ -355,4 +350,32 @@ Route::post('prmigration/accept',[
     'as'=>'consultant.prmigration.accept'
 ]);
 
+/* Dues Section */
+Route::get('dues/{id}',[
+    'uses'=>'ConsultantDuesController@index',
+    'as'=>'consultant.dues'
+]);
+
+
+Route::post('dues/pay',[
+    'uses'=>'ConsultantDuesController@pay',
+    'as'=>'consultant.dues.pay'
+]);
+
+// Route::get('prmigration/show/{id}',[
+//     'uses'=>'ConsultantPrmigrationController@prshow',
+//     'as'=>'prmigration.booking.show'
+// ]);
+
+// Route::post('prmigration/accept',[
+//     'uses'=>'ConsultantPrmigrationController@accept',
+//     'as'=>'consultant.prmigration.accept'
+// ]);
+
+/*Consultant Add University */
+
+Route::post('application/add/university',[
+    'uses' =>'ConsultantApplicationController@universityAdd',
+    'as'=>'consultant.application.add.university'
+]);
 });

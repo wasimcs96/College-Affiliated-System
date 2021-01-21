@@ -47,7 +47,8 @@
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-notebook"></i><span>Application</span></a></li>
                 <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-notebook"></i><span>Application Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'associated_university' ? 'active' : null }}"><a href="javascript:void(0);"><i class="icon-graduation"></i><span>Associated University</span></a></li>
-                <li class="{{ Request::segment(1) === 'messenger' ? 'active open' : null }}"><a href="javascript:void(0);"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                <li class="{{ Request::segment(2) == 'dues' ? 'active open' : null }}"><a href="javascript:void(0);"><i class="icon-cash"></i><span>My Dues</span></a></li>
+                <li class="{{ Request::segment(1) == 'messenger' ? 'active open' : null }}"><a href="javascript:void(0);"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
 
                 {{-- <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('admin.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'services' ? 'active open' : null }}">
@@ -81,8 +82,18 @@
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('consultant.application')}}"><i class="icon-notebook"></i><span>Application</span></a></li>
                 <li class="{{ Request::segment(3) == 'followup' ? 'active' : null }}"><a href="{{route('consultant.application.followup')}}"><i class="icon-notebook"></i><span>Application Follow Up</span></a></li>
                 <li class="{{ Request::segment(2) == 'associated_university' ? 'active' : null }}"><a href="{{route('consultant.associated_university')}}"><i class="icon-graduation"></i><span>Associated University</span></a></li>
-                <li class="{{ Request::segment(1) === 'messenger' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
-
+                <li class="{{ Request::segment(1) == 'messenger' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                <li class="{{ Request::segment(2) == 'dues' ? 'active open' : null }}">
+                    <a href="#Dues" class="has-arrow"><i class="fa fa-credit-card"></i><span>Dues</span></a>
+                    <ul>
+                        {{-- <li class="{{ Request::segment(3) == 'client' ? 'active' : null }}"><a href="{{route('admin.user')}}">Client</a></li> --}}
+                        {{-- <li class="{{ Request::segment(3) == 'consultant' ? 'active' : null }}"><a href="{{route('admin.user.consultant')}}">Consultant</a></li>
+                        <li class="{{ Request::segment(3) == 'university' ? 'active' : null }}"><a href="{{route('admin.user.university')}}">University</a></li> --}}
+                        <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('consultant.dues',['id'=>1])}}">Visa</a></li>
+                        <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('consultant.dues',['id'=>2])}}">PR Migration</a></li>
+                        {{-- <li class="{{ Request::segment(3) == '3' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>3])}}">University</a></li> --}}
+                    </ul>
+                </li>
                 {{-- <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('admin.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'services' ? 'active open' : null }}">
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>

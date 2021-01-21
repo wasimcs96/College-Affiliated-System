@@ -17,13 +17,13 @@ class PaymentController extends Controller
 
     function payment(Request $request)
     {
-
         $api = new Api('rzp_test_6PaQ95AP7ZPT1S', '409ACfFYI6hON1ZmCThrD7nN');
         $amount = $request->amount;
-        $userId = $request->user_id;
+       
+        $userId = $request->user_id ?? auth()->user()->id;
         $type = $request->payment_type;
         $title = $request->title ?? '';
-        $time=$request->package_time;
+        $time=$request->package_time ?? '';
         $user=auth()->user();
         // dd(Carbon::now()->addMonth($time));
         if ($request->payment_type == 0) {
@@ -43,13 +43,14 @@ class PaymentController extends Controller
             'amount'          => $amount * 100, // amount in the smallest currency unit
             'currency'        => 'INR', // <a href="/docs/payment-gateway/payments/international-payments/#supported-currencies" target="_blank">See the list of supported currencies</a>.)
         ]);
+        // dd($order);
         $orderId = $order['id'];
         Session::put('orderId', $orderId);
         Session::put('amount', $amount);
         Session::put('userId', $userId);
         Session::put('type', $type);
         Session::put('title', $title);
-
+      
 
        $saif=$order->toArray();
         return response($saif);
@@ -76,9 +77,14 @@ class PaymentController extends Controller
 
 
 
-            $start=Carbon::now();
-            $end=$request->package_time;
+           
 
+            
+
+            if ($request->payment_type==0 || $request->payment_type==1) {
+                # code...
+                $start=Carbon::now();
+                $end=$request->package_time ?? '';
         UserPurchasedPlans::create([
             'order_id' => $orderID,
             'item_title' => $request->title,
@@ -86,7 +92,7 @@ class PaymentController extends Controller
             'end_date' => Carbon::now()->addMonths($end)
         ]);
 
-
+    }
         return response($orderID);
     }
 }

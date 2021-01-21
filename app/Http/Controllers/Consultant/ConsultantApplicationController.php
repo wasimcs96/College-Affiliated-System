@@ -11,8 +11,11 @@ use App\Models\Booking;
 use App\Models\Application;
 use App\Models\ApplicationDocument;
 use App\Models\Course;
+use App\Models\Country;
 use App\Models\User;
 use App\Models\University;
+use App\Models\ConsultantDues;
+use DB;
 use Config;
 use App\Models\ApplicationAppliedUniversity;
 use date;
@@ -48,7 +51,7 @@ class ConsultantApplicationController extends Controller
     }
 
 
-       return view('consultant.application.application_create',compact('application','university','course'));
+       return view('consultant.application.application_create',compact('application','university','course'))->with('countries',Country::all());
    }
 
    public function documentStore(Request $request)
@@ -103,19 +106,21 @@ class ConsultantApplicationController extends Controller
     public function applicationAccepted(Request $request)
    {
        $id = $request->appliedUniversityRowIdAccepted;
-
+       $application_id = $request->applicationId;
        $university = ApplicationAppliedUniversity::find($id);
-
-    //    $docDefault = $university->userUniversity->university->default_documents;
-    //    $documentDefault = json_decode($docDefault);
-
-    //    $documentDefault = json_encode($documentDefault);
-    //    $documentVisa = Config::get('define.visa');
-    //    dd($documentVisa,$documentVisa);
-    //    $documentVisa2 = json_encode($documentVisa);
-    //    $university->documents = array_merge($documentVisa,$documentDefault2);
+       $applicationCommission = Application::find($application_id);
        $university->is_accepeted = 1;
        $university->save();
+       $application = Application::where('id',$application_id)->where('is_commission_add',1)->get()->first();
+       if($application==NULL)
+       {
+       $type=0;
+       $slug='visa-amount';
+       $check = $this->consultantDue($type,$slug);
+       $applicationCommission->is_commission_add = 1;
+       $applicationCommission->save();
+       }
+
        return response('success');
 
     }
@@ -181,10 +186,12 @@ class ConsultantApplicationController extends Controller
              $id = $request->apply_id;
              $fees = $request->fees;
              $docs = $request->doc;
+             $scholarship = $request->scholarship;
              $document = json_encode($docs);
              $university = ApplicationAppliedUniversity::find($id);
              $university->documents = $document;
              $university->fees =$fees;
+             $university->scholarship = $scholarship;
              $university->save();
              return redirect()->back()->with('success','Application Updated Successfully');
         }
@@ -220,4 +227,65 @@ class ConsultantApplicationController extends Controller
         return response('success');
 
      }
+
+        public function consultantDue($amountType,$slug)
+     {
+         $consultant = ConsultantDues::where('consultant_id',auth()->user()->id)->where('due_amount_type',0)->get()->first();
+
+         $alreadyDue = ConsultantDues::where('consultant_id',auth()->user()->id)->where('due_amount_type',0)->get('due_amount')->first();
+         $alreadyClient = ConsultantDues::where('consultant_id',auth()->user()->id)->where('due_amount_type',0)->get('temp_client_count')->first();
+
+         $dueAmount = DB::table('settings')->where('slug',$slug)->get('config_value')->first();
+
+
+         if($consultant==null)
+         {
+            // dd(auth()->user()->id);
+           $newConsultant = ConsultantDues::create([
+
+                'due_amount' => $dueAmount->config_value,
+                'paid_amount' => 0,
+                'consultant_id' => auth()->user()->id,
+                'total_client_count' => 1,
+                'temp_client_count' => 1,
+                'due_amount_type' => $amountType
+            ]);
+
+            return response('success');
+         }
+         else
+         {
+             $consultant->consultant_id = auth()->user()->id;
+             $consultant->due_amount = $dueAmount->config_value+$alreadyDue->due_amount;
+             $consultant->paid_amount = 0;
+             $consultant->total_client_count = $alreadyClient->temp_client_count+1;
+             $consultant->temp_client_count = $alreadyClient->temp_client_count+1;
+             $consultant->due_amount_type = 0;
+             $consultant->save();
+             return $consultant;
+         }
+        return response('success');
+     }
+
+     public function universityAdd(Request $request)
+    {
+        // dd($request->all());
+        $this->validate($request,[
+            'university_id'=>'required',
+            'course_id'=>'required',
+            'application_id' => 'required',
+            'country_id'=>'required',
+             ]);
+            $storeUniversity = ApplicationAppliedUniversity::create([
+            'university_id' => $request->university,
+            'course_id' => $request->course,
+            'application_id' => $request->application_id,
+            'country_id' => $request->country,
+            // 'documents' =>$jsonApplicationStore,
+
+            ]);
+        return redirect()->back()->with('success','University Added Successfully');
+
+     }
+
 }

@@ -200,9 +200,12 @@
                                     <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
 
-    {{-- <li><span>Country:</span>{{$university->country->countries_name}}</li>   --}}
-
-    <li><span>City:</span>{{$university->city}}</li>
+                                            {{-- <li><span>Country:</span>{{$university->country->countries_name}}</li> --}}
+                                            @if(isset($university->countries_id))
+                                            <?php $country = DB::table('countries')->where('countries_id',$university->countries_id)->get()->first();?>
+                                            @endif
+                                            <li><span>Country:</span>{{$country->countries_name ?? ''}}</li>
+                                            <li><span>City:</span>{{$university->city}}</li>
                                             {{-- <li><span>Admission Opens:</span>19/09/20</li>
                                             <li><span>Campus:</span>93,558 grt</li> --}}
                                             <li><span>University Type:</span> @if($university->university->type==0 ?? '' )

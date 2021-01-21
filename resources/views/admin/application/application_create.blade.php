@@ -58,7 +58,29 @@
                 <table class="table table-hover table-striped">
 
                     <tbody>
-
+                        <tr>
+                            <th scope="row">Consultant Name</th>
+                            <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Consultant Country</th>
+                            @if(isset($application->userConsultant->countries_id))
+                                <?php $country = DB::table('countries')->where('countries_id',$application->userConsultant->countries_id)->get()->first();?>
+                            @endif
+                            <td> {{$country->countries_name ?? ''}} </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Consultant Mobile </th>
+                            <td>{{$application->userConsultant->mobile ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Consultant Email </th>
+                            <td>{{$application->userConsultant->email ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Consultant Company </th>
+                            <td>{{$application->userConsultant->consultant->company_name ?? ''}}</td>
+                        </tr>
                     <tr>
                         <th scope="row">Student Name</th>
                         <td>{{$application->booking->user->first_name ?? ''}}</td>
@@ -108,29 +130,7 @@
                         <th scope="row">Time-Slot</th>
                         <td>{{$application->booking->booking_start_time ?? ''}}-{{$application->booking->booking_end_time ?? ''}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">Consultant Name</th>
-                        <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Country</th>
-                        @if(isset($application->userConsultant->countries_id))
-                            <?php $country = DB::table('countries')->where('countries_id',$application->userConsultant->countries_id)->get()->first();?>
-                        @endif
-                        <td> {{$country->countries_name ?? ''}} </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Mobile </th>
-                        <td>{{$application->userConsultant->mobile ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Email </th>
-                        <td>{{$application->userConsultant->email ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Company </th>
-                        <td>{{$application->userConsultant->mobile ?? ''}}</td>
-                    </tr>
+
            </div>
 
         {{-- </tr> --}}
@@ -167,7 +167,29 @@
                 <table class="table table-hover table-striped" >
 
                     <tbody>
-
+                        <tr>
+                            <th scope="row">Consultant Name</th>
+                            <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Consultant Country</th>
+                            @if(isset($application->userConsultant->countries_id))
+                                <?php $country = DB::table('countries')->where('countries_id',$application->userConsultant->countries_id)->get()->first();?>
+                            @endif
+                            <td> {{$country->countries_name ?? ''}} </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Consultant Mobile </th>
+                            <td>{{$application->userConsultant->mobile ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Consultant Email </th>
+                            <td>{{$application->userConsultant->email ?? ''}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Consultant Company </th>
+                            <td>{{$application->userConsultant->consultant->company_name ?? ''}}</td>
+                        </tr>
 
                     <tr>
                         <th scope="row">Student Name</th>
@@ -190,29 +212,7 @@
                         @endif
                         <td> {{$country->countries_name ?? ''}} </td>
                     </tr>
-                    <tr>
-                        <th scope="row">Consultant Name</th>
-                        <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Country</th>
-                        @if(isset($application->userConsultant->countries_id))
-                            <?php $country = DB::table('countries')->where('countries_id',$application->userConsultant->countries_id)->get()->first();?>
-                        @endif
-                        <td> {{$country->countries_name ?? ''}} </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Mobile </th>
-                        <td>{{$application->userConsultant->mobile ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Email </th>
-                        <td>{{$application->userConsultant->email ?? ''}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Consultant Company </th>
-                        <td>{{$application->userConsultant->mobile ?? ''}}</td>
-                    </tr>
+
                 </div>
 
 

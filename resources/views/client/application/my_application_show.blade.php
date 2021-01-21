@@ -165,7 +165,7 @@
                             <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
                              <input type="hidden" name="document[{{$key}}]" value="0" hidden>
-                             <input type="checkbox" name="document[{{$key}}]" value="1" @if($value == 1) checked @endif >
+                             <input type="checkbox" name="document[{{$key}}]" value="1" @if($value == 1) checked @endif disabled>
 
                             <span>{{$key}}</span>
 
@@ -519,7 +519,7 @@
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px" id="dynamic_document2">
 
                                                         <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
-                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
+                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px" disabled>
 
                                                         <span>{{$key}}</span>
 
@@ -535,7 +535,7 @@
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
                                                         <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
 
-                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
+                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px" disabled>
 
                                                         <span>{{$key}}</span>
 
@@ -566,7 +566,7 @@
                                                     <label class="control-inline fancy-checkbox" style="margin-right: 4px">
 
                                                         <input type="hidden" name="doc[{{$key}}]" value="0" hidden>
-                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="1" @if($value == 1) checked @endif style="margin-right: 4px">
+                                                        <input type="checkbox" name="doc[{{$key}}]" id="document[{{$increase}}]" value="1" @if($value == 1) checked @endif style="margin-right: 4px" disabled>
 
                                                         <span>{{$key}}</span>
 

@@ -22,7 +22,7 @@
                             <h2>Form</h2>
                         </div>
                         <div class="body">
-                            <form action="{{ route('booking.application.store')}}"  id="basic-form" method="POST" novalidate action="#" enctype="multipart/form-data">
+                            <form action="{{ route('booking.application.store')}}"  id="basic-form" method="POST" novalidate  enctype="multipart/form-data">
 
                                 {{-- <div class="form-group">
                                     <label> Consultant Name</label>

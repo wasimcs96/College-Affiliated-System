@@ -420,7 +420,7 @@ Route::get('prmigration', [
 
 Route::post('prmigration/searchresult',[
     'uses'=> 'FrontEndController\PrMigrationFrontController@search',
-    'as' => 'Prmigration.search.result'
+    'as' => 'prmigration.search.result'
 ]);
 
 Route::get('prmigration/book/{id}', [

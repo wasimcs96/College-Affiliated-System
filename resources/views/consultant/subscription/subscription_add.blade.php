@@ -252,7 +252,7 @@ $('#choosedcontent').html(html);
         method:"post",
         data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type,package_time:package_time},
         success: function(result){
-            {{-- console.log() --}}
+           
             var options = {
                 "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
                 "amount": result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
