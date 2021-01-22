@@ -384,7 +384,7 @@ Route::get('advertisement/edit/{id}',[
     'as'=>'consultant.advertisement.edit'
 ]);
 
-Route::post('advertisement/update',[
+Route::post('advertisement/update/{id}',[
     'uses' =>'ConsultantAdvertisementController@update',
     'as'=>'consultant.advertisement.update'
 ]);

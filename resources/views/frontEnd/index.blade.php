@@ -548,7 +548,16 @@
                                         $myvalue = implode(' ', $myvalue);
                                         // $myvalue = $myvalue . ' ...';
                                     } ?>
-                                <p class="testi__desc"><?php echo ($myvalue . '...')?></p><a  class="btn btn-primary" href="{{route('university_detail',['id'=>$university->id])}}">Details</a>
+                                <p class="testi__desc"><?php echo ($myvalue . '...')?></p>
+
+
+
+                                <span class="price__text"><b>Average Fees :</b></span>
+                                <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+
+                                <a  style="
+                                float: right;
+                            " class="btn btn-primary" href="{{route('university_detail',['id'=>$university->id])}}">Details<i class="las la-angle-double-right"></i></a>
                             </div>
 
                         </div><!-- end testimonial-card -->
@@ -563,7 +572,9 @@
             </div><!-- end col-lg-8 -->
         </div>
             <div class="col-lg-12">
-                <div class="section-heading ">
+                <div class="section-heading "  style="
+                margin-top: 27px;
+            ">
 
                     <h4> Featured Consultants</h4>
                     <hr>
@@ -583,14 +594,14 @@
                                     @endphp --}}
                                    <a href="{{route('consultant_detail',['id' => $consultant->id])}}">
                                     @if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
-                                    <img src="{{ asset($consultant->profile_image) }}" alt="testimonial image">
+                                    <img src="{{ asset($consultant->profile_image ) }}" alt="testimonial image">
                                         @else
                                         <img style="" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                         @endif </a>
                                 </div>
                                 <div class="author-bio">
-                                    <a href="{{route('consultant_detail',['id' => $consultant->id])}}"><h4 class="author__title">{{$consultant->first_name}}</h4></a>
-                                    <span class="author__meta">{{$consultant->last_name}}</span>
+                                    <a href="{{route('consultant_detail',['id' => $consultant->id ?? ''])}}"><h4 class="author__title">{{$consultant->consultant->compant_name ?? ''}}</h4></a>
+                                    {{-- <span class="author__meta">{{$consultant->last_name}}</span> --}}
                                     <span class="ratings d-flex align-items-center">
                                         @if($consultant->rating == 3 ?? '' )
 
@@ -649,7 +660,12 @@
                                         $myvalue = implode(' ', $myvalue);
                                         // $myvalue = $myvalue . ' ...';
                                     } ?>
-                                <p class="testi__desc"><?php echo ($myvalue . '...')?></p><a  class="btn btn-primary" href="{{route('consultant_detail',['id'=>$consultant->id])}}">Details</a>
+                                <p class="testi__desc"><?php echo ($myvalue . '...')?></p>
+                                <span class="price__text"><b>City :</b></span>
+                                <span class="price__num">{{$consultant->city ?? ''}}</span>
+                                <a style="
+                                float: right;
+                            " class="btn btn-primary" href="{{route('consultant_detail',['id'=>$consultant->id])}}">Details<i class="las la-angle-double-right"></i></a>
                             </div>
 
                         </div><!-- end testimonial-card -->

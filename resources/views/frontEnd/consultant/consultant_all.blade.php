@@ -115,7 +115,7 @@
                     </div>
                     <div class="card-body">
                         {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
-                        <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->first_name}} {{$consultant->last_name}}</a></h3>
+                        <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->consultant->company_name}} </a></h3>
                         <div class="card-rating">
                             <div class="d-flex flex-wrap align-items-center pt-2">
                                 <p class="mr-2">Rating:</p>
@@ -172,10 +172,10 @@
                             </ul>
                         </div>
                         <div class="card-price d-flex align-items-center justify-content-between">
-                            {{-- <p>
-                                <span class="price__num">Country</span>
-                                <span class="price__text">{{$consultant->country->countries_name}}</span>
-                            </p> --}}
+                            <p>
+                                <span class="price__text">City :</span>
+                                <span class="price__num">{{$consultant->city}}</span>
+                            </p>
                             <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
                         </div>
                     </div>

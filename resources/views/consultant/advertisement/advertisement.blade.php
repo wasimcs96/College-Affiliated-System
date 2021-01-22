@@ -55,7 +55,7 @@
                                 @if($rt->expire_date<$mytime && $rt->expire_date == !null)<div class="btn btn-danger">Expired</div>@endif
                                 @if($rt->expire_date == null)<div class="btn btn-warning">Pending</div>@endif
                             </td>
-                            <td><a href="{{route('consultant.advertisement.edit',['id'=>$rt->id])}}" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>
+                            <td>@if($rt->expire_date == null)<a href="{{route('consultant.advertisement.edit',['id'=>$rt->id])}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>@endif</td>
                         </tr>
                         {{-- @endif --}}
 @endforeach

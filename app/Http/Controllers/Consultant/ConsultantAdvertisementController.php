@@ -65,13 +65,13 @@ class ConsultantAdvertisementController extends Controller
         return view('consultant.advertisement.advertisement_edit',compact('ad'));
    }
 
-   public function update(Request $request)
+   public function update(Request $request , $id)
    {
-       $advertise=Advertisement::find($request->adid);
+       $advertise=Advertisement::find($id);
        $profile_image = $request->image;
        $profile_image_new_name = time().$profile_image->getClientOriginalName();
        $profile_image->move(Config::get('define.image.advertisement'),$profile_image_new_name);
-       $advertise->image = Config::get('define.image.advertisement').'/'.$profile_image_new_name;
+       $advertise->banner_image = Config::get('define.image.advertisement').'/'.$profile_image_new_name;
     $advertise->save();
 
     return redirect()->route('consultant.advertisement')->with('success','Advertisement updated successfully');
