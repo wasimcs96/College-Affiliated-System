@@ -63,12 +63,12 @@
                                     </div><!-- end col-lg-2 --> --}}
                                     <!-- end col-lg-3 -->
 
-                            </div><!-- end contact-form-action -->
 
-                            <div class="btn-box pt-3">
-                                <button class="theme-btn" type="submit">Search Now</button>
-                            </div>
-                        </form>
+                                    <div class="btn-box pt-3" style="margin: 22px;">
+                                        <button class="theme-btn" type="submit">Search Now</button>
+                                    </div>
+                                </form>
+                            </div><!-- end contact-form-action -->
                         </div><!-- end search-fields-container -->
                     </div><!-- end search-result-content -->
                 </div><!-- end col-lg-12 -->
@@ -102,10 +102,12 @@
 
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
                             @if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
-                                                <img style=" width: 152px;
-                                                height: 115px;" src="{{asset($consultant->profile_image)}}" alt="">
+                                                <img
+                                                 style=" width: 368px;
+                                                height: 245px;"
+                                                src="{{asset($consultant->profile_image)}}" alt="">
                                                     @else
-                                                    <img style=" width: 152px; height: 152px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    <img style=" width: 368px; height: 245px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif
                         </a>
                         <span class="badge">Top Ranked</span>
@@ -119,7 +121,7 @@
                         <div class="card-rating">
                             <div class="d-flex flex-wrap align-items-center pt-2">
                                 <p class="mr-2">Rating:</p>
-                                    <span class="badge badge-warning text-white font-size-16">@if($consultant->rating == null) - @else{{$consultant->rating ?? ''}}/5 @endif</span>{!!"&nbsp;"!!}
+
                                     <span>@if($consultant->rating == 3 ?? '' )
                                             <span class="ratings ">
                                                 <i class="la la-star"></i>
@@ -160,15 +162,18 @@
                                         <i class="la la-star-o"></i>
                                         <i class="la la-star-o"></i>
                                     </span>
-                                    @endif</span>
+                                    @endif</span>   {!!"&nbsp;"!!}     <span class="badge badge-warning text-white font-size-16">@if($consultant->rating == null) - @else{{$consultant->rating ?? ''}}/5 @endif</span>
                                 </p>
                             </div>
                         </div>
                         <div class="card-attributes">
                             <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Since"><i class="las la-calendar"></i><span>   @if(isset($consultant->consultant->created_at))
+                                    {{$consultant->consultant->created_at->Format("Y")}}
+                                    @else N/A @endif</span></li>
                                 <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span>{{$consultant->consultantBooking->count()}}</span></li>
                                 <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>{{$consultant->consultantUniversity->count()}}</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-users"></i><span>{{$consultant->consultantUniversity->count()}}</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>{{$consultant->consultantUniversityClient->count()}}</span></li>
                             </ul>
                         </div>
                         <div class="card-price d-flex align-items-center justify-content-between">
@@ -176,7 +181,7 @@
                                 <span class="price__text">City :</span>
                                 <span class="price__num">{{$consultant->city}}</span>
                             </p>
-                            <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -227,9 +232,9 @@
                         <i class="la la-money"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
-                        <h4 class="info__title">Payments</h4>
+                        <h4 class="info__title">FAQ</h4>
                         <p class="info__desc">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                            Find Answer of Your Problems
                         </p>
                     </div><!-- end info-content -->
                 </a><!-- end icon-box -->
@@ -240,7 +245,7 @@
                         <i class="la la-times"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
-                        <h4 class="info__title">Cancel Policy</h4>
+                        <h4 class="info__title">About Us</h4>
                         <p class="info__desc">
                             Lorem ipsum dolor sit amet, consectetur adipisicing
                         </p>
