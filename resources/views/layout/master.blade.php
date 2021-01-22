@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     {{--  <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon"> <!-- Favicon-->  --}}
-    <link rel="icon" href="{{ dd(asset('storage/settings/' . config('get.MAIN_FAVICON'))) }}" type="image/x-icon" rel="icon"/>
+    <link rel="icon" href="{{ asset('storage/settings/' . config('get.MAIN_FAVICON')) }}" type="image/x-icon" rel="icon"/>
     <link href="{{ asset('storage/settings/' . config('get.MAIN_FAVICON')) }}" type="image/x-icon" rel="shortcut icon"/>
     <title>@yield('title') - Education Portal</title>
     <meta name="description" content="@yield('meta_description', config('app.name'))">

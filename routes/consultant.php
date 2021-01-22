@@ -19,7 +19,7 @@ Route::get('dashboard',function(){
 Route::get('students',[
     'uses'=>'ConsultantStudentController@index',
     'as'=>'consultant.students'
-]);
+])->middleware('Package');
 // Route::get('student_show',function(){
 //     return view('consultant.student.student_show');
 // })->name('consultant.student.show');
