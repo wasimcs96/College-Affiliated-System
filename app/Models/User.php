@@ -44,7 +44,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'countries_id',
         'google',
         'facebook',
-        'linkedin'
+        'linkedin',
+        'email_verified_at'
 
     ];
 
