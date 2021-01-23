@@ -18,7 +18,8 @@ class Consultant extends Model
         'start_time',
         'end_time',
         'student_visa_service',
-        'pr_service'
+        'pr_service',
+        'cover_image'
 
     ];
 

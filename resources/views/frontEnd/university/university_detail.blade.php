@@ -289,6 +289,8 @@
 
                 <div class="col-lg-4">
                     <div class="sidebar single-content-sidebar mb-0">
+                        <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                        <td>
     @if ($university->universityConsultant)
                         <?php $universityconsultant=$university->universityConsultant; ?>
                         <div class="sidebar-widget single-content-widget">
@@ -307,6 +309,8 @@
                             overflow: scroll;">
                                 <ul class="list-items">
             @foreach($universityconsultant as $consultant)
+            @if($consultant->userConsultant->Premium_expire_date > $mytime)
+
                                     <li><div class="author-content d-flex">
                                         <div class="author-img">
                                             <a href="#">@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
@@ -391,6 +395,7 @@
                                             </div>
                                         </div>
                                     </div></li>
+                                    @endif
 @endforeach
 
                                 </ul>

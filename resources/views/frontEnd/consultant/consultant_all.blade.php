@@ -98,22 +98,29 @@
         @if($consultant->isConsultant())
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
-                    <div class="card-img" style="text-align: center;">
-
+                    <div class="card-img" style="text-align: center; height:185px;">
+<div>
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
-                            @if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
+                            @if(isset($consultant->consultant->cover_image) && file_exists($consultant->consultant->cover_image))
                                                 <img
                                                  style=" width: 368px;
                                                 height: 245px;"
-                                                src="{{asset($consultant->profile_image)}}" alt="">
+                                                src="{{asset($consultant->consultant->cover_image)}}" alt="">
                                                     @else
-                                                    <img style=" width: 368px; height: 245px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    <img style=" width: 368px; height: 245px;" src="{{asset('frontEnd/assets/images/img21.jpg')}}" >
                                                     @endif
                         </a>
-                        <span class="badge">Top Ranked</span>
+                        <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
+                            <img
+                             style="width: 106px;height: 98px; border-radius:98px;"
+                            src="{{asset($consultant->profile_image)}}" alt="">
+                                @else
+                                <img style="width: 106px;height: 98px; border-radius:98px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                @endif</div>
                         {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
                             <i class="la la-heart-o"></i>
                         </div> --}}
+                    </div>
                     </div>
                     <div class="card-body">
                         {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
