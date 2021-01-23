@@ -35,6 +35,7 @@ class UniversityProfileController extends Controller
 
             'email' => 'required|email',
              'mobile'=>'numeric|required',
+             'cover_image'=> 'dimensions:min_width=1200,min_height=300'
             // 'landline_1'=>'required',
             // 'landline_2' => 'required',
             // 'website' => 'required|url',
@@ -60,6 +61,17 @@ class UniversityProfileController extends Controller
               $user->countries_id = $request->countries_id;
              $user->save();
               $university=auth()->user()->university;
+
+
+              if($request->hasFile('cover_image'))
+              {
+                  $profile_image = $request->cover_image;
+
+                  $profile_image_new_name = time().$profile_image->getClientOriginalName();
+                //   dd($profile_image_new_name);
+                  $profile_image->move(Config::get('define.image.cover_image'),$profile_image_new_name);
+                  $university->fill(['cover_image'=>Config::get('define.image.cover_image').'/'.$profile_image_new_name]);
+              }
 
               $university->fill([
                  'user_id'=>$user->id,
