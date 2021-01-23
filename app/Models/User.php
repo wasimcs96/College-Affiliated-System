@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\UniversityConsultantClient;
 use App\Models\Order;
+use Illuminate\Support\Facades\Mail;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, HasRoles,UserMethod;
@@ -161,4 +163,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Country::class,'countries_id');
     }
+
+
+
+   
+    
 }
