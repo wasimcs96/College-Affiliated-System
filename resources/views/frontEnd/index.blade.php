@@ -10,6 +10,7 @@
 ================================= -->
 <section class="hero-wrapper">
     <div class="hero-box hero-bg">
+
         <span class="line-bg line-bg1"></span>
         <span class="line-bg line-bg2"></span>
         <span class="line-bg line-bg3"></span>
@@ -467,12 +468,15 @@
                     <hr>
                     <?php $universities = App\Models\User::get();
                     ?>
+                        <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+
                    @if($universities->count()>0)
 
                     <div class="testimonial-carousel carousel-action">
                         @foreach($universities as $key => $university)
                         {{-- {{dd($university)}} --}}
                         @if($university->isUniversity())
+                        @if($university->Premium_expire_date >$mytime)
                         <div class="testimonial-card">
 
                             <div class="author-content d-flex align-items-center">
@@ -553,7 +557,7 @@
 
 
                                 <span class="price__text"><b>Average Fees :</b></span>
-                                <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+                                <span class="price__num"><i class="las la-rupee-sign"></i>{{$university->university->average_fees ?? ''}}</span>
 
                                 <a  style="
                                 float: right;
@@ -561,6 +565,7 @@
                             </div>
 
                         </div><!-- end testimonial-card -->
+                        @endif
                         @endif
                         @endforeach
                     </div><!-- end testimonial-carousel -->
@@ -600,7 +605,7 @@
                                         @endif </a>
                                 </div>
                                 <div class="author-bio">
-                                    <a href="{{route('consultant_detail',['id' => $consultant->id ?? ''])}}"><h4 class="author__title">{{$consultant->consultant->compant_name ?? ''}}</h4></a>
+                                    <a href="{{route('consultant_detail',['id' => $consultant->id ?? ''])}}"><h4 class="author__title">{{$consultant->first_name ?? ''}}{{$consultant->last_name ?? ''}}</h4></a>
                                     {{-- <span class="author__meta">{{$consultant->last_name}}</span> --}}
                                     <span class="ratings d-flex align-items-center">
                                         @if($consultant->rating == 3 ?? '' )
@@ -2213,6 +2218,7 @@
                 <div class="mobile-img">
                     {{-- <img src="{{ asset('frontEnd/assets/images/mobile-app.png') }}" alt="mobile-img"> --}}
                     <img src="{{ asset('frontEnd/assets/images/contactus.gif') }}" alt="mobile-img">
+                    <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_du7jspky.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>
                 </div>
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
@@ -2264,10 +2270,39 @@
        START FOOTER AREA
 ================================= -->
 @endsection
+@section('per_page_style')
+<style>
+canvas {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+  }
+  </style>
+@endsection
  @section('per_page_script')
 {{-- <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script> --}}
 rt=$('#categoryselect').val();
-
+<script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
+<script src="{{ asset('frontEnd/assets/js/vanta.net.min.js') }}"></script>
+<script>
+VANTA.NET({
+  el: ".hero-bg",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x3f4aff,
+  backgroundColor: 0x23153c,
+  points: 20.00,
+  maxDistance: 25.00,
+  spacing: 17.00
+})
+</script>
 <script>
     $(document).on('change', '#typeselect', function ()
     {

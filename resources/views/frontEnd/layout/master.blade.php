@@ -35,6 +35,73 @@
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/style.css') }}">
+    <style>.cssload-thecube {
+        width: 73px;
+        height: 73px;
+        margin: 0 auto;
+        margin-top: 49px;
+        position: relative;
+        transform: rotateZ(45deg);
+    }
+    .cssload-thecube .cssload-cube {
+        position: relative;
+        transform: rotateZ(45deg);
+    }
+    .cssload-thecube .cssload-cube {
+        float: left;
+        width: 50%;
+        height: 50%;
+        position: relative;
+        transform: scale(1.1);
+    }
+    .cssload-thecube .cssload-cube:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(43,160,199);
+        animation: cssload-fold-thecube 2.76s infinite linear both;
+        transform-origin: 100% 100%;
+    }
+    .cssload-thecube .cssload-c2 {
+        transform: scale(1.1) rotateZ(90deg);
+    }
+    .cssload-thecube .cssload-c3 {
+        transform: scale(1.1) rotateZ(180deg);
+    }
+    .cssload-thecube .cssload-c4 {
+        transform: scale(1.1) rotateZ(270deg);
+    }
+    .cssload-thecube .cssload-c2:before {
+        animation-delay: 0.35s;
+    }
+    .cssload-thecube .cssload-c3:before {
+        animation-delay: 0.69s;
+    }
+    .cssload-thecube .cssload-c4:before {
+        animation-delay: 1.04s;
+    }
+
+
+
+    @keyframes cssload-fold-thecube {
+        0%, 10% {
+            transform: perspective(136px) rotateX(-180deg);
+            opacity: 0;
+        }
+        25%,
+                    75% {
+            transform: perspective(136px) rotateX(0deg);
+            opacity: 1;
+        }
+        90%,
+                    100% {
+            transform: perspective(136px) rotateY(180deg);
+            opacity: 0;
+        }
+    }</style>
     @yield('per_page_style')
     {{-- <script src="https://kit.fontawesome.com/d8864c88b6.js" crossorigin="anonymous"></script> --}}
 </head>
@@ -42,9 +109,15 @@
 <!-- start cssload-loader -->
 <div class="preloader" id="preloader">
     <div class="loader">
-        <svg class="spinner" viewBox="0 0 50 50">
+        {{-- <svg class="spinner" viewBox="0 0 50 50">
             <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-        </svg>
+        </svg> --}}
+        <div class="cssload-thecube">
+            <div class="cssload-cube cssload-c1"></div>
+            <div class="cssload-cube cssload-c2"></div>
+            <div class="cssload-cube cssload-c4"></div>
+            <div class="cssload-cube cssload-c3"></div>
+        </div>
     </div>
 </div>
 <!-- end cssload-loader -->
@@ -208,6 +281,8 @@
 <script src="{{ asset('frontEnd/assets/js/jquery.ripples-min.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/quantity-input.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/main.js') }}"></script>
+<script src="{{ asset('frontEnd/assets/js/installing-software-to-device.json') }}"></script>
+
 @yield('per_page_script')
 </body>
 
