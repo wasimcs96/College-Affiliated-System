@@ -115,7 +115,7 @@
         </div><!-- end container -->
     </div><!-- end breadcrumb-wrap -->
     <div class="bread-svg-box">
-        <svg class="bread-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><polygon points="100 0 50 10 0 0 0 10 100 10"></polygon></svg>
+
     </div><!-- end bread-svg -->
 </section><!-- end breadcrumb-area -->
 <!-- ================================
@@ -129,19 +129,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="filter-wrap margin-bottom-30px">
-                    <div class="filter-top d-flex align-items-center justify-content-between pb-4">
-                        <div>
-                            <h3 class="title font-size-24">New York: 44 University found</h3>
-                            <p class="font-size-14"><span class="mr-1 pt-1">Study with confidence:</span>No University Found</p>
-                        </div>
-                        <div class="layout-view d-flex align-items-center">
-                            <a href="car-grid.html" data-toggle="tooltip" data-placement="top" title="Grid View" class="active"><i class="la la-th-large"></i></a>
-                            <a href="car-list.html" data-toggle="tooltip" data-placement="top" title="List View"><i class="la la-th-list"></i></a>
-                        </div>
-                    </div><!-- end filter-top -->
 
-                </div><!-- end filter-wrap -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         <div class="row">
@@ -156,11 +144,15 @@
                     @endphp --}}
                             {{-- <img src="{{asset($university->profile_image)}}" alt="university-img" > --}}
                             @if(isset($university->university->cover_image) && file_exists($university->university->cover_image))
-                            <img   style=" width: 368px;
-                            height: 245px;" src="{{asset($university->university->cover_image)}}" alt="">
+                            <img
+                              {{-- style=" width: 368px;
+                            height: 245px;"  --}}
+                            src="{{asset($university->university->cover_image)}}" height="185px;"alt="">
                                 @else
-                                <img   style=" width: 368px;
-                                height: 245px;" src="{{asset('frontEnd/assets/images/university.jpg')}}" >
+                                <img
+                                  {{-- style=" width: 368px;
+                                height: 245px;"  --}}
+                                src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
                                 @endif
                         </a>
                         <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
@@ -171,9 +163,9 @@
                                 <img style="width: 106px;height: 98px; border-radius:98px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                 @endif</div>
                         {{-- <span class="badge">Top Ranked</span> --}}
-                        {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                            <i class="la la-heart-o"></i>
-                        </div> --}}
+                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
+                            <i class="las la-download"></i>
+                        </div>
                     </div>
                     <div class="card-body">
                         <p class="card-meta">
@@ -189,7 +181,7 @@
                         <div class="card-rating">
                             <div class="d-flex flex-wrap align-items-center pt-2">
                                 <p class="mr-2">Rating:</p>
-                                    <span class="badge badge-warning text-white font-size-16">@if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif</span>{!!"&nbsp;"!!}
+
                                     <span>@if($university->rating == 3 ?? '' )
                                             <span class="ratings ">
                                                 <i class="la la-star"></i>
@@ -230,22 +222,33 @@
                                         <i class="la la-star-o"></i>
                                         <i class="la la-star-o"></i>
                                     </span>
-                                    @endif</span>
+                                    @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif</span>
                                 </p>
                             </div>
                         </div>
                         <div class="card-attributes">
                             <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($university->university->created_at))
+                                    {{$university->university->created_at->Format("Y")}}
+                                    @else N/A @endif</span></li>
                                 <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$university->universityCourse->count()}}</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Consultant"><i class="la la-users"></i><span>{{$university->universityConsultant->count()}}</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
+                                    @if(isset($university->universityConsultant))
+                                    {{$university->universityConsultant->count()}}@else N/A @endif</span></li>
+                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($university->universityConsultantClient))
+                                        {{$university->universityConsultantClient->count()}}
+                                        @else N/A @endif</span></li>
                             </ul>
                         </div>
                         <div class="card-price d-flex align-items-center justify-content-between">
-                            {{-- <p>
-                                <span class="price__num">$2300</span>
-                                <span class="price__text">Total fees</span>
-                            </p> --}}
-                            <a href="{{route('university_detail',['id'=>$university->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <p>
+                                <span class="price__text">Average Fees :</span>
+                                <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+                                {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                            </p>
+                            {{-- <a href="{{route('university_detail',['id'=>$university->id])}}" style="background-color: #f9b851;border-color: #f9b851;color: white;" class="theme-btn theme-btn-small mt-2">Brochure{!!"&nbsp"!!}<i class="las la-download"></i></a> --}}
+
+                            <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -254,14 +257,14 @@
             @endforeach
 
         </div><!-- end row -->
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-12">
                 <div class="btn-box mt-3 text-center">
                     <button type="button" class="theme-btn"><i class="la la-refresh mr-1"></i>Load More</button>
                     <p class="font-size-13 pt-2">Showing 1 - 6 of 44 university</p>
                 </div><!-- end btn-box -->
             </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
+        </div><!-- end row --> --}}
     </div><!-- end container -->
 </section><!-- end card-area -->
 <!-- ================================
@@ -277,40 +280,40 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 responsive-column">
-                <a href="#" class="icon-box icon-layout-2 d-flex">
+                <a href="{{route('contact')}}" class="icon-box icon-layout-2 d-flex">
                     <div class="info-icon flex-shrink-0 bg-rgb text-color-2">
                         <i class="la la-phone"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
                         <h4 class="info__title">Need Help? Contact us</h4>
                         <p class="info__desc">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                    Need Help Contact Us
                         </p>
                     </div><!-- end info-content -->
                 </a><!-- end icon-box -->
             </div><!-- end col-lg-4 -->
             <div class="col-lg-4 responsive-column">
-                <a href="#" class="icon-box icon-layout-2 d-flex">
+                <a href="{{route('faq.front')}}" class="icon-box icon-layout-2 d-flex">
                     <div class="info-icon flex-shrink-0 bg-rgb-2 text-color-3">
-                        <i class="la la-money"></i>
+                        <i class="lar la-question-circle"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
-                        <h4 class="info__title">Payments</h4>
+                        <h4 class="info__title">FAQ</h4>
                         <p class="info__desc">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                            Find Answer Of your Query
                         </p>
                     </div><!-- end info-content -->
                 </a><!-- end icon-box -->
             </div><!-- end col-lg-4 -->
             <div class="col-lg-4 responsive-column">
-                <a href="#" class="icon-box icon-layout-2 d-flex">
+                <a href="{{route('blog_all')}}" class="icon-box icon-layout-2 d-flex">
                     <div class="info-icon flex-shrink-0 bg-rgb-3 text-color-4">
-                        <i class="la la-times"></i>
+                        <i class="la la-blog"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
-                        <h4 class="info__title">Cancel Policy</h4>
+                        <h4 class="info__title">Blog</h4>
                         <p class="info__desc">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                    Check Out our Blogs
                         </p>
                     </div><!-- end info-content -->
                 </a><!-- end icon-box -->
@@ -353,4 +356,22 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section>
+@endsection
+@section('per_page_script')
+<script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
+<script src="{{ asset('frontEnd/assets/js/vanta.globe.min.js') }}"></script>
+<script>
+VANTA.GLOBE({
+  el: ".bread-bg-8",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  color: 0x287dfa,
+  backgroundColor: 0x23153c,
+  scale: 1.00,
+  scaleMobile: 1.00
+})
+</script>
 @endsection

@@ -89,7 +89,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function universityConsultantClient()
     {
-        return $this->hasMany(UniversityConsultantClient::class,'user_id');
+        return $this->hasMany(UniversityConsultantClient::class,'university_id');
     }
 
     public function consultantBooking()

@@ -32,7 +32,7 @@ class ConsultantFrontController extends Controller
     {
         $consultant = User::find($id);
 
-        $consultantUniversity = UniversityConsultant::where('consultant_id',$consultant->id)->paginate(1);
+        $consultantUniversity = UniversityConsultant::where('consultant_id',$consultant->id)->get();
 
         return view('frontEnd.consultant.consultant_detail',compact('consultantUniversity'))->with('consultant', $consultant);
     }

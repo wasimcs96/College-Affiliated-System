@@ -29,10 +29,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
+                        <img
+                         style="width: 106px;height: 98px; border-radius:98px;"
+                        src="{{asset($university->profile_image)}}" alt="">
+                            @else
+                            <img style="width: 106px;height: 98px; border-radius:98px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                            @endif</div>
                     <div class="breadcrumb-btn">
-                        <div class="btn-box">
+                        <div class="btn-box"  style="
+                        position: absolute;
+                        bottom: 18px;
+                        left: 151px;
+                        margin-bottom: 8px;
+                    ">
                             <a class="theme-btn" data-fancybox="video" data-src="https://www.youtube.com/embed?v=S5WFxUDs0pE"
-                               data-speed="700">
+                               data-speed="700"  style="
+                               margin: 12px;
+                           ">
                                 <i class="la la-video-camera mr-2"></i>Video
                             </a>
                             <a class="theme-btn" data-src="{{asset($university->profile_image)}}"
@@ -245,9 +259,11 @@
                                    <table class="table">
                                        <thead>
                                            <tr>
-                                               <th scope="col">Type</th>
                                                <th scope="col">Course</th>
+                                               <th scope="col">Type</th>
                                                <th scope="col"> Fees</th>
+                                               <th scope="col">Start Date</th>
+                                               <th scope="col">End Date</th>
                                                <th scope="col">Action</th>
                                            </tr>
                                        </thead>
@@ -255,17 +271,20 @@
                                            <?php $courses=$university->universityCourse?>
                                           @foreach($courses as $course)
                                            <tr>
-                                               <th scope="row">@if($course->course->type == 0) UG @endif
-                                                @if($course->course->type == 1) PG @endif
-                                                @if($course->course->type == 2) Diploma @endif
+                                               <th scope="row"><div class="table-content d-flex align-items-center">
+                                                <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0">
+                                                <h3 class="title">{{$course->course->name}}</h3>
+                                            </div>
                                             </th>
                                                <td>
-                                                   <div class="table-content d-flex align-items-center">
-                                                       <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0">
-                                                       <h3 class="title">{{$course->course->name}}</h3>
-                                                   </div>
+                                                @if($course->course->type == 0) UG @endif
+                                                @if($course->course->type == 1) PG @endif
+                                                @if($course->course->type == 2) Diploma @endif
                                                </td>
                                                <td>{{$course->fees}}</td>
+                                               <td>{{$course->start_date}}</td>
+                                               <td>@if(isset($course->end_date)){{$course->end_date}}@else N/A @endif</td>
+
                                                <td> <div>
                                                 <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
                                             </div></td>
@@ -429,26 +448,33 @@
                         @foreach($consultants as $consultant)
                         {{-- @if($consultant->isConsultant()) --}}
                         <div class="card-item car-card border">
-                            <div class="card-img" style="text-align: center;">
+                            <div class="card-img" style="text-align: center; height:185px;">
 
                                 <a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}" class="d-block">
-                                    @if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
+                                    @if(isset($consultant->userConsultant->consultant->cover_image) && file_exists($consultant->userConsultant->consultant->cover_image))
                                                         <img
                                                         style=" width: 368px;
                                                         height: 245px;"
-                                                        src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
+                                                        src="{{asset($consultant->userConsultant->consultant->cover_image)}}" alt="">
                                                             @else
                                                             <img     style=" width: 368px;
-                                                            height: 245px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                            height: 245px;" src="{{asset('frontEnd/assets/images/img21.jpg')}}" >
                                                             @endif
                                 </a>
+                                <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
+                                    <img
+                                     style="width: 106px;height: 98px; border-radius:98px;"
+                                    src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
+                                        @else
+                                        <img style="width: 106px;height: 98px; border-radius:98px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                        @endif</div>
                                 {{-- <span class="badge">Top Ranked</span> --}}
                                 {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
                                     <i class="la la-heart-o"></i>
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}">{{$consultant->userConsultant->consultant->company_name}}</a></h3>
+                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}">{{$consultant->userConsultant->first_name}}{{$consultant->userConsultant->lasts_name}}</a></h3>
                                 <p class="card-meta">{{$consultant->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>

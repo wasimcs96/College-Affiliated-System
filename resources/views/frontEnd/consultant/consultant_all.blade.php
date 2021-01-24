@@ -178,9 +178,13 @@
                                 <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Since"><i class="las la-calendar"></i><span>   @if(isset($consultant->consultant->created_at))
                                     {{$consultant->consultant->created_at->Format("Y")}}
                                     @else N/A @endif</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span>{{$consultant->consultantBooking->count()}}</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>{{$consultant->consultantUniversity->count()}}</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>{{$consultant->consultantUniversityClient->count()}}</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span> @if(isset($consultant->consultantBooking))
+                                    {{$consultant->consultantBooking->count()}}@else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span> @if(isset($consultant->consultantUniversity))
+                                    {{$consultant->consultantUniversity->count()}}@else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>
+                                    @if(isset($consultant->consultantUniversityClient))
+                                    {{$consultant->consultantUniversityClient->count()}}@else N/A @endif</span></li>
                             </ul>
                         </div>
                         <div class="card-price d-flex align-items-center justify-content-between">
@@ -221,40 +225,40 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 responsive-column">
-                <a href="#" class="icon-box icon-layout-2 d-flex">
+                <a href="{{route('contact')}}" class="icon-box icon-layout-2 d-flex">
                     <div class="info-icon flex-shrink-0 bg-rgb text-color-2">
                         <i class="la la-phone"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
                         <h4 class="info__title">Need Help? Contact us</h4>
                         <p class="info__desc">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                    Need Help Contact Us
                         </p>
                     </div><!-- end info-content -->
                 </a><!-- end icon-box -->
             </div><!-- end col-lg-4 -->
             <div class="col-lg-4 responsive-column">
-                <a href="#" class="icon-box icon-layout-2 d-flex">
+                <a href="{{route('faq.front')}}" class="icon-box icon-layout-2 d-flex">
                     <div class="info-icon flex-shrink-0 bg-rgb-2 text-color-3">
-                        <i class="la la-money"></i>
+                        <i class="lar la-question-circle"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
                         <h4 class="info__title">FAQ</h4>
                         <p class="info__desc">
-                            Find Answer of Your Problems
+                            Find Answer Of your Query
                         </p>
                     </div><!-- end info-content -->
                 </a><!-- end icon-box -->
             </div><!-- end col-lg-4 -->
             <div class="col-lg-4 responsive-column">
-                <a href="#" class="icon-box icon-layout-2 d-flex">
+                <a href="{{route('blog_all')}}" class="icon-box icon-layout-2 d-flex">
                     <div class="info-icon flex-shrink-0 bg-rgb-3 text-color-4">
-                        <i class="la la-times"></i>
+                        <i class="la la-blog"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
-                        <h4 class="info__title">About Us</h4>
+                        <h4 class="info__title">Blog</h4>
                         <p class="info__desc">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                    Check Out our Blogs
                         </p>
                     </div><!-- end info-content -->
                 </a><!-- end icon-box -->
@@ -297,4 +301,22 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section>
+@endsection
+@section('per_page_script')
+<script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
+<script src="{{ asset('frontEnd/assets/js/vanta.globe.min.js') }}"></script>
+<script>
+VANTA.GLOBE({
+  el: ".bread-bg-8",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  color: 0x287dfa,
+  backgroundColor: 0x23153c,
+  scale: 1.00,
+  scaleMobile: 1.00
+})
+</script>
 @endsection
