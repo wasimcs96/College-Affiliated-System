@@ -41,6 +41,11 @@
                     </tr>
 
                     <tr>
+                        <th scope="row">Student DOB</th>
+                        <td>{{$show->user->birth_year ?? ''}}</td>
+                    </tr>
+
+                    <tr>
                         <th scope="row">Student Country</th>
                         @if(isset($show->user->countries_id))
                         <?php $country = DB::table('countries')->where('countries_id',$show->user->countries_id)->get()->first();?>
@@ -49,14 +54,14 @@
                         {{-- <td>{{$show->user->country->countries_name ?? ''}}</td> --}}
                     </tr>
 
-                    <tr>
+                    {{-- <tr>
                         <th scope="row">Student Booking Status</th>
                         <td>@if($show->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
                             @if($show->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
                             @if($show->status==2 ?? '')<div class="btn btn-danger">Rejected</div>@endif
                             @if($show->status==3 ?? '')<div class="btn btn-primary">Walking</div>@endif
                         </td>
-                    </tr>
+                    </tr> --}}
 
             </div>
                     </tbody>

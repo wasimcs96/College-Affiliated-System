@@ -11,7 +11,7 @@ class UniversityStudentController extends Controller
     public function index()
     {
     //    ('users', User::all());
-    $users=auth()->user()->applicationAppliedUniversity;
+        $users=auth()->user()->universityConsultantClient;
     // dd($users);
         return view('university.student.students',compact('users'));
     }

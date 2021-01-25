@@ -11,6 +11,7 @@ use App\Models\Booking;
 use App\Models\Application;
 use App\Models\ApplicationDocument;
 use App\Models\Course;
+use App\Models\Country;
 use App\Models\User;
 use App\Models\University;
 use Config;
@@ -49,7 +50,7 @@ class AdminApplicationController extends Controller
     }
 
 
-       return view('admin.application.application_create',compact('application','university','course'));
+       return view('admin.application.application_create',compact('application','university','course'))->with('countries',Country::all());
    }
 
    public function documentStore(Request $request)

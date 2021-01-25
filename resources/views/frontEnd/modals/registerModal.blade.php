@@ -11,7 +11,7 @@
             <form method="POST" id="registerForm" action="{{ route('register') }}">
                     @csrf
 
-                 
+
 
                     <div class="form-group row" id="nm">
 
@@ -79,7 +79,7 @@
                             <button type="submit" class="btn btn-primary btn-block">
                                 {{ __('Register') }}
                             </button>
-                            Already Member? <a href="#" id="loginalready" data-toggle="modal" data-target="#loginPopupForm">Login</a>
+                            Already Member? <a href="javascript:void(0);" id="loginalready" data-toggle="modal" data-target="#loginPopupForm">Login</a>
                         </div>
                     </div>
                 </form>

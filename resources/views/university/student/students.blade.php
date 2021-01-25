@@ -47,7 +47,7 @@
 
                         @foreach ($users as $user)
                         {{-- {{dd($user->application->user->first_name)}} --}}
-                        @if($user->application == !null)
+                        {{-- @if($user->application == !null) --}}
                                <tr>
                                    <td> {{$user->application->user->first_name ?? ''}} {{$user->application->user->last_name ?? ''}}</td>
 
@@ -65,7 +65,7 @@
                                 </td>
                             </tr>
 
-                        @endif
+                        {{-- @endif --}}
 
                                 @endforeach
 
