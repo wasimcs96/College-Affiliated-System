@@ -52,6 +52,8 @@ class ConsultantProfileController extends Controller
             'email' => 'required|email',
             'mobile'=>'numeric|required',
             'about_me'=>'required',
+            'cover_image'=> 'dimensions:min_width=1200,min_height=300',
+
              ]);
              $id = Auth()->user()->id;
              $user = User::find($id);
@@ -75,6 +77,7 @@ class ConsultantProfileController extends Controller
                 $consultant = Consultant::where('user_id',$id)->first();
             if ($consultant == null)
                 {
+
                     $consultantnew=Consultant::create([
                     'user_id' => $id,
                     'working_week_days' => collect($request->weekday)->implode(','),
@@ -83,12 +86,30 @@ class ConsultantProfileController extends Controller
                     'end_time' => $request->end_time,
                     'website' => $request->website,
                     'about_me'=>$request->about_me,
-                     ]);
 
+                     ]);
+                     if($request->hasFile('cover_image'))
+                     {
+                         $profile_image = $request->cover_image;
+
+                         $profile_image_new_name = time().$profile_image->getClientOriginalName();
+                         dd($profile_image_new_name);
+                         $profile_image->move(Config::get('define.image.cover_image'),$profile_image_new_name);
+                         $consultant->fill(['cover_image'=>Config::get('define.image.cover_image').'/'.$profile_image_new_name]);
+                     };
                 }
             else
             {
                 $consultant->fill($request->all());
+                if($request->hasFile('cover_image'))
+                {
+                    $profile_image = $request->cover_image;
+
+                    $profile_image_new_name = time().$profile_image->getClientOriginalName();
+                    // dd($profile_image_new_name);
+                   $profile_image->move(Config::get('define.image.cover_image'),$profile_image_new_name);
+                    $consultant->fill(['cover_image'=>Config::get('define.image.cover_image').'/'.$profile_image_new_name]);
+                };
                 $consultant->save();
                 $consultant->user_id=$id;
                 $consultant->working_week_days = collect($request->weekday)->implode(',');

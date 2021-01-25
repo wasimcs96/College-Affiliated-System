@@ -16,7 +16,7 @@
                             <div class="contact-form-action">
                                 <form action="{{ route('consultant.inner.filter') }}" method="POST" class="row">
 @csrf
-                                    <div class="col-lg-4 col-sm-2">
+                                    <div class="col-lg-6 col-sm-2">
                                         <div class="input-box">
                                             <label class="label-text">Name</label>
                                             <div class="form-group">
@@ -25,7 +25,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-sm-6 pr-0">
+                                    <div class="col-lg-4 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
                                             <div class="form-group">
@@ -63,12 +63,12 @@
                                     </div><!-- end col-lg-2 --> --}}
                                     <!-- end col-lg-3 -->
 
-                            </div><!-- end contact-form-action -->
 
-                            <div class="btn-box pt-3">
-                                <button class="theme-btn" type="submit">Search Now</button>
-                            </div>
-                        </form>
+                                    <div class="btn-box pt-3" style="margin: 22px;">
+                                        <button class="theme-btn" type="submit">Search Now</button>
+                                    </div>
+                                </form>
+                            </div><!-- end contact-form-action -->
                         </div><!-- end search-fields-container -->
                     </div><!-- end search-result-content -->
                 </div><!-- end col-lg-12 -->
@@ -98,20 +98,29 @@
         @if($consultant->isConsultant())
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
-                    <div class="card-img" style="text-align: center;">
-
+                    <div class="card-img" style="text-align: center; height:185px;">
+<div>
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
-                            @if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
-                                                <img style=" width: 152px;
-                                                height: 115px;" src="{{asset($consultant->profile_image)}}" alt="">
+                            @if(isset($consultant->consultant->cover_image) && file_exists($consultant->consultant->cover_image))
+                                                <img
+                                                 style=" width: 368px;
+                                                height: 245px;"
+                                                src="{{asset($consultant->consultant->cover_image)}}" alt="">
                                                     @else
-                                                    <img style=" width: 152px; height: 152px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    <img style=" width: 368px; height: 245px;" src="{{asset('frontEnd/assets/images/img21.jpg')}}" >
                                                     @endif
                         </a>
-                        <span class="badge">Top Ranked</span>
+                        <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
+                            <img
+                            style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                            src="{{asset($consultant->profile_image)}}" alt="">
+                                @else
+                                <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                @endif</div>
                         {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
                             <i class="la la-heart-o"></i>
                         </div> --}}
+                    </div>
                     </div>
                     <div class="card-body">
                         {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
@@ -119,7 +128,7 @@
                         <div class="card-rating">
                             <div class="d-flex flex-wrap align-items-center pt-2">
                                 <p class="mr-2">Rating:</p>
-                                    <span class="badge badge-warning text-white font-size-16">@if($consultant->rating == null) - @else{{$consultant->rating ?? ''}}/5 @endif</span>{!!"&nbsp;"!!}
+
                                     <span>@if($consultant->rating == 3 ?? '' )
                                             <span class="ratings ">
                                                 <i class="la la-star"></i>
@@ -160,15 +169,22 @@
                                         <i class="la la-star-o"></i>
                                         <i class="la la-star-o"></i>
                                     </span>
-                                    @endif</span>
+                                    @endif</span>   {!!"&nbsp;"!!}     <span class="badge badge-warning text-white font-size-16">@if($consultant->rating == null) - @else{{$consultant->rating ?? ''}}/5 @endif</span>
                                 </p>
                             </div>
                         </div>
                         <div class="card-attributes">
                             <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span>{{$consultant->consultantBooking->count()}}</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>{{$consultant->consultantUniversity->count()}}</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-users"></i><span>{{$consultant->consultantUniversity->count()}}</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Since"><i class="las la-calendar"></i><span>   @if(isset($consultant->consultant->created_at))
+                                    {{$consultant->consultant->created_at->Format("Y")}}
+                                    @else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span> @if(isset($consultant->consultantBooking))
+                                    {{$consultant->consultantBooking->count()}}@else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span> @if(isset($consultant->consultantUniversity))
+                                    {{$consultant->consultantUniversity->count()}}@else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>
+                                    @if(isset($consultant->consultantUniversityClient))
+                                    {{$consultant->consultantUniversityClient->count()}}@else N/A @endif</span></li>
                             </ul>
                         </div>
                         <div class="card-price d-flex align-items-center justify-content-between">
@@ -176,7 +192,7 @@
                                 <span class="price__text">City :</span>
                                 <span class="price__num">{{$consultant->city}}</span>
                             </p>
-                            <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                            <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -209,40 +225,40 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 responsive-column">
-                <a href="#" class="icon-box icon-layout-2 d-flex">
+                <a href="{{route('contact')}}" class="icon-box icon-layout-2 d-flex">
                     <div class="info-icon flex-shrink-0 bg-rgb text-color-2">
                         <i class="la la-phone"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
                         <h4 class="info__title">Need Help? Contact us</h4>
                         <p class="info__desc">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                    Need Help Contact Us
                         </p>
                     </div><!-- end info-content -->
                 </a><!-- end icon-box -->
             </div><!-- end col-lg-4 -->
             <div class="col-lg-4 responsive-column">
-                <a href="#" class="icon-box icon-layout-2 d-flex">
+                <a href="{{route('faq.front')}}" class="icon-box icon-layout-2 d-flex">
                     <div class="info-icon flex-shrink-0 bg-rgb-2 text-color-3">
-                        <i class="la la-money"></i>
+                        <i class="lar la-question-circle"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
-                        <h4 class="info__title">Payments</h4>
+                        <h4 class="info__title">FAQ</h4>
                         <p class="info__desc">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                            Find Answer Of your Query
                         </p>
                     </div><!-- end info-content -->
                 </a><!-- end icon-box -->
             </div><!-- end col-lg-4 -->
             <div class="col-lg-4 responsive-column">
-                <a href="#" class="icon-box icon-layout-2 d-flex">
+                <a href="{{route('blog_all')}}" class="icon-box icon-layout-2 d-flex">
                     <div class="info-icon flex-shrink-0 bg-rgb-3 text-color-4">
-                        <i class="la la-times"></i>
+                        <i class="la la-blog"></i>
                     </div><!-- end info-icon-->
                     <div class="info-content">
-                        <h4 class="info__title">Cancel Policy</h4>
+                        <h4 class="info__title">Blog</h4>
                         <p class="info__desc">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                    Check Out our Blogs
                         </p>
                     </div><!-- end info-content -->
                 </a><!-- end icon-box -->
@@ -285,4 +301,22 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section>
+@endsection
+@section('per_page_script')
+<script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
+<script src="{{ asset('frontEnd/assets/js/vanta.globe.min.js') }}"></script>
+<script>
+VANTA.GLOBE({
+  el: ".bread-bg-8",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  color: 0x287dfa,
+  backgroundColor: 0x23153c,
+  scale: 1.00,
+  scaleMobile: 1.00
+})
+</script>
 @endsection

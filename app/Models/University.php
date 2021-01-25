@@ -18,8 +18,8 @@ class University extends Model
         'type',
         'default_documents',
         'about_me',
-        'average_fees'
-
+        'average_fees',
+        'cover_image'
     ];
 
     public function user()

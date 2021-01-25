@@ -240,6 +240,17 @@
                             <input name="profile_image" value="@if(isset(auth()->profile_image)){{auth()->profile_image}}@endif" type="file" class="dropify-fr"  >
                         </div>
                     </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label for="profile_image">Upload Cover Image</label>
+                            <input name="cover_image" type="file" class="dropify-frr"  >
+<label><span><b>Please Note </b>: Image should be in Given Dimensions:min-width=1200 | min-height=300  </span></label>
+
+                        </div>
+                    </div>
+
+
                 </div>
 
             <button type="submit" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
@@ -304,7 +315,16 @@
     });
 </script>
 
-
+<script>
+    $('.dropify-frr').dropify({
+        messages: {
+            default: 'Upload Cover Image',
+            replace: 'Upload Cover Image',
+            remove: 'Cancel',
+            error: 'Sorry,the file is too large'
+        }
+    });
+</script>
 
 <script>
 $(".deleteRecord").click(function(){

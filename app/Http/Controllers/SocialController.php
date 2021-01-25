@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -40,11 +41,13 @@ class SocialController extends Controller
 
 
 public function newUser($userSocial,$provider){
+    $time=Carbon::now();
     $user = User::create([
         'first_name'          => $userSocial->getName() ?? '',
         'email'         => $userSocial->getEmail() ?? '',
         'profile_image'         => $userSocial->getAvatar() ?? '',
         $provider   => $userSocial->getId(),
+        'email_verified_at'=>$time
         //'provider'      => $provider,
     ]);
    

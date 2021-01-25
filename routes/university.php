@@ -209,6 +209,18 @@ Route::post('services/advertisements/store', [
     'as' => 'university.advertisement.store'
 ]);
 
+Route::get('advertisement/edit/{id}',[
+    'uses' =>'UniversityAdvertisementController@edit',
+    'as'=>'university.advertisement.edit'
+]);
+
+Route::post('advertisement/update/{id}',[
+    'uses' =>'UniversityAdvertisementController@update',
+    'as'=>'university.advertisement.update'
+]);
+
+
+
 /* University Course Media */
 Route::get('/course/media/destroy/{id}',[
     'uses' =>'UniversityCoursesController@destroy',

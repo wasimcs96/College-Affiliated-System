@@ -24,15 +24,29 @@
     START BREADCRUMB AREA
 ================================= -->
 
-    <section class="breadcrumb-area bread-bg-4 py-0" style="background-image: url('{{asset($university->profile_image)}}');">
+    <section class="breadcrumb-area bread-bg-4 py-0" style="background-image: url('{{asset($university->university->cover_image)}}');">
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
+                        <img
+                        style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                        src="{{asset($university->profile_image)}}" alt="">
+                            @else
+                            <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                            @endif</div>
                     <div class="breadcrumb-btn">
-                        <div class="btn-box">
+                        <div class="btn-box"  style="
+                        position: absolute;
+                        bottom: 18px;
+                        left: 151px;
+                        margin-bottom: 8px;
+                    ">
                             <a class="theme-btn" data-fancybox="video" data-src="https://www.youtube.com/embed?v=S5WFxUDs0pE"
-                               data-speed="700">
+                               data-speed="700"  style="
+                               margin: 12px;
+                           ">
                                 <i class="la la-video-camera mr-2"></i>Video
                             </a>
                             <a class="theme-btn" data-src="{{asset($university->profile_image)}}"
@@ -188,6 +202,8 @@
                                         @endif</span> {!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($university->rating == null) - @else{{$university->rating ?? ''}}/5 @endif</span>
                                     </p>
                                 </div>
+
+
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
                             <div class="single-content-item padding-top-40px padding-bottom-40px">
@@ -222,7 +238,7 @@
                                             <li><span>Courses:</span>{{$university->universityCourse->count()}}</li>
 
                                             <li><span>Consultants:</span>{{$university->universityConsultant->count()}}</li>
-                                            <li><span>Website:</span>{{$university->university->website}}</li>
+                                            <li><span>Website:</span><a target="_blank" href="{{$university->university->website ?? ''}}" URL>{{$university->university->website ?? ''}}</a></li>
                                             {{-- <li><span>Total Staff:</span>9,078 crew</li>
                                             <li><span>Counsellor:</span>Italian</li>
                                             <li><span>Hostels:</span>International</li>
@@ -243,9 +259,11 @@
                                    <table class="table">
                                        <thead>
                                            <tr>
-                                               <th scope="col">Type</th>
                                                <th scope="col">Course</th>
-                                               <th scope="col">1st Year Fees</th>
+                                               <th scope="col">Type</th>
+                                               <th scope="col"> Fees</th>
+                                               <th scope="col">Start Date</th>
+                                               <th scope="col">End Date</th>
                                                <th scope="col">Action</th>
                                            </tr>
                                        </thead>
@@ -253,60 +271,80 @@
                                            <?php $courses=$university->universityCourse?>
                                           @foreach($courses as $course)
                                            <tr>
-                                               <th scope="row">@if($course->course->type == 0) UG @endif
-                                                @if($course->course->type == 1) PG @endif
-                                                @if($course->course->type == 2) Diploma @endif
+                                               <th scope="row"><div class="table-content d-flex align-items-center">
+                                                <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0">
+                                                <h3 class="title">{{$course->course->name}}</h3>
+                                            </div>
                                             </th>
                                                <td>
-                                                   <div class="table-content d-flex align-items-center">
-                                                       <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0">
-                                                       <h3 class="title">{{$course->course->name}}</h3>
-                                                   </div>
+                                                @if($course->course->type == 0) UG @endif
+                                                @if($course->course->type == 1) PG @endif
+                                                @if($course->course->type == 2) Diploma @endif
                                                </td>
                                                <td>{{$course->fees}}</td>
+                                               <td>{{$course->start_date}}</td>
+                                               <td>@if(isset($course->end_date)){{$course->end_date}}@else N/A @endif</td>
+
                                                <td> <div>
-                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail</a>
+                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
                                             </div></td>
                                            </tr>
                                            @endforeach
                                     </tbody>
                                    </table>
-                                   <p class="font-size-14 line-height-26"><strong class="text-black">Please note:</strong>sdfsdfsdfsdfjjsdhfsjdhfjshsjhdfkjhsjdfhjsdfhsdhfdsfksfksdfjkdshfjshfjshdjkfdshfjhdfhdsjhfdsfkdsfksdkfh.</p>
+
                                </div>
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
                         </div><!-- end itinerary -->
-                        <div  class="page-scroll">
-                            {{-- <!-- end single-content-item --> --}}
-                            @if (isset($university->universityConsultant))
-                            <?php $universityconsultant=$university->universityConsultant; ?>
-                            <div class="section-block" id="staterooms"></div>
-                            <div class="single-content-item padding-top-40px padding-bottom-40px">
-                                <h2 class="title font-size-23" >Select a Consutant </h2>
-                                @foreach($universityconsultant as $consultant)
-                                @if($consultant->status == 1)
-                                <div class="cabin-type padding-top-30px">
-                                    <div class="cabin-type-item d-flex pt-4">
-                                        <div class="cabin-type-img flex-shrink-0">
-                                            @if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
-                                            <img style=" width: 152px;
-                                            height: 115px;" src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
-                                                @else
-                                                <img style=" width: 152px; height: 115px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                                                @endif
+
+                        <!-- end reviews -->
+                        <!-- end review-box -->
+                    </div><!-- end single-content-wrap -->
+                </div><!-- end col-lg-8 -->
+
+
+
+
+                <div class="col-lg-4">
+                    <div class="sidebar single-content-sidebar mb-0">
+                        <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                        <td>
+    @if ($university->universityConsultant)
+                        <?php $universityconsultant=$university->universityConsultant; ?>
+                        <div class="sidebar-widget single-content-widget">
+                            <h3 class="title stroke-shape">Featured Consultant</h3>
+                            <!-- Example split danger button -->
+
+                            <div class="input-group mb-3 ">
+                                <div class="input-group-prepend">
+                                  <button class="btn btn-outline-primary btn-sm" type="button" id="button-addon1">Country</button>
+                                </div>
+                                <input type="text" class="form-control col-xs-2" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                              </div>
+                            <div class="sidebar-list" style="
+
+                            height: 530px;
+                            overflow: scroll;">
+                                <ul class="list-items">
+            @foreach($universityconsultant as $consultant)
+            @if($consultant->userConsultant->Premium_expire_date > $mytime)
+
+                                    <li><div class="author-content d-flex">
+                                        <div class="author-img">
+                                            <a href="#">@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
+                                                <img style=" width: 70px;
+                                                height: 70px;" src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
+                                                    @else
+                                                    <img style=" width: 70px; height: 70px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif</a>
                                         </div>
-                                       <div class="cabin-type-detail">
-                                            <h3 class="title">{{$consultant->userConsultant->consultant->company_name}}</h3>
-                                           <ul class="list-items pt-2 pb-2">
-                                               <li><span>Bookings:</span>{{$consultant->userConsultant->consultantBooking->count()}}</li>
-                                               <li><span>Affiliated Since:{!! "&nbsp;" !!}{{$consultant->created_at->format('Y','M','D')}}</span></li>
-                                        <li><span>Location:</span>{{$consultant->userConsultant->address ?? ''}}.</li>
-                                           </ul>
-                                       </div>
-                                       <div class="cabin-price">
-                                           <ul><li>
-                                            <div class="d-flex flex-wrap align-items-center pt-2">
-                                                <p class="mr-2">Rating:</p>
+                                        <div class="author-bio">
+                                            {{-- {{dd($consultant)}} --}}
+                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->consultant->company_name}}</a></h4>
+                                            <span class="author__meta">Member Since :{{$consultant->userConsultant->consultant->created_at->Format("Y") ?? ''}}</span>
+                                            <div class="d-flex flex-wrap align-items-center ">
+                                                {{-- <p class="mr-2">Rating:</p> --}}
 
                                                     <span>@if($consultant->userConsultant->rating == 3 ?? '' )
                                                             <span class="ratings ">
@@ -348,87 +386,97 @@
                                                         <i class="la la-star-o"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($consultant->userConsultant->rating == null) - @else{{$consultant->userConsultant->rating ?? ''}}/5 @endif</span>
+                                                    @endif
+                                                    </span>
+                                                   {{--  {!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($consultant->userConsultant->rating == null) - @else{{$consultant->userConsultant->rating ?? ''}}/5 @endif</span> --}}
                                                 </p>
-                                            </div></li>
-                                           </ul>
-                                           <div class="custom-checkbox mb-0">
-                                               <input type="checkbox" id="chb2">
-                                               @if(auth()->user())
-                                               @if(auth()->user()->isClient())
+                                            </div>
+                                            <div>
+                                                @if(auth()->user())
+                                                @if(auth()->user()->isClient())
 
-<form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
-    @csrf
-    <input type="text" name="universityid" value="{{$university->id}}" hidden>
-    <input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
+ <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
+     @csrf
+     <input type="text" name="universityid" value="{{$university->id}}" hidden>
+     <input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
 
-                                           {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
-                                           <button type="submit" class="theme-btn theme-btn-small">Book Now</button>
+                                            {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
+                                            <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
 
-</form>
-                                         @else
-                                      <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Detail</label></a>
-                                         @endif
-                                         @else
-                                         <button type="submit" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Book Now</button>
-                                         @endif
+ </form>
+                                          @else
+                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                                          @endif
+                                          @else
+                                          <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
+                                          @endif
 
+                                            </div>
                                         </div>
-                                       </div>
-                                    </div><!-- end cabin-type-item -->
-                                </div><!-- end cabin-type -->
-                                @else
-                               <h4 class="mt-5" style="text-align:center;"> No consultant Affiliated</h4 >
-                                @endif
-                                @endforeach
+                                    </div></li>
+                                    @endif
+@endforeach
 
+                                </ul>
+                            </div><!-- end sidebar-list -->
+                        </div><!-- end sidebar-widget -->
+                        @endif
+
+                    </div><!-- end sidebar -->
+                    {{-- @endif --}}
+                </div><!-- end col-lg-4 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end single-content-box -->
+</section><!-- end cruise-detail-area -->
+<section class="hotel-area section-bg padding-top-100px padding-bottom-200px overflow-hidden" id="staterooms">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading text-center">
+                    <h2 class="sec__title line-height-55">Select  Consultant</h2>
+                </div><!-- end section-heading -->
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+        <div class="row padding-top-50px">
+            <div class="col-lg-12">
+                <div class="hotel-card-wrap">
+                    <div class="hotel-card-carousel-2 carousel-action">
+                        @if ($university->universityConsultant)
+                        <?php $consultants=$university->universityConsultant; ?>
+
+                        @foreach($consultants as $consultant)
+                        {{-- @if($consultant->isConsultant()) --}}
+                        <div class="card-item car-card border">
+                            <div class="card-img" style="text-align: center; height:185px;">
+
+                                <a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}" class="d-block">
+                                    @if(isset($consultant->userConsultant->consultant->cover_image) && file_exists($consultant->userConsultant->consultant->cover_image))
+                                                        <img
+                                                        style=" width: 368px;
+                                                        height: 245px;"
+                                                        src="{{asset($consultant->userConsultant->consultant->cover_image)}}" alt="">
+                                                            @else
+                                                            <img     style=" width: 368px;
+                                                            height: 245px;" src="{{asset('frontEnd/assets/images/img21.jpg')}}" >
+                                                            @endif
+                                </a>
+                                <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
+                                    <img
+                                    style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                                    src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
+                                        @else
+                                        <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                        @endif</div>
+                                {{-- <span class="badge">Top Ranked</span> --}}
+                                {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                    <i class="la la-heart-o"></i>
+                                </div> --}}
                             </div>
-                            @endif<!-- end single-content-item -->
-                            <p class="font-size-14 line-height-26 padding-bottom-40px"><strong class="text-black">Please note:</strong>Above Consultants are affiliated to this University.</p>
-                            <div class="section-block"></div>
-                        </div>
-                        <!-- end reviews -->
-                        <!-- end review-box -->
-                    </div><!-- end single-content-wrap -->
-                </div><!-- end col-lg-8 -->
-
-
-
-
-                <div class="col-lg-4">
-                    <div class="sidebar single-content-sidebar mb-0">
-    @if ($university->universityConsultant)
-                        <?php $universityconsultant=$university->universityConsultant; ?>
-                        <div class="sidebar-widget single-content-widget">
-                            <h3 class="title stroke-shape">Featured Consultant</h3>
-                            <!-- Example split danger button -->
-
-                            <div class="input-group mb-3 ">
-                                <div class="input-group-prepend">
-                                  <button class="btn btn-outline-primary btn-sm" type="button" id="button-addon1">Country</button>
-                                </div>
-                                <input type="text" class="form-control col-xs-2" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              </div>
-                            <div class="sidebar-list" style="
-
-                            height: 530px;
-                            overflow: scroll;">
-                                <ul class="list-items">
-            @foreach($universityconsultant as $consultant)
-                                    <li><div class="author-content d-flex">
-                                        <div class="author-img">
-                                            <a href="#">@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
-                                                <img style=" width: 70px;
-                                                height: 70px;" src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
-                                                    @else
-                                                    <img style=" width: 70px; height: 70px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                                                    @endif</a>
-                                        </div>
-                                        <div class="author-bio">
-                                            {{-- {{dd($consultant)}} --}}
-                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->consultant->company_name}}</a></h4>
-                                            <span class="author__meta">Member Since :{{$consultant->userConsultant->consultant->created_at->Format("Y") ?? ''}}</span>
-                                            <div class="d-flex flex-wrap align-items-center ">
+                            <div class="card-body">
+                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}">{{$consultant->userConsultant->first_name}}{{$consultant->userConsultant->lasts_name}}</a></h3>
+                                <p class="card-meta">{{$consultant->city ?? ''}}</p>
+                                  <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>
 
                                                     <span>@if($consultant->userConsultant->rating == 3 ?? '' )
@@ -474,187 +522,51 @@
                                                     @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($consultant->userConsultant->rating == null) - @else{{$consultant->userConsultant->rating ?? ''}}/5 @endif</span>
 
                                             </div>
-                                            <div>
-                                                @if(auth()->user())
-                                                @if(auth()->user()->isClient())
-
- <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
-     @csrf
-     <input type="text" name="universityid" value="{{$university->id}}" hidden>
-     <input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
-
-                                            {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
-                                            <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now</button>
-
- </form>
-                                          @else
-                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail</label></a>
-                                          @endif
-                                          @else
-                                          <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now</button>
-                                          @endif
-
+                                            <div class="card-attributes">
+                                                <ul class="d-flex align-items-center">
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Since"><i class="las la-university"></i><span>   @if(isset($consultant->created_at))
+                                                        {{$consultant->created_at->Format("Y")}}
+                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span>
+                                                        @if(isset($consultant->userConsultant->consultantBooking))
+                                                        {{$consultant->userConsultant->consultantBooking->count()}}@else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>   @if(isset($consultant->userConsultant->consultantUniversity))
+                                                        {{$consultant->userConsultant->consultantUniversity->count()}}
+                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>45</span></li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                    </div></li>
-@endforeach
-
-                                </ul>
-                            </div><!-- end sidebar-list -->
-                        </div><!-- end sidebar-widget -->
-                        @endif
-
-                    </div><!-- end sidebar -->
-                    {{-- @endif --}}
-                </div><!-- end col-lg-4 -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end single-content-box -->
-</section><!-- end cruise-detail-area -->
-<section class="hotel-area section-bg padding-top-100px padding-bottom-200px overflow-hidden">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading text-center">
-                    <h2 class="sec__title line-height-55">Featured Consultant <br> You Might Like</h2>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-        <div class="row padding-top-50px">
-            <div class="col-lg-12">
-                <div class="hotel-card-wrap">
-                    <div class="hotel-card-carousel-2 carousel-action">
-                        <?php $consultants=App\Models\User::get();?>
-                        @foreach($consultants as $consultant)
-                        @if($consultant->isConsultant())
-                        <div class="card-item">
-                            <div class="card-img">
-                                <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
-                                    @if(isset($consultant->profile_image) && file_exists($consultant->profile_image))
-                                    <img style=" width: 152px;
-                                    height: 115px;" src="{{asset($consultant->profile_image)}}" alt="">
-                                        @else
-                                        <img style=" width: 152px; height: 152px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                                        @endif
-                                </a>
-                                {{-- <span class="badge">Bestseller</span>
-                                <span class="badge badge-ribbon">30% off</span> --}}
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->consultant->company_name ?? ''}}</a></h3>
-                                <p class="card-meta">{{$consultant->city ?? ''}}</p>
-                                <div class="card-rating">
-                                    <div class="d-flex flex-wrap align-items-center ">
-                                        <p class="mr-2">Rating:</p>
-
-                                            <span>@if($consultant->rating == 3 ?? '' )
-                                                    <span class="ratings ">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                    </span>
-                                            @elseif($consultant->rating == 4 ?? '' )
-                                            <span class="ratings ">
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star-o"></i>
-                                            </span>
-                                            @elseif($consultant->rating == 5 ?? '' )
-                                            <span class="ratings ">
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                            </span>
-                                            @elseif($consultant->rating == 1?? '' )
-                                            <span class="ratings ">
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star-o"></i>
-                                                <i class="la la-star-o"></i>
-                                                <i class="la la-star-o"></i>
-                                                <i class="la la-star-o"></i>
-                                            </span>
-                                            @elseif($consultant->rating == 2 ?? '' )
-                                            <span class="ratings ">
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star"></i>
-                                                <i class="la la-star-o"></i>
-                                                <i class="la la-star-o"></i>
-                                                <i class="la la-star-o"></i>
-                                            </span>
-                                            @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($consultant->rating == null) - @else{{$consultant->rating ?? ''}}/5 @endif</span>
-
-                                    </div>
-                                </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
                                         <span class="price__text">City :</span>
-                                        <span class="price__num">{{$consultant->city}}</span>
+                                        <span class="price__num">{{$consultant->userConsultant->city}}</span>
                                         {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                     </p>
-                                    <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                    @if(auth()->user())
+                                    @if(auth()->user()->isClient())
+
+<form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
+@csrf
+<input type="text" name="universityid" value="{{$university->id}}" hidden>
+<input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
+
+                                {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
+                                <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
+
+</form>
+                              @else
+                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                              @endif
+                              @else
+                              <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
+                              @endif
                                 </div>
                             </div>
                         </div>
-                        @endif
+                        {{-- @endif --}}
                         @endforeach<!-- end card-item -->
-                        <div class="card-item">
-                            <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
-                                    <img src="images/img2.jpg" alt="hotel-img">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">Best Western Grant Park Hotel</a></h3>
-                                <p class="card-meta">124 E Huron St, Chicago</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">From</span>
-                                        <span class="price__num">$58.00</span>
-                                        <span class="price__text">Per night</span>
-                                    </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-
-                        <div class="card-item">
-                            <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
-                                    <img src="images/img4.jpg" alt="hotel-img">
-                                </a>
-                                <span class="badge">Popular</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">Four Seasons Resort Maui at Wailea</a></h3>
-                                <p class="card-meta">3900 Wailea Alanui Drive, Kihei, HI</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__num">$88.00</span>
-                                        <span class="price__text">Per night</span>
-                                    </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-
-
-                    </div><!-- end hotel-card-carousel -->
+                        @endif
+                </div><!-- end hotel-card-carousel -->
                 </div>
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->

@@ -17,6 +17,7 @@ use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\Package;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Http\Middleware\SetCacheHeaders;
 use Illuminate\Auth\Middleware\Authorize;
@@ -74,6 +75,7 @@ class Kernel extends HttpKernel
         'verified' => EnsureEmailIsVerified::class,
         'checkroll'=> checkRoll::class,
         'role' => RoleMiddleware::class,
+        'Package'=>Package::class
         // 'permission' => PermissionMiddleware::class,
     ];
 

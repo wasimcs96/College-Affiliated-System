@@ -26,15 +26,7 @@ class PaymentController extends Controller
         $time=$request->package_time ?? '';
         $user=auth()->user();
         // dd(Carbon::now()->addMonth($time));
-        if ($request->payment_type == 0) {
-            $user->Subscription_expire_date=Carbon::now()->addMonths($time);
-        $user->save();
-        }
-
-        if ($request->payment_type == 1) {
-            $user->Premium_expire_date=Carbon::now()->addMonths($time);
-        $user->save();
-        }
+      
 
 
         $name = auth()->user()->first_name . (auth()->user()->id);
@@ -67,6 +59,20 @@ class PaymentController extends Controller
             'status' => 1,
         ]);
         $order->save();
+
+
+        $user=auth()->user();
+        if ($request->payment_type == 0) {
+            $time=$request->package_time;
+            $user->Subscription_expire_date=Carbon::now()->addMonths($time);
+        $user->save();
+        }
+
+        if ($request->payment_type == 1) {
+            $time=$request->package_time;
+            $user->Premium_expire_date=Carbon::now()->addMonths($time);
+        $user->save();
+        }
 
 
         $orderID = $order->id;

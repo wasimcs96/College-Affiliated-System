@@ -11,6 +11,7 @@ use Illuminate\Support\Carbon;
 use DateInterval;
 use Dotenv\Regex\Success;
 use App\Http\Controllers\PaymentController;
+use Illuminate\Support\Facades\Mail;
 
 class ConsultantAdvertisementController extends Controller
 {
@@ -51,7 +52,10 @@ class ConsultantAdvertisementController extends Controller
         'time_period'=> $expire,
         'order_id'=>$request->orderId
     ]);
-
+    // $replacement['token'] =$request->_token;
+    // $replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
+    // $data = ['template'=>'welcome-email','hooksVars' => $replacement];
+    //     Mail::to("qsaif253@gmail.com")->send(new \App\Mail\ManuMailer($data));
       // $new=new PaymentController();
        //$new->payment($request);
 //dd($new);

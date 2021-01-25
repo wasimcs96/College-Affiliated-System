@@ -55,4 +55,26 @@ $as= Advertisement::create([
      return redirect()->route('university.advertisement')->with('success','Advertisement updated successfully');
     }
 
+
+    public function edit($id)
+    {
+         $ad=Advertisement::where('id',$id)->first();
+         // dd($ad);
+         return view('university.advertisement.advertisement_edit',compact('ad'));
+    }
+
+    public function update(Request $request , $id)
+    {
+        $advertise=Advertisement::find($id);
+        $profile_image = $request->image;
+        $profile_image_new_name = time().$profile_image->getClientOriginalName();
+        $profile_image->move(Config::get('define.image.advertisement'),$profile_image_new_name);
+        $advertise->banner_image = Config::get('define.image.advertisement').'/'.$profile_image_new_name;
+     $advertise->save();
+
+     return redirect()->route('university.advertisement')->with('success','Advertisement updated successfully');
+
+    }
+
+
 }

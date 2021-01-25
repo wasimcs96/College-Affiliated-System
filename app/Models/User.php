@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\UniversityConsultantClient;
 use App\Models\Order;
+use Illuminate\Support\Facades\Mail;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, HasRoles,UserMethod;
@@ -44,7 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'countries_id',
         'google',
         'facebook',
-        'linkedin'
+        'linkedin',
+        'email_verified_at'
 
     ];
 
@@ -86,7 +89,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function universityConsultantClient()
     {
-        return $this->hasMany(UniversityConsultantClient::class,'user_id');
+        return $this->hasMany(UniversityConsultantClient::class,'university_id');
     }
 
     public function consultantBooking()
@@ -160,6 +163,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Country::class,'countries_id');
     }
+
+
+
 
 
 }

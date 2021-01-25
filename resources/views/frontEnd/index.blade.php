@@ -10,6 +10,7 @@
 ================================= -->
 <section class="hero-wrapper">
     <div class="hero-box hero-bg">
+
         <span class="line-bg line-bg1"></span>
         <span class="line-bg line-bg2"></span>
         <span class="line-bg line-bg3"></span>
@@ -206,7 +207,7 @@
                             <div class="contact-form-action">
                                 <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
                                     @csrf
-                                    <div class="col-lg-2 col-sm-6 pr-0">
+                                    <div class="col-lg-6 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
                                             <div class="form-group">
@@ -230,7 +231,7 @@
                                         </div>
                                     </div><!-- end col-lg-3 -->
 
-                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                    <div class="col-lg-4 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">University Type</label>
                                             <div class="form-group">
@@ -305,7 +306,7 @@
                             <div class="contact-form-action">
                                 <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" class="row align-items-center">
                                     @csrf
-                                    <div class="col-lg-2 col-sm-6 pr-0">
+                                    <div class="col-lg-6 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
                                             <div class="form-group">
@@ -389,14 +390,14 @@
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
         </div><!-- end container -->
-        <svg class="hero-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 10 0 0 A 90 59, 0, 0, 0, 100 0 L 100 10 Z"></path></svg>
+        {{-- <svg class="hero-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 10 0 0 A 90 59, 0, 0, 0, 100 0 L 100 10 Z"></path></svg> --}}
     </div>
 </section><!-- end hero-wrapper -->
 <!-- ================================
     END HERO-WRAPPER AREA
 ================================= -->
 
-    <div class="jumbotron jumbotron-fluid" style="margin-top: 30px; background-image: url('{{asset("frontEnd/assets/images/color-bg3.png")}}');">
+    <div class="jumbotron jumbotron-fluid" style="margin-top: 60px; background-image: url('{{asset("frontEnd/assets/images/color-bg3.png")}}');">
     <div class="container">
            <div class="container">
 
@@ -463,16 +464,19 @@
 
                     <h4>Featured University <span style="
                         float: right;
-                    "><a  href="{{route('university_all')}}" class="btn btn-primary btn-sm">View all</a></span></h4>
+                    "><a  href="{{route('university_all')}}" class="theme-btn theme-btn-small mt-2">View all</a></span></h4>
                     <hr>
                     <?php $universities = App\Models\User::get();
                     ?>
+                        <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+
                    @if($universities->count()>0)
 
                     <div class="testimonial-carousel carousel-action">
                         @foreach($universities as $key => $university)
                         {{-- {{dd($university)}} --}}
                         @if($university->isUniversity())
+                        @if($university->Premium_expire_date >$mytime)
                         <div class="testimonial-card">
 
                             <div class="author-content d-flex align-items-center">
@@ -553,14 +557,15 @@
 
 
                                 <span class="price__text"><b>Average Fees :</b></span>
-                                <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+                                <span class="price__num"><i class="las la-rupee-sign"></i>{{$university->university->average_fees ?? ''}}</span>
 
                                 <a  style="
                                 float: right;
-                            " class="btn btn-primary" href="{{route('university_detail',['id'=>$university->id])}}">Details<i class="las la-angle-double-right"></i></a>
+                            " class="theme-btn theme-btn-small mt-2" href="{{route('university_detail',['id'=>$university->id])}}">Details<i class="las la-angle-double-right"></i></a>
                             </div>
 
                         </div><!-- end testimonial-card -->
+                        @endif
                         @endif
                         @endforeach
                     </div><!-- end testimonial-carousel -->
@@ -578,12 +583,15 @@
 
                     <h4> Featured Consultants</h4>
                     <hr>
+                    <?php $consultanttime=Carbon\Carbon::now()->format('Y-m-d');?>
+
                     <?php $consultants = App\Models\User::get();
                     ?>
                     @if($consultants->count()>0)
                     <div class="testimonial-carousel carousel-action">
                         @foreach($consultants as $consultant)
                         @if($consultant->isConsultant())
+                        @if($consultant->Premium_expire_date >$consultanttime)
 
                         <div class="testimonial-card">
 
@@ -600,7 +608,7 @@
                                         @endif </a>
                                 </div>
                                 <div class="author-bio">
-                                    <a href="{{route('consultant_detail',['id' => $consultant->id ?? ''])}}"><h4 class="author__title">{{$consultant->consultant->compant_name ?? ''}}</h4></a>
+                                    <a href="{{route('consultant_detail',['id' => $consultant->id ?? ''])}}"><h4 class="author__title">{{$consultant->first_name ?? ''}}{{$consultant->last_name ?? ''}}</h4></a>
                                     {{-- <span class="author__meta">{{$consultant->last_name}}</span> --}}
                                     <span class="ratings d-flex align-items-center">
                                         @if($consultant->rating == 3 ?? '' )
@@ -665,10 +673,11 @@
                                 <span class="price__num">{{$consultant->city ?? ''}}</span>
                                 <a style="
                                 float: right;
-                            " class="btn btn-primary" href="{{route('consultant_detail',['id'=>$consultant->id])}}">Details<i class="las la-angle-double-right"></i></a>
+                            " class="theme-btn theme-btn-small mt-2" href="{{route('consultant_detail',['id'=>$consultant->id])}}">Details<i class="las la-angle-double-right"></i></a>
                             </div>
 
                         </div><!-- end testimonial-card -->
+                        @endif
 
                         @endif
                         @endforeach
@@ -2213,6 +2222,7 @@
                 <div class="mobile-img">
                     {{-- <img src="{{ asset('frontEnd/assets/images/mobile-app.png') }}" alt="mobile-img"> --}}
                     <img src="{{ asset('frontEnd/assets/images/contactus.gif') }}" alt="mobile-img">
+                    <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_du7jspky.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>
                 </div>
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
@@ -2264,10 +2274,40 @@
        START FOOTER AREA
 ================================= -->
 @endsection
+@section('per_page_style')
+<style></style>
+<style>
+canvas {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+  }
+  </style>
+@endsection
  @section('per_page_script')
 {{-- <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script> --}}
 rt=$('#categoryselect').val();
-
+<script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
+<script src="{{ asset('frontEnd/assets/js/vanta.net.min.js') }}"></script>
+<script>
+VANTA.NET({
+  el: ".hero-bg",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x3f4aff,
+  backgroundColor: 0x23153c,
+  points: 20.00,
+  maxDistance: 25.00,
+  spacing: 17.00
+})
+</script>
 <script>
     $(document).on('change', '#typeselect', function ()
     {

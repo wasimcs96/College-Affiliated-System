@@ -1897,6 +1897,10 @@
                 "matrix",
                 "vector"
             ],
+            "support": {
+                "issues": "https://github.com/MarkBaker/PHPMatrix/issues",
+                "source": "https://github.com/MarkBaker/PHPMatrix/tree/2.1.1"
+            },
             "time": "2021-01-21T13:53:09+00:00"
         },
         {
