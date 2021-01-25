@@ -24,17 +24,17 @@
     START BREADCRUMB AREA
 ================================= -->
 
-    <section class="breadcrumb-area bread-bg-4 py-0" style="background-image: url('{{asset($university->profile_image)}}');">
+    <section class="breadcrumb-area bread-bg-4 py-0" style="background-image: url('{{asset($university->university->cover_image)}}');">
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
                         <img
-                         style="width: 106px;height: 98px; border-radius:98px;"
+                        style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
                         src="{{asset($university->profile_image)}}" alt="">
                             @else
-                            <img style="width: 106px;height: 98px; border-radius:98px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                            <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                             @endif</div>
                     <div class="breadcrumb-btn">
                         <div class="btn-box"  style="
@@ -463,10 +463,10 @@
                                 </a>
                                 <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
                                     <img
-                                     style="width: 106px;height: 98px; border-radius:98px;"
+                                    style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
                                     src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
                                         @else
-                                        <img style="width: 106px;height: 98px; border-radius:98px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                        <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                         @endif</div>
                                 {{-- <span class="badge">Top Ranked</span> --}}
                                 {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">

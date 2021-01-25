@@ -796,7 +796,8 @@ body {
 
 .theme-btn:hover {
     background-color: #fff;
-    color: #287dfa
+    color: #287dfa;
+    transform: rotateY(360deg);
 }
 
 .theme-btn-small {
@@ -5392,7 +5393,13 @@ body {
     -moz-transform: translateY(0);
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
-    transform: translateY(0)
+    transform: translateY(0);
+    box-shadow:
+    1px 1px #53a7ea,
+    2px 2px #53a7ea,
+    3px 3px #53a7ea;
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
 }
 
 .card-attributes {
@@ -9956,6 +9963,19 @@ body {
     -o-transform: scale(1.1);
     transform: scale(1.1)
 }
+/* .testimonial-card:hover{
+    -webkit-animation: swing 1s ease;
+    animation: swing 1s ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+} */
+
+ /* .info-icon:hover {
+    -webkit-transform: rotateZ(-30deg);
+        -ms-transform: rotateZ(-30deg);
+        transform: rotateZ(-30deg);
+} */
+
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .icon-box.margin-top-50px {

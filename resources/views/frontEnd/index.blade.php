@@ -207,7 +207,7 @@
                             <div class="contact-form-action">
                                 <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
                                     @csrf
-                                    <div class="col-lg-2 col-sm-6 pr-0">
+                                    <div class="col-lg-6 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
                                             <div class="form-group">
@@ -231,7 +231,7 @@
                                         </div>
                                     </div><!-- end col-lg-3 -->
 
-                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                    <div class="col-lg-4 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">University Type</label>
                                             <div class="form-group">
@@ -306,7 +306,7 @@
                             <div class="contact-form-action">
                                 <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" class="row align-items-center">
                                     @csrf
-                                    <div class="col-lg-2 col-sm-6 pr-0">
+                                    <div class="col-lg-6 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
                                             <div class="form-group">
@@ -390,14 +390,14 @@
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
         </div><!-- end container -->
-        <svg class="hero-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 10 0 0 A 90 59, 0, 0, 0, 100 0 L 100 10 Z"></path></svg>
+        {{-- <svg class="hero-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 10 0 0 A 90 59, 0, 0, 0, 100 0 L 100 10 Z"></path></svg> --}}
     </div>
 </section><!-- end hero-wrapper -->
 <!-- ================================
     END HERO-WRAPPER AREA
 ================================= -->
 
-    <div class="jumbotron jumbotron-fluid" style="margin-top: 30px; background-image: url('{{asset("frontEnd/assets/images/color-bg3.png")}}');">
+    <div class="jumbotron jumbotron-fluid" style="margin-top: 60px; background-image: url('{{asset("frontEnd/assets/images/color-bg3.png")}}');">
     <div class="container">
            <div class="container">
 
@@ -464,7 +464,7 @@
 
                     <h4>Featured University <span style="
                         float: right;
-                    "><a  href="{{route('university_all')}}" class="btn btn-primary btn-sm">View all</a></span></h4>
+                    "><a  href="{{route('university_all')}}" class="theme-btn theme-btn-small mt-2">View all</a></span></h4>
                     <hr>
                     <?php $universities = App\Models\User::get();
                     ?>
@@ -561,7 +561,7 @@
 
                                 <a  style="
                                 float: right;
-                            " class="btn btn-primary" href="{{route('university_detail',['id'=>$university->id])}}">Details<i class="las la-angle-double-right"></i></a>
+                            " class="theme-btn theme-btn-small mt-2" href="{{route('university_detail',['id'=>$university->id])}}">Details<i class="las la-angle-double-right"></i></a>
                             </div>
 
                         </div><!-- end testimonial-card -->
@@ -583,12 +583,15 @@
 
                     <h4> Featured Consultants</h4>
                     <hr>
+                    <?php $consultanttime=Carbon\Carbon::now()->format('Y-m-d');?>
+
                     <?php $consultants = App\Models\User::get();
                     ?>
                     @if($consultants->count()>0)
                     <div class="testimonial-carousel carousel-action">
                         @foreach($consultants as $consultant)
                         @if($consultant->isConsultant())
+                        @if($consultant->Premium_expire_date >$consultanttime)
 
                         <div class="testimonial-card">
 
@@ -670,10 +673,11 @@
                                 <span class="price__num">{{$consultant->city ?? ''}}</span>
                                 <a style="
                                 float: right;
-                            " class="btn btn-primary" href="{{route('consultant_detail',['id'=>$consultant->id])}}">Details<i class="las la-angle-double-right"></i></a>
+                            " class="theme-btn theme-btn-small mt-2" href="{{route('consultant_detail',['id'=>$consultant->id])}}">Details<i class="las la-angle-double-right"></i></a>
                             </div>
 
                         </div><!-- end testimonial-card -->
+                        @endif
 
                         @endif
                         @endforeach
@@ -2271,6 +2275,7 @@
 ================================= -->
 @endsection
 @section('per_page_style')
+<style></style>
 <style>
 canvas {
 
