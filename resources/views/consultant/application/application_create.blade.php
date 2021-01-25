@@ -725,7 +725,7 @@
 
         </div>
     </div>
-    <button type="button" id="closeApplicationButton" custom1="{{$application->id}}" class="btn btn-danger"  @if($application->status == 0 ?? '') data-toggle="modal" data-target="#closeApplicationModal" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif>Close Application</button>
+    <button type="button" id="closeApplicationButton" custom1="{{$application->id}}" class="btn btn-danger"  @if($application->status == 0 ?? '') data-toggle="modal" data-target="#closeApplicationModal" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif style="margin-bottom: 10px; float: right; margin-top: -15px;">Close Application</button>
     {{-- <a href="javascript:void(0);" class="btn btn-danger">Close Application</a> --}}
 </div>
 

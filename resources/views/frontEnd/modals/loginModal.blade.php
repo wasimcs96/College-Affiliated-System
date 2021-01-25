@@ -58,15 +58,15 @@
                             </div><!-- end input-box -->
                             <div class="btn-box pt-3 pb-4">
                                 <button type="submit" class="theme-btn w-100">Login Account</button>
-                              New to Website? <a href="#" id="signupalready" data-toggle="modal" data-target="#registerModal">Sign Up</a>
+                              New to Website? <a href="javascript:void(0);" id="signupalready" data-toggle="modal" data-target="#registerModal">Sign Up</a>
                             </div>
                             <div class="action-box text-center">
                                 <p class="font-size-14">Or Login Using</p>
                                 <ul class="social-profile py-3">
-                                    
+
                                     <li><a href="{{ url('/login/facebook') }}" class="bg-5 text-white"><i class="lab la-facebook-f"></i></a></li>
                                     <li><a href="{{ url('/login/google') }}" class="bg-6 text-white"><i class="lab la-google"></i></a></li>
-                                   
+
                                     <li><a href="{{ url('/login/linkedin') }}" class="bg-5 text-white"><i class="lab la-linkedin-in"></i></a></li>
                                 </ul>
                             </div>
@@ -80,7 +80,7 @@
 @section('per_page_script')
 @parent
 
-  @if($errors->has('email') || $errors->has('password'))
+    @if($errors->has('email') || $errors->has('password'))
       <script>
       $(function() {
           $('#loginPopupForm').modal({
@@ -90,10 +90,14 @@
 
 
       </script>
-      @endif
-      <script>
-      $(document).on('click','#signupalready', function (e) {
-         $('#loginPopupForm').modal('hide');
-      });
-    </script>
+    @endif
+
+<script>
+
+$(document).on('click', '#signupalready', function ()
+ {
+    $('#loginPopupForm').modal('hide');
+         console.log('test');
+ });
+ </script>
 @endsection
