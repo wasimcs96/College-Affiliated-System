@@ -14,6 +14,7 @@ use App\Models\Course;
 use App\Models\Country;
 use App\Models\User;
 use App\Models\University;
+use App\Models\UniversityConsultantClient;
 use App\Models\ConsultantDues;
 use DB;
 use Config;
@@ -180,7 +181,7 @@ class ConsultantApplicationController extends Controller
 
     public function universityUpdate(Request $request)
     {
-        //  dd($request->all());
+        //   dd($request->all());
         if($request->hiddenValue == 4)
         {
              $id = $request->apply_id;
@@ -206,6 +207,18 @@ class ConsultantApplicationController extends Controller
             $university->documents = $document;
             $university->fees =$fees;
             $university->save();
+            $ucClient = UniversityConsultantClient::where('client_id',$request->client_id)->get()->first();
+            if($ucClient==null)
+            {
+            UniversityConsultantClient::create([
+                'client_id' => $request->client_id,
+                'consultant_id' => auth()->user()->id,
+                'university_id' => $request->university_id,
+            ]);
+            }
+            $application = Application::find($request->application_id);
+            $application->status = 1;
+            $application->save();
             return redirect()->back()->with('success','Application Process is Completed Successfully');
         }
         // $university_id = $request->uni_id;
@@ -287,5 +300,15 @@ class ConsultantApplicationController extends Controller
         return redirect()->back()->with('success','University Added Successfully');
 
      }
+
+     public function closeApplication(Request $request)
+     {
+        //   dd($request->all());
+        $application = Application::find($request->applicationCloseId);
+        $application->status = 2;
+        $application->save();
+        return redirect()->back()->with('danger','University Added Successfully');
+
+      }
 
 }

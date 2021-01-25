@@ -389,4 +389,10 @@ Route::post('advertisement/update/{id}',[
     'as'=>'consultant.advertisement.update'
 ]);
 
+/* Application Close */
+Route::post('application/close',[
+    'uses' =>'ConsultantApplicationController@closeApplication',
+    'as'=>'consultant.application.close'
+]);
+
 });

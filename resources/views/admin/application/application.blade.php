@@ -46,7 +46,8 @@
                             {{-- <td>{{$application->consultant->university->university_name}}</td> --}}
                             {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
                             <td>@if($application->status==0)<div class="btn btn-warning">In Progress</div>@endif
-                                @if($application->status==1)<div class="btn btn-danger">Closed</div>@endif
+                                @if($application->status==1)<div class="btn btn-success">Completed</div>
+                                @if($application->status==2)<div class="btn btn-danger">Closed</div>@endif
 
                             </td>
                             <td style="text-align: center;"><a href="{{route('admin.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>

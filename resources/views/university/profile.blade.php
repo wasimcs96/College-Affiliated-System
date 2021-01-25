@@ -227,7 +227,7 @@
                                 <input type="file" name="brochure" accept="application/pdf" />
                             </div>
                             <br>
-                            @if(file_exists(Auth()->user()->university->brochure))
+                            @if(file_exists(Auth()->user()->university->brochure) || )
                                <a href="{{asset(auth()->user()->university->brochure)}}" class="btn btn-primary" target="blank">Uploaded Brochure</a>
                             @endif
                         </div>
