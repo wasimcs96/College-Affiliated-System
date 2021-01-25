@@ -387,7 +387,7 @@
                                 <form id="wizard_with_validation{{$key}}" action="{{ route('consultant.application.update.university') }}" method="POST" class="addInput">
                                     @csrf
                                     <div id="addInput">
-
+ <input type="text" value="{{$application->user->id ?? ''}}" name="client_id" hidden>
                                     </div>
                                      <h3>Apply in University</h3>
                                      <fieldset>
@@ -416,6 +416,7 @@
 
                                          </div>
                                      <input type="text" name="university_id" value="{{$applied->userUniversity->id ?? ''}}" hidden>
+
                                      <input type="text" name="apply_id" value="{{$applied->id ?? ''}}" hidden>
 
                                      <div class="col-lg-6 col-md-12">
