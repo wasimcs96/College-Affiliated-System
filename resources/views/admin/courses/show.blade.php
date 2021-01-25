@@ -29,13 +29,13 @@
 
                     <tr>
                         <th scope="row">Course Category</th>
-                        <td>{{$course->category->title}}</td>
+                        <td>{{$course->category->title ?? ''}}</td>
                     </tr>
 
 
                      <tr>
                         <th><b> Name</b></th>
-                        <td>{{$course->name}}</td>
+                        <td>{{$course->name ?? ''}}</td>
                     </tr>
 
                     <tr>

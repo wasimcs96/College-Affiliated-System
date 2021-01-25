@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Config;
 use App\Models\Category;
-
+use Illuminate\Support\Str;
 /**
  * Categories Controller
  *
@@ -51,7 +51,7 @@ class AdminCategoryController extends Controller
 
         $this->validate($request, [
             'title' => 'required',
-            'slug' => 'required',
+
             'status' => 'required'
 
         ]);
@@ -63,7 +63,7 @@ class AdminCategoryController extends Controller
 
          Category::create([
              'title'=> $request->title,
-             'slug'=> $request->slug,
+             'slug'=> Str::slug($request->title),
              'status' => $request->status,
              'parent_id'=>$request->parent_id,
              'banner'=> $newname,

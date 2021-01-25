@@ -44,10 +44,10 @@
                         <td>{{$category->title}}</td>
                     </tr>
 
-                    <tr>
+                    {{-- <tr>
                         <th><b>Slug</b></th>
                         <td>{{$category->slug}}</td>
-                    </tr>
+                    </tr> --}}
 
                     <tr>
                         <th><b>Status</b></th>
