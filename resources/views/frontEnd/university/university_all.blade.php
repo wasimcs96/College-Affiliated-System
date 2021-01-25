@@ -16,7 +16,7 @@
                             <div class="contact-form-action">
                                 <form action="{{route('universities_inner_fetch.universities')}}" method="POST" class="row">
                                     @csrf
-                                    <div class="col-lg-4 col-sm-6 pr-0">
+                                    <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">University Name</label>
                                             <div class="form-group">
@@ -25,7 +25,7 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                                    <div class="col-lg-2 col-sm-6 pr-0">
+                                    <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
                                             <div class="form-group">
@@ -51,7 +51,7 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
-                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                    <div class="col-lg-3 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Course Type</label>
                                             <div class="form-group">
@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-sm-2 pr-0">
+                                    <div class="col-lg-3 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Course</label>
                                             <div class="form-group">
@@ -157,10 +157,10 @@
                         </a>
                         <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
                             <img
-                             style="width: 106px;height: 98px; border-radius:98px;"
+                            style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
                             src="{{asset($university->profile_image)}}" alt="">
                                 @else
-                                <img style="width: 106px;height: 98px; border-radius:98px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                 @endif</div>
                         {{-- <span class="badge">Top Ranked</span> --}}
                         <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">

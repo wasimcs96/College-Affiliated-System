@@ -101,7 +101,12 @@
             transform: perspective(136px) rotateY(180deg);
             opacity: 0;
         }
-    }</style>
+    }
+    /* ######################################################################## */
+
+    /* ######################################################################## */
+
+    </style>
     @yield('per_page_style')
     {{-- <script src="https://kit.fontawesome.com/d8864c88b6.js" crossorigin="anonymous"></script> --}}
 </head>
