@@ -466,12 +466,12 @@
                                                  </tbody>
                                              </table>
                                          </div>
-                                           <div class="form-group">
+                                           {{-- <div class="form-group">
                                                <div class="fancy-checkbox">
                                                    <label><span> <p> @if ($applied->is_accepeted == 0) University has accepted your application. Please accept before <b> {{$applied->deadline}} </b>@else @endif </p></span></label>
 
                                                  </div>
-                                           </div>
+                                           </div> --}}
                                            {{-- <div class="row clearfix">
                                              @if ($applied->is_accepeted == 0)
                                              <div class="form-group" style="margin-left: 217px;">
@@ -540,7 +540,14 @@
                                              </div>
                                            </div>
 
-                                        <div class="col-lg-10 col-md-12">
+                                        <div class="col-lg-2 col-md-12">
+                                            <div class="form-group">
+                                               <label for="">Scholarship</label>
+                                                    <input type="text" name="scholarship" class="form-control" id="scholarship" @if($applied->scholarship=="NULL" || $applied->scholarship=="null" || $applied->scholarship=='') value="" @else value="{{$applied->scholarship}}" @endif />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-8 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')
                                             <div class="form-group">
                                                 <?php

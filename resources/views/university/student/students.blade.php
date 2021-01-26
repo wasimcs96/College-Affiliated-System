@@ -51,7 +51,7 @@
                                     @endif
                                     <td> {{$country->countries_name ?? ''}} </td>
                                    {{-- <td> {{$user->user->country->countries_name ?? ''}} </td> --}}
-                                   <td style="text-align: center;"><a href="{{route('university.student.show',['id' => $user->user->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                   <td style="text-align: center;"><a href="{{route('university.student.show',['id' => $user->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                     {{-- <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                     <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a> --}}
                                 </td>

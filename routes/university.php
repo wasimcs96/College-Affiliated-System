@@ -20,7 +20,7 @@ Route::get('students',[
     'as' => 'university.students',
 ]);
 
-Route::get('students/detail{id}',[
+Route::get('students/detail/{id}',[
     'uses' => 'UniversityStudentController@show',
     'as' => 'university.student.show',
 ]);

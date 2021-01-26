@@ -20,6 +20,7 @@ class UniversityStudentController extends Controller
     public function show($id)
     {
         $show = UniversityConsultantClient::where('id',$id)->first();
+        // dd($show);
         return view('university.student.student_show',compact('show'));
     }
 

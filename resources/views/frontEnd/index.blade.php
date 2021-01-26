@@ -694,6 +694,7 @@
 </section><!-- end testimonial-area -->
 
                     {{-- works start --}}
+
                     <section class="testimonial-area section-padding">
     <div class="container">
         <div class="section-heading text-center" >
@@ -751,9 +752,26 @@
             <div class="col-lg-6 ">
 
 
-                    <div class="embed-responsive embed-responsive-4by3 ">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                      </div>
+                    <div class="embed-responsive embed-responsive-4by3" style="height: 416px;">
+                        <object width="425" height="350" data="https://www.youtube.com/watch?v=wY6UyatwVTA" type="application/x-shockwave-flash"><param name="src" value="https://www.youtube.com/watch?v=wY6UyatwVTA" /></object>
+                        {{-- <div id="player" class="js-player" data-plyr-provider="youtube"
+                        data-plyr-embed-id="https://www.youtube.com/watch?v=wY6UyatwVTA" style="height: 500px;"></div> --}}
+                        {{-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe> --}}
+                        {{-- @if($course->mediavideo->type == 'youtube')
+
+
+                        <div id="player" class="js-player" data-plyr-provider="youtube"
+                             data-plyr-embed-id="{{$course->mediavideo->file_name}}"></div>
+                    @elseif($course->mediavideo->type == 'vimeo')
+                        <div id="player" class="js-player" data-plyr-provider="vimeo"
+                             data-plyr-embed-id="{{$course->mediavideo->file_name}}"></div>
+                    @elseif($course->mediavideo->type == 'upload')
+                        <video poster="" id="player" class="js-player" playsinline controls>
+                            <source src="{{$course->mediavideo->url}}" type="video/mp4"/>
+                        </video>
+
+                    @endif                        <video tabindex="-1" class="video-stream html5-main-video" controlslist="nodownload" style="width: 486px; height: 273px; left: 0px; top: 1px;" src="blob:https://www.youtube.com/d314ddcc-d7e1-44f2-a72a-04b419a920fd"></video> --}}
+                    </div>
                     <!-- end testimonial-carousel -->
             </div><!-- end col-lg-8 -->
         </div>
@@ -2356,12 +2374,6 @@ $(".ert").html(result)
         {
         countryId = $(this).val();
 
-
-
-
-
-
-
         $.ajaxSetup({headers:
         {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2382,4 +2394,18 @@ $(".ert").html(result)
 
         });
     </script>
+      <script src="https://cdn.plyr.io/3.5.3/plyr.polyfilled.js"></script>
+
+      <script>
+          const player = new Plyr('#player');
+
+        //   $(document).on('change', 'input[name="stars"]', function () {
+        //       $('#rating').val($(this).val());
+        //   })
+        //           @if(isset($review))
+        //   var rating = "{{$review->rating}}";
+        //   $('input[value="' + rating + '"]').prop("checked", true);
+        //   $('#rating').val(rating);
+        //   @endif
+      </script>
 @endsection
