@@ -66,12 +66,74 @@
                         @endif
                         <td>{{$country->countries_name ?? ''}}</td>
                     </tr>
-            </div>
+@if($user->isConsultant())
+                        <tr>
+                        <th scope="row">Company Name</th>
+                        <td>{{$user->consultant->company_name ?? ''}} </td>
+                    </tr>
 
+                    <tr>
+                        <th scope="row">Website</th>
+                        <td>{{$user->consultant->website ?? ''}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Working Week Days</th>
+                        <td>{{$user->consultant->working_week_days ?? ''}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Time Slot</th>
+                        <td>{{$user->consultant->start_time ?? ''}}-{{$user->consultant->end_time ?? ''}}</td>
+                    </tr>
+                        <tr>
+                        <th scope="row">About Me</th>
+                          <?php
+                                            $myvalue = $user->consultant->about_me ?? '';
+                                            if (strlen($myvalue) > 140)
+                                                {
+                                                    $myvalue = substr($myvalue, 0, 80);
+                                                    $myvalue = explode(' ', $myvalue);
+                                                    array_pop($myvalue); // remove last word from array
+                                                    $myvalue = implode(' ', $myvalue);
+                                                    // $myvalue = $myvalue . ' ...';
+                                                } ?>
+                        <td> <?php echo ($myvalue . '...')?></td>
+                    </tr>
 
+                    @endif
+                    @if($user->isUniversity())
+                        <tr>
+                        <th scope="row">University Name</th>
+                        <td>{{$user->university->university_name ?? ''}} </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Website</th>
+                        <td>{{$user->university->website ?? ''}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Average Fees</th>
+                        <td>{{$user->university->average_fees ?? ''}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">About Me</th>
+                          <?php
+                                            $myvalue = $user->university->about_me ?? '';
+                                            if (strlen($myvalue) > 140)
+                                                {
+                                                    $myvalue = substr($myvalue, 0, 80);
+                                                    $myvalue = explode(' ', $myvalue);
+                                                    array_pop($myvalue); // remove last word from array
+                                                    $myvalue = implode(' ', $myvalue);
+                                                    // $myvalue = $myvalue . ' ...';
+                                                } ?>
+                        <td> <?php echo ($myvalue . '...')?></td>
+                    </tr>
+
+                    @endif
                     </tbody>
 
                 </table>
+            </div>
                 @if($user->isClient())
                    <a href="{{route('admin.users',['id'=>1])}}" id="bac" class="btn btn-danger btn-flat">Back</a>
                 @endif

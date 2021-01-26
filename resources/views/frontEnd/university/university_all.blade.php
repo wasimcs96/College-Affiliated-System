@@ -163,9 +163,10 @@
                                 <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                 @endif</div>
                         {{-- <span class="badge">Top Ranked</span> --}}
-                        <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
+                        {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
+
                             <i class="las la-download"></i>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-body">
                         <p class="card-meta">
@@ -227,6 +228,11 @@
                             </div>
                         </div>
                         <div class="card-attributes">
+                            <p>
+                                <span class="price__text">Average Fees :</span>
+                                <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+                                {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                            </p>
                             <ul class="d-flex align-items-center">
                                 <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($university->university->created_at))
                                     {{$university->university->created_at->Format("Y")}}
@@ -240,13 +246,9 @@
                                         @else N/A @endif</span></li>
                             </ul>
                         </div>
+
                         <div class="card-price d-flex align-items-center justify-content-between">
-                            <p>
-                                <span class="price__text">Average Fees :</span>
-                                <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
-                                {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
-                            </p>
-                            {{-- <a href="{{route('university_detail',['id'=>$university->id])}}" style="background-color: #f9b851;border-color: #f9b851;color: white;" class="theme-btn theme-btn-small mt-2">Brochure{!!"&nbsp"!!}<i class="las la-download"></i></a> --}}
+                            <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
 
                             <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                         </div>
@@ -356,6 +358,93 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section>
+@endsection
+@section('per_page_style')
+<style>
+
+    .buttonDownload {
+        display: inline-block;
+        position: relative;
+        padding: 5px 22px;
+        background-color: #4CC713;
+        color: white;
+        font-family: sans-serif;
+        text-decoration: none;
+        font-size: 0.9em;
+        text-align: center;
+        text-indent: 15px;
+        margin-top: 7px;
+        border-radius: 4px;
+    }
+
+    .buttonDownload:hover {
+        background-color: #333;
+        color: white;
+    }
+
+    .buttonDownload:before, .buttonDownload:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 15px;
+        top: 52%;
+    }
+
+    /* Download box shape  */
+    .buttonDownload:before {
+        width: 10px;
+        height: 2px;
+        border-style: solid;
+        border-width: 0 2px 2px;
+    }
+
+    /* Download arrow shape */
+    .buttonDownload:after {
+        width: 0;
+        height: 0;
+        margin-left: 3px;
+        margin-top: -7px;
+
+        border-style: solid;
+        border-width: 4px 4px 0 4px;
+        border-color: transparent;
+        border-top-color: inherit;
+
+        animation: downloadArrow 2s linear infinite;
+        animation-play-state: paused;
+    }
+
+    .buttonDownload:hover:before {
+        border-color: #4CC713;
+    }
+
+    .buttonDownload:hover:after {
+        border-top-color: #4CC713;
+        animation-play-state: running;
+    }
+
+    /* keyframes for the download icon anim */
+    @keyframes downloadArrow {
+        /* 0% and 0.001% keyframes used as a hackish way of having the button frozen on a nice looking frame by default */
+        0% {
+            margin-top: -7px;
+            opacity: 1;
+        }
+
+        0.001% {
+            margin-top: -15px;
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            margin-top: 0;
+            opacity: 0;
+        }
+    }</style>
 @endsection
 @section('per_page_script')
 <script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>

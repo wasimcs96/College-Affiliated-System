@@ -26,7 +26,7 @@
                                 <th><b> E-mail</b></th>
                                 <th><b>City</b></th>
                                 <th><b>Country</b></th>
-                                <th><b>Actions</b></th>
+                                <th  style="text-align: center;"><b>Actions</b></th>
                             </tr>
 
                     </thead>

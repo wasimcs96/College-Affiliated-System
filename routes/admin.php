@@ -107,13 +107,34 @@ Route::get('general/contact/show/{id}',[
     'as' => 'admin.contact.show'
         ]);
 
-Route::get('general/terms&condition',function(){
-   return view('admin.general.terms');
-})->name('admin.general.terms');
+// Route::get('general/terms&condition',function(){
+//    return view('admin.general.terms');
+// })->name('admin.general.terms');
 
-Route::get('general/privacy_policy',function(){
-   return view('admin.general.privacy_policy');
-})->name('admin.general.privacy_policy');
+Route::get('general/terms&condition',[
+    'uses' => 'AdminTermsController@index',
+    'as' => 'admin.general.terms'
+ ]);
+
+ Route::post('general/terms/store',[
+    'uses' => 'AdminTermsController@store',
+    'as' => 'admin.terms.store'
+    ]);
+
+// Route::get('general/privacy_policy',function(){
+//    return view('admin.general.privacy_policy');
+// })->name('admin.general.privacy_policy');
+
+Route::get('general/privacy_policy',[
+    'uses' => 'AdminPrivacyController@index',
+    'as' => 'admin.general.privacy'
+ ]);
+
+ Route::post('general/privacy_policy/store',[
+    'uses' => 'AdminPrivacyController@store',
+    'as' => 'admin.privacy.store'
+    ]);
+
 
 // ###############Report Application########################
 

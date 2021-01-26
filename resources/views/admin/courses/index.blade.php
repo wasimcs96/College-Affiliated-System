@@ -57,7 +57,7 @@
                             <th> <b>Category</b></th>
                             <th><b> Name </b></th>
                             <th><b> Type</b></th>
-                            <th><b>Action<b></th>
+                            <th style="text-align: center;"><b>Action<b></th>
 
                         </tr>
                     </thead>

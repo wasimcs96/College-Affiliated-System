@@ -19,8 +19,9 @@
             <div class="table-responsive">
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <h3 class="box-title"><span class="caption-subject font-green bold uppercase">List Settings</span></h3>
-                    <div class="box-tools">
-                        <a href="{{route('setting.general.add')}}" class="btn btn-success btn-flat btn-sm"><i class="fa fa-plus"></i> New Setting</a>
+                    <div class="box-tools" >
+                        <a href="{{route('setting.general.add')}}" style="
+    float: right;" class="btn btn-success btn-flat btn-sm"><i class="fa fa-plus"></i> New Setting</a>
                     </div>
                     <thead>
                         <tr>
