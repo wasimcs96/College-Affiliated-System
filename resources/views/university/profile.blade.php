@@ -196,13 +196,13 @@
                         </div>
                     </div> --}}
 
-                    <div class="col-lg-8 col-md-12">
+                    <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="website">Website</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
+                                {{-- <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
-                                </div>
+                                </div> --}}
                                 <input name="website" type="text" class="form-control" value="@if(isset(auth()->user()->university->website)){{auth()->user()->university->website}}@endif" placeholder="http://" required>
                             </div>
                         </div>
@@ -227,7 +227,7 @@
                                 <input type="file" name="brochure" accept="application/pdf" />
                             </div>
                             <br>
-                            @if(file_exists(Auth()->user()->university->brochure) || )
+                            @if(file_exists(Auth()->user()->university->brochure) || isset(Auth()->user()->university->brochure))
                                <a href="{{asset(auth()->user()->university->brochure)}}" class="btn btn-primary" target="blank">Uploaded Brochure</a>
                             @endif
                         </div>
