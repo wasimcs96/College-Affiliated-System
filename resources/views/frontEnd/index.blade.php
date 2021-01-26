@@ -2288,7 +2288,7 @@ canvas {
 @endsection
  @section('per_page_script')
 {{-- <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script> --}}
-rt=$('#categoryselect').val();
+{{-- rt=$('#categoryselect').val(); --}}
 <script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/vanta.net.min.js') }}"></script>
 <script>
