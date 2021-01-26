@@ -30,36 +30,36 @@
 
                     <tr>
                         <th scope="row">Student Name</th>
-                        <td>{{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
+                        <td>{{$show->user->first_name ?? ''}} {{$show->user->last_name ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student Mobile No.</th>
-                        <td>{{$user->mobile ?? ''}}</td>
+                        <td>{{$show->user->mobile ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Student E-mail</th>
-                        <td>{{$user->email ?? ''}}</td>
+                        <td>{{$show->user->email ?? ''}}</td>
                     </tr>
 
                     <tr>
                         <th scope="row">City</th>
-                        <td>{{$user->city ?? ''}}</td>
+                        <td>{{$show->user->city ?? ''}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Student Address</th>
-                        <td>{{$user->address ?? ''}}</td>
+                        <td>{{$show->user->address ?? ''}}</td>
                     </tr>
 
 
                     <tr>
                         <th scope="row">Student Country</th>
-                        @if(isset($user->countries_id))
-                        <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
+                        @if(isset($show->user->countries_id))
+                        <?php $country = DB::table('countries')->where('countries_id',$show->user->countries_id)->get()->first();?>
                         @endif
                         <td> {{$country->countries_name ?? ''}} </td>
-                        {{-- <td>{{$user->country->countries_name ?? ''}}</td> --}}
+                        {{-- <td>{{$show->user->country->countries_name ?? ''}}</td> --}}
                     </tr>
 
                     {{-- <tr>
