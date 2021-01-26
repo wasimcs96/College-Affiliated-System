@@ -127,7 +127,7 @@
                         <td>{{$application->booking->booking_date ?? ''}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Time-Slot</th>
+                        <th scope="row"> Booking Time-Slot</th>
                         <td>{{$application->booking->booking_start_time ?? ''}}-{{$application->booking->booking_end_time ?? ''}}</td>
                     </tr>
 

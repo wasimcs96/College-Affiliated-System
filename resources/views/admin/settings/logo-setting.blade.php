@@ -85,7 +85,7 @@
                                                               <img src="{{asset('img/no_image.gif')}}" alt="" height="100" style="max-height:100px;">
                                                               @endif
                                                             </div>
-                                                            <button class="btn bg-olive btn-flat margin button-upload" data-toggle="tooltip" title="Upload File" data-loading-text="Loading..." type="button">
+                                                            <button style="color: black;" class="btn bg-white btn-flat margin button-upload" data-toggle="tooltip" title="Upload File" data-loading-text="Loading..." type="button">
                                                                     <i class="fa fa-upload"></i>
                                                                     Upload
                                                                 </button>
@@ -166,7 +166,7 @@
                                             @endif
                                             </tbody>
                                             <tfoot>
-                                            <tr>
+                                            {{-- <tr>
                                                 <td colspan="2"></td>
                                                 <td>
                                                     <button type="button" class="btn btn-primary pull-right"
@@ -174,7 +174,7 @@
                                                             data-original-title="Add New"><i class="fa fa-plus"></i>
                                                     </button>
                                                 </td>
-                                            </tr>
+                                            </tr> --}}
                                             </tfoot>
                                         </table>
                                     </div>

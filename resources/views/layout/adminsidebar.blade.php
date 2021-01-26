@@ -70,7 +70,7 @@
                     <a href="#Commission" class="has-arrow"><i class="fa fa-credit-card"></i><span>Commission Manager</span></a>
                     <ul>
                         <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('admin.commission',['id'=>1])}}">Visa Commission</a></li>
-                        <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('admin.commission',['id'=>2])}}">PR Commission</a></li>
+                        <li class="{{ Request::segment(4) == '2' ? 'active' : null }}"><a href="{{route('admin.commission',['id'=>2])}}">PR Commission</a></li>
                     </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
@@ -92,7 +92,7 @@
                 </li>
                 <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('setting.general')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Settings</span></a></li>
                 <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('settingtheme')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Logo Settings</span></a></li>
-                
+
                 {{-- <li class="{{ Request::segment(2) == 'report' ? 'active open' : null }}">
                     <a href="#Report" class="has-arrow"><i class="icon-book-open"></i><span>Reports</span></a>
                     <ul>

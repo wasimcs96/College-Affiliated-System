@@ -22,67 +22,92 @@
 
                     <tr>
                         <th scope="row"> Name</th>
-                        <td>{{$user->first_name ?? ''}}{{$user->last_name ?? ''}}</td>
+                        <td>  @if(isset($user->first_name)){{$user->first_name ?? ''}}{{$user->last_name ?? ''}} @else N/A @endif</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Email</th>
-                        <td>{{$user->email ?? ''}}</td>
+                        <td>  @if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Status</th>
-                        <td>{{$user->status ?? ''}}</td>
+                        <td>  @if(isset($user->status)){{$user->status ?? ''}} @else N/A @endif</td>
                     </tr>
                     <tr>
                         <th scope="row">Mobile</th>
-                        <td>{{$user->mobile ?? ''}}</td>
+                        <td>  @if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
                     </tr>
                     <tr>
                         <th scope="row">Landline 1</th>
-                        <td>{{$user->landline_1 ?? ''}} </td>
+                        <td>  @if(isset($user->landline_1)){{$user->landline_1 ?? ''}}  @else N/A @endif</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Landline 2</th>
-                        <td>{{$user->landline_2 ?? ''}} </td>
+                        <td>  @if(isset($user->landline_2)){{$user->landline_2 ?? ''}} @else N/A @endif </td>
                     </tr>
                     <tr>
                         <th scope="row">Date of Birth</th>
-                        <td>{{$user->birth_year ?? ''}} </td>
+                        <td>  @if(isset($user->birth_year)){{$user->birth_year ?? ''}} @else N/A @endif </td>
                     </tr>
                     <tr>
                         <th scope="row">Address</th>
-                        <td>{{$user->address ?? ''}}</td>
+                        <td>  @if(isset($user->address)){{$user->address ?? ''}} @else N/A @endif</td>
                     </tr>
                     <tr>
                         <th scope="row">City</th>
-                        <td>{{$user->city ?? ''}}</td>
+                        <td>  @if(isset($user->city)){{$user->city ?? ''}} @else N/A @endif</td>
                     </tr>
                     <tr>
                         <th scope="row">Country</th>
                         @if(isset($user->countries_id))
                         <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
                         @endif
-                        <td>{{$country->countries_name ?? ''}}</td>
+                        <td>  @if(isset($country->countries_name)){{$country->countries_name ?? ''}} @else N/A @endif</td>
                     </tr>
 @if($user->isConsultant())
                         <tr>
                         <th scope="row">Company Name</th>
-                        <td>{{$user->consultant->company_name ?? ''}} </td>
+                        <td>  @if(isset($user->consultant->company_name)){{$user->consultant->company_name ?? ''}} @else N/A @endif </td>
                     </tr>
 
                     <tr>
                         <th scope="row">Website</th>
-                        <td>{{$user->consultant->website ?? ''}} </td>
+                        <td>  @if(isset($user->consultant->website)){{$user->consultant->website ?? ''}}  @else N/A @endif</td>
                     </tr>
                     <tr>
                         <th scope="row">Working Week Days</th>
-                        <td>{{$user->consultant->working_week_days ?? ''}} </td>
+
+
+                       <?php
+                        $weekarray = Config::get('define.weekday');
+                        if(isset($user->consultant->working_week_days))
+                        {
+                        $setWorkingDays = explode(",", $user->consultant->working_week_days);
+                        }
+                        else {
+                            $setWorkingDays = [];
+                        }
+                    ?>
+
+                        <td>
+                            @if(count($weekarray)>0)
+                            @foreach($weekarray as $key => $value)
+                               @if(in_array($key, $setWorkingDays))
+                               {{$value}},
+                               @else
+                               {{$value}},
+                               @endif
+                            @endforeach
+                            @endif
+
+                            {{-- @if(isset($user->consultant->working_week_days)){{$user->consultant->working_week_days ?? ''}}  @else N/A @endif --}}
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">Time Slot</th>
-                        <td>{{$user->consultant->start_time ?? ''}}-{{$user->consultant->end_time ?? ''}}</td>
+                        <td>  @if(isset($user->consultant->start_time)){{$user->consultant->start_time ?? ''}}-{{$user->consultant->end_time ?? ''}} @else N/A @endif</td>
                     </tr>
                         <tr>
                         <th scope="row">About Me</th>
@@ -96,37 +121,37 @@
                                                     $myvalue = implode(' ', $myvalue);
                                                     // $myvalue = $myvalue . ' ...';
                                                 } ?>
-                        <td> <?php echo ($myvalue . '...')?></td>
+                        <td>  @if(isset($myvalue)) <?php echo ($myvalue . '...')?> @else N/A @endif</td>
                     </tr>
 
                     @endif
                     @if($user->isUniversity())
                         <tr>
                         <th scope="row">University Name</th>
-                        <td>{{$user->university->university_name ?? ''}} </td>
+                        <td>  @if(isset($user->university->university_name)){{$user->university->university_name ?? ''}}  @else N/A @endif</td>
                     </tr>
 
                     <tr>
                         <th scope="row">Website</th>
-                        <td>{{$user->university->website ?? ''}} </td>
+                        <td>  @if(isset($user->university->website)){{$user->university->website ?? ''}}  @else N/A @endif</td>
                     </tr>
                     <tr>
                         <th scope="row">Average Fees</th>
-                        <td>{{$user->university->average_fees ?? ''}} </td>
+                        <td>  @if(isset($user->university->average_fees)){{$user->university->average_fees ?? ''}}  @else N/A @endif</td>
                     </tr>
                     <tr>
                         <th scope="row">About Me</th>
                           <?php
-                                            $myvalue = $user->university->about_me ?? '';
-                                            if (strlen($myvalue) > 140)
+                                            $myabout = $user->university->about_me ?? '';
+                                            if (strlen($myabout) > 140)
                                                 {
-                                                    $myvalue = substr($myvalue, 0, 80);
-                                                    $myvalue = explode(' ', $myvalue);
-                                                    array_pop($myvalue); // remove last word from array
-                                                    $myvalue = implode(' ', $myvalue);
+                                                    $myabout = substr($myabout, 0, 80);
+                                                    $myabout = explode(' ', $myabout);
+                                                    array_pop($myabout); // remove last word from array
+                                                    $myabout = implode(' ',$myabout);
                                                     // $myvalue = $myvalue . ' ...';
                                                 } ?>
-                        <td> <?php echo ($myvalue . '...')?></td>
+                        <td>  @if(isset($myabout)) <?php echo ($myabout . '...')?> @else N/A @endif</td>
                     </tr>
 
                     @endif

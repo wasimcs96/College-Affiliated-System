@@ -20,10 +20,14 @@
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
-                            <th> <b>
-                                Name</b></th>
-                            <th><b> Mobile </b></th>
-                            <th><b> E-mail</b></th>
+                            <th> <b> Student Name</b></th>
+                            <th> <b> Consultant Name</b></th>
+
+                            <th><b>Student Mobile </b></th>
+                            <th><b>Consultant Mobile </b></th>
+
+                            <th><b>Student Email </b></th>
+                            <th><b>Consultant E-mail</b></th>
                             {{-- <th><b> Universities</b></th> --}}
                             {{-- <th><b> Date</b></th> --}}
                             <th><b> Status</b></th>
@@ -41,8 +45,14 @@
 
                         <tr>
                             <td>{{$application->user->first_name ?? ''}} {{$application->user->last_name ?? ''}}</td>
+                            <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}}</td>
+
                             <td>{{$application->user->mobile ?? ''}}</td>
+                            <td>{{$application->userConsultant->mobile ?? ''}}</td>
+
                             <td>{{$application->user->email ?? ''}}</td>
+                            <td>{{$application->userConsultant->email ?? ''}}</td>
+
                             {{-- <td>{{$application->consultant->university->university_name}}</td> --}}
                             {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
                             <td>@if($application->status==0)<div class="btn btn-warning">In Progress</div>@endif

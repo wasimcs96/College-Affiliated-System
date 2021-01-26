@@ -22,7 +22,7 @@
 
                         <tr>
                             <th> <b>Student Name</b></th>
-                            {{-- <th> <b>Status</b></th> --}}
+                            <th> <b>Consultant Name</b></th>
                             <th><b> Note </b></th>
                             <th><b> Date </b></th>
                             <th style="text-align: center;"><b> Actions </b></th>
@@ -36,12 +36,12 @@
                             {{-- <td>@if($application->application->status==0)<div class="btn btn-warning">In Progress</div>@endif
                                 @if($application->application->status==1)<div class="btn btn-danger">Closed</div>@endif
                             </td> --}}
-
+                            <td>{{$application->application->userConsultant->first_name ?? ''}} {{$application->application->userConsultant->last_name ?? ''}}</td>
                             <td>{{$application->note ?? ''}}</td>
                             <td>{{$application->date ?? ''}}</td>
 
                             <td style="text-align: center;">
-                                <a href="{{route('admin.application.followup.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                {{-- <a href="{{route('admin.application.followup.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a> --}}
                                 <a href="{{route('admin.application.create',['id'=> $application->application_id])}}" class="btn btn-primary">Go to Application<i class="icon-arrow"></i></a>
                             </td>
 
