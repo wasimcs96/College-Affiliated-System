@@ -19,6 +19,7 @@ class UniversityMediaController extends Controller
 
     public function mediastore(Request $request)
     {
+        // dd($request->all());
         $this->validate($request,[
             'images.*' => 'dimensions:min_width=446,min_height=258',
             // 'link' => 'required|url',
@@ -52,10 +53,24 @@ if ($request->link != null) {
         //you can put other insertion here
     ]);
 }
+// dd($request->video);
+    if ($request->video != null) {
+        $video = $request->video;
+        $name= time().$video->getClientOriginalName();
+        $st= $video->move(Config::get('define.video.video'),$name);
+        $newname2 = Config::get('define.video.video').'/'.$name;
+        UniversityMedia::create([
+            'user_id'=>auth()->user()->id,
+            'media'=>$newname2,
+            'file_type' => 1
+            //you can put other insertion here
+        ]);
+    }
 
 
 
-    return redirect()->route('university.media')->with('Success','Media Uploaded successfully');
+
+    return redirect()->route('university.media')->with('success','Media Uploaded successfully');
 }
 
 

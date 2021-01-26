@@ -58,7 +58,7 @@
 
                                   @endforeach
                                   @else
-                                  <h2 class="mt-5" style="text-align: center"> No Media Available</h2>
+                                  {{-- <h2 class="mt-5" style="text-align: center"> No Media Available</h2> --}}
                                   @endif
 
 
@@ -74,20 +74,28 @@
                     </div>
 
 
-                    <div class="col-lg-12 col-md-12" style="margin-top: 13px;">
+                    {{-- <div class="col-lg-12 col-md-12" style="margin-top: 13px;">
                         <div class="form-group">
-                            <label>Video Link</label>
-                            <div class="input-group">
+                            <label>Video </label>
+                            <div class="input-group" id="add">
 
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="icon-globe"></i></span>
-                                </div>
+                                <select name="video_select" class="form-control" id="video_select" required>
+                                    <option value="" >Select Video Type</option>
+                                    <option value="1" > Video </option>
+                                    <option value="2" > Video Link </option>
+                                </select>
 
-                                <input name="link" type="url" class="form-control" placeholder="Video link">
                             </div>
                         </div>
+                    </div> --}}
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12" style="margin-top: 13px;">
+                        <div class="form-group">
+                            <label>Upload Video </label>
+                            <input name="video" type="file" accept="video/*" style="padding-bottom: 33px;" class="form-control" placeholder="Video">
+                        </div>
                     </div>
-
+                </div>
 
 
                 </div>
@@ -190,4 +198,20 @@ console.log(media_id);
 
 });
  </script>
+ <script>
+    $(document).on('change', '#video_select', function(){
+        var option = document.getElementById("video_select").value;
+        console.log(option);
+    if (option =='1')
+    {
+        $('#add').append('<input name="link" type="file" id="option1" accept="video/*" class="form-control" placeholder="Video">');
+        $('#option2').css('display','none');
+    }
+    if (option =='2')
+    {
+    $('#add').append('<input name="link" type="url" id="option2" class="form-control" placeholder="Video link">');
+    $('#option1').css('display','none');
+    }
+      });
+</script>
 @stop

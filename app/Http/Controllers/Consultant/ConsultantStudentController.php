@@ -18,6 +18,7 @@ class ConsultantStudentController extends Controller
 
     public function show($id)
     {
+
         $show = UniversityConsultantClient::where('id',$id)->first();
         // $user = User::where('id',$id)->first();
 // dd($user->first_name);

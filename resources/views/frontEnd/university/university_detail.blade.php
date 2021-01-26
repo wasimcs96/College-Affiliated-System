@@ -43,43 +43,55 @@
                         left: 151px;
                         margin-bottom: 8px;
                     ">
-                            <a class="theme-btn" data-fancybox="video" data-src="https://www.youtube.com/embed?v=S5WFxUDs0pE"
+                     <?php
+                     $medias = $university->universityMedia;
+                     $i=2;
+                     ?>
+                            {{-- <a class="theme-btn" data-fancybox="video" data-src="https://www.youtube.com/embed?v=S5WFxUDs0pE"
                                data-speed="700"  style="
                                margin: 12px;
                            ">
                                 <i class="la la-video-camera mr-2"></i>Video
                             </a>
-                            <a class="theme-btn" data-src="{{asset($university->profile_image)}}"
-                               data-fancybox="gallery"
-                               data-caption="Showing image - 01"
-                               data-speed="700">
-                                <i class="la la-photo mr-2"></i>More Photos
+                            @foreach($medias as $media)
+                            @if(isset($media->media) && file_exists($media->media) && $media->file_type==1)
+                            <a class="d-none"
+                                 data-fancybox="gallery"
+
+                                 data-src="{{asset($media->media)}}"
+
+                                 data-caption="Showing gallery - {{$i}}"
+                                 data-speed="700"></a>
+
+                                 @endif
+                                 @endforeach --}}
+                                 @if(isset($university->profile_image) && file_exists($university->profile_image))
+                            <a class="theme-btn" data-src=" {{asset($university->profile_image)}}" data-fancybox="gallery" data-caption="Showing image - 1" data-speed="700">
+                                <i class="la la-photo mr-2"></i>Gallery
                             </a>
+                            @else
+                            <a class="theme-btn" data-src="{{ asset('assets/images/user.png') }}" data-fancybox="gallery" data-caption="Showing image - 1" data-speed="700">
+                                <i class="la la-photo mr-2"></i>Gallery
+                            </a>
+                            @endif
 
                         </div>
-                      <?php
-                      $medias = $university->universityMedia;
-                    //   dd($medias);
-                ?>
+
+                      {{-- {{dd($medias)}} --}}
                         @foreach($medias as $media)
+                        @if(isset($media->media) && file_exists($media->media))
                         <a class="d-none"
                              data-fancybox="gallery"
+                            {{-- {{ dd($media->media) }} --}}
                              data-src="{{asset($media->media)}}"
 
-                             data-caption="Showing image - {{$media->id}}"
+                             data-caption="Showing gallery - {{$i}}"
                              data-speed="700"></a>
+                             <?php $i++ ?>
+                             @endif
                              @endforeach
 
-                        {{-- <a class="d-none"
-                             data-fancybox="gallery"
-                             data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
-                             data-caption="Showing image - 03"
-                             data-speed="700"></a>
-                        <a class="d-none"
-                             data-fancybox="gallery"
-                             data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
-                             data-caption="Showing image - 04"
-                             data-speed="700"></a> --}}
+
                     </div><!-- end breadcrumb-btn -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
