@@ -86,6 +86,7 @@
                     </div>
                                 <br>
                                 <button type="submit" class="btn btn-primary">Update Category</button>
+                                <a href="{{route('admin.category')}}"class="btn btn-danger">Back</a>
                             </form>
                         </div>
                     </div>

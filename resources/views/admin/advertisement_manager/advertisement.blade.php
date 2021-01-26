@@ -63,12 +63,16 @@
                                 @if($rt->expire_date == null)<div class="btn btn-warning">Pending</div>@endif
                                 {{-- @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif --}}
                             </td>
-                            <td><div class="row" style="justify-content: center;"><form action="{{route('advertisement_manager.update')}}" method="POST" >
+                            <td> @if($rt->expire_date == null)
+                                <div class="row" style="justify-content: center;">
+                                <form action="{{route('advertisement_manager.update')}}" method="POST" >
                                 @csrf
                                 <input type="hidden" value="{{$rt->id}}" name="rtid"> <input type="hidden" value="{{$rt->time_period}}" name="time_period"><button type="submit" data-toggle="tooltip" data-placement="top" title="Accept" class="btn btn-success"><i class="icon-check"></i></button>
                             </form>
+
                                 <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Reject" style="margin-left: 8px;"><i class="icon-trash"></i></a>
-                        </div></td>
+                        </div>
+                        @endif</td>
                         </tr>
                         {{-- @endif --}}
 @endforeach

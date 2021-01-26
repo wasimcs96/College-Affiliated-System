@@ -23,8 +23,8 @@
                             <th><b> Amount</b></th>
                             <th><b> Status</b></th>
                             <th><b>Transaction ID</b></th>
-                            <th><b>
-                                Payment Type</b></th>
+                            <th><b> Payment Type</b></th>
+                            <th><b>Purchased Date</b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -56,6 +56,7 @@
                                 @if($order->payment_type == 3)Consultant Visa Commission @endif
                                 @if($order->payment_type == 4)Consultant PR Commission @endif
                             </td>
+                            <td>{{$order->created_at->format('y-m-d')}}</td>
                             <td><a href="{{route('admin.earning.earning_show',['id'=>$order->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
                         @endforeach

@@ -40,16 +40,17 @@
                                 @foreach ($users as $user)
                                     @if($user->isClient())
                                         <tr>
-                                            <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
+                                            <td> @if(isset($user->first_name)){{$user->first_name ?? ''}} {{$user->last_name ?? ''}} @else N/A @endif</td>
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
-                                            <td>{{$user->mobile ?? ''}}</td>
-                                            <td>{{$user->email ?? ''}}</td>
-                                            <td>{{$user->city ?? ''}}</td>
+                                            <td>@if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
+                                            <td>@if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
+                                            <td>@if(isset($user->city)){{$user->city ?? ''}} @else N/A @endif</td>
                                             {{-- {{dd($user->countries_id->country)}} --}}
+
                                             @if(isset($user->countries_id))
                                             <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
                                             @endif
-                                            <td> {{$country->countries_name ?? ''}} </td>
+                                            <td>   @if(isset($country->countries_name)){{$country->countries_name ?? ''}} @else N/A @endif </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
@@ -64,15 +65,15 @@
                                 @foreach ($users as $user)
                                     @if($user->isConsultant())
                                         <tr>
-                                            <td> {{$user->first_name ?? ''}} {{$user->last_name ?? ''}}</td>
+                                            <td>   @if(isset($user->first_name)){{$user->first_name ?? ''}} {{$user->last_name ?? ''}} @else N/A @endif</td>
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
-                                            <td>{{$user->mobile ?? ''}}</td>
-                                            <td>{{$user->email ?? ''}}</td>
-                                            <td>{{$user->city ?? ''}}</td>
+                                            <td>  @if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
+                                            <td>  @if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
+                                            <td>  @if(isset($user->city )){{$user->city ?? ''}} @else N/A @endif</td>
                                             @if(isset($user->countries_id))
                                             <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
                                             @endif
-                                            <td> {{ $country->countries_name ?? '' }} </td>
+                                            <td>  @if(isset($country->countries_name)) {{ $country->countries_name ?? '' }}  @else N/A @endif</td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
@@ -87,15 +88,15 @@
                                 @foreach ($users as $user)
                                     @if($user->isUniversity())
                                         <tr>
-                                            <td> {{$user->university->university_name ?? ''}} </td>
+                                            <td>  @if(isset($user->university->university_name )) {{$user->university->university_name ?? ''}}  @else N/A @endif</td>
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
-                                            <td>{{$user->mobile ?? ''}}</td>
-                                            <td>{{$user->email ?? ''}}</td>
-                                            <td>{{$user->city ?? ''}}</td>
+                                            <td>  @if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
+                                            <td>  @if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
+                                            <td>  @if(isset($user->city)){{$user->city ?? ''}} @else N/A @endif</td>
                                             @if(isset($user->countries_id))
                                             <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
                                             @endif
-                                            <td> {{$country->countries_name ?? ''}} </td>
+                                            <td>  @if(isset($country->countries_name)) {{$country->countries_name ?? ''}} @else N/A @endif </td>
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>

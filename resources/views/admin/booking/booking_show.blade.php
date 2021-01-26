@@ -32,6 +32,10 @@
                         <td>{{$booking->userConsultant->first_name ?? ''}} {{$booking->userConsultant->last_name ?? ''}}</td>
                     </tr>
                     <tr>
+                        <th scope="row">Student Name</th>
+                        <td>{{$booking->user->first_name ?? ''}} {{$booking->user->last_name ?? ''}}</td>
+                    </tr>
+                    <tr>
                         <th scope="row">Consultant Mobile</th>
                         <td>{{$booking->userConsultant->mobile ?? ''}}</td>
                     </tr>
@@ -75,10 +79,7 @@
                             @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">Student Name</th>
-                        <td>{{$booking->user->first_name ?? ''}} {{$booking->user->last_name ?? ''}}</td>
-                    </tr>
+
                     <?php $i = 1?>
                     @if(isset($university) && $university != '')
                     @foreach($university as $key=> $uni)

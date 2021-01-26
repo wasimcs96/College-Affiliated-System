@@ -30,7 +30,7 @@
                         <tr>
                             <th> <b>User Name</b></th>
                             <th> <b>Email</b></th>
-                            {{-- <th><b>Content</b></th> --}}
+                            <th><b>Mobile</b></th>
                             <th><b>Message</b></th>
                             {{-- <th><b>Status</b></th> --}}
                             {{-- <th style="text-align: center;"><b>Action<b></th> --}}
@@ -50,14 +50,17 @@
 
                              <td>{{$contact->email ?? ''}}</td>
 
+                             <td>{{$contact->mobile ?? ''}}</td>
+
                              <td>{{$contact->message ?? ''}}</td>
 
 
 
 
-                            {{-- <td style="text-align: center;">
+                            <td style="text-align: center;">
                             <a href="{{route('admin.contact.show', $contact->id ?? '')}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View Course" title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
-                            <a href="{{route('admin.contact.reply', $contact->id ?? '')}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit course" title="" data-original-title="reply"><i class="fa fa-edit"></i></a>
+
+                           {{--  <a href="{{route('admin.contact.reply', $contact->id ?? '')}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit course" title="" data-original-title="reply"><i class="fa fa-edit"></i></a>
                             &nbsp;&nbsp;
 
 

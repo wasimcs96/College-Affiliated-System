@@ -331,27 +331,27 @@ Route::get('courses/add',[
    'as' => 'admin.courses.add'
 ]);
 
-Route::get('course/show/{id}',[
+Route::get('courses/show/{id}',[
    'uses' => 'AdminCoursesController@show',
    'as' => 'admin.courses.show'
 ]);
 
-Route::post('course/store',[
+Route::post('courses/store',[
    'uses' => 'AdminCoursesController@store',
    'as' => 'admin.courses.store'
 ]);
 
-Route::get('course/edit/{id}',[
+Route::get('courses/edit/{id}',[
    'uses' => 'AdminCoursesController@edit',
    'as' => 'admin.courses.edit'
 ]);
 
-Route::post('course/update/{id}',[
+Route::post('courses/update/{id}',[
    'uses' => 'AdminCoursesController@update',
    'as' => 'admin.courses.update'
 ]);
 
-Route::get('course/delete/{id}', [
+Route::get('courses/delete/{id}', [
    'uses' => 'AdminCoursesController@destroy',
    'as' => 'admin.courses.delete'
 ]);
@@ -427,7 +427,7 @@ Route::get('pr_Migration',[
     'as'=>'admin.prmigration'
 ]);
 
-Route::post('PR_Migration/store',[
+Route::post('pr_Migration/store',[
     'uses'=>'AdminPrmigationController@store',
     'as'=>'admin.prmigration.store'
 ]);
