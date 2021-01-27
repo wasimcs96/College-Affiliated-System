@@ -1492,7 +1492,7 @@
                                 <span class="counter" data-from="0" data-to="{{$university}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
                             </div>
-                            <p class="counter__title">Universitys</p>
+                            <p class="counter__title">Universities</p>
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
