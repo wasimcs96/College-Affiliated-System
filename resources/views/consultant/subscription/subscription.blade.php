@@ -8,7 +8,7 @@
         <div class="header">
             <h2>Subscription</h2>
             <ul class="header-dropdown dropdown">
-<li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('consultant.subscription.add')}}">Purchase subscription</a></li>
+<li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('consultant.subscription.add')}}">Purchase Subscription</a></li>
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                 {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
