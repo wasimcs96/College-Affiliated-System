@@ -49,12 +49,12 @@
                             @if($rt->user->isUniversity() ?? '') Univeristy @endif</td>
                             {{-- <td>{{$rt->expire_date ?? ''}}</td> --}}
                             <td>
-                                {{$rt->start_date ?? ''}}
+                                @if(isset($rt->start_date )){{ Carbon\Carbon::parse($rt->start_date )->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif
                             </td>
                             <td>
-                                {{$rt->expire_date ?? ''}}
+                                @if(isset($rt->expire_date )){{ Carbon\Carbon::parse($rt->expire_date )->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif
                             </td>
-                            <td>{{$rt->created_at->format("Y-m-d") ?? ''}}</td>
+                            <td>@if(isset($rt->created_at)){{ Carbon\Carbon::parse($rt->created_at)->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
                             <td>
                                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                 {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}

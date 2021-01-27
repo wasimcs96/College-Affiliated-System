@@ -48,7 +48,10 @@
                             <td>@if(isset($booking->userConsultant->first_name)){{$booking->userConsultant->first_name}} {{$booking->userConsultant->last_name}}@else N/A @endif</td>
 
                             <td>@if(isset($booking->booking_for))@if($booking->booking_for == 0)Student Visa @elseif($booking->booking_for == 1)PR Migration @endif @else N/A @endif</td>
-                            <td>@if(isset($booking->booking_date)){{$booking->booking_date}}@else N/A @endif</td>
+                            <td>@if(isset($booking->booking_date)){{ Carbon\Carbon::parse($booking->booking_date)->format(config('get.ADMIN_DATE_FORMAT')) }}
+
+
+                                {{$booking->booking_date}}@else N/A @endif</td>
                             {{-- <td>tru</td>--}}
                             <td>@if(isset($booking->booking_start_time)){{$booking->booking_start_time}}-{{$booking->booking_end_time}}@else N/A @endif</td>
                             {{-- <td>2020/30/11</td> --}}

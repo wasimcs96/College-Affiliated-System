@@ -124,7 +124,7 @@
 
                     <tr>
                         <th scope="row">Booking Date</th>
-                        <td>{{$application->booking->booking_date ?? ''}}</td>
+                        <td>@if(isset($application->booking->booking_date)){{ Carbon\Carbon::parse($application->booking->booking_date)->format(config('get.ADMIN_DATE_FORMAT')) }}@endif</td>
                     </tr>
                     <tr>
                         <th scope="row"> Booking Time-Slot</th>

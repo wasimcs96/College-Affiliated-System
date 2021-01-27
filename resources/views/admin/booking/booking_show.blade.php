@@ -53,7 +53,8 @@
                     </tr>
                     <tr>
                         <th scope="row">Booking Date</th>
-                        <td>{{$booking->booking_date}}</td>
+                        <td>@if(isset($booking->booking_date)){{ Carbon\Carbon::parse($booking->booking_date)->format(config('get.ADMIN_DATE_FORMAT')) }}
+                                @else N/A @endif</td>
                     </tr>
 
                     <tr>
