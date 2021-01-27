@@ -123,12 +123,12 @@ Route::post('course/store',[
     'as' => 'university.course.store'
 ]);
 
-Route::get('course_show/{id}',[
+Route::get('courses/show/{id}',[
     'uses' => 'UniversityCoursesController@show',
     'as' => 'university.course.show'
 ]);
 
-Route::get('course_edit/{id}',[
+Route::get('courses/edit/{id}',[
     'uses' => 'UniversityCoursesController@edit',
     'as' => 'university.course.edit'
 ]);

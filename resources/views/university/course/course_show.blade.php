@@ -39,17 +39,17 @@
 
                         <tr>
                             <th scope="row">Fees</th>
-                            <td>{{$courses->fees}}</td>
+                            <td>₹ {{$courses->fees}}</td>
                         </tr>
 
                         <tr>
                             <th scope="row">Start Date</th>
-                            <td>{{$courses->start_date}}</td>
+                            <td>{{ Carbon\Carbon::parse($courses->start_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                         </tr>
 
                         <tr>
                             <th scope="row">End Date</th>
-                            <td>{{$courses->end_date}}</td>
+                            <td>{{ Carbon\Carbon::parse($courses->end_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                         </tr>
 
 

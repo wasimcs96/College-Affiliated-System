@@ -70,9 +70,11 @@
                             @foreach($universitycourses as $course)
                             <td>{{$course->course->name}}</td>
                             <td>{{$course->description}}</td>
-                            <td>{{$course->fees}}</td>
-                            <td>{{$course->start_date}}</td>
-                            <td>{{$course->end_date}}</td>
+                            <td>₹ {{$course->fees}}</td>
+                            {{-- {{ dd($course->created_at,$course->end_date) }} --}}
+                            <td>{{ Carbon\Carbon::parse($course->start_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
+
+                            <td>{{ Carbon\Carbon::parse($course->end_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                             <td style="text-align: center;">
                                 <a href="{{route('university.course.show', $course->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View " title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
                                 <a href="{{route('university.course.edit', $course->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
