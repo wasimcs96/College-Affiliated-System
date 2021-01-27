@@ -33,7 +33,7 @@
                             <th><b>Mobile</b></th>
                             <th><b>Message</b></th>
                             {{-- <th><b>Status</b></th> --}}
-                            {{-- <th style="text-align: center;"><b>Action<b></th> --}}
+                            <th style="text-align: center;"><b>Action<b></th>
 
                         </tr>
                     </thead>
