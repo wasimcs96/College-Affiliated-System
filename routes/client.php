@@ -13,7 +13,8 @@ Route::group(['middleware' => 'role:client'], function () {
    /* dashboard Section */
 Route::get('dashboard',function(){
     return view('client.dashboard');
-})->name('client.dashboard')->middleware('verified');
+})->name('client.dashboard');
+// ->middleware('verified');
 
 
 /*my_applications Section */

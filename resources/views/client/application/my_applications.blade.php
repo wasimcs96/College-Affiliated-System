@@ -29,7 +29,7 @@
                             <th> <b>Consultant Name</b></th>
                             <th><b> Applied On</b></th>
                             <th><b> Status</b></th>
-                            <th><b>Actions</b></th>
+                            <th style="text-align: center;"><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -42,17 +42,17 @@
                         @foreach($applications as $application)
                             @if(auth()->user()->id == $application->client_id)
                             <tr>
-                                <td>{{$application->user->first_name}} {{$application->user->last_name}} </td>
+                                <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}} </td>
                                {{-- {{ dd($application->university) }} --}}
 
 
-                                <td>{{$application->created_at}}</td>
+                                <td>{{ Carbon\Carbon::parse($application->created_at)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                                 <td>
-                                    @if($application->status==0)<div class="btn btn-warning">In Progress</div>@endif
-                                    @if($application->status==1)<div class="btn btn-danger">Closed</div>@endif
+                                    @if($application->status==0 ?? '')<div class="btn btn-warning">In Progress</div>@endif
+                                    @if($application->status==1 ?? '')<div class="btn btn-danger">Closed</div>@endif
                                 </td>
 
-                                <td><a href="{{route('client.application.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                                <td style="text-align: center;"><a href="{{route('client.application.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                             </tr>
                             @endif
                         @endforeach
