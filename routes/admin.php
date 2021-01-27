@@ -11,9 +11,14 @@ Route::group(['prefix'=>'admin', 'middleware' => 'role:superadmin'], function ()
     return "admin";
 });
 
-Route::get('dashboard',function(){
-    return view('admin.dashboard');
- })->name('admin.dashboard');
+// Route::get('dashboard',function(){
+//     return view('admin.dashboard');
+//  })->name('admin.dashboard');
+
+Route::get('dashboard',[
+    'uses' => 'AdminDashBoardController@index',
+    'as' => 'admin.dashboard'
+ ]);
 
 Route::get('mypage/index','MypageController@index')->name('mypage.index');
 

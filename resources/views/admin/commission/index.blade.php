@@ -25,6 +25,8 @@
                                 <th><b> Client Dues </b></th>
                                 <th><b> Paid Amount</b></th>
                                 <th><b>Total Client</b></th>
+                                <th><b>Dues Amount</b></th>
+                                <th><b>Client Count</b></th>
                                 <th><b>Commission Type</b></th>
                                 <th style="
                                 text-align: center;
@@ -46,6 +48,8 @@
                                             <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
                                             <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->paid_amount ?? ''}}</td>
                                             <td>{{$com->total_client_count ?? ''}}</td>
+                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
+                                            <td>{{$com->temp_client_count ?? ''}}</td>
                                             <td>Visa</td>
                                             <td style="
                                             text-align: center;
@@ -67,8 +71,10 @@
                                             <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
                                             <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->paid_amount ?? ''}}</td>
                                             <td>{{$com->total_client_count ?? ''}}</td>
+                                            <td>{{$com->due_amount ?? ''}}</td>
+                                            <td>{{$com->temp_client_count ?? ''}}</td>
                                             <td>PR</td>
-                                            <td>
+                                            <td style="text-align: center;">
                                                 {{-- <a href="{{route('admin.commission.show',['id' => $com->id])}}" class="btn btn-success"><i class="icon-eye"></i></a> --}}
                                             <a href="{{route('admin.commission.edit',['id' => $com->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                             {{-- <a href="{{route('admin.user.delete',['id' => $com->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td> --}}

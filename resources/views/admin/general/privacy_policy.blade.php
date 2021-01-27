@@ -14,14 +14,17 @@
                     <?php $select=App\Models\Page::where('page_type',3)->get()->first();?>
                     <div class="form-group">
                         <div class="row">
-                        <div class="form-group col-lg-6">
+                        {{-- <div class="form-group col-lg-6">
                             <label>Title</label>
                             <input type="text" class="form-control" maxlength="100" name="title" value="{{$select->title ?? ''}}" id="name" required>
-                        </div>
+                        </div> --}}
+                        <input type="hidden" name="title" value="Privacy And Policy">
+
+{{--
                         <div class="form-group col-lg-6">
                             <label>Subtitle</label>
                             <input type="text" class="form-control" value="{{$select->sub_title ?? ''}}" name="sub_title" id="name" required>
-                        </div>
+                        </div> --}}
 
                         {{-- <div class="form-group col-lg-4">
                             <label>Status</label>
@@ -33,10 +36,10 @@
                             </select>
                        </div> --}}
                     </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="content">Short Description</label><br>
                         <textarea class="summernote" id="Short_description" value="" name="short_description" rows="10" cols="10" class="form-control" style="width:693px">{{$select->short_description ?? ''}}</textarea>
-                        </div>
+                        </div> --}}
                     <input type="hidden" name="page_type" value="3">
 
                            <label for="content">Description</label><br>

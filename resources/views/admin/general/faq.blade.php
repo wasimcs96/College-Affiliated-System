@@ -41,13 +41,13 @@
                            <label for="content">Answer</label><br>
                            <textarea class="summernote" id="content" name="description" rows="10" cols="10" class="form-control" style="width:693px"required></textarea>
 
-                           <div class="form-group">
+                           {{-- <div class="form-group">
                             <br>   <label for="content">Banner Image</label><br>
                        <div class="body"id="nb"  >
                           <input type="file" name="image"class="dropify" multiple >
                        </div>
 
-                </div>
+                </div> --}}
                 <br>
                            <button type="submit" class="btn btn-primary">Store</button>
                 </form>

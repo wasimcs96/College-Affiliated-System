@@ -38,14 +38,6 @@
                     </tr>
 
                     <tr>
-                        <th scope="row">Status</th>
-                        <td> @if ($order->status == 0)
-                            <span class="btn btn-danger">InActive</span>
-                        @else
-                            <span class="btn btn-info">Active</span>
-                        @endif</td>
-                    </tr>
-                    <tr>
                         <th scope="row">Transaction ID</th>
                         <td>{{$order->transaction_id ?? ''}}</td>
                     </tr>
@@ -56,19 +48,30 @@
                             @if($order->payment_type == 2)Advertisement @endif
                             @if($order->payment_type == 3)Consultant Visa Commission @endif
                             @if($order->payment_type == 4)Consultant PR Commission @endif</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Package Description</th>
-                        @foreach($order->OrderItem as $key=>$item)
-                        <td>{{$item->Item_title ?? ''}}</td>
-                        @endforeach
-                    </tr>
-            </div>
+                        </tr>
+                        <tr>
+                            <th scope="row">Package Description</th>
+                            @foreach($order->OrderItem as $key=>$item)
+                            <td>{{$item->Item_title ?? ''}}</td>
+                            @endforeach
+                        </tr>
+                        <tr>
+                            <th scope="row">Purchased Date</th>
+                            <td>{{$order->created_at->format('Y-m-d')}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td> @if ($order->status == 0)
+                                <span class="btn btn-danger">InActive</span>
+                            @else
+                                <span class="btn btn-info">Active</span>
+                            @endif</td>
+                        </tr>
 
+                </tbody>
 
-                    </tbody>
-
-                </table>
+            </table>
+        </div>
                 <div id="res">
 
                 </div>

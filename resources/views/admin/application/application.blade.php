@@ -26,8 +26,8 @@
                             <th><b>Student Mobile </b></th>
                             <th><b>Consultant Mobile </b></th>
 
-                            <th><b>Student Email </b></th>
-                            <th><b>Consultant E-mail</b></th>
+                            {{-- <th><b>Student Email </b></th>
+                            <th><b>Consultant E-mail</b></th> --}}
                             {{-- <th><b> Universities</b></th> --}}
                             {{-- <th><b> Date</b></th> --}}
                             <th><b> Status</b></th>
@@ -50,8 +50,8 @@
                             <td>{{$application->user->mobile ?? ''}}</td>
                             <td>{{$application->userConsultant->mobile ?? ''}}</td>
 
-                            <td>{{$application->user->email ?? ''}}</td>
-                            <td>{{$application->userConsultant->email ?? ''}}</td>
+                            {{-- <td>{{$application->user->email ?? ''}}</td>
+                            <td>{{$application->userConsultant->email ?? ''}}</td> --}}
 
                             {{-- <td>{{$application->consultant->university->university_name}}</td> --}}
                             {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}

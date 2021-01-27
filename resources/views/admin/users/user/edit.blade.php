@@ -110,7 +110,7 @@
 
                                             </div>
                                             @endif
-                            @if($user->isConsultant())
+                            {{-- @if($user->isConsultant())
                                 <div class="form-group">
                                     <label>Company Name</label>
                                     <input type="text" class="form-control" value="{{$user->consultant->company_name ?? ''}}" name="company_name" id="landline_1">
@@ -122,7 +122,7 @@
                                 <div class="form-group">
                                     <label>Website</label>
                                     <input type="url" class="form-control" value="{{$user->consultant->website ?? ''}}" name="website" id="website">
-                                </div>
+                                </div> --}}
                                 {{-- <div class="form-group">
                                     <label>Working  Week Days</label>
                                     <input type="text" class="form-control" value="{{$user->consultant->working_week_days?? ''}}" name="city" id="city">
@@ -131,8 +131,8 @@
                                     <label>Time Slots</label>
                                     <input type="text" class="form-control" value="{{$user->consultant->start_time ?? ''}}-{{$user->consultant->end_time ?? ''}}" name="city" id="city">
                                 </div> --}}
-                                @endif
-                                      @if($user->isUniversity())
+                                {{-- @endif --}}
+                                      {{-- @if($user->isUniversity())
                                 <div class="form-group">
                                     <label>University Name</label>
                                     <input type="text" class="form-control" value="{{$user->university->university_name ?? ''}}" name="university_name" id="landline_1">
@@ -149,7 +149,7 @@
                                     <label>Website</label>
                                     <input type="url" class="form-control" value="{{$user->university->website ?? ''}}" name="website" id="website">
                                 </div>
-                                <input type="hidden" name="uni_id" value="{{$user->id}}">
+                                <input type="hidden" name="uni_id" value="{{$user->id}}"> --}}
                                 {{-- <div class="form-group">
                                     <label>Working  Week Days</label>
                                     <input type="text" class="form-control" value="{{$user->consultant->working_week_days?? ''}}" name="city" id="city">
@@ -158,7 +158,7 @@
                                     <label>Time Slots</label>
                                     <input type="text" class="form-control" value="{{$user->consultant->start_time ?? ''}}-{{$user->consultant->end_time ?? ''}}" name="city" id="city">
                                 </div> --}}
-                                @endif
+                                {{-- @endif --}}
                                 @if($user->isClient())
                                 <input type="text" name="parameter_id" value=1 hidden>
                                 @endif
