@@ -708,17 +708,17 @@
 @endif
 
 <div class="col-lg-12">
-    <div class="card">
+  {{--   <div class="card">
         <div class="header">
 
-            <h2>Add University<small>
+            <h2>Add University<small> --}}
                 {{-- <h6>Booking Details of Sufiyan Qureshi</h6></b> --}}
-                </small></h2>
+                {{-- </small></h2> --}}
             {{-- <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
             </ul> --}}
-        </div>
+        {{-- </div>
         <div class="body">
             <form action="{{ route('consultant.application.add.university')}}"  id="basic-form" method="POST" novalidate enctype="multipart/form-data">
             @csrf
@@ -740,22 +740,22 @@
                             </td>
                             <td class="university">
                                 <select id="university" custom2="" class="form-control " name="university" placeholder="Select University" required>
-                                 <option value="">Select University Name</option>
+                                 <option value="">Select University Name</option> --}}
                               {{--  @foreach($univers as $univer)
                                 <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option>
 
                                 @endforeach--}}
-                              </select>
+                              {{-- </select>
                             </td>
                               <td id="">
                                   <select id="course" name="course" class="form-control" required>
-                                    <option value="">Select Course Name</option>
+                                    <option value="">Select Course Name</option> --}}
                                 {{-- @foreach($courses as $course)
                                <option value="{{$course->id}}">{{$course->name}}</option>
                                @endforeach --}}
-                             </select></td>
+                             {{-- </select></td> --}}
                             {{-- <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i></button></td> --}}
-
+{{--
                         </tr>
                     </table>
                 </div>
@@ -764,7 +764,7 @@
         </form>
 
         </div>
-    </div>
+    </div> --}}
     <button type="button" id="closeApplicationButton" custom1="{{$application->id}}" class="btn btn-danger"  @if($application->status == 0 ?? '') data-toggle="modal" data-target="#closeApplicationModal" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif style="margin-bottom: 10px; float: right; margin-top: -15px;">Close Application</button>
     {{-- <a href="javascript:void(0);" class="btn btn-danger">Close Application</a> --}}
 </div>
