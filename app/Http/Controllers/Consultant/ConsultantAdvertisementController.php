@@ -55,6 +55,7 @@ class ConsultantAdvertisementController extends Controller
     //Important Code
     // $replacement['token'] =$request->_token;
     // $replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
+    // $replacement['USER_NAME'] = auth()->user()->first_name;
     // $data = ['template'=>'welcome-email','hooksVars' => $replacement];
     // Mail::to("qsaif253@gmail.com")->send(new \App\Mail\ManuMailer($data));
     // $new=new PaymentController();

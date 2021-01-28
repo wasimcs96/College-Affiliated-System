@@ -120,8 +120,38 @@ class AdminUsersController extends Controller
 
     public function update(Request $request, User $id)
     {
+        // dd($request->uni_id);
+//       if($request->parameter_id == 2){
+//         $consultant=Consultant::find($id)->first();
+//         // dd($consultant);
+// $consultant->update([
+//     'company_name' => $request->company_name,
+//     'about_me'=>$request->about_me,
+//     'website'=>$request->website
+//     ]);
 
-        // $id = Package::find($id);
+//         }
+//         if($request->parameter_id == 3){
+//             $university=University::where('user_id',$request->uni_id)->first();
+//             // dd($university);
+//             if($university == null){
+//             $university->create([
+//         'university_name' =>$request->university_name,
+//         'about_me'=>$request->about_me,
+//         'website'=>$request->website,
+//         'average_fees'=>$request->average_fees
+//         ]);
+//     }
+//     else{
+//         $university->update([
+//             'university_name' =>$request->university_name,
+//             'about_me'=>$request->about_me,
+//             'website'=>$request->website,
+//             'average_fees'=>$request->average_fees]);
+//     }
+
+//             }
+        // dd($consultant);
         $id->update($request->all());
         $id->countries_id = $request->country;
         $id->rating = $request->rating;

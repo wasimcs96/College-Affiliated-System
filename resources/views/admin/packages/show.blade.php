@@ -59,14 +59,14 @@
 
                     <tr>
                         <th><b> Package Time </b></th>
-                        <td>{{$package->package_time}}</td>
+                        <td>{{$package->package_time}}{!!"&nbsp"!!}-{!!"&nbsp"!!}Months</td>
                     </tr>
 
 
 
                     <tr>
                         <th><b>Amount</b></th>
-                        <td>{{$package->amount}}</td>
+                        <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$package->amount}}</td>
                     </tr>
 
                     <tr>

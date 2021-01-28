@@ -5,22 +5,23 @@ namespace App\Http\Controllers\University;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UniversityConsultantClient;
 
 class UniversityStudentController extends Controller
 {
     public function index()
     {
     //    ('users', User::all());
-    $users=auth()->user()->applicationAppliedUniversity;
+        $users=auth()->user()->universityConsultantClient;
     // dd($users);
         return view('university.student.students',compact('users'));
     }
 
     public function show($id)
     {
-        $user = User::where('id',$id)->first();
-// dd($user->first_name);
-        return view('university.student.student_show',compact('user'));
+        $show = UniversityConsultantClient::where('id',$id)->first();
+        // dd($show);
+        return view('university.student.student_show',compact('show'));
     }
 
 

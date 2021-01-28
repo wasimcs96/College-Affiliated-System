@@ -42,7 +42,8 @@
                             <td>{{$booking->user->first_name ?? ''}} </td>
                             <td>{{$booking->user->mobile ?? ''}}</td>
                             <td>{{$booking->user->email ?? ''}}</td>
-                            <td>{{$booking->booking_date ?? ''}}</td>
+
+                            <td>{{ Carbon\Carbon::parse($booking->booking_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                             <td>{{$booking->booking_start_time ?? ''}}-{{$booking->booking_end_time ?? ''}}</td>
                             <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
                                 @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif

@@ -42,15 +42,6 @@
                     </tr>
 
                     <tr>
-                        <th scope="row">University Type</th>
-                        <td>@if($university->type == 0)
-                            <span class="btn btn-warning" >Private</span>
-                            @else
-                            <span class="btn btn-info">Government</span>
-                          @endif</td>
-                    </tr>
-
-                    <tr>
                         <th scope="row">University Email</th>
                         <td>{{$university->user->email}}</td>
                     </tr>
@@ -59,7 +50,14 @@
                         <th scope="row">University Mobile Number</th>
                         <td>{{$university->user->mobile}}</td>
                     </tr>
-
+                    <tr>
+                        <th scope="row">University Type</th>
+                        <td>@if($university->type == 0)
+                            <span class="btn btn-warning" >Private</span>
+                            @else
+                            <span class="btn btn-info">Government</span>
+                          @endif</td>
+                    </tr>
             </div>
                     </tr>
 
@@ -67,6 +65,7 @@
 
                     </tbody>
                 </table>
+                <a href="{{route('consultant.associated_university')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>

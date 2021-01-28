@@ -5,10 +5,10 @@
 @section('content')
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>
-                Manage Website Logo & Fav Icon
+            {{-- <h3>
+                Manage Website Logo & Fav Icon<br>
                 <small>Here you can manage the logo and fav icons Option</small>
-            </h1>
+            </h3> --}}
             <ol class="breadcrumb">
                 <li><a href="{{url('admin/dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li><a href="{{url('admin/settings/general')}}">Settings</a></li>
@@ -21,7 +21,7 @@
                 <div class="col-md-8">
                     <div class="box box-default settings">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Theme Options</h3>
+                            <h3 class="box-title">Update Logo and Favicon </h3>
                         </div><!-- /.box-header -->
                         <form method="post" enctype="multipart/form-data" accept-charset="utf-8" role="form" action="{{route('setting.logo.update')}}">
                             @csrf
@@ -85,7 +85,7 @@
                                                               <img src="{{asset('img/no_image.gif')}}" alt="" height="100" style="max-height:100px;">
                                                               @endif
                                                             </div>
-                                                            <button class="btn bg-olive btn-flat margin button-upload" data-toggle="tooltip" title="Upload File" data-loading-text="Loading..." type="button">
+                                                            <button style="color: black;" class="btn bg-white btn-flat margin button-upload" data-toggle="tooltip" title="Upload File" data-loading-text="Loading..." type="button">
                                                                     <i class="fa fa-upload"></i>
                                                                     Upload
                                                                 </button>
@@ -166,7 +166,7 @@
                                             @endif
                                             </tbody>
                                             <tfoot>
-                                            <tr>
+                                            {{-- <tr>
                                                 <td colspan="2"></td>
                                                 <td>
                                                     <button type="button" class="btn btn-primary pull-right"
@@ -174,7 +174,7 @@
                                                             data-original-title="Add New"><i class="fa fa-plus"></i>
                                                     </button>
                                                 </td>
-                                            </tr>
+                                            </tr> --}}
                                             </tfoot>
                                         </table>
                                     </div>

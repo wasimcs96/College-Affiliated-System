@@ -80,7 +80,19 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label for="landline_1">Landline 1</label>
+                            <input type="text" value="@if(isset(auth()->user()->landline_1)){{auth()->user()->landline_1}}@endif" name="landline_1" class="form-control" placeholder="Landline1">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label for="landline_2">Landline 2</label>
+                            <input type="text" value="@if(isset(auth()->user()->landline_2)){{auth()->user()->landline_2}}@endif" name="landline_2" class="form-control" placeholder="Landline2">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="birth_year">DOB</label>
                             <div class="input-group">
@@ -91,7 +103,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="email">Email</label>
                             <div class="input-group">
@@ -106,18 +118,6 @@
                         <div class="form-group">
                             <label for="mobile">Mobile</label>
                             <input type="number" value="@if(isset(auth()->user()->mobile)){{auth()->user()->mobile}}@endif" name="mobile" class="form-control" placeholder="Mobile Number" required>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <label for="landline_1">Landline 1</label>
-                            <input type="text" value="@if(isset(auth()->user()->landline_1)){{auth()->user()->landline_1}}@endif" name="landline_1" class="form-control" placeholder="Landline1">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <label for="landline_2">Landline 2</label>
-                            <input type="text" value="@if(isset(auth()->user()->landline_2)){{auth()->user()->landline_2}}@endif" name="landline_2" class="form-control" placeholder="Landline2">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">

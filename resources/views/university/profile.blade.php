@@ -58,7 +58,7 @@
         </div>
         <div class="card">
             <div class="header">
-                <h2>Add Default Document</h2>
+                <h2>Add Default Document</h2> <small style="color: white">Note: These document will be shown at consultant end for creating application</small>
                 <ul class="header-dropdown dropdown">
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
 
@@ -120,8 +120,10 @@
                             <label for="type">University Type</label>
                             <select class="form-control" name="type">
                                 <option value="">-- Select Type -- </option>
-                                <option value="0" <?php if($user->medium == 0) { echo "selected"; } ?>>Private
-                                <option value="1" <?php if($user->medium == 1) { echo "selected"; } ?>>Government</option>
+
+                                <option value="0" @if(isset(auth()->user()->university->type)) <?php if(auth()->user()->university->type == 0) { echo "selected"; } ?> @endif>Private
+                                <option value="1" @if(isset(auth()->user()->university->type)) <?php if(auth()->user()->university->type == 1) { echo "selected"; } ?> @endif>Government</option>
+
                             </select>
                         </div>
                     </div>
@@ -169,7 +171,7 @@
                                 <option value="">-- Select Country --</option>
                                 @if($countries->count() > 0)
                                     @foreach($countries as $country)
-                            <option value="{{$country->countries_id}}"  <?php if($user->countries_id == $country->countries_id) { echo "selected"; } ?>>{{$country->countries_name}}</option>
+                            <option value="{{$country->countries_id}}"  <?php if(auth()->user()->countries_id == $country->countries_id) { echo "selected"; } ?>>{{$country->countries_name}}</option>
                                     @endforeach
                                     @else
                                     <option value="Data Not Available" >Data Not Available</option>
@@ -187,7 +189,7 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="landline_2">Average Fees</label>
-                            <input type="text" name="average_fees" value="@if(isset(auth()->user()->university->average_fess)){{auth()->user()->university->average_fees}}@endif"class="form-control" placeholder="Average Fees" required>
+                            <input type="text" name="average_fees" value="@if(isset(auth()->user()->university->average_fees)){{auth()->user()->university->average_fees}}@endif" class="form-control" placeholder="Average Fees">
                         </div>
                     </div>
                     {{-- <div class="col-lg-12 col-md-12">
@@ -196,13 +198,13 @@
                         </div>
                     </div> --}}
 
-                    <div class="col-lg-8 col-md-12">
+                    <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="website">Website</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
+                                {{-- <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
-                                </div>
+                                </div> --}}
                                 <input name="website" type="text" class="form-control" value="@if(isset(auth()->user()->university->website)){{auth()->user()->university->website}}@endif" placeholder="http://" required>
                             </div>
                         </div>
@@ -225,11 +227,11 @@
                             <label for="brochure">Upload Brochure</label>
                             <div class="input-group">
                                 <input type="file" name="brochure" accept="application/pdf" />
+                                {{-- <br> --}}
+                                @if(file_exists(Auth()->user()->university->brochure) && isset(Auth()->user()->university->brochure))
+                                <a href="{{asset(auth()->user()->university->brochure)}}" class="btn btn-primary" download style="float: right;">Download Brochure</a>
+                                @endif
                             </div>
-                            <br>
-                            @if(file_exists(Auth()->user()->university->brochure))
-                               <a href="{{asset(auth()->user()->university->brochure)}}" class="btn btn-primary" target="blank">Uploaded Brochure</a>
-                            @endif
                         </div>
                     </div>
 
@@ -245,8 +247,10 @@
                         <div class="form-group">
                             <label for="profile_image">Upload Cover Image</label>
                             <input name="cover_image" type="file" class="dropify-frr"  >
-<label><span><b>Please Note </b>: Image should be in Given Dimensions:min-width=1200 | min-height=300  </span></label>
-
+                             <label><span><b>Please Note </b>: Image should be in Given Dimensions:min-width=1200 | min-height=300  </span></label>
+                            @if(file_exists(Auth()->user()->university->cover_image) && isset(Auth()->user()->university->cover_image))
+                                <a href="{{asset(auth()->user()->university->cover_image)}}" class="btn btn-primary" target="_blank" style="float: right;">See Cover Image</a>
+                            @endif
                         </div>
                     </div>
 

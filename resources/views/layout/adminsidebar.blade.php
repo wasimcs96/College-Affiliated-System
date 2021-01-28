@@ -70,14 +70,14 @@
                     <a href="#Commission" class="has-arrow"><i class="fa fa-credit-card"></i><span>Commission Manager</span></a>
                     <ul>
                         <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('admin.commission',['id'=>1])}}">Visa Commission</a></li>
-                        <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('admin.commission',['id'=>2])}}">PR Commission</a></li>
+                        <li class="{{ Request::segment(4) == '2' ? 'active' : null }}"><a href="{{route('admin.commission',['id'=>2])}}">PR Commission</a></li>
                     </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
                 <li class="{{ Request::segment(2) === 'chat' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
 
 
-                 <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('admin.subscription')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Subscription</span></a></li>
+                 {{-- <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('admin.subscription')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Subscription</span></a></li> --}}
 
                 <li class="{{ Request::segment(2) == 'general' ? 'active open' : null }}">
                     <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
@@ -85,15 +85,15 @@
                         <li class="{{ Request::segment(3) == 'faq' ? 'active' : null }}"><a href="{{route('admin.general.faq')}}">Manage FAQ</a></li>
                         <li class="{{ Request::segment(3) == 'about' ? 'active' : null }}"><a href="{{route('admin.general.about')}}">Manage About Us</a></li>
                         <li class="{{ Request::segment(3) == 'terms&condition' ? 'active' : null }}"><a href="{{route('admin.general.terms')}}">Manage Terms & Conditions</a></li>
-                        <li class="{{ Request::segment(3) == 'privacy_policy' ? 'active' : null }}"><a href="{{route('admin.general.privacy_policy')}}">Manage Privacy & Policy</a></li>
-                        <li class="{{ Request::segment(3) == 'blog' ? 'active' : null }}"><a href="{{route('admin.general.blog')}}">Blog</a></li>
+                        <li class="{{ Request::segment(3) == 'privacy_policy' ? 'active' : null }}"><a href="{{route('admin.general.privacy')}}">Manage Privacy & Policy</a></li>
+                        <li class="{{ Request::segment(3) == 'blog' ? 'active' : null }}"><a href="{{route('admin.general.blog')}}">Manage Blog</a></li>
                         <li class="{{ Request::segment(3) == 'contact' ? 'active' : null }}"><a href="{{route('admin.contact.index')}}">Contact Manager</a></li>
                     </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('setting.general')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Settings</span></a></li>
                 <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('settingtheme')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Logo Settings</span></a></li>
-                
-                <li class="{{ Request::segment(2) == 'report' ? 'active open' : null }}">
+
+                {{-- <li class="{{ Request::segment(2) == 'report' ? 'active open' : null }}">
                     <a href="#Report" class="has-arrow"><i class="icon-book-open"></i><span>Reports</span></a>
                     <ul>
                         <li class="{{ Request::segment(3) == 'application' ? 'active open' : null }}">
@@ -117,7 +117,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
             </ul>
         </nav>

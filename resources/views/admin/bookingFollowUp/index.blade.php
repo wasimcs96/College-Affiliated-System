@@ -38,10 +38,11 @@
                             </td> --}}
 
                             <td>{{$booking->note ?? ''}}</td>
-                            <td>{{$booking->date ?? ''}}</td>
+                            <td>@if(isset($booking->date)){{ Carbon\Carbon::parse($booking->date)->format(config('get.ADMIN_DATE_FORMAT')) }}
+@endif</td>
 
                             <td style="text-align: center;">
-                                <a href="{{route('admin.booking.followup.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                {{-- <a href="{{route('admin.booking.followup.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a> --}}
                                 <a href="{{route('admin.booking.show',['id'=> $booking->booking_id])}}" class="btn btn-primary">Go to Booking<i class="icon-arrow"></i></a>
                             </td>
 

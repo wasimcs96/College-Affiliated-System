@@ -44,7 +44,7 @@ if($store == null){
         if($request->hasFile('image')){
             $image=$request->image;
                $profile_image_new_name = time().$image->getClientOriginalName();
-               $image->move(Config::get('define.image.page_banner'),$profile_image_new_name);
+               $image->move($profile_image_new_name);
                $store->banner=Config::get('define.image.page_banner').'/'.$profile_image_new_name;
            };
 

@@ -4,113 +4,180 @@
 
 @section('content')
 
+@php
+    $user = DB::table('applications')->where('consultant_id',auth()->user()->id)->where('is_commission_add',1)->count();
+    $university = DB::table('university_consultants')->where('consultant_id',auth()->user()->id)->count();
+    $booking = DB::table('bookings')->where('consultant_id',auth()->user()->id)->where('booking_for',0)->count();
+    $pr = DB::table('bookings')->where('consultant_id',auth()->user()->id)->where('booking_for',1)->count();
+    $runningApplication = DB::table('applications')->where('consultant_id',auth()->user()->id)->where('status',0)->count();
+    $completedApplication = DB::table('applications')->where('consultant_id',auth()->user()->id)->where('status',1)->count();
+    $closedApplication = DB::table('applications')->where('consultant_id',auth()->user()->id)->where('status',2)->count();
+    $visaDues = DB::table('consultant_dues')->where('consultant_id',auth()->user()->id)->where('due_amount_type',0)->get('due_amount')->first();
+    $prDues = DB::table('consultant_dues')->where('consultant_id',auth()->user()->id)->where('due_amount_type',1)->get('due_amount')->first();
+    $visaPaid = DB::table('consultant_dues')->where('consultant_id',auth()->user()->id)->where('due_amount_type',0)->get('paid_amount')->first();
+    $prPaid = DB::table('consultant_dues')->where('consultant_id',auth()->user()->id)->where('due_amount_type',1)->get('paid_amount')->first();
+@endphp
 
 
 <div class="row clearfix">
-    <div class="col-lg-9 col-md-12 col-sm-12">
-        <div class="row clearfix">
-            <div class="col-lg-6 col-md-6">
-                <div class="card-wrapper">
-                    <div class="card s-widget-top">
-                        <div class="front p-3 px-4">
-                            <div>Income status</div>
-                            <div class="py-4 m-0 text-center h2 text-info">$2,258</div>
-                            <div class="d-flex">
-                                <small class="text-muted">New income</small>
-                                <div class="ml-auto">0%</div>
-                            </div>
-                        </div>
-                        {{-- <div class="back p-3 px-4 bg-info text-center">
-                            <p class="text-light">This Week</p>
-                            <span id="minibar-chart2" class="mini-bar-chart"></span>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="card-wrapper flip-left">
-                    <div class="card s-widget-top">
-                        <div class="front p-3 px-4 bg-danger text-light">
-                            <div>Student status</div>
-                            <div class="py-4 m-0 text-center h2">428</div>
-                            <div class="d-flex">
-                                <small>New Student</small>
-                                <div class="ml-auto"><i class="fa fa-caret-down"></i>10%</div>
-                            </div>
-                        </div>
-                        <div class="back p-3 px-4 text-center">
-                            <p>This Week</p>
-                            <span id="minibar-chart4" class="mini-bar-chart"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="card-wrapper flip-left">
-                    <div class="card s-widget-top">
-                        <div class="front p-3 px-4 bg-warning text-light">
-                            <div>University status</div>
-                            <div class="py-4 m-0 text-center h2">232</div>
-                            <div class="d-flex">
-                                <small>New universities</small>
-                                <div class="ml-auto"><i class="fa fa-caret-up"></i>3%</div>
-                            </div>
-                        </div>
-                        <div class="back p-3 px-4 text-center">
-                            <p>This Week</p>
-                            <span id="minibar-chart3" class="mini-bar-chart"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="card-wrapper flip-left">
-                    <div class="card s-widget-top">
-                        <div class="front p-3 px-4">
-                            <div>Total revenue</div>
-                            <div class="py-4 m-0 text-center h2 text-success">$9,653</div>
-                            <div class="d-flex">
-                                <small class="text-muted">Income</small>
-                                <div class="ml-auto"><i class="fa fa-caret-up text-success"></i>4%</div>
-                            </div>
-                        </div>
-                        <div class="back p-3 px-4 bg-success text-center">
-                            <p class="text-light">This Week</p>
-                            <span id="minibar-chart1" class="mini-bar-chart"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card">
-            <div class="body">
-                <div class="row text-center">
-                    <div class="col-lg-12 col-md-5">
-                        <div class="text-center">
-                            <input type="text" class="knob" value="77" data-width="68" data-height="68" data-thickness="0.1" data-bgColor="#383b40" data-fgColor="#17C2D7">
-                        </div>
-                        <label class="mb-0 mt-2">New Users</label>
-                        <h4 class="h4 mb-0 font-weight-bold text-cyan">225</h4>
-                    </div>
-                    <div class="col-12 col-md-2 col-lg-12">
-                        <hr class="mt-4 mb-4">
-                    </div>
-                    <div class="col-lg-12 col-md-5">
-                        <div class="text-center">
-                            <input type="text" class="knob" value="38" data-width="68" data-height="68" data-thickness="0.1" data-bgColor="#383b40" data-fgColor="#dc3545">
-                        </div>
-                        <label class="mb-0 mt-2">Return Visitors</label>
-                        <h4 class="h4 mb-0 font-weight-bold text-info">124</h4>
-                    </div>
-                </div>
+<div class="col-lg-4 col-md-6">
+<div class="card">
+    <div class="body">
+        <div class="d-flex align-items-center">
+            <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-user"></i></div>
+            <div class="ml-4">
+                <span>Total Students</span>
+                <h4 class="mb-0 font-weight-medium">{{ $user }}</h4>
             </div>
         </div>
     </div>
 </div>
+</div>
+<div class="col-lg-4 col-md-6">
+<div class="card">
+<div class="body">
+    <div class="d-flex align-items-center">
+        <div class="icon-in-bg bg-danger text-white rounded-circle"><i class="fa fa-university" aria-hidden="true"></i>
+        </div>
+        <div class="ml-4">
+            <span>Associated Universities</span>
+            <h4 class="mb-0 font-weight-medium">{{$university}}</h4>
+        </div>
+    </div>
+</div>
+</div>
+</div>
 
+{{-- <div class="col-lg-4 col-md-6">
+<div class="card">
+    <div class="body">
+        <div class="d-flex align-items-center">
+            <div class="icon-in-bg bg-orange text-white rounded-circle"><i class="fa fa-briefcase" aria-hidden="true"></i>
+
+            </div>
+            <div class="ml-4">
+                <span>Total Consultant</span>
+                <h4 class="mb-0 font-weight-medium">{{$consultant}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+</div> --}}
+
+<div class="col-lg-4 col-md-6">
+<div class="card">
+    <div class="body">
+        <div class="d-flex align-items-center">
+            <div class="icon-in-bg bg-primary text-white rounded-circle"><i class="fa fa-sticky-note" aria-hidden="true"></i>
+            </div>
+            <div class="ml-4">
+                <span>Total Bookings</span>
+                <h4 class="mb-0 font-weight-medium">{{$booking}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+    <div class="card">
+    <div class="body">
+
+    <div class="d-flex align-items-center">
+        <div class="icon-in-bg bg-green text-white rounded-circle"><i class="fa fa-plane" aria-hidden="true"></i>
+        </div>
+        <div class="ml-4">
+            <span>PR Requests</span>
+            <h4 class="mb-0 font-weight-medium">{{$pr}}</h4>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<div class="col-lg-4 col-md-6">
+<div class="card">
+
+<div class="body">
+    <div class="d-flex align-items-center">
+        <div class="icon-in-bg bg-warning text-white rounded-circle"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </div>
+        <div class="ml-4">
+            <span>Running Application</span>
+            <h4 class="mb-0 font-weight-medium">{{ $closedApplication }}</h4>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+    <div class="card">
+
+    <div class="body">
+        <div class="d-flex align-items-center">
+            <div class="icon-in-bg bg-success text-white rounded-circle"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </div>
+            <div class="ml-4">
+                <span>Completed Application</span>
+                <h4 class="mb-0 font-weight-medium">{{ $completedApplication }}</h4>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="card">
+
+        <div class="body">
+            <div class="d-flex align-items-center">
+                <div class="icon-in-bg bg-danger text-white rounded-circle"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </div>
+                <div class="ml-4">
+                    <span>Closed Application</span>
+                    <h4 class="mb-0 font-weight-medium">{{ $closedApplication }}</h4>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+
+<div class="col-lg-4 col-md-6">
+<div class="card">
+<div class="body">
+
+<div class="d-flex align-items-center">
+    <div class="icon-in-bg bg-cyan text-white rounded-circle"><i class="fa fa-credit-card" aria-hidden="true"></i>
+    </div>
+    <div class="ml-4">
+        <span>Total Dues</span>
+        <h4 class="mb-0 font-weight-medium"><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!} {{ $visaDues->due_amount + $prDues->due_amount }}</h4>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-6">
+<div class="card">
+<div class="body">
+
+
+<div class="d-flex align-items-center">
+    <div class="icon-in-bg bg-cyan text-white rounded-circle"><i class="fa fa-money" aria-hidden="true"></i>
+    </div>
+    <div class="ml-4">
+        <span>Total Paid Amount</span>
+        <h4 class="mb-0 font-weight-medium"><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{ $visaPaid->paid_amount + $prPaid->paid_amount }}</h4>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
 
 
 @stop

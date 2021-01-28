@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class UniversityConsultantClient extends Model
 {
+    protected $fillable = ['client_id', 'university_id', 'consultant_id'];
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'client_id');
     }
 
     public function universityClient()
@@ -18,6 +20,6 @@ class UniversityConsultantClient extends Model
 
     public function consultantClient()
     {
-        return $this->belongsTo(User::class,'university_id');
+        return $this->belongsTo(User::class,'consultant_id');
     }
 }

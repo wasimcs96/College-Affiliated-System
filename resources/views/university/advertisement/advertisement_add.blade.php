@@ -34,7 +34,7 @@
             <ul class="pricing body">
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
-                    <h3><span>$</span>{{$package->amount}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>                    <span>Advertisement</span>
+                    <h3><span><i class="fa fa-inr"></i></span>{{$package->amount}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>                    <span>Advertisement</span>
                 </li>
                 <li>{{$package->title}}</li>
                 <hr>
@@ -177,7 +177,7 @@
         var orderId='';
         photo=$(`#photo-${package_id}`).val()
         console.log(isEmpty(photo));
-        
+
     if (isEmpty(photo)){
         $(`#al`).html(`<div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Image not found!</strong>Please select the image
@@ -193,38 +193,38 @@
                     <div class="body">
                         <div class="row clearfix">
                             <br>
-        
+
                             <div class="col-md-3">
                                 <br>
-        
+
                                 <p><b>Plan Name</b></p>
                                 <ul style="list-style-type: none;margin-left: -40px;">
                 <li class="plan-img">${title}</li>
-        
-        
+
+
             </ul>
                             </div>
                             <div class="col-md-3">
                                 <br>
-        
+
                                 <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
                                 <br>
-                                <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
+                                <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span><i class="fa fa-inr" aria-hidden="true"></i></span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
                             </div>
                             <br>
-        
+
                             <div class="col-md-3">
                                 <br>
-        
+
                                 <p class="align-right"><b style="float: left;">Description</b></p>
                                 <br>
                                 <div class="align-left" style="float: left;     margin-left: -4px;">${description} </div>
                             </div>
                             <br>
-        
+
                             <div class="col-md-3">
                                 <br>
-        
+
                                 <p class="align-justify"><b >Payment Method</b></p>
                                 <div class="align-justify"> <img style="margin-top: -57px; margin-left: 1px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} "></div>
                             </div>
@@ -239,7 +239,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
                 });
-        
+
                 $.ajax({
                 url:"{{ route('subscription.payment') }}",
                 method:"post",
@@ -255,16 +255,16 @@
                         "image": "https://example.com/your_logo",
                         "order_id": result.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                         "handler": function (response){
-        
+
                             $.ajaxSetup({headers:
                                 {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 }
                                 });
-        
-        
+
+
                                  transactionId=response.razorpay_payment_id;
-        
+
                                 $.ajax({
                                 url:"{{ route('transaction.pay') }}",
                                 method:"GET",
@@ -276,12 +276,12 @@
                                     $('#mdlup').modal('show');
                                 }
                                 });
-        
-        
-        
-        
+
+
+
+
                         },
-        
+
                         "prefill": {
                             "name": "Gaurav Kumar",
                             "email": "gaurav.kumar@example.com",
@@ -310,13 +310,13 @@
                     }
                 }
                 });
-        
-        
-        
-            
+
+
+
+
     }
-        
-    
+
+
     })
     </script>
 

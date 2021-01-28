@@ -1,4 +1,4 @@
-<header class="header-area">
+<header class="header-area" >
     <div class="header-top-bar padding-right-100px padding-left-100px">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -92,7 +92,10 @@
                     <div class="menu-wrapper">
                         <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('frontEnd/assets/images/education-portal.png') }}" alt="logo"></a>
+                            <a href="index.html"><img src="{{ asset('frontEnd/assets/images/logo.png') }}" alt="logo"  style="
+                                width: 198px;
+                                height: 70px;
+                            "></a>
                             <div class="menu-toggler">
                                 <i class="la la-bars"></i>
                                 <i class="la la-times"></i>

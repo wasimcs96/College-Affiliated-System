@@ -12,14 +12,6 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li>
             </ul>
         </div>
         <div class="body">
@@ -46,26 +38,25 @@
 
 
                         @foreach ($users as $user)
-                        {{-- {{dd($user->application->user->first_name)}} --}}
-                        @if($user->application == !null)
+                        {{-- {{dd($user->user->first_name)}} --}}
+                        {{-- @if($user == !null) --}}
                                <tr>
-                                   <td> {{$user->application->user->first_name ?? ''}} {{$user->application->user->last_name ?? ''}}</td>
+                                   <td> {{$user->user->first_name ?? ''}} {{$user->user->last_name ?? ''}}</td>
 
-                                   <td>{{$user->application->user->mobile ?? ''}}</td>
-                                   <td>{{$user->application->user->email ?? ''}}</td>
-                                   <td>{{$user->application->user->city ?? ''}}</td>
-                                    @if(isset($user->application->user->countries_id))
-                                       <?php $country = DB::table('countries')->where('countries_id',$user->application->user->countries_id)->get()->first();?>
-                                    @endif
-                                    <td> {{$country->countries_name ?? ''}} </td>
-                                   {{-- <td> {{$user->application->user->country->countries_name ?? ''}} </td> --}}
-                                   <td style="text-align: center;"><a href="{{route('university.student.show',['id' => $user->application->user->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                   <td>{{$user->user->mobile ?? ''}}</td>
+                                   <td>{{$user->user->email ?? ''}}</td>
+                                   <td>{{$user->user->city ?? ''}}</td>
+                                   <td>      @if(isset($user->user->countries_id) )
+                                    <?php $country = DB::table('countries')->where('countries_id',$user->user->countries_id)->get()->first();?>
+                                {{$country->countries_name ?? ''}} @else N/A @endif</td>
+                                   {{-- <td> {{$user->user->country->countries_name ?? ''}} </td> --}}
+                                   <td style="text-align: center;"><a href="{{route('university.student.show',['id' => $user->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                     {{-- <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                     <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a> --}}
                                 </td>
                             </tr>
 
-                        @endif
+                        {{-- @endif --}}
 
                                 @endforeach
 

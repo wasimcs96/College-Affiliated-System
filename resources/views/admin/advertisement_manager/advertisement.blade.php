@@ -49,12 +49,12 @@
                             @if($rt->user->isUniversity() ?? '') Univeristy @endif</td>
                             {{-- <td>{{$rt->expire_date ?? ''}}</td> --}}
                             <td>
-                                {{$rt->start_date ?? ''}}
+                                @if(isset($rt->start_date )){{ Carbon\Carbon::parse($rt->start_date )->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif
                             </td>
                             <td>
-                                {{$rt->expire_date ?? ''}}
+                                @if(isset($rt->expire_date )){{ Carbon\Carbon::parse($rt->expire_date )->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif
                             </td>
-                            <td>{{$rt->created_at->format("Y-m-d") ?? ''}}</td>
+                            <td>@if(isset($rt->created_at)){{ Carbon\Carbon::parse($rt->created_at)->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
                             <td>
                                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                 {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}
@@ -63,12 +63,16 @@
                                 @if($rt->expire_date == null)<div class="btn btn-warning">Pending</div>@endif
                                 {{-- @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif --}}
                             </td>
-                            <td><div class="row" style="justify-content: center;"><form action="{{route('advertisement_manager.update')}}" method="POST" >
+                            <td> @if($rt->expire_date == null)
+                                <div class="row" style="justify-content: center;">
+                                <form action="{{route('advertisement_manager.update')}}" method="POST" >
                                 @csrf
                                 <input type="hidden" value="{{$rt->id}}" name="rtid"> <input type="hidden" value="{{$rt->time_period}}" name="time_period"><button type="submit" data-toggle="tooltip" data-placement="top" title="Accept" class="btn btn-success"><i class="icon-check"></i></button>
                             </form>
+
                                 <a href="#" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Reject" style="margin-left: 8px;"><i class="icon-trash"></i></a>
-                        </div></td>
+                        </div>
+                        @endif</td>
                         </tr>
                         {{-- @endif --}}
 @endforeach

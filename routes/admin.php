@@ -15,6 +15,11 @@ Route::get('dashboard',function(){
     return view('admin.dashboard');
  })->name('admin.dashboard');
 
+// Route::get('dashboard',[
+//     'uses' => 'AdminDashBoardController@index',
+//     'as' => 'admin.dashboard'
+//  ]);
+
 Route::get('mypage/index','MypageController@index')->name('mypage.index');
 
 
@@ -107,13 +112,34 @@ Route::get('general/contact/show/{id}',[
     'as' => 'admin.contact.show'
         ]);
 
-Route::get('general/terms&condition',function(){
-   return view('admin.general.terms');
-})->name('admin.general.terms');
+// Route::get('general/terms&condition',function(){
+//    return view('admin.general.terms');
+// })->name('admin.general.terms');
 
-Route::get('general/privacy_policy',function(){
-   return view('admin.general.privacy_policy');
-})->name('admin.general.privacy_policy');
+Route::get('general/terms&condition',[
+    'uses' => 'AdminTermsController@index',
+    'as' => 'admin.general.terms'
+ ]);
+
+ Route::post('general/terms/store',[
+    'uses' => 'AdminTermsController@store',
+    'as' => 'admin.terms.store'
+    ]);
+
+// Route::get('general/privacy_policy',function(){
+//    return view('admin.general.privacy_policy');
+// })->name('admin.general.privacy_policy');
+
+Route::get('general/privacy_policy',[
+    'uses' => 'AdminPrivacyController@index',
+    'as' => 'admin.general.privacy'
+ ]);
+
+ Route::post('general/privacy_policy/store',[
+    'uses' => 'AdminPrivacyController@store',
+    'as' => 'admin.privacy.store'
+    ]);
+
 
 // ###############Report Application########################
 
@@ -310,27 +336,27 @@ Route::get('courses/add',[
    'as' => 'admin.courses.add'
 ]);
 
-Route::get('course/show/{id}',[
+Route::get('courses/show/{id}',[
    'uses' => 'AdminCoursesController@show',
    'as' => 'admin.courses.show'
 ]);
 
-Route::post('course/store',[
+Route::post('courses/store',[
    'uses' => 'AdminCoursesController@store',
    'as' => 'admin.courses.store'
 ]);
 
-Route::get('course/edit/{id}',[
+Route::get('courses/edit/{id}',[
    'uses' => 'AdminCoursesController@edit',
    'as' => 'admin.courses.edit'
 ]);
 
-Route::post('course/update/{id}',[
+Route::post('courses/update/{id}',[
    'uses' => 'AdminCoursesController@update',
    'as' => 'admin.courses.update'
 ]);
 
-Route::get('course/delete/{id}', [
+Route::get('courses/delete/{id}', [
    'uses' => 'AdminCoursesController@destroy',
    'as' => 'admin.courses.delete'
 ]);
@@ -406,7 +432,7 @@ Route::get('pr_Migration',[
     'as'=>'admin.prmigration'
 ]);
 
-Route::post('PR_Migration/store',[
+Route::post('pr_Migration/store',[
     'uses'=>'AdminPrmigationController@store',
     'as'=>'admin.prmigration.store'
 ]);

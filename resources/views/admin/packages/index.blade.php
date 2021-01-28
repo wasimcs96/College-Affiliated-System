@@ -58,9 +58,19 @@
 
                                 @endif
                             </td>
-                            <td>{{$package->description}}</td>
-                            <td>{{$package->package_time}}</td>
-                            <td>{{$package->amount}}</td>
+                            <?php
+                                            $myvalue =$package->description ?? '';
+                                            if (strlen($myvalue) > 140)
+                                                {
+                                                    $myvalue = substr($myvalue, 0, 40);
+                                                    $myvalue = explode(' ', $myvalue);
+                                                    array_pop($myvalue); // remove last word from array
+                                                    $myvalue = implode(' ', $myvalue);
+                                                    // $myvalue = $myvalue . ' ...';
+                                                } ?>
+                            <td><?php echo ($myvalue . '...')?>  </td>
+                            <td>{{$package->package_time}}{!!"&nbsp"!!}-{!!"&nbsp"!!}Months</td>
+                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$package->amount}}</td>
                             <td>
                                 @if ($package->status == 0)
 

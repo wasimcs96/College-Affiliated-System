@@ -61,6 +61,8 @@
 
                                 <br>
                                 <button type="submit" class="btn btn-primary">Update Course</button>
+                                <a href="{{route('admin.courses')}}" class="btn btn-danger">Back</a>
+
                             </form>
                         </div>
                     </div>

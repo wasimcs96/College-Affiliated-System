@@ -32,6 +32,10 @@
                         <td>{{$booking->userConsultant->first_name ?? ''}} {{$booking->userConsultant->last_name ?? ''}}</td>
                     </tr>
                     <tr>
+                        <th scope="row">Student Name</th>
+                        <td>{{$booking->user->first_name ?? ''}} {{$booking->user->last_name ?? ''}}</td>
+                    </tr>
+                    <tr>
                         <th scope="row">Consultant Mobile</th>
                         <td>{{$booking->userConsultant->mobile ?? ''}}</td>
                     </tr>
@@ -49,7 +53,8 @@
                     </tr>
                     <tr>
                         <th scope="row">Booking Date</th>
-                        <td>{{$booking->booking_date}}</td>
+                        <td>@if(isset($booking->booking_date)){{ Carbon\Carbon::parse($booking->booking_date)->format(config('get.ADMIN_DATE_FORMAT')) }}
+                                @else N/A @endif</td>
                     </tr>
 
                     <tr>
@@ -75,10 +80,7 @@
                             @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">Student Name</th>
-                        <td>{{$booking->user->first_name ?? ''}} {{$booking->user->last_name ?? ''}}</td>
-                    </tr>
+
                     <?php $i = 1?>
                     @if(isset($university) && $university != '')
                     @foreach($university as $key=> $uni)

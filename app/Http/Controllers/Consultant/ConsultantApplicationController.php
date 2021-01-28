@@ -14,6 +14,7 @@ use App\Models\Course;
 use App\Models\Country;
 use App\Models\User;
 use App\Models\University;
+use App\Models\UniversityConsultantClient;
 use App\Models\ConsultantDues;
 use DB;
 use Config;
@@ -49,7 +50,7 @@ class ConsultantApplicationController extends Controller
         // dd($university[0]);
         $i++;
     }
-
+    //    $countrys = auth()->user()->consultantPrMigrationCountry->with('countrys',$countrys);
 
        return view('consultant.application.application_create',compact('application','university','course'))->with('countries',Country::all());
    }
@@ -180,7 +181,7 @@ class ConsultantApplicationController extends Controller
 
     public function universityUpdate(Request $request)
     {
-        //  dd($request->all());
+        //   dd($request->all());
         if($request->hiddenValue == 4)
         {
              $id = $request->apply_id;
@@ -206,6 +207,18 @@ class ConsultantApplicationController extends Controller
             $university->documents = $document;
             $university->fees =$fees;
             $university->save();
+            $ucClient = UniversityConsultantClient::where('client_id',$request->client_id)->get()->first();
+            if($ucClient==null)
+            {
+            UniversityConsultantClient::create([
+                'client_id' => $request->client_id,
+                'consultant_id' => auth()->user()->id,
+                'university_id' => $request->university_id,
+            ]);
+            }
+            $application = Application::find($request->application_id);
+            $application->status = 1;
+            $application->save();
             return redirect()->back()->with('success','Application Process is Completed Successfully');
         }
         // $university_id = $request->uni_id;
@@ -287,5 +300,59 @@ class ConsultantApplicationController extends Controller
         return redirect()->back()->with('success','University Added Successfully');
 
      }
+
+     public function closeApplication(Request $request)
+     {
+        //   dd($request->all());
+        $application = Application::find($request->applicationCloseId);
+        $application->status = 2;
+        $application->save();
+        return redirect()->back()->with('danger','University Added Successfully');
+
+      }
+
+      function fetchCourse(Request $request)
+      {
+          // dd($request->all());
+          $fetch=User::where('id',$request->universityid)->first();
+          if(isset($fetch->universityCourse) && $fetch != NULL)
+          {
+          $courses =  $fetch->universityCourse;
+          $output='<option value="" selected>Course Name</option>';
+          foreach($courses as $row)
+          {
+           $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
+          }
+          echo $output;
+        }
+        else
+        {
+           $output='<option value="" selected>No Data Available</option>';
+           echo $output;
+        }
+      }
+
+      function fetchUniversity(Request $request)
+      {
+        //   dd($request->all());
+          $fetch=Country::where('countries_id',$request->countryid)->first();
+          // dd($fetch);
+          $universities = User::where('countries_id',$request->countryid)->get();
+          //   dd( $universities->get()->toArray());
+          $output='<option value="" selected>Select University Name</option>';
+          if(isset($universities))
+          foreach($universities as $university)
+          {
+          if($university->isUniversity())
+              {
+
+                $output .= '<option value="'.$university->id.'">'.$university->first_name.'</option>';
+
+              }
+
+          }
+          // dd($output);
+          echo $output;
+      }
 
 }

@@ -9,8 +9,8 @@
     START HERO-WRAPPER AREA
 ================================= -->
 <section class="hero-wrapper">
-    <div class="hero-box hero-bg">
-
+    <div class="hero-box  hero-bg " >
+        {{-- style="background-image: url('{{ asset('frontEnd/assets/images/svvg.svg')}}');" --}}
         <span class="line-bg line-bg1"></span>
         <span class="line-bg line-bg2"></span>
         <span class="line-bg line-bg3"></span>
@@ -562,6 +562,8 @@
                                 <a  style="
                                 float: right;
                             " class="theme-btn theme-btn-small mt-2" href="{{route('university_detail',['id'=>$university->id])}}">Details<i class="las la-angle-double-right"></i></a>
+
+
                             </div>
 
                         </div><!-- end testimonial-card -->
@@ -694,6 +696,7 @@
 </section><!-- end testimonial-area -->
 
                     {{-- works start --}}
+
                     <section class="testimonial-area section-padding">
     <div class="container">
         <div class="section-heading text-center" >
@@ -702,14 +705,9 @@
         <div class="row">
 
             <div class="col-lg-6">
-
-
-                    {{-- <p class="sec__desc padding-top-30px">
-                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero
-                    </p>
-                    <div class="btn-box padding-top-35px">
-                        <a href="#" class="theme-btn">Explore All</a>
-                    </div> --}}
+                <lottie-player src="{{asset('frontEnd/assets/json/book_loti.json')}}"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+                {{-- <a href="{{asset('frontEnd/assets/images/book_loti.json')}}"></a> --}}
+{{--
                     <div class="row12" style="    display: -ms-flexbox;
                     display: flex;
                     -ms-flex-wrap: wrap;
@@ -744,19 +742,92 @@
                           <p class="card-text">Some quick example text to build on the card tit.</p>
                         </div>
                       </div>
-                    </div>
+                    </div> --}}
 
                 <!-- end section-heading -->
             </div><!-- end col-lg-4 -->
             <div class="col-lg-6 ">
 
 
-                    <div class="embed-responsive embed-responsive-4by3 ">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                      </div>
+                    <div class="embed-responsive embed-responsive-4by3" style="height: 416px;">
+                        <iframe width="420" height="315"
+                        src="https://www.youtube.com/embed/IsobKug-8bc">
+                        </iframe>
+                        {{-- <object width="425" height="350" data="https://www.youtube.com/watch?v=wY6UyatwVTA" type="application/x-shockwave-flash"><param name="src" value="https://www.youtube.com/watch?v=wY6UyatwVTA" /></object> --}}
+                        {{-- <div id="player" class="js-player" data-plyr-provider="youtube"
+                        data-plyr-embed-id="https://www.youtube.com/watch?v=wY6UyatwVTA" style="height: 500px;"></div> --}}
+                        {{-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe> --}}
+                        {{-- @if($course->mediavideo->type == 'youtube')
+
+
+                        <div id="player" class="js-player" data-plyr-provider="youtube"
+                             data-plyr-embed-id="{{$course->mediavideo->file_name}}"></div>
+                    @elseif($course->mediavideo->type == 'vimeo')
+                        <div id="player" class="js-player" data-plyr-provider="vimeo"
+                             data-plyr-embed-id="{{$course->mediavideo->file_name}}"></div>
+                    @elseif($course->mediavideo->type == 'upload')
+                        <video poster="" id="player" class="js-player" playsinline controls>
+                            <source src="{{$course->mediavideo->url}}" type="video/mp4"/>
+                        </video>
+
+                    @endif                        <video tabindex="-1" class="video-stream html5-main-video" controlslist="nodownload" style="width: 486px; height: 273px; left: 0px; top: 1px;" src="blob:https://www.youtube.com/d314ddcc-d7e1-44f2-a72a-04b419a920fd"></video> --}}
+                    </div>
                     <!-- end testimonial-carousel -->
             </div><!-- end col-lg-8 -->
         </div>
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>
+<section class="deal padding-top-60px padding-bottom-80px">
+    <div class="container">
+
+        <div class="row padding-top-50px">
+            <div class="col-lg-3 responsive-column">
+                <div class="deal-list">
+
+                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                    {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+                   <h3 style="text-align: center"> Hire Consultant</h3>
+                </div>
+            </div><!-- end col-lg-3 -->
+             <div class="col-lg-3 responsive-column">
+                <div class="deal-list">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        {{-- <h5 class="title"><a href="flight-single.html">Spain</a></h5>
+                        <span class="font-weight-bold font-size-18">$359.00</span> --}}
+                    </div>
+                    {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+                    <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                    <h3 style="text-align: center">Choose University</h3>
+                </div>
+            </div><!-- end col-lg-3 -->
+
+
+             <div class="col-lg-3 responsive-column">
+                <div class="deal-list">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        {{-- <h5 class="title"><a href="flight-single.html">Hawaii</a></h5>
+                        <span class="font-weight-bold font-size-18">$359.00</span> --}}
+                    </div>
+                    {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+                    <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                    <h3 style="text-align: center">Verify Documents</h3>
+
+                </div>
+            </div><!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="deal-list">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        {{-- <h5 class="title"><a href="flight-single.html">Spain</a></h5>
+                        <span class="font-weight-bold font-size-18">$359.00</span> --}}
+                    </div>
+                    {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+                    <div>
+                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                    </div>
+                    <h3 style="text-align: center">Get Visa</h3>
+                </div>
+            </div><!-- end col-lg-3 -->
         </div><!-- end row -->
     </div><!-- end container -->
 </section>
@@ -778,9 +849,17 @@
                             <div class="row padding-top-80px">
 
                                      @foreach($categories as $category)
-                                    <div class="col-lg-2 responsive-column">
-                                        <div class="icon-box icon-layout-4">
-                                            <div class="info-icon">
+                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
+                                        <div class="icon-box icon-layout-4" style="
+                                        border-radius: inherit;
+                                        background-color: gainsboro;
+                                        border-bottom-color: blue;
+                                        height: 174px;
+                                    ">
+                                            <div class="info-icon" style="
+                                            background-color: transparent;
+                                            color: black; margin-top:0px;
+                                        ">
                                                 <i class="las la-book-medical"></i>
                                             </div><!-- end info-icon-->
                                             <div class="info-content">
@@ -790,11 +869,143 @@
                                         </div><!-- end icon-box -->
                                     </div><!-- end col-lg-2 -->
                                     @endforeach
+                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
+                                        <div class="icon-box icon-layout-4" style="
+                                        border-radius: inherit;
+                                        background-color: gainsboro;
+                                        border-bottom-color: blue;
+                                        height: 174px;
+                                    ">
+                                            <div class="info-icon" style="
+                                            background-color: transparent;
+                                            color: black; margin-top:0px;
+                                        ">
+                                                <i class="las la-book-medical"></i>
+                                            </div><!-- end info-icon-->
+                                            <div class="info-content">
+                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
 
+                                            </div><!-- end info-content -->
+                                        </div><!-- end icon-box -->
+                                    </div>
+                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
+                                        <div class="icon-box icon-layout-4" style="
+                                        border-radius: inherit;
+                                        background-color: gainsboro;
+                                        border-bottom-color: blue;
+                                        height: 174px;
+                                    ">
+                                            <div class="info-icon" style="
+                                            background-color: transparent;
+                                            color: black; margin-top:0px;
+                                        ">
+                                                <i class="las la-book-medical"></i>
+                                            </div><!-- end info-icon-->
+                                            <div class="info-content">
+                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
+
+                                            </div><!-- end info-content -->
+                                        </div><!-- end icon-box -->
+                                    </div>
+                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
+                                        <div class="icon-box icon-layout-4" style="
+                                        border-radius: inherit;
+                                        background-color: gainsboro;
+                                        border-bottom-color: blue;
+                                        height: 174px;
+                                    ">
+                                            <div class="info-icon" style="
+                                            background-color: transparent;
+                                            color: black; margin-top:0px;
+                                        ">
+                                                <i class="las la-book-medical"></i>
+                                            </div><!-- end info-icon-->
+                                            <div class="info-content">
+                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
+
+                                            </div><!-- end info-content -->
+                                        </div><!-- end icon-box -->
+                                    </div>
+                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
+                                        <div class="icon-box icon-layout-4" style="
+                                        border-radius: inherit;
+                                        background-color: gainsboro;
+                                        border-bottom-color: blue;
+                                        height: 174px;
+                                    ">
+                                            <div class="info-icon" style="
+                                            background-color: transparent;
+                                            color: black; margin-top:0px;
+                                        ">
+                                                <i class="las la-book-medical"></i>
+                                            </div><!-- end info-icon-->
+                                            <div class="info-content">
+                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
+
+                                            </div><!-- end info-content -->
+                                        </div><!-- end icon-box -->
+                                    </div>
+                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
+                                        <div class="icon-box icon-layout-4" style="
+                                        border-radius: inherit;
+                                        background-color: gainsboro;
+                                        border-bottom-color: blue;
+                                        height: 174px;
+                                    ">
+                                            <div class="info-icon" style="
+                                            background-color: transparent;
+                                            color: black; margin-top:0px;
+                                        ">
+                                                <i class="las la-book-medical"></i>
+                                            </div><!-- end info-icon-->
+                                            <div class="info-content">
+                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
+
+                                            </div><!-- end info-content -->
+                                        </div><!-- end icon-box -->
+                                    </div>
+                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
+                                        <div class="icon-box icon-layout-4" style="
+                                        border-radius: inherit;
+                                        background-color: gainsboro;
+                                        border-bottom-color: blue;
+                                        height: 174px;
+                                    ">
+                                            <div class="info-icon" style="
+                                            background-color: transparent;
+                                            color: black; margin-top:0px;
+                                        ">
+                                                <i class="las la-book-medical"></i>
+                                            </div><!-- end info-icon-->
+                                            <div class="info-content">
+                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
+
+                                            </div><!-- end info-content -->
+                                        </div><!-- end icon-box -->
+                                    </div>
+                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
+                                        <div class="icon-box icon-layout-4" style="
+                                        border-radius: inherit;
+                                        background-color: gainsboro;
+                                        border-bottom-color: blue;
+                                        height: 174px;
+                                    ">
+                                            <div class="info-icon" style="
+                                            background-color: transparent;
+                                            color: black; margin-top:0px;
+                                        ">
+                                                <i class="las la-book-medical"></i>
+                                            </div><!-- end info-icon-->
+                                            <div class="info-content">
+                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
+
+                                            </div><!-- end info-content -->
+                                        </div><!-- end icon-box -->
+                                    </div>
                             </div><!-- end row -->
                             @else
                             <div>
-                              <h4 style="margin-top: 50px;"">Discipline Unavailable</h4>
+                              <h4 style="margin-top: 50px;">Discipline Unavailable</h4>
                             </div>
                             @endif
                         </div><!-- end container -->
@@ -1474,7 +1685,7 @@
                                 <span class="counter" data-from="0" data-to="{{$university}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
                             </div>
-                            <p class="counter__title">Universitys</p>
+                            <p class="counter__title">Universities</p>
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
@@ -2275,6 +2486,7 @@
 ================================= -->
 @endsection
 @section('per_page_style')
+
 <style></style>
 <style>
 canvas {
@@ -2287,8 +2499,9 @@ canvas {
   </style>
 @endsection
  @section('per_page_script')
+
 {{-- <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script> --}}
-rt=$('#categoryselect').val();
+{{-- rt=$('#categoryselect').val(); --}}
 <script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/vanta.net.min.js') }}"></script>
 <script>
@@ -2356,12 +2569,6 @@ $(".ert").html(result)
         {
         countryId = $(this).val();
 
-
-
-
-
-
-
         $.ajaxSetup({headers:
         {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2382,4 +2589,18 @@ $(".ert").html(result)
 
         });
     </script>
+      <script src="https://cdn.plyr.io/3.5.3/plyr.polyfilled.js"></script>
+
+      <script>
+          const player = new Plyr('#player');
+
+        //   $(document).on('change', 'input[name="stars"]', function () {
+        //       $('#rating').val($(this).val());
+        //   })
+        //           @if(isset($review))
+        //   var rating = "{{$review->rating}}";
+        //   $('input[value="' + rating + '"]').prop("checked", true);
+        //   $('#rating').val(rating);
+        //   @endif
+      </script>
 @endsection

@@ -31,7 +31,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Total Client</label>
+                                    <label>Client Dues</label>
                                     <input type="number" class="form-control" value="{{$com->temp_client_count ?? ''}}" name="temp_client_count" id="temp_client_count" required>
                                 </div>
                                 <input type="text" name="parameter_id" value="@if(isset($com->due_amount_type)) @if($com->due_amount_type==0) 1 @else 2 @endif @endif" hidden>

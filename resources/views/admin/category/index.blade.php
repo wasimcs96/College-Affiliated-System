@@ -31,7 +31,7 @@
                             <th> <b>Category Image</b></th>
                             <th> <b>Parent Category</b></th>
                             <th><b> Title </b></th>
-                            <th><b> Slug</b></th>
+                            {{-- <th><b> Slug</b></th> --}}
                             <th><b>Status</b></th>
                             <th><b>Actions</b></th>
                         </tr>
@@ -45,13 +45,13 @@
 " src="{{asset($category->banner ?? '')}}"></td>
                             <td>{{$category->parent_category->title ?? ''}}</td>
                             <td>
-                               {{$category->title}}
+                               {{$category->title ?? ''}}
                             </td>
 
-                            <td>{{$category->slug}}</td>
+                            {{-- <td>{{$category->slug}}</td> --}}
                             <td>
-                                @if ($category->status == 0)
-
+                                @if (isset($category->status))
+@if($category->status==0)
                                     <span class="btn btn-danger">InActive</span>
 
                                 @else
@@ -59,6 +59,8 @@
                                  <span class="btn btn-info">Active</span>
 
                                 @endif
+                                @endif
+
                             </td>
                             <td style="text-align: center;">
                                 <a href="{{route('admin.category.show', $category->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View " title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;

@@ -23,40 +23,34 @@
                             <th><b> E-mail</b></th>
                             <th><b>City</b></th>
                             <th><b>Country</b></th>
-                            <th><b> Status</b></th>
+                            {{-- <th><b> Status</b></th> --}}
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
-                    <?php $bookings=auth()->user()->consultantBooking;
-                     ?>
-                    {{-- {{ dd($bookings) }} --}}
-                    @if($bookings->count() > 0)
+
+                    {{-- {{ dd($students) }} --}}
+                    @if($students->count() > 0)
                     <tbody>
 
-                @foreach($bookings as $booking)
-                    @if($booking->status==1 || $booking->status==2 || $booking->status==3)
+                @foreach($students as $student)
+                {{-- {{ dd($student->user->first_name) }} --}}
+
                         <tr>
-                            <td>{{$booking->user->first_name ?? ''}} </td>
-                            <td>{{$booking->user->mobile ?? ''}}</td>
-                            <td>{{$booking->user->email ?? ''}}</td>
-                            <td>{{$booking->user->city ?? ''}}</td>
-                            @if(isset($booking->user->countries_id))
-                            <?php $country = DB::table('countries')->where('countries_id',$booking->user->countries_id)->get()->first();?>
-                            @endif
-                            <td> {{$country->countries_name ?? ''}} </td>
-                            {{-- <td>{{$booking->user->country->countries_name ?? ''}}</td> --}}
-                            <td> <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
-                                @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
-                                @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
-                                @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
-                            </td>
-                            </td>
-                            <td style="text-align: center;"><a href="{{route('consultant.student.show',['id'=> $booking->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td>{{$student->user->first_name ?? ''}} </td>
+                            <td>{{$student->user->mobile ?? ''}}</td>
+                            <td>{{$student->user->email ?? ''}}</td>
+                            <td>{{$student->user->city ?? ''}}</td>
+                            <td>      @if(isset($student->user->countries_id) && $student->user->countries_id )
+                                <?php $country = DB::table('countries')->where('countries_id',$student->user->countries_id)->get()->first();?>
+                            {{$country->countries_name ?? ''}} @else N/A @endif</td>
+
+
+                            <td style="text-align: center;"><a href="{{route('consultant.student.show',['id'=> $student->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
-                    @endif
+
                 @endforeach
 
 @endif

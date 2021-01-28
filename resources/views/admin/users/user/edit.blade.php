@@ -110,7 +110,55 @@
 
                                             </div>
                                             @endif
-
+                            {{-- @if($user->isConsultant())
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    <input type="text" class="form-control" value="{{$user->consultant->company_name ?? ''}}" name="company_name" id="landline_1">
+                                </div>
+                                      <div class="form-group">
+                                    <label for="address">About Consultant</label>
+                                    <textarea rows="4" type="text" name="about_me" class="form-control" placeholder="About Consultant">{{$user->consultant->about_me ?? ''}} </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Website</label>
+                                    <input type="url" class="form-control" value="{{$user->consultant->website ?? ''}}" name="website" id="website">
+                                </div> --}}
+                                {{-- <div class="form-group">
+                                    <label>Working  Week Days</label>
+                                    <input type="text" class="form-control" value="{{$user->consultant->working_week_days?? ''}}" name="city" id="city">
+                                </div>
+                                 <div class="form-group">
+                                    <label>Time Slots</label>
+                                    <input type="text" class="form-control" value="{{$user->consultant->start_time ?? ''}}-{{$user->consultant->end_time ?? ''}}" name="city" id="city">
+                                </div> --}}
+                                {{-- @endif --}}
+                                      {{-- @if($user->isUniversity())
+                                <div class="form-group">
+                                    <label>University Name</label>
+                                    <input type="text" class="form-control" value="{{$user->university->university_name ?? ''}}" name="university_name" id="landline_1">
+                                </div>
+                                      <div class="form-group">
+                                    <label for="address">About University</label>
+                                    <textarea rows="4" type="text" name="about_me" class="form-control" placeholder="About University">{{$user->university->about_me ?? ''}} </textarea>
+                                </div>
+                                  <div class="form-group">
+                                    <label>Average Fees</label>
+                                    <input type="number" class="form-control" value="{{$user->university->average_fees ?? ''}}" name="average_fees" id="website">
+                                </div>
+                                <div class="form-group">
+                                    <label>Website</label>
+                                    <input type="url" class="form-control" value="{{$user->university->website ?? ''}}" name="website" id="website">
+                                </div>
+                                <input type="hidden" name="uni_id" value="{{$user->id}}"> --}}
+                                {{-- <div class="form-group">
+                                    <label>Working  Week Days</label>
+                                    <input type="text" class="form-control" value="{{$user->consultant->working_week_days?? ''}}" name="city" id="city">
+                                </div>
+                                 <div class="form-group">
+                                    <label>Time Slots</label>
+                                    <input type="text" class="form-control" value="{{$user->consultant->start_time ?? ''}}-{{$user->consultant->end_time ?? ''}}" name="city" id="city">
+                                </div> --}}
+                                {{-- @endif --}}
                                 @if($user->isClient())
                                 <input type="text" name="parameter_id" value=1 hidden>
                                 @endif

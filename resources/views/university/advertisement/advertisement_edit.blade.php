@@ -37,7 +37,8 @@
 
                     <tr>
                         <th scope="row">Purchased Date</th>
-                        <td>{{$ad->created_at->format("Y-m-d") ?? ''}}</td>
+
+                        <td>{{ Carbon\Carbon::parse($ad->created_at ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                     </tr>
 
 

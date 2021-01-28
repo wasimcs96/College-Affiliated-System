@@ -41,12 +41,13 @@
 
                         {{-- {{dd($rt->advertisement)}} --}}
                         <tr>
-                            <td style="text-align: center;"> <a href="{{asset($rt->banner_image ?? '')}}" target="_blank"> <img src="{{asset($rt->banner_image ?? '')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"></a></td>
+                            <td style="text-align: center;">
+                                @if(isset($rt->banner_image) && file_exists($rt->banner_image))<a href="{{asset($rt->banner_image ?? '')}}" target="_blank"> <img src="{{asset($rt->banner_image ?? '')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"></a>@else <img src="{{asset('assets/default/default-banner.jpg')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"> @endif</td>
                              <td>{{$rt->order->transaction_id ?? ''}}</td>
 
-                             <td>{{$rt->start_date ?? ''}}</td>
-                             <td>{{$rt->expire_date ?? ''}}</td>
-                             <td>{{$rt->created_at->format("Y-m-d") ?? ''}}</td>
+                             <td>{{ Carbon\Carbon::parse($rt->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
+                             <td>{{ Carbon\Carbon::parse($rt->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
+                             <td>{{ Carbon\Carbon::parse($rt->created_at ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
 
                                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                 <td>

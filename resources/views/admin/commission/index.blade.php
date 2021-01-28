@@ -10,7 +10,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <a href="{{route('admin.user.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>  Add User </a>
+                {{-- <a href="{{route('admin.user.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>  Add User </a> --}}
             </ul>
         </div>
         <div class="body">
@@ -22,11 +22,15 @@
                                <th> <b>
                                 Name</b></th>
                                 {{-- <th><b> DOB</b></th> --}}
-                                <th><b> Dues </b></th>
-                                <th><b> Paid</b></th>
-                                <th><b>Client</b></th>
-                                <th><b>Type</b></th>
-                                <th><b>Actions</b></th>
+                                <th><b> Client Dues </b></th>
+                                <th><b> Paid Amount</b></th>
+                                <th><b>Total Client</b></th>
+                                <th><b>Dues Amount</b></th>
+                                <th><b>Client Count</b></th>
+                                <th><b>Commission Type</b></th>
+                                <th style="
+                                text-align: center;
+                            "><b>Actions</b></th>
                             </tr>
 
                     </thead>
@@ -41,11 +45,15 @@
                                         <tr>
                                             <td> {{$com->userConsultant->first_name ?? ''}} {{$com->userConsultant->last_name ?? ''}}</td>
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
-                                            <td>{{$com->due_amount ?? ''}}</td>
-                                            <td>{{$com->paid_amount ?? ''}}</td>
+                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
+                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->paid_amount ?? ''}}</td>
                                             <td>{{$com->total_client_count ?? ''}}</td>
+                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
+                                            <td>{{$com->temp_client_count ?? ''}}</td>
                                             <td>Visa</td>
-                                            <td>
+                                            <td style="
+                                            text-align: center;
+                                        ">
                                                 {{-- <a href="{{route('admin.commission.show',['id' => $com->id])}}" class="btn btn-success"><i class="icon-eye"></i></a> --}}
                                             <a href="{{route('admin.commission.edit',['id' => $com->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                             {{-- <a href="{{route('admin.user.delete',['id' => $com->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td> --}}
@@ -60,11 +68,13 @@
                                         <tr>
                                             <td> {{$com->userConsultant->first_name ?? ''}} {{$com->userConsultant->last_name ?? ''}}</td>
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
-                                            <td>{{$com->due_amount ?? ''}}</td>
-                                            <td>{{$com->paid_amount ?? ''}}</td>
+                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
+                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->paid_amount ?? ''}}</td>
                                             <td>{{$com->total_client_count ?? ''}}</td>
+                                            <td>{{$com->due_amount ?? ''}}</td>
+                                            <td>{{$com->temp_client_count ?? ''}}</td>
                                             <td>PR</td>
-                                            <td>
+                                            <td style="text-align: center;">
                                                 {{-- <a href="{{route('admin.commission.show',['id' => $com->id])}}" class="btn btn-success"><i class="icon-eye"></i></a> --}}
                                             <a href="{{route('admin.commission.edit',['id' => $com->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                             {{-- <a href="{{route('admin.user.delete',['id' => $com->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td> --}}

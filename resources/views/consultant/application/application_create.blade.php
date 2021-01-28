@@ -14,7 +14,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <a href="#" data-toggle="modal" data-target="#followUpModal" custom1="{{$application->id}}" class="btn btn-primary" id="follow_up_trigger"><i class="fa fa-plus" style="margin-right: 8px;"></i>Add Follow Up</a>
+                <a href="javascript:void(0);" @if($application->status == 0 ?? '')  data-toggle="modal" data-target="#followUpModal" @else data-toggle="modal" data-target="#disabledModal" @endif custom1="{{$application->id}}" class="btn btn-primary" id="follow_up_trigger"><i class="fa fa-plus" style="margin-right: 8px;"></i>Add Follow Up</a>
                 <div class="modal fade" id="followUpModal" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -172,6 +172,7 @@
                         <td> {{$country->countries_name ?? ''}} </td>
                         {{-- <td>{{$application->user->country->countries_name ?? ''}}</td> --}}
                     </tr>
+
                 </div>
 
 
@@ -220,7 +221,7 @@
                     </div>
                     <input type="text" value="{{$application->id}}" name="app_id" hidden>
                     {{-- <input type="text" value="{{$application->applicationAppliedUniversity->id}}" name="app_university_id" hidden> --}}
-                    <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" data-toggle="modal" data-target="#documentModal" ><i class="fa fa-plus"></i> </button>
+                    <button type="button" name="adddocument" id="add_document" class="btn btn-primary btn-m" @if($application->status == 0 ?? '') data-toggle="modal" data-target="#documentModal" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif><i class="fa fa-plus"></i> </button>
                     <p id="error-checkbox3"></p>
 
                     <div class="row clearfix">
@@ -263,7 +264,7 @@
                     <input type="file" name="documents[]" class="dropify" multiple>
                     @csrf
                     <br>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button @if($application->status == 0 ?? '') type="submit" @endif class="btn btn-primary" @if($application->status == 1 ?? '') type="button" data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') type="button" data-toggle="modal" data-target="#disabledModal" @endif>Update</button>
                 </div>
             </div>
         </form>
@@ -375,12 +376,14 @@
                                          <div class="col-lg-6 col-md-12">
 
                                          </div>
+                                         <input type="text" name="application_id" value={{$application->id ?? ''}} hidden>
                                      <input type="text" name="university_id" value="{{$applied->userUniversity->id ?? ''}}" hidden>
+                                     <input type="text" name="client_id" value="{{$application->user->id ?? ''}}" hidden>
                                      <input type="text" name="apply_id" value="{{$applied->id ?? ''}}" hidden>
 
                                      <div class="col-lg-6 col-md-12">
                                      <div class="form-group">
-                                     @if($applied->Is_applied==0) <a href="javascript:void(0);" class="btn btn-warning applied" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyModal" style="float: right;margin-top: 19px;">Ready to Apply</a>@endif
+                                     @if($applied->Is_applied==0) <a href="javascript:void(0);" class="btn btn-warning applied" custom1="{{$applied->id}}" @if($application->status == 0 ?? '') data-toggle="modal" data-target="#applyModal" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif style="float: right;margin-top: 19px;">Ready to Apply</a>@endif
                                      @if($applied->Is_applied==1)<div class="btn btn-success" style="float: right;margin-top: 19px;">Applied</div>@endif
                                      </div>
                                      </div>
@@ -417,10 +420,10 @@
                                     </div>
                                     <div class="form-group" style="float: right;  margin-top: 2px; margin-right: -30px;">
 
-                                     <button type="button"  id="rtf2" custom1="{{$applied->id}}"  class="btn btn-success approvel" data-toggle="modal" data-target="#dateModal" style="margin-right: 10px;" @if ($applied->approved_status == 1 ?? '') disabled @endif>Accept</button>
+                                     <button type="button"  id="rtf2" custom1="{{$applied->id}}"  class="btn btn-success approvel" @if($application->status == 0 ?? '') data-toggle="modal" data-target="#dateModal" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif style="margin-right: 10px;" @if ($applied->approved_status == 1 ?? '') disabled @endif>Accept</button>
 
 
-                                 <button type="button" id="rtf2" custom1="{{$applied->id}}" class="btn btn-danger cancel" custom1="{{$applied->id}}" data-toggle="modal" data-target="#applyCanceled" @if ($applied->approved_status == 2 ?? '') disabled @endif>Decline</button>
+                                 <button type="button" id="rtf2" custom1="{{$applied->id}}" class="btn btn-danger cancel" custom1="{{$applied->id}}" @if($application->status == 0 ?? '') data-toggle="modal" data-target="#applyCanceled" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif @if ($applied->approved_status == 2 ?? '') disabled @endif>Decline</button>
                                </div>
 
                              @else
@@ -476,7 +479,7 @@
                                              @if ($applied->is_accepeted == 0)
                                              <div class="form-group" style="margin-left: 217px;">
                                                  <h6 style="margin-left: 16px; color:orange">Accept Your Application by clicking the below button</h6>
-                                                   <a style="margin-left: 182px;" href="javascript:void(0);"  class="btn btn-warning accepted" custom1="{{$applied->id}}" data-toggle="modal" data-target="#acceptedModal">Accept</a>
+                                                   <a style="margin-left: 182px;" href="javascript:void(0);"  class="btn btn-warning accepted" custom1="{{$applied->id}}" @if($application->status == 0 ?? '') data-toggle="modal" data-target="#acceptedModal" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif>Accept</a>
                                                </div>
 
                                              @endif
@@ -520,17 +523,6 @@
                                            <div class="row clearfix">
                                              <input type="text"  name="appliedUniversityRowIdReadyToFly" value="{{ $applied->id }}" hidden>
 
-
-                                               {{-- <div class="col-lg-6 col-md-12">
-                                                   <div class="form-group">
-                                                       <input type="text" class="form-control" value="@if(isset($applied->userUniversity->university->university_name)){{$applied->userUniversity->university->university_name}}@endif" placeholder="University Name" name="university" disabled>
-                                                   </div>
-                                               </div>
-                                               <div class="col-lg-6 col-md-12">
-                                                   <div class="form-group">
-                                                       <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
-                                                   </div>
-                                               </div> --}}
                                                <div class="col-lg-2 col-md-12">
                                            <div class="form-group">
                                                <label for="">Course Fees</label>
@@ -591,7 +583,7 @@
                                                     @endif
                                                 </div>
 
-                                                <button type="button" customDoc="{{$key}}"  name="adddocument " id="add_document_university" class="btn btn-primary btn-m add_document_university" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
+                                                <button type="button" customDoc="{{$key}}"  name="adddocument " id="add_document_university" class="btn btn-primary btn-m add_document_university" @if($application->status == 0 ?? '') data-toggle="modal" data-target="#documentModal2" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif ><i class="fa fa-plus"></i> </button>
 
                                               </div>
                                             @else
@@ -622,7 +614,7 @@
                                                     @endif
                                                 </div>
 
-                                                <button type="button" customDoc="{{$key}}" name="adddocument" id="add_document_university" class="btn btn-primary btn-m add_document_university" data-toggle="modal" data-target="#documentModal2" ><i class="fa fa-plus"></i> </button>
+                                                <button type="button" customDoc="{{$key}}" name="adddocument" id="add_document_university" class="btn btn-primary btn-m add_document_university" @if($application->status == 0 ?? '') data-toggle="modal" data-target="#documentModal2" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif ><i class="fa fa-plus"></i> </button>
 
                                               </div>
                                               @endif
@@ -630,12 +622,12 @@
                                              <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
                                                     @if($applied->is_complete==0)
-                                                    <button type="submit" class="btn btn-primary" id="rtf4" >Update</button>
+                                                    <button  @if($application->status == 0 ?? '') type="submit" @endif class="btn btn-primary" @if($application->status == 1 ?? '') type="button" data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') type="button" data-toggle="modal" data-target="#disabledModal" @endif class="btn btn-primary" id="rtf4" >Update</button>
 
                                                     {{-- <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof" data-toggle="modal" data-target="#readyToFly" > Ready to fly</button> --}}
-                                                    <button type="submit" name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof"  > Ready to fly</button>
+                                                    <button  @if($application->status == 0 ?? '') type="submit" @endif  @if($application->status == 1 ?? '') type="button" data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') type="button" data-toggle="modal" data-target="#disabledModal" @endif name="adddocument" id="rtf" custom1="{{$applied->id}}"  class="btn btn-warning readytof"  > Ready to fly</button>
                                                     @else
-                                                   <button type="button" name="adddocument" id="rtf3" class="btn btn-success">Completed</button>
+                                                   <button class="btn btn-primary" @if($application->status == 1 ?? '') type="button" data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') type="button" data-toggle="modal" data-target="#disabledModal" @endif type="button" name="adddocument" id="rtf3" class="btn btn-success">Completed</button>
                                                 @endif
                                                 </div>
                                             </div>
@@ -678,6 +670,7 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
+
             <h2>Add University<small>
                 {{-- <h6>Booking Details of Sufiyan Qureshi</h6></b> --}}
                 </small></h2>
@@ -727,19 +720,47 @@
                     </table>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Add University</button>
+            <button class="btn btn-primary" @if($application->status == 0 ?? '') type="submit" @endif  @if($application->status == 1 ?? '') type="button" data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') type="button" data-toggle="modal" data-target="#disabledModal" @endif>Add University</button>
         </form>
+
         </div>
+    </div>
+    <button type="button" id="closeApplicationButton" custom1="{{$application->id}}" class="btn btn-danger"  @if($application->status == 0 ?? '') data-toggle="modal" data-target="#closeApplicationModal" @endif  @if($application->status == 1 ?? '') data-toggle="modal" data-target="#completedModal" @endif @if($application->status == 2 ?? '') data-toggle="modal" data-target="#disabledModal" @endif style="margin-bottom: 10px; float: right; margin-top: -15px;">Close Application</button>
+    {{-- <a href="javascript:void(0);" class="btn btn-danger">Close Application</a> --}}
+</div>
+
+</div>
+
+</div>
+
+<div class="modal fade" id="closeApplicationModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Close Application</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h4>Are you sure you want to close the application?</h4>
+        </div>
+        <form action="{{ route('consultant.application.close') }}" method="POST">
+            @csrf
+        <div class="modal-footer">
+                <input type="text" value="{{ $application->id }}" name="applicationCloseId" hidden>
+            <button type="submit" class="btn btn-danger" >
+                Yes
+              </button>
+              {{-- <a href="javascript:void(0)" id="closeApplication" class="btn btn-danger" >Yes</a> --}}
+              <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">
+                  No
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 </div>
-
-
-</div>
-
-
-
-
 
 <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
@@ -756,7 +777,7 @@
 
         </div>
         <div class="modal-footer">
-           <a href="javascript:void(0)"  class="btn btn-primary" id="apply"> Apply </a>
+           <a href="javascript:void(0);"  class="btn btn-primary" id="apply"> Apply </a>
         </div>
     </div>
 </div>
@@ -956,8 +977,53 @@
        </div>
 </div>
 
+<div class="modal fade" id="disabledModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Application Closed</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h4>This Application is closed </h4>
+        </div>
+        <div class="modal-footer">
 
+              {{-- <a href="javascript:void(0)" id="closeApplication" class="btn btn-danger" >Yes</a> --}}
+              <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                Close
+                </button>
+            </div>
 
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="completedModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Application Completed</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h4>This Application is completed</h4>
+        </div>
+        <div class="modal-footer">
+
+              {{-- <a href="javascript:void(0)" id="closeApplication" class="btn btn-danger" >Yes</a> --}}
+              <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                Close
+                </button>
+            </div>
+
+    </div>
+</div>
+</div>
 @stop
 
 @section('page-styles')
@@ -1571,14 +1637,14 @@ $(document).on('click', '#readyTo2', function ()
                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                            }
                            });
-                           countryid=$('#country-'+dt+'').val();
+                           countryid=$('#country').val();
                            console.log(countryid);
                                  $.ajax({
-                                     url:"{{ route('fetch.university_application') }}",
+                                     url:"{{ route('fetch.university_add') }}",
                                      method:"GET",
                                      data:{countryid:countryid,dt:dt},
                                      success: function(result){
-                                     $('#university-'+dt+'').html(result);
+                                     $('#university').html(result);
                                      console.log('success');
                                    }
                                    });
@@ -1596,18 +1662,62 @@ $(document).on('click', '#readyTo2', function ()
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             }
                             });
-                            universityid=$('#university-'+dt+'').val();
+                            universityid=$('#university').val();
                             console.log(universityid);
                                   $.ajax({
-                                      url:"{{ route('fetch.course_application') }}",
+                                      url:"{{ route('fetch.course_add') }}",
                                       method:"GET",
                                       data:{universityid:universityid,dt:dt},
                                       success: function(result){
-                                      $('#course-'+dt+'').html(result);
+                                      $('#course').html(result);
                                     }
                                     });
 
                         });
 
 </script>
+<script>
+    var applicationCloseId='';
+     $(document).on('click', '#closeApplicationButton', function ()
+ {
+    applicationCloseId=$(this).attr('custom1');
+ console.log(applicationCloseId);
+ });
+ $(document).on('click', '#closeApplication', function ()
+ {
+var j = 0;
+
+       if(applicationCloseId > 0){
+         $.ajaxSetup({headers:
+             {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+             });
+
+             $.ajax({
+                     type: "post",
+                     url: "{{route('consultant.application.close')}}",
+                     data: {applicationCloseId:applicationCloseId},
+                     success: function (result) {
+                        // $('#alert_add2').append('<div class="container"><div class="alert alert-danger alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong> Application is Declined.</strong></div></div>')
+                        // $('#application1').html('<span style="color:red">Declined</span>');
+                        // $('#application1').css("margin-left"," 16px");
+                        // $('#application1').css("color","red");
+
+                        j++;
+                         console.log('success');
+                        //  location.reload();
+                     }
+                 });
+       }
+
+
+             // $(this).text("Pending");
+
+             $('#closeApplicationModal').modal('hide');
+             // row++;
+     });
+
+
+ </script>
 @stop

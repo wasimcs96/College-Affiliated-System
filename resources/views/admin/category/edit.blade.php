@@ -48,10 +48,10 @@
                                     <input type="text" class="form-control" value="{{$category->title}}" name="title" id="title" required>
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Slug</label>
                                     <input type="text" class="form-control" value="{{$category->slug}}" name="slug" id="slug" required>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label>Status</label>
                                     <select name="status" class="form-control">
@@ -86,6 +86,7 @@
                     </div>
                                 <br>
                                 <button type="submit" class="btn btn-primary">Update Category</button>
+                                <a href="{{route('admin.category')}}"class="btn btn-danger">Back</a>
                             </form>
                         </div>
                     </div>

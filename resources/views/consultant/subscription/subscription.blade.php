@@ -8,7 +8,7 @@
         <div class="header">
             <h2>Subscription</h2>
             <ul class="header-dropdown dropdown">
-<li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('consultant.subscription.add')}}">Purchase subscription</a></li>
+<li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('consultant.subscription.add')}}">Purchase Subscription</a></li>
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                 {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
@@ -51,11 +51,12 @@
                                             @if($subscription->payment_type == 0)
                                             <tr>
                                                 <td>{{$subscription->OrderItem[0]->Item_title}}</td>
-                                                <td>{{$subscription->amount}}$</td>
+                                                <td><i class="fa fa-inr"></i>{{$subscription->amount}}</td>
                                                 <td>{{$subscription->transaction_id}}</td>
-                                                <td>{{$subscription->userPurchasedPlans[0]->start_date}}</td>
-                                                <td>{{$subscription->userPurchasedPlans[0]->end_date}}</td>
-                                                <td>{{$subscription->created_at}}</td>
+
+                                                <td>{{ Carbon\Carbon::parse($subscription->userPurchasedPlans[0]->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
+                                                <td>{{ Carbon\Carbon::parse($subscription->userPurchasedPlans[0]->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
+                                                <td>{{ Carbon\Carbon::parse($subscription->userPurchasedPlans[0]->created_at ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                                                 <td>
                                                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                                     @if($subscription->userPurchasedPlans[0]->end_date > $mytime)<div class="btn btn-success">Activated</div>@endif

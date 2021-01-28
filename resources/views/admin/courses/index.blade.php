@@ -57,7 +57,7 @@
                             <th> <b>Category</b></th>
                             <th><b> Name </b></th>
                             <th><b> Type</b></th>
-                            <th><b>Action<b></th>
+                            <th style="text-align: center;"><b>Action<b></th>
 
                         </tr>
                     </thead>
@@ -65,9 +65,11 @@
                    <tbody>
                     @foreach ($courses as $course)
                         <tr>
-                            <td>{{$course->category->title ?? ''}}</td>
-                             <td>{{$course->name}}</td>
+                            <td>@if(isset($course->category->title))
+                            {{$course->category->title ?? ''}} @else N/A @endif</td>
+                             <td>@if(isset($course->name)){{$course->name}} @else N/A @endif</td>
                             <td>
+                                @if(isset($course->type))
                                 @if ($course->type  == 0)
 
                                     <span class="">UG</span>
@@ -81,6 +83,7 @@
                                     <span class="">Diploma</span>
 
                                 @endif
+                                @else N/A @endif
                             </td>
 
 

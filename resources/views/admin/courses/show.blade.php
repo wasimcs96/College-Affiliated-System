@@ -29,19 +29,19 @@
 
                     <tr>
                         <th scope="row">Course Category</th>
-                        <td>{{$course->category->title}}</td>
+                        <td>@if(isset($course->category->title)){{$course->category->title ?? ''}} @else N/A @endif</td>
                     </tr>
 
 
                      <tr>
                         <th><b> Name</b></th>
-                        <td>{{$course->name}}</td>
+                        <td>@if(isset($course->name)){{$course->name ?? ''}} @else N/A @endif</td>
                     </tr>
 
                     <tr>
                         <th><b>Course Type</b></th>
                         <td>
-
+                            @if(isset($course->type))
                              @if ($course->type  == 0)
 
                                     <span class="">UG</span>
@@ -55,7 +55,7 @@
                                     <span class="">Diploma</span>
 
                                 @endif
-
+                                @else N/A @endif
                         </td>
                     </tr>
 

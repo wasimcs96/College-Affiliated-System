@@ -164,8 +164,4 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Country::class,'countries_id');
     }
 
-
-
-   
-    
 }

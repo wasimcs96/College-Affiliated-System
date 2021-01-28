@@ -1,13 +1,13 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Client')
-@section('title', 'My Applications')
+@section('parentPageTitle', 'Admin')
+@section('title', 'Contact Detail')
 
 @section('content')
 
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Applications<small>All Application requests</small></h2>
+            <h2>Contact<small>Contact Details</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
@@ -22,53 +22,78 @@
             </ul>
         </div>
         <div class="body">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover dataTable js-exportable">
-                    <thead>
-                        <tr>
-                            <th> <b>Consultant Name</b></th>
-                            <th><b> Applied On</b></th>
-                            <th><b> Status</b></th>
-                            <th style="text-align: center;"><b>Actions</b></th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-
-                    </tfoot>
-
-                    @if($applications->count() > 0)
+            <div class="table-responsive" >
+                <table class="table table-hover table-striped">
 
                     <tbody>
-                        @foreach($applications as $application)
-                            @if(auth()->user()->id == $application->client_id)
-                            <tr>
-                                <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}} </td>
-                               {{-- {{ dd($application->university) }} --}}
+
+                    <tr>
+                        <th scope="row"> User Name</th>
+                        <td>{{$show->name}}</td>
+
+                    </tr>
+                    <tr>
+                        <th><b>Mobile </b></th>
+                        <td>{{$show->mobile}}</td>
+
+                    </tr>
 
 
-                                <td>{{ Carbon\Carbon::parse($application->created_at)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
-                                <td>
-                                    @if($application->status==0 ?? '')<div class="btn btn-warning">In Progress</div>@endif
-                                    @if($application->status==1 ?? '')<div class="btn btn-danger">Closed</div>@endif
-                                </td>
+                    <tr>
+                        <th><b> Email </b></th>
+                        <td>{{$show->email}}</td>
+                    </tr>
 
-                                <td style="text-align: center;"><a href="{{route('client.application.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
-                            </tr>
+                    {{-- <tr>
+                        <th><b>Message</b></th>
+                        <td>{{$show->message}}</td>
+                    </tr> --}}
+
+
+
+                    {{-- <tr>
+                        <th><b>Amount</b></th>
+                        <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$package->amount}}</td>
+                    </tr> --}}
+
+                    {{-- <tr>
+                        <th><b>Status</b></th>
+                        <td>
+
+                            @if ($package->status == 0)
+
+                                <span class="btn btn-danger">InActive</span>
+
+                            @else
+
+                                <span class="btn btn-info">Active</span>
+
                             @endif
-                        @endforeach
+
+                        </td>
+                    </tr> --}}
 
 
-                        @endif
 
-                    </tbody>
-                </table>
+
+
+                </tbody>
+
+            </table>
+            <h3>Message</h3>
+            {{$show->message}}
+        </div>
+                <div id="dec">
+
+                </div>
+
+                <a href="{{route('admin.packages')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>
 </div>
-</div>
-@stop
 
+@stop
 @section('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
@@ -84,7 +109,6 @@ tr.shown td.details-control {
 }
 </style>
 @stop
-
 @section('page-script')
 <script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
@@ -97,4 +121,3 @@ tr.shown td.details-control {
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
 @stop
-
