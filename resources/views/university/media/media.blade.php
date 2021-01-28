@@ -34,7 +34,7 @@
                                 {{-- {{dd($rts)}} --}}
                                 @if($rts->count()>0)
                                 @foreach($rts as $rt)
-                                @if ($rt->file_type==0)
+                                @if($rt->file_type==0)
 
                                   <div style="margin-left:24px; "  id="{{$rt->id}}">
                                   <input type="text" class="" value="{{$rt->id}}" name="media_id" hidden>
@@ -49,10 +49,6 @@
                                         </div>
                                     </div>
                                   </div>
-
-
-                                @else
-
                                 @endif
 
 
@@ -65,8 +61,25 @@
                               </div>
 
                                 </div>
-{{-- @endif --}}
-<label>University Image</label>
+{{-- @endif --}} @if($rts->count()>0)
+@foreach($rts as $rt)
+@if($rt->file_type==1)
+
+<video width="320" height="240" controls>
+    <source src="{{asset($rt->media)}}" type="video/mp4">
+    {{-- <source src="movie.ogg" type="video/ogg"> --}}
+  Your browser does not support the video tag.
+  </video>
+
+@endif
+
+
+  @endforeach
+  @else
+  {{-- <h2 class="mt-5" style="text-align: center"> No Media Available</h2> --}}
+  @endif
+  <br>
+<label>Upload University Image</label>
 
 <input name="images[]" value=""type="file" class="dropify-frrr" multiple>
 <small><b>Please Note:</b> Image Dimension Should be in (min_width:872.13|min_height:302|max_width=1024|max_height=640)</small>

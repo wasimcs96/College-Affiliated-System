@@ -5,7 +5,7 @@
 @section('content')
 
 @php
-    // $user = DB::table('application_applied_universities')->where('consultant_id',auth()->user()->id)->where('')->count();
+    $user = DB::table('applications')->where('consultant_id',auth()->user()->id)->where('is_commission_add',1)->count();
     $university = DB::table('university_consultants')->where('consultant_id',auth()->user()->id)->count();
     $booking = DB::table('bookings')->where('consultant_id',auth()->user()->id)->where('booking_for',0)->count();
     $pr = DB::table('bookings')->where('consultant_id',auth()->user()->id)->where('booking_for',1)->count();
@@ -28,7 +28,7 @@
             <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-user"></i></div>
             <div class="ml-4">
                 <span>Total Students</span>
-                <h4 class="mb-0 font-weight-medium">0</h4>
+                <h4 class="mb-0 font-weight-medium">{{ $user }}</h4>
             </div>
         </div>
     </div>
