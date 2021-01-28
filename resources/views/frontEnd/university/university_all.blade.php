@@ -12,13 +12,17 @@
                         <div class="section-heading">
                             <h2 class="sec__title text-white"> University Search Result</h2>
                         </div>
-                        <div class="search-fields-container margin-top-30px">
+                        <div class="search-fields-container margin-top-30px" style="
+                        background-color: transparent; color:white;
+                    ">
                             <div class="contact-form-action">
                                 <form action="{{route('universities_inner_fetch.universities')}}" method="POST" class="row">
                                     @csrf
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">University Name</label>
+                                            <label class="label-text" style="
+                                            color: white;
+                                        ">University Name</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <input class="form-control" type="text" name="keyword" placeholder="University">
@@ -27,7 +31,9 @@
                                     </div><!-- end col-lg-4 -->
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Country</label>
+                                            <label class="label-text" style="
+                                            color: white;
+                                        ">Country</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                 <select class="select-contain-select" name="countries_id">
@@ -53,7 +59,9 @@
                                     </div><!-- end col-lg-3 -->
                                     <div class="col-lg-3 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Course Type</label>
+                                            <label class="label-text" style="
+                                            color: white;
+                                        ">Course Type</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                     <select id="typeselect" name="type" class="select-contain-select">
@@ -82,7 +90,9 @@
                                     </div>
                                     <div class="col-lg-3 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Course</label>
+                                            <label class="label-text" style="
+                                            color: white;
+                                        ">Course</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select" name="course_id">

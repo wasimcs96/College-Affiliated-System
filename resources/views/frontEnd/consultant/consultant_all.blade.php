@@ -12,13 +12,17 @@
                         <div class="section-heading">
                             <h2 class="sec__title text-white">Search Consultant</h2>
                         </div>
-                        <div class="search-fields-container margin-top-30px">
+                        <div class="search-fields-container margin-top-30px" style="
+                        background-color: transparent; color:white;
+                    ">
                             <div class="contact-form-action">
                                 <form action="{{ route('consultant.inner.filter') }}" method="POST" class="row">
 @csrf
                                     <div class="col-lg-6 col-sm-2">
                                         <div class="input-box">
-                                            <label class="label-text">Name</label>
+                                            <label class="label-text" style="
+                                            color: white;
+                                        ">Name</label>
                                             <div class="form-group">
                                                 <input class=" form-control" type="text" name="keyword" Placeholder="Search Consultant by Name">
 
@@ -27,7 +31,9 @@
                                     </div>
                                     <div class="col-lg-4 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Country</label>
+                                            <label class="label-text" style="
+                                            color: white;
+                                        ">Country</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">

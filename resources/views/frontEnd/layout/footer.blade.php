@@ -66,6 +66,10 @@
         </div>
         <div class="copyright">
             <div class="container">
+                <a href="index.html"><img src="{{ asset('frontEnd/assets/images/logo.png') }}" alt="logo"  style="
+                    width: 198px;
+                    height: 70px;
+                "></a>
                 <p>Copyright © 2020. All Rights Reserved.</p>
                 <ul class="footer-social">
                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
