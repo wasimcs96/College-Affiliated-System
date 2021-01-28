@@ -38,7 +38,7 @@
                             </td> --}}
                             <td>{{$application->application->userConsultant->first_name ?? ''}} {{$application->application->userConsultant->last_name ?? ''}}</td>
                             <td>{{$application->note ?? ''}}</td>
-                            <td>{{$application->date ?? ''}}</td>
+                            <td>@if(isset($application->date)){{ Carbon\Carbon::parse($application->date)->format(config('get.ADMIN_DATE_FORMAT')) }}@endif</td>
 
                             <td style="text-align: center;">
                                 {{-- <a href="{{route('admin.application.followup.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a> --}}
