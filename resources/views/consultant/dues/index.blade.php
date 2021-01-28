@@ -73,6 +73,7 @@
         <div class="body"> --}}
             <div class="d-flex align-items-center">
                 <button  customAmount="{{$dues->due_amount ?? ''}}" customDue="0" customUser="{{auth()->user()->id}}" customPayment="3" customTitle="paydue" class="btn btn-round btn-outline-secondary chooseplan">Pay Dues</button>
+            <br><br><br><br>
             </div>
        {{-- </div>
     </div>
@@ -80,6 +81,48 @@
 
 <div class="container" id="choosedcontent">
 
+</div>
+<div class="card">
+    <div class="header">
+        <h2>Dues<small>All PR Dues</small></h2>
+    </div>
+<div class="body">
+<div class="table-responsive">
+    <table class="table table-striped table-hover dataTable js-exportable">
+        <thead>
+            <tr>
+                <th> <b>
+                    Amount</b></th>
+                <th><b> Transaction Id </b></th>
+                <th><b> Status</b></th>
+                <th><b>Paid for</b></th>
+                 <th><b>Paid On</b></th>
+                {{--<th><b> Status</b></th>
+                <th><b>Actions</b></th> --}}
+            </tr>
+        </thead>
+        <tfoot>
+
+        </tfoot>
+        {{-- {{ dd($orders) }} --}}
+        @if($orders->count() > 0)
+        <tbody>
+            @foreach($orders as $order)
+@if($order->payment_type == 3)
+            <tr>
+                <td> ₹ {{$order->amount ?? ''}} </td>
+                <td>{{$order->transaction_id ?? ''}}</td>
+                <td> <div class="btn btn-success">Paid</div> </td>
+                <td> <div class="btn btn-warning">Visa</div>  </td>
+                <td> {{ Carbon\Carbon::parse($order->created_at)->format(config('get.ADMIN_DATE_TIME_FORMAT')) }}  </td>
+            </tr>
+@endif
+            @endforeach
+        @endif
+        </tbody>
+    </table>
+</div>
+</div>
 </div>
 <div class="modal fade" id="mdlup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -201,6 +244,50 @@
 <div class="container" id="choosedcontent">
 
 </div>
+<div class="card">
+    <div class="header">
+        <h2>Dues<small>All PR Dues</small></h2>
+    </div>
+<div class="body">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover dataTable js-exportable">
+            <thead>
+                <tr>
+                    <th> <b>
+                        Amount</b></th>
+                    <th><b> Transaction Id </b></th>
+                    <th><b> Status</b></th>
+                    <th><b>Paid for</b></th>
+                    <th><b>Paid On</b></th>
+                    {{-- <th><b>Time Slot</b></th>
+                    <th><b> Status</b></th>
+                    <th><b>Actions</b></th> --}}
+                </tr>
+            </thead>
+            <tfoot>
+
+            </tfoot>
+            {{-- {{ dd($orders) }} --}}
+            @if($orders->count() > 0)
+            <tbody>
+                @foreach($orders as $order)
+    @if($order->payment_type == 4)
+                <tr>
+                    <td> ₹ {{$order->amount ?? ''}} </td>
+                    <td>{{$order->transaction_id ?? ''}}</td>
+                    <td> <div class="btn btn-success">Paid</div> </td>
+                    <td> <div class="btn btn-warning">PR</div>  </td>
+                    <td> {{ Carbon\Carbon::parse($order->created_at)->format(config('get.ADMIN_DATE_TIME_FORMAT')) }}  </td>
+                </tr>
+    @endif
+                @endforeach
+            @endif
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
 <div class="modal fade" id="mdlup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -247,11 +334,33 @@
 @stop
 
 @section('page-styles')
+<link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}"/>
+<style>
+td.details-control {
+background: url('../assets/images/details_open.png') no-repeat center center;
+cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../assets/images/details_close.png') no-repeat center center;
+}
+</style>
 @stop
 
 @section('page-script')
 
+<script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
+
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
 
 <script>
     $(function() {
@@ -292,9 +401,9 @@
                     <div class="col-md-3">
                         <br>
 
-                        <p><b>Plan Name</b></p>
+                        <p><b>Title</b></p>
                         <ul style="list-style-type: none;margin-left: -40px;">
-        <li class="plan-img">${title}</li>
+        <li class="plan-img">Pay Dues</li>
 
 
     </ul>
@@ -304,18 +413,11 @@
 
                         <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
                         <br>
-                        <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>$</span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
+                        <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>₹</span>${amount}<small></small></h5></div>
                     </div>
                     <br>
 
-                    <div class="col-md-3">
-                        <br>
 
-                        <p class="align-right"><b style="float: left;">Description</b></p>
-                        <br>
-                        <div class="align-left" style="float: left;     margin-left: -4px;"> </div>
-                    </div>
-                    <br>
 
                     <div class="col-md-3">
                         <br>

@@ -23,8 +23,12 @@ class ConsultantPrmigrationController extends Controller
        }
 
        public function store(Request $request){
+        //    dd($request->all());
         $au=auth()->user()->id;
         $consultant = ConsultantPrMigrationCountry::where('user_id',$au)->get()->first();
+        $pr = Consultant::where('user_id',auth()->user()->id)->get()->first();
+        $pr->pr_service = $request->pr_service;
+        $pr->save();
         if($consultant == null)
         {
         // $json=json_encode($request->country);

@@ -11,7 +11,7 @@ class AdminDashboardController extends Controller
     public function index()
     {
       $booking=Booking::Count();
-      dd($booking);
+    //   dd($booking);
         return view('admin.dashboard');
     }
 }

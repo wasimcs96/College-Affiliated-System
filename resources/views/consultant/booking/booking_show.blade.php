@@ -103,6 +103,8 @@
                 <a  href="javascript:void(0);" class="btn btn-warning btn-flat" >In Progress</a>
                 @endif
                 @endif
+
+                <a href="{{route('consultant.bookings')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>
