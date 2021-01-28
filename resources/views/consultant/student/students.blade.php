@@ -43,17 +43,10 @@
                             <td>{{$student->user->mobile ?? ''}}</td>
                             <td>{{$student->user->email ?? ''}}</td>
                             <td>{{$student->user->city ?? ''}}</td>
-                            @if(isset($student->user->countries_id))
-                            <?php $country = DB::table('countries')->where('countries_id',$student->user->countries_id)->get()->first();?>
-                            @endif
-                            <td> {{$country->countries_name ?? ''}} </td>
-                            {{-- <td>{{$student->user->country->countries_name ?? ''}}</td> --}}
-                            {{-- <td> <td>@if($student->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
-                                @if($student->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
-                                @if($student->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
-                                @if($student->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
-                            </td>
-                            </td> --}}
+                            <td>      @if(isset($student->user->countries_id) && $student->user->countries_id )
+                                <?php $country = DB::table('countries')->where('countries_id',$student->user->countries_id)->get()->first();?>
+                            {{$country->countries_name ?? ''}} @else N/A @endif</td>
+
 
                             <td style="text-align: center;"><a href="{{route('consultant.student.show',['id'=> $student->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>

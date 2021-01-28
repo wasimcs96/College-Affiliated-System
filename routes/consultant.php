@@ -308,12 +308,12 @@ Route::get('applications/followup/show/{id}',[
 ]);
 
 /* PR Migration */
-Route::get('PR_Migration',[
+Route::get('prmigration',[
     'uses'=>'ConsultantPrmigrationController@index',
     'as'=>'consultant.prmigration'
 ]);
 
-Route::post('PR_Migration/store',[
+Route::post('prmigration/store',[
     'uses'=>'ConsultantPrmigrationController@store',
     'as'=>'consultant.prmigration.store'
 ]);
@@ -393,6 +393,17 @@ Route::post('advertisement/update/{id}',[
 Route::post('application/close',[
     'uses' =>'ConsultantApplicationController@closeApplication',
     'as'=>'consultant.application.close'
+]);
+
+/* Fetch Course and University in Application */
+Route::get('add/fetch/course',[
+    'uses' => 'ConsultantApplicationController@fetchCourse',
+    'as' => 'fetch.course_add'
+]);
+
+Route::get('add/fetch/university',[
+    'uses' => 'ConsultantApplicationController@fetchUniversity',
+    'as' => 'fetch.university_add'
 ]);
 
 });

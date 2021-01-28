@@ -16,12 +16,15 @@ class ConsultantDuesController extends Controller
         if($id==1)
         {
             $dues = ConsultantDues::where('due_amount_type',0)->get()->first();
-            return view('consultant.dues.index')->with('dues',$dues)->with('id',1);
+            $orders = Order::where('payment_type',3)->where('user_id',auth()->user()->id)->get();
+            // dd($orders);
+            return view('consultant.dues.index')->with('dues',$dues)->with('id',1)->with('orders',$orders);
         }
         if($id==2)
         {
             $prDues = ConsultantDues::where('due_amount_type',1)->get()->first();
-            return view('consultant.dues.index')->with('prDues',$prDues)->with('id',2);
+            $orders = Order::where('payment_type',4)->where('user_id',auth()->user()->id)->get();
+            return view('consultant.dues.index')->with('prDues',$prDues)->with('id',2)->with('orders',$orders);
         }
 
     }
@@ -31,19 +34,19 @@ class ConsultantDuesController extends Controller
         $userId = $request->userId;
         $due_type = $request->due_type;
         $amount=$request->amount;
- 
+
         $dues = ConsultantDues::where('due_amount_type',$due_type)->where('consultant_id', $userId)->first();
-       
-    
+
+
          if ($dues != null) {
             $dues->paid_amount= $dues->paid_amount+$amount;
             $dues->due_amount= $dues->due_amount-$amount;
             $dues->temp_client_count=0;
             $dues->save();
          }
-      
-       
-        
+
+
+
         return  response("success");
     }
 }

@@ -1637,14 +1637,14 @@ $(document).on('click', '#readyTo2', function ()
                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                            }
                            });
-                           countryid=$('#country-'+dt+'').val();
+                           countryid=$('#country').val();
                            console.log(countryid);
                                  $.ajax({
-                                     url:"{{ route('fetch.university_application') }}",
+                                     url:"{{ route('fetch.university_add') }}",
                                      method:"GET",
                                      data:{countryid:countryid,dt:dt},
                                      success: function(result){
-                                     $('#university-'+dt+'').html(result);
+                                     $('#university').html(result);
                                      console.log('success');
                                    }
                                    });
@@ -1662,14 +1662,14 @@ $(document).on('click', '#readyTo2', function ()
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             }
                             });
-                            universityid=$('#university-'+dt+'').val();
+                            universityid=$('#university').val();
                             console.log(universityid);
                                   $.ajax({
-                                      url:"{{ route('fetch.course_application') }}",
+                                      url:"{{ route('fetch.course_add') }}",
                                       method:"GET",
                                       data:{universityid:universityid,dt:dt},
                                       success: function(result){
-                                      $('#course-'+dt+'').html(result);
+                                      $('#course').html(result);
                                     }
                                     });
 

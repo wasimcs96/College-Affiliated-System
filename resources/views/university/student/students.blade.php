@@ -46,10 +46,9 @@
                                    <td>{{$user->user->mobile ?? ''}}</td>
                                    <td>{{$user->user->email ?? ''}}</td>
                                    <td>{{$user->user->city ?? ''}}</td>
-                                    @if(isset($user->user->countries_id))
-                                       <?php $country = DB::table('countries')->where('countries_id',$user->user->countries_id)->get()->first();?>
-                                    @endif
-                                    <td> {{$country->countries_name ?? ''}} </td>
+                                   <td>      @if(isset($user->user->countries_id) )
+                                    <?php $country = DB::table('countries')->where('countries_id',$user->user->countries_id)->get()->first();?>
+                                {{$country->countries_name ?? ''}} @else N/A @endif</td>
                                    {{-- <td> {{$user->user->country->countries_name ?? ''}} </td> --}}
                                    <td style="text-align: center;"><a href="{{route('university.student.show',['id' => $user->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                     {{-- <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>

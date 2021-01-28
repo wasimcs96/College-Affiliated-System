@@ -50,7 +50,7 @@ class ConsultantApplicationController extends Controller
         // dd($university[0]);
         $i++;
     }
-
+    //    $countrys = auth()->user()->consultantPrMigrationCountry->with('countrys',$countrys);
 
        return view('consultant.application.application_create',compact('application','university','course'))->with('countries',Country::all());
    }
@@ -309,6 +309,50 @@ class ConsultantApplicationController extends Controller
         $application->save();
         return redirect()->back()->with('danger','University Added Successfully');
 
+      }
+
+      function fetchCourse(Request $request)
+      {
+          // dd($request->all());
+          $fetch=User::where('id',$request->universityid)->first();
+          if(isset($fetch->universityCourse) && $fetch != NULL)
+          {
+          $courses =  $fetch->universityCourse;
+          $output='<option value="" selected>Course Name</option>';
+          foreach($courses as $row)
+          {
+           $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
+          }
+          echo $output;
+        }
+        else
+        {
+           $output='<option value="" selected>No Data Available</option>';
+           echo $output;
+        }
+      }
+
+      function fetchUniversity(Request $request)
+      {
+        //   dd($request->all());
+          $fetch=Country::where('countries_id',$request->countryid)->first();
+          // dd($fetch);
+          $universities = User::where('countries_id',$request->countryid)->get();
+          //   dd( $universities->get()->toArray());
+          $output='<option value="" selected>Select University Name</option>';
+          if(isset($universities))
+          foreach($universities as $university)
+          {
+          if($university->isUniversity())
+              {
+
+                $output .= '<option value="'.$university->id.'">'.$university->first_name.'</option>';
+
+              }
+
+          }
+          // dd($output);
+          echo $output;
       }
 
 }

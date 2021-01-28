@@ -60,7 +60,10 @@
                 <form action="{{route('consultant.prmigration.store')}}" method="POST">
                     @csrf
 
-
+                    <div class="fancy-checkbox">
+                        <input type="text" class="hidden" name="pr_service" value="0" hidden>
+                        <label><input type="checkbox"  name="pr_service" value="1" @if(isset(auth()->user()->consultant->pr_service) && auth()->user()->consultant->pr_service==1) checked @endif><span> @if(auth()->user()->consultant->pr_service==1)PR Enabled @else Enable PR @endif</span></label>                    </div>
+                        @if(auth()->user()->consultant->pr_service==1)
                     <div class="row clearfix">
                         {{-- <input type="text" value="{{$au}}" hidden> --}}
                         <div class="col-lg-4 col-md-12">
@@ -75,6 +78,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     <button class="btn btn-primary" type="submit">Submit</button>
                 </form>
             </div>
@@ -200,14 +204,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-12 col-md-12">
-                        <div class="form-group">
-                            <label for="address">Describe Yourself</label>
-                            <textarea rows="4"  type="text" name="about_me" class="form-control" placeholder="Address" required>@if(isset(Auth()->user()->consultant->about_me)){{Auth()->user()->consultant->about_me}}@endif</textarea>
-                        </div>
-                    </div>
-
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="website">Website</label>
@@ -219,6 +215,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label for="address">Describe Yourself</label>
+                            <textarea rows="4"  type="text" name="about_me" class="form-control" placeholder="Address" required>@if(isset(Auth()->user()->consultant->about_me)){{Auth()->user()->consultant->about_me}}@endif</textarea>
+                        </div>
+                    </div>
+
+
 
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
@@ -262,18 +266,6 @@
                               </div>
                         </div>
                     </div>
-                    {{-- <div class="col-lg-6 col-md-12">
-                        <div class="form-group">
-                            <label for="start_time">Selected Start Time</label>
-                            <input type="text" value="@if(isset(auth()->user()->consultant->start_time)){{auth()->user()->consultant->start_time}}@endif" name="nothing" class="form-control" disabled>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="form-group">
-                            <label for="start_time">Selected End Time</label>
-                            <input type="text" value="@if(isset(auth()->user()->consultant->end_time)){{auth()->user()->consultant->end_time}}@endif" name="nothing" class="form-control" disabled>
-                        </div>
-                    </div> --}}
                 <div class="col-lg-6 col-md-12">
                     <div class="form-group">
                         <label for="start_time">Select Start Time</label>
@@ -323,6 +315,9 @@
                             <label for="cover_image">Upload Cover Image</label>
                             <input   name="cover_image" type="file" class="dropify-frr" >
 <label><span><b>Please Note </b>: Image should be in Given Dimensions:min-width=1200 | min-height=300  </span></label>
+@if(file_exists(Auth()->user()->consultant->cover_image) && isset(Auth()->user()->consultant->cover_image))
+<a href="{{asset(auth()->user()->consultant->cover_image)}}" class="btn btn-primary" target="_blank" style="float: right;">See Cover Image</a>
+@endif
                         </div>
                     </div>
 
@@ -377,7 +372,7 @@
     function setEndTime(start_time){
         if(start_time){
           $("#endtime").prop('disabled', false);
-
+          $("#endtime").val('');
           $('#endtime option').filter(function() {
               return $(this).val() <= start_time;
           }).prop('disabled', true);
