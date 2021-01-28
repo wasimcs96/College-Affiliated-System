@@ -114,6 +114,23 @@
     /* ######################################################################## */
 
     </style>
+    <style>
+
+
+        .capload {
+		-webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
+}
+
+    </style>
     @yield('per_page_style')
     {{-- <script src="https://kit.fontawesome.com/d8864c88b6.js" crossorigin="anonymous"></script> --}}
 </head>
@@ -124,12 +141,15 @@
         {{-- <svg class="spinner" viewBox="0 0 50 50">
             <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
         </svg> --}}
-        <div class="cssload-thecube">
+        <div class="capload">
+        <img src="{{asset('frontEnd/assets/images/cap.png')}}" width="200px" height="200px">
+        {{-- <div class="cssload-thecube">
             <div class="cssload-cube cssload-c1"></div>
             <div class="cssload-cube cssload-c2"></div>
             <div class="cssload-cube cssload-c4"></div>
             <div class="cssload-cube cssload-c3"></div>
-        </div>
+        </div> --}}
+    </div>
     </div>
 </div>
 <!-- end cssload-loader -->
@@ -264,7 +284,10 @@
 
 <!-- start back-to-top -->
 <div id="back-to-top">
-    <i class="la la-angle-up" title="Go top"></i>
+    {{-- <i class="la la-angle-up" title="Go top"></i> --}}
+    <div>
+    <lottie-player src="{{asset('frontEnd/assets/json/34115-rocket-lunch.json')}}"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop  autoplay></lottie-player>
+    </div>
 </div>
 <!-- end back-to-top -->
 
@@ -279,6 +302,7 @@
 {{-- <script src="{{ asset('frontEnd/assets/font_awesome/js/v4-shimss.min.js') }}"></script> --}}
 
 <!-- Template JS Files -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <script src="{{ asset('frontEnd/assets/js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/jquery-ui.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/popper.min.js') }}"></script>
