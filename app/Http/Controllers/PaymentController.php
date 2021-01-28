@@ -10,6 +10,7 @@ use  App\Models\Order;
 use  App\Models\OrderItem;
 use App\Models\UserPurchasedPlans;
 use Carbon\Carbon;
+
 class PaymentController extends Controller
 {
     //409ACfFYI6hON1ZmCThrD7nN
@@ -19,14 +20,14 @@ class PaymentController extends Controller
     {
         $api = new Api('rzp_test_6PaQ95AP7ZPT1S', '409ACfFYI6hON1ZmCThrD7nN');
         $amount = $request->amount;
-       
+
         $userId = $request->user_id ?? auth()->user()->id;
         $type = $request->payment_type;
         $title = $request->title ?? '';
-        $time=$request->package_time ?? '';
-        $user=auth()->user();
+        $time = $request->package_time ?? '';
+        $user = auth()->user();
         // dd(Carbon::now()->addMonth($time));
-      
+
 
 
         $name = auth()->user()->first_name . (auth()->user()->id);
@@ -42,9 +43,9 @@ class PaymentController extends Controller
         Session::put('userId', $userId);
         Session::put('type', $type);
         Session::put('title', $title);
-      
 
-       $saif=$order->toArray();
+
+        $saif = $order->toArray();
         return response($saif);
     }
 
@@ -61,44 +62,44 @@ class PaymentController extends Controller
         $order->save();
 
 
-        $user=auth()->user();
+        $user = auth()->user();
         if ($request->payment_type == 0) {
-            $time=$request->package_time;
-            $user->Subscription_expire_date=Carbon::now()->addMonths($time);
-        $user->save();
+            $time = $request->package_time;
+            $user->Subscription_expire_date = Carbon::now()->addMonths($time);
+            $user->save();
         }
 
         if ($request->payment_type == 1) {
-            $time=$request->package_time;
-            $user->Premium_expire_date=Carbon::now()->addMonths($time);
-        $user->save();
+            $time = $request->package_time;
+            $user->Premium_expire_date = Carbon::now()->addMonths($time);
+            $user->save();
         }
 
 
         $orderID = $order->id;
         OrderItem::create([
-            'order_id' => $orderID,
+            'order_id' => $orderID,                                    
             'item_title' => $request->title,
         ]);
 
 
+        if ($request->payment_type == 0 || $request->payment_type == 1) {
+            # code...
+            //Important Code
+            // $replacement['token'] =$request->_token;
+            // $replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
+            // $data = ['template'=>'welcome-email','hooksVars' => $replacement];
+            // Mail::to("qsaif253@gmail.com")->send(new \App\Mail\ManuMailer($data));
+            $start = Carbon::now();
+            $end = $request->package_time ?? '';
+            UserPurchasedPlans::create([
+                'order_id' => $orderID,
+                'item_title' => $request->title,
+                'start_date' => $start,
+                'end_date' => Carbon::now()->addMonths($end)
+            ]);
 
-           
-
-            
-
-            if ($request->payment_type==0 || $request->payment_type==1) {
-                # code...
-                $start=Carbon::now();
-                $end=$request->package_time ?? '';
-        UserPurchasedPlans::create([
-            'order_id' => $orderID,
-            'item_title' => $request->title,
-            'start_date' => $start,
-            'end_date' => Carbon::now()->addMonths($end)
-        ]);
-
-    }
+        }
         return response($orderID);
     }
 }

@@ -52,14 +52,14 @@ class ConsultantAdvertisementController extends Controller
         'time_period'=> $expire,
         'order_id'=>$request->orderId
     ]);
+    //Important Code
     // $replacement['token'] =$request->_token;
     // $replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
     // $replacement['USER_NAME'] = auth()->user()->first_name;
     // $data = ['template'=>'welcome-email','hooksVars' => $replacement];
-    // dd($data);
-    //     Mail::to("qsaif253@gmail.com")->send(new \App\Mail\ManuMailer($data));
-      $new=new PaymentController();
-       $new->payment($request);
+    // Mail::to("qsaif253@gmail.com")->send(new \App\Mail\ManuMailer($data));
+    // $new=new PaymentController();
+    //$new->payment($request);
 //dd($new);
        return redirect()->route('consultant.advertisement')->with('success','Advertisement updated successfully');
    }
