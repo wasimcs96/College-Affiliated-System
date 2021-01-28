@@ -753,7 +753,10 @@
 
 
                     <div class="embed-responsive embed-responsive-4by3" style="height: 416px;">
-                        <object width="425" height="350" data="https://www.youtube.com/watch?v=wY6UyatwVTA" type="application/x-shockwave-flash"><param name="src" value="https://www.youtube.com/watch?v=wY6UyatwVTA" /></object>
+                        <iframe width="420" height="315"
+                        src="https://www.youtube.com/embed/IsobKug-8bc">
+                        </iframe>
+                        {{-- <object width="425" height="350" data="https://www.youtube.com/watch?v=wY6UyatwVTA" type="application/x-shockwave-flash"><param name="src" value="https://www.youtube.com/watch?v=wY6UyatwVTA" /></object> --}}
                         {{-- <div id="player" class="js-player" data-plyr-provider="youtube"
                         data-plyr-embed-id="https://www.youtube.com/watch?v=wY6UyatwVTA" style="height: 500px;"></div> --}}
                         {{-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe> --}}
