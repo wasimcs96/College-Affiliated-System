@@ -42,7 +42,7 @@
                                 @if($order->user->isSubAdmin()) SubAdmin @endif
                                 @if($order->user->isClient()) Client @endif
                             </td>
-                            <td>{{$order->amount ?? ''}}</td>
+                            <td><i class="fa fa-inr"></i> {{$order->amount ?? ''}}</td>
                             <td>{{$order->transaction_id}}</td>
                             <td>@if($order->payment_type == 0)Subscription @endif
                                 @if($order->payment_type == 1)Premium @endif

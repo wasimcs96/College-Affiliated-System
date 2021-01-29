@@ -30,16 +30,16 @@
 
                         <tr>
                             <th scope="row"> Course</th>
-                            <td>{{$courses->course->name}}</td>
+                            <td>{{$courses->title ?? 'NA'}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Description</th>
-                            <td>{{$courses->description}}</td>
+                            <td>{{$courses->description ?? 'NA'}}</td>
                         </tr>
 
                         <tr>
                             <th scope="row">Fees</th>
-                            <td>₹ {{$courses->fees}}</td>
+                            <td>₹ {{$courses->fees ?? 'NA'}}</td>
                         </tr>
 
                         <tr>
