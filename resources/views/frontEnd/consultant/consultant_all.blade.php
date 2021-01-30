@@ -3,7 +3,7 @@
 
 
 
-<section class="breadcrumb-area bread-bg-8" style="background-image: url('{{ asset('frontEnd/assets/images/consultant.jpg')}}');">
+<section class="breadcrumb-area consult-bg-8" style="top: -72px;">
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row align-items-center">
@@ -308,6 +308,13 @@
     </div><!-- end container -->
 </section>
 @endsection
-@section('per_page_script')
 
+@section('per_page_style')
+<style>
+.la-angle-down:before {
+
+    color: #ff7503;
+    font-size: 12px;
+}
+    </style>
 @endsection

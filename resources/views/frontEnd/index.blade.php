@@ -9,7 +9,9 @@
     START HERO-WRAPPER AREA
 ================================= -->
 <section class="hero-wrapper">
-    <div class="hero-box  hero-bg " >
+    <div class="hero-box  hero-bg "  style="
+    top: -76px;
+">
         {{-- style="background-image: url('{{ asset('frontEnd/assets/images/svvg.svg')}}');" --}}
         <span class="line-bg line-bg1"></span>
         <span class="line-bg line-bg2"></span>
@@ -858,7 +860,7 @@
             <div class="col-lg-3 responsive-column">
                 <div class="deal-list">
 
-                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 216px;"  loop  autoplay></lottie-player>
                     {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
                    <h3 style="text-align: center"> Hire Consultant</h3>
                 </div>
@@ -2437,6 +2439,12 @@
 @endsection
 @section('per_page_style')
 <style>/*--thank you pop starts here--*/
+
+.la-angle-down:before {
+    content: "\f107";
+
+    font-size: 12px;
+}
     @font-face {
  font-family:'Open Sans';
  font-style:normal;
