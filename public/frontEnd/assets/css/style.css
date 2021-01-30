@@ -5399,9 +5399,9 @@ body {
     -o-transform: translateY(0);
     transform: translateY(0);
     box-shadow:
-    1px 1px #53a7ea,
-    2px 2px #53a7ea,
-    3px 3px #53a7ea;
+    1px 1px #ff811a,
+    2px 2px  #ff811a,
+    3px 3px #ff811a;
 -webkit-transform: translateX(-3px);
 transform: translateX(-3px);
 }
@@ -6673,7 +6673,7 @@ transform: translateX(-3px);
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: .7;
+    opacity: .3;
     background-color: #0d233e
 }
 
@@ -9977,16 +9977,21 @@ transform: translateX(-3px);
         height: 100%;
         transform: scaleY(0);
         transform-origin: bottom center;
-        background: linear-gradient(#6cc3eb ,#0e8dc7 );
+        background: linear-gradient(
+        45deg,
+        rgba(235, 139, 29, 0.5),
+        rgba(155, 68, 10, 0.5) 100%
+      );
         z-index: -1;
         transition: transform 0.3s;
-        opacity: 0.5;
+        opacity:0.9;
         color: white;
     }
 
     .testimonial-card:hover::after {
         transform: scaleY(1);
         text-decoration-color: aliceblue;
+        color: white;
     }
 
 
