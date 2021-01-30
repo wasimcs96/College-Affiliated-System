@@ -14,12 +14,25 @@
                 <form id="basic-form" method="POST" enctype="multipart/form-data" action="{{route('university.course.store')}}">
                     @csrf
                     <div class="form-group">
-                        <label for="course_id">Course Name</label>
-                        <select name="course_id" class="form-control" required>
-                            <option value="">--- Select  Course ---</option>
-                            @foreach ($courses as $course)
-                                <option value="{{ $course->id }}">{{ $course->name }}</option>
+                        <label for="category_id">Category Name</label>
+                        <select name="category_id" class="form-control" required>
+                            <option value="">--- Select  Category ---</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>
                             @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Course Title</label>
+                        <input type="text"  name="title" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Course Type</label>
+                        <select name="type" class="form-control" required>
+                            <option value="">--- Select Course Type ---</option>
+                                <option value="0">UG</option>
+                                <option value="1">PG</option>
+                                <option value="2">Diploma</option>
                         </select>
                     </div>
                    <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>

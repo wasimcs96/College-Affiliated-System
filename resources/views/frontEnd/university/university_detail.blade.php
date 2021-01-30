@@ -276,7 +276,7 @@
                                                <th scope="col"> Fees</th>
                                                <th scope="col">Start Date</th>
                                                <th scope="col">End Date</th>
-                                               <th scope="col">Action</th>
+                                               {{--  <th scope="col">Action</th>  --}}
                                            </tr>
                                        </thead>
                                        <tbody>
@@ -285,21 +285,21 @@
                                            <tr>
                                                <th scope="row"><div class="table-content d-flex align-items-center">
                                                 <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0">
-                                                <h3 class="title">{{$course->course->name}}</h3>
+                                                <h3 class="title">{{$course->title ?? ''}}</h3>
                                             </div>
                                             </th>
                                                <td>
-                                                @if($course->course->type == 0) UG @endif
-                                                @if($course->course->type == 1) PG @endif
-                                                @if($course->course->type == 2) Diploma @endif
+                                                @if($course->type == 0) UG @endif
+                                                @if($course->type == 1) PG @endif
+                                                @if($course->type == 2) Diploma @endif
                                                </td>
-                                               <td>{{$course->fees}}</td>
-                                               <td>{{$course->start_date}}</td>
-                                               <td>@if(isset($course->end_date)){{$course->end_date}}@else N/A @endif</td>
+                                               <td>₹ {{$course->fees ?? ''}}</td>
+                                               <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
+                                               <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
 
-                                               <td> <div>
+                                               {{--  <td> <div>
                                                 <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
-                                            </div></td>
+                                            </div></td>  --}}
                                            </tr>
                                            @endforeach
                                     </tbody>

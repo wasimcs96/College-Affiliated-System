@@ -16,11 +16,11 @@ class UniversityFilterController extends Controller
     public function filter(Request $request)
     {
 
-        $courses = Course::where('category_id', $request->categoryselect)->where('type', $request->typeselect)->get();
+        $courses = UniversityCourse::where('category_id', $request->categoryselect)->where('type', $request->typeselect)->get();
 
         $output = '<option value="" selected>Course Name</option>';
         foreach ($courses as $row) {
-            $output .= '<option value="' . $row->id . '">' . $row->name . '</option>';
+            $output .= '<option value="' . $row->id . '">' . $row->title . '</option>';
         }
 
         echo $output;

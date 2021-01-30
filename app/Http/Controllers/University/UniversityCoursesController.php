@@ -4,6 +4,7 @@ namespace App\Http\Controllers\University;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\CourseMedia;
 use App\Models\University;
@@ -32,7 +33,7 @@ class UniversityCoursesController extends Controller
     public function create()
     {
 
-        return view('university.course.add_course')->with('courses', Course::all())->with('universities', University::all());
+        return view('university.course.add_course')->with('categories', Category::all())->with('universities', University::all());
 
     }
 
@@ -43,9 +44,11 @@ class UniversityCoursesController extends Controller
      */
     public function store(Request $request)
     {
-            // dd($request);
+          
         $this->validate($request, [
-            'course_id' => 'required',
+            'category_id' => 'required',
+            'title' => 'required',
+            'type' => 'required',
             'user_id' => 'required',
             'description' => 'required',
             'fees' => 'required',
@@ -55,7 +58,6 @@ class UniversityCoursesController extends Controller
         ]);
         $course = UniversityCourse::create($request->all());
         $images=collect($request->image);
-
 
         foreach($images as $image){
             $name= time().$image->getClientOriginalName();
@@ -70,7 +72,7 @@ class UniversityCoursesController extends Controller
                 'media'=>  $newname,
                 'status'=>0,
                 'file_type' => $type,
-                'course_id'=>$request->course_id
+                'category_id'=>$request->category_id
                 //you can put other insertion here
             ]);
          }
@@ -110,7 +112,7 @@ class UniversityCoursesController extends Controller
     {
 
 
-        return view('university.course.course_edit')->with('courses', Course::all())->with('universitycourse', $id);
+        return view('university.course.course_edit')->with('categories', Category::all())->with('universitycourse', $id);
 
     }
 
@@ -141,7 +143,7 @@ class UniversityCoursesController extends Controller
                 'media'=>  $newname,
                 'status'=>0,
                 'file_type' => $type,
-                'course_id'=>$request->course_id
+                'category_id'=>$request->category_id
                 //you can put other insertion here
             ]);
          }

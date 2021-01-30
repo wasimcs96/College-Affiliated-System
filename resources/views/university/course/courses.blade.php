@@ -68,9 +68,9 @@
                         @if($universitycourses->count() > 0)
                         <tr>
                             @foreach($universitycourses as $course)
-                            <td>{{$course->course->name}}</td>
-                            <td>{{$course->description}}</td>
-                            <td>₹ {{$course->fees}}</td>
+                            <td>{{$course->title ?? 'NA'}}</td>
+                            <td>{{$course->description ?? ''}}</td>
+                            <td>₹ {{$course->fees ?? ''}}</td>
                             {{-- {{ dd($course->created_at,$course->end_date) }} --}}
                             <td>{{ Carbon\Carbon::parse($course->start_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
 
