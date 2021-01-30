@@ -3,7 +3,7 @@
 
 
 
-<section class="breadcrumb-area bread-bg-8">
+<section class="breadcrumb-area bread-bg-8 " style="background-image: url('{{ asset('frontEnd/assets/images/university-all.jpg')}}');">
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row align-items-center">
@@ -376,7 +376,7 @@
         display: inline-block;
         position: relative;
         padding: 5px 22px;
-        background-color: #4CC713;
+        background-color:  #ff811a;
         color: white;
         font-family: sans-serif;
         text-decoration: none;
@@ -388,7 +388,7 @@
     }
 
     .buttonDownload:hover {
-        background-color: #333;
+        background-color:  #073975;
         color: white;
     }
 
@@ -457,7 +457,7 @@
     }</style>
 @endsection
 @section('per_page_script')
-<script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
+{{-- <script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/vanta.globe.min.js') }}"></script>
 <script>
 VANTA.GLOBE({
@@ -472,5 +472,5 @@ VANTA.GLOBE({
   scale: 1.00,
   scaleMobile: 1.00
 })
-</script>
+</script> --}}
 @endsection

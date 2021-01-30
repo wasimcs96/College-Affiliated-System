@@ -21,9 +21,9 @@
             <div class="row">
                 <div class="col-lg-10 mx-auto responsive--column-l">
                     <div class="hero-content pb-5">
-                        <div class="section-heading">
-                            <h2 class="sec__title cd-headline zoom">
-                                Amazing <span class="cd-words-wrapper">
+                        <div class="section-heading" >
+                            <h2 class="sec__title cd-headline zoom" style="color: #073975;">
+                                Amazing <span class="cd-words-wrapper" style="color:#ff7300">
                                 <b class="is-visible">Education</b>
                                 <b>Courses</b>
                                 <b>Colleges</b>
@@ -177,12 +177,14 @@
                                                     </div>
                                                 </div>
                                             </div><!-- end col-lg-3 -->
-                                            <div class="col-lg-4 col-sm-2 pr-0">
+                                            <div class="col-lg-4 col-sm-2 pr-0" >
                                                 <div class="input-box">
                                                     <label class="label-text">Courses</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select id="selectcourse" name="course_id" class="form-control ert" required>
+                                                            <select id="selectcourse" name="course_id" class="form-control ert" required  style="
+                                                            height: 52px;
+                                                        ">
                                                                 <option value="" selected>Select Course</option>
 
 
@@ -194,7 +196,7 @@
                                             </div>
 
                                             <div class="col-lg-2">
-                                                <button type="submit"  class="theme-btn w-100 text-center margin-top-20px">Search Now</button>
+                                                <button type="submit"  class="theme-btn w-100 text-center "style="margin-top: 4px">Search Now</button>
                                             </div>
                                         </form>
                                     </div>
@@ -296,7 +298,9 @@
                             </div><!-- end checkmark-wrap --> --}}
 
                             <div class="btn-box col-lg-2">
-                                <button type="submit" style="margin-top: 20px" class="theme-btn">Search Now</button>
+                                <button type="submit"  style="
+                                margin-bottom: -4px;
+                            " class="theme-btn">Search Now</button>
                             </div>
                         </form>
                             </div>
@@ -377,7 +381,9 @@
                                         </div>
                                     </div> --}}
                                     <div class="btn-box pt-3 col-lg-2">
-                                        <button type="submit" class="theme-btn">Search Now</button>
+                                        <button type="submit" class="theme-btn" style="
+                                        margin-bottom: 8px;
+                                    ">Search Now</button>
                                     </div>
                                 </form>
                                <!-- end row -->
@@ -397,7 +403,7 @@
     END HERO-WRAPPER AREA
 ================================= -->
 
-    <div class="jumbotron jumbotron-fluid" style="margin-top: 60px; background-image: url('{{asset("frontEnd/assets/images/color-bg3.png")}}');">
+    {{-- <div class="jumbotron jumbotron-fluid" style="margin-top: 60px; background-image: url('{{asset("frontEnd/assets/images/color-bg3.png")}}');">
     <div class="container">
            <div class="container">
 
@@ -406,7 +412,7 @@
     <h3 style=" font-size: 32px; color:dodgerblue ">Status</h3>
 
 
-<div class="form-title-wrap">
+        <div class="form-title-wrap">
     <div class="step-bar-wrap text-center">
 
 
@@ -436,20 +442,85 @@
         </ul>
 
     </div>
-</div>
+    </div>
 
-</div>
-    {{-- <ul>
-        <li style="float: right;">
+    </div>
 
-            <a href="{{route('dashboard.index2')}}" class="stbtn">More <i class="las la-chevron-right"></i></a>
-
-                </li>
-    </ul> --}}
         </div>
 
     </div>
-  </div>
+  </div> --}}
+
+  <section class="col1 wrapped XXsnipcss_extracted_selector_selectionXX">
+    <div class="colblock" style="margin-top: 65px;">
+      <div data-module="Onboarding:OnboardingBar" class="Module StudyPortals_Shared_Modules_Onboarding_OnboardingBar_OnboardingBar">
+        <section id="OnboardingBar">
+          <ul class="OnboardingList" id="ulid">
+            <li class="OnboardingItem Explore liclss">
+              <div class="OnboardingBullet">
+                <i class="OnboardingIcon" style="color: #fdac10">
+                    <i class="las la-check-circle"  style="color:  #ff7300; font-size:xxx-large;"></i>
+                </i>
+              </div>
+              <div class="OnboardingText">
+                <p>
+                  <span class="ItemHeader">
+                    Booking Submitted
+                  </span>
+                  You can browse more than 71.000 Master’s programmes from all over the world.
+                </p>
+              </div>
+            </li>
+            <li class="OnboardingItem Compare liclss">
+              <div class="OnboardingBullet">
+                <i class="OnboardingIcon" style="color: #fdac10">
+                    <i class="las la-university" style="color:  #ff7300; font-size:xxx-large;" ></i>
+                </i>
+              </div>
+              <div class="OnboardingText">
+                <p>
+                  <span class="ItemHeader">
+                 Applied University
+                  </span>
+                  Make a wishlist of your favourite programmes, check your fit with them, and read what other students are saying.
+                </p>
+              </div>
+            </li>
+            <li class="OnboardingItem Decide " liclss>
+              <div class="OnboardingBullet">
+                <i class="OnboardingIcon" style="color: #fdac10">
+                    <i class="las la-receipt"  style="color:  #ff7300; font-size:xxx-large;"></i>
+                </i>
+              </div>
+              <div class="OnboardingText">
+                <p>
+                  <span class="ItemHeader">
+                   Offer receipt
+                  </span>
+                  Now that you have your top programmes shortlisted, you can pick the ones that fit you the best.
+                </p>
+              </div>
+            </li>
+            <li class="OnboardingItem Apply" liclss>
+              <div class="OnboardingBullet">
+                <i class="OnboardingIcon " style="color: #fdac10">
+                    <i class="las la-plane-departure"  style="color:  #ff7300; font-size:xxx-large;"></i>
+                </i>
+              </div>
+              <div class="OnboardingText">
+                <p>
+                  <span class="ItemHeader">
+                   Ready to Fly
+                  </span>
+                  When you feel confident about your programme choice, you can apply.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
 
 
 <!-- ================================
@@ -477,7 +548,7 @@
                         {{-- {{dd($university)}} --}}
                         @if($university->isUniversity())
                         @if($university->Premium_expire_date >$mytime)
-                        <div class="testimonial-card">
+                        <div class="testimonial-card  .btn-img .btn-img-combo">
 
                             <div class="author-content d-flex align-items-center">
                                 <div class="author-img">
@@ -570,6 +641,8 @@
                         @endif
                         @endif
                         @endforeach
+
+
                     </div><!-- end testimonial-carousel -->
 @else
 <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
@@ -846,10 +919,12 @@
                             </div><!-- end row -->
                             <?php $categories = App\Models\Category::all() ?>
                             @if($categories->count() > 0)
-                            <div class="row padding-top-80px">
+                            <div class="row padding-top-80px"  style="
+                            justify-content: center;
+                        ">
 
                                      @foreach($categories as $category)
-                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
+                                    {{-- <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
                                         <div class="icon-box icon-layout-4" style="
                                         border-radius: inherit;
                                         background-color: gainsboro;
@@ -860,148 +935,23 @@
                                             background-color: transparent;
                                             color: black; margin-top:0px;
                                         ">
-                                                <i class="las la-book-medical"></i>
+
                                             </div><!-- end info-icon-->
                                             <div class="info-content">
                                                 <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
 
                                             </div><!-- end info-content -->
                                         </div><!-- end icon-box -->
-                                    </div><!-- end col-lg-2 -->
+                                    </div><!-- end col-lg-2 --> --}}
+                                    <div class="card text-center customhover" style="border-radius: 0px; width: 15rem;height: 11rem;   background-color: #edf3f6;   margin: 1px; z-index:0; border-radius: inherit">
+                                        <div class="card-body customhover" style=";height: 174px;">
+                                          <h5 class="card-title"><img src="
+                                            {{asset('frontEnd/assets/images/first_aid.png')}}" width="84px" ></h5>
+                                          <p class="card-text"><a style="color: black;" href="#" value="{{$category->id}}">{{$category->title}}</a></p>
+                                          {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+                                        </div>
+                                      </div>
                                     @endforeach
-                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
-                                        <div class="icon-box icon-layout-4" style="
-                                        border-radius: inherit;
-                                        background-color: gainsboro;
-                                        border-bottom-color: blue;
-                                        height: 174px;
-                                    ">
-                                            <div class="info-icon" style="
-                                            background-color: transparent;
-                                            color: black; margin-top:0px;
-                                        ">
-                                                <i class="las la-book-medical"></i>
-                                            </div><!-- end info-icon-->
-                                            <div class="info-content">
-                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
-
-                                            </div><!-- end info-content -->
-                                        </div><!-- end icon-box -->
-                                    </div>
-                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
-                                        <div class="icon-box icon-layout-4" style="
-                                        border-radius: inherit;
-                                        background-color: gainsboro;
-                                        border-bottom-color: blue;
-                                        height: 174px;
-                                    ">
-                                            <div class="info-icon" style="
-                                            background-color: transparent;
-                                            color: black; margin-top:0px;
-                                        ">
-                                                <i class="las la-book-medical"></i>
-                                            </div><!-- end info-icon-->
-                                            <div class="info-content">
-                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
-
-                                            </div><!-- end info-content -->
-                                        </div><!-- end icon-box -->
-                                    </div>
-                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
-                                        <div class="icon-box icon-layout-4" style="
-                                        border-radius: inherit;
-                                        background-color: gainsboro;
-                                        border-bottom-color: blue;
-                                        height: 174px;
-                                    ">
-                                            <div class="info-icon" style="
-                                            background-color: transparent;
-                                            color: black; margin-top:0px;
-                                        ">
-                                                <i class="las la-book-medical"></i>
-                                            </div><!-- end info-icon-->
-                                            <div class="info-content">
-                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
-
-                                            </div><!-- end info-content -->
-                                        </div><!-- end icon-box -->
-                                    </div>
-                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
-                                        <div class="icon-box icon-layout-4" style="
-                                        border-radius: inherit;
-                                        background-color: gainsboro;
-                                        border-bottom-color: blue;
-                                        height: 174px;
-                                    ">
-                                            <div class="info-icon" style="
-                                            background-color: transparent;
-                                            color: black; margin-top:0px;
-                                        ">
-                                                <i class="las la-book-medical"></i>
-                                            </div><!-- end info-icon-->
-                                            <div class="info-content">
-                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
-
-                                            </div><!-- end info-content -->
-                                        </div><!-- end icon-box -->
-                                    </div>
-                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
-                                        <div class="icon-box icon-layout-4" style="
-                                        border-radius: inherit;
-                                        background-color: gainsboro;
-                                        border-bottom-color: blue;
-                                        height: 174px;
-                                    ">
-                                            <div class="info-icon" style="
-                                            background-color: transparent;
-                                            color: black; margin-top:0px;
-                                        ">
-                                                <i class="las la-book-medical"></i>
-                                            </div><!-- end info-icon-->
-                                            <div class="info-content">
-                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
-
-                                            </div><!-- end info-content -->
-                                        </div><!-- end icon-box -->
-                                    </div>
-                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
-                                        <div class="icon-box icon-layout-4" style="
-                                        border-radius: inherit;
-                                        background-color: gainsboro;
-                                        border-bottom-color: blue;
-                                        height: 174px;
-                                    ">
-                                            <div class="info-icon" style="
-                                            background-color: transparent;
-                                            color: black; margin-top:0px;
-                                        ">
-                                                <i class="las la-book-medical"></i>
-                                            </div><!-- end info-icon-->
-                                            <div class="info-content">
-                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
-
-                                            </div><!-- end info-content -->
-                                        </div><!-- end icon-box -->
-                                    </div>
-                                    <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
-                                        <div class="icon-box icon-layout-4" style="
-                                        border-radius: inherit;
-                                        background-color: gainsboro;
-                                        border-bottom-color: blue;
-                                        height: 174px;
-                                    ">
-                                            <div class="info-icon" style="
-                                            background-color: transparent;
-                                            color: black; margin-top:0px;
-                                        ">
-                                                <i class="las la-book-medical"></i>
-                                            </div><!-- end info-icon-->
-                                            <div class="info-content">
-                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
-
-                                            </div><!-- end info-content -->
-                                        </div><!-- end icon-box -->
-                                    </div>
                             </div><!-- end row -->
                             @else
                             <div>
@@ -2432,8 +2382,8 @@
             <div class="col-lg-6">
                 <div class="mobile-img">
                     {{-- <img src="{{ asset('frontEnd/assets/images/mobile-app.png') }}" alt="mobile-img"> --}}
-                    <img src="{{ asset('frontEnd/assets/images/contactus.gif') }}" alt="mobile-img">
-                    <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_du7jspky.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>
+                    {{-- <img src="{{ asset('frontEnd/assets/images/contactus.gif') }}" alt="mobile-img"> --}}
+                    <lottie-player src="{{asset('frontEnd/assets/json/installing-software-to-device.json')}}"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
                 </div>
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
@@ -2486,8 +2436,732 @@
 ================================= -->
 @endsection
 @section('per_page_style')
+<style>/*--thank you pop starts here--*/
+    @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWJ0bbck.woff2) format('woff2');
+ unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFUZ0bbck.woff2) format('woff2');
+ unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWZ0bbck.woff2) format('woff2');
+ unicode-range:U+1F00-1FFF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVp0bbck.woff2) format('woff2');
+ unicode-range:U+0370-03FF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWp0bbck.woff2) format('woff2');
+ unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFW50bbck.woff2) format('woff2');
+ unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');
+ unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOX-hpOqc.woff2) format('woff2');
+ unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOVuhpOqc.woff2) format('woff2');
+ unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOXuhpOqc.woff2) format('woff2');
+ unicode-range:U+1F00-1FFF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUehpOqc.woff2) format('woff2');
+ unicode-range:U+0370-03FF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOXehpOqc.woff2) format('woff2');
+ unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOXOhpOqc.woff2) format('woff2');
+ unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2) format('woff2');
+ unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ @font-face {
+ font-family:'icomoon';
+ src:url('https://d1azc1qln24ryf.cloudfront.net/26905/Studyportalslineariconset/icomoon.eot?tqtgr7');
+ src:url('https://d1azc1qln24ryf.cloudfront.net/26905/Studyportalslineariconset/icomoon.eot?tqtgr7#iefix') format('embedded-opentype'),
+     url('https://d1azc1qln24ryf.cloudfront.net/26905/Studyportalslineariconset/icomoon.woff2?tqtgr7') format('woff2'),
+     url('https://d1azc1qln24ryf.cloudfront.net/26905/Studyportalslineariconset/icomoon.ttf?tqtgr7') format('truetype'),
+     url('https://d1azc1qln24ryf.cloudfront.net/26905/Studyportalslineariconset/icomoon.woff?tqtgr7') format('woff'),
+     url('https://d1azc1qln24ryf.cloudfront.net/26905/Studyportalslineariconset/icomoon.svg?tqtgr7#icomoon') format('svg');
+ font-weight:normal;
+ font-style:normal;
+ font-display:block;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWJ0bbck.woff2) format('woff2');
+ unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFUZ0bbck.woff2) format('woff2');
+ unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWZ0bbck.woff2) format('woff2');
+ unicode-range:U+1F00-1FFF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVp0bbck.woff2) format('woff2');
+ unicode-range:U+0370-03FF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWp0bbck.woff2) format('woff2');
+ unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFW50bbck.woff2) format('woff2');
+ unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:400;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');
+ unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOX-hpOqc.woff2) format('woff2');
+ unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOVuhpOqc.woff2) format('woff2');
+ unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOXuhpOqc.woff2) format('woff2');
+ unicode-range:U+1F00-1FFF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUehpOqc.woff2) format('woff2');
+ unicode-range:U+0370-03FF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOXehpOqc.woff2) format('woff2');
+ unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOXOhpOqc.woff2) format('woff2');
+ unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+ }
+ @font-face {
+ font-family:'Open Sans';
+ font-style:normal;
+ font-weight:700;
+ font-display:swap;
+ src:url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2) format('woff2');
+ unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ @media (min-width: 1025px){
+ body .WhiteBackgroundPane {
+     background-color: #fff;
+ }
+ }
 
+ #galactus {
+     position: relative;
+     min-width: 320px;
+     width: 100%;
+     font-size: .9375rem;
+     line-height: 1.5rem;
+     word-wrap: break-word;
+     margin: 0;
+     padding: 3.75rem 0 0;
+     box-sizing: border-box;
+     overflow: hidden;
+     overflow-wrap: break-word;
+     margin-top: 0px;
+     margin-right: 0px;
+     margin-bottom: 0px;
+     margin-left: 0px;
+     padding-top: 3.75rem;
+     padding-right: 0px;
+     padding-bottom: 0px;
+     padding-left: 0px;
+     overflow-x: hidden;
+     overflow-y: hidden;
+ }
+
+ .colblock, a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, tfoot, th, thead, time, tt, u, var, video {
+     margin: 0;
+     padding: 0;
+     border: 0;
+     vertical-align: baseline;
+     line-height: 1.5em;
+     margin-top: 0px;
+     margin-right: 0px;
+     margin-bottom: 0px;
+     margin-left: 0px;
+     padding-top: 0px;
+     padding-right: 0px;
+     padding-bottom: 0px;
+     padding-left: 0px;
+     border-top-width: 0px;
+     border-right-width: 0px;
+     border-bottom-width: 0px;
+     border-left-width: 0px;
+     border-top-style: initial;
+     border-right-style: initial;
+     border-bottom-style: initial;
+     border-left-style: initial;
+     border-top-color: initial;
+     border-right-color: initial;
+     border-bottom-color: initial;
+     border-left-color: initial;
+     border-image-source: initial;
+     border-image-slice: initial;
+     border-image-width: initial;
+     border-image-outset: initial;
+     border-image-repeat: initial;
+ }
+
+ /* body {
+     font-size: 100%;
+ }  */
+
+ /* body {
+     font-family: Open Sans,Helvetica,Arial,sans-serif;
+     -webkit-text-size-adjust: none;
+     color: #05293c;
+     background-color: #fff;
+     text-size-adjust: none;
+ }  */
+
+
+
+
+ /* article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+     display: block;
+ }  */
+
+ #galactus .col1 , #galactus .col2, #galactus .col2-left, #galactus .col2-right, .nav-bar:after  {
+     clear: both;
+ }
+
+ #galactus .col1 , #galactus .col2, #galactus .col2-left, #galactus .col2-right {
+     padding-top: 1rem;
+     padding-bottom: 1rem;
+ }
+
+ #galactus .col1.wrapped , #galactus .col2-left.wrapped, #galactus .col2-right.wrapped, #galactus .col2.wrapped {
+     max-width: 1220px;
+     margin-left: auto!important;
+     margin-right: auto!important;
+     float: none!important;
+ }
+
+ .col1:after , .col2-left:after , .col2-right:after , .col2:after , .nav-bar:after  {
+     content: "";
+     clear: both;
+     display: block;
+ }
+
+ .colblock , .colblock , .colblock , .colblock  {
+     float: left;
+     margin-right: -100%;
+     overflow: hidden;
+     box-sizing: border-box;
+     overflow-x: hidden;
+     overflow-y: hidden;
+ }
+
+ @media (min-width: 1025px){
+ .colblock  {
+     float: left;
+     margin-left: 1rem!important;
+     width: calc(100% - 2rem);
+ }
+ }
+
+ .colblock:nth-child(n + 1) , .colblock:nth-child(n + 1) , .colblock:nth-child(n + 1) , .colblock:nth-child(n + 1)  {
+     margin-left: 0;
+     margin-top: 1rem;
+     margin-bottom: 1rem;
+     clear: both;
+ }
+
+ #ulid  {
+     list-style-type: square;
+ }
+
+ #OnboardingBar .OnboardingList  {
+     display: block;
+     position: relative;
+     margin: 0;
+     padding: 0;
+     list-style-type: none;
+     margin-top: 0px;
+     margin-right: 0px;
+     margin-bottom: 0px;
+     margin-left: 0px;
+     padding-top: 0px;
+     padding-right: 0px;
+     padding-bottom: 0px;
+     padding-left: 0px;
+ }
+
+ @media (min-width: 1025px){
+ #OnboardingBar .OnboardingList  {
+     display: flex;
+ }
+ }
+
+ #ulid liclss  {
+     margin-top: .5rem;
+     margin-bottom: .5rem;
+ }
+
+ #ulid liclss:first-child  {
+     margin-top: 0;
+ }
+
+ #OnboardingBar .OnboardingItem  {
+     display: flex;
+     margin: 0;
+     text-align: left;
+     margin-top: 0px;
+     margin-right: 0px;
+     margin-bottom: 0px;
+     margin-left: 0px;
+ }
+
+ @media (min-width: 1025px){
+ #OnboardingBar .OnboardingItem  {
+     display: block;
+     flex: 0 1 25%;
+     text-align: center;
+     flex-grow: 0;
+     flex-shrink: 1;
+     flex-basis: 25%;
+ }
+ }
+
+ #ulid liclss:last-child  {
+     margin-bottom: 0;
+ }
+
+ #OnboardingBar .OnboardingBullet  {
+     flex: 0 0 3rem;
+     position: relative;
+     margin: 0 auto;
+     flex-grow: 0;
+     flex-shrink: 0;
+     flex-basis: 3rem;
+     margin-top: 0px;
+     margin-right: auto;
+     margin-bottom: 0px;
+     margin-left: auto;
+ }
+
+ @media (min-width: 1025px){
+ #OnboardingBar .OnboardingBullet  {
+     display: block;
+     flex: none;
+     width: 100%;
+     margin-bottom: .5rem;
+     flex-grow: 0;
+     flex-shrink: 0;
+     flex-basis: auto;
+ }
+ }
+
+ #OnboardingBar .OnboardingBullet:before  {
+     content: "";
+     display: block;
+     position: absolute;
+     top: 3rem;
+     bottom: 0;
+     left: 1.5rem;
+     border-left: 1px dotted #547a92;
+     border-left-width: 1px;
+     border-left-style: dotted;
+     border-left-color: rgb(84, 122, 146);
+ }
+
+ @media (min-width: 1025px){
+ #OnboardingBar .OnboardingBullet:before  {
+     top: 0;
+     right: unset;
+     left: unset;
+     bottom: unset;
+     height: 2.5rem;
+     width: 100%;
+     border-left: 0;
+     border-bottom: 1px dotted #547a92;
+     border-left-width: 0px;
+     border-left-style: initial;
+     border-left-color: initial;
+     border-bottom-width: 1px;
+     border-bottom-style: dotted;
+     border-bottom-color: rgb(84, 122, 146);
+ }
+ }
+
+ @media (min-width: 1025px){
+ #OnboardingBar .OnboardingItem:first-child .OnboardingBullet:before  {
+     width: 50%;
+     left: 50%;
+ }
+ }
+
+ #OnboardingBar .OnboardingText  {
+     font-size: .8125rem;
+     line-height: 1rem;
+     flex: 1 1 auto;
+     position: relative;
+     padding: 0 .5rem 0 1rem;
+     color: #3f5c6e;
+     flex-grow: 1;
+     flex-shrink: 1;
+     flex-basis: auto;
+     padding-top: 0px;
+     padding-right: 0.5rem;
+     padding-bottom: 0px;
+     padding-left: 1rem;
+ }
+
+ @media (min-width: 1025px){
+ #OnboardingBar .OnboardingText  {
+     font-size: .9375rem;
+     line-height: 1.5rem;
+     display: block;
+     flex: none;
+     box-sizing: border-box;
+     padding: 0 1rem;
+     width: 100%;
+     height: auto;
+     flex-grow: 0;
+     flex-shrink: 0;
+     flex-basis: auto;
+     padding-top: 0px;
+     padding-right: 1rem;
+     padding-bottom: 0px;
+     padding-left: 1rem;
+ }
+ }
+
+ #OnboardingBar .OnboardingItem:last-child .OnboardingBullet:before  {
+     display: none;
+ }
+
+ @media (min-width: 1025px){
+ #OnboardingBar .OnboardingItem:last-child .OnboardingBullet:before  {
+     display: block;
+     width: 50%;
+ }
+ }
+
+ [class^="lnr-"] {
+     font-family: 'icomoon' !important;
+     speak: none;
+     font-style: normal;
+     font-weight: normal;
+     font-variant: normal;
+     text-transform: none;
+     line-height: 1;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     font-variant-ligatures: normal;
+     font-variant-caps: normal;
+     font-variant-numeric: normal;
+     font-variant-east-asian: normal;
+ }
+
+ #OnboardingBar .OnboardingBullet .OnboardingIcon  {
+     display: block;
+     position: relative;
+     height: 3rem;
+     width: 3rem;
+     font-size: 1.5rem;
+     line-height: 3rem;
+     text-align: center;
+     background: #fff;
+     border: 1px solid #f95c39;
+     border-radius: 50%;
+     background-image: initial;
+     background-position-x: initial;
+     background-position-y: initial;
+     background-size: initial;
+     background-repeat-x: initial;
+     background-repeat-y: initial;
+     background-attachment: initial;
+     background-origin: initial;
+     background-clip: initial;
+     background-color: rgb(255, 255, 255);
+     border-top-width: 1px;
+     border-right-width: 1px;
+     border-bottom-width: 1px;
+     border-left-width: 1px;
+     border-top-style: solid;
+     border-right-style: solid;
+     border-bottom-style: solid;
+     border-left-style: solid;
+     border-top-color: #073975;
+     border-right-color: #073975;
+     border-bottom-color:#073975;
+     border-left-color: #073975;
+     border-image-source: initial;
+     border-image-slice: initial;
+     border-image-width: initial;
+     border-image-outset: initial;
+     border-image-repeat: initial;
+     border-top-left-radius: 20%;
+     border-top-right-radius: 20%;
+     border-bottom-right-radius: 20%;
+     border-bottom-left-radius: 20%;
+ }
+
+ @media (min-width: 1025px){
+ #OnboardingBar .OnboardingBullet .OnboardingIcon  {
+     margin: 0 auto;
+     height: 5rem;
+     width: 5rem;
+     font-size: 2rem;
+     line-height: 5rem;
+     margin-top: 0px;
+     margin-right: auto;
+     margin-bottom: 0px;
+     margin-left: auto;
+ }
+ }
+
+ .lnr-compass2:before {
+     content: "\e780";
+ }
+
+ p  {
+     margin: 0 0 .75rem;
+     margin-top: 0px;
+     margin-right: 0px;
+     margin-bottom: 0.75rem;
+     margin-left: 0px;
+ }
+
+ #OnboardingBar .OnboardingText p  {
+     max-width: 450px;
+ }
+
+ .lnr-compare:before {
+     content: "\e92e";
+ }
+
+ .lnr-archery:before {
+     content: "\e870";
+ }
+
+ #OnboardingBar .OnboardingText .ItemHeader  {
+     font-size: 1.0625rem;
+     line-height: 1.5rem;
+     font-weight: 600;
+     display: block;
+     color: #05293c;
+ }
+
+ @media (min-width: 1025px){
+ #OnboardingBar .OnboardingText .ItemHeader  {
+     font-size: 1.6875rem;
+     line-height: 2.5rem;
+ }
+ }
+
+ #OnboardingBar .OnboardingBullet .IconImg  {
+     position: absolute;
+     height: 26px;
+     width: 26px;
+     top: 50%;
+     left: 50%;
+     margin-top: -15px;
+     margin-left: -15px;
+     vertical-align: unset;
+ }
+
+ @media (min-width: 1025px){
+ #OnboardingBar .OnboardingBullet .IconImg  {
+     height: 36px;
+     width: 36px;
+     margin-top: -20px;
+     margin-left: -20px;
+ }
+ }
+
+ #OnboardingBar .OnboardingBullet #Star1  {
+     fill: #fdac10;
+     opacity: .4;
+     transform-box: fill-box;
+     transform-origin: 50% 50%;
+     transform: scale(1);
+     animation: star1_Animation 3s ease-in infinite;
+     animation-duration: 3s;
+     animation-timing-function: ease-in;
+     animation-delay: 0s;
+     animation-iteration-count: infinite;
+     animation-direction: normal;
+     animation-fill-mode: none;
+     animation-play-state: running;
+     animation-name: star1_Animation;
+ }
+
+ #OnboardingBar .OnboardingBullet #Star2  {
+     fill: #fdac10;
+     opacity: .6;
+     animation: star2_Animation 3s ease-in infinite;
+     animation-duration: 3s;
+     animation-timing-function: ease-in;
+     animation-delay: 0s;
+     animation-iteration-count: infinite;
+     animation-direction: normal;
+     animation-fill-mode: none;
+     animation-play-state: running;
+     animation-name: star2_Animation;
+ }
+
+ #OnboardingBar .OnboardingBullet #Star3  {
+     fill: #fdac10;
+     opacity: 1;
+     animation: star3_Animation 3s ease-out infinite;
+     animation-duration: 3s;
+     animation-timing-function: ease-out;
+     animation-delay: 0s;
+     animation-iteration-count: infinite;
+     animation-direction: normal;
+     animation-fill-mode: none;
+     animation-play-state: running;
+     animation-name: star3_Animation;
+ }
+
+
+     </style>
 <style></style>
+<style>
+.customhover:hover{
+background-color: #073975;
+color: #edf3f6;
+z-index: 1;
+opacity:0.9;
+}
+
+</style>
 <style>
 canvas {
 
@@ -2504,7 +3178,7 @@ canvas {
 {{-- rt=$('#categoryselect').val(); --}}
 <script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/vanta.net.min.js') }}"></script>
-<script>
+{{-- <script>
 VANTA.NET({
   el: ".hero-bg",
   mouseControls: true,
@@ -2520,7 +3194,7 @@ VANTA.NET({
   maxDistance: 25.00,
   spacing: 17.00
 })
-</script>
+</script> --}}
 <script>
     $(document).on('change', '#typeselect', function ()
     {

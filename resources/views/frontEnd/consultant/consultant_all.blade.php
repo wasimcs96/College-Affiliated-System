@@ -3,7 +3,7 @@
 
 
 
-<section class="breadcrumb-area bread-bg-8">
+<section class="breadcrumb-area bread-bg-8" style="background-image: url('{{ asset('frontEnd/assets/images/consultant.jpg')}}');">
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row align-items-center">
@@ -309,20 +309,5 @@
 </section>
 @endsection
 @section('per_page_script')
-<script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
-<script src="{{ asset('frontEnd/assets/js/vanta.globe.min.js') }}"></script>
-<script>
-VANTA.GLOBE({
-  el: ".bread-bg-8",
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  color: 0x287dfa,
-  backgroundColor: 0x23153c,
-  scale: 1.00,
-  scaleMobile: 1.00
-})
-</script>
+
 @endsection
