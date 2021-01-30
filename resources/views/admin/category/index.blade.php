@@ -40,10 +40,9 @@
                    <tbody>
                     @foreach ($categories as $category)
                         <tr>
-<td><img style="
-    width: 36px;
-" src="{{asset($category->banner ?? '')}}"></td>
-                            <td>{{$category->parent_category->title ?? ''}}</td>
+                            <td style="text-align: center;">
+                                @if(isset($category->banner) && file_exists($category->banner))<a href="{{asset($category->banner ?? '')}}" target="_blank"> <img src="{{asset($category->banner ?? '')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"></a>@else <img src="{{asset('assets/default/default-banner.jpg')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"> @endif</td>
+                            <td>{{$category->parent_category->title ?? 'N/A'}}</td>
                             <td>
                                {{$category->title ?? ''}}
                             </td>

@@ -1,61 +1,70 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Applications')
-@section('title', 'All Application')
+@section('parentPageTitle', 'SubAdmin')
+@section('title', 'Application')
 
 @section('content')
 <div class="col-lg-12">
     <div class="card">
         <div class="header">
-            <h2>Applications<small>All Applications</small></h2>
-
+            <h2>Applications<small>All application created</small></h2>
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-            <a href="{{route('subadmin.application.application_create')}}"class="btn btn-primary">add</a>
-                {{-- <li class="dropdown">
+                <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li> --}}
+                </li>
             </ul>
         </div>
         <div class="body">
             <div class="table-responsive">
-
-
                 <table class="table table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
-                            <th> <b>
-                               Client Name</b></th>
-                            <th><b> Consultant </b></th>
+                            <th> <b> Student Name</b></th>
+                            <th> <b> Consultant Name</b></th>
 
-                            <th><b> Created Date</b></th>
+                            <th><b>Student Mobile </b></th>
+                            <th><b>Consultant Mobile </b></th>
+
+                            {{-- <th><b>Student Email </b></th>
+                            <th><b>Consultant E-mail</b></th> --}}
+                            {{-- <th><b> Universities</b></th> --}}
+                            {{-- <th><b> Date</b></th> --}}
                             <th><b> Status</b></th>
-
-                            <th><b>Actions</b></th>
+                            <th style="text-align: center;"><b> Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
+
+                    @if($applications->count() > 0)
                     <tbody>
+
+                        @foreach($applications as $application)
+
                         <tr>
-                            <td>Sufiyan</td>
-                            <td>Qureshi</td>
+                            <td>{{$application->user->first_name ?? ''}} {{$application->user->last_name ?? ''}}</td>
+                            <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}}</td>
 
-                            <td>2020/30/11</td>
+                            <td>{{$application->user->mobile ?? ''}}</td>
+                            <td>{{$application->userConsultant->mobile ?? ''}}</td>
 
-                            <td><button class="btn btn-warning">Pending</button></td>
+                            {{-- <td>{{$application->user->email ?? ''}}</td>
+                            <td>{{$application->userConsultant->email ?? ''}}</td> --}}
 
+                            {{-- <td>{{$application->consultant->university->university_name}}</td> --}}
+                            {{-- <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td> --}}
+                            <td>@if($application->status==0)<div class="btn btn-warning">In Progress</div>@endif
+                                @if($application->status==1)<div class="btn btn-success">Completed</div>@endif
+                                @if($application->status==2)<div class="btn btn-danger">Closed</div>@endif
 
-                            <td><a href="{{route('subadmin.application.application_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            </td>
+                            <td style="text-align: center;"><a href="{{route('subadmin.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 
-
+                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

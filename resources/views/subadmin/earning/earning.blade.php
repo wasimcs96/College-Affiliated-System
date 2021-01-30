@@ -10,14 +10,6 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                {{-- <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0);">Action</a></li>
-                        <li><a href="javascript:void(0);">Another Action</a></li>
-                        <li><a href="javascript:void(0);">Something else</a></li>
-                    </ul>
-                </li> --}}
             </ul>
         </div>
         <div class="body">
@@ -29,32 +21,54 @@
                                 Name</b></th>
                             <th><b> User type </b></th>
                             <th><b> Amount</b></th>
-                            <th><b> Status</b></th>
                             <th><b>Transaction ID</b></th>
-                            <th><b>
-                                Payment for</b></th>
-                            <th><b>Actions</b></th>
+                            <th><b> Payment Type</b></th>
+                            <th><b>Purchased Date</b></th>
+                            <th><b> Status</b></th>
+                            <th style="text-align: center;"><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
+                    @if($orders->count() > 0)
                     <tbody>
+                        @foreach ($orders as $order)
                         <tr>
-                            <td>Sufiyan</td>
-                            <td>consultant</td>
-                            <td>$10.020</td>
-                            <td>pending</td>
-                            <td>3233251212</td>
-                            <td>premium</td>
-                            <td><a href="{{route('subadmin.earning.earning_show')}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td>{{$order->user->first_name ?? ''}}{{$order->user->last_name ?? ''}}</td>
+                            <td>@if($order->user->isConsultant()) Consultant @endif
+                                @if($order->user->isUniversity()) University @endif
+                                @if($order->user->isAdmin()) Admin @endif
+                                @if($order->user->isSubAdmin()) SubAdmin @endif
+                                @if($order->user->isClient()) Client @endif
+                            </td>
+                            <td>{{$order->amount ?? ''}}</td>
+                            <td>{{$order->transaction_id}}</td>
+                            <td>@if($order->payment_type == 0)Subscription @endif
+                                @if($order->payment_type == 1)Premium @endif
+                                @if($order->payment_type == 2)Advertisement @endif
+                                @if($order->payment_type == 3)Consultant Visa Commission @endif
+                                @if($order->payment_type == 4)Consultant PR Commission @endif
+                            </td>
+                            <td style="text-align: center;">{{$order->created_at->format('Y-m-d')}}</td>
+                            <td>
+                            @if ($order->status == 0)
+                                <span class="btn btn-danger">InActive</span>
+                            @else
+                                <span class="btn btn-info">Active</span>
+                            @endif </td>
+
+                            <td style="text-align: center;"><a href="{{route('subadmin.earning.earning_show',['id'=>$order->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
-
-
-
-
-
+                        @endforeach
                     </tbody>
+                            @else
+                            <tfoot>
+                                <tr>
+                                    <td colspan='7' align='center'> <strong>Record Not Available</strong> </td>
+                                </tr>
+                            </tfoot>
+                        @endif
                 </table>
             </div>
         </div>

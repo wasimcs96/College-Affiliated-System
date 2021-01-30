@@ -30,7 +30,7 @@
                             <h2>Form</h2>
                         </div>
                         <div class="body">
-                            <form id="basic-form" method="post" novalidate action="{{route('admin.category.store')}}" enctype="multipart/form-data">
+                            <form method="post" action="{{route('admin.category.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="title">Parent Category</label>
@@ -52,7 +52,7 @@
                                 </div> --}}
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select name="status" class="form-control">
+                                    <select name="status" class="form-control" required>
                                         <option value="">-- Select --</option>
                                         <option value="1">Active</option>
                                         <option value="0">InActive</option>
@@ -61,7 +61,7 @@
                                <div class="form-group">
                                 Upload Category Image
                            <div class="body"id="nb"  >
-                              <input type="file" name="image"class="dropify" >
+                              <input type="file" name="image"class="dropify" required>
                            </div>
 
                     </div>

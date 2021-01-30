@@ -51,16 +51,18 @@ class AdminCategoryController extends Controller
 
         $this->validate($request, [
             'title' => 'required',
-
             'status' => 'required'
 
         ]);
+
 // dd($request->image);
+      if($request->hasFile('image'))
+       {
         $image=$request->image;
         $name= time().$image->getClientOriginalName();
         $st= $image->move(Config::get('define.image.category_media'),$name);
         $newname= Config::get('define.image.category_media').'/'.$name;
-
+       }
          Category::create([
              'title'=> $request->title,
              'slug'=> Str::slug($request->title),
