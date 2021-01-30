@@ -92,7 +92,7 @@
                 <div id="dec">
 
                 </div>
-                {{-- <a  href="{{route('subadmin.report.booking.client_app')}}" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
+                {{-- <a  href="{{route('subsubadmin.report.booking.client_app')}}" class="btn btn-success btn-flat" id="accept">Accept</a> --}}
                 <a href="{{route('subadmin.report.booking.client')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
@@ -130,8 +130,8 @@
    $("#accept").click(function() {
     $("#accept").remove()
     $("#bac").remove()
-    $("#res").html("<a  href='{{route('subadmin.booking.client_app')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
-    $("#dec").html("<a href='{{route('subadmin.booking.client')}}' class='btn btn-danger btn-flat'>Close</a>")
+    $("#res").html("<a  href='{{route('subsubadmin.booking.client_app')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#dec").html("<a href='{{route('subsubadmin.booking.client')}}' class='btn btn-danger btn-flat'>Close</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
 

@@ -14,7 +14,7 @@
             <ul class="pricing body">
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
-                    <h3><span>$</span> {{$package->amount}}<small>/ mo</small></h3>
+                    <h3><span><i class="fa fa-inr"></i></span> {{$package->amount}}<small>/ mo</small></h3>
                     <span>Subscription</span>
                 </li>
                  <li>{{$package->description}}</li>

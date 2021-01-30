@@ -326,40 +326,40 @@ Route::get('category/delete/{id}', [
 
 /* Courses  */
 
-Route::get('courses', [
-   'uses' => 'AdminCoursesController@index',
-   'as' => 'admin.courses'
-]);
+// Route::get('courses', [
+//    'uses' => 'AdminCoursesController@index',
+//    'as' => 'admin.courses'
+// ]);
 
-Route::get('courses/add',[
-   'uses' => 'AdminCoursesController@create',
-   'as' => 'admin.courses.add'
-]);
+// Route::get('courses/add',[
+//    'uses' => 'AdminCoursesController@create',
+//    'as' => 'admin.courses.add'
+// ]);
 
-Route::get('courses/show/{id}',[
-   'uses' => 'AdminCoursesController@show',
-   'as' => 'admin.courses.show'
-]);
+// Route::get('courses/show/{id}',[
+//    'uses' => 'AdminCoursesController@show',
+//    'as' => 'admin.courses.show'
+// ]);
 
-Route::post('courses/store',[
-   'uses' => 'AdminCoursesController@store',
-   'as' => 'admin.courses.store'
-]);
+// Route::post('courses/store',[
+//    'uses' => 'AdminCoursesController@store',
+//    'as' => 'admin.courses.store'
+// ]);
 
-Route::get('courses/edit/{id}',[
-   'uses' => 'AdminCoursesController@edit',
-   'as' => 'admin.courses.edit'
-]);
+// Route::get('courses/edit/{id}',[
+//    'uses' => 'AdminCoursesController@edit',
+//    'as' => 'admin.courses.edit'
+// ]);
 
-Route::post('courses/update/{id}',[
-   'uses' => 'AdminCoursesController@update',
-   'as' => 'admin.courses.update'
-]);
+// Route::post('courses/update/{id}',[
+//    'uses' => 'AdminCoursesController@update',
+//    'as' => 'admin.courses.update'
+// ]);
 
-Route::get('courses/delete/{id}', [
-   'uses' => 'AdminCoursesController@destroy',
-   'as' => 'admin.courses.delete'
-]);
+// Route::get('courses/delete/{id}', [
+//    'uses' => 'AdminCoursesController@destroy',
+//    'as' => 'admin.courses.delete'
+// ]);
 
 
 /* Users Client Section */

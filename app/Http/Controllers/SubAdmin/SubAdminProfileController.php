@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Sessions;
 use Config;
 use App\Models\Country;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -19,19 +20,20 @@ class SubAdminProfileController extends Controller
     public function profile()
     {
 
-        return view('subadmin.profile')->with('countries',Country::all());
+        return view('admin.profile')->with('countries',Country::all());
     }
 
     public function profileStore(Request $request)
     {
+        // dd($request);
         $this->validate($request,[
             'first_name'=>'required',
             'last_name'=>'required',
             'email' => 'required|email',
-            'mobile'=>'numeric|required',
+         'mobile'=>'numeric|required',
             'landline_1'=>'required',
             'landline_2' => 'required',
-            'website' => 'required|url',
+
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);
@@ -49,11 +51,13 @@ class SubAdminProfileController extends Controller
               $user->longitude = $data->longitude;
               $user->countries_id = $request->countries_id;
               $user->save();
+
             //   $admin = Admin::create([
             //     'name'=>$request->first_name,
             //     'email'=>$request->email,
             //     'password'=> Hash::make($request->password),
             //   ]);
-             return redirect()->route('subadmin.profile')->with('success','Profile Updated successfully');
+
+             return redirect()->route('admin.profile')->with('success','Profile Updated successfully');
     }
 }
