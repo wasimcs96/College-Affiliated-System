@@ -42,8 +42,8 @@
 
                         {{-- {{dd($rt->advertisement)}} --}}
                         <tr>
-                            <td style="text-align: center;"> <a href="{{asset($rt->banner_image ?? '')}}" target="_blank"> <img src="{{asset($rt->banner_image ?? '')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"></a></td>
-                             <td>{{$rt->user->first_name ?? ''}}</td>
+                            <td style="text-align: center;">
+                                @if(isset($rt->banner_image) && file_exists($rt->banner_image))<a href="{{asset($rt->banner_image)}}" target="_blank"> <img src="{{asset($rt->banner_image)}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"></a>@else <img src="{{asset('assets/default/default-banner.jpg')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"> @endif</td>                                <td>{{$rt->user->first_name ?? ''}}</td>
 
                             <td>@if($rt->user->isConsultant() ?? '') Consultant @endif
                             @if($rt->user->isUniversity() ?? '') Univeristy @endif</td>

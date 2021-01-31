@@ -273,7 +273,7 @@
                 @foreach($orders as $order)
     @if($order->payment_type == 4)
                 <tr>
-                    <td> ₹ {{$order->amount ?? ''}} </td>
+                    <td> <i class="fa fa-inr"></i> {{$order->amount ?? ''}} </td>
                     <td>{{$order->transaction_id ?? ''}}</td>
                     <td> <div class="btn btn-success">Paid</div> </td>
                     <td> <div class="btn btn-warning">PR</div>  </td>

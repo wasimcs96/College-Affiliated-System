@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Consultant')
+@section('parentPageTitle', 'SubAdmin')
 @section('title', 'Booking')
 
 @section('content')
@@ -26,35 +26,48 @@
                     <thead>
                         <tr>
                             <th> <b>
-                                Name</b></th>
-                            <th><b> Mobile </b></th>
-                            <th><b> E-mail</b></th>
-                            <th><b> Universities</b></th>
-                            <th><b>
-                                Consultant</b></th>
-                            <th><b>Date</b></th>
-                            <th><b>
-                                Time</b></th>
+                               Client Name</b></th>
+                            <th><b>Consultant Name </b></th>
+                            {{-- <th><b>Booking Type</b></th> --}}
+                            <th><b>Booking Date</b></th>
+                            <th><b>Booking Time Slot</b></th>
+                            <th><b>Booking Status</b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
                     <tfoot>
 
                     </tfoot>
+
+                    @if($bookings->count() > 0)
                     <tbody>
+
+                        @foreach($bookings as $booking)
                         <tr>
-                            <td>Sufiyan</td>
-                            <td>1234567890</td>
-                            <td>email@email.com</td>
-                            <td>tru</td>
-                            <td>Qureshi</td>
-                            <td>2020/30/11</td>
-                            <td> 10:30 A.M. </td>
-                            <td><a href="{{route('subadmin.booking.booking_show')}}" class="btn btn-success"><i class="fa fa-edit"></i></a></td>
+                            <td>@if(isset($booking->user->first_name)){{$booking->user->first_name}} {{$booking->user->last_name}}@else N/A @endif</td>
+                            <td>@if(isset($booking->userConsultant->first_name)){{$booking->userConsultant->first_name}} {{$booking->userConsultant->last_name}}@else N/A @endif</td>
+
+                            {{-- <td>@if(isset($booking->booking_for))@if($booking->booking_for == 0)Student Visa @elseif($booking->booking_for == 1)PR Migration @endif @else N/A @endif</td> --}}
+                            <td>@if(isset($booking->booking_date)){{ Carbon\Carbon::parse($booking->booking_date)->format(config('get.ADMIN_DATE_FORMAT')) }}
+
+
+                                {{$booking->booking_date}}@else N/A @endif</td>
+                            {{-- <td>tru</td>--}}
+                            <td>@if(isset($booking->booking_start_time)){{$booking->booking_start_time}}-{{$booking->booking_end_time}}@else N/A @endif</td>
+                            {{-- <td>2020/30/11</td> --}}
+                            <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
+                                @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
+                                @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
+                                @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
+                            </td>
+                            <td style="text-align: center;"><a href="{{route('subadmin.booking.show',['id'=>$booking->id])}}" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
                         </tr>
 
+@endforeach
+@else
 
-
+Records not available
+@endif
                     </tbody>
                 </table>
             </div>

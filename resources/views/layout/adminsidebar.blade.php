@@ -44,7 +44,7 @@
 
                 <li class="{{ Request::segment(2) == 'category' ? 'active' : null }}"><a href="{{route('admin.category')}}"><i class="icon-notebook"></i><span>Categories</span></a></li>
 
-                <li class="{{ Request::segment(2) == 'courses' ? 'active' : null }}"><a href="{{route('admin.courses')}}"><i class="fa fa-book" aria-hidden="true"></i><span>Courses</span></a></li>
+                {{-- <li class="{{ Request::segment(2) == 'courses' ? 'active' : null }}"><a href="{{route('admin.courses')}}"><i class="fa fa-book" aria-hidden="true"></i><span>Courses</span></a></li> --}}
                 {{-- <li class="{{ Request::segment(2) == 'user' ? 'active' : null }}"><a href="{{route('admin.user.add')}}"><i class="icon-users"></i><span>Add Users</span></a></li> --}}
                 <li class="{{ Request::segment(2) == 'users' ? 'active open' : null }}">
                     <a href="#Users" class="has-arrow"><i class="fa fa-users"></i><span>Users</span></a>
@@ -74,7 +74,7 @@
                     </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
-                <li class="{{ Request::segment(2) === 'chat' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                <li class="{{ Request::segment(1) == 'messenger' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
 
 
                  {{-- <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('admin.subscription')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Subscription</span></a></li> --}}

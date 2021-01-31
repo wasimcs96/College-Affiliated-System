@@ -17,7 +17,7 @@
              @endif
                     </div>
                     <div class="details">
-                    <h5 class="mb-0"> @if(isset(Auth()->user()->first_name)){{Auth()->user()->first_name}}@endif</h5>
+                    <h5 class="mb-0">@if(isset(Auth()->user()->first_name)){{Auth()->user()->first_name}}@endif</h5>
                         <span class="text-light">@if(isset(Auth()->user()->last_name)){{Auth()->user()->last_name}}@endif</span>
                     </div>
                 </div>
@@ -70,57 +70,56 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="first_name">First Name</label>
-                            <input type="text" value="@if(isset(auth()->user()->first_name)){{auth()->user()->first_name}}@endif" name="first_name" class="form-control" placeholder="First Name">
+                            <input type="text" value="@if(isset(auth()->user()->first_name)){{auth()->user()->first_name}}@endif" name="first_name" class="form-control" placeholder="First Name" required>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="last_name">Last Name</label>
-                            <input type="text" value="@if(isset(auth()->user()->last_name)){{auth()->user()->last_name}}@endif" name="last_name" class="form-control" placeholder="Last Name">
+                            <input type="text" value="@if(isset(auth()->user()->last_name)){{auth()->user()->last_name}}@endif" name="last_name" class="form-control" placeholder="Last Name" required>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label for="landline_1">Landline 1</label>
+                            <input type="text" value="@if(isset(auth()->user()->landline_1)){{auth()->user()->landline_1}}@endif" name="landline_1" class="form-control" placeholder="Landline1">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label for="landline_2">Landline 2</label>
+                            <input type="text" value="@if(isset(auth()->user()->landline_2)){{auth()->user()->landline_2}}@endif" name="landline_2" class="form-control" placeholder="Landline2">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="birth_year">DOB</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-calendar"></i></span>
                                 </div>
-                                <input value="@if(isset(auth()->user()->birth_year)){{auth()->user()->birth_year}}@endif" data-provide="datepicker" data-date-autoclose="true" class="form-control" name="birth_date" placeholder="Birthdate">
+                                <input value="@if(isset(auth()->user()->birth_year)){{auth()->user()->birth_year}}@endif" data-provide="datepicker" data-date-autoclose="true" class="form-control" name="birth_year" placeholder="DOB" required>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="email">Email</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
                                 </div>
-                                <input type="text" value="@if(isset(auth()->user()->email)){{auth()->user()->email}}@endif" name="email" class="form-control" placeholder="Email">
+                                <input type="text" value="@if(isset(auth()->user()->email)){{auth()->user()->email}}@endif" name="email" class="form-control" placeholder="Email" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="mobile">Mobile</label>
-                            <input type="text" value="@if(isset(auth()->user()->mobile)){{auth()->user()->mobile}}@endif" name="mobile" class="form-control" placeholder="Mobile Number">
+                            <input type="number" value="@if(isset(auth()->user()->mobile)){{auth()->user()->mobile}}@endif" name="mobile" class="form-control" placeholder="Mobile Number" required>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <label for="landline_1">Landline 1</label>
-                            <input type="text" value="@if(isset(auth()->user()->landline_1)){{auth()->user()->landline_1}}@endif" name="landline_1" class="form-control" placeholder="Landline1">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <label for="landline_2">Landline 2</label>
-                            <input type="text" value="@if(isset(auth()->user()->landline_2)){{auth()->user()->landline_2}}@endif" name="landline_2" class="form-control" placeholder="Landline2">
-                        </div>
-                    </div>
-
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="country">Country</label>
@@ -136,7 +135,6 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="city">City</label>
