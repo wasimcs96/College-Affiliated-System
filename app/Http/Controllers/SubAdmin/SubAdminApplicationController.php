@@ -24,7 +24,7 @@ class SubAdminApplicationController extends Controller
    {
      $applications = Application::orderBy('created_at', 'DESC')->get();
     //  dd($applications);
-     return view('admin.application.application')->with('applications', $applications);
+     return view('subadmin.application.application')->with('applications', $applications);
    }
 
    public function applicationCreate($id)
@@ -50,7 +50,7 @@ class SubAdminApplicationController extends Controller
     }
 
 
-       return view('admin.application.application_create',compact('application','university','course'))->with('countries',Country::all());
+       return view('subadmin.application.application_create',compact('application','university','course'))->with('countries',Country::all());
    }
 
    public function documentStore(Request $request)

@@ -23,35 +23,35 @@ class SubAdminUsersController extends Controller
         if($id==1)
         {
 
-           return view('admin.users.user.index')->with('users', User::all())->with('id',1);
+           return view('subadmin.users.user.index')->with('users', User::all())->with('id',1);
         }
         if($id==2)
         {
             // dd($id);
-           return view('admin.users.user.index')->with('users', User::all())->with('id',2);
+           return view('subadmin.users.user.index')->with('users', User::all())->with('id',2);
         }
         if($id==3)
         {
-           return view('admin.users.user.index')->with('users', User::all())->with('id',3);
+           return view('subadmin.users.user.index')->with('users', User::all())->with('id',3);
         }
     }
 
     public function add()
     {
-        return view('admin.users.user.add');
+        return view('subadmin.users.user.add');
     }
 
     public function show($id)
     {
         // dd($request->all());
         $user = User::where('id',$id)->first();
-        return view('admin.users.user.show')->with('user', $user);
+        return view('subadmin.users.user.show')->with('user', $user);
     }
 
     public function edit($id)
     {
         $user = User::where('id',$id)->first();
-        return view('admin.users.user.edit')->with('user', $user)->with('countries',Country::all());
+        return view('subadmin.users.user.edit')->with('user', $user)->with('countries',Country::all());
     }
 
     public function store(Request $request)
@@ -76,7 +76,7 @@ class SubAdminUsersController extends Controller
             'mobile' => $request->mobile,
             'password' => Hash::make($request->password),
         ])->assignRole('client');
-        return view('admin.users.user.index')->with('users', User::all())->with('id',1);
+        return view('subadmin.users.user.index')->with('users', User::all())->with('id',1);
        }
        if($role==2){
            $user=User::create([
@@ -90,7 +90,7 @@ class SubAdminUsersController extends Controller
             'user_id'=>$user->id,
 
         ]);
-        return view('admin.users.user.index')->with('users', User::all())->with('id',3);
+        return view('subadmin.users.user.index')->with('users', User::all())->with('id',3);
 
        }
        if($role==4){
@@ -104,7 +104,7 @@ class SubAdminUsersController extends Controller
         Consultant::create([
             'user_id'=>$user->id,
         ]);
-        return view('admin.users.user.index')->with('users', User::all())->with('id',2);
+        return view('subadmin.users.user.index')->with('users', User::all())->with('id',2);
        }
        if($role==5){
         return User::create([
@@ -156,7 +156,7 @@ class SubAdminUsersController extends Controller
         $id->countries_id = $request->country;
         $id->rating = $request->rating;
         $id->save();
-        return redirect()->route('admin.users',['id' => $request->parameter_id])->with('success', 'User updated Succefully.');
+        return redirect()->route('subadmin.users',['id' => $request->parameter_id])->with('success', 'User updated Succefully.');
     }
 
     /**

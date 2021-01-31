@@ -16,6 +16,6 @@ class SubAdminController extends Controller
 
     public function index()
     {
-        return view('admin.pages.dashboard');
+        return view('subadmin.pages.dashboard');
     }
 }

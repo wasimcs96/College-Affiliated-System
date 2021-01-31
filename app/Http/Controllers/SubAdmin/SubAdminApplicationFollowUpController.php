@@ -21,7 +21,7 @@ class SubAdminApplicationFollowUpController extends Controller
    public function index()
    {
        $applications = ApplicationFollowsUp::orderBy('date', 'DESC')->get();
-     return view('admin.applicationFollowUp.index')->with('applications',$applications);
+     return view('subadmin.applicationFollowUp.index')->with('applications',$applications);
    }
 
 
@@ -29,7 +29,7 @@ class SubAdminApplicationFollowUpController extends Controller
    {
        $applications = Application::all();
     //    dd($application_id);
-       return view('admin.applicationFollowUp.create')->with('applications',$applications);
+       return view('subadmin.applicationFollowUp.create')->with('applications',$applications);
    }
 
 
@@ -39,7 +39,7 @@ class SubAdminApplicationFollowUpController extends Controller
 
     $application = ApplicationFollowsUp::where('id', $id)->first();
     // dd($application);
-    return view('admin.applicationFollowUp.show')->with('applications', $application);
+    return view('subadmin.applicationFollowUp.show')->with('applications', $application);
 
    }
 

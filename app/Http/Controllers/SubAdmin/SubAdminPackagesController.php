@@ -13,7 +13,7 @@ class SubAdminPackagesController extends Controller
 {
     public function index()
     {
-        return view('admin.packages.index')->with('packages', Package::all());
+        return view('subadmin.packages.index')->with('packages', Package::all());
     }
 
     /**
@@ -27,19 +27,19 @@ class SubAdminPackagesController extends Controller
 
         $package = Package::where('id',$id)->first();
         // dd($package);
-        return view('admin.packages.show')->with('package', $package);
+        return view('subadmin.packages.show')->with('package', $package);
     }
 
     public function create()
     {
-        return view('admin.packages.create');
+        return view('subadmin.packages.create');
     }
 
 
     public function add()
     {
 
-        return view('admin.packages.add');
+        return view('subadmin.packages.add');
     }
 
 
@@ -61,7 +61,7 @@ class SubAdminPackagesController extends Controller
 
         $package = Package::create($request->all());
         $package->save();
-        return redirect()->route('admin.packages')->with('success', 'Package created Succefully.');
+        return redirect()->route('subadmin.packages')->with('success', 'Package created Succefully.');
     }
 
      /**
@@ -73,7 +73,7 @@ class SubAdminPackagesController extends Controller
     public function edit(Package $id)
     {
         $package = Package::orderBy('updated_at', 'DESC')->get();
-        return view('admin.packages.edit', compact('package'))->with('packages', $id);
+        return view('subadmin.packages.edit', compact('package'))->with('packages', $id);
     }
 
     /**
@@ -86,7 +86,7 @@ class SubAdminPackagesController extends Controller
     {
         // $id = Package::find($id);
         $id->update($request->all());
-        return redirect()->route('admin.packages')->with('success', 'Package updated Succefully.');
+        return redirect()->route('subadmin.packages')->with('success', 'Package updated Succefully.');
     }
 
     /**
@@ -99,7 +99,7 @@ class SubAdminPackagesController extends Controller
         $id = Package::find($id);
         $id->delete();
 
-        return redirect()->route('admin.packages')->with('success', 'Package Removed Succefully.');
+        return redirect()->route('subadmin.packages')->with('success', 'Package Removed Succefully.');
     }
 
 

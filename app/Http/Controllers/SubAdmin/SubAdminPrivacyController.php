@@ -11,7 +11,7 @@ class SubAdminPrivacyController extends Controller
 
     public function index()
     {
-        return view('admin.general.privacy_policy');
+        return view('subadmin.general.privacy_policy');
     }
     public function store(Request $request)
     {
@@ -36,7 +36,7 @@ class SubAdminPrivacyController extends Controller
 
          ]);
 
-         return redirect()->route('admin.general.privacy')->with('success','Privacy & Policy Submitted successfully');
+         return redirect()->route('subadmin.general.privacy')->with('success','Privacy & Policy Submitted successfully');
      }
      else{
         //  if($request->hasFile('image')){
@@ -55,7 +55,7 @@ class SubAdminPrivacyController extends Controller
          $store ->status = 1;
          $store->save();
          // $store ->banner = $banner;
-         return redirect()->route('admin.general.privacy')->with('success','Privacy & Policy Submitted successfully');
+         return redirect()->route('subadmin.general.privacy')->with('success','Privacy & Policy Submitted successfully');
      }
     }
 

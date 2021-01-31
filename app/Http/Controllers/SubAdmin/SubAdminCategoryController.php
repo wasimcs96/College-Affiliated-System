@@ -26,7 +26,7 @@ class SubAdminCategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('updated_at', 'DESC')->get();
-        return view('admin.category.index', compact('categories'));
+        return view('subadmin.category.index', compact('categories'));
 
     }
 
@@ -37,7 +37,7 @@ class SubAdminCategoryController extends Controller
     public function create()
     {
 
-        return view('admin.category.add')->with('categories', Category::all());
+        return view('subadmin.category.add')->with('categories', Category::all());
 
     }
 
@@ -71,7 +71,7 @@ class SubAdminCategoryController extends Controller
          ]);
         // dd($category);
 
-        return redirect()->route('admin.category')->with('success', 'Category has been saved Successfully');
+        return redirect()->route('subadmin.category')->with('success', 'Category has been saved Successfully');
     }
 
     /**
@@ -81,7 +81,7 @@ class SubAdminCategoryController extends Controller
     public function show($id)
     {
         $category = Category::where('id',$id)->first();
-        return view('admin.category.show')->with('category', $category);
+        return view('subadmin.category.show')->with('category', $category);
     }
 
     /**
@@ -94,7 +94,7 @@ class SubAdminCategoryController extends Controller
         //  $category = Category::where('id',$id)->first();
         // dd($id);
         // dd(Category::all());
-         return view('admin.category.edit')->with('category', $id)
+         return view('subadmin.category.edit')->with('category', $id)
          ->with('categories',Category::all());
     }
 
@@ -116,7 +116,7 @@ class SubAdminCategoryController extends Controller
         $update->parent_id = $request->parent_id;
         $update->banner = $newname;
         $update->save();
-        return redirect()->route('admin.category')->with('success', 'Category updated Succefully.');
+        return redirect()->route('subadmin.category')->with('success', 'Category updated Succefully.');
     }
 
     /**
@@ -129,7 +129,7 @@ class SubAdminCategoryController extends Controller
         $id = Category::find($id);
         $id->delete();
 
-        return redirect()->route('admin.category')->with('success', 'Category Removed Succefully.');
+        return redirect()->route('subadmin.category')->with('success', 'Category Removed Succefully.');
 
     }
 }
