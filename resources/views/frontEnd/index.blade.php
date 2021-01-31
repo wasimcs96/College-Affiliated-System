@@ -2441,8 +2441,8 @@
 <style>/*--thank you pop starts here--*/
 
 .la-angle-down:before {
-    content: "\f107";
 
+    color: #ff7503;
     font-size: 12px;
 }
     @font-face {
