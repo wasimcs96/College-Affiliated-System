@@ -933,6 +933,11 @@ body {
    background-color:#073975 ;
 }
 
+.btn-primary:hover{
+    background-color:#ff7503 ;
+    color:#073975
+ }
+
 .btn-text:hover {
     color: #073975
 }
@@ -3212,7 +3217,7 @@ body {
     border-top: 1px solid rgba(128, 137, 150, 0.1)
 }
 
-.breadcrumb-area {
+.breadcrumb-area  {
     padding-top: 90px;
     padding-bottom: 100px;
     position: relative;
@@ -3265,6 +3270,9 @@ body {
 }
 
 .bread-bg-8 {
+    background-image: url(../images/university-all.jpg)
+}
+.consult-bg-8 {
     background-image: url(../images/consultant.jpg)
 }
 
@@ -4165,7 +4173,8 @@ body {
 }
 
 .main-menu-content ul li a {
-    color: #0d233e;
+    color:#ff7503;
+    font-weight: 500;
     display: block;
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
@@ -6655,7 +6664,7 @@ transform: translateX(-3px);
     }
 }
 
-.hero-box {
+.hero-box  {
     position: relative;
     width: 100%;
     z-index: 2;
@@ -9979,8 +9988,8 @@ transform: translateX(-3px);
         transform-origin: bottom center;
         background: linear-gradient(
         45deg,
-        rgba(235, 139, 29, 0.5),
-        rgba(155, 68, 10, 0.5) 100%
+        #fa7202,
+        #fa7202
       );
         z-index: -1;
         transition: transform 0.3s;

@@ -89,7 +89,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="menu-wrapper">
+                    <div class="menu-wrapper"  style="
+                    z-index: 59; color:white;">
                         <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                         <div class="logo">
                             <a href="index.html"><img src="{{ asset('frontEnd/assets/images/logo.png') }}" alt="logo"  style="
