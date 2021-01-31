@@ -11,7 +11,7 @@ class SubAdminTermsController extends Controller
 
     public function index()
     {
-        return view('admin.general.terms');
+        return view('subadmin.general.terms');
     }
     public function store(Request $request)
     {
@@ -36,7 +36,7 @@ class SubAdminTermsController extends Controller
 
          ]);
 
-         return redirect()->route('admin.general.terms')->with('success','Terms & Condition Submitted successfully');
+         return redirect()->route('subadmin.general.terms')->with('success','Terms & Condition Submitted successfully');
      }
      else{
         //  if($request->hasFile('image')){
@@ -55,7 +55,7 @@ class SubAdminTermsController extends Controller
          $store ->status = 1;
          $store->save();
          // $store ->banner = $banner;
-         return redirect()->route('admin.general.terms')->with('success','Terms & Condition Submitted successfully');
+         return redirect()->route('subadmin.general.terms')->with('success','Terms & Condition Submitted successfully');
      }
     }
 

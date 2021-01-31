@@ -11,7 +11,7 @@ class SubAdminFaqController extends Controller
 {
    public function index()
    {
-       return view('admin.general.faq');
+       return view('subadmin.general.faq');
    }
 
    public function store(Request $request)
@@ -33,6 +33,6 @@ class SubAdminFaqController extends Controller
     ]);
 
 
-    return view('admin.general.faq')->with('success','FAQ added  Successfully.');
+    return view('subadmin.general.faq')->with('success','FAQ added  Successfully.');
    }
 }

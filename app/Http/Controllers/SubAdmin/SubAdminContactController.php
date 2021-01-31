@@ -10,12 +10,12 @@ class SubAdminContactController extends Controller
 {
     public function index()
     {
-        return view('admin.general.contact.contact');
+        return view('subadmin.general.contact.contact');
     }
 
     public function show($id)
     {
         $show=Contact::find($id);
-        return view('admin.general.contact.contact_show',compact('show'));
+        return view('subadmin.general.contact.contact_show',compact('show'));
     }
 }

@@ -12,12 +12,12 @@ class SubAdminBlogController extends Controller
 {
     public function index()
     {
-        return view ('admin.general.blog.blog_all');
+        return view ('subadmin.general.blog.blog_all');
     }
 
     public function add()
     {
-        return view ('admin.general.blog.blog_add');
+        return view ('subadmin.general.blog.blog_add');
     }
 
     public function store(Request $request)
@@ -38,19 +38,19 @@ class SubAdminBlogController extends Controller
             'main_image'=>$banner,
             'short_description'=>$request->short_description,
         ]);
-        return view ('admin.general.blog.blog_all')->with('success','Blog post added Successfully');
+        return view ('subadmin.general.blog.blog_all')->with('success','Blog post added Successfully');
     }
 
     public function show($id)
     {
         $show= Blog::where('id',$id)->get()->first();
-        return view ('admin.general.blog.blog_show',compact('show'));
+        return view ('subadmin.general.blog.blog_show',compact('show'));
     }
 
     public function edit($id)
     {
         $edit= Blog::where('id',$id)->get()->first();
-        return view ('admin.general.blog.blog_edit',compact('edit'));
+        return view ('subadmin.general.blog.blog_edit',compact('edit'));
     }
 
     public function update(Request $request)
@@ -70,7 +70,7 @@ class SubAdminBlogController extends Controller
         $update->status =$request->type;
         $update->short_description = $request->short_description;
         $update->save();
-        return view ('admin.general.blog.blog_all')->with('success','Blog post added Successfully');
+        return view ('subadmin.general.blog.blog_all')->with('success','Blog post added Successfully');
 
     }
 
@@ -78,7 +78,7 @@ class SubAdminBlogController extends Controller
     {
         $delete=Blog::find($id);
         $delete->delete();
-        return view ('admin.general.blog.blog_all')->with('success','Blog post Deleted Successfully');
+        return view ('subadmin.general.blog.blog_all')->with('success','Blog post Deleted Successfully');
 
     }
 }

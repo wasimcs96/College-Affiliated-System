@@ -12,12 +12,12 @@ class SubAdminEarningController extends Controller
     public function index()
     {
         $orders=Order::orderBy('updated_at', 'DESC')->get();
-        return view('admin.earning.earning')->with('orders',$orders);
+        return view('subadmin.earning.earning')->with('orders',$orders);
     }
 
     public function show($id)
     {
         $order=Order::where('id',$id)->orderBy('updated_at', 'DESC')->get()->first();
-        return view('admin.earning.earning_show')->with('order',$order);
+        return view('subadmin.earning.earning_show')->with('order',$order);
     }
 }

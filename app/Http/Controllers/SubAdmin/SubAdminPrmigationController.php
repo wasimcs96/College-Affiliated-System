@@ -13,7 +13,7 @@ class SubAdminPrmigationController extends Controller
 
         $countries = ConsultantPrMigrationCountry::orderBy('updated_at', 'Desc')->get();
 
-       return view('admin.prmigration.prmigration', compact('countries'));
+       return view('subadmin.prmigration.prmigration', compact('countries'));
    }
 
 //    public function store(Request $request){

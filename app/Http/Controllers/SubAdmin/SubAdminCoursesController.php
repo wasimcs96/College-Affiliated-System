@@ -16,7 +16,7 @@ class SubAdminCoursesController extends Controller
      public function index()
      {
         $courses = Course::orderBy('updated_at', 'DESC')->get();
-         return view('admin.courses.index', compact('courses'));
+         return view('subadmin.courses.index', compact('courses'));
 
      }
 
@@ -28,7 +28,7 @@ class SubAdminCoursesController extends Controller
     public function create()
     {
 
-        return view('admin.courses.add')->with('courses', Course::all())->with('category', Category::all());
+        return view('subadmin.courses.add')->with('courses', Course::all())->with('category', Category::all());
 
     }
 
@@ -48,7 +48,7 @@ class SubAdminCoursesController extends Controller
 
         $course =  Course::create($request->all());
         $course->save();
-        return redirect()->route('admin.courses')->with('success', 'Course has been saved Successfully');
+        return redirect()->route('subadmin.courses')->with('success', 'Course has been saved Successfully');
     }
 
     /**
@@ -58,7 +58,7 @@ class SubAdminCoursesController extends Controller
     public function show($id)
     {
         $courses = Course::where('id',$id)->first();
-        return view('admin.courses.show')->with('course', $courses);
+        return view('subadmin.courses.show')->with('course', $courses);
     }
 
     /**
@@ -68,7 +68,7 @@ class SubAdminCoursesController extends Controller
     public function edit(Course $id)
     {
 
-         return view('admin.courses.edit')->with('course', $id)->with('categories', Category::all());
+         return view('subadmin.courses.edit')->with('course', $id)->with('categories', Category::all());
 
     }
 
@@ -81,7 +81,7 @@ class SubAdminCoursesController extends Controller
     {
 
         $id->update($request->all());
-        return redirect()->route('admin.courses')->with('success', 'Course updated Succefully.');
+        return redirect()->route('subadmin.courses')->with('success', 'Course updated Succefully.');
     }
 
     /**
@@ -94,7 +94,7 @@ class SubAdminCoursesController extends Controller
         $id = Course::find($id);
         $id->delete();
 
-        return redirect()->route('admin.courses')->with('success', 'Course Removed Succefully.');
+        return redirect()->route('subadmin.courses')->with('success', 'Course Removed Succefully.');
 
     }
 }

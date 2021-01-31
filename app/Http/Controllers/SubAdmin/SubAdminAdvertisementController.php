@@ -10,7 +10,7 @@ class SubAdminAdvertisementController extends Controller
 {
     public function index()
     {
-        return view('admin.advertisement_manager.advertisement');
+        return view('subadmin.advertisement_manager.advertisement');
     }
 
     public function update(Request $request)
@@ -30,6 +30,6 @@ class SubAdminAdvertisementController extends Controller
             $booking->save();
             // return response('success');
 
-        return redirect()->route('admin.advertisement_manager');
+        return redirect()->route('subadmin.advertisement_manager');
     }
 }

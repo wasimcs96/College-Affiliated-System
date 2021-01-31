@@ -13,7 +13,7 @@ class SubAdminBookingController extends Controller
  Public function index(){
 
     $bookings= Booking::orderBy('updated_at', 'DESC')->where('booking_for',0)->get();
-    return view('admin.booking.booking',compact('bookings'));
+    return view('subadmin.booking.booking',compact('bookings'));
  }
 
 
@@ -41,7 +41,7 @@ class SubAdminBookingController extends Controller
          $i++;
      }
     }
-     return view('admin.booking.booking_show',compact('booking','university','course'));
+     return view('subadmin.booking.booking_show',compact('booking','university','course'));
  }
 
         public function accept(Request $request)

@@ -20,7 +20,7 @@ class SubAdminProfileController extends Controller
     public function profile()
     {
 
-        return view('admin.profile')->with('countries',Country::all());
+        return view('subadmin.profile')->with('countries',Country::all());
     }
 
     public function profileStore(Request $request)
@@ -58,6 +58,6 @@ class SubAdminProfileController extends Controller
             //     'password'=> Hash::make($request->password),
             //   ]);
 
-             return redirect()->route('admin.profile')->with('success','Profile Updated successfully');
+             return redirect()->route('subadmin.profile')->with('success','Profile Updated successfully');
     }
 }

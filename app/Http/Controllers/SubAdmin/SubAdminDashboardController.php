@@ -12,6 +12,6 @@ class SubAdminDashboardController extends Controller
     {
       $booking=Booking::Count();
     //   dd($booking);
-        return view('admin.dashboard');
+        return view('subadmin.dashboard');
     }
 }

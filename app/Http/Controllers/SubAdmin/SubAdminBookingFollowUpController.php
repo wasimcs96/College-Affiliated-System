@@ -21,7 +21,7 @@ class SubAdminBookingFollowUpController extends Controller
    public function index()
    {
        $bookings = BookingFollowsUp::orderBy('date', 'DESC')->get();
-     return view('admin.bookingFollowUp.index')->with('bookings',$bookings);
+     return view('subadmin.bookingFollowUp.index')->with('bookings',$bookings);
    }
 
    public function show($id)
@@ -29,7 +29,7 @@ class SubAdminBookingFollowUpController extends Controller
 
 
     $booking = BookingFollowsUp::where('id', $id)->first();
-    return view('admin.bookingFollowUp.show')->with('booking', $booking);
+    return view('subadmin.bookingFollowUp.show')->with('booking', $booking);
    }
 
    public function store(Request $request)
