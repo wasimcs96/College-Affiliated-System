@@ -29,9 +29,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="category_id">Select Category</label>
+                        <label for="category_id">Category Name</label>
                         <select name="category_id" class="form-control" id="category" required>
-                            <option value="">--- Select Category ---</option>
                             {{-- <option value="">--- Select  Category ---</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>
@@ -175,7 +174,7 @@ $('#documentModal').modal('hide')
                            parentid=$('#parent_category').val();
                            console.log(parentid);
                                  $.ajax({
-                                     url:"{{ route('fetch.category.course') }}",
+                                     url:"{{ route('fetch.category_course') }}",
                                      method:"GET",
                                      data:{parentid:parentid},
                                      success: function(result){
