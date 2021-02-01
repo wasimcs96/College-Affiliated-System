@@ -196,14 +196,15 @@ class UniversityCoursesController extends Controller
 
     function fetchCategory(Request $request)
     {
-        // dd($request->all());
-        $categories=Category::where('parent_id',$request->parentid)->get();
-        if(isset($categories))
+        dd($request->all());
+        $fetch=User::where('id',$request->universityid)->first();
+        if(isset($fetch->universityCourse) && $fetch != NULL)
         {
-        $output='<option value="" selected>Select Category</option>';
-        foreach($categories as $row)
+        $courses =  $fetch->universityCourse;
+        $output='<option value="" selected>Course Name</option>';
+        foreach($courses as $row)
         {
-         $output .= '<option value="'.$row->id.'">'.$row->title.'</option>';
+         $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
         }
         echo $output;
       }
