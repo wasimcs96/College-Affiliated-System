@@ -30,9 +30,11 @@ class UniversityExcelController extends Controller
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function import()
+    public function import(Request $request)
     {
-        Excel::import(new CoursesImport,request()->file('file'));
+        // dd($request->all());
+        $category = $request->category_id;
+        Excel::import(new CoursesImport($category),request()->file('file'));
 
         return redirect()->back()->with('success','Course Uploaded Successfully');
     }

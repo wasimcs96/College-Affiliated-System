@@ -143,6 +143,10 @@ Route::post('course_update/{id}',[
     'as' => 'university.course.update'
 ]);
 
+Route::get('course/import',[
+    'uses' => 'UniversityCoursesController@importBlade',
+    'as' => 'university.course.import'
+]);
 
 /* Profile Section */
 Route::get('profile',[

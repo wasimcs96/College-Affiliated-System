@@ -44,7 +44,7 @@ class UniversityCoursesController extends Controller
      */
     public function store(Request $request)
     {
-          
+
         $this->validate($request, [
             'category_id' => 'required',
             'title' => 'required',
@@ -186,6 +186,11 @@ class UniversityCoursesController extends Controller
 
 
 
+    }
+
+    public function importBlade(Request $request)
+    {
+        return view('university.course.course_import')->with('categories',Category::all());
     }
 
 }

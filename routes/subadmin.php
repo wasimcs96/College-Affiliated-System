@@ -517,7 +517,7 @@ Route::get('advertisement',[
 ]);
 Route::post('advertisement/update',[
     'uses'=>'SubAdminAdvertisementController@update',
-    'as'=>'advertisement_manager.update'
+    'as'=>'subadmin.advertisement_manager.update'
 ]);
 
 
