@@ -521,7 +521,7 @@ Route::get('advertisement',[
 ]);
 Route::post('advertisement/update',[
     'uses'=>'AdminAdvertisementController@update',
-    'as'=>'advertisement_manager.update'
+    'as'=>'admin.advertisement_manager.update'
 ]);
 
 
