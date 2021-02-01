@@ -271,12 +271,12 @@
                                    <table class="table">
                                        <thead>
                                            <tr>
-                                               <th scope="col">Course</th>
+                                               <th scope="col">Course Name</th>
                                                <th scope="col">Type</th>
                                                <th scope="col"> Fees</th>
                                                <th scope="col">Start Date</th>
                                                <th scope="col">End Date</th>
-                                               {{--  <th scope="col">Action</th>  --}}
+                                                <th scope="col">Action</th>
                                            </tr>
                                        </thead>
                                        <tbody>
@@ -284,7 +284,7 @@
                                           @foreach($courses as $course)
                                            <tr>
                                                <th scope="row"><div class="table-content d-flex align-items-center">
-                                                <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0">
+                                                {{-- <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0"> --}}
                                                 <h3 class="title">{{$course->title ?? ''}}</h3>
                                             </div>
                                             </th>
@@ -297,9 +297,9 @@
                                                <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
                                                <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
 
-                                               {{--  <td> <div>
-                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
-                                            </div></td>  --}}
+                                                <td> <div>
+                                                <a href="{{route('course_detail',['id'=>$course->course_id])}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
+                                            </div></td>
                                            </tr>
                                            @endforeach
                                     </tbody>

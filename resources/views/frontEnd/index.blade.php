@@ -947,8 +947,14 @@
                                     </div><!-- end col-lg-2 --> --}}
                                     <div class="card text-center customhover" style="border-radius: 0px; width: 15rem;height: 11rem;   background-color: #edf3f6;   margin: 1px; z-index:0; border-radius: inherit">
                                         <div class="card-body customhover" style=";height: 174px;">
-                                          <h5 class="card-title"><img src="
-                                            {{asset('frontEnd/assets/images/first_aid.png')}}" width="84px" ></h5>
+                                          <h5 class="card-title">
+                                            @if(isset($category->banner) && file_exists($category->banner))
+                            <img  style="width: 86px;" src="{{asset($category->banner)}}" alt="">
+                                @else
+                                <img src="
+                                {{asset('frontEnd/assets/images/first_aid.png')}}" width="84px" >
+                                @endif
+                                            </h5>
                                           <p class="card-text"><a style="color: black;" href="#" value="{{$category->id}}">{{$category->title}}</a></p>
                                           {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
                                         </div>
@@ -1013,57 +1019,364 @@
                         <div class="tab-pane fade show active" id="new-york" role="tabpanel" aria-labelledby="new-york-tab">
                             <div class="row">
                                 <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                 RTU
-                                                </a>
-                                            </h3>
+                                    <div class="card-item car-card border">
+                                        <div class="card-img" style="text-align: center; height:185px;">
+                                        <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-block">
+                                            {{-- @php
+                                            print_r($university->user->profile_image);
+                                        @endphp --}}
+                                                {{-- <img src="{{asset($university->profile_image)}}" alt="university-img" > --}}
+                                                @if(isset($university->university->cover_image) && file_exists($university->university->cover_image))
+                                                <img
+                                                  {{-- style=" width: 368px;
+                                                height: 245px;"  --}}
+                                                src="{{asset($university->university->cover_image)}}" height="185px;"alt="">
+                                                    @else
+                                                    <img
+                                                      {{-- style=" width: 368px;
+                                                    height: 245px;"  --}}
+                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                                    @endif
+                                            </a>
+                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
+                                                <img
+                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                                                src="{{asset($university->profile_image)}}" alt="">
+                                                    @else
+                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif</div>
+                                            {{-- <span class="badge">Top Ranked</span> --}}
+                                            {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
+
+                                                <i class="las la-download"></i>
+                                            </div> --}}
                                         </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$22132</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                        <div class="card-body">
+                                            <p class="card-meta">
+                                                @if(isset($university->university->type))
+                                                 @if($university->university->type==0)
+                                            Private
+                                        @else
+                                        Govenment</p>
+                                        @endif
+                                        @endif
+
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a></h3>
+                                            <div class="card-rating">
+                                                <div class="d-flex flex-wrap align-items-center pt-2">
+                                                    <p class="mr-2">Rating:</p>
+
+                                                        <span>@if($university->rating == 3 ?? '' )
+                                                                <span class="ratings ">
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                </span>
+                                                        @elseif($university->rating == 4)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($university->rating == 5)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                        </span>
+                                                        @elseif($university->rating == 1)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($university->rating == 2)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="card-attributes">
+                                                <p>
+                                                    <span class="price__text">Average Fees :</span>
+                                                    <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                                                </p>
+                                                <ul class="d-flex align-items-center">
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($university->university->created_at))
+                                                        {{$university->university->created_at->Format("Y")}}
+                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$university->universityCourse->count()}}</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
+                                                        @if(isset($university->universityConsultant))
+                                                        {{$university->universityConsultant->count()}}@else N/A @endif</span></li>
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($university->universityConsultantClient))
+                                                            {{$university->universityConsultantClient->count()}}
+                                                            @else N/A @endif</span></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="card-price d-flex align-items-center justify-content-between">
+                                                <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
+
+                                                <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                            </div>
                                         </div>
-                                    </div><!-- end deal-card -->
+                                    </div><!-- end card-item -->
                                 </div><!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                   BTU
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                    <div class="card-item car-card border">
+                                        <div class="card-img" style="text-align: center; height:185px;">
+                                        <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-block">
+                                            {{-- @php
+                                            print_r($university->user->profile_image);
+                                        @endphp --}}
+                                                {{-- <img src="{{asset($university->profile_image)}}" alt="university-img" > --}}
+                                                @if(isset($university->university->cover_image) && file_exists($university->university->cover_image))
+                                                <img
+                                                  {{-- style=" width: 368px;
+                                                height: 245px;"  --}}
+                                                src="{{asset($university->university->cover_image)}}" height="185px;"alt="">
+                                                    @else
+                                                    <img
+                                                      {{-- style=" width: 368px;
+                                                    height: 245px;"  --}}
+                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                                    @endif
+                                            </a>
+                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
+                                                <img
+                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                                                src="{{asset($university->profile_image)}}" alt="">
+                                                    @else
+                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif</div>
+                                            {{-- <span class="badge">Top Ranked</span> --}}
+                                            {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                                <i class="las la-download"></i>
+                                            </div> --}}
                                         </div>
-                                    </div><!-- end deal-card -->
+                                        <div class="card-body">
+                                            <p class="card-meta">
+                                                @if(isset($university->university->type))
+                                                 @if($university->university->type==0)
+                                            Private
+                                        @else
+                                        Govenment</p>
+                                        @endif
+                                        @endif
+
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a></h3>
+                                            <div class="card-rating">
+                                                <div class="d-flex flex-wrap align-items-center pt-2">
+                                                    <p class="mr-2">Rating:</p>
+
+                                                        <span>@if($university->rating == 3 ?? '' )
+                                                                <span class="ratings ">
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                </span>
+                                                        @elseif($university->rating == 4)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($university->rating == 5)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                        </span>
+                                                        @elseif($university->rating == 1)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($university->rating == 2)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="card-attributes">
+                                                <p>
+                                                    <span class="price__text">Average Fees :</span>
+                                                    <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                                                </p>
+                                                <ul class="d-flex align-items-center">
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($university->university->created_at))
+                                                        {{$university->university->created_at->Format("Y")}}
+                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$university->universityCourse->count()}}</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
+                                                        @if(isset($university->universityConsultant))
+                                                        {{$university->universityConsultant->count()}}@else N/A @endif</span></li>
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($university->universityConsultantClient))
+                                                            {{$university->universityConsultantClient->count()}}
+                                                            @else N/A @endif</span></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="card-price d-flex align-items-center justify-content-between">
+                                                <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
+
+                                                <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card-item -->
                                 </div><!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                    IIT
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                    <div class="card-item car-card border">
+                                        <div class="card-img" style="text-align: center; height:185px;">
+                                        <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-block">
+                                            {{-- @php
+                                            print_r($university->user->profile_image);
+                                        @endphp --}}
+                                                {{-- <img src="{{asset($university->profile_image)}}" alt="university-img" > --}}
+                                                @if(isset($university->university->cover_image) && file_exists($university->university->cover_image))
+                                                <img
+                                                  {{-- style=" width: 368px;
+                                                height: 245px;"  --}}
+                                                src="{{asset($university->university->cover_image)}}" height="185px;"alt="">
+                                                    @else
+                                                    <img
+                                                      {{-- style=" width: 368px;
+                                                    height: 245px;"  --}}
+                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                                    @endif
+                                            </a>
+                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
+                                                <img
+                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                                                src="{{asset($university->profile_image)}}" alt="">
+                                                    @else
+                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif</div>
+                                            {{-- <span class="badge">Top Ranked</span> --}}
+                                            {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                                <i class="las la-download"></i>
+                                            </div> --}}
                                         </div>
-                                    </div><!-- end deal-card -->
+                                        <div class="card-body">
+                                            <p class="card-meta">
+                                                @if(isset($university->university->type))
+                                                 @if($university->university->type==0)
+                                            Private
+                                        @else
+                                        Govenment</p>
+                                        @endif
+                                        @endif
+
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a></h3>
+                                            <div class="card-rating">
+                                                <div class="d-flex flex-wrap align-items-center pt-2">
+                                                    <p class="mr-2">Rating:</p>
+
+                                                        <span>@if($university->rating == 3 ?? '' )
+                                                                <span class="ratings ">
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                </span>
+                                                        @elseif($university->rating == 4)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($university->rating == 5)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                        </span>
+                                                        @elseif($university->rating == 1)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($university->rating == 2)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="card-attributes">
+                                                <p>
+                                                    <span class="price__text">Average Fees :</span>
+                                                    <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                                                </p>
+                                                <ul class="d-flex align-items-center">
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($university->university->created_at))
+                                                        {{$university->university->created_at->Format("Y")}}
+                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$university->universityCourse->count()}}</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
+                                                        @if(isset($university->universityConsultant))
+                                                        {{$university->universityConsultant->count()}}@else N/A @endif</span></li>
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($university->universityConsultantClient))
+                                                            {{$university->universityConsultantClient->count()}}
+                                                            @else N/A @endif</span></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="card-price d-flex align-items-center justify-content-between">
+                                                <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
+
+                                                <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card-item -->
                                 </div><!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
                                     <div class="deal-card">

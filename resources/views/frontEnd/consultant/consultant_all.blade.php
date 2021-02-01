@@ -105,7 +105,7 @@
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img" style="text-align: center; height:185px;">
-<div>
+                        <div>
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
                             @if(isset($consultant->consultant->cover_image) && file_exists($consultant->consultant->cover_image))
                                                 <img
