@@ -41,7 +41,7 @@
                             <td>{{$booking->date ?? ''}}</td>
 
                             <td style="text-align: center;">
-                                <a href="{{route('consultant.booking.followup.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                {{-- <a href="{{route('consultant.booking.followup.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a> --}}
                                 <a href="{{route('consultant.booking.show',['id'=> $booking->booking_id])}}" class="btn btn-primary">Go to Booking<i class="icon-arrow"></i></a>
                             </td>
 
