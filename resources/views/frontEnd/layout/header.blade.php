@@ -114,13 +114,13 @@
                                             <ul class="row no-gutters">
                                                 <li class="col-lg-4 mega-menu-item">
                                                     <ul>
-                                                    <li><a href="{{route('course_detail')}}">B.Tech<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="{{route('course_detail')}}">MBA <span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="{{route('course_detail')}}">MBBS<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="{{route('course_detail')}}">Law<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="{{route('course_detail')}}">Science<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="{{route('course_detail')}}">Commerce</a></li>
-                                                        <li><a href="{{route('course_detail')}}">Arts</a></li>
+                                                    <li><a href="#">B.Tech<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">Science<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">Commerce</a></li>
+                                                        <li><a href="#">Arts</a></li>
                                                     </ul>
                                                 </li>
                                                 <li class="col-lg-8 mega-menu-item">

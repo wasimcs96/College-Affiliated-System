@@ -88,6 +88,11 @@ Route::get('course_detail', function(){
     return view('frontEnd.courses.course_detail');
 })->name('course_detail');
 
+Route::get('course/detail/{id}',[
+    'uses' => 'FrontEndController\CourseFrontController@detail',
+    'as' => 'course_detail'
+]);
+
 /* consultants route */
 
 // Route::get('consultant_all',function (){
