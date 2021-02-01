@@ -346,7 +346,7 @@
                                 <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($course->users->userUniversity->profile_image) && file_exists($course->users->userUniversity->profile_image))
                                     <img
                                     style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                    src="{{asset($course->users->userUniversity->profile_image)}}" alt="">
+                                    src="{{asset($course->users->university->profile_image)}}" alt="">
                                         @else
                                         <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                         @endif</div>
@@ -356,7 +356,7 @@
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $course->users->id])}}">{{$course->users->userUniversity->university_name ?? ''}}</a></h3>
+                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $course->users->id])}}">{{$course->users->university->university_name ?? ''}}</a></h3>
                                 <p class="card-meta">{{$course->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>
