@@ -8,22 +8,7 @@
     <div class="card">
         <div class="header">
             <h2>Courses<small>All Courses </small></h2>
-            <div class="container">
-                <div class="card bg-light mt-3">
-                    <div class="card-header">
-                        Import Courses
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="file" class="form-control" style="padding-bottom: 33px;">
-                            <br>
-                            <button class="btn btn-success">Import Courses</button>
-                            {{-- <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a> --}}
-                        </form>
-                    </div>
-                </div>
-            </div>
+
             {{-- <div class="card-body">
                 <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -36,6 +21,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+                <a  href="{{ route('university.course.import') }}" class="btn btn-warning btn-flat" id="add_course">Import Course</a>
                 <a  href="{{ route('university.add_course') }}" class="btn btn-success btn-flat" id="add_course">Add Course</a>
 
                 {{-- <li class="dropdown">

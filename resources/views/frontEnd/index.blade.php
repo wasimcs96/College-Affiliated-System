@@ -74,60 +74,13 @@
                                     <div class="contact-form-action">
                                         <form action="{{route('university_fetch.coursewise')}}" method="POST" class="row align-items-center">
                                             @csrf
-                                            {{-- <div class="col-lg-2 col-sm-6 pr-0">
-                                                <div class="input-box">
-                                                    <label class="label-text">Country</label>
-                                                    <div class="form-group">
-                                                        <div class="select-contain w-auto">
-
-                                                        <select class="select-contain-select">
-
-                                                            @if($countries->count() > 0)
-                                                                @foreach($countries as $country)
-                                                                <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
-                                                                @endforeach
-                                                            @else
-
-                                                                <option value="">Currently Unavailable</option>
-
-                                                            @endif
-
-                                                        </select>
-
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-3 --> --}}
-                                            {{-- <div class="col-lg-4 col-sm-2 pr-0">
-                                                <div class="input-box">
-                                                    <label class="label-text">University</label>
-                                                    <div class="form-group">
-                                                        <div class="select-contain w-auto">
-                                                            <select class="select-contain-select">
-
-                                                                @if($universities->count() > 0)
-
-                                                                @foreach($universities as $university)
-                                                                <option value="{{$university->id}}" selected>{{$university->university_name}}</option>
-                                                                @endforeach
-                                                                @else
-
-                                                                <option value="">Currently Unavailable</option>
-
-                                                            @endif
-
-
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-3 --> --}}
+                                           
                                             <div class="col-lg-4 col-sm-2 pr-0">
                                                 <div class="input-box">
                                                     <label class="label-text" id="ali">Category</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select id="categoryselect" name="category" class="select-contain-select" required>
+                                                            <select id="categoryselect" name="category" class="select-contain-select typeselect" required>
                                                                 <option value="">
                                                                     Select Categories
                                                                 </option>
@@ -151,43 +104,16 @@
                                                 </div>
                                             </div>
                                            <!-- end col-lg-3 -->
-                                            <div class="col-lg-4 col-sm-2 pr-0">
-                                                <div class="input-box">
-                                                    <label class="label-text">Courses Type</label>
-                                                    <div class="form-group">
-                                                        <div class="select-contain w-auto">
-                                                            <select id="typeselect" name="type" class="select-contain-select" required>
-                                                                <option value="">
-                                                                    Select Type
-                                                                </option>
-                                                                <?php $courses = App\Models\Course::all();
-                                                                $type=[
-                                                                    0=>"UG",
-                                                                    1=>"PG",
-                                                                    2=>"Diploma"
-                                                                ];
-                                                                ?>
-                                                                @foreach($type as $key=>$course)
-                                                                <option value="{{$key}}">
-                                                                    {{$course}}
-                                                                </option>
-
-                                                               @endforeach
-
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end col-lg-3 -->
+                                           <!-- end col-lg-3 -->
                                             <div class="col-lg-4 col-sm-2 pr-0" >
                                                 <div class="input-box">
-                                                    <label class="label-text">Courses</label>
+                                                    <label class="label-text">Sub Cartegory</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select id="selectcourse" name="course_id" class="form-control ert" required  style="
+                                                            <select id="selectcourse" name="sub_category" class="form-control ert"   style="
                                                             height: 52px;
                                                         ">
-                                                                <option value="" selected>Select Course</option>
+                                                                <option value="" selected>Select Sub Cartegory</option>
 
 
 
@@ -912,62 +838,50 @@
 
                       <section class="service-area section--padding text-center">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="section-heading text-center">
-                                        <h2 class="sec__title">Browse by Discipline</h2>
-                                    </div><!-- end section-heading -->
-                                </div><!-- end col-lg-12 -->
-                            </div><!-- end row -->
-                            <?php $categories = App\Models\Category::all() ?>
-                            @if($categories->count() > 0)
-                            <div class="row padding-top-80px"  style="
-                            justify-content: center;
+                        <div class="row">
+                        <div class="col-lg-12">
+                        <div class="section-heading text-center">
+                        <h2 class="sec__title">Browse by Discipline</h2>
+                        </div><!-- end section-heading -->
+                        </div><!-- end col-lg-12 -->
+                        </div><!-- end row -->
+                        <?php $categories = App\Models\Category::all() ?>
+                        @if($categories->count() > 0)
+                        <div class="row padding-top-80px" style="
+                        justify-content: center;
                         ">
-
-                                     @foreach($categories as $category)
-                                    {{-- <div class="col-lg-2 responsive-column"  style="padding: 0px;border-radius:inherit;border-color: black;padding: 1.10px;">
-                                        <div class="icon-box icon-layout-4" style="
-                                        border-radius: inherit;
-                                        background-color: gainsboro;
-                                        border-bottom-color: blue;
-                                        height: 174px;
-                                    ">
-                                            <div class="info-icon" style="
-                                            background-color: transparent;
-                                            color: black; margin-top:0px;
-                                        ">
-
-                                            </div><!-- end info-icon-->
-                                            <div class="info-content">
-                                                <h4 class="info__title"><a href="#" value="{{$category->id}}">{{$category->title}}</a></h4>
-
-                                            </div><!-- end info-content -->
-                                        </div><!-- end icon-box -->
-                                    </div><!-- end col-lg-2 --> --}}
-                                    <div class="card text-center customhover" style="border-radius: 0px; width: 15rem;height: 11rem;   background-color: #edf3f6;   margin: 1px; z-index:0; border-radius: inherit">
-                                        <div class="card-body customhover" style=";height: 174px;">
-                                          <h5 class="card-title">
-                                            @if(isset($category->banner) && file_exists($category->banner))
-                            <img  style="width: 86px;" src="{{asset($category->banner)}}" alt="">
-                                @else
-                                <img src="
-                                {{asset('frontEnd/assets/images/first_aid.png')}}" width="84px" >
-                                @endif
-                                            </h5>
-                                          <p class="card-text"><a style="color: black;" href="#" value="{{$category->id}}">{{$category->title}}</a></p>
-                                          {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
-                                        </div>
-                                      </div>
-                                    @endforeach
-                            </div><!-- end row -->
-                            @else
-                            <div>
-                              <h4 style="margin-top: 50px;">Discipline Unavailable</h4>
-                            </div>
-                            @endif
+                        
+                        @foreach($categories as $category)
+                        <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                            @csrf
+                        <input type="hidden" name="category" value="{{$category->id}}">
+                        <button type="submit" style="border: none">
+                        <div class="card text-center customhover" style="border-radius: 0px; width: 15rem;height: 11rem; background-color: #edf3f6; margin: 1px; z-index:0; border-radius: inherit">
+                        <div class="card-body customhover" style=";height: 174px;">
+                        <h5 class="card-title">
+                        @if(isset($category->banner) && file_exists($category->banner))
+                        <img style="width: 86px;" src="{{asset($category->banner)}}" alt="">
+                        @else
+                        <img src="
+                        {{asset('frontEnd/assets/images/first_aid.png')}}" width="84px" >
+                        @endif
+                        </h5>
+                        <p class="card-text"><a style="color: black;" href="#" value="{{$category->id}}">{{$category->title}}</a></p>
+                        {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+                        </div>
+                        </div>
+                        </button>
+                        </form>
+                        @endforeach
+                        </div><!-- end row -->
+                        
+                        @else
+                        <div>
+                        <h4 style="margin-top: 50px;">Discipline Unavailable</h4>
+                        </div>
+                        @endif
                         </div><!-- end container -->
-                    </section>
+                        </section>
 
                       {{-- discipline end --}}
 
@@ -3517,13 +3431,13 @@ VANTA.NET({
 })
 </script> --}}
 <script>
-    $(document).on('change', '#typeselect', function ()
+    $(document).on('change', '#categoryselect', function ()
     {
-    typeselect = $(this).val();
+        console.log("clicked")
     categoryselect=$('#categoryselect').val();
 
     function isEmpty(val){
-        return (val === undefined || val == null || val.length <= 0) ? true : false;
+        return (val == undefined || val == null || val.length <= 0) ? true : false;
     }
 
 
@@ -3547,11 +3461,11 @@ VANTA.NET({
     $.ajax({
     url:"{{ route('university_fetch') }}",
     method:"GET",
-    data:{typeselect:typeselect,categoryselect:categoryselect},
+    data:{categoryselect:categoryselect},
     success: function(result){
         console.log(result)
 
-$(".ert").html(result)
+    $(".ert").html(result)
     }
     });
 }

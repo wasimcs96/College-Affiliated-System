@@ -143,6 +143,10 @@ Route::post('course_update/{id}',[
     'as' => 'university.course.update'
 ]);
 
+Route::get('courses/import',[
+    'uses' => 'UniversityCoursesController@importBlade',
+    'as' => 'university.course.import'
+]);
 
 /* Profile Section */
 Route::get('profile',[
@@ -272,5 +276,10 @@ Route::get('export', 'UniversityExcelController@export')->name('export');
 Route::get('importExportView', 'UniversityExcelController@importExportView');
 Route::post('import', 'UniversityExcelController@import')->name('import');
 
+/* Category Fetch Course */
+Route::get('fetch/category/course',[
+    'uses' => 'UniversityCoursesController@fetchCategory',
+    'as' => 'fetch.category.course'
+]);
 
 });

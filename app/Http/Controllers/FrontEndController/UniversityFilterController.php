@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontEndController;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\University;
 use App\Models\UniversityConsultant;
@@ -16,9 +17,9 @@ class UniversityFilterController extends Controller
     public function filter(Request $request)
     {
 
-        $courses = UniversityCourse::where('category_id', $request->categoryselect)->where('type', $request->typeselect)->get();
+        $courses = Category::where('parent_id', $request->categoryselect)->get();
 
-        $output = '<option value="" selected>Course Name</option>';
+        $output = '<option value="" selected>Sub Category</option>';
         foreach ($courses as $row) {
             $output .= '<option value="' . $row->id . '">' . $row->title . '</option>';
         }
@@ -28,20 +29,42 @@ class UniversityFilterController extends Controller
     public function courseWiseUniversity(Request $request)
     {
 
-        $typecoming = $request->type ?? '';
-        $course_id = $request->course_id ?? '';
 
+        $category = $request->category ?? '';
+        $sub_category = $request->sub_category ?? '';
 
 
 
         $universities = [];
+        if ($sub_category != null && $sub_category != '') {
+            $universitycourse = UniversityCourse::where('category_id', $sub_category)->distinct()->get(['user_id']);
+            // dd($universitycourse);
+            foreach ($universitycourse as $key => $univercity) {
+                $universities[$key] = $univercity->user;
+            }
+        } else {
 
-        $universitycourse = UniversityCourse::where('course_id', $request->course_id)->get();
-        foreach ($universitycourse as $key => $univercity) {
-            $universities[$key] = $univercity->user;
+
+            $check = Category::find($category);
+            $childcheck = $check->child_category->pluck('id');
+            if ($childcheck->count() > 0) {
+
+                $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get(['user_id']);
+
+                foreach ($universitycourse as $key => $univercity) {
+                    $universities[$key] = $univercity->user;
+                }
+            } else {
+                $universitycourse = UniversityCourse::where('category_id',  $category)->distinct()->get(['user_id']);
+
+                foreach ($universitycourse as $key => $univercity) {
+                    $universities[$key] = $univercity->user;
+                }
+            }
         }
 
-        return view('frontEnd.university.university_all', compact('typecoming', 'course_id'))->with('universities', $universities);
+
+        return view('frontEnd.university.university_all', compact('category'))->with('universities', $universities);
     }
 
 
@@ -190,19 +213,17 @@ class UniversityFilterController extends Controller
             // dd($consultants);
         } else {
 
-             
-                $query = User::where('countries_id', $request->countries_id)->with(['consultant']);
-               
 
-                $rtd = $query->get();
-                // dd($rtd->toArray());
-                foreach ($rtd as $key => $que) {
-                    if ($que->consultant != null) {
+            $query = User::where('countries_id', $request->countries_id)->with(['consultant']);
+
+
+            $rtd = $query->get();
+            // dd($rtd->toArray());
+            foreach ($rtd as $key => $que) {
+                if ($que->consultant != null) {
                     $consultants[$key] = $que;
-                    
-                    }
                 }
-            
+            }
         }
 
 

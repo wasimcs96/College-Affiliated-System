@@ -66,7 +66,7 @@
                             </td>
                             <td> @if($rt->expire_date == null)
                                 <div class="row" style="justify-content: center;">
-                                <form action="{{route('advertisement_manager.update')}}" method="POST" >
+                                <form action="{{route('subadmin.advertisement_manager.update')}}" method="POST" >
                                 @csrf
                                 <input type="hidden" value="{{$rt->id}}" name="rtid"> <input type="hidden" value="{{$rt->time_period}}" name="time_period"><button type="submit" data-toggle="tooltip" data-placement="top" title="Accept" class="btn btn-success"><i class="icon-check"></i></button>
                             </form>
