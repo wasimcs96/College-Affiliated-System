@@ -74,7 +74,7 @@
                                     <div class="contact-form-action">
                                         <form action="{{route('university_fetch.coursewise')}}" method="POST" class="row align-items-center">
                                             @csrf
-                                           
+
                                             <div class="col-lg-4 col-sm-2 pr-0">
                                                 <div class="input-box">
                                                     <label class="label-text" id="ali">Category</label>
@@ -450,7 +450,49 @@
     </div>
   </section>
 
+{{-- ###################ADVERTISEMENT start --}}
 
+<section class="info-area info-bg info-area2 padding-top-80px padding-bottom-45px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+            <div class="testimonial-carousel carousel-action">
+<?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+@foreach($advertisement as $advertise)
+                <div class="col-lg-12">
+                    <a href="{{$advertise->link}}" target="_blank">
+                    <div class="discount-box">
+                        <div class="discount-img">
+
+                            @if(isset($advertise->banner_image) && file_exists($advertise->banner_image))
+                            <img  src="{{asset($advertise->banner_image)}}" height="159px;" alt="" class="d-block w-100">
+                                @else
+                                <img src="{{asset('frontEnd/assets/images/discount-hotel-img.jpg')}}"  height="159px;"  alt="discount img">
+                                @endif
+                        </div>
+                        <!-- end discount-img -->
+                        {{-- <div class="discount-content">
+                            <div class="section-heading">
+                                <p class="sec__desc text-white">Hot deal, save 50%</p>
+                                <h2 class="sec__title mb-0 line-height-50 text-white">Discount 50% for the <br> First Booking</h2>
+                            </div><!-- end section-heading -->
+                            <div class="btn-box pt-4">
+                                <a href="#" class="theme-btn border-0">Learn More <i class="la la-arrow-right ml-1"></i></a>
+                            </div>
+                        </div><!-- end discount-content --> --}}
+                        {{-- <div class="company-logo">
+                            <img src="images/logo2.png" alt="">
+                            <p class="text-white font-size-14 text-right">*Terms applied</p>
+                        </div><!-- end company-logo --> --}}
+                    </div>
+                </a>
+                </div>
+                @endforeach
+        </div><!-- end row -->
+        </div>
+    </div><!-- end container -->
+</section>
+{{-- ########################ADVERTISEMENT END  --}}
 <!-- ================================
        START TESTIMONIAL AREA
 ================================= -->
@@ -850,7 +892,7 @@
                         <div class="row padding-top-80px" style="
                         justify-content: center;
                         ">
-                        
+
                         @foreach($categories as $category)
                         <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                             @csrf
@@ -874,7 +916,7 @@
                         </form>
                         @endforeach
                         </div><!-- end row -->
-                        
+
                         @else
                         <div>
                         <h4 style="margin-top: 50px;">Discipline Unavailable</h4>

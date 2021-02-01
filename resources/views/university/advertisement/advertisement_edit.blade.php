@@ -60,6 +60,15 @@
             <form action="{{route('university.advertisement.update',$ad->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
         <input name="image" id="photo" type="file" class="dropify-fr" >
+        <div class="form-group">
+            <label for="website">Link</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-globe"></i></span>
+                </div>
+                <input name="link" type="url" class="form-control" value="{{$ad->link}}" placeholder="http://" >
+            </div>
+        </div>
                 {{-- <input type="hidden" name="adID" value="{{$ad->id}}"> --}}
 
                 <button class="btn btn-primary" style="margin-top: 11px;" type="submit">Submit</button>

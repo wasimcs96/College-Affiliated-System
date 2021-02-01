@@ -63,15 +63,18 @@
                                 @if($rt->expire_date == null)<div class="btn btn-warning">Pending</div>@endif
                                 {{-- @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif --}}
                             </td>
-                            <td> @if($rt->expire_date == null)
-                                <div class="row" style="justify-content: center;">
+                            <td style="justify-content: center;"> @if($rt->expire_date == null)
+                                <div class="row" style="width: 145px; margin-left:-3px;">
+                                    <a href="{{$rt->link}}" target="_blank" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Advertisement Link" style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a>
                                 <form action="{{route('admin.advertisement_manager.update')}}" method="POST" >
                                 @csrf
-                                <input type="hidden" value="{{$rt->id}}" name="rtid"> <input type="hidden" value="{{$rt->time_period}}" name="time_period"><button type="submit" data-toggle="tooltip" data-placement="top" title="Accept" class="btn btn-success"><i class="icon-check"></i></button>
+                                <input type="hidden" value="{{$rt->id}}" name="rtid"> <input type="hidden" value="{{$rt->time_period}}" name="time_period">
+                                <button type="submit" data-toggle="tooltip" data-placement="top" title="Accept" class="btn btn-success"><i class="icon-check"></i></button>
                             </form>
 
                                 <a href="javascript:void(0);" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Reject" style="margin-left: 8px;"><i class="icon-trash"></i></a>
                         </div>
+
                         @endif</td>
                         </tr>
                         {{-- @endif --}}

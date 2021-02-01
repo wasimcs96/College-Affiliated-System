@@ -211,7 +211,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
                                 </div>
-                                <input name="website" type="text" class="form-control" value="@if(isset(auth()->user()->consultant->website)){{auth()->user()->consultant->website}}@endif" placeholder="http://" >
+                                <input name="website" type="url" class="form-control" value="@if(isset(auth()->user()->consultant->website)){{auth()->user()->consultant->website}}@endif" placeholder="http://" >
                             </div>
                         </div>
                     </div>

@@ -41,6 +41,15 @@
 
                  <li>{{$package->description}}</li>
                 <input name="image" id="photo-{{$package->id}}" type="file" class="dropify-frrr" >
+                <div class="form-group">
+                    <label for="website">Link</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-globe"></i></span>
+                        </div>
+                        <input name="link" type="url" class="form-control"placeholder="http://" >
+                    </div>
+                </div>
                 <input type="text" name="amount" value="{{$package->amount}}" hidden>
                 <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
                 <input type="text" name="payment_type" value="2" hidden>
