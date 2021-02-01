@@ -13,13 +13,28 @@
             <div class="body">
                 <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @php
+                        $categorys = DB::table('categories')->select('parent_id', 'title')->distinct('parent_id')->get()->toArray();
+                    @endphp
+                 {{-- {{  dd($categorys) }} --}}
+                    <div class="form-group">
+                        <label for="title">Parent Category</label>
+                        <select name="parent_id" class="form-control" id="parent_category" required>
+                            <option value="">--- Select Parent Category ---</option>
+                            @foreach ($categories->unique('parent_id')  as $category)
+                                @if($category->parent_id != NULL)
+                                    <option value="{{ $category->parent_id }}">{{ $category->title }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="category_id">Category Name</label>
-                        <select name="category_id" class="form-control" required>
-                            <option value="">--- Select  Category ---</option>
+                        <select name="category_id" class="form-control" id="category" required>
+                            {{-- <option value="">--- Select  Category ---</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
                     <div class="form-group">
@@ -145,5 +160,29 @@ $('#documentModal').modal('hide')
          });
       }
     });
+</script>
+<script>
+    $(document).on('change', '#parent_category', function ()
+                   {
+                        //   dt  = $(this).data("row_id");
+
+                          $.ajaxSetup({headers:
+                           {
+                               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                           }
+                           });
+                           parentid=$('#parent_category').val();
+                           console.log(parentid);
+                                 $.ajax({
+                                     url:"{{ route('fetch.category_course') }}",
+                                     method:"GET",
+                                     data:{parentid:parentid},
+                                     success: function(result){
+                                     $('#category').html(result);
+                                   }
+                                   });
+
+                       });
+
 </script>
 @stop

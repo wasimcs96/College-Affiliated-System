@@ -193,4 +193,25 @@ class UniversityCoursesController extends Controller
         return view('university.course.course_import')->with('categories',Category::all());
     }
 
+
+    function fetchCategory(Request $request)
+    {
+        dd($request->all());
+        $fetch=User::where('id',$request->universityid)->first();
+        if(isset($fetch->universityCourse) && $fetch != NULL)
+        {
+        $courses =  $fetch->universityCourse;
+        $output='<option value="" selected>Course Name</option>';
+        foreach($courses as $row)
+        {
+         $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
+        }
+        echo $output;
+      }
+      else
+      {
+         $output='<option value="" selected>No Data Available</option>';
+         echo $output;
+      }
+    }
 }
