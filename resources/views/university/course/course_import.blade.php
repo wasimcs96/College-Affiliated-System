@@ -18,9 +18,9 @@
                     @endphp
                  {{-- {{  dd($categorys) }} --}}
                     <div class="form-group">
-                        <label for="title">Parent Category</label>
+                        <label for="title">Discipline</label>
                         <select name="parent_id" class="form-control" id="parent_category" required>
-                            <option value="">--- Select Parent Category ---</option>
+                            <option value="">--- Select Discipline ---</option>
                             @foreach ($categories->unique('parent_id')  as $category)
                                 @if($category->parent_id != NULL)
                                     <option value="{{ $category->parent_id }}">{{ $category->title }}</option>
@@ -29,9 +29,9 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="category_id">Select Category</label>
+                        <label for="category_id">Select Sub-Discipline</label>
                         <select name="category_id" class="form-control" id="category" required>
-                            <option value="">--- Select Category ---</option>
+                            <option value="">--- Select Discipline ---</option>
                             {{-- <option value="">--- Select  Category ---</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>

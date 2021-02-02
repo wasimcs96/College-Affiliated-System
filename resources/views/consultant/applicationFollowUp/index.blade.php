@@ -41,7 +41,7 @@
                             <td>{{$application->date ?? ''}}</td>
 
                             <td style="text-align: center;">
-                                <a href="{{route('consultant.application.followup.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                {{-- <a href="{{route('consultant.application.followup.show',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a> --}}
                                 <a href="{{route('consultant.application.create',['id'=> $application->application_id])}}" class="btn btn-primary">Go to Application<i class="icon-arrow"></i></a>
                             </td>
 

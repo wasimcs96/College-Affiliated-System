@@ -16,9 +16,9 @@
                 <form id="basic-form" method="POST" enctype="multipart/form-data" action="{{route('university.course.update', $universitycourse->id)}}">
                     @csrf
                     <div class="form-group">
-                        <label for="category_id">Category Name</label>
+                        <label for="category_id">Discipline Name</label>
                         <select name="category_id" class="form-control" required>
-                            <option value="">--- Select  Category ---</option>
+                            <option value="">--- Select  Discipline ---</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" @if($category->id == $universitycourse->category_id) selected @endif>{{ $category->title ?? '' }}</option>
                             @endforeach
