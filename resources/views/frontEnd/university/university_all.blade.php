@@ -144,6 +144,7 @@
         </div><!-- end row -->
         <div class="row">
             @foreach($universities as $university)
+            
             @if($university->isUniversity())
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">

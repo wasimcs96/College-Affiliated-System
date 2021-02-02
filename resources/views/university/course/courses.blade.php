@@ -20,7 +20,8 @@
             </div> --}}
             <ul class="header-dropdown dropdown">
 
-                <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+                <li>
+                    <a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                 <a  href="{{ route('university.course.import') }}" class="btn btn-warning btn-flat" id="add_course">Import Course</a>
                 <a  href="{{ route('university.add_course') }}" class="btn btn-success btn-flat" id="add_course">Add Course</a>
 

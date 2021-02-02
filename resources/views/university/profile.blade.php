@@ -58,7 +58,7 @@
         </div>
         <div class="card">
             <div class="header">
-                <h2>Add Default Document</h2> <small style="color: white">Note: These document will be shown at consultant end for creating application</small>
+                <h2>Add Default Document</h2> <small style="color: white">Note: These document will be shown at consultant end for creating application.</small>
                 <ul class="header-dropdown dropdown">
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
 

@@ -40,7 +40,7 @@ class UniversityFilterController extends Controller
             $universitycourse = UniversityCourse::where('category_id', $sub_category)->distinct()->get(['user_id']);
             // dd($universitycourse);
             foreach ($universitycourse as $key => $univercity) {
-                $universities[$key] = $univercity->user;
+                $universities[$key] = $univercity->users;
             }
         } else {
 
@@ -50,15 +50,14 @@ class UniversityFilterController extends Controller
             if ($childcheck->count() > 0) {
 
                 $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get(['user_id']);
-
                 foreach ($universitycourse as $key => $univercity) {
-                    $universities[$key] = $univercity->user;
+                    $universities[$key] = $univercity->users;
                 }
             } else {
                 $universitycourse = UniversityCourse::where('category_id',  $category)->distinct()->get(['user_id']);
 
                 foreach ($universitycourse as $key => $univercity) {
-                    $universities[$key] = $univercity->user;
+                    $universities[$key] = $univercity->users;
                 }
             }
         }

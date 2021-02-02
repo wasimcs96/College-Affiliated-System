@@ -23,7 +23,7 @@
 
                         <tr>
                             <th scope="row">Student Name</th>
-                            <td>{{$booking->application->user->first_name ?? ''}} {{$booking->application->user->last_name ?? ''}}</td>
+                            <td>{{$booking->booking->user->first_name ?? ''}} {{$booking->application->user->last_name ?? ''}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Note</th>
