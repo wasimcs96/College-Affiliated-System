@@ -21,6 +21,7 @@
                             <th  style="text-align: center;"><b>Banner Image</b></th>
                             <th><b>User Name</b></th>
                             <th><b>User type </b></th>
+                            <th><b>Click Count </b></th>
                             <th><b>Start Date</b></th>
                             <th><b>End Date</b></th>
                             <th><b>Purchased Date</b></th>
@@ -47,7 +48,7 @@
 
                             <td>@if($rt->user->isConsultant() ?? '') Consultant @endif
                             @if($rt->user->isUniversity() ?? '') Univeristy @endif</td>
-                            {{-- <td>{{$rt->expire_date ?? ''}}</td> --}}
+                            <td>@if(isset($rt->click_count)){{$rt->click_count ?? ''}}@else N/A @endif</td>
                             <td>
                                 @if(isset($rt->start_date )){{ Carbon\Carbon::parse($rt->start_date )->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif
                             </td>
@@ -65,7 +66,7 @@
                             </td>
                             <td style="justify-content: center;"> @if($rt->expire_date == null)
                                 <div class="row" style="width: 145px; margin-left:-3px;">
-                                    <a href="{{$rt->link}}" target="_blank" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Advertisement Link" style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                    <a href="{{$rt->link}}" target="_blank" style="margin-right: 3px;" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Advertisement Link" style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a>
                                 <form action="{{route('admin.advertisement_manager.update')}}" method="POST" >
                                 @csrf
                                 <input type="hidden" value="{{$rt->id}}" name="rtid"> <input type="hidden" value="{{$rt->time_period}}" name="time_period">

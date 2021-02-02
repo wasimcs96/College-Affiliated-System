@@ -59,6 +59,7 @@ Author Email:   contact@tecydevs.com
         var galleryCarousel = $('.gallery-carousel');
         var clientCarousel = $('.client-logo');
         var testimonialCarousel = $('.testimonial-carousel');
+        var testimonialCarouselad = $('.testimonial-carousel-ad')
         var testimonialCarouselTwo = $('.testimonial-carousel-2');
         var fancyVideo = $('[data-fancybox="video"]');
         var fancyGallery = $('[data-fancybox="gallery"]');
@@ -410,6 +411,31 @@ Author Email:   contact@tecydevs.com
                     // breakpoint from 900 up
                     900 : {
                         items: 2
+                    }
+
+                }
+            });
+        }
+
+        // ################################ Ad testimoniall
+        if ($(testimonialCarouselad).length) {
+            $(testimonialCarouselad).owlCarousel({
+                loop: true,
+                items: 1,
+                nav: true,
+                dots: false,
+                smartSpeed: 700,
+                autoplay: false,
+                margin: 30,
+                navText: ['<i class="la la-angle-left"></i>', '<i class="la la-angle-right"></i>'],
+                responsive : {
+                    // breakpoint from 0 up
+                    0 : {
+                        items: 1
+                    },
+                    // breakpoint from 900 up
+                    900 : {
+                        items: 1
                     }
 
                 }

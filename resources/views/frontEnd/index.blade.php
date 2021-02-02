@@ -456,11 +456,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-            <div class="testimonial-carousel carousel-action">
-<?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
-@foreach($advertisement as $advertise)
-                <div class="col-lg-12">
-                    <a href="{{$advertise->link}}" target="_blank">
+            <div class="testimonial-carousel-ad carousel-action">
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    @foreach($advertisement as $advertise)
+                    <div class="col-lg-12">
+                    <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
                     <div class="discount-box">
                         <div class="discount-img">
 
@@ -471,19 +471,19 @@
                                 @endif
                         </div>
                         <!-- end discount-img -->
-                        {{-- <div class="discount-content">
-                            <div class="section-heading">
-                                <p class="sec__desc text-white">Hot deal, save 50%</p>
-                                <h2 class="sec__title mb-0 line-height-50 text-white">Discount 50% for the <br> First Booking</h2>
-                            </div><!-- end section-heading -->
+                        <div class="discount-content">
+                            {{-- <div class="section-heading"> --}}
+                                {{-- <p class="sec__desc text-white">Hot deal, save 50%</p> --}}
+                                {{-- <h6 class="sec__title mb-0 line-height-50 text-white"></h6> --}}
+                            {{-- </div><!-- end section-heading --> --}}
                             <div class="btn-box pt-4">
-                                <a href="#" class="theme-btn border-0">Learn More <i class="la la-arrow-right ml-1"></i></a>
+                                {{-- <a href="#" class="theme-btn border-0">Learn More <i class="la la-arrow-right ml-1"></i></a> --}}
                             </div>
-                        </div><!-- end discount-content --> --}}
-                        {{-- <div class="company-logo">
+                        </div><!-- end discount-content -->
+                        <div class="company-logo">
                             <img src="images/logo2.png" alt="">
-                            <p class="text-white font-size-14 text-right">*Terms applied</p>
-                        </div><!-- end company-logo --> --}}
+                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name}}</p>
+                        </div><!-- end company-logo -->
                     </div>
                 </a>
                 </div>
@@ -740,52 +740,16 @@
 
                     {{-- works start --}}
 
-                    <section class="testimonial-area section-padding">
-    <div class="container">
+     <section class="testimonial-area section-padding">
+      <div class="container">
         <div class="section-heading text-center" >
             <h2> How it works</h2>
             <hr>
-        <div class="row">
+        {{-- <div class="row">
 
             <div class="col-lg-6">
                 <lottie-player src="{{asset('frontEnd/assets/json/book_loti.json')}}"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
-                {{-- <a href="{{asset('frontEnd/assets/images/book_loti.json')}}"></a> --}}
-{{--
-                    <div class="row12" style="    display: -ms-flexbox;
-                    display: flex;
-                    -ms-flex-wrap: wrap;
-                    flex-wrap: wrap;
-                    margin-right: 7px;
-                    margin-left: 8px;">
-                    <div class="card border-primary mt-3 ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
-                        <div class="card-header border-primary">1st Step</div>
-                        <div class="card-body">
-                          <h5 class="card-title text-primary">Hire Consultant</h5>
-                          <p class="card-text">djfhgdhghdjkhgkjdfghdfgjdddddddddddddhflgd.</p>
-                        </div>
-                      </div>
-                      <div class="card border-primary mt-3 ml-4 mb-2 " style="max-width: 15rem; max-height:15rem">
-                        <div class="card-header border-primary">2nd Step</div>
-                        <div class="card-body">
-                          <h5 class="card-title text-primary ">Choose University</h5>
-                          <p class="card-text">sdjfhsjkhfshhkshkhskjghjkfhjkgsajkgjkfhghdfdf.</p>
-                        </div>
-                      </div>
-                      <div class="card border-primary mt-3 ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
-                        <div class="card-header border-primary">3rd Step</div>
-                        <div class="card-body ">
-                          <h5 class="card-title text-primary">Verify Documents</h5>
-                          <p class="card-text">Some quick example text to build on the carddt.</p>
-                        </div>
-                      </div>
-                      <div class="card border-primary mt-3 ml-4 mb-2" style="max-width: 15rem; max-height:15rem">
-                        <div class="card-header border-primary">4th Step</div>
-                        <div class="card-body ">
-                          <h5 class="card-title text-primary">Get Visa </h5>
-                          <p class="card-text">Some quick example text to build on the card tit.</p>
-                        </div>
-                      </div>
-                    </div> --}}
+
 
                 <!-- end section-heading -->
             </div><!-- end col-lg-4 -->
@@ -796,83 +760,91 @@
                         <iframe width="420" height="315"
                         src="https://www.youtube.com/embed/IsobKug-8bc">
                         </iframe>
-                        {{-- <object width="425" height="350" data="https://www.youtube.com/watch?v=wY6UyatwVTA" type="application/x-shockwave-flash"><param name="src" value="https://www.youtube.com/watch?v=wY6UyatwVTA" /></object> --}}
-                        {{-- <div id="player" class="js-player" data-plyr-provider="youtube"
-                        data-plyr-embed-id="https://www.youtube.com/watch?v=wY6UyatwVTA" style="height: 500px;"></div> --}}
-                        {{-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe> --}}
-                        {{-- @if($course->mediavideo->type == 'youtube')
-
-
-                        <div id="player" class="js-player" data-plyr-provider="youtube"
-                             data-plyr-embed-id="{{$course->mediavideo->file_name}}"></div>
-                    @elseif($course->mediavideo->type == 'vimeo')
-                        <div id="player" class="js-player" data-plyr-provider="vimeo"
-                             data-plyr-embed-id="{{$course->mediavideo->file_name}}"></div>
-                    @elseif($course->mediavideo->type == 'upload')
-                        <video poster="" id="player" class="js-player" playsinline controls>
-                            <source src="{{$course->mediavideo->url}}" type="video/mp4"/>
-                        </video>
-
-                    @endif                        <video tabindex="-1" class="video-stream html5-main-video" controlslist="nodownload" style="width: 486px; height: 273px; left: 0px; top: 1px;" src="blob:https://www.youtube.com/d314ddcc-d7e1-44f2-a72a-04b419a920fd"></video> --}}
                     </div>
                     <!-- end testimonial-carousel -->
             </div><!-- end col-lg-8 -->
-        </div>
+        </div> --}}
+        <div class="container">
+
+            <div class="row padding-top-50px">
+                <div class="col-lg-3 responsive-column">
+                    <div class="deal-list">
+
+                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 216px;"  loop  autoplay></lottie-player>
+                        {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+                       <h3 style="text-align: center"> Hire Nearby Consultant</h3>
+                    </div>
+                </div><!-- end col-lg-3 -->
+                 <div class="col-lg-3 responsive-column">
+                    <div class="deal-list">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            {{-- <h5 class="title"><a href="flight-single.html">Spain</a></h5>
+                            <span class="font-weight-bold font-size-18">$359.00</span> --}}
+                        </div>
+                        {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+                        <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                        <h3 style="text-align: center">Choose University</h3>
+                    </div>
+                </div><!-- end col-lg-3 -->
+
+
+                 <div class="col-lg-3 responsive-column">
+                    <div class="deal-list">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            {{-- <h5 class="title"><a href="flight-single.html">Hawaii</a></h5>
+                            <span class="font-weight-bold font-size-18">$359.00</span> --}}
+                        </div>
+                        {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+                        <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                        <h3 style="text-align: center">Verify Documents</h3>
+
+                    </div>
+                </div><!-- end col-lg-3 -->
+                <div class="col-lg-3 responsive-column">
+                    <div class="deal-list">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            {{-- <h5 class="title"><a href="flight-single.html">Spain</a></h5>
+                            <span class="font-weight-bold font-size-18">$359.00</span> --}}
+                        </div>
+                        {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+                        <div>
+                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                        </div>
+                        <h3 style="text-align: center">Get Ready to Fly</h3>
+                    </div>
+                </div><!-- end col-lg-3 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
         </div><!-- end row -->
     </div><!-- end container -->
 </section>
-<section class="deal padding-top-60px padding-bottom-80px">
+<section class="testimonial-area section-padding">
     <div class="container">
+      <div class="section-heading text-center" >
+          {{-- <h2> How it works</h2>
+          <hr> --}}
+      <div class="row">
 
-        <div class="row padding-top-50px">
-            <div class="col-lg-3 responsive-column">
-                <div class="deal-list">
-
-                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 216px;"  loop  autoplay></lottie-player>
-                    {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
-                   <h3 style="text-align: center"> Hire Consultant</h3>
-                </div>
-            </div><!-- end col-lg-3 -->
-             <div class="col-lg-3 responsive-column">
-                <div class="deal-list">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        {{-- <h5 class="title"><a href="flight-single.html">Spain</a></h5>
-                        <span class="font-weight-bold font-size-18">$359.00</span> --}}
-                    </div>
-                    {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
-                    <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
-                    <h3 style="text-align: center">Choose University</h3>
-                </div>
-            </div><!-- end col-lg-3 -->
+          <div class="col-lg-6">
+              <lottie-player src="{{asset('frontEnd/assets/json/book_loti.json')}}"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
 
 
-             <div class="col-lg-3 responsive-column">
-                <div class="deal-list">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        {{-- <h5 class="title"><a href="flight-single.html">Hawaii</a></h5>
-                        <span class="font-weight-bold font-size-18">$359.00</span> --}}
-                    </div>
-                    {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
-                    <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
-                    <h3 style="text-align: center">Verify Documents</h3>
+              <!-- end section-heading -->
+          </div><!-- end col-lg-4 -->
+          <div class="col-lg-6 ">
 
-                </div>
-            </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 responsive-column">
-                <div class="deal-list">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        {{-- <h5 class="title"><a href="flight-single.html">Spain</a></h5>
-                        <span class="font-weight-bold font-size-18">$359.00</span> --}}
-                    </div>
-                    {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
-                    <div>
-                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
-                    </div>
-                    <h3 style="text-align: center">Get Visa</h3>
-                </div>
-            </div><!-- end col-lg-3 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
+
+                  <div class="embed-responsive embed-responsive-4by3" style="height: 416px;">
+                      <iframe width="420" height="315"
+                      src="https://www.youtube.com/embed/IsobKug-8bc">
+                      </iframe>
+                  </div>
+                  <!-- end testimonial-carousel -->
+          </div><!-- end col-lg-8 -->
+      </div>
+
+      </div><!-- end row -->
+  </div><!-- end container -->
 </section>
                       {{-- works end --}}
 
@@ -2441,7 +2413,7 @@
 <!-- ================================
     START CTA AREA
 ================================= -->
-<section class="cta-area padding-top-100px padding-bottom-180px text-center">
+{{-- <section class="cta-area padding-top-100px padding-bottom-180px text-center">
     <div class="video-bg">
         <video autoplay loop>
             <source src="{{asset('frontEnd/assets/video/video-bg.mp4') }}" type="video/mp4">
@@ -2461,7 +2433,47 @@
         </div><!-- end row -->
     </div><!-- end container -->
     <svg class="cta-svg" viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M-31.31,170.22 C164.50,33.05 334.36,-32.06 547.11,196.88 L500.00,150.00 L0.00,150.00 Z"></path></svg>
-</section><!-- end cta-area -->
+</section><!-- end cta-area --> --}}
+<section class="info-area info-bg info-area2 padding-top-80px padding-bottom-45px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+            <div class="testimonial-carousel-ad carousel-action">
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    @foreach($advertisement as $advertise)
+                    <div class="col-lg-12">
+                    <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
+                    <div class="discount-box">
+                        <div class="discount-img">
+
+                            @if(isset($advertise->banner_image) && file_exists($advertise->banner_image))
+                            <img  src="{{asset($advertise->banner_image)}}" height="159px;" alt="" class="d-block w-100">
+                                @else
+                                <img src="{{asset('frontEnd/assets/images/discount-hotel-img.jpg')}}"  height="159px;"  alt="discount img">
+                                @endif
+                        </div>
+                        <!-- end discount-img -->
+                        <div class="discount-content">
+                            {{-- <div class="section-heading"> --}}
+                                {{-- <p class="sec__desc text-white">Hot deal, save 50%</p> --}}
+                                {{-- <h6 class="sec__title mb-0 line-height-50 text-white"></h6> --}}
+                            {{-- </div><!-- end section-heading --> --}}
+                            <div class="btn-box pt-4">
+                                {{-- <a href="#" class="theme-btn border-0">Learn More <i class="la la-arrow-right ml-1"></i></a> --}}
+                            </div>
+                        </div><!-- end discount-content -->
+                        <div class="company-logo">
+                            <img src="images/logo2.png" alt="">
+                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name}}</p>
+                        </div><!-- end company-logo -->
+                    </div>
+                </a>
+                </div>
+                @endforeach
+        </div><!-- end row -->
+        </div>
+    </div><!-- end container -->
+</section>
 <!-- ================================
     END CTA AREA
 ================================= -->
@@ -3540,6 +3552,7 @@ VANTA.NET({
 
         });
     </script>
+
       <script src="https://cdn.plyr.io/3.5.3/plyr.polyfilled.js"></script>
 
       <script>
@@ -3554,4 +3567,47 @@ VANTA.NET({
         //   $('#rating').val(rating);
         //   @endif
       </script>
+
+<script>
+    var linkclick='';
+     $(document).on('click', '#click_count', function ()
+ {
+    linkclick=$(this).attr('link_click');
+ console.log(linkclick);
+
+// var j = 0;
+
+    //    if(applicationCloseId > 0){
+         $.ajaxSetup({headers:
+             {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+             });
+
+             $.ajax({
+                     type: "post",
+                     url: "{{route('front.advertisement.click.count')}}",
+                     data: {linkclick:linkclick},
+                     success: function (result) {
+                        // $('#alert_add2').append('<div class="container"><div class="alert alert-danger alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong> Application is Declined.</strong></div></div>')
+                        // $('#application1').html('<span style="color:red">Declined</span>');
+                        // $('#application1').css("margin-left"," 16px");
+                        // $('#application1').css("color","red");
+
+                        // j++;
+                         console.log('success');
+                        //  location.reload();
+                     }
+                 });
+    //    }
+
+
+             // $(this).text("Pending");
+
+             $('#closeApplicationModal').modal('hide');
+             // row++;
+     });
+
+
+ </script>
 @endsection
