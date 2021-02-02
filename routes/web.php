@@ -454,3 +454,8 @@ Route::post('consultant/inner/filter',[
     'uses'=>'FrontEndController\UniversityFilterController@consultantsInnerFilter',
     'as'=>'consultant.inner.filter'
 ]);
+
+Route::post('advertisement/click/count',[
+    'uses'=>'FrontEndController\AdvertisementFrontController@advertisementCount',
+    'as'=>'front.advertisement.click.count'
+]);

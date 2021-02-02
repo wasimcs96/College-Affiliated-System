@@ -20,6 +20,8 @@
                         <tr>
                             <th><b>Banner Image</b></th>
                             <th><b>Transaction Id</b></th>
+                            <th><b>Click Count</b></th>
+
                             <th><b>Start Date </b></th>
                             <th><b>End Date</b></th>
                             <th><b>Purchased Date</b></th>
@@ -43,7 +45,9 @@
                                                 {{-- {{dd($rt->advertisement)}} --}}
                                                 <tr>
                                                     <td style="text-align: center;">
-                                                        @if(isset($rt->banner_image) && file_exists($rt->banner_image))<a href="{{asset($rt->banner_image ?? '')}}" target="_blank"> <img src="{{asset($rt->banner_image ?? '')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"></a>@else <img src="{{asset('assets/default/default-banner.jpg')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"> @endif</td>                                                     <td>{{$rt->order->transaction_id ?? ''}}</td>
+                                                        @if(isset($rt->banner_image) && file_exists($rt->banner_image))<a href="{{asset($rt->banner_image ?? '')}}" target="_blank"> <img src="{{asset($rt->banner_image ?? '')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"></a>@else <img src="{{asset('assets/default/default-banner.jpg')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"> @endif</td>
+                                                        <td>{{$rt->order->transaction_id ?? ''}}</td>
+                                                        <td>@if(isset($rt->click_count)){{$rt->click_count ?? ''}}@else N/A @endif</td>
 
                                                      <td>{{$rt->expire_date ?? ''}}</td>
                                                      <td>{{$rt->start_date ?? ''}}</td>
