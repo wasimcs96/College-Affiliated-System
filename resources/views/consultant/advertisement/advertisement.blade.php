@@ -24,6 +24,7 @@
                             <th><b>Start Date </b></th>
                             <th><b>End Date</b></th>
                             <th><b>Purchased Date</b></th>
+                            <th><b>Link</b></th>
                             <th><b> Status</b></th>
                             <th><b>Action<b></th>
                         </tr>
@@ -50,7 +51,7 @@
                              <td>{{ Carbon\Carbon::parse($rt->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                              <td>{{ Carbon\Carbon::parse($rt->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                              <td>{{ Carbon\Carbon::parse($rt->created_at ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
-
+                             <td>   <a href="{{$rt->link}}" target="_blank" style="margin-right: 3px;" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Advertisement Link" style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a></td>
                                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                 <td>
                                 {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}

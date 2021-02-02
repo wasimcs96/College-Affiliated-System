@@ -298,7 +298,7 @@
                                                <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
 
                                                 <td> <div>
-                                                <a href="{{route('course_detail',['id'=>$university->id])}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('course_detail',['id'=>$course->id])}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
                                             </div></td>
                                            </tr>
                                            @endforeach

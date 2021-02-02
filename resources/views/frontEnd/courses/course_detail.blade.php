@@ -24,25 +24,28 @@
     START BREADCRUMB AREA
 ================================= -->
 
-    <section class="breadcrumb-area bread-bg-4 py-0" style="background-image: url('{{asset('frontEnd/assets/images/universityall.jpg')}}');">
+    <section class="breadcrumb-area bread-bg-4 py-0" @if(isset( $universitycourse->university->cover_image) && file_exists( $universitycourse->university->cover_image)) style="background-image: url('{{asset( $universitycourse->university->cover_image)}}');" @else style="background-image: url('{{asset('frontEnd/assets/images/universityall.jpg')}}');" @endif>
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-
+                    <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset( $universitycourse->profile_image) && file_exists( $universitycourse->profile_image))
+                        <img
+                        style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                        src="{{asset( $universitycourse->profile_image)}}" alt="">
+                            @else
+                            <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                            @endif</div>
                     <div class="breadcrumb-btn">
+                        <div class="btn-box"  style="
+                        position: absolute;
+                        bottom: 18px;
+                        left: 151px;
+                        margin-bottom: 8px;
+                    ">
+                 </div>
 
 
-                        {{-- <a class="d-none"
-                             data-fancybox="gallery"
-                             data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
-                             data-caption="Showing image - 03"
-                             data-speed="700"></a>
-                        <a class="d-none"
-                             data-fancybox="gallery"
-                             data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
-                             data-caption="Showing image - 04"
-                             data-speed="700"></a> --}}
                     </div><!-- end breadcrumb-btn -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
@@ -63,11 +66,12 @@
                 <div class="col-lg-12">
                     <div class="single-content-nav" id="single-content-nav">
                         <ul>
-                            <li><a data-scroll="description" href="#description" class="scroll-link active">About Course</a></li>
-                            {{-- <li><a data-scroll="itinerary" href="#itinerary" class="scroll-link">Courses</a></li> --}}
-                            <li><a data-scroll="staterooms" href="#staterooms" class="scroll-link">Affiliated University</a></li>
+                            <li><a data-scroll="description" href="#description" class="scroll-link active">About This Course</a></li>
+                            <li><a data-scroll="itinerary" href="#staterooms" class="scroll-link">More Universities</a></li>
+                            <li><a data-scroll="staterooms" href="#staterooms" class="scroll-link"></a></li>
 
-                    </ul>
+
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -80,42 +84,41 @@
                     <div class="single-content-wrap padding-top-60px">
                         <div id="description" class="page-scroll">
                             <div class="single-content-item pb-4">
-                                <h3 class="title font-size-26">{{$course->name ?? ''}}</h3>
-                                <div class="d-flex flex-wrap align-items-center pt-2">
-                                    <p class="mr-2">Category:  {{$course->category->title}}</p>
-                                    {{-- <p class="mr-2">Type:        @if($course->type == 0 ?? '') UG @endif
-                                        @if($course->type == 1 ?? '')  PG @endif
-                                        @if($course->type == 2 ?? '') Diploma @endif</p> --}}
-                                </div>
-
+                                <h3 class="title font-size-26">{{ $universitycourse->title ?? ''}}</h3>
+                                {{-- <div class="d-flex flex-wrap align-items-center pt-2">
+                                    <p class="mr-2">Discipline  : {{ $universitycourse->category->title}}</p>
+                                </div> --}}
+                                {{-- <div class="d-flex flex-wrap align-items-center pt-2">
+                                    <p class="mr-2">Course Type  : @if(isset($universitycourse->type)&&$universitycourse->type == 0)Under-Graduation
+                                        @elseif($universitycourse->type == 1) Post-Graduation
+                                        @elseif($universitycourse->type == 2)Diploma @endif</p>
+                                </div> --}}
 
 
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
                             <div class="single-content-item padding-top-40px padding-bottom-40px">
                                 <h3 class="title font-size-20">Description</h3>
-                                <p class="pt-3">{{$course->description ?? ''}}</p>
+                                <p class="pt-3">{{ $universitycourse->description ?? ''}}</p>
                             </div><!-- end single-content-item -->
                             <div class="single-content-item padding-bottom-30px">
-                                <h3 class="title font-size-20">Course  Statistics</h3>
+                                <h3 class="title font-size-20">Course Detail</h3>
                                 <div class="row pt-4">
                                     <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
 
-                                            {{-- <li><span>Country:</span>{{$course->country->countries_name}}</li> --}}
-                                            @if(isset($course->countries_id))
-                                            <?php $country = DB::table('countries')->where('countries_id',$course->countries_id)->get()->first();?>
-                                            @endif
-                                            <li><span>Country:</span>{{$country->countries_name ?? ''}}</li>
-                                            <li><span>City:</span>{{$course->city ?? ''}}</li>
-                                            <li><span>Address:</span>{{$course->address ?? ''}}</li>
-
-                                            {{-- <li><span>Admission Opens:</span>19/09/20</li>
-                                            <li><span>Campus:</span>93,558 grt</li> --}}
-                                            {{-- <li><span>Working Week Days:</span> @if(isset($course->consultant->working_week_days)&&($course->consultant->type==0))
+                                            {{-- <li><span>Country:</span>{{ $universitycourse->country->countries_name}}</li> --}}
+                                            {{-- {{dd( $universitycourse->users->university->type)}} --}}
+                                            <li><span>University Type:</span> @if(isset(  $universitycourse->users->university->type)&&(  $universitycourse->users->university->type == 0))
                                                 Private
                                                 @else Govenment</p>
-                                                @endif</li> --}}
+                                                @endif</li>
+                                            <li><span>Discipline:</span> {{ $universitycourse->category->title}}</li>
+                                            <li><span>Type:</span> @if(isset($universitycourse->type)&&$universitycourse->type == 0)Under-Graduation
+                                                @elseif($universitycourse->type == 1) Post-Graduation
+                                                @elseif($universitycourse->type == 2)Diploma @endif</li>
+                                            {{-- <li><span>Admission Opens:</span>19/09/20</li>
+                                            <li><span>Campus:</span>93,558 grt</li> --}}
                                             {{-- <li><span>Opening time:</span>105 ft</li>
                                             <li><span>Closeing time:</span>28 ft</li>
                                             <li><span>brachs</span>22.5 knots</li> --}}
@@ -123,13 +126,10 @@
                                     </div><!-- end col-lg-6 -->
                                    <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
-                                            <li><span>Affiliated University:</span>
-                                                @if(isset($course->consultantUniversity)){{$course->consultantUniversity->count()}} @else N/A @endif</li>
-                                <li><span>On Going Booking :</span>@if(isset($course->consultantBooking)){{$course->consultantBooking->count()}} @else N/A @endif</li>
-                                            <li><span>Clients:</span>
-                                                @if(isset($course->consultantUniversityClient))
-                                    {{$course->consultantUniversityClient->count()}}@else N/A @endif</li>
-                                            <li><span>Website:</span><a target="_blank" href="{{$course->consultant->website ?? ''}}" URL>{{$course->consultant->website ?? ''}}</a></li>
+                                            <li><span>Fees:</span> @if(isset( $universitycourse->fees)){{ $universitycourse->fees}} @else N/A @endif</li>
+
+                                            <li><span>Start Date:</span> @if(isset( $universitycourse->start_date)) {{ $universitycourse->start_date}} @else N/A @endif</li>
+                                            <li><span>End Date:</span>@if(isset( $universitycourse->start_date)) {{ $universitycourse->start_date}} @else N/A @endif</li>
                                             {{-- <li><span>Total Staff:</span>9,078 crew</li>
                                             <li><span>Counsellor:</span>Italian</li>
                                             <li><span>Hostels:</span>International</li>
@@ -142,52 +142,54 @@
                             </div><!-- end single-content-item -->
 
                         </div><!-- end description -->
-                        {{-- <div id="itinerary" class="page-scroll">
+                        <div id="itinerary" class="page-scroll">
                             <div class="section-block margin-top-40px"></div>
                             <div class="single-content-item padding-top-40px padding-Rbottom-40px">
-                                <h3 class="title font-size-20">Courses</h3>
+                                <h3 class="title font-size-20">More Courses of {{$universitycourse->users->university->university_name}}</h3>
                                <div class="table-form table-responsive padding-top-30px">
                                    <table class="table">
                                        <thead>
                                            <tr>
-                                               <th scope="col">Course</th>
+                                               <th scope="col">Course Name</th>
                                                <th scope="col">Type</th>
                                                <th scope="col"> Fees</th>
                                                <th scope="col">Start Date</th>
                                                <th scope="col">End Date</th>
-                                               <th scope="col">Action</th>
+                                                <th scope="col">Action</th>
                                            </tr>
                                        </thead>
                                        <tbody>
-
-                                          @foreach($courses as $course)
+                                           @if(isset( $universitycourse->users->universityCourse))
+                                              <?php $courses= $universitycourse->users->universityCourse?>
+                                             @foreach($courses as $course)
                                            <tr>
                                                <th scope="row"><div class="table-content d-flex align-items-center">
-                                                <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0">
-                                                <h3 class="title">{{$course->course->name}}</h3>
+                                                {{-- <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0"> --}}
+                                                <h3 class="title">{{$course->title ?? ''}}</h3>
                                             </div>
                                             </th>
                                                <td>
-                                                @if($course->course->type == 0) UG @endif
-                                                @if($course->course->type == 1) PG @endif
-                                                @if($course->course->type == 2) Diploma @endif
+                                                @if($course->type == 0) UG @endif
+                                                @if($course->type == 1) PG @endif
+                                                @if($course->type == 2) Diploma @endif
                                                </td>
-                                               <td>{{$course->fees}}</td>
-                                               <td>{{$course->start_date}}</td>
-                                               <td>@if(isset($course->end_date)){{$course->end_date}}@else N/A @endif</td>
+                                               <td>₹ {{$course->fees ?? ''}}</td>
+                                               <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
+                                               <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
 
-                                               <td> <div>
-                                                <a href="{{route('course_detail')}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
+                                                <td> <div>
+                                                <a href="{{route('course_detail',['id'=> $course->id])}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
                                             </div></td>
-                                           </tr>
-                                           @endforeach
+                                        </tr>
+                                        @endforeach
+                                        @else<td> No Course Available</td> @endif
                                     </tbody>
                                    </table>
 
                                </div>
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
-                        </div><!-- end itinerary --> --}}
+                        </div><!-- end itinerary -->
 
                         <!-- end reviews -->
                         <!-- end review-box -->
@@ -201,100 +203,49 @@
                     <div class="sidebar single-content-sidebar mb-0">
                         <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                         <td>
-                            {{-- {{dd($course->consultantUniversity)}} --}}
-    @if ($course->university)
-                        <?php $universitycourses=$course->university; ?>
-                        <div class="sidebar-widget single-content-widget">
-                            <h3 class="title stroke-shape">Featured University</h3>
-                            <!-- Example split danger button -->
+    @if (isset($universitycourse->category))
+                        <?php  $coursecategory=$universitycourse->category->universityCourses; ?>
+            {{-- {{dd($coursecategory)}} --}}
 
-                            <div class="input-group mb-3 ">
-                                <div class="input-group-prepend">
-                                  <button class="btn btn-outline-primary btn-sm" type="button" id="button-addon1">Country</button>
-                                </div>
-                                <input type="text" class="form-control col-xs-2" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              </div>
+                        <div class="sidebar-widget single-content-widget">
+                            <h3 class="title stroke-shape">More Courses from same Discipline</h3>
+                            <!-- Example split danger button -->
                             <div class="sidebar-list" style="
 
                             height: 530px;
                             overflow: scroll;">
                                 <ul class="list-items">
-
-            @foreach($universitycourses as $universitycourse)
-            {{-- @if($universityco->status == 1) --}}
-            {{-- {{dd($universitycourse->users)}} --}}
-            @if($universitycourse->users->Premium_expire_date > $mytime)
+            @foreach( $coursecategory as $category)
+            {{-- {{dd($category->title)}} --}}
+            {{-- @if($consultant->userConsultant->Premium_expire_date > $mytime) --}}
 
                                     <li><div class="author-content d-flex">
-                                        <div class="author-img">
-                                            <a href="{{route('university_detail',['id'=>$universitycourse->users->id])}}">@if(isset($universitycourse->users->profile_image) && file_exists($universitycourse->users->profile_image))
+                                        {{-- <div class="author-img">
+                                            <a href="#">@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
                                                 <img style=" width: 70px;
-                                                height: 70px;" src="{{asset($universitycourse->users->profile_image)}}" alt="">
+                                                height: 70px;" src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
                                                     @else
                                                     <img style=" width: 70px; height: 70px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif</a>
-                                        </div>
+                                        </div> --}}
                                         <div class="author-bio">
-                                            {{-- {{dd($course)}} --}}
-                                            <h4 class="author__title"><a href="#">{{$universitycourse->users->university->university_name ?? ''}}</a></h4>
-                                            <span class="author__meta">Member Since :@if(isset($universitycourse->users->university->created_at))
-                                                {{$universitycourse->users->university->created_at->Format("Y") ?? ''}}@else N/A @endif</span>
+                                            {{-- {{dd($consultant)}} --}}
+                                            <h4 class="author__title"><a href="{{route('course_detail',['id'=> $category->id])}}">{{$category->title}}</a></h4>
+                                            <span class="author__meta">Course Type :@if(isset($category->type)&&$category->type == 0)Under-Graduation
+                                                @elseif($category->type == 1) Post-Graduation
+                                                @elseif($category->type == 2)Diploma @endif</span>
                                             <div class="d-flex flex-wrap align-items-center ">
-                                                {{-- <p class="mr-2">Rating:</p> --}}
 
-                                                    <span>@if($universitycourse->users->rating == 3 ?? '' )
-                                                            <span class="ratings ">
-                                                                <i class="la la-star"></i>
-                                                                <i class="la la-star"></i>
-                                                                <i class="la la-star"></i>
-                                                                <i class="la la-star-o"></i>
-                                                                <i class="la la-star-o"></i>
-                                                            </span>
-                                                    @elseif($universitycourse->users->rating == 4 ?? '' )
-                                                    <span class="ratings ">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star-o"></i>
-                                                    </span>
-                                                    @elseif($universitycourse->users->rating == 5 ?? '' )
-                                                    <span class="ratings ">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                    </span>
-                                                    @elseif($universitycourse->users->rating == 1 ?? '' )
-                                                    <span class="ratings ">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                    </span>
-                                                    @elseif($universitycourse->users->rating == 2 ?? '' )
-                                                    <span class="ratings ">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                    </span>
-                                                    @endif
-                                                    </span>
-                                                   {{--  {!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($course->userConsultant->rating == null) - @else{{$course->userConsultant->rating ?? ''}}/5 @endif</span> --}}
-                                                </p>
+                                                {{-- </p> --}}
                                             </div>
                                             <div>
-                                       <a href="{{route('university_detail',['id'=>$universitycourse->users->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
-                                        </div>
+                                          <a href="{{route('course_detail',['id'=> $category->id])}}" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Detail<i class="las la-angle-double-right"></i><a>
+
+
+                                            </div>
                                         </div>
                                     </div></li>
                                     {{-- @endif --}}
-                                    @endif
-
 @endforeach
 
                                 </ul>
@@ -309,12 +260,54 @@
         </div><!-- end container -->
     </div><!-- end single-content-box -->
 </section><!-- end cruise-detail-area -->
+
+<section class="info-area info-bg info-area2 padding-top-80px padding-bottom-45px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+            <div class="testimonial-carousel-ad carousel-action">
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    @foreach($advertisement as $advertise)
+                    <div class="col-lg-12">
+                    <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
+                    <div class="discount-box">
+                        <div class="discount-img">
+
+                            @if(isset($advertise->banner_image) && file_exists($advertise->banner_image))
+                            <img  src="{{asset($advertise->banner_image)}}" height="159px;" alt="" class="d-block w-100">
+                                @else
+                                <img src="{{asset('frontEnd/assets/images/discount-hotel-img.jpg')}}"  height="159px;"  alt="discount img">
+                                @endif
+                        </div>
+                        <!-- end discount-img -->
+                        <div class="discount-content">
+                            {{-- <div class="section-heading"> --}}
+                                {{-- <p class="sec__desc text-white">Hot deal, save 50%</p> --}}
+                                {{-- <h6 class="sec__title mb-0 line-height-50 text-white"></h6> --}}
+                            {{-- </div><!-- end section-heading --> --}}
+                            <div class="btn-box pt-4">
+                                {{-- <a href="#" class="theme-btn border-0">Learn More <i class="la la-arrow-right ml-1"></i></a> --}}
+                            </div>
+                        </div><!-- end discount-content -->
+                        <div class="company-logo">
+                            <img src="images/logo2.png" alt="">
+                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name}}</p>
+                        </div><!-- end company-logo -->
+                    </div>
+                </a>
+                </div>
+                @endforeach
+        </div><!-- end row -->
+        </div>
+    </div><!-- end container -->
+</section>
+
 <section class="hotel-area section-bg padding-top-100px padding-bottom-200px overflow-hidden" id="staterooms">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading text-center">
-                    <h2 class="sec__title line-height-55">Select University</h2>
+                    <h2 class="sec__title line-height-55">Select  Consultant</h2>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
@@ -322,31 +315,29 @@
             <div class="col-lg-12">
                 <div class="hotel-card-wrap">
                     <div class="hotel-card-carousel-2 carousel-action">
-                        {{-- {{dd($course->consultantUniversity)}} --}}
-                        @if ($course->university)
-                        <?php $courses=$universitycourses; ?>
-                        {{-- {{dd($courses)}} --}}
-                        @foreach($courses as $course)
-                        {{-- {{dd($course->users)}} --}}
-                        {{-- @if($course->isConsultant()) --}}
-                        <div class="card-item car-card border">
-                            <div class="card-img"  style="text-align: center; height:185px;">
+                        @if (isset( $universitycourse->universityConsultant))
+                        <?php $consultants= $universitycourse->universityConsultant; ?>
 
-                                <a href="{{route('university_detail',['id' => $course->users->id])}}" class="d-block">
-                                    @if(isset($course->users->userUniversity->cover_image) && file_exists($course->users->userUniversity->cover_image))
+                        @foreach($consultants as $consultant)
+                        {{-- @if($consultant->isConsultant()) --}}
+                        <div class="card-item car-card border">
+                            <div class="card-img" style="text-align: center; height:185px;">
+
+                                <a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}" class="d-block">
+                                    @if(isset($consultant->userConsultant->consultant->cover_image) && file_exists($consultant->userConsultant->consultant->cover_image))
                                                         <img
                                                         style=" width: 368px;
                                                         height: 245px;"
-                                                        src="{{asset($course->users->userUniversity->cover_image)}}" alt="">
+                                                        src="{{asset($consultant->userConsultant->consultant->cover_image)}}" alt="">
                                                             @else
                                                             <img     style=" width: 368px;
-                                                            height: 245px;" src="{{asset('frontEnd/assets/images/university.jpg')}}" >
+                                                            height: 245px;" src="{{asset('frontEnd/assets/images/img21.jpg')}}" >
                                                             @endif
                                 </a>
-                                <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($course->users->userUniversity->profile_image) && file_exists($course->users->userUniversity->profile_image))
+                                <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
                                     <img
                                     style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                    src="{{asset($course->users->university->profile_image)}}" alt="">
+                                    src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
                                         @else
                                         <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                         @endif</div>
@@ -356,12 +347,12 @@
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $course->users->id])}}">{{$course->users->university->university_name ?? ''}}</a></h3>
-                                <p class="card-meta">{{$course->city ?? ''}}</p>
+                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}">{{$consultant->userConsultant->first_name}}{{$consultant->userConsultant->lasts_name}}</a></h3>
+                                <p class="card-meta">{{$consultant->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>
 
-                                                    <span>@if($course->users->rating == 3 ?? '' )
+                                                    <span>@if($consultant->userConsultant->rating == 3 ?? '' )
                                                             <span class="ratings ">
                                                                 <i class="la la-star"></i>
                                                                 <i class="la la-star"></i>
@@ -369,7 +360,7 @@
                                                                 <i class="la la-star-o"></i>
                                                                 <i class="la la-star-o"></i>
                                                             </span>
-                                                    @elseif($course->users->rating == 4 ?? '' )
+                                                    @elseif($consultant->userConsultant->rating == 4 ?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -377,7 +368,7 @@
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @elseif($course->users->rating == 5 ?? '' )
+                                                    @elseif($consultant->userConsultant->rating == 5 ?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -385,7 +376,7 @@
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
                                                     </span>
-                                                    @elseif($course->users->rating == 1?? '' )
+                                                    @elseif($consultant->userConsultant->rating == 1?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star-o"></i>
@@ -393,7 +384,7 @@
                                                         <i class="la la-star-o"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @elseif($course->users->rating == 2 ?? '' )
+                                                    @elseif($consultant->userConsultant->rating == 2 ?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -401,35 +392,47 @@
                                                         <i class="la la-star-o"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($course->users->rating == null) - @else{{$course->users->rating ?? ''}}/5 @endif</span>
+                                                    @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($consultant->userConsultant->rating == null) - @else{{$consultant->userConsultant->rating ?? ''}}/5 @endif</span>
 
                                             </div>
                                             <div class="card-attributes">
                                                 <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($course->users->userUniversity->created_at))
-                                                        {{$course->users->userUniversity->university->created_at->Format("Y")}}
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Since"><i class="las la-university"></i><span>   @if(isset($consultant->created_at))
+                                                        {{$consultant->created_at->Format("Y")}}
                                                         @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
-                                                        @if(isset($course->users->userUniversity->universityConsultant))
-                                                        {{$course->userUniversity->universityConsultant->count()}}@else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="las la-book"></i><span>   @if(isset($course->users->userUniversity->universityCourse))
-                                                        {{$course->users->userUniversity->universityCourse->count()}}
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span>
+                                                        @if(isset($consultant->userConsultant->consultantBooking))
+                                                        {{$consultant->userConsultant->consultantBooking->count()}}@else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>   @if(isset($consultant->userConsultant->consultantUniversity))
+                                                        {{$consultant->userConsultant->consultantUniversity->count()}}
                                                         @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($course->users->userUniversity->universityConsultantClient))
-                                                        {{$course->users->userUniversity->universityConsultantClient->count()}}
-                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>45</span></li>
                                                 </ul>
                                             </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
                                         <span class="price__text">City :</span>
-                                        <span class="price__num">@if(isset($course->users->userUniversity->city)){{$course->users->userUniversity->city ?? ''}}@else N/A @endif</span>
+                                        <span class="price__num">{{$consultant->userConsultant->city}}</span>
                                         {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                     </p>
+                                    @if(auth()->user())
+                                    @if(auth()->user()->isClient())
 
-                           <a href="{{route('university_detail',['id'=>$course->users->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+<form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
+@csrf
+<input type="text" name="universityid" value="{{ $universitycourse->id}}" hidden>
+<input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
 
+                                {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
+                                <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
 
+</form>
+                              @else
+                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                              @endif
+                              @else
+                              <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
+                              @endif
                                 </div>
                             </div>
                         </div>
