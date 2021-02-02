@@ -50,7 +50,8 @@ class ConsultantAdvertisementController extends Controller
         'user_type'=>0,
         'status'=>0,
         'time_period'=> $expire,
-        'order_id'=>$request->orderId
+        'order_id'=>$request->orderId,
+        'link'=>$request->link
     ]);
     //Important Code
     // $replacement['token'] =$request->_token;
@@ -74,10 +75,17 @@ class ConsultantAdvertisementController extends Controller
    public function update(Request $request , $id)
    {
        $advertise=Advertisement::find($id);
+    if($request->hasFile('image'))
+    {
        $profile_image = $request->image;
        $profile_image_new_name = time().$profile_image->getClientOriginalName();
        $profile_image->move(Config::get('define.image.advertisement'),$profile_image_new_name);
        $advertise->banner_image = Config::get('define.image.advertisement').'/'.$profile_image_new_name;
+    };
+
+
+
+    $advertise->link = $request->link;
     $advertise->save();
 
     return redirect()->route('consultant.advertisement')->with('success','Advertisement updated successfully');

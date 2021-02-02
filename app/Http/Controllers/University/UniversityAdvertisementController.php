@@ -46,6 +46,7 @@ $as= Advertisement::create([
      'user_type'=>1,
      'status'=>0,
      'time_period'=> $expire,
+     'link'=>$request->link,
      'order_id'=>$request->orderId
  ]);
 
@@ -66,11 +67,16 @@ $as= Advertisement::create([
     public function update(Request $request , $id)
     {
         $advertise=Advertisement::find($id);
+
+        if($request->hasFile('image'))
+        {
         $profile_image = $request->image;
         $profile_image_new_name = time().$profile_image->getClientOriginalName();
         $profile_image->move(Config::get('define.image.advertisement'),$profile_image_new_name);
         $advertise->banner_image = Config::get('define.image.advertisement').'/'.$profile_image_new_name;
-     $advertise->save();
+        }
+        $advertise->link = $request->link;
+         $advertise->save();
 
      return redirect()->route('university.advertisement')->with('success','Advertisement updated successfully');
 

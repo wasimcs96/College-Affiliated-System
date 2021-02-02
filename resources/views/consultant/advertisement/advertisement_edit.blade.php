@@ -45,17 +45,12 @@
                     <tr>
                         <th scope="row">Status</th>
                         <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
-                        <td>
+
                         <td> @if($ad->expire_date>$mytime)<div class="btn btn-success">Activated</div>@endif
                             @if($ad->expire_date<$mytime && $ad->expire_date == !null)<div class="btn btn-danger">Expired</div>@endif
                             @if($ad->expire_date == null)<div class="btn btn-warning">Pending</div>@endif</td>
 
                     </tr>
-            <tr>
-                <td>
-
-                </td>
-            </tr>
 
                 </tbody>
 
@@ -63,9 +58,20 @@
             </div>
             <form action="{{route('consultant.advertisement.update',$ad->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <label for="link">Banner Image</label>
         <input name="image" id="photo" type="file" class="dropify-fr" >
                 {{-- <input type="hidden" name="adID" value="{{$ad->id}}"> --}}
-
+                <br>
+                <div class="form-group">
+                    <label for="link">Link</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-globe"></i></span>
+                        </div>
+                        <input name="link" type="url" class="form-control" value="{{$ad->link ?? ''}}" placeholder="http://" >
+                    </div>
+                </div>
+                <br>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
             </div>
