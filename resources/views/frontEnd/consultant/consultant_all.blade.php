@@ -100,6 +100,7 @@
         </div><!-- end row -->
 
         <div class="row">
+            @if(count($consultants) > 0)
         @foreach($consultants as $consultant)
         @if($consultant->isConsultant())
             <div class="col-lg-4 responsive-column">
@@ -206,6 +207,9 @@
 
             @endif
             @endforeach
+            @else
+            <h1>No Results Found</h1>
+            @endif
         </div><!-- end row -->
 
         {{-- <div class="row">

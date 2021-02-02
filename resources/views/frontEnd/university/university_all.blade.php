@@ -10,7 +10,7 @@
                 <div class="col-lg-12">
                     <div class="search-result-content">
                         <div class="section-heading">
-                            <h2 class="sec__title text-white"> University Search Result</h2>
+                            <h2 class="sec__title text-white">University Search Result</h2>
                         </div>
                         <div class="search-fields-container margin-top-30px" style="
                         background-color: transparent; color:white;
@@ -61,7 +61,7 @@
                                         <div class="input-box">
                                             <label class="label-text" style="
                                             color: white;
-                                        ">Course Type</label>
+                                        ">University Type</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                     <select id="typeselect" name="type" class="select-contain-select">
@@ -70,9 +70,9 @@
                                                         </option>
                                                         <?php $courses = App\Models\Course::all();
                                                         $type=[
-                                                            0=>"UG",
-                                                            1=>"PG",
-                                                            2=>"Diploma"
+                                                            0=>"PRIVATE",
+                                                            1=>"GOVERMENT"
+                                                           
                                                         ];
                                                         ?>
 
@@ -88,27 +88,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text" style="
-                                            color: white;
-                                        ">Course</label>
-                                            <div class="form-group">
-                                                <div class="select-contain w-auto">
-                                                    <select class="select-contain-select" name="course_id">
-                                                        <option value="">
-                                                            Select Course
-                                                        </option>
-                                                    @foreach ($courses as $item)
-                                                    <option value="{{$item->id}}" @if(isset($course_id) && $course_id == $item->id) selected @endif>{{$item->name}}</option>
-
-                                                    @endforeach
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-3 -->
+                                   
                                    <!-- end col-lg-2 -->
 
 
@@ -143,6 +123,7 @@
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         <div class="row">
+            @if(count($universities) > 0)
             @foreach($universities as $university)
             
             @if($university->isUniversity())
@@ -268,7 +249,9 @@
             </div>
             @endif
             @endforeach
-
+            @else
+            <h1>No Results Found</h1>
+            @endif
         </div><!-- end row -->
         {{-- <div class="row">
             <div class="col-lg-12">
@@ -289,51 +272,44 @@
 <!-- ================================
     START INFO AREA
 ================================= -->
+
+@if (count($childs) > 0)
+
 <section class="info-area info-bg padding-top-90px padding-bottom-70px">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4 responsive-column">
-                <a href="{{route('contact')}}" class="icon-box icon-layout-2 d-flex">
-                    <div class="info-icon flex-shrink-0 bg-rgb text-color-2">
-                        <i class="la la-phone"></i>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">Need Help? Contact us</h4>
-                        <p class="info__desc">
-                    Need Help Contact Us
-                        </p>
-                    </div><!-- end info-content -->
-                </a><!-- end icon-box -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <a href="{{route('faq.front')}}" class="icon-box icon-layout-2 d-flex">
-                    <div class="info-icon flex-shrink-0 bg-rgb-2 text-color-3">
-                        <i class="lar la-question-circle"></i>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">FAQ</h4>
-                        <p class="info__desc">
-                            Find Answer Of your Query
-                        </p>
-                    </div><!-- end info-content -->
-                </a><!-- end icon-box -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <a href="{{route('blog_all')}}" class="icon-box icon-layout-2 d-flex">
-                    <div class="info-icon flex-shrink-0 bg-rgb-3 text-color-4">
-                        <i class="la la-blog"></i>
-                    </div><!-- end info-icon-->
-                    <div class="info-content">
-                        <h4 class="info__title">Blog</h4>
-                        <p class="info__desc">
-                    Check Out our Blogs
-                        </p>
-                    </div><!-- end info-content -->
-                </a><!-- end icon-box -->
-            </div><!-- end col-lg-4 -->
-        </div><!-- end row -->
+
+        <!-- Section: Categories -->
+        <section>
+        
+          <h5>Subcategories</h5>
+        
+          <div class="text-muted small text-uppercase mb-5" style="display: flex">
+            @foreach($childs as $child)
+            <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                @csrf
+                <input type="hidden" name="category" value="{{$child->id}}">
+                <button type="submit" style="border: none;background:none"><p style="padding: 25px" class="mb-4"><strong>{{$child->title}}</strong></p></button>
+            </form>
+            @endforeach
+           
+          </div>
+        
+        </section>
+        <!-- Section: Categories -->
+{{--  
+        <ul class="list-group">
+            @foreach($childs as $child)
+            <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                @csrf
+                <input type="hidden" name="category" value="{{$child->id}}">
+                <button type="submit" style="border: none"> <li class="list-group-item">{{$child->title}}</li></button>
+            </form>
+                @endforeach
+              </ul>  --}}
     </div><!-- end container -->
 </section><!-- end info-area -->
+
+@endif
 <!-- ================================
     END INFO AREA
 ================================= -->

@@ -36,9 +36,10 @@ class UniversityFilterController extends Controller
 
 
         $universities = [];
+        $childs=[];
         if ($sub_category != null && $sub_category != '') {
             $universitycourse = UniversityCourse::where('category_id', $sub_category)->distinct()->get(['user_id']);
-            // dd($universitycourse);
+            
             foreach ($universitycourse as $key => $univercity) {
                 $universities[$key] = $univercity->users;
             }
@@ -47,6 +48,16 @@ class UniversityFilterController extends Controller
 
             $check = Category::find($category);
             $childcheck = $check->child_category->pluck('id');
+            $childerens=$check->child_category;
+
+            if ($childcheck->count() > 0) {
+                foreach($childerens as $keys=>$child){
+                    $childs[$keys]=$child;
+
+                }
+            }
+
+
             if ($childcheck->count() > 0) {
 
                 $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get(['user_id']);
@@ -63,7 +74,7 @@ class UniversityFilterController extends Controller
         }
 
 
-        return view('frontEnd.university.university_all', compact('category'))->with('universities', $universities);
+        return view('frontEnd.university.university_all', compact('category','childs'))->with('universities', $universities);
     }
 
 
@@ -116,9 +127,6 @@ class UniversityFilterController extends Controller
 
             if ($request->countries_id != null) {
                 $query = User::where('countries_id', $request->countries_id);
-                //  dd($request->type);
-
-
 
                 if ($request->type != '' && $request->type != null) {
                     $tape = $request->type;
@@ -126,21 +134,36 @@ class UniversityFilterController extends Controller
                         $q->where('type', '=', $tape);
                     }]);
                 }
-                //  dd($query->get()->toArray());
 
-                if ($request->course_id != '' && $request->course_id != null) {
-                    $course_id = $request->course_id;
-                    $query->with(['universityCourse' => function ($q) use ($course_id) {
-                        $q->where('course_id', '=', $course_id);
-                    }]);
-                }
                 $rtd = $query->get();
-                //    dd($rtd);
+          
                 foreach ($rtd as $key => $que) {
 
 
                     if (isset($que->university)) {
-                        if ($que->university != null && $que->universityCourse != null) {
+                        if ($que->university != null) {
+                            $universities[$key] = $que;
+                        }
+                    }
+                }
+            }
+            else{
+                $tape = $request->type;
+                $query = User:: with(['university' => function ($q) use ($tape) {
+                    $q->where('type', '=', $tape);
+                }]);
+
+               
+                   
+                
+
+                $rtd = $query->get();
+          
+                foreach ($rtd as $key => $que) {
+
+
+                    if (isset($que->university)) {
+                        if ($que->university != null) {
                             $universities[$key] = $que;
                         }
                     }
@@ -170,19 +193,30 @@ class UniversityFilterController extends Controller
     {
 
         $universities = [];
-        $universityconsultants = UniversityConsultant::where('university_id', $request->univercity_id)->get();
+        if ($request->univercity_id || $request->univercity_id != '' || $request->univercity_id != null) {
+            $universityconsultants = UniversityConsultant::where('university_id', $request->univercity_id)->get();
 
-        foreach ($universityconsultants as $key => $univercity) {
+            foreach ($universityconsultants as $key => $univercity) {
 
-            $consultants = $univercity->userConsultant;
+                $consultants = $univercity->userConsultant;
 
-            if ($consultants != null) {
+                if ($consultants != null) {
 
-                $universities[$key] = $consultants;
-            } else {
-                $universities = [];
+                    $universities[$key] = $consultants;
+                } else {
+                    $universities = [];
+                }
+            }
+        } else {
+            $query = User::where('countries_id', $request->countries_id)->with(['consultant'])->get();
+
+            foreach ($query as $key => $que) {
+
+                $universities[$key] = $que;
             }
         }
+
+
 
         return view('frontEnd.consultant.consultant_all')->with('consultants', $universities);
     }
@@ -190,7 +224,7 @@ class UniversityFilterController extends Controller
     public function consultantsInnerFilter(Request $request)
     {
 
-        // dd($request->all());
+
         $consultants = [];
         if ($request->keyword != null) {
             $keyword = $request->keyword;
@@ -202,29 +236,21 @@ class UniversityFilterController extends Controller
 
             foreach ($users as $key => $user) {
                 if ($user->isConsultant()) {
-                    # code...
-
                     if ($user->consultant != null) {
                         $consultants[$key] = $user;
                     }
                 }
             }
-            // dd($consultants);
         } else {
 
 
-            $query = User::where('countries_id', $request->countries_id)->with(['consultant']);
+            $query = User::where('countries_id', $request->countries_id)->with(['consultant'])->get();
 
+            foreach ($query as $key => $que) {
 
-            $rtd = $query->get();
-            // dd($rtd->toArray());
-            foreach ($rtd as $key => $que) {
-                if ($que->consultant != null) {
-                    $consultants[$key] = $que;
-                }
+                $consultants[$key] = $que;
             }
         }
-
 
 
 
