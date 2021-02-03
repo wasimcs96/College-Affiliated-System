@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Mail;
 
 class SocialController extends Controller
 {
@@ -52,6 +53,15 @@ public function newUser($userSocial,$provider){
     ]);
    
     $user->assignRole('client');
+
+
+    // Important Code
+// $replacement['token'] =$request->_token;
+// $replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
+
+// $replacement['USER_NAME'] = $userSocial->getName();
+// $data = ['template'=>'welcome-email','hooksVars' => $replacement];
+// mail::to($userSocial->getEmail())->send(new \App\Mail\ManuMailer($data));
 
     return $user;
 }
