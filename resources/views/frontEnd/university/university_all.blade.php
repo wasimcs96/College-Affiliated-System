@@ -72,7 +72,7 @@
                                                         $type=[
                                                             0=>"PRIVATE",
                                                             1=>"GOVERMENT"
-                                                           
+
                                                         ];
                                                         ?>
 
@@ -88,7 +88,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                    <!-- end col-lg-2 -->
 
 
@@ -353,15 +353,15 @@
 ================================= -->
 
 @if (count($childs) > 0)
-
+{{--
 <section class="info-area info-bg padding-top-90px padding-bottom-70px">
     <div class="container">
 
         <!-- Section: Categories -->
         <section>
-        
+
           <h5>Subcategories</h5>
-        
+
           <div class="text-muted small text-uppercase mb-5" style="display: flex">
             @foreach($childs as $child)
             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
@@ -370,24 +370,44 @@
                 <button type="submit" style="border: none;background:none"><p style="padding: 25px" class="mb-4"><strong>{{$child->title}}</strong></p></button>
             </form>
             @endforeach
-           
-          </div>
-        
-        </section>
-        <!-- Section: Categories -->
-{{--  
-        <ul class="list-group">
-            @foreach($childs as $child)
-            <form action="{{route('university_fetch.coursewise')}}" method="POST" >
-                @csrf
-                <input type="hidden" name="category" value="{{$child->id}}">
-                <button type="submit" style="border: none"> <li class="list-group-item">{{$child->title}}</li></button>
-            </form>
-                @endforeach
-              </ul>  --}}
-    </div><!-- end container -->
-</section><!-- end info-area -->
 
+          </div>
+
+        </section>
+
+    </div><!-- end container -->
+</section><!-- end info-area --> --}}
+<section class="top_lists exams XXsnipcss_extracted_selector_selectionXX">
+    <div class="section-heading " style="
+    text-align: center;
+    padding-bottom: 17px;
+    color: aliceblue;
+    font-family: fangsong;
+">
+
+      <h5>Sub-Discipline</h5>
+    </div>
+    <div class="container-fluid">
+      <div class="col-sm-10 col-centered">
+        <div class="lists textt-centerr text-tiny">
+          <ul class="ullidd">
+            @foreach($childs as $child)
+            <li class="liidd">
+                <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                    @csrf
+                    <input type="hidden" name="category" value="{{$child->id}}">
+              <button type="submit" class="ida" >
+                {{$child->title}}
+              </button>
+            </form>
+            </li>
+            @endforeach
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 @endif
 <!-- ================================
     END INFO AREA
@@ -426,6 +446,159 @@
 </section>
 @endsection
 @section('per_page_style')
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+
+
+    /* article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+        display: block;
+    }  */
+
+    section.top_lists {
+        background: #ff790a;
+        background-image: initial;
+        background-position-x: initial;
+        background-position-y: initial;
+        background-size: initial;
+        background-repeat-x: initial;
+        background-repeat-y: initial;
+        background-attachment: initial;
+        background-origin: initial;
+        background-clip: initial;
+        background-color:#ff790a;
+    }
+
+    .col-centered {
+        margin: 0 auto!important;
+        float: none!important;
+        display: block!important;
+        margin-top: 0px !important;
+        margin-right: auto !important;
+        margin-bottom: 0px !important;
+        margin-left: auto !important;
+    }
+
+
+
+    .textt-centerr {
+        text-align: center;
+    }
+
+    .text-h1 {
+        font-size: 1.575rem;
+    }
+
+    .textt-centerr {
+        text-align: center!important;
+    }
+
+
+    .text-tiny {
+        font-size: .772rem;
+    }
+
+    dl, .ullidd {
+        margin-top: 0;
+    }
+
+     .ullidd {
+        margin-bottom: 10px;
+    }
+
+    .lists , .ullidd  {
+        padding: 0;
+        list-style: none;
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        list-style-position: initial;
+        list-style-image: initial;
+        list-style-type: none;
+    }
+
+     .liidd {
+        display: inline-block;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    .ida {
+        background: 0 0;
+        background-image: initial;
+        background-position-x: 0px;
+        background-position-y: 0px;
+        background-size: initial;
+        background-repeat-x: initial;
+        background-repeat-y: initial;
+        background-attachment: initial;
+        background-origin: initial;
+        background-clip: initial;
+        background-color: initial;
+    }
+
+    .ida {
+        /* color: #428bca; */
+        text-decoration: none;
+        text-decoration-line: none;
+        text-decoration-thickness: initial;
+        text-decoration-style: initial;
+        text-decoration-color: initial;
+    }
+
+     .ida   {
+        color: #fff;
+        font-weight: 400;
+        border: 1px solid #fff;
+        border-radius: 50px;
+        padding: 6px 12px;
+        display: block;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: rgb(255, 255, 255);
+        border-right-color: rgb(255, 255, 255);
+        border-bottom-color: rgb(255, 255, 255);
+        border-left-color: rgb(255, 255, 255);
+        border-image-source: initial;
+        border-image-slice: initial;
+        border-image-width: initial;
+        border-image-outset: initial;
+        border-image-repeat: initial;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        border-bottom-left-radius: 50px;
+        padding-top: 6px;
+        padding-right: 12px;
+        padding-bottom: 6px;
+        padding-left: 12px;
+    }
+
+    section.top_lists.exams {
+        background: #f37c1b;
+        padding-top: 36px;
+        background-image: initial;
+        background-position-x: initial;
+        background-position-y: initial;
+        background-size: initial;
+        background-repeat-x: initial;
+        background-repeat-y: initial;
+        background-attachment: initial;
+        background-origin: initial;
+        background-clip: initial;
+        background-color:  #f37c1b;
+    }
+
+
+    </style>
+
 <style>
     .la-angle-down:before {
 

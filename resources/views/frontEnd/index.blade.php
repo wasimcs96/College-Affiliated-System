@@ -456,7 +456,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-            <div class="testimonial-carousel-ad carousel-action">
+            <div class="testimonial-carousel-ad  carousel-action" data-interval="100" >
     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">

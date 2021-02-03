@@ -25,7 +25,8 @@
                             <th><b>Start Date</b></th>
                             <th><b>End Date</b></th>
                             <th><b>Purchased Date</b></th>
-                            <th><b> Status</b></th>
+                            <th><b>Link</b></th>
+                            <th><b>Status</b></th>
                             <th style="text-align: center;"><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -56,6 +57,7 @@
                                 @if(isset($rt->expire_date )){{ Carbon\Carbon::parse($rt->expire_date )->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif
                             </td>
                             <td>@if(isset($rt->created_at)){{ Carbon\Carbon::parse($rt->created_at)->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
+                            <td>   <a href="{{$rt->link}}" target="_blank" style="margin-right: 3px;" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Advertisement Link" style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a></td>
                             <td>
                                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                 {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}
@@ -65,8 +67,7 @@
                                 {{-- @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif --}}
                             </td>
                             <td style="justify-content: center;"> @if($rt->expire_date == null)
-                                <div class="row" style="width: 145px; margin-left:-3px;">
-                                    <a href="{{$rt->link}}" target="_blank" style="margin-right: 3px;" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Advertisement Link" style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                <div class="row" >
                                 <form action="{{route('admin.advertisement_manager.update')}}" method="POST" >
                                 @csrf
                                 <input type="hidden" value="{{$rt->id}}" name="rtid"> <input type="hidden" value="{{$rt->time_period}}" name="time_period">
