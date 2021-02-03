@@ -57,6 +57,7 @@
                         {{-- <td>{{$booking->userConsultant->country->countries_name ?? ''}}</td> --}}
                     </tr>
                     @foreach($university as $key=> $uni)
+                    {{-- {{ dd($university) }} --}}
                     <tr>
                         <th scope="row">My University/Course Preference-{{$key + 1}}</th>
                         <td>{{$uni->university->university_name ?? '' }}/{{$course[$key]->name ?? ''}}</td>

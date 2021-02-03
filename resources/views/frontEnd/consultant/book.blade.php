@@ -54,8 +54,27 @@
                             <li><span>Mobile:</span>{{$consultant->mobile ?? ''}}</li>
                             {{-- <li><span>Home Airport:</span>Knoxville, TN 37920, USA</li> --}}
                             <li><span>Address:</span>{{$consultant->address ?? ''}}</li>
-                            <li><span>Website:</span><a href="#">{{$consultant->consultant->website ?? ''}}</a></li>
-                            <li><span>Working Week Days:</span>{{$consultant->consultant->working_week_days ?? ''}}</li>
+                            <li><span>Website:</span><a href="{{ $consultant->consultant->website }}" style="color: blue">{{$consultant->consultant->website ?? ''}}</a></li>
+                            <?php
+                        $weekarray = Config::get('define.weekday');
+                        if(isset($consultant->consultant->working_week_days))
+                        {
+                        $setWorkingDays = explode(",", $consultant->consultant->working_week_days);
+                        }
+                        else {
+                            $setWorkingDays = [];
+                        }
+                    ?>
+                            <li>
+                                <span>Working Week Days:</span>
+                                @if(count($weekarray)>0)
+                                    @foreach($weekarray as $key => $value)
+                                        @if(in_array($key, $setWorkingDays))
+                                            {{$value}},
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </li>
                             {{-- <a href="#"> <span class="btn btn-primary" style="margin-top: 10px;">Change Consultant</span></a> --}}
                         </ul>
 
@@ -148,15 +167,11 @@ return $output;
 <tbody>
 @php
 $bannerImages = old('banner_images') ?? [];
-$inc = 0;
+$inc = 1;
 @endphp
-
-</tbody>
-<tfoot>
-
 <tr>
     <td class="text-center filetype"  data-row_id='+image_row+'>
-        <select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[][university]" disabled>
+        <select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[0][university]">
 <?php $un=$consultant->consultantUniversity?>
      @foreach($un as $uns)
 <option value="{{$uns->userUniversity->id}}"
@@ -167,10 +182,11 @@ $inc = 0;
         </select>
     </td>
     <td>
-        <select required class="form-control"  id="tl-'+image_row+'" name="banner_images[][course]">
+        <select required class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;"  id="tl-'+image_row+'" name="banner_images[0][course]">
         <?php $courses = $uns->userUniversity->universityCourse?>
+        <option selected>Choose Course</option>
         @foreach($courses as $course)
-       <option value="{{$course->course->id}}">{{$course->course->name}}</option>
+       <option value="{{$course->id}}">{{$course->title}}</option>
        @endforeach
     </select>
 </td>
@@ -180,6 +196,10 @@ $inc = 0;
 </button>
 </td>
 </tr>
+</tbody>
+<tfoot>
+
+
 </tfoot>
 </table>
 
@@ -437,7 +457,7 @@ html = '<tr id="imageBox-' + image_row + '" class="imageBox">';
 
 html += ' <td class="text-center filetype" data-row_id='+image_row+'><select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][university]"> <option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option><?php }?></select></td>';
 html += ' <td class="text-left" id="tc-'+image_row+'" >'
-html +='<select required class="form-control" id="tl-'+image_row+'" name="banner_images['+image_row+'][course]"></select>';
+html +='<select required class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="tl-'+image_row+'" name="banner_images['+image_row+'][course]"><option selected>Choose Course</option></select>';
 html +='</td>';
 
 
