@@ -1,8 +1,231 @@
 @extends('layout.master')
-@section('parentPageTitle', 'messenger')
+@section('parentPageTitle', 'Messenger')
 @section('title', 'Chat')
 
 
+@section('content')
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="body">
+                <div class="chatapp_list">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control search-bar" onkeyup="myFunction()" id="myInput" placeholder="Search...">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="icon-magnifier"></i></span>
+                        </div>
+                    </div>
+                    <div class="">
+                    <ul class="right_chat list-unstyled mb-0">
+                        <?php $auth=auth()->user()?>
+                        @foreach($users as $user)
+                        @if($auth->isAdmin() && !$user->isAdmin())
+
+                        {{-- @if() --}}
+                        <li class="online chat_list">
+                            <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
+                                <div class="media">
+                                    <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
+                                        <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                        @else
+                                        <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                        @endif</div>
+                                    <div class="media-body chat_ib" id="cs">
+                                        <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
+                                        @if($user->message != null)
+                                            @foreach($user->message as $key=>$message)
+                                                @if($key == 0)
+                                                    <h5><span class="chat_date">{{$message->created_at}}</span></h5>
+                                                    <p>{{$message->message}}</p>
+                                                @endif
+                                            @endforeach
+                                         @endif
+                                        <span class="message">online</span>
+                                        <span class="badge badge-outline status"></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        @endif
+                        @if($auth->isSubAdmin() && !$user->isSubAdmin())
+
+                        {{-- @if() --}}
+                        <li class="online chat_list">
+                            <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
+                                <div class="media">
+                                    <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
+                                        <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                        @else
+                                        <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                        @endif</div>
+                                    <div class="media-body chat_ib" id="cs">
+                                        <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
+                                        @if($user->message != null)
+                                            @foreach($user->message as $key=>$message)
+                                                @if($key == 0)
+                                                    <h5><span class="chat_date">{{$message->created_at}}</span></h5>
+                                                    <p>{{$message->message}}</p>
+                                                @endif
+                                            @endforeach
+                                         @endif
+                                        {{-- <span class="message">online</span> --}}
+                                        <span class="badge badge-outline status"></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        @endif
+                            @if($auth->isUniversity() && !$user->isUniversity())
+
+                            {{-- @if() --}}
+                            <li class="online chat_list">
+                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
+                                    <div class="media">
+                                        <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
+                                            <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                            @else
+                                            <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                            @endif</div>
+                                        <div class="media-body chat_ib" id="cs">
+                                            <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
+                                            @if($user->message != null)
+                                                @foreach($user->message as $key=>$message)
+                                                    @if($key == 0)
+                                                        <h5><span class="chat_date">{{$message->created_at}}</span></h5>
+                                                        <p>{{$message->message}}</p>
+                                                    @endif
+                                                @endforeach
+                                             @endif
+                                            <span class="message">online</span>
+                                            <span class="badge badge-outline status"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            @endif
+                            @if($auth->isConsultant() && !$user->isConsultant())
+
+                            {{-- @if() --}}
+                            <li class="online chat_list">
+                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
+                                    <div class="media">
+                                        <div> @if(isset($user->profile_image) && file_exists($user->profile_image))
+                                            <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                            @else
+                                            <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                            @endif</div>
+                                        <div class="media-body chat_ib" id="cs">
+                                            <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
+                                            @if($user->message != null)
+                                                @foreach($user->message as $key=>$message)
+                                                    @if($key == 0)
+                                                        <h5><span class="chat_date">{{$message->created_at}}</span></h5>
+                                                        <p>{{$message->message}}</p>
+                                                    @endif
+                                                @endforeach
+                                             @endif
+                                            <span class="message">online</span>
+                                            <span class="badge badge-outline status"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            @endif
+                            @if($auth->isClient() && !$user->isClient())
+
+                            {{-- @if() --}}
+                            <li class="online chat_list">
+                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
+                                    <div class="media">
+                                        <div>
+                                            @if(isset($user->profile_image) && file_exists($user->profile_image))
+                                            <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                            @else
+                                            <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                            @endif
+                                    </div>
+                                        <div class="media-body chat_ib" id="cs">
+                                            <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
+                                            @if($user->message != null)
+                                                @foreach($user->message as $key=>$message)
+                                                    @if($key == 0)
+                                                        <h5><span class="chat_date">{{$message->created_at}}</span></h5>
+                                                        <p>{{$message->message}}</p>
+                                                    @endif
+                                                @endforeach
+                                             @endif
+                                            {{-- <span class="message">online</span> --}}
+                                            <span class="badge badge-outline status"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                    </div>
+                </div>
+
+                    <div class="chatapp_body" style="margin-right: 0px;">
+                        <div class="chat-header clearfix">
+                            <div class="row clearfix">
+                                <div class="col-lg-12">
+                                    <div class="chat-about">
+                                        <h6 class="m-b-0" id="hed">Select User</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-scroll">
+                        <div class="chat-history ">
+                            <ul class="message_data msg_history" id="history">
+                                <li class="right clearfix">
+                                    @if(isset($user->profile_image) && file_exists($user->profile_image))
+                                    <img  class="user_pix" src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                    @else
+                                    <img  class="user_pix" src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                    @endif
+                                    <div class="message">
+                                        <p></p>
+                                    </div>
+                                    <span class="data_time"></span>
+                                </li>
+                                <li class="left clearfix">
+                                    @if(isset($user->profile_image) && file_exists($user->profile_image))
+                                    <img  class="user_pix" src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                    @else
+                                    <img  class="user_pix" src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                    @endif
+                                    <div class="message">
+                                    <p></p>
+                                    </div>
+                                    <span class="data_time"></span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="chat-message clearfix" id="btn">
+                            {{-- <div class="input-group mb-0" id="btn target" > --}}
+                                <form class="input-group mb-0" id="target">
+                                    <textarea type="text" row="" id="message" name="message id" class="form-control" placeholder="Enter text here..."></textarea>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <button class="btn btn-link" id="bt" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            {{-- </div> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@stop
+
+@section('page-styles')
 <style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -142,232 +365,6 @@
       overflow-y: auto;
     }
     </style>
-
-
-@section('content')
-<div class="row clearfix">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="body">
-                <div class="chatapp_list">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control search-bar" onkeyup="myFunction()" id="myInput" placeholder="Search...">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="icon-magnifier"></i></span>
-                        </div>
-                    </div>
-                    <div class="">
-                    <ul class="right_chat list-unstyled mb-0">
-                        <?php $auth=auth()->user()?>
-                        @foreach($users as $user)
-                        @if($auth->isAdmin() && !$user->isAdmin())
-
-                        {{-- @if() --}}
-                        <li class="online chat_list">
-                            <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
-                                <div class="media">
-                                    <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
-                                        <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
-                                        @else
-                                        <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
-                                        @endif</div>
-                                    <div class="media-body chat_ib" id="cs">
-                                        <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
-                                        @if($user->message != null)
-                                            @foreach($user->message as $key=>$message)
-                                                @if($key == 0)
-                                                    <h5><span class="chat_date">{{$message->created_at}}</span></h5>
-                                                    <p>{{$message->message}}</p>
-                                                @endif
-                                            @endforeach
-                                         @endif
-                                        <span class="message">online</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        @endif
-                        @if($auth->isSubAdmin() && !$user->isSubAdmin())
-
-                        {{-- @if() --}}
-                        <li class="online chat_list">
-                            <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
-                                <div class="media">
-                                    <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
-                                        <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
-                                        @else
-                                        <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
-                                        @endif</div>
-                                    <div class="media-body chat_ib" id="cs">
-                                        <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
-                                        @if($user->message != null)
-                                            @foreach($user->message as $key=>$message)
-                                                @if($key == 0)
-                                                    <h5><span class="chat_date">{{$message->created_at}}</span></h5>
-                                                    <p>{{$message->message}}</p>
-                                                @endif
-                                            @endforeach
-                                         @endif
-                                        <span class="message">online</span>
-                                        <span class="badge badge-outline status"></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        @endif
-                            @if($auth->isUniversity() && !$user->isUniversity())
-
-                            {{-- @if() --}}
-                            <li class="online chat_list">
-                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
-                                    <div class="media">
-                                        <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
-                                            <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
-                                            @else
-                                            <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
-                                            @endif</div>
-                                        <div class="media-body chat_ib" id="cs">
-                                            <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
-                                            @if($user->message != null)
-                                                @foreach($user->message as $key=>$message)
-                                                    @if($key == 0)
-                                                        <h5><span class="chat_date">{{$message->created_at}}</span></h5>
-                                                        <p>{{$message->message}}</p>
-                                                    @endif
-                                                @endforeach
-                                             @endif
-                                            <span class="message">online</span>
-                                            <span class="badge badge-outline status"></span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            @endif
-                            @if($auth->isConsultant() && !$user->isConsultant())
-
-                            {{-- @if() --}}
-                            <li class="online chat_list">
-                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
-                                    <div class="media">
-                                        <div> @if(isset($user->profile_image) && file_exists($user->profile_image))
-                                            <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
-                                            @else
-                                            <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
-                                            @endif</div>
-                                        <div class="media-body chat_ib" id="cs">
-                                            <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
-                                            @if($user->message != null)
-                                                @foreach($user->message as $key=>$message)
-                                                    @if($key == 0)
-                                                        <h5><span class="chat_date">{{$message->created_at}}</span></h5>
-                                                        <p>{{$message->message}}</p>
-                                                    @endif
-                                                @endforeach
-                                             @endif
-                                            <span class="message">online</span>
-                                            <span class="badge badge-outline status"></span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            @endif
-                            @if($auth->isClient() && !$user->isClient())
-
-                            {{-- @if() --}}
-                            <li class="online chat_list">
-                                <a href="javascript:void(0);" id="{{$user->id}}" class="javae">
-                                    <div class="media">
-                                        <div>
-                                            @if(isset($user->profile_image) && file_exists($user->profile_image))
-                                            <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
-                                            @else
-                                            <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
-                                            @endif
-                                    </div>
-                                        <div class="media-body chat_ib" id="cs">
-                                            <span class="name">{{$user->first_name}} {{$user->last_name}}</span>
-                                            @if($user->message != null)
-                                                @foreach($user->message as $key=>$message)
-                                                    @if($key == 0)
-                                                        <h5><span class="chat_date">{{$message->created_at}}</span></h5>
-                                                        <p>{{$message->message}}</p>
-                                                    @endif
-                                                @endforeach
-                                             @endif
-                                            <span class="message">online</span>
-                                            <span class="badge badge-outline status"></span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            @endif
-                        @endforeach
-                    </ul>
-                    </div>
-                </div>
-
-                    <div class="chatapp_body" style="margin-right: 0px;">
-                        <div class="chat-header clearfix">
-                            <div class="row clearfix">
-                                <div class="col-lg-12">
-                                    <div class="chat-about">
-                                        <h6 class="m-b-0" id="hed">Select User</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-scroll">
-                        <div class="chat-history ">
-                            <ul class="message_data msg_history" id="history">
-                                <li class="right clearfix">
-                                    @if(isset($user->profile_image) && file_exists($user->profile_image))
-                                    <img  class="user_pix" src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
-                                    @else
-                                    <img  class="user_pix" src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
-                                    @endif
-                                    <div class="message">
-                                        <p></p>
-                                    </div>
-                                    <span class="data_time"></span>
-                                </li>
-                                <li class="left clearfix">
-                                    @if(isset($user->profile_image) && file_exists($user->profile_image))
-                                    <img  class="user_pix" src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
-                                    @else
-                                    <img  class="user_pix" src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
-                                    @endif
-                                    <div class="message">
-                                    <p></p>
-                                    </div>
-                                    <span class="data_time"></span>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <div class="chat-message clearfix" id="btn">
-                            {{-- <div class="input-group mb-0" id="btn target" > --}}
-                                <form class="input-group mb-0" id="target">
-                                    <textarea type="text" row="" id="message" name="message id" class="form-control" placeholder="Enter text here..."></textarea>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <button class="btn btn-link" id="bt" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                                        </span>
-                                    </div>
-                                </form>
-                            {{-- </div> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@stop
-
-@section('page-styles')
-
 @stop
 
 @section('page-script')
@@ -452,7 +449,7 @@
        // var form = $(this);
        // var url = form.attr('action');
        var id = $('input[name="id"]').val();
-       
+
        var msd = $('#message').val();
        document.getElementById('history').innerHTML+=`<li class="right clearfix">
         <img class="user_pix" src="{{asset('assets/images/user.png')}}" alt="avatar">

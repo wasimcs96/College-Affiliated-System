@@ -570,6 +570,23 @@ Route::post('commission/update/{id}',[
     'uses'=>'AdminCommissionController@update',
     'as'=> 'admin.commission.update'
 ]);
+
+/* Messenger  */
+
+Route::get('messenger', [
+    'uses' => 'AdminMessengerController@index',
+    'as' => 'admin.messenger'
+]);
+
+Route::post('messenger/fetchData', [
+    'uses' => 'AdminMessengerController@fetchData',
+    'as' => 'admin.messenger.fetchdata'
+]);
+
+Route::post('messenger/sendMessage', [
+    'uses' => 'AdminMessengerController@sendMessage',
+    'as' => 'admin.messenger.sendmessage'
+]);
 });
 
 Route::get('/', function () {
