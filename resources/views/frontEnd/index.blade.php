@@ -808,7 +808,7 @@
                         </div>
                         {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
                         <div>
-                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 238px;"  loop  autoplay></lottie-player>
                         </div>
                         <h3 style="text-align: center">Get Ready to Fly</h3>
                     </div>

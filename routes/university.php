@@ -282,4 +282,9 @@ Route::get('fetch/category/course',[
     'as' => 'fetch.category.course'
 ]);
 
+Route::get('fetch/category/course/add',[
+    'uses' => 'UniversityCoursesController@fetchCategorycourse',
+    'as' => 'fetch.category.add.course'
+]);
+
 });

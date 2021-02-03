@@ -15,11 +15,21 @@
                     @csrf
                     <div class="form-group">
                         <label for="category_id">Discipline Name</label>
-                        <select name="category_id" class="form-control" required>
+                        <select  class="form-control" id="parent_category" required>
                             <option value="">--- Select  Discipline ---</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>
                             @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="category_id">Select Sub-Discipline</label>
+                        <select name="category_id" class="form-control" id="category" required>
+                            <option value="">--- Select Discipline ---</option>
+                            {{-- <option value="">--- Select  Category ---</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>
+                            @endforeach --}}
                         </select>
                     </div>
                     <div class="form-group">
@@ -52,13 +62,13 @@
                         <label>Course End Date</label>
                         <input type="date" name="end_date" class="form-control" required>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                                 Upload Media
                            <div class="body"id="nb"  >
                               <input type="file" name="image[]"class="dropify" multiple>
                            </div>
 
-                    </div>
+                    </div> --}}
                     <br>
 
 
@@ -180,5 +190,29 @@ $('#documentModal').modal('hide')
          });
       }
     });
+</script>
+<script>
+    $(document).on('change', '#parent_category', function ()
+                   {
+                        //   dt  = $(this).data("row_id");
+
+                          $.ajaxSetup({headers:
+                           {
+                               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                           }
+                           });
+                           parentid=$('#parent_category').val();
+                           console.log(parentid);
+                                 $.ajax({
+                                     url:"{{ route('fetch.category.add.course') }}",
+                                     method:"GET",
+                                     data:{parentid:parentid},
+                                     success: function(result){
+                                     $('#category').html(result);
+                                   }
+                                   });
+
+                       });
+
 </script>
 @stop

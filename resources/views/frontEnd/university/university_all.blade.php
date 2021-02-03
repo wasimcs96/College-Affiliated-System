@@ -351,7 +351,7 @@
 <!-- ================================
     START INFO AREA
 ================================= -->
-
+@if(isset($child))
 @if (count($childs) > 0)
 {{--
 <section class="info-area info-bg padding-top-90px padding-bottom-70px">
@@ -409,6 +409,8 @@
     </div>
   </section>
 @endif
+@endif
+
 <!-- ================================
     END INFO AREA
 ================================= -->
@@ -690,7 +692,8 @@
             margin-top: 0;
             opacity: 0;
         }
-    }</style>
+    }
+</style>
 @endsection
 @section('per_page_script')
 {{-- <script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
