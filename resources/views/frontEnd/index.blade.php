@@ -771,17 +771,15 @@
                     <div class="deal-list">
 
                         <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 216px;"  loop  autoplay></lottie-player>
-                        {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
                        <h3 style="text-align: center"> Hire Nearby Consultant</h3>
                     </div>
                 </div><!-- end col-lg-3 -->
                  <div class="col-lg-3 responsive-column">
                     <div class="deal-list">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            {{-- <h5 class="title"><a href="flight-single.html">Spain</a></h5>
-                            <span class="font-weight-bold font-size-18">$359.00</span> --}}
+
                         </div>
-                        {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+
                         <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
                         <h3 style="text-align: center">Choose University</h3>
                     </div>
@@ -791,10 +789,9 @@
                  <div class="col-lg-3 responsive-column">
                     <div class="deal-list">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            {{-- <h5 class="title"><a href="flight-single.html">Hawaii</a></h5>
-                            <span class="font-weight-bold font-size-18">$359.00</span> --}}
+
                         </div>
-                        {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+
                         <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
                         <h3 style="text-align: center">Verify Documents</h3>
 
@@ -803,10 +800,9 @@
                 <div class="col-lg-3 responsive-column">
                     <div class="deal-list">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            {{-- <h5 class="title"><a href="flight-single.html">Spain</a></h5>
-                            <span class="font-weight-bold font-size-18">$359.00</span> --}}
+
                         </div>
-                        {{-- <a href="flight-single.html" class="theme-btn theme-btn-small">Book</a> --}}
+
                         <div>
                         <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 238px;"  loop  autoplay></lottie-player>
                         </div>

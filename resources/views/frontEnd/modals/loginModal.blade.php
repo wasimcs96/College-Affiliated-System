@@ -3,28 +3,40 @@
 <div class="modal-popup">
     <div class="modal fade" id="loginPopupForm" tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
 
+
+            <div class="modal-content" style="background-image: url('{{asset('frontEnd/assets/images/universityall.jpg')}}'); color: #f16d01;
+            ">
                 <div class="modal-header">
                     <div>
-                        <h5 class="modal-title title" id="exampleModalLongTitle2">Login</h5>
-                        <p class="font-size-14">Hello! Welcome to your account</p>
+                        <img src="{{asset('frontEnd/assets/images/logo.png')}}" alt="logo" style="
+                        width: 198px;
+                        height: 70px;
+                    ">
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="la la-close"></span>
                     </button>
                 </div>
+                <div class="row">
 
-                <div class="modal-body">
-                    <div id="mouse-container">
-                        <div id="lottie"></div>
+            <div class="col-lg-6">
+                <div class="container">
+                <div class="modal-header">
+                    <div >
+                        <h5 class="modal-title title" id="exampleModalLongTitle2" style="color: #f16d01;">Hello! Welcome to your account</h5>
+                        {{-- <p class="font-size-14"></p> --}}
                     </div>
-                    <div id="cursor_preloader"></div>
-                    <div class="contact-form-action">
+
+                </div>
+
+                        <div class="modal-body">
+
+                    <div class="contact-form-action"  style=" padding: 19px;">
                     <form method="post" action="{{ route('login') }}">
                         @csrf
                             <div class="input-box">
-                                <label class="label-text">Email</label>
+                                <label class="label-text" style="color: #f16d01;">Email</label>
                                 <div class="form-group">
                                     <span class="la la-user form-icon"></span>
 
@@ -39,7 +51,7 @@
                                 </div>
                             </div><!-- end input-box -->
                             <div class="input-box">
-                                <label class="label-text">Password</label>
+                                <label class="label-text" style="color: #f16d01;">Password</label>
                                 <div class="form-group mb-2">
                                     <span class="la la-lock form-icon"></span>
                                 <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" id="password" placeholder="Type your password" required>
@@ -81,7 +93,72 @@
                         </form>
                     </div><!-- end contact-form-action -->
                 </div>
-            </div>
+                </div>
+        </div>
+        <div class="col-lg-6">
+            <section class="testimonial-area">
+                <div class="container">
+                  <div class="section-heading text-center" >
+                      <h2> How it works</h2>
+                      <hr>
+
+                  <div class="container">
+                      <div class="row padding-top-50px">
+                          <div class="row">
+                            <div class="col-lg-5 responsive-column" style="width: 429px;">
+                                <div class="deal-list" style="
+                                height: 219px;
+                            ">
+
+                                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 160px; height: 93px;"  loop  autoplay></lottie-player>
+                                    <h3 style="text-align: center"> Hire Nearby Consultant</h3>
+                                </div>
+                            </div><!-- end col-lg-3 -->
+
+                           <div class="col-lg-5 responsive-column">
+                              <div class="deal-list">
+                                  <div class="d-flex align-items-center justify-content-between mb-3">
+
+                                  </div>
+
+                                  <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 160px; height: 93px;"  loop  autoplay></lottie-player>
+                                  <h3 style="text-align: center">Choose University</h3>
+                              </div>
+                          </div><!-- end col-lg-3 -->
+                        </div>
+                        <div class="row">
+                           <div class="col-lg-5 responsive-column" style="width: 416px;">
+                              <div class="deal-list"  style=" height: 219px;">
+                                  <div class="d-flex align-items-center justify-content-between mb-3">
+
+                                  </div>
+
+                                  <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 160px;height: 93px;"  loop  autoplay></lottie-player>
+                                  <h3 style="text-align: center">Verify Documents</h3>
+
+                              </div>
+                          </div><!-- end col-lg-3 -->
+                          <div class="col-lg-5 responsive-column" style="width: 416px;">
+                              <div class="deal-list">
+                                  <div class="d-flex align-items-center justify-content-between mb-3">
+
+                                  </div>
+
+                                  <div>
+                                  <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 160px;height: 93px;"  loop  autoplay></lottie-player>
+                                  </div>
+                                  <h3 style="text-align: center">Get Ready to Fly</h3>
+                              </div>
+                          </div><!-- end col-lg-3 -->
+                        </div>
+                      </div><!-- end row -->
+                  </div><!-- end container -->
+                  </div><!-- end row -->
+              </div><!-- end container -->
+          </section>
+        </div>
+        </div>
+        </div>
         </div>
     </div>
 </div><!-- end modal-popup -->
