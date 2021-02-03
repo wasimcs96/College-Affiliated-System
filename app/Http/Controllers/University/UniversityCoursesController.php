@@ -213,4 +213,24 @@ class UniversityCoursesController extends Controller
          echo $output;
       }
     }
+
+    function fetchCategorycourse(Request $request)
+    {
+        // dd($request->all());
+        $categories=Category::where('parent_id',$request->parentid)->get();
+        if(isset($categories))
+        {
+        $output='<option value="" selected>Select Discipline</option>';
+        foreach($categories as $row)
+        {
+         $output .= '<option value="'.$row->id.'">'.$row->title.'</option>';
+        }
+        echo $output;
+      }
+      else
+      {
+         $output='<option value="" selected>No Data Available</option>';
+         echo $output;
+      }
+    }
 }

@@ -29,13 +29,95 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset( $universitycourse->profile_image) && file_exists( $universitycourse->profile_image))
-                        <img
-                        style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                        src="{{asset( $universitycourse->profile_image)}}" alt="">
-                            @else
-                            <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                            @endif</div>
+                    <div style="position: absolute;bottom: 8px;left: 16px;" >
+                        {{-- <section class="hero-wrapper hero-wrapper5">
+                         <div class=" pb-0 ">
+                            <div class="container">
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="search-fields-container search-fields-container-shape">
+                                            <div class="search-fields-container-inner">
+                                                <div class="contact-form-action">
+                                                    <form action="#" class="row">
+                                                        <div class="col-lg-3 col-sm-6 pr-0">
+                                                            <div class="input-box">
+                                                                <label class="label-text">Where would like to go?</label>
+                                                                <div class="form-group">
+                                                                    <div class="select-contain select-contain-shadow w-auto">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- end col-lg-3 -->
+                                                        <div class="col-lg-3 col-sm-6 pr-0">
+                                                            <div class="input-box">
+                                                                <label class="label-text">Departs as early as</label>
+                                                                <div class="form-group">
+                                                                    <span class="la la-calendar form-icon"></span>
+                                                                    <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- end col-lg-3 -->
+                                                        <div class="col-lg-3 col-sm-6 pr-0">
+                                                            <div class="input-box">
+                                                                <label class="label-text">Departs as late as</label>
+                                                                <div class="form-group">
+                                                                    <span class="la la-calendar form-icon"></span>
+                                                                    <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- end col-lg-3 -->
+                                                        <div class="col-lg-3 col-sm-6">
+                                                            <div class="input-box">
+                                                                <label class="label-text">Travelers in the cabin</label>
+                                                                <div class="form-group">
+                                                                    <div class="dropdown dropdown-contain">
+                                                                        <a class="dropdown-toggle dropdown-btn" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                                                                            <span>Travelers <span class="qtyTotal guestTotal_8">0</span></span>
+                                                                        </a>
+                                                                        <div class="dropdown-menu dropdown-menu-wrap">
+                                                                            <div class="dropdown-item">
+                                                                                <div class="qty-box d-flex align-items-center justify-content-between">
+                                                                                    <label>Adults</label>
+                                                                                    <div class="qtyBtn d-flex align-items-center">
+                                                                                        <input type="text" name="qtyInput" value="0">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="dropdown-item">
+                                                                                <div class="qty-box d-flex align-items-center justify-content-between">
+                                                                                    <label>Children</label>
+                                                                                    <div class="qtyBtn d-flex align-items-center">
+                                                                                        <input type="text" name="qtyInput" value="0">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="dropdown-item">
+                                                                                <div class="qty-box d-flex align-items-center justify-content-between">
+                                                                                    <label>Infants</label>
+                                                                                    <div class="qtyBtn d-flex align-items-center">
+                                                                                        <input type="text" name="qtyInput" value="0">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><!-- end dropdown -->
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- end col-lg-3 -->
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div><!-- end search-fields-container -->
+                                    </div>
+                                </div><!-- end row -->
+                            </div><!-- end container -->
+
+                        </div>
+                    </section> --}}
+                </div>
                     <div class="breadcrumb-btn">
                         <div class="btn-box"  style="
                         position: absolute;
@@ -43,6 +125,7 @@
                         left: 151px;
                         margin-bottom: 8px;
                     ">
+                            {{-- <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a> --}}
                  </div>
 
 
@@ -140,7 +223,51 @@
                                     </div><!-- end col-lg-6 -->
                                 </div><!-- end row -->
                             </div><!-- end single-content-item -->
+                            <div class="single-content-item padding-bottom-30px">
+                                <h3 class="title font-size-20">University  Detail <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" style="
+                                    float: right;
+                                " download class="buttonDownload">Brochure</a> </h3>
 
+                                <div class="row pt-4">
+                                    <div class="col-lg-6 responsive-column">
+                                        <ul class="list-items list-items-2">
+
+                                            <li><span>University Name:</span>{{$universitycourse->users->university->university_name ?? ''}}</li>
+
+                                            <li><span>University Type:</span> @if(isset(  $universitycourse->users->university->type)&&(  $universitycourse->users->university->type == 0))
+                                                Private
+                                                @else Govenment</p>
+                                                @endif</li>
+                                                <li><span>Average Fees:</span>{{$universitycourse->users->university->average_fees ?? ''}}</li>
+
+                                            {{-- <li><span>Admission Opens:</span>19/09/20</li>
+                                            <li><span>Campus:</span>93,558 grt</li> --}}
+
+                                            {{-- <li><span>Opening time:</span>105 ft</li>
+                                            <li><span>Closeing time:</span>28 ft</li>
+                                            <li><span>brachs</span>22.5 knots</li> --}}
+                                        </ul><!-- end list-items -->
+                                    </div><!-- end col-lg-6 -->
+                                   <div class="col-lg-6 responsive-column">
+                                        <ul class="list-items list-items-2">
+
+                                            <li><span>Country:</span>@if(isset($universitycourse->users->countries_id))
+                                                <?php $country = DB::table('countries')->where('countries_id',$universitycourse->users->countries_id)->get()->first();?>
+                                                {{$country->countries_name ?? ''}} @else N/A @endif
+                                                </li>
+                                            <li><span>City:</span>{{$universitycourse->users->city ?? ''}}</li>
+                                            {{-- <li><span>Consultants:</span>{{$universitycourse->users->university->universityConsultant->count() ?? ''}}</li> --}}
+                                            <li><span>Website:</span><a  style="color:blue;" target="_blank" href="{{$universitycourse->users->university->website ?? ''}}" URL>Visit site</a></li>
+                                            {{-- <li><span>Total Staff:</span>9,078 crew</li>
+                                            <li><span>Counsellor:</span>Italian</li>
+                                            <li><span>Hostels:</span>International</li>
+                                            <li><span>affiliated collages:</span>International</li>
+                                            <li><span>Registry:</span>Panama</li> --}}
+
+                                        </ul><!-- end list-items -->
+                                    </div><!-- end col-lg-6 -->
+                                </div><!-- end row -->
+                            </div><!-- end single-content-item -->
                         </div><!-- end description -->
                         <div id="itinerary" class="page-scroll">
                             <div class="section-block margin-top-40px"></div>
@@ -208,7 +335,7 @@
             {{-- {{dd($coursecategory)}} --}}
 
                         <div class="sidebar-widget single-content-widget">
-                            <h3 class="title stroke-shape">More Courses from same Discipline</h3>
+                            <h3 class="title stroke-shape">Related Courses</h3>
                             <!-- Example split danger button -->
                             <div class="sidebar-list" style="
 
@@ -216,14 +343,12 @@
                             overflow: scroll;">
                                 <ul class="list-items">
             @foreach( $coursecategory as $category)
-            {{-- {{dd($category->title)}} --}}
-            {{-- @if($consultant->userConsultant->Premium_expire_date > $mytime) --}}
 
                                     <li><div class="author-content d-flex">
                                         {{-- <div class="author-img">
-                                            <a href="#">@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
+                                            <a href="#">@if(isset($category->courseMedia->media) && file_exists($category->courseMedia->media))
                                                 <img style=" width: 70px;
-                                                height: 70px;" src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
+                                                height: 70px;" src="{{asset($category->courseMedia->media)}}" alt="">
                                                     @else
                                                     <img style=" width: 70px; height: 70px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif</a>
@@ -239,7 +364,7 @@
                                                 {{-- </p> --}}
                                             </div>
                                             <div>
-                                          <a href="{{route('course_detail',['id'=> $category->id])}}" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Detail<i class="las la-angle-double-right"></i><a>
+                                          <a href="{{route('course_detail',['id'=> $category->id])}}" class="theme-btn theme-btn-small mt-2" ><span style="color: white;">Detail<i class="las la-angle-double-right"></i></span><a>
 
 
                                             </div>
@@ -307,7 +432,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading text-center">
-                    <h2 class="sec__title line-height-55">Select  Consultant</h2>
+                    <h2 class="sec__title line-height-55">More Universities</h2>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
@@ -315,29 +440,29 @@
             <div class="col-lg-12">
                 <div class="hotel-card-wrap">
                     <div class="hotel-card-carousel-2 carousel-action">
-                        @if (isset( $universitycourse->universityConsultant))
-                        <?php $consultants= $universitycourse->universityConsultant; ?>
+                        @if (isset($universities))
 
-                        @foreach($consultants as $consultant)
+                        @foreach($universities as $courseuniversity)
+                        {{-- {{dd($courseuniversity->id)}} --}}
                         {{-- @if($consultant->isConsultant()) --}}
                         <div class="card-item car-card border">
                             <div class="card-img" style="text-align: center; height:185px;">
 
-                                <a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}" class="d-block">
-                                    @if(isset($consultant->userConsultant->consultant->cover_image) && file_exists($consultant->userConsultant->consultant->cover_image))
+                                <a href="{{route('university_detail',['id' => $courseuniversity->id])}}" class="d-block">
+                                    @if(isset($courseuniversity->university->cover_image) && file_exists($courseuniversity->university->cover_image))
                                                         <img
                                                         style=" width: 368px;
                                                         height: 245px;"
-                                                        src="{{asset($consultant->userConsultant->consultant->cover_image)}}" alt="">
+                                                        src="{{asset($courseuniversity->university->cover_image)}}" alt="">
                                                             @else
                                                             <img     style=" width: 368px;
                                                             height: 245px;" src="{{asset('frontEnd/assets/images/img21.jpg')}}" >
                                                             @endif
                                 </a>
-                                <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
+                                <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($courseuniversity->profile_image) && file_exists($courseuniversity->profile_image))
                                     <img
                                     style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                    src="{{asset($consultant->userConsultant->profile_image)}}" alt="">
+                                    src="{{asset($courseuniversity->profile_image)}}" alt="">
                                         @else
                                         <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                         @endif</div>
@@ -347,12 +472,12 @@
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}">{{$consultant->userConsultant->first_name}}{{$consultant->userConsultant->lasts_name}}</a></h3>
-                                <p class="card-meta">{{$consultant->city ?? ''}}</p>
+                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $courseuniversity->id])}}">{{$courseuniversity->university->university_name}}</a></h3>
+                                <p class="card-meta">{{$courseuniversity->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>
 
-                                                    <span>@if($consultant->userConsultant->rating == 3 ?? '' )
+                                                    <span>@if($courseuniversity->rating == 3 ?? '' )
                                                             <span class="ratings ">
                                                                 <i class="la la-star"></i>
                                                                 <i class="la la-star"></i>
@@ -360,7 +485,7 @@
                                                                 <i class="la la-star-o"></i>
                                                                 <i class="la la-star-o"></i>
                                                             </span>
-                                                    @elseif($consultant->userConsultant->rating == 4 ?? '' )
+                                                    @elseif($courseuniversity->rating == 4 ?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -368,7 +493,7 @@
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @elseif($consultant->userConsultant->rating == 5 ?? '' )
+                                                    @elseif($courseuniversity->rating == 5 ?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -376,7 +501,7 @@
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
                                                     </span>
-                                                    @elseif($consultant->userConsultant->rating == 1?? '' )
+                                                    @elseif($courseuniversity->rating == 1?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star-o"></i>
@@ -384,7 +509,7 @@
                                                         <i class="la la-star-o"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @elseif($consultant->userConsultant->rating == 2 ?? '' )
+                                                    @elseif($courseuniversity->rating == 2 ?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -392,47 +517,33 @@
                                                         <i class="la la-star-o"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($consultant->userConsultant->rating == null) - @else{{$consultant->userConsultant->rating ?? ''}}/5 @endif</span>
+                                                    @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($courseuniversity->rating == null) - @else{{$courseuniversity->rating ?? ''}}/5 @endif</span>
 
                                             </div>
                                             <div class="card-attributes">
                                                 <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Since"><i class="las la-university"></i><span>   @if(isset($consultant->created_at))
-                                                        {{$consultant->created_at->Format("Y")}}
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Since"><i class="las la-university"></i><span>   @if(isset($courseuniversity->created_at))
+                                                        {{$courseuniversity->created_at->Format("Y")}}
                                                         @else N/A @endif</span></li>
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span>
-                                                        @if(isset($consultant->userConsultant->consultantBooking))
-                                                        {{$consultant->userConsultant->consultantBooking->count()}}@else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>   @if(isset($consultant->userConsultant->consultantUniversity))
-                                                        {{$consultant->userConsultant->consultantUniversity->count()}}
+                                                        @if(isset($courseuniversity->userConsultant->consultantBooking))
+                                                        {{$courseuniversity->userConsultant->consultantBooking->count()}}@else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>   @if(isset($courseuniversity->userConsultant->consultantUniversity))
+                                                        {{$courseuniversity->userConsultant->consultantUniversity->count()}}
                                                         @else N/A @endif</span></li>
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>45</span></li>
                                                 </ul>
                                             </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
-                                        <span class="price__text">City :</span>
-                                        <span class="price__num">{{$consultant->userConsultant->city}}</span>
+                                        <span class="price__text">Average Fees :</span>
+                                        <span class="price__num">{{$courseuniversity->university->average_fees}}</span>
                                         {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                     </p>
-                                    @if(auth()->user())
-                                    @if(auth()->user()->isClient())
 
-<form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
-@csrf
-<input type="text" name="universityid" value="{{ $universitycourse->id}}" hidden>
-<input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
+                           <a href="{{route('university_detail',['id'=>$courseuniversity->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
 
-                                {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
-                                <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
 
-</form>
-                              @else
-                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
-                              @endif
-                              @else
-                              <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
-                              @endif
                                 </div>
                             </div>
                         </div>
@@ -452,7 +563,7 @@
 <!-- ================================
     START CTA AREA
 ================================= -->
-<section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
+{{-- <section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7">
@@ -479,7 +590,7 @@
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section><!-- end cta-area -->
+</section><!-- end cta-area --> --}}
 <!-- ================================
     END CTA AREA
 ================================= -->
@@ -496,98 +607,7 @@
 <div id="back-to-top">
     <i class="la la-angle-up" title="Go top"></i>
 </div>
-                        {{-- ####################################################ERROR###################### --}}
 
-<div class="modal fade" id="mdlwait" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-body" style="
-        text-align:center;
-        padding: 0px;
-        ">
-            <div style="
-            padding: 0px;
-            background-color: white;
-        ">
-            <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/wait.png')}}">
-            </div>
-
-            <div style="
-            background-color: #52b1b1;
-            color: #585550;
-            font-family: sans-serif;
-        ">
-                <h1 style=" margin: 0px;
-                font-family: sans-serif;
-                padding: 18px;
-                color: #323435;"> Wait  ! </h1>
-
-                <h4 style="color: dimgrey;margin: 0px;font-size: large;">Your Request is in Waiting. Have patience</h4>
-            </div>
-        </div>
-        <div class="modal-footer"  style="
-        padding: 0px;
-        border: 0px;
-        justify-content: center;
-        background-color: #52b1b1;
-    ">
-          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-          {{-- <button type= class="btn btn-primary">Submit</button> --}}
-          <a href="{{route('consultant.dashboard')}}"  style=" border-radius: 35px;font-weight: 500; font-family: sans-serif;margin: 11px; margin-top: 30px;  background-color: white; border-color:white; " class="btn btn-warning" id="add_document3">Close</a>
-        </div>
-        </div>
-       </div>
-</div>
-{{-- ####################################################ERROR###################### --}}
-                        <div class="modal fade" id="mdlup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-
-                                <div class="modal-body" style="
-                                text-align:center;
-                                padding: 0px;
-                                ">
-                                    <div style="
-                                    padding: 0px;
-                                    background-color: #5890ff;
-                                ">
-                                    <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/checkmark.png')}}">
-                                    </div>
-
-                                    <div style="
-                                    text-align:center;
-                                    background-color: white;
-                                    color: black;
-                                    ">
-                                        <h3 style="
-                                        margin: 0px;
-                                        font-family: sans-serif;
-                                        padding: 18px;
-                                        color: #323435;
-                                    ">Your Request have been sent </h3>
-                                         <h4 style="
-                                        color: dimgrey;
-                                         margin: 0px;
-                                         font-size: large;
-                                         "
-                                     >Have patience Wait for Respond</h4>
-                                    </div>
-                                </div>
-                                <div class="modal-footer" style="
-                                padding: 6px;
-                                background-color: white;
-                                border: 0px;
-                                justify-content: center;
-                            ">
-                                  {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-                                  {{-- <button type= class="btn btn-primary">Submit</button> --}}
-                                  <a href="{{route('consultant.dashboard')}}" class="btn btn-primary" style=" border-radius: 35px;font-weight: 500; font-family: sans-serif;margin: 11px; margin-top: 30px;" id="add_document3">Close</a>
-                                </div>
-                                </div>
-                               </div>
-                        </div>
-                        {{-- ############################################## MODELLLLLLLLL END --}}
 @endsection
 @section('per_page_style')
 <style>

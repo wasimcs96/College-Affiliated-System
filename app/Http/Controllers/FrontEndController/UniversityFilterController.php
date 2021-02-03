@@ -39,7 +39,7 @@ class UniversityFilterController extends Controller
         $childs=[];
         if ($sub_category != null && $sub_category != '') {
             $universitycourse = UniversityCourse::where('category_id', $sub_category)->distinct()->get(['user_id']);
-            
+
             foreach ($universitycourse as $key => $univercity) {
                 $universities[$key] = $univercity->users;
             }
@@ -136,7 +136,7 @@ class UniversityFilterController extends Controller
                 }
 
                 $rtd = $query->get();
-          
+
                 foreach ($rtd as $key => $que) {
 
 
@@ -153,12 +153,12 @@ class UniversityFilterController extends Controller
                     $q->where('type', '=', $tape);
                 }]);
 
-               
-                   
-                
+
+
+
 
                 $rtd = $query->get();
-          
+
                 foreach ($rtd as $key => $que) {
 
 

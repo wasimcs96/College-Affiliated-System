@@ -79,7 +79,7 @@
                             <button type="submit" class="btn btn-primary btn-block">
                                 {{ __('Register') }}
                             </button>
-                            Already Member? <a href="javascript:void(0);" id="loginalready" data-toggle="modal" data-target="#loginPopupForm">Login</a>
+                            Already Member? <a href="#loginPopupForm" id="loginalready" data-toggle="modal" data-dismiss="modal">Login</a>
                         </div>
                     </div>
                 </form>
