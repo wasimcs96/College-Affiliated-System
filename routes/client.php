@@ -97,5 +97,21 @@ Route::get('bookings/show/{id}', [
     'as' => 'client.booking.show'
 ]);
 
+/* Messenger  */
+
+Route::get('messenger', [
+    'uses' => 'ClientMessengerController@index',
+    'as' => 'client.messenger'
+]);
+
+Route::post('messenger/fetchData', [
+    'uses' => 'ClientMessengerController@fetchData',
+    'as' => 'client.messenger.fetchdata'
+]);
+
+Route::post('messenger/sendMessage', [
+    'uses' => 'ClientMessengerController@sendMessage',
+    'as' => 'client.messenger.sendmessage'
+]);
 
 });

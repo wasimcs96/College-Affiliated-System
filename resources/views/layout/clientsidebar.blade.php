@@ -37,7 +37,7 @@
                 <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('client.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
                 <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('client.bookings')}}"><i class="icon-list"></i><span>My Booking</span></a></li>
                 <li class="{{ Request::segment(2) == 'applications' ? 'active' : null }}"><a href="{{route('client.applications')}}"><i class="icon-notebook"></i><span>My Applications</span></a></li>
-                <li class="{{ Request::segment(2) == 'feedback' ? 'active ' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Chat and Feedback</span></a></li>
+                <li class="{{ Request::segment(2) == 'messenger' ? 'active ' : null }}"><a href="{{route('client.messenger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
                 <li class="{{ Request::segment(2) == 'logout' ? 'active' : null }}"><a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
