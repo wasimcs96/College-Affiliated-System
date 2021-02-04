@@ -568,13 +568,5 @@ Route::post('commission/update/{id}',[
 ]);
 });
 
-Route::get('/', function () {
-    return view('frontEnd.index');
-})->name('front');
-
-// Route::post('/',[
-//     'uses'=>'FrontEndController@index',
-//     'as'=>'front'
-// ]);
 
 

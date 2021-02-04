@@ -581,4 +581,41 @@ Route::get('/', function () {
 //     'as'=>'front'
 // ]);
 
+/* Loan Manager */
+
+Route::get('loan', [
+    'uses' => 'AdminLoanController@index',
+    'as' => 'admin.general.loan'
+]);
+
+Route::get('loan/add', [
+    'uses' => 'AdminLoanController@create',
+    'as' => 'admin.loan.create'
+]);
+
+Route::post('loan/store', [
+    'uses' => 'AdminLoanController@store',
+    'as' => 'admin.loan.store'
+]);
+
+Route::get('loan/show/{id}', [
+    'uses' => 'AdminLoanController@show',
+    'as' => 'admin.loan.show'
+]);
+
+Route::post('loan/update/{id}', [
+    'uses' => 'AdminLoanController@update',
+    'as' => 'admin.loan.update'
+]);
+
+Route::get('loan/edit/{id}', [
+    'uses' => 'AdminLoanController@edit',
+    'as' => 'admin.loan.edit'
+]);
+
+Route::get('loan/delete/{id}', [
+    'uses' => 'AdminLoanController@destroy',
+    'as' => 'admin.loan.delete'
+]);
+
 
