@@ -459,3 +459,8 @@ Route::post('advertisement/click/count',[
     'uses'=>'FrontEndController\AdvertisementFrontController@advertisementCount',
     'as'=>'front.advertisement.click.count'
 ]);
+
+Route::get('/front/loan', [
+    'uses' => 'FrontEndController\LoanFrontController@index',
+    'as' => 'front.loan'
+]);

@@ -118,9 +118,11 @@ a:hover{
                                             <a href="#">  <i class="las la-chevron-right"></i> Educational Loan Scheme</a><a href="#"><i class="las la-chevron-right"></i>  Application Form</a>
                                              </li>
                                              <br>
-                                </ol>
+                            </ol>
 
                         </div>
+
+
                         <div class="section-block"></div>
                         <div class="post-navigation d-flex justify-content-between py-4">
                            <p><span style="color: red"><b>Disclaimer:</b></span>Since the rules, regulations, eligibility conditions, repayments and interests rates etc are revised by the banks from time to time in keeping pace with the changing capital market conditions, students and parents are advised to thoroughly check the terms and conditions of educational loan scheme on offer at the time of application.</p>
@@ -184,7 +186,7 @@ a:hover{
                                                  <span class="ml-2">305 Reviews</span>
                                             </span>
                                             <div>
-                                                <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                {{-- <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a> --}}
                                             </div>
                                     </div>
                                 </div></li>
@@ -204,7 +206,7 @@ a:hover{
                                                  <span class="ml-2">305 Reviews</span>
                                             </span>
                                             <div>
-                                                <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                {{-- <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a> --}}
                                             </div>
                                     </div>
                                 </div></li>
@@ -224,7 +226,7 @@ a:hover{
                                                  <span class="ml-2">305 Reviews</span>
                                             </span>
                                             <div>
-                                                <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                {{-- <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a> --}}
                                             </div>
                                     </div>
                                 </div></li>
@@ -244,7 +246,7 @@ a:hover{
                                                  <span class="ml-2">305 Reviews</span>
                                             </span>
                                             <div>
-                                                <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a>
+                                                {{-- <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a> --}}
                                             </div>
                                     </div>
                                 </div></li>
