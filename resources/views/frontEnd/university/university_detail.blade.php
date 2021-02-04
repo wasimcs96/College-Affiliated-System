@@ -308,7 +308,8 @@
                                </div>
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
-                        </div><!-- end itinerary -->
+                        </div>
+                        <!-- end itinerary -->
 
                         <!-- end reviews -->
                         <!-- end review-box -->

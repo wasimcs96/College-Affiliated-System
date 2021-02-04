@@ -147,10 +147,6 @@ Route::get('blog_detail',function(){
     return view('frontEnd.blog.blog_detail');
 })->name('blog_detail');
 
-// ######## loan route
-Route::get('loan',function(){
-    return view('frontEnd.loan.loan');
-})->name('loan');
 
 // about and contact
 Route::get('about', function(){
@@ -460,7 +456,12 @@ Route::post('advertisement/click/count',[
     'as'=>'front.advertisement.click.count'
 ]);
 
-Route::get('/front/loan', [
+Route::get('loan/detail', [
     'uses' => 'FrontEndController\LoanFrontController@index',
-    'as' => 'front.loan'
+    'as' => 'loan'
+]);
+
+Route::post('loan/enquiry/submit', [
+    'uses' => 'FrontEndController\LoanFrontController@loanEnquiry',
+    'as' => 'loan.enquiry.submit'
 ]);

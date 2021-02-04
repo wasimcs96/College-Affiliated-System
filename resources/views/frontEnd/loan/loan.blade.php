@@ -1,13 +1,15 @@
 @extends('frontEnd.layout.master')
 @section('per_page_style')
 <style>
-a{
-    color:red;
-    fo
-}
-a:hover{
-    color:black;
-}
+    a {
+        color: red;
+        fo
+    }
+
+    a:hover {
+        color: black;
+    }
+
 </style>
 @endsection
 @section('content')
@@ -39,7 +41,9 @@ a:hover{
         </div><!-- end container -->
     </div><!-- end breadcrumb-wrap -->
     <div class="bread-svg-box">
-        <svg class="bread-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><polygon points="100 0 50 10 0 0 0 10 100 10"></polygon></svg>
+        <svg class="bread-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+            <polygon points="100 0 50 10 0 0 0 10 100 10"></polygon>
+        </svg>
     </div><!-- end bread-svg -->
 </section><!-- end breadcrumb-area -->
 <!-- ================================
@@ -52,8 +56,8 @@ a:hover{
 <section class="card-area section--padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
-                <div class="card-item blog-card blog-card-layout-2 blog-single-card mb-5">
+            <div class="col-lg-12">
+                <div class="card-item blog-card blog-card-layout-2 blog-single-card mb-5" style="padding: 35px;">
                     <div class="card-img before-none">
                         {{-- <img src="{{asset('frontEnd/assets/images/img20.jpg')}}" alt="blog-img"> --}}
                     </div>
@@ -73,59 +77,102 @@ a:hover{
                             <span class="post__time"><a href="#" class="text-gray">202 Likes</a></span>
                         </p>
                         <div class="section-block"></div>
-                        <p class="card-text py-3">Vidya Lakshmi is a first of its kind portal for students seeking Education Loan. This portal has been developed under the guidance of Department of Financial Services, (Ministry of Finance) , Department of Higher Education (Ministry of Human Resource Development) and Indian Banks Association (IBA).The portal has been developed and being maintained by NSDL e-Governance Infrastructure Limited. Students can view, apply and track the education loan applications to banks anytime, anywhere by accessing the portal. The portal also provides linkages to National Scholarship Portal. Click Here to Apply for an Educational Loan</p>
-                        <p class="card-text pb-3">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper pretium tortor</p>
+                        <p class="card-text py-3">Vidya Lakshmi is a first of its kind portal for students seeking
+                            Education Loan. This portal has been developed under the guidance of Department of Financial
+                            Services, (Ministry of Finance) , Department of Higher Education (Ministry of Human Resource
+                            Development) and Indian Banks Association (IBA).The portal has been developed and being
+                            maintained by NSDL e-Governance Infrastructure Limited. Students can view, apply and track
+                            the education loan applications to banks anytime, anywhere by accessing the portal. The
+                            portal also provides linkages to National Scholarship Portal. Click Here to Apply for an
+                            Educational Loan</p>
+                        <p class="card-text pb-3">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet
+                            felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper
+                            pretium tortor</p>
                         <div class="photo-block-gallery">
                             <h3 class="title pb-2">Tax Benefits</h3>
-                            <p class="card-text pb-4"><b>Repayment of an education loan is deductible under section 80E of the Income Tax Act. The yearly limit for deduction is Rs. 40,000 (for both the principal and the interest). Only loans taken for higher education - full time studies in any graduate or post-graduate, professional, and pure and applied science courses - may claim deduction. The deduction will be available for a maximum of eight years starting from the day you start repaying.</b></p>
-                            Equitable Access to quality higher education has been a concern of the University Grants Commission. To this purpose the Commission, besides encouraging colleges and universities to provide for liberal financial support to the meritorious but needy students, has also been instrumental in educational loan scheme. The Reserve Bank of India (RBI) has issued guidelines in this regard to all commercial banks. A large number of banks have already launched educational loan schemes. Provided below are links to the respective website of individual banks offering such facilities.
+                            <p class="card-text pb-4"><b>Repayment of an education loan is deductible under section 80E
+                                    of the Income Tax Act. The yearly limit for deduction is Rs. 40,000 (for both the
+                                    principal and the interest). Only loans taken for higher education - full time
+                                    studies in any graduate or post-graduate, professional, and pure and applied science
+                                    courses - may claim deduction. The deduction will be available for a maximum of
+                                    eight years starting from the day you start repaying.</b></p>
+                            Equitable Access to quality higher education has been a concern of the University Grants
+                            Commission. To this purpose the Commission, besides encouraging colleges and universities to
+                            provide for liberal financial support to the meritorious but needy students, has also been
+                            instrumental in educational loan scheme. The Reserve Bank of India (RBI) has issued
+                            guidelines in this regard to all commercial banks. A large number of banks have already
+                            launched educational loan schemes. Provided below are links to the respective website of
+                            individual banks offering such facilities.
 
                         </div>
 
 
 
-                        <div class="post-tag-wrap d-flex align-items-center justify-content-between py-4" >
-                            <ol>
-                                <li><a href="#"><b> Allahabad Bank</b></a><br>
-                                    <a href="#">  <i class="las la-chevron-right"></i> Educational Loan Scheme</a><a href="#"><i class="las la-chevron-right"></i>  Application Form</a>
-                                     </li>
-                                     <br>
-                                         <li><a href="#"><b> Allahabad Bank</b></a><br>
-                                          <a href="#">  <i class="las la-chevron-right"></i> Educational Loan Scheme</a><a href="#"><i class="las la-chevron-right"></i>  Application Form</a>
-                                           </li>
-                                           <br>
-                                           <li><a href="#"><b> Allahabad Bank</b></a><br>
-                                            <a href="#">  <i class="las la-chevron-right"></i> Educational Loan Scheme</a><a href="#"><i class="las la-chevron-right"></i>  Application Form</a>
-                                             </li>
-                                             <br>
-                                             <li><a href="#"><b> Allahabad Bank</b></a><br>
-                                                <a href="#">  <i class="las la-chevron-right"></i> Educational Loan Scheme</a><a href="#"><i class="las la-chevron-right"></i>  Application Form</a>
-                                                 </li>
-                                                 <br>
-                                                 <li><a href="#"><b> Allahabad Bank</b></a><br>
-                                                    <a href="#">  <i class="las la-chevron-right"></i> Educational Loan Scheme</a><a href="#"><i class="las la-chevron-right"></i>  Application Form</a>
-                                                     </li>
-                                                     <br>
-                                                     <li><a href="#"><b> Allahabad Bank</b></a><br>
-                                                        <a href="#">  <i class="las la-chevron-right"></i> Educational Loan Scheme</a><a href="#"><i class="las la-chevron-right"></i>  Application Form</a>
-                                                         </li>
-                                                         <br>
-                                                         <li><a href="#"><b> Allahabad Bank</b></a><br>
-                                          <a href="#">  <i class="las la-chevron-right"></i> Educational Loan Scheme</a><a href="#"><i class="las la-chevron-right"></i>  Application Form</a>
-                                           </li>
-                                           <br>
-                                           <li><a href="#"><b> Allahabad Bank</b></a><br>
-                                            <a href="#">  <i class="las la-chevron-right"></i> Educational Loan Scheme</a><a href="#"><i class="las la-chevron-right"></i>  Application Form</a>
-                                             </li>
-                                             <br>
-                            </ol>
+                        <div class="post-tag-wrap  align-items-center justify-content-between py-4">
+                            <div id="itinerary" class="page-scroll">
+                                <div class="section-block margin-top-40px"></div>
+                                <div class="single-content-item padding-top-40px padding-Rbottom-40px">
+                                    <h3 class="title font-size-20">Loan</h3>
+                                    <div class="table-form table-responsive padding-top-30px">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Provider</th>
+                                                    <th scope="col">Interest Rate</th>
+                                                    <th scope="col">Tenure</th>
+                                                    <th scope="col">Processing Fees</th>
+                                                    <th scope="col">Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach($loans as $loan)
+                                                <tr>
+                                                    <th scope="row">
+                                                        <div class="table-content d-flex align-items-center">
+                                                            <h3 class="title">{{$loan->provider ?? ''}}</h3>
+                                                        </div>
+                                                    </th>
+                                                    {{-- <td>
+                                                    @if($course->type == 0) UG @endif
+                                                    @if($course->type == 1) PG @endif
+                                                    @if($course->type == 2) Diploma @endif
+                                                   </td> --}}
+                                                    <td> {{$loan->interest_rate ?? ''}}</td>
+                                                    <td> {{$loan->tenure ?? ''}}</td>
+                                                    <td>₹ {{$loan->processing_fees ?? ''}}</td>
+                                                    {{-- <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}
+                                                    @else N/A @endif</td>
+                                                    <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else
+                                                        N/A @endif</td> --}}
+
+                                                    <td>
+                                                        <div>
+                                                            <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-light">Detail<i
+                                                                    class="las la-angle-double-right"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div><!-- end single-content-item -->
+                                <div class="section-block"></div>
+                            </div>
 
                         </div>
 
 
                         <div class="section-block"></div>
                         <div class="post-navigation d-flex justify-content-between py-4">
-                           <p><span style="color: red"><b>Disclaimer:</b></span>Since the rules, regulations, eligibility conditions, repayments and interests rates etc are revised by the banks from time to time in keeping pace with the changing capital market conditions, students and parents are advised to thoroughly check the terms and conditions of educational loan scheme on offer at the time of application.</p>
+                            <p><span style="color: red"><b>Disclaimer:</b></span>Since the rules, regulations,
+                                eligibility conditions, repayments and interests rates etc are revised by the banks from
+                                time to time in keeping pace with the changing capital market conditions, students and
+                                parents are advised to thoroughly check the terms and conditions of educational loan
+                                scheme on offer at the time of application.</p>
                         </div>
                         <div class="section-block"></div>
 
@@ -134,160 +181,65 @@ a:hover{
 
 
             </div><!-- end col-lg-8 -->
-            <div class="col-lg-4">
-                <div class="sidebar single-content-sidebar mb-0">
+            <!-- end col-lg-4 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
 
-                    <div class="sidebar-widget single-content-widget">
-                        <h3 class="title stroke-shape">Featured Consultant</h3>
-                        <!-- Example split danger button -->
+    <!--  Model section -->
+    <!-- Button trigger modal -->
 
-                        <div class="input-group mb-3 ">
-                            <div class="input-group-prepend">
-                              <button class="btn btn-outline-primary btn-sm" type="button" id="button-addon1">Country</button>
-                            </div>
-                            <input type="text" class="form-control col-xs-2" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                          </div>
-                          <div class="sidebar-list">
-                            <ul class="list-items">
 
-                                <li><div class="author-content d-flex">
-                                    <div class="author-img">
-                                        <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                    </div>
-                                    <div class="author-bio">
-                                        <h4 class="author__title"><a href="#">John Wick</a></h4>
-                                        <span class="author__meta">Member Since 2017</span>
-                                        <span class="ratings d-flex align-items-center">
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star-o"></i>
-                                                 <span class="ml-2">305 Reviews</span>
-                                            </span>
-                                        <div>
-                                        <a href="#" class="btn btn-primary text-light">Book Now</a>
-                                        </div>
-                                    </div>
-                                </div></li>
-                                <li><div class="author-content d-flex">
-                                    <div class="author-img">
-                                        <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                    </div>
-                                    <div class="author-bio">
-                                        <h4 class="author__title"><a href="#">John Wick</a></h4>
-                                        <span class="author__meta">Member Since 2017</span>
-                                        <span class="ratings d-flex align-items-center">
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star-o"></i>
-                                                 <span class="ml-2">305 Reviews</span>
-                                            </span>
-                                            <div>
-                                                {{-- <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a> --}}
-                                            </div>
-                                    </div>
-                                </div></li>
-                                <li><div class="author-content d-flex">
-                                    <div class="author-img">
-                                        <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                    </div>
-                                    <div class="author-bio">
-                                        <h4 class="author__title"><a href="#">John Wick</a></h4>
-                                        <span class="author__meta">Member Since 2017</span>
-                                        <span class="ratings d-flex align-items-center">
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star-o"></i>
-                                                 <span class="ml-2">305 Reviews</span>
-                                            </span>
-                                            <div>
-                                                {{-- <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a> --}}
-                                            </div>
-                                    </div>
-                                </div></li>
-                                <li><div class="author-content d-flex">
-                                    <div class="author-img">
-                                        <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                    </div>
-                                    <div class="author-bio">
-                                        <h4 class="author__title"><a href="#">John Wick</a></h4>
-                                        <span class="author__meta">Member Since 2017</span>
-                                        <span class="ratings d-flex align-items-center">
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star-o"></i>
-                                                 <span class="ml-2">305 Reviews</span>
-                                            </span>
-                                            <div>
-                                                {{-- <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a> --}}
-                                            </div>
-                                    </div>
-                                </div></li>
-                                <li><div class="author-content d-flex">
-                                    <div class="author-img">
-                                        <a href="#"><img src="{{asset('frontEnd/assets/images/team8.jpg')}}" alt="testimonial image"></a>
-                                    </div>
-                                    <div class="author-bio">
-                                        <h4 class="author__title"><a href="#">John Wick</a></h4>
-                                        <span class="author__meta">Member Since 2017</span>
-                                        <span class="ratings d-flex align-items-center">
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star"></i>
-                                                 <i class="la la-star-o"></i>
-                                                 <span class="ml-2">305 Reviews</span>
-                                            </span>
-                                            <div>
-                                                {{-- <a href="{{route('consultant_detail')}}" class="btn btn-primary text-light">Book Now</a> --}}
-                                            </div>
-                                    </div>
-                                </div></li>
-                                {{-- <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#" ><span>&nbsp;   John Wick</span>
-                                </a></li>
-                                <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li>
-                                <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li>
-                                <li><i><img src="{{asset('frontEnd/assets/img/course/user-1.jpg')}}"></i><a href="#"><span>&nbsp;   John Wick</span></a></li> --}}
-                            </ul>
-                        </div><!-- end sidebar-list -->
-                    </div>
-                    <!-- end sidebar-widget -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 520px;">
+      <div class="modal-content">
+        <div class="modal-header">
+
+                <div>
+                    <img src="{{asset('frontEnd/assets/images/logo.png')}}" alt="logo" style="
+                    width: 198px;
+                    height: 70px;
+                     ">
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la la-close"></span>
+                </button>
+
+
+        </div>
+        <div class="modal-body">
+            <div class="contact-form-action" style=" padding: 19px;">
+                <form method="post" action="{{route('loan.enquiry.submit')}}">
+                    @csrf
                     <div class="sidebar-widget single-content-widget">
                         <h3 class="title stroke-shape">Enquiry Form</h3>
                         <div class="enquiry-forum">
                             <div class="form-box">
                                 <div class="form-content">
                                     <div class="contact-form-action">
-                                        <form method="post">
+                                        <input class="form-control" value="1" name="type"  hidden>
                                             <div class="input-box">
                                                 <label class="label-text">Your Name</label>
                                                 <div class="form-group">
                                                     <span class="la la-user form-icon"></span>
-                                                    <input class="form-control" type="text" name="text" placeholder="Your name">
+                                                    <input class="form-control" type="name" name="name" placeholder="Your name" required>
                                                 </div>
                                             </div>
                                             <div class="input-box">
                                                 <label class="label-text">Your Email</label>
                                                 <div class="form-group">
                                                     <span class="la la-envelope-o form-icon"></span>
-                                                    <input class="form-control" type="email" name="email" placeholder="Email address">
+                                                    <input class="form-control" type="email" name="email" placeholder="Email address" required>
                                                 </div>
                                             </div>
                                             <div class="input-box">
                                                 <label class="label-text">Message</label>
                                                 <div class="form-group">
                                                     <span class="la la-pencil form-icon"></span>
-                                                    <textarea class="message-control form-control" name="message" placeholder="Write message"></textarea>
+                                                    <textarea class="message-control form-control" name="message" placeholder="Write message" required></textarea>
                                                 </div>
                                             </div>
-                                            <div class="input-box">
+                                            {{-- <div class="input-box">
                                                 <div class="form-group">
                                                     <div class="custom-checkbox mb-0">
                                                         <input type="checkbox" id="agreeChb">
@@ -295,23 +247,118 @@ a:hover{
                                                             <a href="#">Privacy Statement</a></label>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="btn-box">
-                                                <button type="button" class="theme-btn">Submit Enquiry</button>
+                                                <button type="submit" class="theme-btn">Submit Enquiry</button>
                                             </div>
-                                        </form>
+
                                     </div><!-- end contact-form-action -->
                                 </div><!-- end form-content -->
                             </div><!-- end form-box -->
                         </div><!-- end enquiry-forum -->
-                    </div><!-- end sidebar-widget -->
-                  <!-- end sidebar-widget -->
-                  <!-- end sidebar-widget -->
-                   <!-- end sidebar-widget -->
-                </div><!-- end sidebar -->
-            </div><!-- end col-lg-4 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> --}}
+      </div>
+    </div>
+  </div>
+    {{-- <div class="modal-popup">
+        <div class="modal fade" id="loanPopupForm" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div>
+                            <img src="{{asset('frontEnd/assets/images/logo.png')}}" alt="logo" style="
+                            width: 198px;
+                            height: 70px;
+                             ">
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="la la-close"></span>
+                        </button>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-8">
+                            <div class="container">
+                                <div class="modal-header">
+                                    <div>
+                                        <h5 class="modal-title title" id="exampleModalLongTitle2"
+                                            style="color: #f16d01;">Hello! Welcome to your account</h5>
+                                        {{-- <p class="font-size-14"></p>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-body">
+
+                                    <div class="contact-form-action" style=" padding: 19px;">
+                                        <form method="post" action="{{route('loan.enquiry.submit')}}">
+                                            @csrf
+                                            <div class="sidebar-widget single-content-widget">
+                                                <h3 class="title stroke-shape">Enquiry Form</h3>
+                                                <div class="enquiry-forum">
+                                                    <div class="form-box">
+                                                        <div class="form-content">
+                                                            <div class="contact-form-action">
+                                                                <form method="post">
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Your Name</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-user form-icon"></span>
+                                                                            <input class="form-control" type="name" name="name" placeholder="Your name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Your Email</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-envelope-o form-icon"></span>
+                                                                            <input class="form-control" type="email" name="email" placeholder="Email address">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Message</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-pencil form-icon"></span>
+                                                                            <textarea class="message-control form-control" name="message" placeholder="Write message"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{-- <div class="input-box">
+                                                                        <div class="form-group">
+                                                                            <div class="custom-checkbox mb-0">
+                                                                                <input type="checkbox" id="agreeChb">
+                                                                                <label for="agreeChb">I agree with <a href="#">Terms of Service</a> and
+                                                                                    <a href="#">Privacy Statement</a></label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="btn-box">
+                                                                        <button type="submit" class="theme-btn">Submit Enquiry</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div><!-- end contact-form-action -->
+                                                        </div><!-- end form-content -->
+                                                    </div><!-- end form-box -->
+                                                </div><!-- end enquiry-forum -->
+                                            </div>
+                                        </form>
+                                    </div><!-- end contact-form-action -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
 </section><!-- end card-area -->
 <!-- ================================
     END CARD AREA
@@ -338,5 +385,15 @@ a:hover{
 <div id="back-to-top">
     <i class="la la-angle-up" title="Go top"></i>
 </div>
+
+<script>
+    $(function() {
+        $('#exampleModal').modal({
+            show: true
+        });
+    });
+
+
+    </script>
 
 @endsection
