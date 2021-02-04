@@ -83,15 +83,12 @@ class ConsultantFrontController extends Controller
     {
         $fetch=User::where('id',$request->universityid)->first();
         $courses =  $fetch->universityCourse;
-
-
-        $output='';
+        $output='<option value="" selected>Choose Course</option>';
         foreach($courses as $row)
         {
-         $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
+         $output .= '<option value="'.$row->id.'">'.$row->title.'</option>';
         }
         echo $output;
-        // dd();
     }
 
 
