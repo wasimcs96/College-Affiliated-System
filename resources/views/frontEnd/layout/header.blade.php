@@ -213,7 +213,7 @@
                                     <li>
                                         <a href="#">More <i class="la la-angle-down"></i></a>
                                         <ul class="dropdown-menu-item">
-                                            <li><a href="{{route('front.loan')}}">Loan</a></li>
+                                            <li><a href="{{route('loan')}}">Loan</a></li>
                                             <li><a href="{{route('blog_all')}}">Blog</a></li>
                                             <li><a href="{{route('contact')}}">Contact Us</a></li>
                                             <li><a href="{{route('about')}}">About Us</a></li>
