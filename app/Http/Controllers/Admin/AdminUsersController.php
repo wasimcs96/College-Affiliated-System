@@ -14,7 +14,7 @@ use App\Models\User;
 use App\Models\Country;
 use App\Models\Consultant;
 use App\Models\University;
-
+use Illuminate\Support\Facades\Mail;
 class AdminUsersController extends Controller
 {
     public function index($id)
@@ -76,6 +76,17 @@ class AdminUsersController extends Controller
             'mobile' => $request->mobile,
             'password' => Hash::make($request->password),
         ])->assignRole('client');
+
+            // Important Code
+     $replacement['token'] =$request->_token;
+    
+
+     $replacement['USER_NAME'] = $request->first_name;
+     $replacement['PASSWORD'] = $request->password;
+     $replacement['EMAIL'] = $request->email;
+     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+
         return view('admin.users.user.index')->with('users', User::all())->with('id',1);
        }
        if($role==2){
@@ -90,6 +101,15 @@ class AdminUsersController extends Controller
             'user_id'=>$user->id,
 
         ]);
+                    // Important Code
+     $replacement['token'] =$request->_token;
+    
+
+     $replacement['USER_NAME'] = $request->first_name;
+     $replacement['PASSWORD'] = $request->password;
+     $replacement['EMAIL'] = $request->email;
+     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
         return view('admin.users.user.index')->with('users', User::all())->with('id',3);
 
        }
@@ -104,6 +124,15 @@ class AdminUsersController extends Controller
         Consultant::create([
             'user_id'=>$user->id,
         ]);
+                    // Important Code
+                    $replacement['token'] =$request->_token;
+    
+
+                    $replacement['USER_NAME'] = $request->first_name;
+     $replacement['PASSWORD'] = $request->password;
+     $replacement['EMAIL'] = $request->email;
+     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
         return view('admin.users.user.index')->with('users', User::all())->with('id',2);
        }
        if($role==5){
@@ -115,7 +144,15 @@ class AdminUsersController extends Controller
             'password' => Hash::make($request->password),
         ])->assignRole('subAdmin');
        }
+            // Important Code
+            $replacement['token'] =$request->_token;
+    
 
+            $replacement['USER_NAME'] = $request->first_name;
+     $replacement['PASSWORD'] = $request->password;
+     $replacement['EMAIL'] = $request->email;
+     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
     }
 
     public function update(Request $request, User $id)
