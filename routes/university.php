@@ -287,4 +287,21 @@ Route::get('fetch/category/course/add',[
     'as' => 'fetch.category.add.course'
 ]);
 
+/* Messenger  */
+
+Route::get('messenger', [
+    'uses' => 'UniversityMessengerController@index',
+    'as' => 'university.messenger'
+]);
+
+Route::post('messenger/fetchData', [
+    'uses' => 'UniversityMessengerController@fetchData',
+    'as' => 'university.messenger.fetchdata'
+]);
+
+Route::post('messenger/sendMessage', [
+    'uses' => 'UniversityMessengerController@sendMessage',
+    'as' => 'university.messenger.sendmessage'
+]);
+
 });

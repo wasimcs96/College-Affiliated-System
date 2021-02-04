@@ -406,4 +406,21 @@ Route::get('add/fetch/university',[
     'as' => 'fetch.university_add'
 ]);
 
+/* Messenger  */
+
+Route::get('messenger', [
+    'uses' => 'ConsultantMessengerController@index',
+    'as' => 'consultant.messenger'
+]);
+
+Route::post('messenger/fetchData', [
+    'uses' => 'ConsultantMessengerController@fetchData',
+    'as' => 'consultant.messenger.fetchdata'
+]);
+
+Route::post('messenger/sendMessage', [
+    'uses' => 'ConsultantMessengerController@sendMessage',
+    'as' => 'consultant.messenger.sendmessage'
+]);
+
 });

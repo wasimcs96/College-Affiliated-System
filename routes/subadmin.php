@@ -566,6 +566,23 @@ Route::post('commission/update/{id}',[
     'uses'=>'subadminCommissionController@update',
     'as'=> 'subadmin.commission.update'
 ]);
+
+/* Messenger  */
+
+Route::get('messenger', [
+    'uses' => 'SubAdminMessengerController@index',
+    'as' => 'subadmin.messenger'
+]);
+
+Route::post('messenger/fetchData', [
+    'uses' => 'SubAdminMessengerController@fetchData',
+    'as' => 'subadmin.messenger.fetchdata'
+]);
+
+Route::post('messenger/sendMessage', [
+    'uses' => 'SubAdminMessengerController@sendMessage',
+    'as' => 'subadmin.messenger.sendmessage'
+]);
 });
 
 

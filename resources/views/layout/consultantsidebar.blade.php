@@ -100,7 +100,7 @@
 
                     </ul>
                 </li>
-                <li class="{{ Request::segment(1) == 'messenger' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                <li class="{{ Request::segment(2) == 'messenger' ? 'active open' : null }}"><a href="{{route('consultant.messenger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
                 <li class="{{ Request::segment(2) == 'logout' ? 'active' : null }}"><a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
