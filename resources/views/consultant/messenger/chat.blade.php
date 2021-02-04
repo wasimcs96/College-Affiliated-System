@@ -370,7 +370,7 @@ var reciever = '';
 console.log(userid)
                   // document.getElementById(`userlist-${userid}`).style.background="grey";
                 $.ajax({
-                  url: "{{ route('university.messenger.fetchdata') }}",
+                  url: "{{ route('consultant.messenger.fetchdata') }}",
                     method: "POST",
                     data:{userid:userid,_token:_token},
                     success:function(result)
@@ -460,7 +460,7 @@ $(".msg_history").stop().animate({
 
        $.ajax({
               type: "POST",
-              url: "{{ route('university.messenger.sendmessage') }}",
+              url: "{{ route('consultant.messenger.sendmessage') }}",
               data: {id:id,_token:_token,msd:msd}, // serializes the form's elements.
               success: function(data)
               {

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\UniversityConsultantClient;
 use App\Models\UniversityConsultant;
+use App\Models\Booking;
 use App\Models\ApplicationChat;
 use Illuminate\Support\Arr;
 use App\Http\Controllers\Controller;

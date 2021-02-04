@@ -28,10 +28,10 @@
                     <thead>
 
                         <tr>
-                            <th> <b>User Name</b></th>
+                            <th> <b> Name</b></th>
                             <th> <b>Email</b></th>
-                            <th><b>Mobile</b></th>
-                            <th><b>Message</b></th>
+                            <th><b>Type</b></th>
+                            {{-- <th><b>Message</b></th> --}}
                             {{-- <th><b>Status</b></th> --}}
                             <th style="text-align: center;"><b>Action<b></th>
 
@@ -50,9 +50,19 @@
 
                              <td>{{$contact->email ?? ''}}</td>
 
-                             <td>{{$contact->mobile ?? ''}}</td>
+                             <td>
+                                    @if ($contact->type == 0)
 
-                             <td>{{$contact->message ?? ''}}</td>
+                                        <span class="">Normal Enquiry</span>
+
+                                     @else
+
+                                        <span class="">Loan Enquiry</span>
+
+                                     @endif
+                            </td>
+
+                             {{-- <td>{{$contact->message ?? ''}}</td> --}}
 
 
 
