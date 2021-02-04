@@ -92,11 +92,14 @@
                                    <!-- end col-lg-2 -->
 
 
+                                   <div class="col-lg-3 col-sm-2 pr-0">
+                                       <button class="theme-btn" type="submit"  style="
+                                       margin: 37px;
+                                       margin-left: 4px;
+                                   ">Search Now</button>
+                                   </div>
                             </div><!-- end contact-form-action -->
 
-                            <div class="btn-box pt-3">
-                                <button class="theme-btn" type="submit">Search Now</button>
-                            </div>
                         </form>
                         </div><!-- end search-fields-container -->
                     </div><!-- end search-result-content -->
