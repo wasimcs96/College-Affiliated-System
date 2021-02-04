@@ -911,27 +911,27 @@
                        <ul class="nav nav-tabs justify-content-center" id="myTab4" role="tablist">
                            <li class="nav-item">
                                <a class="nav-link active" id="new-york-tab" data-toggle="tab" href="#new-york" role="tab" aria-controls="new-york" aria-selected="false">
-                                   New York
+                                   US
                                </a>
                            </li>
                            <li class="nav-item">
                                <a class="nav-link" id="hong-kong-tab" data-toggle="tab" href="#hong-kong" role="tab" aria-controls="hong-kong" aria-selected="false">
-                                   Hong Kong
+                                 UK
                                </a>
                            </li>
                            <li class="nav-item">
                                <a class="nav-link" id="beijing-tab" data-toggle="tab" href="#beijing" role="tab" aria-controls="beijing" aria-selected="false">
-                                   Beijing
+                                Australia
                                </a>
                            </li>
                            <li class="nav-item">
                                <a class="nav-link" id="tokyo-tab" data-toggle="tab" href="#tokyo" role="tab" aria-controls="tokyo" aria-selected="false">
-                                   Tokyo
+                                   Canada
                                </a>
                            </li>
                            <li class="nav-item">
                                <a class="nav-link" id="seoul-tab" data-toggle="tab" href="#seoul" role="tab" aria-controls="seoul" aria-selected="false">
-                                   Seoul
+                                   IreLand
                                </a>
                            </li>
                        </ul>
@@ -942,19 +942,24 @@
                     <div class="tab-content" id="myTabContent4">
                         <div class="tab-pane fade show active" id="new-york" role="tabpanel" aria-labelledby="new-york-tab">
                             <div class="row">
+                                <?php $usa = App\Models\User::where('countries_id',223)->orderBy('rating', 'DESC')->limit(6)->get();?>
+                                @if($usa->count()> 0)
+                                {{-- {{dd($usa)}} --}}
+                                @foreach($usa as $us)
+                                @if($us->isUniversity())
                                 <div class="col-lg-4 responsive-column">
                                     <div class="card-item car-card border">
                                         <div class="card-img" style="text-align: center; height:185px;">
-                                        <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-block">
+                                        <a href="{{route('university_detail',['id'=>$us->id])}}" class="d-block">
                                             {{-- @php
                                             print_r($university->user->profile_image);
                                         @endphp --}}
-                                                {{-- <img src="{{asset($university->profile_image)}}" alt="university-img" > --}}
-                                                @if(isset($university->university->cover_image) && file_exists($university->university->cover_image))
+                                                {{-- <img src="{{asset($aus->profile_image)}}" alt="university-img" > --}}
+                                                @if(isset($us->university->cover_image) && file_exists($us->university->cover_image))
                                                 <img
                                                   {{-- style=" width: 368px;
                                                 height: 245px;"  --}}
-                                                src="{{asset($university->university->cover_image)}}" height="185px;"alt="">
+                                                src="{{asset($us->university->cover_image)}}" height="185px;"alt="">
                                                     @else
                                                     <img
                                                       {{-- style=" width: 368px;
@@ -962,10 +967,10 @@
                                                     src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
                                                     @endif
                                             </a>
-                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
+                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($us->profile_image) && file_exists($us->profile_image))
                                                 <img
                                                 style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                                src="{{asset($university->profile_image)}}" alt="">
+                                                src="{{asset($us->profile_image)}}" alt="">
                                                     @else
                                                     <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif</div>
@@ -977,20 +982,20 @@
                                         </div>
                                         <div class="card-body">
                                             <p class="card-meta">
-                                                @if(isset($university->university->type))
-                                                 @if($university->university->type==0)
+                                                @if(isset($us->university->type))
+                                                 @if($us->university->type==0)
                                             Private
                                         @else
                                         Govenment</p>
                                         @endif
                                         @endif
 
-                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a></h3>
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$us->id])}}">{{$us->university->university_name ?? ''}}</a></h3>
                                             <div class="card-rating">
                                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                                     <p class="mr-2">Rating:</p>
 
-                                                        <span>@if($university->rating == 3 ?? '' )
+                                                        <span>@if($us->rating == 3 ?? '' )
                                                                 <span class="ratings ">
                                                                     <i class="la la-star"></i>
                                                                     <i class="la la-star"></i>
@@ -998,7 +1003,7 @@
                                                                     <i class="la la-star-o"></i>
                                                                     <i class="la la-star-o"></i>
                                                                 </span>
-                                                        @elseif($university->rating == 4)
+                                                        @elseif($us->rating == 4)
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
@@ -1006,7 +1011,7 @@
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star-o"></i>
                                                         </span>
-                                                        @elseif($university->rating == 5)
+                                                        @elseif($us->rating == 5)
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
@@ -1014,7 +1019,7 @@
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
                                                         </span>
-                                                        @elseif($university->rating == 1)
+                                                        @elseif($us->rating == 1)
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star-o"></i>
@@ -1022,7 +1027,7 @@
                                                             <i class="la la-star-o"></i>
                                                             <i class="la la-star-o"></i>
                                                         </span>
-                                                        @elseif($university->rating == 2)
+                                                        @elseif($us->rating == 2)
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
@@ -1030,787 +1035,598 @@
                                                             <i class="la la-star-o"></i>
                                                             <i class="la la-star-o"></i>
                                                         </span>
-                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif</span>
+                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($us->rating == null)- @else{{$us->rating ?? ''}}/5 @endif</span>
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num">{{$us->university->average_fees ?? ''}}</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($university->university->created_at))
-                                                        {{$university->university->created_at->Format("Y")}}
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($us->university->created_at))
+                                                        {{$us->university->created_at->Format("Y")}}
                                                         @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$university->universityCourse->count()}}</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$us->universityCourse->count()}}</span></li>
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
-                                                        @if(isset($university->universityConsultant))
-                                                        {{$university->universityConsultant->count()}}@else N/A @endif</span></li>
-                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($university->universityConsultantClient))
-                                                            {{$university->universityConsultantClient->count()}}
+                                                        @if(isset($us->universityConsultant))
+                                                        {{$us->universityConsultant->count()}}@else N/A @endif</span></li>
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($us->universityConsultantClient))
+                                                            {{$us->universityConsultantClient->count()}}
                                                             @else N/A @endif</span></li>
                                                 </ul>
                                             </div>
 
                                             <div class="card-price d-flex align-items-center justify-content-between">
-                                                <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
+                                                <a href="{{asset($us->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
 
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$us->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->
                                 </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="card-item car-card border">
-                                        <div class="card-img" style="text-align: center; height:185px;">
-                                        <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-block">
-                                            {{-- @php
-                                            print_r($university->user->profile_image);
-                                        @endphp --}}
-                                                {{-- <img src="{{asset($university->profile_image)}}" alt="university-img" > --}}
-                                                @if(isset($university->university->cover_image) && file_exists($university->university->cover_image))
-                                                <img
-                                                  {{-- style=" width: 368px;
-                                                height: 245px;"  --}}
-                                                src="{{asset($university->university->cover_image)}}" height="185px;"alt="">
-                                                    @else
-                                                    <img
-                                                      {{-- style=" width: 368px;
-                                                    height: 245px;"  --}}
-                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
-                                                    @endif
-                                            </a>
-                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
-                                                <img
-                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                                src="{{asset($university->profile_image)}}" alt="">
-                                                    @else
-                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                                                    @endif</div>
-                                            {{-- <span class="badge">Top Ranked</span> --}}
-                                            {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
+                                @endif
+                                @endforeach
+                                @else
+                                <div class="container align-center">
+                                    <h1 style="text-align: center;">  Not Available </h1>
+                                      </div>
+@endif
 
-                                                <i class="las la-download"></i>
-                                            </div> --}}
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="card-meta">
-                                                @if(isset($university->university->type))
-                                                 @if($university->university->type==0)
-                                            Private
-                                        @else
-                                        Govenment</p>
-                                        @endif
-                                        @endif
-
-                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a></h3>
-                                            <div class="card-rating">
-                                                <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2">Rating:</p>
-
-                                                        <span>@if($university->rating == 3 ?? '' )
-                                                                <span class="ratings ">
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                </span>
-                                                        @elseif($university->rating == 4)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($university->rating == 5)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                        </span>
-                                                        @elseif($university->rating == 1)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($university->rating == 2)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-attributes">
-                                                <p>
-                                                    <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
-                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
-                                                </p>
-                                                <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($university->university->created_at))
-                                                        {{$university->university->created_at->Format("Y")}}
-                                                        @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$university->universityCourse->count()}}</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
-                                                        @if(isset($university->universityConsultant))
-                                                        {{$university->universityConsultant->count()}}@else N/A @endif</span></li>
-                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($university->universityConsultantClient))
-                                                            {{$university->universityConsultantClient->count()}}
-                                                            @else N/A @endif</span></li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="card-price d-flex align-items-center justify-content-between">
-                                                <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
-
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card-item -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="card-item car-card border">
-                                        <div class="card-img" style="text-align: center; height:185px;">
-                                        <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-block">
-                                            {{-- @php
-                                            print_r($university->user->profile_image);
-                                        @endphp --}}
-                                                {{-- <img src="{{asset($university->profile_image)}}" alt="university-img" > --}}
-                                                @if(isset($university->university->cover_image) && file_exists($university->university->cover_image))
-                                                <img
-                                                  {{-- style=" width: 368px;
-                                                height: 245px;"  --}}
-                                                src="{{asset($university->university->cover_image)}}" height="185px;"alt="">
-                                                    @else
-                                                    <img
-                                                      {{-- style=" width: 368px;
-                                                    height: 245px;"  --}}
-                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
-                                                    @endif
-                                            </a>
-                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($university->profile_image) && file_exists($university->profile_image))
-                                                <img
-                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                                src="{{asset($university->profile_image)}}" alt="">
-                                                    @else
-                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                                                    @endif</div>
-                                            {{-- <span class="badge">Top Ranked</span> --}}
-                                            {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
-
-                                                <i class="las la-download"></i>
-                                            </div> --}}
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="card-meta">
-                                                @if(isset($university->university->type))
-                                                 @if($university->university->type==0)
-                                            Private
-                                        @else
-                                        Govenment</p>
-                                        @endif
-                                        @endif
-
-                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a></h3>
-                                            <div class="card-rating">
-                                                <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2">Rating:</p>
-
-                                                        <span>@if($university->rating == 3 ?? '' )
-                                                                <span class="ratings ">
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                </span>
-                                                        @elseif($university->rating == 4)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($university->rating == 5)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                        </span>
-                                                        @elseif($university->rating == 1)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($university->rating == 2)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-attributes">
-                                                <p>
-                                                    <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
-                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
-                                                </p>
-                                                <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($university->university->created_at))
-                                                        {{$university->university->created_at->Format("Y")}}
-                                                        @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$university->universityCourse->count()}}</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
-                                                        @if(isset($university->universityConsultant))
-                                                        {{$university->universityConsultant->count()}}@else N/A @endif</span></li>
-                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($university->universityConsultantClient))
-                                                            {{$university->universityConsultantClient->count()}}
-                                                            @else N/A @endif</span></li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="card-price d-flex align-items-center justify-content-between">
-                                                <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
-
-                                                <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card-item -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                    MIT
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
-
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                KANPUR
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
-
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                BOMBAY
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
-
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
                             </div>
                         </div><!-- end tab-pane -->
                         <div class="tab-pane fade" id="hong-kong" role="tabpanel" aria-labelledby="hong-kong-tab">
                             <div class="row">
+                                <?php $uka = App\Models\User::where('countries_id',222)->orderBy('rating', 'DESC')->limit(6)->get();?>
+                                {{-- {{dd($usa)}} --}}
+                                @if($uka->count()> 0)
+                                @foreach($uka as $uk)
+                                @if($uk->isUniversity())
                                 <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                Harvard
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                    <div class="card-item car-card border">
+                                        <div class="card-img" style="text-align: center; height:185px;">
+                                        <a href="{{route('university_detail',['id'=>$uk->id])}}" class="d-block">
+                                            {{-- @php
+                                            print_r($uk->user->profile_image);
+                                        @endphp --}}
+                                                {{-- <img src="{{asset($uk->profile_image)}}" alt="university-img" > --}}
+                                                @if(isset($uk->university->cover_image) && file_exists($uk->university->cover_image))
+                                                <img
+                                                  {{-- style=" width: 368px;
+                                                height: 245px;"  --}}
+                                                src="{{asset($uk->university->cover_image)}}" height="185px;"alt="">
+                                                    @else
+                                                    <img
+                                                      {{-- style=" width: 368px;
+                                                    height: 245px;"  --}}
+                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                                    @endif
+                                            </a>
+                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($uk->profile_image) && file_exists($uk->profile_image))
+                                                <img
+                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                                                src="{{asset($uk->profile_image)}}" alt="">
+                                                    @else
+                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif</div>
+                                            {{-- <span class="badge">Top Ranked</span> --}}
+                                            {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                                <i class="las la-download"></i>
+                                            </div> --}}
                                         </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                Cambridge
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                        <div class="card-body">
+                                            <p class="card-meta">
+                                                @if(isset($uk->university->type))
+                                                 @if($uk->university->type==0)
+                                            Private
+                                        @else
+                                        Govenment</p>
+                                        @endif
+                                        @endif
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                               sdfdsgdfsg
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$uk->id])}}">{{$uk->university->university_name ?? ''}}</a></h3>
+                                            <div class="card-rating">
+                                                <div class="d-flex flex-wrap align-items-center pt-2">
+                                                    <p class="mr-2">Rating:</p>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdfkjksddf
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                                        <span>@if($uk->rating == 3 ?? '' )
+                                                                <span class="ratings ">
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                </span>
+                                                        @elseif($uk->rating == 4)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($uk->rating == 5)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                        </span>
+                                                        @elseif($uk->rating == 1)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($uk->rating == 2)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($uk->rating == null)- @else{{$uk->rating ?? ''}}/5 @endif</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="card-attributes">
+                                                <p>
+                                                    <span class="price__text">Average Fees :</span>
+                                                    <span class="price__num">{{$uk->university->average_fees ?? ''}}</span>
+                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                                                </p>
+                                                <ul class="d-flex align-items-center">
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($uk->university->created_at))
+                                                        {{$uk->university->created_at->Format("Y")}}
+                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$uk->universityCourse->count()}}</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
+                                                        @if(isset($uk->universityConsultant))
+                                                        {{$uk->universityConsultant->count()}}@else N/A @endif</span></li>
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($uk->universityConsultantClient))
+                                                            {{$uk->universityConsultantClient->count()}}
+                                                            @else N/A @endif</span></li>
+                                                </ul>
+                                            </div>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdjafsjdfjs
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                            <div class="card-price d-flex align-items-center justify-content-between">
+                                                <a href="{{asset($uk->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$uk->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                            </div>
                                         </div>
-                                    </div><!-- end deal-card -->
+                                    </div><!-- end card-item -->
                                 </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                fsjfjsjf
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                @endif
+                                @endforeach
+                                @else
+                                <div class="container align-center">
+                                    <h1 style="text-align: center;">  Not Available </h1>
+                                      </div>
+@endif
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
                             </div>
                         </div><!-- end tab-pane -->
                         <div class="tab-pane fade" id="seoul" role="tabpanel" aria-labelledby="seoul-tab">
                             <div class="row">
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdfsdkfjlsdajfl
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                <?php $irel = App\Models\User::where('countries_id',103)->orderBy('rating', 'DESC')->limit(6)->get();?>
+                                {{-- {{dd($usa)}} --}}
+                                @if($irel->count()> 0)
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
+                                @foreach($irel as $ire)
+                                @if($ire->isUniversity())
                                 <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdfghj
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                    <div class="card-item car-card border">
+                                        <div class="card-img" style="text-align: center; height:185px;">
+                                        <a href="{{route('university_detail',['id'=>$ire->id])}}" class="d-block">
+                                            {{-- @php
+                                            print_r($ire->user->profile_image);
+                                        @endphp --}}
+                                                {{-- <img src="{{asset($ire->profile_image)}}" alt="university-img" > --}}
+                                                @if(isset($ire->university->cover_image) && file_exists($ire->university->cover_image))
+                                                <img
+                                                  {{-- style=" width: 368px;
+                                                height: 245px;"  --}}
+                                                src="{{asset($ire->university->cover_image)}}" height="185px;"alt="">
+                                                    @else
+                                                    <img
+                                                      {{-- style=" width: 368px;
+                                                    height: 245px;"  --}}
+                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                                    @endif
+                                            </a>
+                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($ire->profile_image) && file_exists($ire->profile_image))
+                                                <img
+                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                                                src="{{asset($ire->profile_image)}}" alt="">
+                                                    @else
+                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif</div>
+                                            {{-- <span class="badge">Top Ranked</span> --}}
+                                            {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                                <i class="las la-download"></i>
+                                            </div> --}}
                                         </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                jhgfdf
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                        <div class="card-body">
+                                            <p class="card-meta">
+                                                @if(isset($ire->university->type))
+                                                 @if($ire->university->type==0)
+                                            Private
+                                        @else
+                                        Govenment</p>
+                                        @endif
+                                        @endif
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sjdfhjskhf
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$ire->id])}}">{{$ire->university->university_name ?? ''}}</a></h3>
+                                            <div class="card-rating">
+                                                <div class="d-flex flex-wrap align-items-center pt-2">
+                                                    <p class="mr-2">Rating:</p>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                jdgkjdfgjdlfgkl
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                                        <span>@if($ire->rating == 3 ?? '' )
+                                                                <span class="ratings ">
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                </span>
+                                                        @elseif($ire->rating == 4)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($ire->rating == 5)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                        </span>
+                                                        @elseif($ire->rating == 1)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($ire->rating == 2)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($ire->rating == null)- @else{{$ire->rating ?? ''}}/5 @endif</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="card-attributes">
+                                                <p>
+                                                    <span class="price__text">Average Fees :</span>
+                                                    <span class="price__num">{{$ire->university->average_fees ?? ''}}</span>
+                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                                                </p>
+                                                <ul class="d-flex align-items-center">
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($ire->university->created_at))
+                                                        {{$ire->university->created_at->Format("Y")}}
+                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$ire->universityCourse->count()}}</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
+                                                        @if(isset($ire->universityConsultant))
+                                                        {{$ire->universityConsultant->count()}}@else N/A @endif</span></li>
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($ire->universityConsultantClient))
+                                                            {{$ire->universityConsultantClient->count()}}
+                                                            @else N/A @endif</span></li>
+                                                </ul>
+                                            </div>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdjfhskjdhfkj
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                            <div class="card-price d-flex align-items-center justify-content-between">
+                                                <a href="{{asset($ire->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$ire->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                            </div>
                                         </div>
-                                    </div><!-- end deal-card -->
+                                    </div><!-- end card-item -->
                                 </div><!-- end col-lg-4 -->
+                                @endif
+                                @endforeach
+                                @else
+                                <div class="container align-center">
+                                    <h1 style="text-align: center;">  Not Available </h1>
+                                      </div>
+@endif
+
                             </div>
                         </div><!-- end tab-pane -->
                         <div class="tab-pane fade" id="tokyo" role="tabpanel" aria-labelledby="tokyo-tab">
                             <div class="row">
+                                <?php $cana = App\Models\User::where('countries_id',38)->orderBy('rating', 'DESC')->limit(6)->get();?>
+                                {{-- {{dd($usa)}} --}}
+                                @if($cana->count()> 0)
+                                @foreach($cana as $can)
+                                @if($can->isUniversity())
                                 <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                hdfjshdfhdsh
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                    <div class="card-item car-card border">
+                                        <div class="card-img" style="text-align: center; height:185px;">
+                                        <a href="{{route('university_detail',['id'=>$can->id])}}" class="d-block">
+                                            {{-- @php
+                                            print_r($can->user->profile_image);
+                                        @endphp --}}
+                                                {{-- <img src="{{asset($can->profile_image)}}" alt="university-img" > --}}
+                                                @if(isset($can->university->cover_image) && file_exists($can->university->cover_image))
+                                                <img
+                                                  {{-- style=" width: 368px;
+                                                height: 245px;"  --}}
+                                                src="{{asset($can->university->cover_image)}}" height="185px;"alt="">
+                                                    @else
+                                                    <img
+                                                      {{-- style=" width: 368px;
+                                                    height: 245px;"  --}}
+                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                                    @endif
+                                            </a>
+                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($can->profile_image) && file_exists($can->profile_image))
+                                                <img
+                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                                                src="{{asset($can->profile_image)}}" alt="">
+                                                    @else
+                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif</div>
+                                            {{-- <span class="badge">Top Ranked</span> --}}
+                                            {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                                <i class="las la-download"></i>
+                                            </div> --}}
                                         </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                fsdfsdfsdf
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                        <div class="card-body">
+                                            <p class="card-meta">
+                                                @if(isset($can->university->type))
+                                                 @if($can->university->type==0)
+                                            Private
+                                        @else
+                                        Govenment</p>
+                                        @endif
+                                        @endif
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdhfsjdfhkshdkfhs
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$can->id])}}">{{$can->university->university_name ?? ''}}</a></h3>
+                                            <div class="card-rating">
+                                                <div class="d-flex flex-wrap align-items-center pt-2">
+                                                    <p class="mr-2">Rating:</p>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$140</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdfkskldflksf
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                                        <span>@if($can->rating == 3 ?? '' )
+                                                                <span class="ratings ">
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                </span>
+                                                        @elseif($can->rating == 4)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($can->rating == 5)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                        </span>
+                                                        @elseif($can->rating == 1)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($can->rating == 2)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($can->rating == null)- @else{{$can->rating ?? ''}}/5 @endif</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="card-attributes">
+                                                <p>
+                                                    <span class="price__text">Average Fees :</span>
+                                                    <span class="price__num">{{$can->university->average_fees ?? ''}}</span>
+                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                                                </p>
+                                                <ul class="d-flex align-items-center">
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($can->university->created_at))
+                                                        {{$can->university->created_at->Format("Y")}}
+                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$can->universityCourse->count()}}</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
+                                                        @if(isset($can->universityConsultant))
+                                                        {{$can->universityConsultant->count()}}@else N/A @endif</span></li>
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($can->universityConsultantClient))
+                                                            {{$can->universityConsultantClient->count()}}
+                                                            @else N/A @endif</span></li>
+                                                </ul>
+                                            </div>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                               sdjfsjkdhfjkhsdhfs
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                            <div class="card-price d-flex align-items-center justify-content-between">
+                                                <a href="{{asset($can->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$can->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                            </div>
                                         </div>
-                                    </div><!-- end deal-card -->
+                                    </div><!-- end card-item -->
                                 </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdfsdfsdfsd
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
-
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
+                                @endif
+                                @endforeach
+                                @else
+                                <div class="container align-center">
+                                    <h1 style="text-align: center;">  Not Available </h1>
+                                      </div>
+@endif
                             </div>
                         </div><!-- end tab-pane -->
                         <div class="tab-pane fade" id="beijing" role="tabpanel" aria-labelledby="beijing-tab">
                             <div class="row">
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdfdsjjdfgjkl
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                <?php $aust = App\Models\User::where('countries_id',13)->orderBy('rating', 'DESC')->limit(6)->get();?>
+                                {{-- {{dd($usa)}} --}}
+                                @if($aust->count()> 0)
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
+                                @foreach($aust as $aus)
+                                @if($aus->isUniversity())
                                 <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img2.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                dfkdslfksjdj
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                    <div class="card-item car-card border">
+                                        <div class="card-img" style="text-align: center; height:185px;">
+                                        <a href="{{route('university_detail',['id'=>$aus->id])}}" class="d-block">
+                                            {{-- @php
+                                            print_r($aus->user->profile_image);
+                                        @endphp --}}
+                                                {{-- <img src="{{asset($aus->profile_image)}}" alt="university-img" > --}}
+                                                @if(isset($aus->university->cover_image) && file_exists($aus->university->cover_image))
+                                                <img
+                                                  {{-- style=" width: 368px;
+                                                height: 245px;"  --}}
+                                                src="{{asset($aus->university->cover_image)}}" height="185px;"alt="">
+                                                    @else
+                                                    <img
+                                                      {{-- style=" width: 368px;
+                                                    height: 245px;"  --}}
+                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                                    @endif
+                                            </a>
+                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($aus->profile_image) && file_exists($aus->profile_image))
+                                                <img
+                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                                                src="{{asset($aus->profile_image)}}" alt="">
+                                                    @else
+                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                                    @endif</div>
+                                            {{-- <span class="badge">Top Ranked</span> --}}
+                                            {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$740</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                                <i class="las la-download"></i>
+                                            </div> --}}
                                         </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img3.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                              sdfsdfsdfsd
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                        <div class="card-body">
+                                            <p class="card-meta">
+                                                @if(isset($aus->university->type))
+                                                 @if($aus->university->type==0)
+                                            Private
+                                        @else
+                                        Govenment</p>
+                                        @endif
+                                        @endif
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Feess</span><span class="price__num">$140</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img4.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdfsdfsdfs
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$aus->id])}}">{{$aus->university->university_name ?? ''}}</a></h3>
+                                            <div class="card-rating">
+                                                <div class="d-flex flex-wrap align-items-center pt-2">
+                                                    <p class="mr-2">Rating:</p>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img5.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                                sdfsdfsdf
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                                        <span>@if($aus->rating == 3 ?? '' )
+                                                                <span class="ratings ">
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                    <i class="la la-star-o"></i>
+                                                                </span>
+                                                        @elseif($aus->rating == 4)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($aus->rating == 5)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                        </span>
+                                                        @elseif($aus->rating == 1)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @elseif($aus->rating == 2)
+                                                        <span class="ratings ">
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                            <i class="la la-star-o"></i>
+                                                        </span>
+                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($aus->rating == null)- @else{{$aus->rating ?? ''}}/5 @endif</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="card-attributes">
+                                                <p>
+                                                    <span class="price__text">Average Fees :</span>
+                                                    <span class="price__num">{{$aus->university->average_fees ?? ''}}</span>
+                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                                                </p>
+                                                <ul class="d-flex align-items-center">
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($aus->university->created_at))
+                                                        {{$aus->university->created_at->Format("Y")}}
+                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$aus->universityCourse->count()}}</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
+                                                        @if(isset($aus->universityConsultant))
+                                                        {{$aus->universityConsultant->count()}}@else N/A @endif</span></li>
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($aus->universityConsultantClient))
+                                                            {{$aus->universityConsultantClient->count()}}
+                                                            @else N/A @endif</span></li>
+                                                </ul>
+                                            </div>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$100</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                        </div>
-                                    </div><!-- end deal-card -->
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="deal-card">
-                                        <div class="deal-title d-flex align-items-center">
-                                            <img src="{{ asset('frontEnd/assets/images/airline-img6.png') }}" alt="air-line-img">
-                                            <h3 class="deal__title">
-                                                <a href="#" class="d-flex align-items-center">
-                                               sdfsdfsdfsda
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <p class="deal__meta">City: Rajasthan</p>
+                                            <div class="card-price d-flex align-items-center justify-content-between">
+                                                <a href="{{asset($aus->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
 
-                                        <div class="deal-action-box d-flex align-items-center justify-content-between">
-                                            <div class="price-box d-flex align-items-center"><span class="price__from mr-1">Fees</span><span class="price__num">$640</span></div>
-                                            <a href="#" class="btn-text">See details<i class="la la-angle-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$aus->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                            </div>
                                         </div>
-                                    </div><!-- end deal-card -->
+                                    </div><!-- end card-item -->
                                 </div><!-- end col-lg-4 -->
+                                @endif
+                                @endforeach
+                                @else
+                                <div class="container align-center">
+                                    <h1 style="text-align: center;">  Not Available </h1>
+                                      </div>
+@endif
                             </div>
                         </div><!-- end tab-pane -->
                     </div><!-- end tab-content -->
-                    <div class="tab-content-info d-flex justify-content-between align-items-center">
-                        <p class="font-size-15"><i class="la la-question-circle mr-1"></i>Average round-trip price per person, taxes and fees included.</p>
-                        <a href="#" class="btn-text font-size-15">Discover More <i class="la la-angle-right"></i></a>
-                    </div><!-- end tab-content-info -->
+
                 @else
                 <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
 

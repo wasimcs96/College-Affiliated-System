@@ -1,6 +1,6 @@
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="background-image: url('{{asset('frontEnd/assets/images/university-all.jpg')}}'); color: #f16d01;
+        <div class="modal-content" style="background-image: url('{{asset('frontEnd/assets/images/signup.jpg')}}'); color: #f16d01;
         ">
             <div class="modal-header">
                 <div>
