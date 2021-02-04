@@ -60,7 +60,7 @@
                                         <label class="label-text">Your Name</label>
                                         <div class="form-group">
                                             <span class="la la-user form-icon"></span>
-                                            <input class="form-control" type="text" name="user_name" placeholder="Your name">
+                                            <input class="form-control" type="text" name="user_name" placeholder="Your name" required>
                                         </div>
                                     </div>
                                 </div><!-- end col-lg-6 -->
@@ -69,7 +69,7 @@
                                         <label class="label-text">Your Email</label>
                                         <div class="form-group">
                                             <span class="la la-envelope-o form-icon"></span>
-                                            <input class="form-control" type="email" name="email" placeholder="Email address">
+                                            <input class="form-control" type="email" name="email" placeholder="Email address"  required>
                                         </div>
                                     </div>
                                 </div><!-- end col-lg-6 -->
@@ -78,7 +78,7 @@
                                         <label class="label-text">Message</label>
                                         <div class="form-group">
                                             <span class="la la-pencil form-icon"></span>
-                                            <textarea class="message-control form-control" name="message" placeholder="Write message"></textarea>
+                                            <textarea class="message-control form-control" name="message" placeholder="Write message"  required></textarea>
                                         </div>
                                     </div>
                                 </div><!-- end col-lg-12 -->

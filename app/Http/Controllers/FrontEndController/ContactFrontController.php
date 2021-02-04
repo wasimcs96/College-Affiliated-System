@@ -17,6 +17,7 @@ class ContactFrontController extends Controller
 
     public function store(Request $request)
     {
+        // $this->validate()
         // dd($request->all());
         Contact::create([
             'name'=>$request->user_name,

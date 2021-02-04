@@ -161,7 +161,10 @@
                     <div class="single-content-wrap padding-top-60px">
                         <div id="description" class="page-scroll">
                             <div class="single-content-item pb-4">
-                                <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}</h3>
+                                <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}
+                                    @if($university->is_verified == 1)
+                            <span data-toggle="tooltip"  data-url=""  data-title="Verified" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-certificate"></i></span>
+                        @endif</h3>
                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                     <p class="mr-2">University Type:       @if(isset($university->university->type)&&($university->university->type==0))
                                         Private
@@ -523,13 +526,23 @@
                                         @else
                                         <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                         @endif</div>
+                                        <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                        @if($consultant->userConsultant->Premium_expire_date > $mytime)
+                                        <span style="
+                                        background-color: #073975;
+                                    " class="badge">Premium</span>
+                                     @endif
                                 {{-- <span class="badge">Top Ranked</span> --}}
                                 {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
                                     <i class="la la-heart-o"></i>
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}">{{$consultant->userConsultant->first_name}}{{$consultant->userConsultant->lasts_name}}</a></h3>
+                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}">{{$consultant->userConsultant->first_name}}{{$consultant->userConsultant->lasts_name}}</a>
+                                    @if($consultant->userConsultant->is_verified == 1)
+                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                @endif
+                            </h3>
                                 <p class="card-meta">{{$consultant->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>
