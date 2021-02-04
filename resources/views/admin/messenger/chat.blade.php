@@ -175,7 +175,7 @@
                         </div>
                     </div>
                     <div class="inbox_chat" style="width: 252px; height: 660px;">
-                    <ul class="right_chat list-unstyled mb-0">
+                    <ul class="right_chat list-unstyled mb-0" id="cse">
                         <?php $auth=auth()->user();?>
                         @foreach($users as $user)
                         @if($auth->isAdmin() && !$user->isAdmin())
@@ -323,7 +323,8 @@ var reciever = '';
                  reciever =  $(this).attr("id");
                 var _token = $('input[name="_token"]').val();
                 // $('#receiver_name-'+userid+'').addClass('active');
-                $('#receiver_name-'+userid+'').css("color","black");
+                $("#cse").find("span").css({"color": "black"});
+                $('#receiver_name-'+userid+'').css("color","white");
                 $('#unread_message-'+userid+'').css("display","none");
 console.log(userid)
                   // document.getElementById(`userlist-${userid}`).style.background="grey";

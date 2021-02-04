@@ -25,7 +25,7 @@
                          {{ __('Logout') }}
                      </a>
 
-                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                     <form action="{{ route('logout') }}" method="POST" style="display: none;">
                          @csrf
                      </form></li>
                 </ul>
@@ -35,9 +35,18 @@
             <ul id="main-menu" class="metismenu">
                 <li class="{{ Request::segment(2) == 'dashboard' ? 'active' : null }}"><a href="{{route('client.dashboard')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
                 <li class="{{ Request::segment(2) == 'profile' ? 'active' : null }}"><a href="{{route('client.profile')}}"><i class="icon-user"></i><span>My Profile</span></a></li>
-                <li class="{{ Request::segment(2) == 'applications' ? 'active' : null }}"><a href="{{route('client.applications')}}"><i class="icon-notebook"></i><span>My Applications</span></a></li>
                 <li class="{{ Request::segment(2) == 'bookings' ? 'active' : null }}"><a href="{{route('client.bookings')}}"><i class="icon-list"></i><span>My Booking</span></a></li>
+                <li class="{{ Request::segment(2) == 'applications' ? 'active' : null }}"><a href="{{route('client.applications')}}"><i class="icon-notebook"></i><span>My Applications</span></a></li>
                 <li class="{{ Request::segment(2) == 'feedback' ? 'active ' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Chat and Feedback</span></a></li>
+                <li class="{{ Request::segment(2) == 'logout' ? 'active' : null }}"><a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                    <i class="icon-power"></i> {{ __('Logout') }}
+                 </a>
+
+                 <form action="{{ route('logout') }}" method="POST" style="display: none;">
+                     @csrf
+                 </form></li>
                 {{-- <li class="{{ Request::segment(2) === 'chat' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li> --}}
 
             </ul>

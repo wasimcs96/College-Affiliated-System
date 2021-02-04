@@ -156,7 +156,7 @@ public function applicationStore(Request $request){
         $output='<option value="" selected>Course Name</option>';
         foreach($courses as $row)
         {
-         $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
+         $output .= '<option value="'.$row->id.'">'.$row->title.'</option>';
         }
         echo $output;
     }
