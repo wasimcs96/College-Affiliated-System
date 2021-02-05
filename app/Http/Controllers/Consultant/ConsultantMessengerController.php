@@ -1,14 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Consultant;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\UniversityConsultantClient;
+use App\Models\UniversityConsultant;
+use App\Models\Booking;
 use App\Models\ApplicationChat;
+use App\Models\Booking;
+use Illuminate\Support\Arr;
 use App\Http\Controllers\Controller;
 
-class AdminMessengerController extends Controller
+class ConsultantMessengerController extends Controller
 {
     public function index()
     {
@@ -28,9 +33,19 @@ class AdminMessengerController extends Controller
         // if($auth->isSubAdmin()){
         //     $usertype=4;
         // }
+        $consultants = [];
+        $clients= [];
+        $consultants = UniversityConsultant::where('consultant_id',auth()->user()->id)->pluck('university_id');
+        // dd($consultants);
+        $clients = Booking::where('consultant_id',auth()->user()->id)->pluck('client_id');
+        // dd($clients);
+        // $users = array_merge($consultants,$clients);
+        $array = Arr::collapse([$consultants,$clients]);
+        $users = User::whereIn('id', $array)->get();
+        // dd($users);
         $check = ApplicationChat::where('sender',auth()->user()->id)->orWhere('receiver',auth()->user()->id)->orderByDesc('id')->first();
         // dd($check);
-        return view('admin.messenger.chat',compact('check'))->with('users', User::all());
+        return view('consultant.messenger.chat',compact('check'))->with('adminUsers', User::all())->with('users',$users);
         // $users=User::where('status','=',1)->with(["message"])->orderBY("first_name", "ASC")->get();
         //dd($users);
     }
@@ -75,8 +90,7 @@ class AdminMessengerController extends Controller
             'messages'=>$msg,
             'conversation'=>$conversation,
             'sender'=>$sb,
-            'send_by'=>0,
-
+            'send_by'=>2,
         );
     // }
 
@@ -97,10 +111,9 @@ class AdminMessengerController extends Controller
             $ms=DB::table('application_chats')->insert([
                 'receiver'=>$userid,
                 'sender'=>auth()->user()->id,
-                 'send_by'=>0,
+                 'send_by'=>2,
                  'message'=>$message,
-                //  'updated_at'
-                //  'created_at'=>$ldate
+                 'created_at'=>$ldate
             ]);
         }
 
@@ -108,13 +121,13 @@ class AdminMessengerController extends Controller
        $ms=DB::table('application_chats')->insert([
            'receiver'=>$userid,
            'sender'=>auth()->user()->id,
-            'send_by'=>0,
+            'send_by'=>2,
             'message'=>$message,
             'created_at'=>$ldate
        ]);
         }
 
-        return redirect()->route('admin.messenger');
+        return redirect()->route('consultant.messenger');
 
 }
 }

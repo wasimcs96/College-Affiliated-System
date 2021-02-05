@@ -112,26 +112,95 @@
                                         <a href="#">Courses<i class="la la-angle-down"></i></a>
                                         <div class="dropdown-menu-item mega-menu">
                                             <ul class="row no-gutters">
+
                                                 <li class="col-lg-4 mega-menu-item">
                                                     <ul>
-                                                    <li><a href="#">B.Tech<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
+                                                        <?php $headercourses = App\Models\Category::take(7)->get(); ?>
+                                                      @foreach ($headercourses as $item)
+                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        @csrf
+                                                    <input type="hidden" name="category" value="{{$item->id}}">
+
+                                                    <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 3px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 15px;
+                                                        font-weight: 500;">{{$item->title}}</button></li>
+                                                    </form>
+                                                      @endforeach
+
+                                                        {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
                                                         <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
                                                         <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
                                                         <li><a href="#">Science<span class="badge bg-2 text-white">New</span></a></li>
                                                         <li><a href="#">Commerce</a></li>
-                                                        <li><a href="#">Arts</a></li>
+                                                        <li><a href="#">Arts</a></li> --}}
                                                     </ul>
                                                 </li>
-                                                <li class="col-lg-8 mega-menu-item">
+                                                <li class="col-lg-4 mega-menu-item">
                                                     <ul>
-                                                        <li><a href="{{route('course_all')}}">Search Courses</a></li>
-                                                        <li><a href="{{route('course_all')}}">Search Courses in Abroad</a></li>
-                                                        <li><a href="{{route('course_all')}}">Search Courses to study in Abroad</a></li>
-                                                        <li><a href="{{route('course_all')}}">Search Courses</a></li>
-                                                        <li><a href="{{route('course_all')}}">Search Courses in Abroad</a></li>
-                                                        <li><a href="{{route('course_all')}}">Search Courses to study in Abroad</a></li>
-                                                        {{-- <li><a href="{{route('consultant_book')}}">Search Consultants </a></li> --}}
+                                                        <?php $headercoursesms = App\Models\Category::skip(7)->take(7)->get(); ?>
+                                                      @foreach ($headercoursesms as $itemit)
+                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        @csrf
+                                                    <input type="hidden" name="category" value="{{$itemit->id}}">
+
+                                                    <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 3px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 15px;
+                                                        font-weight: 500;">{{$itemit->title}}</button></li>
+                                                    </form>
+                                                      @endforeach
+
+                                                        {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">Science<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">Commerce</a></li>
+                                                        <li><a href="#">Arts</a></li> --}}
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-4 mega-menu-item">
+                                                    <ul>
+                                                        <?php $headercourse = App\Models\Category::skip(14)->take(7)->get(); ?>
+                                                      @foreach ($headercourse as $itemsm)
+                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        @csrf
+                                                    <input type="hidden" name="category" value="{{$itemsm->id}}">
+
+                                                    <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 3px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 15px;
+                                                        font-weight: 500;">{{$itemsm->title}}</button></li>
+                                                    </form>
+                                                      @endforeach
+
+                                                        {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">Science<span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="#">Commerce</a></li>
+                                                        <li><a href="#">Arts</a></li> --}}
                                                     </ul>
                                                 </li>
 
@@ -213,7 +282,7 @@
                                     <li>
                                         <a href="#">More <i class="la la-angle-down"></i></a>
                                         <ul class="dropdown-menu-item">
-                                            <li><a href="{{route('front.loan')}}">Loan</a></li>
+                                            <li><a href="{{route('loan')}}">Loan</a></li>
                                             <li><a href="{{route('blog_all')}}">Blog</a></li>
                                             <li><a href="{{route('contact')}}">Contact Us</a></li>
                                             <li><a href="{{route('about')}}">About Us</a></li>

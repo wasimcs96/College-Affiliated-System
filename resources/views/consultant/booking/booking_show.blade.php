@@ -67,7 +67,7 @@
 
                     <tr>
                         <th scope="row">Student University / Course Preference-{{$i}}</th>
-                        <td>{{$uni->university->university_name ?? ''}} / {{$course[$key]->name ?? ''}}</td>
+                        <td>{{$uni->university->university_name ?? ''}} / {{$course[$key]->title ?? ''}}</td>
                     </tr>
                 <?php $i++ ?>
                 @endforeach

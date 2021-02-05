@@ -74,7 +74,7 @@
                     </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('subadmin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
-                <li class="{{ Request::segment(1) == 'messenger' ? 'active' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                <li class="{{ Request::segment(2) == 'messenger' ? 'active' : null }}"><a href="{{route('subadmin.messenger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
 
 
                  {{-- <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('subadmin.subscription')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Subscription</span></a></li> --}}

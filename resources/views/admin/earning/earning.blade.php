@@ -22,7 +22,7 @@
                             <th><b> User type </b></th>
                             <th><b> Amount</b></th>
                             <th><b>Transaction ID</b></th>
-                            <th><b> Payment Type</b></th>
+                            {{-- <th><b> Payment Type</b></th> --}}
                             <th><b>Purchased Date</b></th>
                             <th><b> Status</b></th>
                             <th style="text-align: center;"><b>Actions</b></th>
@@ -44,14 +44,14 @@
                             </td>
                             <td><i class="fa fa-inr"></i> {{$order->amount ?? ''}}</td>
                             <td>{{$order->transaction_id}}</td>
-                            <td>@if($order->payment_type == 0)Subscription @endif
+                            {{-- <td>@if($order->payment_type == 0)Subscription @endif
                                 @if($order->payment_type == 1)Premium @endif
                                 @if($order->payment_type == 2)Advertisement @endif
                                 @if($order->payment_type == 3)Consultant Visa Commission @endif
                                 @if($order->payment_type == 4)Consultant PR Commission @endif
-                            </td>
-                            <td style="text-align: center;">{{$order->created_at->format('Y-m-d')}}</td>
-                            <td>
+                            </td> --}}
+                            <td>@if(isset($order->created_at)){{ Carbon\Carbon::parse($order->created_at)->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
+                                        <td>
                             @if ($order->status == 0)
                                 <span class="btn btn-danger">InActive</span>
                             @else

@@ -524,6 +524,10 @@ Route::post('advertisement/update',[
     'as'=>'admin.advertisement_manager.update'
 ]);
 
+Route::post('advertisement/reject',[
+    'uses'=>'AdminAdvertisementController@reject',
+    'as'=>'admin.advertisement.reject'
+]);
 
 /* Add User */
 Route::get('users/user/add',[
@@ -587,12 +591,6 @@ Route::post('messenger/sendMessage', [
     'uses' => 'AdminMessengerController@sendMessage',
     'as' => 'admin.messenger.sendmessage'
 ]);
-});
-
-Route::get('/', function () {
-    return view('frontEnd.index');
-})->name('front');
-
 // Route::post('/',[
 //     'uses'=>'FrontEndController@index',
 //     'as'=>'front'
@@ -635,4 +633,9 @@ Route::get('loan/delete/{id}', [
     'as' => 'admin.loan.delete'
 ]);
 
+});
 
+
+Route::get('/', function () {
+    return view('frontEnd.index');
+})->name('front');

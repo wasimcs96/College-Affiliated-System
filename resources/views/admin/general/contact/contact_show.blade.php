@@ -28,13 +28,21 @@
                     <tbody>
 
                     <tr>
-                        <th scope="row"> User Name</th>
+                        <th scope="row"> Name</th>
                         <td>{{$show->name}}</td>
 
                     </tr>
                     <tr>
-                        <th><b>Mobile </b></th>
-                        <td>{{$show->mobile}}</td>
+                        <th><b>Type </b></th>
+                        <td>@if ($show->type == 0)
+
+                            <span class="">Normal Enquiry</span>
+
+                         @else
+
+                            <span class="">Loan Enquiry</span>
+
+                         @endif</td>
 
                     </tr>
 
@@ -82,12 +90,15 @@
             </table>
             <h3>Message</h3>
             {{$show->message}}
+
+
         </div>
                 <div id="dec">
 
                 </div>
-
-                <a href="{{route('admin.packages')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                &nbsp
+                <br>
+                <a href="{{route('admin.contact.index')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
             </div>
         </div>
     </div>

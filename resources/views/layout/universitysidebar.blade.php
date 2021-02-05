@@ -83,7 +83,7 @@
                 <li class="{{ Request::segment(2) == 'students' ? 'active' : null }}"><a href="{{route('university.students')}}"><i class="icon-users"></i><span>My Students</span></a></li>
                 <li class="{{ Request::segment(2) == 'my_consultants' ? 'active' : null }}"><a href="{{route('university.my_consultants')}}"><i class="icon-user"></i><span>My Consultants</span></a></li>
                 <li class="{{ Request::segment(2) == 'application' ? 'active' : null }}"><a href="{{route('university.application')}}"><i class="icon-notebook"></i><span>Applications</span></a></li>
-                <li class="{{ Request::segment(1) === 'messenger' ? 'active open' : null }}"><a href="{{route('messanger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                <li class="{{ Request::segment(2) === 'messenger' ? 'active open' : null }}"><a href="{{route('university.messenger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
                 <li class="{{ Request::segment(2) == 'consultants' ? 'active' : null }}"><a href="{{route('university.consultants')}}"><i class="icon-user"></i><span>Consultants Request</span></a></li>
                 <li class="{{ Request::segment(2) == 'services' ? 'active open' : null }}">
                     <a href="#services" class="has-arrow"><i class="icon-diamond"></i><span>Services</span></a>

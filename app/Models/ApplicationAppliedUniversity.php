@@ -18,12 +18,15 @@ class ApplicationAppliedUniversity extends Model
         return $this->belongsTo(User::class,'university_id');
     }
 
+    // public function course()
+    // {
+    //     return $this->belongsTo(Course::class,'course_id');
+    // }
+
     public function course()
     {
-        return $this->belongsTo(Course::class,'course_id');
+        return $this->belongsTo(UniversityCourse::class,'course_id');
     }
-
-
 
 
     public function user()

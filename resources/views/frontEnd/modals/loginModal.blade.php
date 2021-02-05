@@ -5,7 +5,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
 
 
-            <div class="modal-content" style="background-image: url('{{asset('frontEnd/assets/images/universityall.jpg')}}'); color: #f16d01;
+            <div class="modal-content" style="background-image: url('{{asset('frontEnd/assets/images/login.jpg')}}'); color: #f16d01;
             ">
                 <div class="modal-header">
                     <div>

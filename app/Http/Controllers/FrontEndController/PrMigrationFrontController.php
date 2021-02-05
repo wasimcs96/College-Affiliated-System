@@ -108,7 +108,7 @@ class PrMigrationFrontController extends Controller
             'booking_for'=>1,
             ]);
             $type=1;
-            $slug='pr-amount';
+            $slug='pr_amount';
             $consultant_id=$request->cid;
             $check = $this->consultantDue($type,$slug,$consultant_id);
             return redirect()->route('client.dashboard')->with('success','Your Application have been Submitted Successfully');
@@ -124,7 +124,8 @@ class PrMigrationFrontController extends Controller
 
         $dueAmount = DB::table('settings')->where('slug',$slug)->get('config_value')->first();
 
-
+if(isset($dueAmount))
+{
         if($consultant==null)
         {
            // dd(auth()->user()->id);
@@ -151,6 +152,7 @@ class PrMigrationFrontController extends Controller
             $consultant->save();
             return $consultant;
         }
+    }
        return response('success');
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\SubAdmin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\ApplicationChat;
 use App\Http\Controllers\Controller;
 
-class AdminMessengerController extends Controller
+class SubAdminMessengerController extends Controller
 {
     public function index()
     {
@@ -30,7 +30,7 @@ class AdminMessengerController extends Controller
         // }
         $check = ApplicationChat::where('sender',auth()->user()->id)->orWhere('receiver',auth()->user()->id)->orderByDesc('id')->first();
         // dd($check);
-        return view('admin.messenger.chat',compact('check'))->with('users', User::all());
+        return view('subadmin.messenger.chat',compact('check'))->with('users', User::all());
         // $users=User::where('status','=',1)->with(["message"])->orderBY("first_name", "ASC")->get();
         //dd($users);
     }
@@ -75,7 +75,7 @@ class AdminMessengerController extends Controller
             'messages'=>$msg,
             'conversation'=>$conversation,
             'sender'=>$sb,
-            'send_by'=>0,
+            'send_by'=>1,
 
         );
     // }
@@ -97,10 +97,9 @@ class AdminMessengerController extends Controller
             $ms=DB::table('application_chats')->insert([
                 'receiver'=>$userid,
                 'sender'=>auth()->user()->id,
-                 'send_by'=>0,
+                 'send_by'=>1,
                  'message'=>$message,
-                //  'updated_at'
-                //  'created_at'=>$ldate
+                 'created_at'=>$ldate
             ]);
         }
 
@@ -108,13 +107,13 @@ class AdminMessengerController extends Controller
        $ms=DB::table('application_chats')->insert([
            'receiver'=>$userid,
            'sender'=>auth()->user()->id,
-            'send_by'=>0,
+            'send_by'=>1,
             'message'=>$message,
             'created_at'=>$ldate
        ]);
         }
 
-        return redirect()->route('admin.messenger');
+        return redirect()->route('subadmin.messenger');
 
 }
 }

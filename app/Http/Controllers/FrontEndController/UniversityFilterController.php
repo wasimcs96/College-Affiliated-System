@@ -81,7 +81,6 @@ class UniversityFilterController extends Controller
     public function countryWiseUniversity(Request $request)
     {
 
-
         if ($request->type != null) {
             $universities = [];
             $countrycoming = $request->countries_id ?? '';
@@ -98,6 +97,7 @@ class UniversityFilterController extends Controller
             }
         }
 
+        // dd($universities);
 
 
 

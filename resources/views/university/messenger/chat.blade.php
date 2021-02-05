@@ -177,8 +177,8 @@
                     <div class="inbox_chat" style="width: 252px; height: 660px;">
                     <ul class="right_chat list-unstyled mb-0" id="cse">
                         <?php $auth=auth()->user();?>
-                        @foreach($users as $user)
-                        @if($auth->isAdmin() && !$user->isAdmin())
+                        @foreach($adminUsers as $user)
+                        @if($user->isAdmin() || $user->isSubAdmin() && !$user->isUniversity())
 
                         {{-- @if() --}}
                         <li class="online chat_list">
@@ -212,8 +212,48 @@
                                 </div>
                             </a>
                         </li>
-                        @endif
+                          @endif
                         @endforeach
+                        <?php $auth=auth()->user();?>
+                        @foreach($users as $user)
+
+
+                        {{-- @if() --}}
+                        <li class="online chat_list">
+                            <a href="javascript:void(0);" id="{{$user->id}}" class="javae" >
+                                <div class="media">
+                                    <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
+                                        <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                        @else
+                                        <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                        @endif</div>
+                                    <div class="media-body chat_ib" id="cs">
+                                   <span class="name" id="receiver_name-{{ $user->id }}"> {{$user->first_name}} {{$user->last_name}} </span>
+                                   @php
+                                       $seen = DB::table('application_chats')->where('sender',$user->id)->where('receiver',auth()->user()->id)->where('seen',0)->count();
+                                   @endphp
+                                    @if(isset($seen) && $seen !=NULL && $seen != 0)
+                                        <span class="badge badge-outline status" id="unread_message-{{ $user->id }}" style="width: 26px; height: 26px;"> <span style="color: white">{{$seen}}</span> </span>
+                                    @endif
+                                        @if($user->message != null)
+                                            @foreach($user->message as $key=>$message)
+                                                @if($key == 0)
+                                                    <h5><span class="chat_date">{{$message->created_at}}</span></h5>
+                                                    <p>{{$message->message}}</p>
+                                                @endif
+                                                <?php $i++ ?>
+                                            @endforeach
+                                         @endif
+                                        {{-- <span class="message">hey this is admin</span> @if($check->receiver == $user->id) style="color: black" @endif--}}
+                                        {{-- <span class="badge badge-outline status"></span> --}}
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        @endforeach
+
+
                     </ul>
                     </div>
                 </div>
@@ -228,7 +268,7 @@
                             <div class="row clearfix">
                                 <div class="col-lg-12">
                                     <div class="chat-about">
-                                        <h6 class="m-b-0" id="hed">@if($check == NULL) Select User to Start Conversation @elseif($check->send_by==0) {{ $useme->first_name }} {{ $useme->last_name }} (Last Message) Click on the user to start conversation @else {{ $usemeSend->first_name }} {{ $usemeSend->last_name }} (Last Message) Click on the user to start conversation @endif</h6>
+                                        <h6 class="m-b-0" id="hed">@if($check == NULL) Select User to Start Conversation @elseif($check->send_by==3) {{ $useme->first_name }} {{ $useme->last_name }} (Last Message) Click on the user to start conversation @else {{ $usemeSend->first_name }} {{ $usemeSend->last_name }} (Last Message) Click on the user to start conversation @endif</h6>
                                     </div>
                                 </div>
                             </div>
@@ -237,7 +277,7 @@
                         <div class="chat-history ">
                             <ul class="message_data msg_history" id="history">
 
-                            @if(isset($check) && $check->send_by==0 && $check != NULL)
+                            @if(isset($check) && $check->send_by==3 && $check != NULL)
                                 <li class="right clearfix">
                                     @if(file_exists($useme->profile_image) && isset($useme->profile_image))
                                     <img class="user_pix" src="{{asset($useme->profile_image)}}" alt="avatar">
@@ -330,7 +370,7 @@ var reciever = '';
 console.log(userid)
                   // document.getElementById(`userlist-${userid}`).style.background="grey";
                 $.ajax({
-                  url: "{{ route('admin.messenger.fetchdata') }}",
+                  url: "{{ route('university.messenger.fetchdata') }}",
                     method: "POST",
                     data:{userid:userid,_token:_token},
                     success:function(result)
@@ -352,7 +392,7 @@ console.log(userid)
                               html='';
                               (re.messages).forEach(element => {
 
-                                  if (element.send_by == 0) {
+                                  if (element.send_by == 3) {
                                       html+=`<li class="right clearfix">
                                    <img class="user_pix"  onerror="javascript:this.src='{{ asset("assets/images/xs/avatar4.jpg") }}'" src="{{asset('${img}')}}" alt="avatar">
                                 <div class="message">
@@ -368,7 +408,7 @@ console.log(userid)
                                if (element.sender == userid) {
 
                                 html+=` <li class="left clearfix">
-        <img class="user_pix" onerror="javascript:this.src='{{ asset("assets/images/xs/avatar4.jpg") }}'" src="{{asset('${img}')}}" alt="avatar">
+                                    <img class="user_pix" onerror="javascript:this.src='{{ asset('assets/images/xs/avatar4.jpg') }}'" src="{{asset('${img}')}}" alt="avatar">
         <div class="message">
             <p>${element.message}</p>
         </div>
@@ -420,7 +460,7 @@ $(".msg_history").stop().animate({
 
        $.ajax({
               type: "POST",
-              url: "{{ route('admin.messenger.sendmessage') }}",
+              url: "{{ route('university.messenger.sendmessage') }}",
               data: {id:id,_token:_token,msd:msd}, // serializes the form's elements.
               success: function(data)
               {

@@ -139,18 +139,23 @@ Route::post('/slots',[
 // })->name('university_all');
 
 /* blog routes*/
-Route::get('blog_all',function(){
-    return view('frontEnd.blog.blog_all');
-})->name('blog_all');
+// Route::get('blog_all',function(){
+//     return view('frontEnd.blog.blog_all');
+// })->name('blog_all');
 
-Route::get('blog_detail',function(){
-    return view('frontEnd.blog.blog_detail');
-})->name('blog_detail');
+Route::get('blog_all',[
+    'uses' => 'FrontEndController\BlogFrontcontroller@index',
+    'as'=> 'blog_all'
+]);
 
-// ######## loan route
-Route::get('loan',function(){
-    return view('frontEnd.loan.loan');
-})->name('loan');
+
+Route::get('blog_detail{id}',[
+    'uses' => 'FrontEndController\BlogFrontcontroller@detail',
+    'as'=> 'blog_detail'
+]);
+
+// })->name('blog_detail');
+
 
 // about and contact
 Route::get('about', function(){
@@ -460,7 +465,12 @@ Route::post('advertisement/click/count',[
     'as'=>'front.advertisement.click.count'
 ]);
 
-Route::get('/front/loan', [
+Route::get('loan/detail', [
     'uses' => 'FrontEndController\LoanFrontController@index',
-    'as' => 'front.loan'
+    'as' => 'loan'
+]);
+
+Route::post('loan/enquiry/submit', [
+    'uses' => 'FrontEndController\LoanFrontController@loanEnquiry',
+    'as' => 'loan.enquiry.submit'
 ]);
