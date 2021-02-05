@@ -56,8 +56,7 @@ class AdminUsersController extends Controller
 
     public function store(Request $request)
     {
-// dd($request->all());
-
+        
             $request->validate([
             'first_name'=>['required', 'string', 'max:255'],
             'last_name'=>['required', 'string', 'max:255'],
@@ -66,7 +65,7 @@ class AdminUsersController extends Controller
             'role' => ['required'],
             'mobile' => ['required','min:6','unique:users','numeric'],
              ]);
-        // dd($role);
+       
         $role = $request->role;
        if($role==3){
         User::create([
@@ -78,14 +77,14 @@ class AdminUsersController extends Controller
         ])->assignRole('client');
 
             // Important Code
-     $replacement['token'] =$request->_token;
+    //  $replacement['token'] =$request->_token;
     
 
-     $replacement['USER_NAME'] = $request->first_name;
-     $replacement['PASSWORD'] = $request->password;
-     $replacement['EMAIL'] = $request->email;
-     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
-     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+    //  $replacement['USER_NAME'] = $request->first_name;
+    //  $replacement['PASSWORD'] = $request->password;
+    //  $replacement['EMAIL'] = $request->email;
+    //  $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+    //  mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
 
         return view('admin.users.user.index')->with('users', User::all())->with('id',1);
        }
@@ -102,14 +101,15 @@ class AdminUsersController extends Controller
 
         ]);
                     // Important Code
-     $replacement['token'] =$request->_token;
+    //  $replacement['token'] =$request->_token;
     
 
-     $replacement['USER_NAME'] = $request->first_name;
-     $replacement['PASSWORD'] = $request->password;
-     $replacement['EMAIL'] = $request->email;
-     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
-     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+    //  $replacement['USER_NAME'] = $request->first_name;
+    //  $replacement['PASSWORD'] = $request->password;
+    //  $replacement['EMAIL'] = $request->email;
+    //  $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+    //  mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+     
         return view('admin.users.user.index')->with('users', User::all())->with('id',3);
 
        }
@@ -125,14 +125,14 @@ class AdminUsersController extends Controller
             'user_id'=>$user->id,
         ]);
                     // Important Code
-                    $replacement['token'] =$request->_token;
+    //                 $replacement['token'] =$request->_token;
     
 
-                    $replacement['USER_NAME'] = $request->first_name;
-     $replacement['PASSWORD'] = $request->password;
-     $replacement['EMAIL'] = $request->email;
-     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
-     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+    //                 $replacement['USER_NAME'] = $request->first_name;
+    //  $replacement['PASSWORD'] = $request->password;
+    //  $replacement['EMAIL'] = $request->email;
+    //  $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+    //  mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
         return view('admin.users.user.index')->with('users', User::all())->with('id',2);
        }
        if($role==5){
@@ -145,14 +145,14 @@ class AdminUsersController extends Controller
         ])->assignRole('subAdmin');
        }
             // Important Code
-            $replacement['token'] =$request->_token;
+    //         $replacement['token'] =$request->_token;
     
 
-            $replacement['USER_NAME'] = $request->first_name;
-     $replacement['PASSWORD'] = $request->password;
-     $replacement['EMAIL'] = $request->email;
-     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
-     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+    //         $replacement['USER_NAME'] = $request->first_name;
+    //  $replacement['PASSWORD'] = $request->password;
+    //  $replacement['EMAIL'] = $request->email;
+    //  $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+    //  mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
     }
 
     public function update(Request $request, User $id)
