@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\ApplicationAppliedUniversity;
 use App\Models\ApplicationDocument;
-use App\Models\Course;
+use App\Models\UniversityCourse;
 use App\Models\User;
 use Config;
 
@@ -41,7 +41,7 @@ class ClientApplicationController extends Controller
          $course_id[$i] = $booking['course'] ?? '';
 
         $university[$i] =  User::where('id',$university_id[$i])->get()->first();
-        $course[$i] = Course::where('id',$course_id[$i])->get()->first();
+        $course[$i] = UniversityCourse::where('id',$course_id[$i])->get()->first();
         // dd($university[0]);
         $i++;
     }

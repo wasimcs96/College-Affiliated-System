@@ -402,13 +402,13 @@ console.log(userid)
                             </li>`;
                                   }
                           });
-                          if(re.sender != 'Start the conversation')
+                          if(re.sender != '')
                           {
                           (re.sender).forEach(element => {
                                if (element.sender == userid) {
 
                                 html+=` <li class="left clearfix">
-        <img class="user_pix" src="{{asset('assets/images/user.png')}}" alt="avatar">
+                                    <img class="user_pix" onerror="javascript:this.src='{{ asset('assets/images/xs/avatar4.jpg') }}'" src="{{asset('${img}')}}" alt="avatar">
         <div class="message">
             <p>${element.message}</p>
         </div>

@@ -27,6 +27,7 @@
                         <tr>
                             <th><b> Consultant  Name</b></th>
                             <th><b> Booking Date </b></th>
+                            <th><b> Booking Time Slot </b></th>
                             <th><b> Status</b></th>
                             <th><b> Actions</b></th>
 
@@ -40,10 +41,10 @@
                             <tr>
                                 <td>{{$booking->userConsultant->first_name ?? ''}}  {{$booking->userConsultant->last_name ?? ''}} </td>
 
-                                <td>{{$booking->booking_date ?? ''}}</td>
-
-
-
+                                <td>@if(isset($booking->booking_date)){{ Carbon\Carbon::parse($booking->booking_date)->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
+                                {{-- <td>tru</td>--}}
+                                <td>@if(isset($booking->booking_start_time)){{$booking->booking_start_time}}-{{$booking->booking_end_time}}@else N/A @endif</td>
+                                {{-- <td>2020/30/11</td> --}}
                                  <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
                                 @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
                                 @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif

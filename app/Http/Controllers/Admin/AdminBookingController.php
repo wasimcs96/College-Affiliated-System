@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\University;
-use App\Models\Course;
+use App\Models\UniversityCourse;
 use App\Models\User;
 class AdminBookingController extends Controller
 {
@@ -36,7 +36,7 @@ class AdminBookingController extends Controller
           $course_id[$i] = $enquiry['course'] ?? '';
 
          $university[$i] =  User::where('id',$university_id[$i])->get()->first();
-         $course[$i] = Course::where('id',$course_id[$i])->get()->first();
+         $course[$i] = UniversityCourse::where('id',$course_id[$i])->get()->first();
          // dd($university[0]);
          $i++;
      }

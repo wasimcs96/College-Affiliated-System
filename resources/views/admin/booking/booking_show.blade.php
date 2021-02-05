@@ -61,6 +61,20 @@
                         <th scope="row">Time Slot</th>
                         <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td>
                     </tr>
+
+
+                    <?php $i = 1?>
+                    @if(isset($university) && $university != '')
+                    @foreach($university as $key=> $uni)
+
+                        <tr>
+                            <th scope="row">Student University / Course Preference-{{$i}}</th>
+                            <td>{{$uni->university->university_name ?? ''}} / {{$course[$key]->title ?? ''}}</td>
+                        </tr>
+                    <?php $i++ ?>
+                    @endforeach
+                    @endif
+
                     <tr>
                         <th scope="row">Booking For</th>
                         <td>
@@ -80,20 +94,6 @@
                             @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
                         </td>
                     </tr>
-
-                    <?php $i = 1?>
-                    @if(isset($university) && $university != '')
-                    @foreach($university as $key=> $uni)
-
-                        <tr>
-                            <th scope="row">Student University / Course Preference-{{$i}}</th>
-                            <td>{{$uni->university->university_name ?? ''}} / {{$course[$key]->name ?? ''}}</td>
-                        </tr>
-                    <?php $i++ ?>
-                    @endforeach
-                    @endif
-
-
 <input type="text" class="" value="{{$booking->id}}" name="booking_id" hidden>
 
 
@@ -116,6 +116,7 @@
                 <div id="dec">
 
                 </div>
+                <a href="{{route('admin.booking')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
                 {{-- @if($booking->status== 0)
                 <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
                 <a href="{{route('admin.booking')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>

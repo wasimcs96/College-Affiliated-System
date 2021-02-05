@@ -11,7 +11,7 @@ use App\Models\Booking;
 use App\Models\Application;
 use App\Models\ApplicationAppliedUniversity;
 use App\Models\University;
-use App\Models\Course;
+use App\Models\UniversityCourse;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\ApplicationDocument;
@@ -45,7 +45,7 @@ class ConsultantBookingController extends Controller
                 $university_id[$i] = $query['university'] ?? '';
                 $course_id[$i] = $query['course'] ?? '';
                 $university[$i] =  User::where('id',$university_id[$i])->get()->first();
-                $course[$i] = Course::where('id',$course_id[$i])->get()->first();
+                $course[$i] = UniversityCourse::where('id',$course_id[$i])->get()->first();
                 $i++;
 
             }
@@ -84,7 +84,7 @@ class ConsultantBookingController extends Controller
 public function application($id)
 {
     $book = Booking::where('id',$id)->get()->first();
-    $courses = Course::all();
+    $courses = UniversityCourse::all();
     $countries = Country::all();
     return view('consultant.booking.booking_application',compact('book','courses','countries'));
 }

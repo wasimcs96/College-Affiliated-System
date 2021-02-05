@@ -53,7 +53,7 @@
                     @foreach($university as $key=> $uni)
                     <tr>
                         <th scope="row">Student University/Course Preference-{{$key + 1}}</th>
-                        <td>{{$uni->university->university_name ?? '' }} / {{$course[$key]->name ?? ''}}</td>
+                        <td>{{$uni->university->university_name ?? '' }} / {{$course[$key]->title ?? ''}}</td>
                     </tr>
                    @endforeach
 
@@ -316,7 +316,7 @@
                                                  </tr>
                                                  <tr>
                                                      <th scope="row">Course Name</th>
-                                                     <td>{{$applied->course->name ?? ''}}</td>
+                                                     <td>{{$applied->course->title ?? ''}}</td>
                                                  </tr>
                                              </tbody>
                                          </table>
@@ -356,7 +356,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Course Name</th>
-                                                    <td>{{$applied->course->name ?? ''}}</td>
+                                                    <td>{{$applied->course->title ?? ''}}</td>
                                                 </tr>
                                                 <tr>
                                                  <th scope="row">Application Status</th>
@@ -401,7 +401,7 @@
                                                      </tr>
                                                      <tr>
                                                          <th scope="row">Course Name</th>
-                                                         <td>{{$applied->course->name ?? ''}}</td>
+                                                         <td>{{$applied->course->title ?? ''}}</td>
                                                      </tr>
                                                      @if ($applied->is_accepeted == 1)
                                                      <tr>
@@ -472,7 +472,7 @@
                                                    </tr>
                                                    <tr>
                                                        <th scope="row">Course Name</th>
-                                                       <td>{{$applied->course->name ?? ''}}</td>
+                                                       <td>{{$applied->course->title ?? ''}}</td>
                                                    </tr>
 
                                                </tbody>
@@ -495,11 +495,13 @@
                                                    </div>
                                                </div> --}}
                                                <div class="col-lg-2 col-md-12">
-                                           <div class="form-group">
-                                               <label for="">Course Fees</label>
-                                               <input type="text" name="fees" class="form-control" id="coursefees" @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$applied->userUniversity->universityCourse[$key]->fees}}" @else value="{{$applied->fees ?? ''}}" @endif />
-                                             </div>
-                                           </div>
+                                                <div class="col-lg-2 col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="">Course Fees</label>
+                                                        <?php $coursedetails=\App\Models\UniversityCourse::where('id',$applied->course_id)->first(); ?>
+
+                                                        <input type="text" name="fees" class="form-control" id="coursefees"  @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$coursedetails->fees}}"@else value="{{ $applied->fees }}"  @endif />                                                     </div>
+                                                     </div>
                                         {{-- {{ dd($applied->documents) }} --}}
                                         <div class="col-lg-10 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')

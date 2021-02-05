@@ -74,7 +74,7 @@
                                 <button type="submit" data-toggle="tooltip" data-placement="top" title="Accept" class="btn btn-success"><i class="icon-check"></i></button>
                             </form>
 
-                                <a href="javascript:void(0);" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Reject" style="margin-left: 8px;"><i class="icon-trash"></i></a>
+                                <a href="javascript:void(0);" @if($rt->user->isConsultant() ?? '') custom2="{{ $rt->user->id }}" @endif @if($rt->user->isUniversity() ?? '') custom2="{{ $rt->user->id }}" @endif custom1="{{ $rt->id }}" class="btn btn-danger" data-toggle="modal" data-target="#rejectModal" data-placement="top" title="Reject" style="margin-left: 8px;" id="rejectTrigger"><i class="icon-trash"></i></a>
                         </div>
 
                         @endif</td>
@@ -88,6 +88,41 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+<div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel3" style="color:white; text-align: center;">Reject Advertisement</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <form id="basic-form6" class="basic-form" method="post" novalidate action="{{route('admin.application.followup.store')}}">
+                    @csrf
+                    {{-- <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="title" id="title" required>
+                    </div> --}}
+                  {{-- <input type="text" name="application_id" value={{$application->id ?? ''}} hidden> --}}
+                    <div class="form-group" id="reasonError">
+                        <label style="color:white">State Reason</label>
+                        <textarea class="form-control" id="reason" name="reason" rows="5" cols="30" required></textarea>
+                    </div>
+                    <br>
+
+        </div>
+        <div class="modal-footer">
+          {{-- <button type="submit" class="btn btn-primary">Add Follow Up</button> --}}
+          <a href="javascript:void(0)"  class="btn btn-primary" id="rejectButton"> Done </a>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">
+            Cancel
+          </button>
+        </form>
+                    </div>
+</div>
 </div>
 </div>
 @stop
@@ -139,4 +174,50 @@ tr.shown td.details-control {
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
+<script>
+    var advertisement_id='';
+    var user_id='';
+    var reason ='';
+     $(document).on('click', '#rejectTrigger', function ()
+ {
+    advertisement_id=$(this).attr('custom1');
+    user_id=$(this).attr('custom2');
+ console.log(advertisement_id);
+ });
+ $(document).on('click', '#rejectButton', function ()
+ {
+
+       var reason=$('#reason').val();
+    if( reason == '')
+    {
+        $('#reasonError').html('<label style="color:white">State Reason</label><textarea class="form-control" id="reason" name="reason" rows="5" cols="30" required></textarea><strong><span style="color:red">*Please State Reason</span></strong>')
+    }
+    else
+    {
+       if(advertisement_id > 0){
+         $.ajaxSetup({headers:
+             {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+             });
+
+             $.ajax({
+                     type: "post",
+                     url: "{{route('admin.advertisement.reject')}}",
+                     data: {advertisement_id:advertisement_id,reason:reason,user_id:user_id},
+                     success: function (result) {
+                         console.log('success');
+                        //  alert('Follow Up created Successfully');
+                         $('#alert_add').append('<div class="container" style="width: 1026px;"><div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>Rejection Message Sent Successfully.</strong></div></div>')
+                     }
+                 });
+       }
+
+             $('#rejectModal').modal('hide');
+             document.getElementById("basic-form6").reset();
+    }
+     });
+
+
+ </script>
 @stop
