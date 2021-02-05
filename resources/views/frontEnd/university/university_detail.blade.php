@@ -160,11 +160,14 @@
                 <div class="col-lg-8">
                     <div class="single-content-wrap padding-top-60px">
                         <div id="description" class="page-scroll">
+
                             <div class="single-content-item pb-4">
                                 <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}
                                     @if($university->is_verified == 1)
-                            <span data-toggle="tooltip"  data-url=""  data-title="Verified" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-certificate"></i></span>
-                        @endif</h3>
+                            <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif
+                            <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                            @if($university->Premium_expire_date > $mytime)<span data-toggle="tooltip"  data-url=""  data-title="Premium Profile"  style="
+                            background-color: #073975; border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-certificate"></i></span> @endif</h3>
                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                     <p class="mr-2">University Type:       @if(isset($university->university->type)&&($university->university->type==0))
                                         Private
@@ -357,7 +360,8 @@
                                         </div>
                                         <div class="author-bio">
                                             {{-- {{dd($consultant)}} --}}
-                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->consultant->company_name}}</a></h4>
+                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->first_name}}{{$consultant->userConsultant->last_name}}</a> @if($consultant->userConsultant->is_verified == 1)
+                                                <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif</h4>
                                             <span class="author__meta">Member Since :{{$consultant->userConsultant->consultant->created_at->Format("Y") ?? ''}}</span>
                                             <div class="d-flex flex-wrap align-items-center ">
                                                 {{-- <p class="mr-2">Rating:</p> --}}

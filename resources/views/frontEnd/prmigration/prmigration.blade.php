@@ -35,7 +35,7 @@
                                                         <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
-                                                            <option value="{{$country->countries_id}}">{{$country->countries_name}}</option>
+                                                            <option value="{{$country->countries_id}}" @if(isset($countrycoming) && $countrycoming == $country->countries_id) selected @endif>{{$country->countries_name}}</option>
                                                          @endforeach
 
                                                         @else
@@ -141,8 +141,8 @@
 
         <div class="row">
 
+            @if($consultants->count() > 0)
         @foreach($consultants as $consultant)
-        @if($consultant == !null)
         @if($consultant->isConsultant())
 
         <div class="col-lg-4 responsive-column">
@@ -166,6 +166,10 @@
                             @else
                             <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                             @endif</div>
+                            <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                            @if($consultant->Premium_expire_date > $mytime)<span style="
+                            background-color: #073975;
+                        " class="badge">Premium</span> @endif
                     {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
                         <i class="la la-heart-o"></i>
                     </div> --}}
@@ -173,7 +177,9 @@
                 </div>
                 <div class="card-body">
                     {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
-                    <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->consultant->company_name}} </a></h3>
+                    <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->first_name}} {{$consultant->last_name}}</a>   @if($consultant->is_verified == 1)
+                        <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                    @endif</h3>
                     <div class="card-rating">
                         <div class="d-flex flex-wrap align-items-center pt-2">
                             <p class="mr-2">Rating:</p>
@@ -241,29 +247,28 @@
                             <span class="price__text">City :</span>
                             <span class="price__num">{{$consultant->city}}</span>
                         </p>
-                        <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                        <a href="{{route('prmigration.book',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
                     </div>
                 </div>
             </div><!-- end card-item -->
         </div>
             @endif
+            @endforeach
             @else
-            <div class="container">
-            <h1 style="text-align:center;"> No Consultant Available for Selected Country !</h1>
-            <h4 style="text-align:center; margin-top:15px;">Please Select Another Country</h4>
+            <div class="container" style="text-align: center;">
+         <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
             </div>
             @endif
-            @endforeach
         </div><!-- end row -->
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-12">
                 <div class="btn-box mt-3 text-center">
                     <button type="button" class="theme-btn"><i class="la la-refresh mr-1"></i>Load More</button>
                     <p class="font-size-13 pt-2">Showing 1 - 6 of 44 Cars</p>
                 </div><!-- end btn-box -->
             </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
+        </div><!-- end row --> --}}
     </div><!-- end container -->
 </section><!-- end card-area -->
 <!-- ================================

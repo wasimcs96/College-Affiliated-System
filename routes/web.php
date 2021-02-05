@@ -162,6 +162,14 @@ Route::get('about', function(){
     return view('frontEnd.about.about');
 })->name('about');
 
+Route::get('privacy&policy/campus', function(){
+    return view('frontEnd.privacy&policy.p&p');
+})->name('privacy&policy');
+
+Route::get('terms&condition/campus', function(){
+    return view('frontEnd.terms_co.t&c');
+})->name('terms&condition');
+
 // Route::get('contact', function(){
 //     return view('frontEnd.contact.contact');
 // })->name('contact');

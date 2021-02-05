@@ -65,7 +65,8 @@
 
                 <li class="{{ Request::segment(2) == 'packages' ? 'active' : null }}"><a href="{{route('subadmin.packages')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>Packages</span></a></li>
 
-                <li class="{{ Request::segment(2) == 'advertisement' ? 'active' : null }}"><a href="{{route('subadmin.advertisement_manager')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>Ad Manager</span></a></li>
+                <li class="{{ Request::segment(2) == 'advertisement' ? 'active' : null }}"><a href="{{route('subadmin.advertisement_manager')}}"><i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+                    <span>Ad Manager</span></a></li>
                 <li class="{{ Request::segment(2) == 'commission' ? 'active open' : null }}">
                     <a href="#Commission" class="has-arrow"><i class="fa fa-credit-card"></i><span>Commission Manager</span></a>
                     <ul>
@@ -80,7 +81,8 @@
                  {{-- <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('subadmin.subscription')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Subscription</span></a></li> --}}
 
                 <li class="{{ Request::segment(2) == 'general' ? 'active open' : null }}">
-                    <a href="#Generals" class="has-arrow"><i class="fa fa-gear"></i><span>Generals</span></a>
+                    <a href="#Generals" class="has-arrow"><i class="fa fa-tasks" aria-hidden="true"></i>
+                        <span>Generals</span></a>
                     <ul>
                         <li class="{{ Request::segment(3) == 'faq' ? 'active' : null }}"><a href="{{route('subadmin.general.faq')}}">Manage FAQ</a></li>
                         <li class="{{ Request::segment(3) == 'about' ? 'active' : null }}"><a href="{{route('subadmin.general.about')}}">Manage About Us</a></li>
@@ -90,8 +92,10 @@
                         <li class="{{ Request::segment(3) == 'contact' ? 'active' : null }}"><a href="{{route('subadmin.contact.index')}}">Contact Manager</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) == 'settings' ? 'active' : null }}"><a href="{{route('setting.general')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Settings</span></a></li>
-                <li class="{{ Request::segment(3) == 'logos' ? 'active' : null }}"><a href="{{route('settingtheme')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Logo Settings</span></a></li>
+                <li class="{{ Request::segment(2) == 'settings' ? 'active' : null }}"><a href="{{route('setting.general')}}"><i class="fa fa-cogs" aria-hidden="true"></i>
+                    <span>Settings</span></a></li>
+                <li class="{{ Request::segment(3) == 'logos' ? 'active' : null }}"><a href="{{route('settingtheme')}}"><i class="fa fa-cog" aria-hidden="true"></i>
+                    <span>Logo Settings</span></a></li>
 
                 {{-- <li class="{{ Request::segment(2) == 'report' ? 'active open' : null }}">
                     <a href="#Report" class="has-arrow"><i class="icon-book-open"></i><span>Reports</span></a>

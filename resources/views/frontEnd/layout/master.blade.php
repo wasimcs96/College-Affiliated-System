@@ -270,11 +270,7 @@
                 <div class="footer-item">
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Popular Country</h4>
                     <ul class="list-items list--items" style="margin-left: 17px;">
-                        <li>
-                            <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
-                                <input type="hidden" name="countries_id" value="99">
-                                @csrf <a><button style="
-                                border: none;   color: #5d646d; background-color: transparent;"  type="submit">India</button></a> </form></li>
+
                         <li>
                             {{-- <a href="services.html">United States</a> --}}
                             <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
@@ -310,6 +306,13 @@
                                 border: none;background-color: transparent; color: #5d646d;"  type="submit">Ireland</button></a> </form>
                             {{-- <a href="#">Ireland</a> --}}
                         </li>
+
+                        <li>
+                            <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                <input type="hidden" name="countries_id" value="99">
+                                @csrf <a><button style="
+                                border: none;   color: #5d646d; background-color: transparent;"  type="submit">India</button></a> </form>
+                                </li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -317,12 +320,21 @@
                 <div class="footer-item">
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Blogs</h4>
                     <ul class="list-items list--items">
-                        <li><a href="#">PR/ Migration</a></li>
-                        <li><a href="#">Loans</a></li>
-                        <li><a href="#">sdfssdfss</a></li>
-                        <li><a href="#">sdfsdfsdf</a></li>
-                        <li><a href="#">sdfsdfsdfs</a></li>
-                        <li><a href="#">sdfsdfsdfsdf</a></li>
+                        <?php $footer_blogs=App\Models\Blog::take(6)->orderBy('Updated_at','DESC')->get() ?>
+                        @foreach($footer_blogs as $footer_blog)
+                        <?php
+                        // $myfooterblog =$package->description ?? '';
+                        // if (strlen($myfooterblog) > 140)
+                        //     {
+                        //         $myfooterblog = substr($myfooterblog, 0, 40);
+                        //         $myfooterblog = explode(' ',$myfooterblog);
+                        //         array_pop($myfooterblog); // remove last word from array
+                        //         $myfooterblog = implode(' ',$myfooterblog);
+                        //         // $myvalue = $myvalue . ' ...';
+                        //     } ?>
+                        <li><a href="{{route('blog_detail',['id'=>$footer_blog->id])}}"> <?php ?>{{$footer_blog->title}}</a></li>
+                        @endforeach
+
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -332,6 +344,9 @@
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Get in touch</h4>
                     <ul class="list-items list--items">
                         <li><a href="#">Book a consultant</a></li>
+                        <li><a href="{{route('contact')}}">Contact Us</a></li>
+
+                        <li><a href="{{route('Prmigration')}}">PR/ Migration</a></li>
                         <li><a href="#">Track Application</a></li>
                         <li>Download App</li>
                         <li><a href="#" ><img style="    width: 105px;" src="{{ asset('frontEnd/assets/images/app-store.png') }}" alt=""></a>
@@ -342,15 +357,19 @@
                 </div><!-- end footer-item -->
             </div>
 
+
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
-                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">About us</h4>
+                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Pages</h4>
                     <ul class="list-items list--items">
-                        <li><a href="#">Why C.I</a></li>
-                        <li><a href="#">Vision & Goals</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">User Agreement</a></li>
+                        <li><a href="{{route('loan')}}">Loan</a></li>
+                        {{-- <li><a href="{{route('blog_all')}}">Blog</a></li> --}}
+                        <li><a href="{{route('about')}}">About Us</a></li>
+                        <li><a href="{{route('faq.front')}}">FAQ</a></li>
+                        <li><a href="{{route('privacy&policy')}}">Privacy and Policy</a></li>
+                        <li><a href="{{route('terms&condition')}}">Terms and Condition</a></li>
+
+
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->

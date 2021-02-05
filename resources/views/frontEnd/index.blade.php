@@ -484,7 +484,9 @@
                                         @endif</a>
                                 </div>
                                 <div class="author-bio">
-                                    <a href="{{route('university_detail',['id'=>$university->id])}}"><h4 class="author__title">{{$university->university->university_name  ?? ''}}</h4></a>
+                                    <a href="{{route('university_detail',['id'=>$university->id])}}"><h4 class="author__title">{{$university->university->university_name  ?? ''}}        @if($university->is_verified == 1)
+                                        <span data-toggle="tooltip"  data-url=""  data-title="Verified" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-certificate"></i></span>
+                                    @endif</h4></a>
                                     {{-- <span class="author__meta">{{$university->userUniversity->type ?? ''}}</span> --}}
                                     <span class="ratings d-flex align-items-center">
                                         @if($university->rating == 3 ?? '' )
@@ -604,7 +606,9 @@
                                         @endif </a>
                                 </div>
                                 <div class="author-bio">
-                                    <a href="{{route('consultant_detail',['id' => $consultant->id ?? ''])}}"><h4 class="author__title">{{$consultant->first_name ?? ''}}{{$consultant->last_name ?? ''}}</h4></a>
+                                    <a href="{{route('consultant_detail',['id' => $consultant->id ?? ''])}}"><h4 class="author__title">{{$consultant->first_name ?? ''}}{{$consultant->last_name ?? ''}}   @if($consultant->is_verified == 1)
+                                        <span data-toggle="tooltip"  data-url=""  data-title="Verified" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-certificate"></i></span>
+                                    @endif</h4></a>
                                     {{-- <span class="author__meta">{{$consultant->last_name}}</span> --}}
                                     <span class="ratings d-flex align-items-center">
                                         @if($consultant->rating == 3 ?? '' )
@@ -795,6 +799,7 @@
 </section>
                       {{-- works end --}}
 
+
                       {{-- discipline start --}}
 
                       <section class="service-area section--padding text-center">
@@ -925,6 +930,10 @@
                                                     @else
                                                     <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif</div>
+                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                                    @if($us->Premium_expire_date > $mytime)<span style="
+                                                    background-color: #073975;
+                                                " class="badge">Premium</span> @endif
                                             {{-- <span class="badge">Top Ranked</span> --}}
                                             {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
@@ -932,6 +941,9 @@
                                             </div> --}}
                                         </div>
                                         <div class="card-body">
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$us->id])}}">{{$us->university->university_name ?? ''}}</a> @if($us->is_verified == 1)
+                                                <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                            @endif</h3>
                                             <p class="card-meta">
                                                 @if(isset($us->university->type))
                                                  @if($us->university->type==0)
@@ -941,7 +953,6 @@
                                         @endif
                                         @endif
 
-                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$us->id])}}">{{$us->university->university_name ?? ''}}</a></h3>
                                             <div class="card-rating">
                                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                                     <p class="mr-2">Rating:</p>
@@ -1011,7 +1022,10 @@
                                             </div>
 
                                             <div class="card-price d-flex align-items-center justify-content-between">
-                                                <a href="{{asset($us->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
+                                                <a href="{{asset($us->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                                    height: 38px;
+                                                    padding-top: 9px;
+                                                ">Brochure</a>
 
                                                 <a href="{{route('university_detail',['id'=>$us->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                                             </div>
@@ -1062,6 +1076,10 @@
                                                     @else
                                                     <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif</div>
+                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                                    @if($uk->Premium_expire_date > $mytime)<span style="
+                                                    background-color: #073975;
+                                                " class="badge">Premium</span> @endif
                                             {{-- <span class="badge">Top Ranked</span> --}}
                                             {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
@@ -1069,6 +1087,11 @@
                                             </div> --}}
                                         </div>
                                         <div class="card-body">
+
+                                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$uk->id])}}">{{$uk->university->university_name ?? ''}}</a>@if($uk->is_verified == 1)
+                                            <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                        @endif</h3>
+
                                             <p class="card-meta">
                                                 @if(isset($uk->university->type))
                                                  @if($uk->university->type==0)
@@ -1077,8 +1100,6 @@
                                         Govenment</p>
                                         @endif
                                         @endif
-
-                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$uk->id])}}">{{$uk->university->university_name ?? ''}}</a></h3>
                                             <div class="card-rating">
                                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                                     <p class="mr-2">Rating:</p>
@@ -1148,7 +1169,10 @@
                                             </div>
 
                                             <div class="card-price d-flex align-items-center justify-content-between">
-                                                <a href="{{asset($uk->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
+                                                <a href="{{asset($uk->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                                    height: 38px;
+                                                    padding-top: 9px;
+                                                ">Brochure</a>
 
                                                 <a href="{{route('university_detail',['id'=>$uk->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                                             </div>
@@ -1200,6 +1224,10 @@
                                                     @else
                                                     <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif</div>
+                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                                    @if($ire->Premium_expire_date > $mytime)<span style="
+                                                    background-color: #073975;
+                                                " class="badge">Premium</span> @endif
                                             {{-- <span class="badge">Top Ranked</span> --}}
                                             {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
@@ -1207,6 +1235,9 @@
                                             </div> --}}
                                         </div>
                                         <div class="card-body">
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$ire->id])}}">{{$ire->university->university_name ?? ''}}</a>@if($ire->is_verified == 1)
+                                                <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                            @endif</h3>
                                             <p class="card-meta">
                                                 @if(isset($ire->university->type))
                                                  @if($ire->university->type==0)
@@ -1216,7 +1247,6 @@
                                         @endif
                                         @endif
 
-                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$ire->id])}}">{{$ire->university->university_name ?? ''}}</a></h3>
                                             <div class="card-rating">
                                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                                     <p class="mr-2">Rating:</p>
@@ -1286,7 +1316,10 @@
                                             </div>
 
                                             <div class="card-price d-flex align-items-center justify-content-between">
-                                                <a href="{{asset($ire->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
+                                                <a href="{{asset($ire->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                                    height: 38px;
+                                                    padding-top: 9px;
+                                                ">Brochure</a>
 
                                                 <a href="{{route('university_detail',['id'=>$ire->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                                             </div>
@@ -1337,6 +1370,10 @@
                                                     @else
                                                     <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif</div>
+                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                                    @if($can->Premium_expire_date > $mytime)<span style="
+                                                    background-color: #073975;
+                                                " class="badge">Premium</span> @endif
                                             {{-- <span class="badge">Top Ranked</span> --}}
                                             {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
@@ -1344,6 +1381,9 @@
                                             </div> --}}
                                         </div>
                                         <div class="card-body">
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$can->id])}}">{{$can->university->university_name ?? ''}}</a>@if($can->is_verified == 1)
+                                                <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                            @endif</h3>
                                             <p class="card-meta">
                                                 @if(isset($can->university->type))
                                                  @if($can->university->type==0)
@@ -1353,7 +1393,6 @@
                                         @endif
                                         @endif
 
-                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$can->id])}}">{{$can->university->university_name ?? ''}}</a></h3>
                                             <div class="card-rating">
                                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                                     <p class="mr-2">Rating:</p>
@@ -1423,7 +1462,10 @@
                                             </div>
 
                                             <div class="card-price d-flex align-items-center justify-content-between">
-                                                <a href="{{asset($can->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
+                                                <a href="{{asset($can->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                                    height: 38px;
+                                                    padding-top: 9px;
+                                                ">Brochure</a>
 
                                                 <a href="{{route('university_detail',['id'=>$can->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                                             </div>
@@ -1474,6 +1516,10 @@
                                                     @else
                                                     <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                                     @endif</div>
+                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                                    @if($aus->Premium_expire_date > $mytime)<span style="
+                                                    background-color: #073975;
+                                                " class="badge">Premium</span> @endif
                                             {{-- <span class="badge">Top Ranked</span> --}}
                                             {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
@@ -1481,6 +1527,9 @@
                                             </div> --}}
                                         </div>
                                         <div class="card-body">
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$aus->id])}}">{{$aus->university->university_name ?? ''}}</a>@if($aus->is_verified == 1)
+                                                <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                            @endif</h3>
                                             <p class="card-meta">
                                                 @if(isset($aus->university->type))
                                                  @if($aus->university->type==0)
@@ -1490,7 +1539,6 @@
                                         @endif
                                         @endif
 
-                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$aus->id])}}">{{$aus->university->university_name ?? ''}}</a></h3>
                                             <div class="card-rating">
                                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                                     <p class="mr-2">Rating:</p>
@@ -1560,7 +1608,10 @@
                                             </div>
 
                                             <div class="card-price d-flex align-items-center justify-content-between">
-                                                <a href="{{asset($aus->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
+                                                <a href="{{asset($aus->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                                    height: 38px;
+                                                    padding-top: 9px;
+                                                ">Brochure</a>
 
                                                 <a href="{{route('university_detail',['id'=>$aus->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                                             </div>
@@ -1590,6 +1641,8 @@
 <!-- ================================
     END ROUND-TRIP AREA
 ================================= -->
+
+
 <section class="funfact-area padding-bottom-70px">
     <div class="container">
         <div class="row">
@@ -2415,14 +2468,14 @@
                         <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Free access</li>
                         <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Get real-time  updates</li>
                     </ul>
-                    <div class="btn-box padding-top-30px">
+                    {{-- <div class="btn-box padding-top-30px">
                         <a href="#" class="d-inline-block mr-3">
                             <img src="{{ asset('frontEnd/assets/images/app-store.png') }}" alt="">
                         </a>
                         <a href="#" class="d-inline-block">
                             <img src="{{ asset('frontEnd/assets/images/google-play.png') }}" alt="">
                         </a>
-                    </div><!-- end btn-box -->
+                    </div><!-- end btn-box --> --}}
                 </div>
             </div><!-- end col-lg-6 -->
             <div class="col-lg-6">

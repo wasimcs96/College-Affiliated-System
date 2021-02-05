@@ -54,8 +54,25 @@
                             <li><span>Mobile:</span>{{$consultant->mobile ?? ''}}</li>
                             {{-- <li><span>Home Airport:</span>Knoxville, TN 37920, USA</li> --}}
                             <li><span>Address:</span>{{$consultant->address ?? ''}}</li>
-                            <li><span>Website:</span><a href="#">{{$consultant->consultant->website ?? ''}}</a></li>
-                            <li><span>Working Week Days:</span>{{$consultant->consultant->working_week_days ?? ''}}</li>
+                            <li><span>Website:</span><a target="_blank" href="{{$consultant->consultant->website ?? ''}}">Visit<i class="las la-external-link-alt"></i></a></li>
+                            <li><span>Working Week Days:</span>
+                                <?php
+                                $weekarray = Config::get('define.weekday');
+                                if(isset($consultant->consultant->working_week_days))
+                                {
+                                $setWorkingDays = explode(",", $consultant->consultant->working_week_days);
+                                }
+                                else {
+                                    $setWorkingDays = [];
+                                }
+                            ?>
+                                @if(count($weekarray)>0)
+                                @foreach($weekarray as $key => $value)
+                                    @if(in_array($key, $setWorkingDays))
+                                        {{$value}},
+                                    @endif
+                                @endforeach
+                            @endif</li>
                             {{-- <a href="#"> <span class="btn btn-primary" style="margin-top: 10px;">Change Consultant</span></a> --}}
                         </ul>
 
