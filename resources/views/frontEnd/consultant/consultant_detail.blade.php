@@ -86,7 +86,9 @@
                     <div class="single-content-wrap padding-top-60px">
                         <div id="description" class="page-scroll">
                             <div class="single-content-item pb-4">
-                                <h3 class="title font-size-26">{{$consultant->first_name ?? ''}} {{$consultant->last_name ?? ''}}</h3>
+                                <h3 class="title font-size-26">{{$consultant->first_name ?? ''}} {{$consultant->last_name ?? ''}}          @if($consultant->is_verified == 1)
+                                    <span data-toggle="tooltip"  data-url=""  data-title="Verified" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-certificate"></i></span>
+                                @endif</h3>
                                 {{-- <div class="d-flex flex-wrap align-items-center pt-2">
                                     <p class="mr-2">University Type:       @if(isset($consultant->university->type)&&($consultant->university->type==0))
                                         Private
@@ -440,13 +442,19 @@
                                         @else
                                         <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                         @endif</div>
+                                        <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                        @if($consultant->userUniversity->Premium_expire_date > $mytime)<span style="
+                                        background-color: #073975;
+                                    " class="badge">Premium</span> @endif
                                 {{-- <span class="badge">Top Ranked</span> --}}
                                 {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
                                     <i class="la la-heart-o"></i>
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $consultant->userUniversity->id])}}">{{$consultant->userUniversity->university->university_name ?? ''}}</a></h3>
+                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $consultant->userUniversity->id])}}">{{$consultant->userUniversity->university->university_name ?? ''}}</a>          @if($consultant->userUniversity->is_verified == 1)
+                                    <span data-toggle="tooltip"  data-url=""  data-title="Verified" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-certificate"></i></span>
+                                @endif</h3>
                                 <p class="card-meta">{{$consultant->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>
@@ -539,7 +547,7 @@
 <!-- ================================
     START CTA AREA
 ================================= -->
-<section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
+{{-- <section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7">
@@ -566,7 +574,7 @@
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section><!-- end cta-area -->
+</section><!-- end cta-area --> --}}
 <!-- ================================
     END CTA AREA
 ================================= -->

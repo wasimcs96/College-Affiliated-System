@@ -164,6 +164,10 @@
                                 @else
                                 <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                 @endif</div>
+                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                @if($consultant->Premium_expire_date > $mytime)<span style="
+                                background-color: #073975;
+                            " class="badge">Premium</span> @endif
                         {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
                             <i class="la la-heart-o"></i>
                         </div> --}}
@@ -171,7 +175,9 @@
                     </div>
                     <div class="card-body">
                         {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
-                        <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->consultant->company_name}} </a></h3>
+                        <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->consultant->company_name}} </a>    @if($consultant->is_verified == 1)
+                            <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                        @endif</h3>
                         <div class="card-rating">
                             <div class="d-flex flex-wrap align-items-center pt-2">
                                 <p class="mr-2">Rating:</p>
@@ -362,7 +368,7 @@
 <!-- ================================
     START CTA AREA
 ================================= -->
-<section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
+{{-- <section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7">
@@ -389,7 +395,7 @@
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section>
+</section> --}}
 @endsection
 
 @section('per_page_style')

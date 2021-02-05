@@ -15,6 +15,7 @@ class BlogFrontController extends Controller
 
     public function detail($id)
     {
+        // dd($id);
         $detail=Blog::where('id',$id)->get()->first();
 
         $next_id=Blog::where('id','>',$detail->id)->min('id');
@@ -23,7 +24,7 @@ class BlogFrontController extends Controller
         $next=Blog::find($next_id);
         $prev=Blog::find($prev_id);
         // dd($prev);
-
+// dd($detail);
 
         return view('frontEnd.blog.blog_detail',compact('detail','prev','next'));
     }

@@ -197,13 +197,21 @@
                                 @else
                                 <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                 @endif</div>
-                        {{-- <span class="badge">Top Ranked</span> --}}
+                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                        @if($university->Premium_expire_date > $mytime)<span style="
+                        background-color: #073975;
+                    " class="badge">Premium</span> @endif
                         {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Download Brochure">
 
                             <i class="las la-download"></i>
                         </div> --}}
                     </div>
                     <div class="card-body">
+                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a>
+                             @if($university->is_verified == 1)
+                             <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                         @endif
+                        </h3>
                         <p class="card-meta">
                             @if(isset($university->university->type))
                              @if($university->university->type==0)
@@ -213,7 +221,6 @@
                     @endif
                     @endif
 
-                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a></h3>
                         <div class="card-rating">
                             <div class="d-flex flex-wrap align-items-center pt-2">
                                 <p class="mr-2">Rating:</p>

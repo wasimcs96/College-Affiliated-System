@@ -175,55 +175,6 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
-                                    {{-- <div class="col-lg-2 col-sm-2 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text">Course</label>
-                                            <div class="form-group">
-                                                <div class="select-contain w-auto">
-                                                    <select class="select-contain-select">
-                                                        <option value="1200AM">Btech</option>
-                                                        <option value="1230AM">Btech</option>
-                                                        <option value="0100AM">Btech</option>
-                                                        <option value="0130AM">Btech</option>
-                                                        <option value="0200AM">Btech</option>
-                                                        <option value="0230AM">Btech</option>
-                                                        <option value="0300AM">Btech</option>
-                                                        <option value="0330AM">Btech</option>
-                                                        <option value="0400AM">Btech</option>
-                                                        <option value="0430AM">Btech</option>
-                                                        <option value="0500AM">Btech</option>
-                                                        <option value="0530AM">Btech</option>
-                                                        <option value="0600AM">Btech</option>
-                                                        <option value="0630AM">Btech</option>
-                                                        <option value="0700AM">dfgdfg</option>
-                                                        <option value="0730AM">Btech</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-3 --> --}}
-{{--
-                            <div class="col-lg-2 col-sm-2">
-                                <div class="input-box">
-                                    <label class="label-text">Duration</label>
-                                    <div class="form-group">
-                                        <div class="select-contain w-auto">
-                                            <select class="select-contain-select">
-
-
-                                                <option value="0700AM">6 months</option>
-                                                <option value="0730AM">1 Years</option>
-                                                <option value="0800AM">2 Years</option>
-                                                <option value="0830AM">3 Years</option>
-                                                <option value="0900AM" selected="">4 Years</option>
-                                                <option value="0930AM">5 years</option>
-
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end checkmark-wrap --> --}}
 
                             <div class="btn-box col-lg-2">
                                 <button type="submit"  style="
@@ -911,12 +862,12 @@
                        <ul class="nav nav-tabs justify-content-center" id="myTab4" role="tablist">
                            <li class="nav-item">
                                <a class="nav-link active" id="new-york-tab" data-toggle="tab" href="#new-york" role="tab" aria-controls="new-york" aria-selected="false">
-                                   US
+                                   United States
                                </a>
                            </li>
                            <li class="nav-item">
                                <a class="nav-link" id="hong-kong-tab" data-toggle="tab" href="#hong-kong" role="tab" aria-controls="hong-kong" aria-selected="false">
-                                 UK
+                                 United Kingdom
                                </a>
                            </li>
                            <li class="nav-item">
@@ -2457,7 +2408,7 @@
             <div class="col-lg-6">
                 <div class="mobile-app-content">
                     <div class="section-heading">
-                        <h2 class="sec__title line-height-55">Education Portal Android and IOS App is Available!</h2>
+                        <h2 class="sec__title line-height-55">Campus Interest Android and IOS App is Available!</h2>
                     </div><!-- end section-heading -->
                     <ul class="info-list padding-top-30px">
                         <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Access and change your itinerary on-the-go</li>
@@ -2478,7 +2429,7 @@
                 <div class="mobile-img">
                     {{-- <img src="{{ asset('frontEnd/assets/images/mobile-app.png') }}" alt="mobile-img"> --}}
                     {{-- <img src="{{ asset('frontEnd/assets/images/contactus.gif') }}" alt="mobile-img"> --}}
-                    <lottie-player src="{{asset('frontEnd/assets/json/installing-software-to-device.json')}}"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_vulsjlia.json')}}"  background="transparent"  speed="1"  style="width: 785px;height: 646px;"  loop  autoplay></lottie-player>
                 </div>
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->

@@ -269,13 +269,47 @@
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Popular Country</h4>
-                    <ul class="list-items list--items">
-                        <li><a href="about.html">China</a></li>
-                        <li><a href="services.html">Germany</a></li>
-                        <li><a href="#">USA</a></li>
-                        <li><a href="blog-grid.html">Canada</a></li>
-                        <li><a href="contact.html">Spain</a></li>
-                        <li><a href="#">Algeria</a></li>
+                    <ul class="list-items list--items" style="margin-left: 17px;">
+                        <li>
+                            <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                <input type="hidden" name="countries_id" value="99">
+                                @csrf <a><button style="
+                                border: none;   color: #5d646d; background-color: transparent;"  type="submit">India</button></a> </form></li>
+                        <li>
+                            {{-- <a href="services.html">United States</a> --}}
+                            <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                <input type="hidden" name="countries_id" value="223">
+                                @csrf<a> <button style="
+                                border: none;  color: #5d646d;  background-color: transparent;" type="submit">United States</button> </a></form>
+                        </li>
+                        <li>
+                            <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                <input type="hidden" name="countries_id" value="222">
+                                @csrf <a><button style="
+                                border: none;   color: #5d646d;
+                                background-color: transparent;"  type="submit">United Kingdom</button></a> </form>
+                        </li>
+                        <li>
+                            <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                <input type="hidden" name="countries_id" value="13">
+                                @csrf<a> <button style="
+                                border: none;  color: #5d646d; background-color: transparent;"  type="submit">Australia</button></a> </form>
+                            {{-- <a href="blog-grid.html">Australia</a> --}}
+                        </li>
+                        <li>
+                            <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                <input type="hidden" name="countries_id" value="38">
+                                @csrf <a> <button style="
+                                border: none;   position: relative; color: #5d646d; background-color: transparent;"  type="submit">Canada</button></a> </form>
+                            {{-- <a href="contact.html">Canada</a> --}}
+                        </li>
+                        <li>
+                            <form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                <input type="hidden" name="countries_id" value="103">
+                                @csrf <a> <button style="
+                                border: none;background-color: transparent; color: #5d646d;"  type="submit">Ireland</button></a> </form>
+                            {{-- <a href="#">Ireland</a> --}}
+                        </li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
