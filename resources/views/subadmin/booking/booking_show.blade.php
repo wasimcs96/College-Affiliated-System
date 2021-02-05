@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'SubAdmin')
+@section('parentPageTitle', 'Admin')
 @section('title', 'See Bookings Detail')
 
 @section('content')
@@ -61,6 +61,20 @@
                         <th scope="row">Time Slot</th>
                         <td>{{$booking->booking_start_time}}-{{$booking->booking_end_time}}</td>
                     </tr>
+
+
+                    <?php $i = 1?>
+                    @if(isset($university) && $university != '')
+                    @foreach($university as $key=> $uni)
+
+                        <tr>
+                            <th scope="row">Student University / Course Preference-{{$i}}</th>
+                            <td>{{$uni->university->university_name ?? ''}} / {{$course[$key]->title ?? ''}}</td>
+                        </tr>
+                    <?php $i++ ?>
+                    @endforeach
+                    @endif
+
                     <tr>
                         <th scope="row">Booking For</th>
                         <td>
@@ -80,20 +94,6 @@
                             @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
                         </td>
                     </tr>
-
-                    <?php $i = 1?>
-                    @if(isset($university) && $university != '')
-                    @foreach($university as $key=> $uni)
-
-                        <tr>
-                            <th scope="row">Student University / Course Preference-{{$i}}</th>
-                            <td>{{$uni->university->university_name ?? ''}} / {{$course[$key]->name ?? ''}}</td>
-                        </tr>
-                    <?php $i++ ?>
-                    @endforeach
-                    @endif
-
-
 <input type="text" class="" value="{{$booking->id}}" name="booking_id" hidden>
 
 
@@ -116,12 +116,13 @@
                 <div id="dec">
 
                 </div>
+                <a href="{{route('admin.booking')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
                 {{-- @if($booking->status== 0)
                 <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('subadmin.booking')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
+                <a href="{{route('admin.booking')}}" id="bac" class="btn btn-danger btn-flat">Decline</a>
                 @else
                 <button class='btn btn-success btn-flat' >Already Accepted</button>
-                <a style="margin-left: 5px;" href="{{route('subadmin.booking')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
+                <a style="margin-left: 5px;" href="{{route('admin.booking')}}" id="bac" class="btn btn-danger btn-flat">Back</a>
 
                 @endif --}}
             </div>
@@ -201,7 +202,7 @@ headers: {
 });
             $.ajax({
                 type: "post",
-                url: "{{route('subadmin.booking.accept')}}",
+                url: "{{route('admin.booking.accept')}}",
                 data: {booking_id:booking_id},
                 success: function (result) {
                     console.log('success');
@@ -249,7 +250,7 @@ headers: {
 
              $.ajax({
                      type: "post",
-                     url: "{{route('subadmin.booking.followup.store')}}",
+                     url: "{{route('admin.booking.followup.store')}}",
                      data: {booking_id:booking_id,note:note,date:date},
                      success: function (result) {
                          console.log('success');

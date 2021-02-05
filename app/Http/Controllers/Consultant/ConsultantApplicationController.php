@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Application;
 use App\Models\ApplicationDocument;
-use App\Models\Course;
+use App\Models\UniversityCourse;
 use App\Models\Country;
 use App\Models\User;
 use App\Models\University;
@@ -46,7 +46,7 @@ class ConsultantApplicationController extends Controller
          $course_id[$i] = $booking['course'] ?? '';
 
         $university[$i] =  User::where('id',$university_id[$i])->get()->first();
-        $course[$i] = Course::where('id',$course_id[$i])->get()->first();
+        $course[$i] = UniversityCourse::where('id',$course_id[$i])->get()->first();
         // dd($university[0]);
         $i++;
     }
@@ -116,7 +116,7 @@ class ConsultantApplicationController extends Controller
        if($application==NULL)
        {
        $type=0;
-       $slug='visa-amount';
+       $slug='visa_amount';
        $check = $this->consultantDue($type,$slug);
        $applicationCommission->is_commission_add = 1;
        $applicationCommission->save();
@@ -250,8 +250,9 @@ class ConsultantApplicationController extends Controller
 
          $dueAmount = DB::table('settings')->where('slug',$slug)->get('config_value')->first();
 
-
-         if($consultant==null)
+    if(isset($duesAmount))
+    {
+         if($consultant==null )
          {
             // dd(auth()->user()->id);
            $newConsultant = ConsultantDues::create([
@@ -278,6 +279,11 @@ class ConsultantApplicationController extends Controller
              return $consultant;
          }
         return response('success');
+        }
+        else
+        {
+            return response('success');
+        }
      }
 
      public function universityAdd(Request $request)
@@ -321,7 +327,7 @@ class ConsultantApplicationController extends Controller
           $output='<option value="" selected>Course Name</option>';
           foreach($courses as $row)
           {
-           $output .= '<option value="'.$row->Course->id.'">'.$row->Course->name.'</option>';
+           $output .= '<option value="'.$row->id.'">'.$row->title.'</option>';
           }
           echo $output;
         }

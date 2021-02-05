@@ -268,7 +268,7 @@
                             <div class="row clearfix">
                                 <div class="col-lg-12">
                                     <div class="chat-about">
-                                        <h6 class="m-b-0" id="hed">@if($check == NULL) Select User to Start Conversation @elseif($check->send_by==3) {{ $useme->first_name }} {{ $useme->last_name }} (Last Message) Click on the user to start conversation @else {{ $usemeSend->first_name }} {{ $usemeSend->last_name }} (Last Message) Click on the user to start conversation @endif</h6>
+                                        <h6 class="m-b-0" id="hed">@if($check == NULL) Select User to Start Conversation @elseif($check->send_by==2) {{ $useme->first_name }} {{ $useme->last_name }} (Last Message) Click on the user to start conversation @else {{ $usemeSend->first_name }} {{ $usemeSend->last_name }} (Last Message) Click on the user to start conversation @endif</h6>
                                     </div>
                                 </div>
                             </div>
@@ -277,7 +277,7 @@
                         <div class="chat-history ">
                             <ul class="message_data msg_history" id="history">
 
-                            @if(isset($check) && $check->send_by==3 && $check != NULL)
+                            @if(isset($check) && $check->send_by==2 && $check != NULL)
                                 <li class="right clearfix">
                                     @if(file_exists($useme->profile_image) && isset($useme->profile_image))
                                     <img class="user_pix" src="{{asset($useme->profile_image)}}" alt="avatar">
@@ -367,7 +367,7 @@ var reciever = '';
                 $("#cse").find("span").css({"color": "black"});
                 $('#receiver_name-'+userid+'').css("color","white");
                 $('#unread_message-'+userid+'').css("display","none");
-console.log(userid)
+console.log(userid);
                   // document.getElementById(`userlist-${userid}`).style.background="grey";
                 $.ajax({
                   url: "{{ route('consultant.messenger.fetchdata') }}",
@@ -390,11 +390,12 @@ console.log(userid)
                           }
                           else{
                               html='';
+
                               (re.messages).forEach(element => {
 
-                                  if (element.send_by == 3) {
+                                  if (element.send_by == 2) {
                                       html+=`<li class="right clearfix">
-                                   <img class="user_pix"  onerror="javascript:this.src='{{ asset("assets/images/xs/avatar4.jpg") }}'" src="{{asset('${img}')}}" alt="avatar">
+                                   <img class="user_pix"  onerror="javascript:this.src='{{ asset("assets/images/xs/avatar4.jpg") }}'" src="{{ asset('${img}') }}" alt="avatar">
                                 <div class="message">
                                     <p>${element.message}</p>
                                 </div>
@@ -402,13 +403,14 @@ console.log(userid)
                             </li>`;
                                   }
                           });
-                          if(re.sender != 'Start the conversation')
+
+                          if(re.sender != '')
                           {
                           (re.sender).forEach(element => {
                                if (element.sender == userid) {
 
                                 html+=` <li class="left clearfix">
-        <img class="user_pix" src="{{asset('assets/images/user.png')}}" alt="avatar">
+        <img class="user_pix" onerror="javascript:this.src='{{ asset('assets/images/xs/avatar4.jpg') }}'" src="{{asset('${img}')}}" alt="avatar">
         <div class="message">
             <p>${element.message}</p>
         </div>

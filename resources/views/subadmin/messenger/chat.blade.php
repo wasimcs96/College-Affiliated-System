@@ -227,8 +227,7 @@
                             <div class="row clearfix">
                                 <div class="col-lg-12">
                                     <div class="chat-about">
-                                        <h6 class="m-b-0" id="hed">@if($check == NULL) Select User to Start Conversation @else {{ $useme->first_name }} {{ $useme->last_name }} (Last Message) Click on the user to start conversation @endif</h6>
-                                    </div>
+                                        <h6 class="m-b-0" id="hed">@if($check == NULL) Select User to Start Conversation @elseif($check->send_by==0) {{ $useme->first_name }} {{ $useme->last_name }} (Last Message) Click on the user to start conversation @else {{ $usemeSend->first_name }} {{ $usemeSend->last_name }} (Last Message) Click on the user to start conversation @endif</h6>                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -361,13 +360,13 @@ console.log(userid)
                             </li>`;
                                   }
                           });
-                          if(re.sender != 'Start the conversation')
+                          if(re.sender != '')
                           {
                           (re.sender).forEach(element => {
                                if (element.sender == userid) {
 
                                 html+=` <li class="left clearfix">
-        <img class="user_pix" src="{{asset('assets/images/user.png')}}" alt="avatar">
+                                    <img class="user_pix" onerror="javascript:this.src='{{ asset('assets/images/xs/avatar4.jpg') }}'" src="{{asset('${img}')}}" alt="avatar">
         <div class="message">
             <p>${element.message}</p>
         </div>

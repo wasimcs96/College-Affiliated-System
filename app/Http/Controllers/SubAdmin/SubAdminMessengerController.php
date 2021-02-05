@@ -38,29 +38,33 @@ class SubAdminMessengerController extends Controller
     public function fetchData(Request $request){
 
         $userid = $request->get('userid');
+        $sb = '';
+        $msg = '';
+        $conversation = false;
         $use=User::where('id','=',$userid)->get()->first();
-        $message = DB::table('application_chats')->where('sender',auth()->user()->id)->where('receiver',$userid)->get();
+        // $message = DB::table('application_chats')->where('sender',auth()->user()->id)->where('receiver',$userid)->get();
         $msgr = DB::table('application_chats')->where('sender',$userid)->where('receiver',auth()->user()->id)->where('seen',0)->update(array('seen' => 1));
         // dd($msgr);
         // dd($message);
         $message = DB::table('application_chats')->where('sender',auth()->user()->id)->where('receiver',$userid)->get();
         $send_by = DB::table('application_chats')->where('sender',$userid)->where('receiver',auth()->user()->id)->get();
+        // dd($send_by);
         if ($message->count() > 0) {
             $msg=$message;
             $conversation=true;
         }
-        else{
-            $msg='Start the conversation';
-            $conversation=false;
-        }
+        // else{
+        //     $msg='Start the conversation';
+        //     $conversation=false;
+        // }
         if ($send_by->count() > 0) {
             $sb=$send_by;
             $conversation=true;
         }
-        else{
-            $sb='Start the conversation';
-            // $conversation=false;
-        }
+        // else{
+        //     $sb='Start the conversation';
+        //     // $conversation=false;
+        // }
         // foreach($message as $output){
 
         $output=array(

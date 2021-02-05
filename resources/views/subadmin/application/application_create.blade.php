@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'SubAdmin')
+@section('parentPageTitle', 'Admin')
 @section('title', 'Application')
 
 @section('content')
@@ -25,7 +25,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                                <form id="basic-form6" class="basic-form" method="post" novalidate action="{{route('subadmin.application.followup.store')}}">
+                                <form id="basic-form6" class="basic-form" method="post" novalidate action="{{route('admin.application.followup.store')}}">
                                     @csrf
                                     {{-- <div class="form-group">
                                         <label>Title</label>
@@ -118,7 +118,7 @@
                 @foreach($university as $key=> $uni)
                     <tr>
                         <th scope="row">Student University/Course Preference-{{$key + 1}}</th>
-                        <td>{{$uni->university->university_name ?? '' }}/{{$course[$key]->name ?? ''}}</td>
+                        <td>{{$uni->university->university_name ?? '' }}/{{$course[$key]->title ?? ''}}</td>
                     </tr>
                 @endforeach
 
@@ -145,7 +145,7 @@
 
                 </div> --}}
                 {{-- <a  href="#" class="btn btn-success btn-flat" id="accept">Accept</a>
-                <a href="{{route('subadmin.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a> --}}
+                <a href="{{route('admin.bookings')}}" id="bac" class="btn btn-danger btn-flat">Decline</a> --}}
             </div>
         </div>
     </div>
@@ -405,7 +405,7 @@
                                                  </tr>
                                                  <tr>
                                                      <th scope="row">Course Name</th>
-                                                     <td>{{$applied->course->name ?? ''}}</td>
+                                                     <td>{{$applied->course->title ?? ''}}</td>
                                                  </tr>
                                              </tbody>
                                          </table>
@@ -447,7 +447,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Course Name</th>
-                                                    <td>{{$applied->course->name ?? ''}}</td>
+                                                    <td>{{$applied->course->title ?? ''}}</td>
                                                 </tr>
                                                 <tr>
                                                  <th scope="row">Application Status</th>
@@ -492,7 +492,7 @@
                                                      </tr>
                                                      <tr>
                                                          <th scope="row">Course Name</th>
-                                                         <td>{{$applied->course->name ?? ''}}</td>
+                                                         <td>{{$applied->course->title ?? ''}}</td>
                                                      </tr>
                                                      @if ($applied->is_accepeted == 1)
                                                      <tr>
@@ -552,7 +552,7 @@
                                                    </tr>
                                                    <tr>
                                                        <th scope="row">Course Name</th>
-                                                       <td>{{$applied->course->name ?? ''}}</td>
+                                                       <td>{{$applied->course->title ?? ''}}</td>
                                                    </tr>
 
                                                </tbody>
@@ -566,10 +566,9 @@
                                                <div class="col-lg-2 col-md-12">
                                            <div class="form-group">
                                                <label for="">Course Fees</label>
-                                               <?php $coursedetails=\App\Models\UniversityCourse::where('user_id',$applied->university_id)->where('course_id',$applied->course_id)->first(); ?>
+                                               <?php $coursedetails=\App\Models\UniversityCourse::where('id',$applied->course_id)->first(); ?>
 
-                                               <input type="text" name="fees" class="form-control" id="coursefees" @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="" @else value="{{$coursedetails->fees}}" @endif />
-                                             </div>
+                                               <input type="text" name="fees" class="form-control" id="coursefees"  @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$coursedetails->fees}}"@else value="{{ $applied->fees }}"  @endif />                                                                    </div>
                                            </div>
                                             <div class="col-lg-2 col-md-12">
                                                 <div class="form-group">
@@ -1264,7 +1263,7 @@ $(document).on('click', '#apply', function ()
 
             $.ajax({
                     type: "post",
-                    url: "{{route('subadmin.application.apply')}}",
+                    url: "{{route('admin.application.apply')}}",
                     data: {appliedUniversityRowId:appliedUniversityRowId},
                     success: function (result) {
                         $('.applied').html('Applied');
@@ -1330,7 +1329,7 @@ $(document).ready(function () {
             //  $("#basic-form5 input").removeClass("is-invalid");
              $.ajax({
                      type: "post",
-                     url: "{{route('subadmin.application.approval')}}",
+                     url: "{{route('admin.application.approval')}}",
                      data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval,modalDate:modalDate},
                      success: function (result) {
                         $('#alert_add2').append('<div class="container"><div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong> Application Approved Successfully.</strong></div></div>')
@@ -1388,7 +1387,7 @@ var j = 0;
 
              $.ajax({
                      type: "post",
-                     url: "{{route('subadmin.application.approval')}}",
+                     url: "{{route('admin.application.approval')}}",
                      data: {appliedUniversityRowIdApproval:appliedUniversityRowIdApproval},
                      success: function (result) {
                         $('#alert_add2').append('<div class="container"><div class="alert alert-danger alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong> Application is Declined.</strong></div></div>')
@@ -1432,7 +1431,7 @@ var j = 0;
 
              $.ajax({
                      type: "post",
-                     url: "{{route('subadmin.application.accepted')}}",
+                     url: "{{route('admin.application.accepted')}}",
                      data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted},
                      success: function (result) {
 
@@ -1461,7 +1460,7 @@ var j = 0;
 
              $.ajax({
                      type: "post",
-                     url: "{{route('subadmin.application.offer.decline')}}",
+                     url: "{{route('admin.application.offer.decline')}}",
                      data: {appliedUniversityRowIdAccepted:appliedUniversityRowIdAccepted},
                      success: function (result) {
 
@@ -1514,7 +1513,7 @@ console.log(docs)
 
              $.ajax({
                      type: "post",
-                     url: "{{route('subadmin.application.readytofly')}}",
+                     url: "{{route('admin.application.readytofly')}}",
                      data: {appliedUniversityRowIdReadyToFly:appliedUniversityRowIdReadyToFly,fees:fees,docs:docs,uni_id:uni_id},
                      success: function (result) {
 
@@ -1544,7 +1543,7 @@ console.log(docs)
                     });
                 $.ajax({
                             type: "post",
-                            url: "{{route('subadmin.application.document.destroy')}}",
+                            url: "{{route('admin.application.document.destroy')}}",
                             data: {document_id: document_id},
                             success: function (result)
                             {
@@ -1587,7 +1586,7 @@ $(document).on('click', '#readyTo2', function ()
 
             $.ajax({
                     type: "post",
-                    url: "{{route('subadmin.application.update.university')}}",
+                    url: "{{route('admin.application.update.university')}}",
                     data: {appliedUniversityRowIdReadyToFly:appliedUniversityRowIdReadyToFly,fees:fees,docs:docs,uni_id:uni_id},
                     success: function (result) {
 
@@ -1640,7 +1639,7 @@ $(document).on('click', '#readyTo2', function ()
 
              $.ajax({
                      type: "post",
-                     url: "{{route('subadmin.application.followup.store')}}",
+                     url: "{{route('admin.application.followup.store')}}",
                      data: {application_id:application_id,note:note,date:date},
                      success: function (result) {
                          console.log('success');

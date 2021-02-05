@@ -60,7 +60,7 @@
                     {{-- {{ dd($university) }} --}}
                     <tr>
                         <th scope="row">My University/Course Preference-{{$key + 1}}</th>
-                        <td>{{$uni->university->university_name ?? '' }}/{{$course[$key]->name ?? ''}}</td>
+                        <td>{{$uni->university->university_name ?? '' }}/{{$course[$key]->title ?? ''}}</td>
                     </tr>
                     @endforeach
                     <tr>
