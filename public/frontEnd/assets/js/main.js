@@ -400,7 +400,7 @@ Author Email:   contact@tecydevs.com
                 nav: true,
                 dots: false,
                 smartSpeed: 700,
-                autoplay: true,
+                autoplay: false,
                 margin: 30,
                 navText: ['<i class="la la-angle-left"></i>', '<i class="la la-angle-right"></i>'],
                 responsive : {
@@ -425,7 +425,7 @@ Author Email:   contact@tecydevs.com
                 nav: true,
                 dots: false,
                 smartSpeed: 700,
-                autoplay: true,
+                autoplay: false,
                 margin: 30,
                 navText: ['<i class="la la-angle-left"></i>', '<i class="la la-angle-right"></i>'],
                 responsive : {

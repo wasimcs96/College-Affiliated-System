@@ -438,6 +438,77 @@
 <script src="{{ asset('frontEnd/assets/js/quantity-input.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/main.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/installing-software-to-device.json') }}"></script>
+<script>
+    var university_id='';
+
+    $(document).on('click', '#universitySubmit', function ()
+    {
+
+    var university_id=$('#university').val();
+    console.log(university_id);
+    if( university_id == '')
+    {
+    $('#universityError').html('<label class="label-text">Select University</label><div class="form-group"><span class="la la-user form-icon"></span><select  multiple class="form-control" placeholder="University" id="university" name="university"><?php $universities = \App\Models\University::get();  ?>@foreach($universities as $university)<option value="{{$university->user_id}}">{{$university->university_name}}</option>@endforeach</select></div><strong><span style="color:red">*This field is required</span></strong>')
+    }
+    else
+    {
+
+    $.ajaxSetup({headers:
+    {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+    $.ajax({
+    type: "post",
+    url: "{{route('consultant.modal.university')}}",
+    data: {university_id:university_id},
+    success: function (result) {
+    console.log('success');
+    // alert('Follow Up created Successfully');
+    window.location.reload();
+    }
+    });
+
+
+    // $('#followUpModal').modal('hide');
+    // document.getElementById("basic-form6").reset();
+    }
+    });
+
+
+    </script>
+    <script>
+        var university_id='';
+
+        $(document).on('click', '#skip', function ()
+        {
+        var university_id=$('#university').val();
+        console.log(university_id);
+        $.ajaxSetup({headers:
+        {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+        $.ajax({
+        type: "post",
+        url: "{{route('consultant.university.skip')}}",
+        data: {university_id:university_id},
+        success: function (result) {
+        console.log('success');
+        // alert('Follow Up created Successfully');
+        window.location.reload();
+        }
+        });
+
+
+        // $('#followUpModal').modal('hide');
+        // document.getElementById("basic-form6").reset();
+        });
+
+
+        </script>
 
 @yield('per_page_script')
 </body>

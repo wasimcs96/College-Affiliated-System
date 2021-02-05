@@ -9,7 +9,6 @@ use App\Models\UniversityConsultantClient;
 use App\Models\UniversityConsultant;
 use App\Models\Booking;
 use App\Models\ApplicationChat;
-use App\Models\Booking;
 use Illuminate\Support\Arr;
 use App\Http\Controllers\Controller;
 

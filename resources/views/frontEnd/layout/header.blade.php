@@ -303,7 +303,12 @@
                             @if(Auth()->user()->isConsultant())
                             <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                             @if(auth()->user()->Subscription_expire_date<$mytime || auth()->user()->Subscription_expire_date==NULL)
-                            <a href="{{ route('consultant.subscription') }}" class="theme-btn ">Dashboard</a>
+                            <a @if(auth()->user()->add_university == 0)
+                                 href="javascript:void(0);" data-toggle="modal" data-target ="#exampleModal"
+                                @else
+                                 href="{{ route('consultant.subscription') }}"
+                                 @endif
+                                 class="theme-btn ">Dashboard</a>
                             @else
                         <a href="{{ route('consultant.dashboard') }}" class="theme-btn ">Dashboard</a>
                             @endif
@@ -337,4 +342,81 @@
             </div><!-- end row -->
         </div><!-- end container-fluid -->
     </div><!-- end header-menu-wrapper -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 520px;">
+          <div class="modal-content">
+            <div class="modal-header">
+
+                    <div>
+                        <img src="{{asset('frontEnd/assets/images/logo.png')}}" alt="logo" style="
+                        width: 198px;
+                        height: 70px;
+                         ">
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="la la-close"></span>
+                    </button>
+
+
+            </div>
+            <div class="modal-body">
+                <div class="contact-form-action" style=" padding: 19px;">
+                    <form method="post" action="">
+                        @csrf
+                        <div class="sidebar-widget single-content-widget">
+                            <h5 class="title stroke-shape">Choose University</h5>
+                            <div class="enquiry-forum">
+                                <div class="form-box">
+                                    <div class="form-content">
+                                        <div class="contact-form-action">
+                                            <input class="form-control" value="1" name="type"  hidden>
+                                                <div class="input-box" id="universityError">
+                                                    <span class="la la-university mr-1 form-icon"></span>
+                                                    <label class="label-text">Select University</label>
+
+                                                    <div class="form-group">
+
+                                                        <select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university">
+                                                            <?php $universities = \App\Models\University::get();  ?>
+                                                            @foreach($universities as $university)
+
+                                                                <option value="{{$university->user_id}}">{{$university->university_name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        {{-- <input class="form-control" type="name" name="name" placeholder="Your name" required> --}}
+                                                    </div>
+                                                </div>
+
+                                                {{-- <div class="input-box">
+                                                    <div class="form-group">
+                                                        <div class="custom-checkbox mb-0">
+                                                            <input type="checkbox" id="agreeChb">
+                                                            <label for="agreeChb">I agree with <a href="#">Terms of Service</a> and
+                                                                <a href="#">Privacy Statement</a></label>
+                                                        </div>
+                                                    </div>
+                                                </div> --}}
+                                                {{-- <div class="btn-box">
+                                                    <button type="submit" class="theme-btn">Submit Enquiry</button>
+                                                </div> --}}
+
+                                        </div><!-- end contact-form-action -->
+                                    </div><!-- end form-content -->
+                                </div><!-- end form-box -->
+                            </div><!-- end enquiry-forum -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="skip">Skip</button>
+              <button type="button" class="btn btn-primary" id="universitySubmit">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </header>
+
+
+
