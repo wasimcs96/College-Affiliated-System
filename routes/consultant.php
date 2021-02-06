@@ -6,8 +6,9 @@
    });
    /* Consultant */
 
+   Route::group(['middleware' => 'Package'], function () {
 
-/* dashboard Section */
+    /* dashboard Section */
 Route::get('dashboard',function(){
     return view('consultant.dashboard');
 })->name('consultant.dashboard');
@@ -211,10 +212,7 @@ Route::get('services/subscription', [
     'as' => 'consultant.subscription'
 ]);
 
-Route::get('services/subscription/add', [
-    'uses' => 'ConsultantSubscriptionController@add',
-    'as' => 'consultant.subscription.add'
-]);
+
 
 /* Go Premium */
 Route::get('services/premium', [
@@ -362,16 +360,6 @@ Route::post('dues/pay',[
     'as'=>'consultant.dues.pay'
 ]);
 
-// Route::get('prmigration/show/{id}',[
-//     'uses'=>'ConsultantPrmigrationController@prshow',
-//     'as'=>'prmigration.booking.show'
-// ]);
-
-// Route::post('prmigration/accept',[
-//     'uses'=>'ConsultantPrmigrationController@accept',
-//     'as'=>'consultant.prmigration.accept'
-// ]);
-
 /*Consultant Add University */
 
 Route::post('application/add/university',[
@@ -421,6 +409,12 @@ Route::post('messenger/fetchData', [
 Route::post('messenger/sendMessage', [
     'uses' => 'ConsultantMessengerController@sendMessage',
     'as' => 'consultant.messenger.sendmessage'
+]);
+   });
+
+   Route::get('services/subscription/add', [
+    'uses' => 'ConsultantSubscriptionController@add',
+    'as' => 'consultant.subscription.add'
 ]);
 
 });

@@ -89,7 +89,7 @@ class ClientMessengerController extends Controller
             'messages'=>$msg,
             'conversation'=>$conversation,
             'sender'=>$sb,
-            'send_by'=>2,
+            'send_by'=>4,
 
         );
     // }
@@ -111,7 +111,7 @@ class ClientMessengerController extends Controller
             $ms=DB::table('application_chats')->insert([
                 'receiver'=>$userid,
                 'sender'=>auth()->user()->id,
-                 'send_by'=>2,
+                 'send_by'=>4,
                  'message'=>$message,
                  'created_at'=>$ldate
             ]);
@@ -121,7 +121,7 @@ class ClientMessengerController extends Controller
        $ms=DB::table('application_chats')->insert([
            'receiver'=>$userid,
            'sender'=>auth()->user()->id,
-            'send_by'=>2,
+            'send_by'=>4,
             'message'=>$message,
             'created_at'=>$ldate
        ]);

@@ -51,17 +51,19 @@
                                             @if($subscription->payment_type == 0)
                                             <tr>
                                                 <td>{{$subscription->OrderItem[0]->Item_title}}</td>
-                                                <td><i class="fa fa-inr"></i>{{$subscription->amount}}</td>
-                                                <td>{{$subscription->transaction_id}}</td>
+                                                <td><i class="fa fa-inr"></i>{{$subscription->amount ?? 'NA'}}</td>
+                                                <td>{{$subscription->transaction_id ?? 'NA'}}</td>
 
                                                 <td>{{ Carbon\Carbon::parse($subscription->userPurchasedPlans[0]->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                                                 <td>{{ Carbon\Carbon::parse($subscription->userPurchasedPlans[0]->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                                                 <td>{{ Carbon\Carbon::parse($subscription->userPurchasedPlans[0]->created_at ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                                                 <td>
+                                                    @if(isset($subscription->userPurchasedPlans[0]->end_date))
                                                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                                     @if($subscription->userPurchasedPlans[0]->end_date > $mytime)<div class="btn btn-success">Activated</div>@endif
 
                                                     @if($subscription->userPurchasedPlans[0]->end_date < $mytime)<div class="btn btn-danger">Expired</div>@endif
+                                                    @endif
                                                 </td>
                                                 {{-- <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td> --}}
                                             </tr>

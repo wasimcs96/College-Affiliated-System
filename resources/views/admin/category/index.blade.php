@@ -64,7 +64,7 @@
                             <td style="text-align: center;">
                                 <a href="{{route('admin.category.show', $category->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View " title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
                                 <a href="{{route('admin.category.edit', $category->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
-                                <a href="{{route('admin.category.delete', $category->id)}}" class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete " data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
+                                <a @if($category->default_category==1) href="javascript:void(0);" data-toggle="modal" data-target="#defaultModal" @else href="{{route('admin.category.delete', $category->id)}}" @endif class="confirmDeleteBtn btn btn-danger btn-sm btn-flat" data-toggle="tooltip" alt="Delete " data-url="" data-title="Delete"><i class="fa fa-trash"></i></a>
                             </td>
 
                         </tr>
@@ -85,7 +85,29 @@
 </div>
 </div>
 
+<div class="modal fade" id="defaultModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Default Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h4>This is a Default Category </h4>
+        </div>
+        <div class="modal-footer">
 
+              {{-- <a href="javascript:void(0)" id="closeApplication" class="btn btn-danger" >Yes</a> --}}
+              <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                Close
+                </button>
+            </div>
+
+    </div>
+</div>
+</div>
 
 @stop
 @section('page-styles')
