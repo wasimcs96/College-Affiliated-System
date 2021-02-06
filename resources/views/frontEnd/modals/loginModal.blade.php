@@ -166,18 +166,7 @@
 @section('per_page_script')
 @parent
 
-    @if($errors->has('email') || $errors->has('password'))
-      <script>
-      $(function() {
-          $('#loginPopupForm').modal({
-              show: true
-          });
-      });
-
-
-      </script>
-    @endif
-
+   
 <script>
 
 $(document).on('click', '#signupalready', function ()

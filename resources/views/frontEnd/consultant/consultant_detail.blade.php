@@ -24,7 +24,7 @@
     START BREADCRUMB AREA
 ================================= -->
 
-    <section class="breadcrumb-area bread-bg-4 py-0" @if(isset($consultant->consultant->cover_image) && file_exists($consultant->consultant->cover_image)) style="background-image: url('{{asset($university->university->cover_image)}}');" @else style="background-image: url('{{asset('frontEnd/assets/images/universityall.jpg')}}');" @endif>
+    <section class="breadcrumb-area bread-bg-4 py-0" @if(isset($consultant->consultant->cover_image) && file_exists($consultant->consultant->cover_image)) style="background-image: url('{{asset($consultant->consultant->cover_image)}}');" @else style="background-image: url('{{asset('frontEnd/assets/images/universityall.jpg')}}');" @endif>
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row">
