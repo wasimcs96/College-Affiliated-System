@@ -458,76 +458,46 @@
 <script src="{{ asset('frontEnd/assets/js/main.js') }}"></script>
 <script src="{{ asset('frontEnd/assets/js/installing-software-to-device.json') }}"></script>
 <script>
-    var university_id='';
-
-    $(document).on('click', '#universitySubmit', function ()
-    {
-
-    var university_id=$('#university').val();
-    console.log(university_id);
-    if( university_id == '')
-    {
-    $('#universityError').html('<label class="label-text">Select University</label><div class="form-group"><span class="la la-user form-icon"></span><select  multiple class="form-control" placeholder="University" id="university" name="university"><?php $universities = \App\Models\University::get();  ?>@foreach($universities as $university)<option value="{{$university->user_id}}">{{$university->university_name}}</option>@endforeach</select></div><strong><span style="color:red">*This field is required</span></strong>')
-    }
-    else
-    {
-
-    $.ajaxSetup({headers:
-    {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-    });
-
-    $.ajax({
-    type: "post",
-    url: "{{route('consultant.modal.university')}}",
-    data: {university_id:university_id},
-    success: function (result) {
-    console.log('success');
-    // alert('Follow Up created Successfully');
-    window.location.reload();
-    }
-    });
-
-
-    // $('#followUpModal').modal('hide');
-    // document.getElementById("basic-form6").reset();
-    }
+    $(function () {
+        $('#registerForm').submit(function (e) {
+            e.preventDefault();
+            let formData = $(this).serializeArray();
+            $(".invalid-feedback").children("strong").text("");
+            $("#registerForm input").removeClass("is-invalid");
+            $.ajax({
+                method: "POST",
+                headers: {
+                    Accept: "application/json"
+                },
+                url: "{{ route('register') }}",
+                data: formData,
+                success: () => window.location.assign("{{ route('front') }}"),
+                error: (response) => {
+                    if(response.status == 422) {
+                        let errors = response.responseJSON.errors;
+                        Object.keys(errors).forEach(function (key) {
+                            $("#" + key + "Input").addClass("is-invalid");
+                            $("#" + key + "Error").children("strong").text(errors[key][0]);
+                        });
+                    } else {
+                        window.location.reload();
+                    }
+                }
+            })
+        });
+    })
+    </script>
+    @if($errors->has('email') || $errors->has('password'))
+    <script>
+    $(function() {
+        $('#loginPopupForm').modal({
+            show: true
+        });
     });
 
 
     </script>
-    <script>
-        var university_id='';
-
-        $(document).on('click', '#skip', function ()
-        {
-        var university_id=$('#university').val();
-        console.log(university_id);
-        $.ajaxSetup({headers:
-        {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-
-        $.ajax({
-        type: "post",
-        url: "{{route('consultant.university.skip')}}",
-        data: {university_id:university_id},
-        success: function (result) {
-        console.log('success');
-        // alert('Follow Up created Successfully');
-        window.location.reload();
-        }
-        });
-
-
-        // $('#followUpModal').modal('hide');
-        // document.getElementById("basic-form6").reset();
-        });
-
-
-        </script>
+  @endif
 
 @yield('per_page_script')
 </body>
