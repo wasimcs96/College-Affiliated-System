@@ -15,7 +15,7 @@ use App\Models\UniversityCourse;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\ApplicationDocument;
-
+use App\Models\UniversityConsultant;
 
 class ConsultantBookingController extends Controller
 {
@@ -171,6 +171,9 @@ public function applicationStore(Request $request){
         $output='<option value="" selected>University Name</option>';
         foreach($universities as $university)
         {
+            $check=UniversityConsultant::where('university_id',$university->id)->where('consultant_id',auth()->user()->id)->first();
+            if ($check) {
+                # code...
         if($university->isUniversity())
             {
 
@@ -178,6 +181,8 @@ public function applicationStore(Request $request){
 
             }
         }
+    }
+
         // dd($output);
         echo $output;
     }

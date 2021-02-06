@@ -49,6 +49,7 @@ class SettingManagerController extends Controller
     public function storeLogos(LogoRequest $request)
     {
         $data = $request->input('setting');
+        // dd($data);
         foreach($request->input('setting') as $setting){
             $newUser = Setting::updateOrCreate(
                  [
