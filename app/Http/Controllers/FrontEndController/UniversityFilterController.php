@@ -18,13 +18,19 @@ class UniversityFilterController extends Controller
     {
 
         $courses = Category::where('parent_id', $request->categoryselect)->get();
-
-        $output = '<option value="" selected>Sub Category</option>';
+if($courses->count()>0){
+        $output = '<option value="" selected>Select Sub Category</option>';
         foreach ($courses as $row) {
             $output .= '<option value="' . $row->id . '">' . $row->title . '</option>';
         }
 
         echo $output;
+    }else{
+        $output = '<option value="" selected>No Data Available</option>';
+        echo $output;
+
+
+    }
     }
     public function courseWiseUniversity(Request $request)
     {
@@ -181,13 +187,18 @@ class UniversityFilterController extends Controller
     {
 
         $courses = University::where('countries_id', $request->countryId)->get();
-
+if($courses->count()>0){
         $output = '<option value="" selected>Select University</option>';
         foreach ($courses as $row) {
             $output .= '<option value="' . $row->user_id . '">' . $row->university_name . '</option>';
         }
 
         echo $output;
+    }else{
+        $output = '<option> No Data available</option>';
+        echo $output;
+
+    }
     }
     public function universityWiseConsultant(Request $request)
     {

@@ -88,8 +88,63 @@
                         <p class="card-text pb-3">Suspendisse ullamcorper lacus et commodo laoreet. Sed sodales aliquet
                             felis, quis volutpat massa imperdiet in. Praesent rutrum malesuada risus, ullamcorper
                             pretium tortor</p>
+
                         <div class="photo-block-gallery">
-                            <h3 class="title pb-2">Tax Benefits</h3>
+                            <h3 class="title pb-2">Eligibility</h3>
+                            <p class="card-text pb-4"><b>Repayment of an education loan is deductible under section 80E
+                                    of the Income Tax Act. The yearly limit for deduction is Rs. 40,000 (for both the
+                                    principal and the interest). Only loans taken for higher education - full time
+                                    studies in any graduate or post-graduate, professional, and pure and applied science
+                                    courses - may claim deduction. The deduction will be available for a maximum of
+                                    eight years starting from the day you start repaying.</b></p>
+                            Equitable Access to quality higher education has been a concern of the University Grants
+                            Commission. To this purpose the Commission, besides encouraging colleges and universities to
+                            provide for liberal financial support to the meritorious but needy students, has also been
+                            instrumental in educational loan scheme. The Reserve Bank of India (RBI) has issued
+                            guidelines in this regard to all commercial banks. A large number of banks have already
+                            launched educational loan schemes. Provided below are links to the respective website of
+                            individual banks offering such facilities.
+
+                        </div>
+
+                        <div class="photo-block-gallery">
+                            <h3 class="title pb-2">Pre-approvals</h3>
+                            <p class="card-text pb-4"><b>Repayment of an education loan is deductible under section 80E
+                                    of the Income Tax Act. The yearly limit for deduction is Rs. 40,000 (for both the
+                                    principal and the interest). Only loans taken for higher education - full time
+                                    studies in any graduate or post-graduate, professional, and pure and applied science
+                                    courses - may claim deduction. The deduction will be available for a maximum of
+                                    eight years starting from the day you start repaying.</b></p>
+                            Equitable Access to quality higher education has been a concern of the University Grants
+                            Commission. To this purpose the Commission, besides encouraging colleges and universities to
+                            provide for liberal financial support to the meritorious but needy students, has also been
+                            instrumental in educational loan scheme. The Reserve Bank of India (RBI) has issued
+                            guidelines in this regard to all commercial banks. A large number of banks have already
+                            launched educational loan schemes. Provided below are links to the respective website of
+                            individual banks offering such facilities.
+
+                        </div>
+
+                        <div class="photo-block-gallery">
+                            <h3 class="title pb-2">Benefits</h3>
+                            <p class="card-text pb-4"><b>Repayment of an education loan is deductible under section 80E
+                                    of the Income Tax Act. The yearly limit for deduction is Rs. 40,000 (for both the
+                                    principal and the interest). Only loans taken for higher education - full time
+                                    studies in any graduate or post-graduate, professional, and pure and applied science
+                                    courses - may claim deduction. The deduction will be available for a maximum of
+                                    eight years starting from the day you start repaying.</b></p>
+                            Equitable Access to quality higher education has been a concern of the University Grants
+                            Commission. To this purpose the Commission, besides encouraging colleges and universities to
+                            provide for liberal financial support to the meritorious but needy students, has also been
+                            instrumental in educational loan scheme. The Reserve Bank of India (RBI) has issued
+                            guidelines in this regard to all commercial banks. A large number of banks have already
+                            launched educational loan schemes. Provided below are links to the respective website of
+                            individual banks offering such facilities.
+
+                        </div>
+
+                        <div class="photo-block-gallery">
+                            <h3 class="title pb-2">Documents</h3>
                             <p class="card-text pb-4"><b>Repayment of an education loan is deductible under section 80E
                                     of the Income Tax Act. The yearly limit for deduction is Rs. 40,000 (for both the
                                     principal and the interest). Only loans taken for higher education - full time

@@ -343,11 +343,11 @@
                 <div class="footer-item">
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Get in touch</h4>
                     <ul class="list-items list--items">
-                        <li><a href="#">Book a consultant</a></li>
+                        {{-- <li><a href="#">Book a consultant</a></li> --}}
                         <li><a href="{{route('contact')}}">Contact Us</a></li>
 
                         <li><a href="{{route('Prmigration')}}">PR/ Migration</a></li>
-                        <li><a href="#">Track Application</a></li>
+                        {{-- <li><a href="#">Track Application</a></li> --}}
                         <li>Download App</li>
                         <li><a href="#" ><img style="    width: 105px;" src="{{ asset('frontEnd/assets/images/app-store.png') }}" alt=""></a>
                         <a href="#"><img style="    width: 105px;" src="{{ asset('frontEnd/assets/images/google-play.png') }}" alt="">
@@ -374,7 +374,7 @@
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
         </div><!-- end row -->
-        <div class="row align-items-center">
+        {{-- <div class="row align-items-center">
             <div class="col-lg-8">
                 <div class="term-box footer-item">
                     <ul class="list-items list--items d-flex align-items-center">
@@ -394,7 +394,7 @@
                     </ul>
                 </div>
             </div><!-- end col-lg-4 -->
-        </div><!-- end row -->
+        </div><!-- end row --> --}}
     </div><!-- end container -->
     <div class="section-block mt-4"></div>
     <div class="container">

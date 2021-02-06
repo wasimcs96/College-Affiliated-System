@@ -207,7 +207,7 @@
                         </div> --}}
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">{{$university->university->university_name ?? ''}}</a>
+                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">@if(isset($university->university->university_name)){{$university->university->university_name ?? ''}} @else N/A @endif</a>
                              @if($university->is_verified == 1)
                              <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                          @endif
@@ -219,6 +219,8 @@
                     @else
                     Govenment</p>
                     @endif
+                    @else
+                    N/A
                     @endif
 
                         <div class="card-rating">
@@ -300,7 +302,9 @@
             @endif
             @endforeach
             @else
-            <h1>No Results Found</h1>
+            <div class="container" style="text-align: center;">
+                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                   </div>
             @endif
         </div><!-- end row -->
         {{-- <div class="row">
@@ -428,7 +432,7 @@
 <!-- ================================
     START CTA AREA
 ================================= -->
-<section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
+{{-- <section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7">
@@ -455,7 +459,52 @@
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section>
+</section> --}}
+{{-- <section class="info-area info-bg padding-top-90px padding-bottom-70px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 responsive-column">
+                <a href="{{route('contact')}}" class="icon-box icon-layout-2 d-flex">
+                    <div class="info-icon flex-shrink-0 bg-rgb text-color-2">
+                        <i class="la la-phone"></i>
+                    </div><!-- end info-icon-->
+                    <div class="info-content">
+                        <h4 class="info__title">Need Help? Contact us</h4>
+                        <p class="info__desc">
+                    Need Help Contact Us
+                        </p>
+                    </div><!-- end info-content -->
+                </a><!-- end icon-box -->
+            </div><!-- end col-lg-4 -->
+            <div class="col-lg-4 responsive-column">
+                <a href="{{route('faq.front')}}" class="icon-box icon-layout-2 d-flex">
+                    <div class="info-icon flex-shrink-0 bg-rgb-2 text-color-3">
+                        <i class="lar la-question-circle"></i>
+                    </div><!-- end info-icon-->
+                    <div class="info-content">
+                        <h4 class="info__title">FAQ</h4>
+                        <p class="info__desc">
+                            Find Answer Of your Query
+                        </p>
+                    </div><!-- end info-content -->
+                </a><!-- end icon-box -->
+            </div><!-- end col-lg-4 -->
+            <div class="col-lg-4 responsive-column">
+                <a href="{{route('blog_all')}}" class="icon-box icon-layout-2 d-flex">
+                    <div class="info-icon flex-shrink-0 bg-rgb-3 text-color-4">
+                        <i class="la la-blog"></i>
+                    </div><!-- end info-icon-->
+                    <div class="info-content">
+                        <h4 class="info__title">Blog</h4>
+                        <p class="info__desc">
+                    Check Out our Blogs
+                        </p>
+                    </div><!-- end info-content -->
+                </a><!-- end icon-box -->
+            </div><!-- end col-lg-4 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end info-area --> --}}
 @endsection
 @section('per_page_style')
 <style>

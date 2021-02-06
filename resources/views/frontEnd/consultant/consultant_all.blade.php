@@ -254,7 +254,9 @@
             @endif
             @endforeach
             @else
-            <h1>No Results Found</h1>
+            <div class="container" style="text-align: center;">
+                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                   </div>
             @endif
         </div><!-- end row -->
 
