@@ -1,6 +1,9 @@
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="background-image: url('{{asset('frontEnd/assets/images/signup.jpg')}}'); color: #f16d01;
+        {{-- background-image: url('{{asset('frontEnd/assets/images/signup.jpg')}}'); --}}
+
+        <div class="modal-content" style="  background-color:#e5e3e6;
+         color: #f16d01;
         ">
             <div class="modal-header">
                 <div>
@@ -16,13 +19,15 @@
             <div class="row">
             <div class="col-lg-6">
                 <div class="container">
-                    <div class="modal-header">
+                    <div class="modal-header"  style="
+                    border-bottom-color: #d0cfd1;
+                ">
                         <h5 class="modal-title" id="registerModal" style="color: #f16d01;">Create a New Account</h5>
 
                     </div>
             <div class="modal-body">
             <form method="POST" id="registerForm" action="{{ route('register') }}"  style="
-            padding: 4rem;
+            padding: 11vh;
         ">
                     @csrf
 
@@ -91,7 +96,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-12" style="color: #f16d01;">
-                                <button type="submit" class="btn form-thme-btn btn-block">
+                                <button type="submit" class="btn btn-primary btn-block">
                                     {{ __('Register') }}
                                 </button>
                                 Already Member? <a href="#loginPopupForm" id="loginalready" data-toggle="modal" data-dismiss="modal">Login</a>

@@ -332,7 +332,7 @@
 <!-- ================================
     START CTA AREA
 ================================= -->
-<section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
+{{-- <section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7">
@@ -359,5 +359,5 @@
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section>
+</section> --}}
 @endsection

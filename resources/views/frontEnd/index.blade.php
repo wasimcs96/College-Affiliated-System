@@ -143,6 +143,7 @@
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                 <select class="select-contain-select" name="countries_id" required>
+                                                    <option>Select Country</option>
                                                     <?php $countries = App\Models\Country::all();?>
                                                     @if($countries->count() > 0)
                                                     @foreach($countries as $country)
@@ -195,11 +196,12 @@
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select" id="salazar" name="countries_id">
+                                            <select class="select-contain-select" id="salazar" name="countries_id">
+                                                <option>Select Country</option>
                                                         <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
-                                                            <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
+                                                            <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
                                                          @endforeach
 
                                                         @else
@@ -568,7 +570,9 @@
 
                     </div><!-- end testimonial-carousel -->
 @else
-<h2 class="mt-5" style="text-align: center"> No Data Available</h2>
+<div class="container" style="text-align: center;">
+    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}" height="auto;" width="400px;">
+       </div>
 @endif
 
 
@@ -683,7 +687,9 @@
                         @endforeach
                     </div><!-- end testimonial-carousel -->
 @else
-<h2 class="mt-5" style="text-align: center"> No Data Available</h2>
+<div class="container" style="text-align: center;">
+    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}" height="auto;" width="400px;">
+       </div>
 @endif
 
 
@@ -1035,9 +1041,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container align-center">
-                                    <h1 style="text-align: center;">  Not Available </h1>
-                                      </div>
+                                <div class="container" style="text-align: center;">
+                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                                       </div>
 @endif
 
                             </div>
@@ -1182,9 +1188,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container align-center">
-                                    <h1 style="text-align: center;">  Not Available </h1>
-                                      </div>
+                                <div class="container" style="text-align: center;">
+                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                                       </div>
 @endif
 
                             </div>
@@ -1329,9 +1335,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container align-center">
-                                    <h1 style="text-align: center;">  Not Available </h1>
-                                      </div>
+                                <div class="container" style="text-align: center;">
+                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                                       </div>
 @endif
 
                             </div>
@@ -1475,9 +1481,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container align-center">
-                                    <h1 style="text-align: center;">  Not Available </h1>
-                                      </div>
+                                <div class="container" style="text-align: center;">
+                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                                       </div>
 @endif
                             </div>
                         </div><!-- end tab-pane -->
@@ -1621,17 +1627,18 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container align-center">
-                                    <h1 style="text-align: center;">  Not Available </h1>
-                                      </div>
+                                <div class="container" style="text-align: center;">
+                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                                       </div>
 @endif
                             </div>
                         </div><!-- end tab-pane -->
                     </div><!-- end tab-content -->
 
                 @else
-                <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
-
+                <div class="container" style="text-align: center;">
+                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                       </div>
                     @endif
                 </div>
             </div><!-- end col-lg-12 -->

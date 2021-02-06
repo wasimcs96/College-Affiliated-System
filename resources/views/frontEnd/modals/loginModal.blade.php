@@ -5,7 +5,9 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
 
 
-            <div class="modal-content" style="background-image: url('{{asset('frontEnd/assets/images/login.jpg')}}'); color: #f16d01;
+            {{-- background-image: url('{{asset('frontEnd/assets/images/login.jpg')}}'); --}}
+            <div class="modal-content" style=" background-color:#e5e3e6;
+             color: #f16d01;
             ">
                 <div class="modal-header">
                     <div>
@@ -22,7 +24,9 @@
 
             <div class="col-lg-6">
                 <div class="container">
-                <div class="modal-header">
+                <div class="modal-header"  style="
+                border-bottom-color: #d0cfd1;
+            ">
                     <div >
                         <h5 class="modal-title title" id="exampleModalLongTitle2" style="color: #f16d01;">Hello! Welcome to your account</h5>
                         {{-- <p class="font-size-14"></p> --}}
@@ -77,7 +81,7 @@
                                 </div>
                             </div><!-- end input-box -->
                             <div class="btn-box pt-3 pb-4">
-                                <button type="submit" class="form-thme-btn w-100">Login Account</button>
+                                <button type="submit" class="theme-btn w-100">Login Account</button>
                               New to Website? <a href="#registerModal" id="signupalready" data-toggle="modal" data-dismiss="modal">Sign Up</a>
                             </div>
                             <div class="action-box text-center">
@@ -166,7 +170,7 @@
 @section('per_page_script')
 @parent
 
-   
+
 <script>
 
 $(document).on('click', '#signupalready', function ()

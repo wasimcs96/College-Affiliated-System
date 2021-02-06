@@ -364,7 +364,7 @@
                                                 {{-- </p> --}}
                                             </div>
                                             <div>
-                                          <a href="{{route('course_detail',['id'=> $category->id])}}" class="theme-btn theme-btn-small mt-2" ><span style="color: white;">Detail<i class="las la-angle-double-right"></i></span><a>
+                                          <a href="{{route('course_detail',['id'=> $category->id])}}" class="theme-btn theme-btn-small mt-2" ><span style="color: #ff7504;">Detail<i class="las la-angle-double-right"></i></span><a>
 
 
                                             </div>
@@ -445,7 +445,9 @@
                         @foreach($universities as $courseuniversity)
                         {{-- {{dd($courseuniversity->id)}} --}}
                         {{-- @if($consultant->isConsultant()) --}}
-                        <div class="card-item car-card border">
+                        <div class="card-item car-card border" style="
+                        margin-bottom: 22px;
+                    ">
                             <div class="card-img" style="text-align: center; height:185px;">
 
                                 <a href="{{route('university_detail',['id' => $courseuniversity->id])}}" class="d-block">
@@ -466,13 +468,19 @@
                                         @else
                                         <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                         @endif</div>
+                                        <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                        @if($courseuniversity->Premium_expire_date > $mytime)<span style="
+                                        background-color: #073975;
+                                    " class="badge">Premium</span> @endif
                                 {{-- <span class="badge">Top Ranked</span> --}}
                                 {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
                                     <i class="la la-heart-o"></i>
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $courseuniversity->id])}}">{{$courseuniversity->university->university_name}}</a></h3>
+                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $courseuniversity->id])}}">{{$courseuniversity->university->university_name}}</a>   @if($courseuniversity->is_verified == 1)
+                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                @endif</h3>
                                 <p class="card-meta">{{$courseuniversity->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>

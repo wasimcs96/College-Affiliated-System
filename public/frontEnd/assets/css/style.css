@@ -1886,12 +1886,17 @@ body {
 
 .list-items li a {
     color: #5d646d;
+    /* color:#ff7504; */
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     -ms-transition: all .3s;
     -o-transition: all .3s;
     transition: all .3s
 }
+
+/* .crc{
+    color:#ff7504;
+} */
 
 .list-items li a:hover {
     color: #073975

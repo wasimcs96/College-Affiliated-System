@@ -7,7 +7,7 @@
                         <div class="header-left">
                             <ul class="list-items">
                                 <li><a href="#"><i class="la la-phone mr-1"></i>(123) 123-456</a></li>
-                                <li><a href="#"><i class="la la-envelope mr-1"></i>educationportal@example.com</a></li>
+                                <li><a href="#"><i class="la la-envelope mr-1"></i>{{config('get.ADMIN_EMAIL')}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -530,8 +530,8 @@
                                             <li><a href="{{route('contact')}}">Contact Us</a></li>
                                             <li><a href="{{route('about')}}">About Us</a></li>
                                             <li><a href="{{route('faq.front')}}">FAQ</a></li>
-                                            <li><a href="{{route('privacy&policy')}}">Privacy and Policy</a></li>
-                                            <li><a href="{{route('terms&condition')}}">Terms and Condition</a></li>
+                                            {{-- <li><a href="{{route('privacy&policy')}}">Privacy and Policy</a></li>
+                                            <li><a href="{{route('terms&condition')}}">Terms and Condition</a></li> --}}
 
 
 
