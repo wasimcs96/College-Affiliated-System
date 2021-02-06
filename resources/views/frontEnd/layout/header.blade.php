@@ -93,7 +93,7 @@
                     z-index: 59; color:white;">
                         <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('frontEnd/assets/images/logo.png') }}" alt="logo"  style="
+                            <a href="{{route('front')}}"><img src="{{ asset('frontEnd/assets/images/logo.png') }}" alt="logo"  style="
                                 width: 198px;
                                 height: 70px;
                             "></a>
@@ -112,7 +112,8 @@
                                         <a href="#">Courses<i class="la la-angle-down"></i></a>
                                         <div class="dropdown-menu-item mega-menu">
                                             <ul class="row no-gutters">
-
+                                                <?php $headervalid = App\Models\Category::all(); ?>
+                                                @if($headervalid->count() == 21)
                                                 <li class="col-lg-4 mega-menu-item">
                                                     <ul>
                                                         <?php $headercourses = App\Models\Category::take(7)->get(); ?>
@@ -195,6 +196,31 @@
                                                     </form>
                                                       @endforeach
 
+                                                    </ul>
+                                                </li>
+                                                @else
+                                                <li class="col-lg-4 mega-menu-item">
+                                                    <ul>
+                                                        <?php $headercoursev2 = App\Models\Category::take(7)->get(); ?>
+                                                      @foreach ($headercoursev2 as $hcc)
+                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        @csrf
+                                                    <input type="hidden" name="category" value="{{$hcc->countries_id}}">
+
+                                                    <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 3px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 15px;
+                                                        font-weight: 500;">{{$hcc->countries_name}}</button></li>
+                                                    </form>
+                                                      @endforeach
+
                                                         {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
                                                         <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
                                                         <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
@@ -203,7 +229,31 @@
                                                         <li><a href="#">Arts</a></li> --}}
                                                     </ul>
                                                 </li>
+                                                <li class="col-lg-8 mega-menu-item">
+                                                    <ul>
+                                                        <?php $headercourse = App\Models\Category::skip(7)->take(7)->get(); ?>
+                                                      @foreach ($headercourse as $itemsm)
+                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        @csrf
+                                                    <input type="hidden" name="category" value="{{$itemsm->id}}">
 
+                                                    <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 3px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 15px;
+                                                        font-weight: 500;">{{$itemsm->title}}</button></li>
+                                                    </form>
+                                                      @endforeach
+
+                                                    </ul>
+                                                </li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </li>
@@ -211,29 +261,132 @@
                                         <a href="#">Consultants <i class="la la-angle-down"></i></a>
                                         <div class="dropdown-menu-item mega-menu">
                                             <ul class="row no-gutters">
+                                                <?php $headercountryvalid = App\Models\Country::all(); ?>
+                                                @if($headercountryvalid->count() > 21)
                                                 <li class="col-lg-4 mega-menu-item">
                                                     <ul>
-                                                        <li><a href="{{ route('consultant_all') }}">Search Consultant<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="{{ route('consultant_all') }}">Consultant <span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="add-tour.html">Colleges in Abroad<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="add-cruise.html">Consultants in Abroad<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="add-car.html">Search Colleges<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="user-dashboard.html">Visa Rules</a></li>
-                                                        <li><a href="admin-dashboard.html">How to book a consultant</a></li>
+                                                        <?php $headercountry = App\Models\Country::take(7)->get(); ?>
+                                                        @foreach ($headercountry as $itemcountry)
+                                                        <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                          @csrf
+                                                      <input type="hidden" name="category" value="{{$itemcountry->countries_id}}">
+
+                                                      <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                          display: -ms-flex;
+                                                          display: flex;
+                                                          -ms-flex-align: center;
+                                                          align-items: center;
+                                                          justify-content: space-between;
+                                                          position: relative;
+                                                          padding: 3px 25px;
+                                                          color: #5d646d;
+                                                          font-size: 15px;
+                                                          font-weight: 500;">{{$itemcountry->countries_name}}</button></li>
+                                                      </form>
+                                                        @endforeach
+
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-4 mega-menu-item">
+                                                    <ul>
+                                                        <?php $headercountry2 = App\Models\Country::skip(7)->take(7)->get(); ?>
+                                                        @foreach ($headercountry2 as $itemcountry2)
+                                                        <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                          @csrf
+                                                      <input type="hidden" name="category" value="{{$itemcountry2->countries_id}}">
+
+                                                      <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                          display: -ms-flex;
+                                                          display: flex;
+                                                          -ms-flex-align: center;
+                                                          align-items: center;
+                                                          justify-content: space-between;
+                                                          position: relative;
+                                                          padding: 3px 25px;
+                                                          color: #5d646d;
+                                                          font-size: 15px;
+                                                          font-weight: 500;">{{$itemcountry2->countries_name}}</button></li>
+                                                      </form>
+                                                        @endforeach
+
+                                                    </ul>
+                                                </li>
+
+                                                <li class="col-lg-4 mega-menu-item">
+                                                    <ul>
+                                                        <?php $headercountry3 = App\Models\Country::skip(14)->take(7)->get(); ?>
+                                                        @foreach ($headercountry3 as $itemcountry3)
+                                                        <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                          @csrf
+                                                      <input type="hidden" name="category" value="{{$itemcountry3->countries_id}}">
+
+                                                      <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                          display: -ms-flex;
+                                                          display: flex;
+                                                          -ms-flex-align: center;
+                                                          align-items: center;
+                                                          justify-content: space-between;
+                                                          position: relative;
+                                                          padding: 3px 25px;
+                                                          color: #5d646d;
+                                                          font-size: 15px;
+                                                          font-weight: 500;">{{$itemcountry3->countries_name}}</button></li>
+                                                      </form>
+                                                        @endforeach
+
+                                                    </ul>
+                                                </li>
+
+                                                @else
+                                                <li class="col-lg-4 mega-menu-item">
+                                                    <ul>
+                                                        <?php $headercountryvalid = App\Models\Country::take(7)->get(); ?>
+                                                      @foreach ($headercountryvalid as $headercountryv)
+                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        @csrf
+                                                    <input type="hidden" name="category" value="{{$headercountryv->countries_id}}">
+
+                                                    <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 3px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 15px;
+                                                        font-weight: 500;">{{$headercountryv->countries_name}}</button></li>
+                                                    </form>
+                                                      @endforeach
+
                                                     </ul>
                                                 </li>
                                                 <li class="col-lg-8 mega-menu-item">
                                                     <ul>
-                                                        <li><a href="user-profile.html">Search Colleges in Abroad</a></li>
-                                                        <li><a href="become-local-expert.html">Search Universities in Abroad</a></li>
-                                                        <li><a href="contact.html">Search Courses to study in Abroad</a></li>
-                                                        <li><a href="cart.html">MBBS in Foreign Universities</a></li>
-                                                        <li><a href="checkout.html">B.Tech in Foreign Universities</a></li>
-                                                        <li><a href="recover.html">B.Design in Foreign Universities</a></li>
-                                                        <li><a href="payment-received.html">Book a Consultant to Study in Abroad</a></li>
+                                                        <?php $headercountryvalid2 = App\Models\Country::skip(7)->take(7)->get(); ?>
+                                                      @foreach ($headercountryvalid2 as $headercountryv2)
+                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        @csrf
+                                                    <input type="hidden" name="category" value="{{ $headercountryv2->id}}">
+
+                                                    <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 3px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 15px;
+                                                        font-weight: 500;">{{ $headercountryv2->countries_name}}</button></li>
+                                                    </form>
+                                                      @endforeach
+
                                                     </ul>
                                                 </li>
-
+                                                @endif
                                             </ul>
                                         </div>
                                     </li>
@@ -242,7 +395,7 @@
                                         <a href="#">Study Abroad <i class="la la-angle-down"></i></a>
                                         <div class="dropdown-menu-item mega-menu">
                                             <ul class="row no-gutters">
-                                                <li class="col-lg-4 mega-menu-item">
+                                                {{-- <li class="col-lg-4 mega-menu-item">
                                                     <ul>
                                                         <li><a href="add-hotel.html">Study Abroad<span class="badge bg-2 text-white">New</span></a></li>
                                                         <li><a href="add-flight.html">Courses Abroad <span class="badge bg-2 text-white">New</span></a></li>
@@ -252,16 +405,106 @@
                                                         <li><a href="user-dashboard.html">Visa Rules</a></li>
                                                         <li><a href="admin-dashboard.html">How to book a consultant</a></li>
                                                     </ul>
-                                                </li>
+                                                </li> --}}
                                                 <li class="col-lg-8 mega-menu-item">
                                                     <ul>
-                                                        <li><a href="user-profile.html">Search Colleges in Abroad</a></li>
-                                                        <li><a href="become-local-expert.html">Search Universities in Abroad</a></li>
-                                                        <li><a href="contact.html">Search Courses to study in Abroad</a></li>
-                                                        <li><a href="cart.html">MBBS in Foreign Universities</a></li>
-                                                        <li><a href="checkout.html">B.Tech in Foreign Universities</a></li>
-                                                        <li><a href="recover.html">B.Design in Foreign Universities</a></li>
-                                                        <li><a href="payment-received.html">Book a Consultant to Study in Abroad</a></li>
+                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                                            <input type="hidden" name="countries_id" value="223">
+                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 3px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 15px;
+                                                                font-weight: 500;" type="submit">Search Universities in United States of America</button> </a></form></li>
+
+                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                                            <input type="hidden" name="countries_id" value="222">
+                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 3px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 15px;
+                                                                font-weight: 500;" type="submit">Search Universities in United Kingdom</button> </a></form></li>
+
+                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                                            <input type="hidden" name="countries_id" value="13">
+                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 3px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 15px;
+                                                                font-weight: 500;" type="submit">Search Universities in Australia</button> </a></form></li>
+
+                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                                            <input type="hidden" name="countries_id" value="38">
+                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 3px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 15px;
+                                                                font-weight: 500;" type="submit">Search Universities in Canada</button> </a></form></li>
+
+                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                                            <input type="hidden" name="countries_id" value="103">
+                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 3px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 15px;
+                                                                font-weight: 500;" type="submit">Search Universities in Ireland</button> </a></form></li>
+
+                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                                            <input type="hidden" name="countries_id" value="99">
+                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 3px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 15px;
+                                                                font-weight: 500;" type="submit">Search Universities in India</button> </a></form></li>
+
+                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
+                                                            <input type="hidden" name="countries_id" value="222">
+                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 3px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 15px;
+                                                                font-weight: 500;" type="submit">Search Universities in Germany</button> </a></form></li>
                                                     </ul>
                                                 </li>
 
@@ -287,6 +530,10 @@
                                             <li><a href="{{route('contact')}}">Contact Us</a></li>
                                             <li><a href="{{route('about')}}">About Us</a></li>
                                             <li><a href="{{route('faq.front')}}">FAQ</a></li>
+                                            <li><a href="{{route('privacy&policy')}}">Privacy and Policy</a></li>
+                                            <li><a href="{{route('terms&condition')}}">Terms and Condition</a></li>
+
+
 
                                         </ul>
                                     </li>

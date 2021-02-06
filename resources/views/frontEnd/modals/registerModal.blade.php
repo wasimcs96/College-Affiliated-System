@@ -21,7 +21,9 @@
 
                     </div>
             <div class="modal-body">
-            <form method="POST" id="registerForm" action="{{ route('register') }}">
+            <form method="POST" id="registerForm" action="{{ route('register') }}"  style="
+            padding: 4rem;
+        ">
                     @csrf
 
 
@@ -89,7 +91,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-12" style="color: #f16d01;">
-                                <button type="submit" class="btn btn-primary btn-block">
+                                <button type="submit" class="btn form-thme-btn btn-block">
                                     {{ __('Register') }}
                                 </button>
                                 Already Member? <a href="#loginPopupForm" id="loginalready" data-toggle="modal" data-dismiss="modal">Login</a>

@@ -77,7 +77,7 @@
                                 </div>
                             </div><!-- end input-box -->
                             <div class="btn-box pt-3 pb-4">
-                                <button type="submit" class="theme-btn w-100">Login Account</button>
+                                <button type="submit" class="form-thme-btn w-100">Login Account</button>
                               New to Website? <a href="#registerModal" id="signupalready" data-toggle="modal" data-dismiss="modal">Sign Up</a>
                             </div>
                             <div class="action-box text-center">

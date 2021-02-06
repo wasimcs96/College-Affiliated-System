@@ -22,9 +22,10 @@ class PrMigrationFrontController extends Controller
     {
         // dd($request->all());
         // $request->country=19;
+        $countrycoming=$request->country;
         $total=[];
         $consultants=DB::table("consultant_pr_migration_countries")
-        ->whereRaw("find_in_set('$request->country',country_id)")
+        ->whereRaw("find_in_set('$countrycoming',country_id)")
 
         ->get();
 
@@ -34,7 +35,7 @@ class PrMigrationFrontController extends Controller
                 $consultants[$key]= $us;
         }
 
-            return view('frontEnd.prmigration.prmigration',compact('consultants'));
+            return view('frontEnd.prmigration.prmigration',compact('consultants','countrycoming'));
         }
 
         public function book($id)
