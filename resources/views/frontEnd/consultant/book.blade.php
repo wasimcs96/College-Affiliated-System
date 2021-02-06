@@ -54,7 +54,7 @@
                             <li><span>Mobile:</span>{{$consultant->mobile ?? ''}}</li>
                             {{-- <li><span>Home Airport:</span>Knoxville, TN 37920, USA</li> --}}
                             <li><span>Address:</span>{{$consultant->address ?? ''}}</li>
-                            <li><span>Website:</span><a href="{{ $consultant->consultant->website }}" style="color: blue">{{$consultant->consultant->website ?? ''}}</a></li>
+                            <li><span>Website:</span><a target="_blank" href="{{ $consultant->consultant->website }}" style="color: blue">Visit<i class="las la-external-link-alt"></i></a></li>
                             <?php
                         $weekarray = Config::get('define.weekday');
                         if(isset($consultant->consultant->working_week_days))

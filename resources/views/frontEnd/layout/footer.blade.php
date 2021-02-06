@@ -4,7 +4,7 @@
         <img src="{{ asset('frontEnd/assets/img/header/header-shape-2.png') }}" class="hero-circle-1" alt="thumb">
     </div>
     <div class="footer-widget">
-        <div class="container">
+        {{-- <div class="container">
             <div class="footer-widget-wrapper grid-4 de-padding">
                 <div class="footer-widget-box ab-us">
                     <h4 class="foo-widget-title">About Us</h4>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="copyright">
             <div class="container">
                 <a href="index.html"><img src="{{ asset('frontEnd/assets/images/logo.png') }}" alt="logo"  style="
