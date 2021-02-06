@@ -65,7 +65,7 @@ class ConsultantFrontController extends Controller
         $vr = date('w', $dt);
         $check = date('Y-m-d', $dt);
         //  dd($check);
-        $bookings = Booking::where('booking_date', $check)->get();
+        $bookings = Booking::where('booking_date', $check)->where('status','!=',3)->get();
         if ($bookings->count() > 0) {
            
         
