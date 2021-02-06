@@ -12,9 +12,9 @@
     $runningApplication = DB::table('applications')->where('consultant_id',auth()->user()->id)->where('status',0)->count();
     $completedApplication = DB::table('applications')->where('consultant_id',auth()->user()->id)->where('status',1)->count();
     $closedApplication = DB::table('applications')->where('consultant_id',auth()->user()->id)->where('status',2)->count();
-    $visaDues = DB::table('consultant_dues')->where('consultant_id',auth()->user()->id)->where('due_amount_type',0)->get('due_amount')->first();
+    $visaDues = DB::table('consultant_dues')->where('consultant_id',auth()->user()->id)->sum('due_amount');
     $prDues = DB::table('consultant_dues')->where('consultant_id',auth()->user()->id)->where('due_amount_type',1)->get('due_amount')->first();
-    $visaPaid = DB::table('consultant_dues')->where('consultant_id',auth()->user()->id)->where('due_amount_type',0)->get('paid_amount')->first();
+    $visaPaid = DB::table('consultant_dues')->where('consultant_id',auth()->user()->id)->sum('paid_amount');
     $prPaid = DB::table('consultant_dues')->where('consultant_id',auth()->user()->id)->where('due_amount_type',1)->get('paid_amount')->first();
 @endphp
 
@@ -154,7 +154,7 @@
     </div>
     <div class="ml-4">
         <span>Total Dues</span>
-        <h4 class="mb-0 font-weight-medium"><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!} {{ $visaDues->due_amount + $prDues->due_amount }}</h4>
+        <h4 class="mb-0 font-weight-medium"><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!} {{  $visaDues ?? '' }} </h4>
     </div>
 </div>
 </div>
@@ -170,7 +170,7 @@
     </div>
     <div class="ml-4">
         <span>Total Paid Amount</span>
-        <h4 class="mb-0 font-weight-medium"><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{ $visaPaid->paid_amount + $prPaid->paid_amount }}</h4>
+        <h4 class="mb-0 font-weight-medium"><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{ $visaPaid ?? '' }}</h4>
     </div>
 </div>
 </div>

@@ -474,3 +474,13 @@ Route::post('loan/enquiry/submit', [
     'uses' => 'FrontEndController\LoanFrontController@loanEnquiry',
     'as' => 'loan.enquiry.submit'
 ]);
+
+Route::post('consultant/modal/university', [
+    'uses' => 'FrontEndController\ConsultantFrontController@addUniversity',
+    'as' => 'consultant.modal.university'
+]);
+
+Route::post('consultant/modal/university/skip', [
+    'uses' => 'FrontEndController\ConsultantFrontController@skipUniversity',
+    'as' => 'consultant.university.skip'
+]);
