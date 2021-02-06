@@ -19,6 +19,7 @@ use App\Models\ConsultantDues;
 use DB;
 use Config;
 use App\Models\ApplicationAppliedUniversity;
+use App\Models\UniversityConsultant;
 use date;
 
 class ConsultantApplicationController extends Controller
@@ -346,15 +347,20 @@ class ConsultantApplicationController extends Controller
           $universities = User::where('countries_id',$request->countryid)->get();
           //   dd( $universities->get()->toArray());
           $output='<option value="" selected>Select University Name</option>';
-          if(isset($universities))
+          if($universities->count() > 0)
           foreach($universities as $university)
           {
-          if($university->isUniversity())
+              $check=UniversityConsultant::where('university_id',$university->id)->where('consultant_id',auth()->user()->id)->first();
+              if ($check) {
+                  # code...
+             
+              if($university->isUniversity())
               {
 
                 $output .= '<option value="'.$university->id.'">'.$university->first_name.'</option>';
 
               }
+            }
 
           }
           // dd($output);
