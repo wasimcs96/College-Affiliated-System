@@ -55,10 +55,12 @@
                                                 <td>{{ Carbon\Carbon::parse($subscription->userPurchasedPlans[0]->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                                                 <td>{{ Carbon\Carbon::parse($subscription->userPurchasedPlans[0]->created_at ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                                                 <td>
+                                                    @if(isset($subscription->userPurchasedPlans[0]->end_date))
                                                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                                     @if($subscription->userPurchasedPlans[0]->end_date > $mytime)<div class="btn btn-success">Activated</div>@endif
 
                                                     @if($subscription->userPurchasedPlans[0]->end_date < $mytime)<div class="btn btn-danger">Expired</div>@endif
+                                                    @endif
                                                 </td>
                                                 {{-- <td><a href="#" class="btn btn-danger"><i class="icon-trash"></i></a></td> --}}
                                             </tr>
