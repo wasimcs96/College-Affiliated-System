@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
+use App\Models\User;
 use App\Models\ApplicationChat;
 use Illuminate\Support\Carbon;
 class AdminAdvertisementController extends Controller
@@ -36,12 +37,15 @@ class AdminAdvertisementController extends Controller
 
     public function reject(Request $request)
     {
-         dd($request->all());
+        //  dd($request->all());
         // dd($id);
-            // $ad = Advertisement::find($request->advertisement_id);
-            // // dd($ad);
-            // $ad->status = 2;
-            // $ad->save();
+        $user = User::where('id',$request->user_id)->first();
+        $fname = $user->first_name;
+        $lname = $user->last_name;
+        $email = $user->email;
+        $reason = $request->reason;
+        $link = "https://bilaltech.in/development.EducationPortal/public/consultant/advertisement/edit/$request->advertisement_id";
+        $image = "https://bilaltech.in/development.EducationPortal/public/frontEnd/assets/image/logo.png";
       $rt=  ApplicationChat::create([
            'sender'=>auth()->user()->id,
            'receiver'=>$request->user_id,
@@ -50,7 +54,12 @@ class AdminAdvertisementController extends Controller
         ]);
              return response($rt);
 
-        // return redirect()->route('admin.advertisement_manager');
+        // $replacement['IMAGE'] = $image;
+        // $replacement['USER_NAME'] = $user->first_name;
+        // $replacement['REASON'] =$request->reason;
+        // $replacement['ADVERTISEMENT_LINK'] = $link;
+        // $data = ['template'=>'advertisement-reject','hooksVars' => $replacement];
+        // mail::to($user->email)->send(new \App\Mail\ManuMailer($data));
     }
 
 }

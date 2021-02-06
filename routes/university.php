@@ -5,7 +5,7 @@
        return "university";
    });
    /* University */
-
+   Route::group(['middleware' => 'Package'], function () {
 /* dashboard Section */
 Route::get('dashboard',function(){
     return view('university.dashboard');
@@ -302,6 +302,13 @@ Route::post('messenger/fetchData', [
 Route::post('messenger/sendMessage', [
     'uses' => 'UniversityMessengerController@sendMessage',
     'as' => 'university.messenger.sendmessage'
+]);
+
+});
+
+Route::get('services/subscription/add', [
+    'uses' => 'UniversitySubscriptionController@add',
+    'as' => 'university.subscription.add'
 ]);
 
 });

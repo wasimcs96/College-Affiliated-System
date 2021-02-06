@@ -568,7 +568,7 @@
                             @if(Auth()->user()->isUniversity())
                             <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                             @if(auth()->user()->Subscription_expire_date<$mytime || auth()->user()->Subscription_expire_date==NULL)
-                            <a href="{{ route('university.subscription') }}" class="theme-btn ">Dashboard</a>
+                            <a href="{{ route('university.subscription.add') }}" class="theme-btn ">Dashboard</a>
                             @else
                            <a href="{{ route('university.dashboard') }}" class="theme-btn ">Dashboard</a>
                             @endif
