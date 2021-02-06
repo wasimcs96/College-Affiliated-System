@@ -162,6 +162,14 @@ Route::get('about', function(){
     return view('frontEnd.about.about');
 })->name('about');
 
+Route::get('privacy&policy/campus', function(){
+    return view('frontEnd.privacy&policy.p&p');
+})->name('privacy&policy');
+
+Route::get('terms&condition/campus', function(){
+    return view('frontEnd.terms_co.t&c');
+})->name('terms&condition');
+
 // Route::get('contact', function(){
 //     return view('frontEnd.contact.contact');
 // })->name('contact');
@@ -473,4 +481,14 @@ Route::get('loan/detail', [
 Route::post('loan/enquiry/submit', [
     'uses' => 'FrontEndController\LoanFrontController@loanEnquiry',
     'as' => 'loan.enquiry.submit'
+]);
+
+Route::post('consultant/modal/university', [
+    'uses' => 'FrontEndController\ConsultantFrontController@addUniversity',
+    'as' => 'consultant.modal.university'
+]);
+
+Route::post('consultant/modal/university/skip', [
+    'uses' => 'FrontEndController\ConsultantFrontController@skipUniversity',
+    'as' => 'consultant.university.skip'
 ]);

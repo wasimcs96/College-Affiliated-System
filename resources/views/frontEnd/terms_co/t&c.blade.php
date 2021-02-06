@@ -1,6 +1,7 @@
 @extends('frontEnd.layout.master')
 @section('content')
-<?php $about=App\Models\Page::where('page_type',0)->first() ?>
+<?php $terms=App\Models\Page::where('page_type',2)->first() ?>
+
 <section class="breadcrumb-area bread-bg-9">
     <div class="breadcrumb-wrap">
         <div class="container">
@@ -8,7 +9,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-content">
                         <div class="section-heading">
-                            <h2 class="sec__title line-height-50">{{$about->title ?? ''}}</h2>
+                            <h2 class="sec__title line-height-50">{{$terms->title ?? ''}}</h2>
                         </div>
                     </div><!-- end breadcrumb-content -->
                 </div><!-- end col-lg-12 -->
@@ -37,22 +38,21 @@
 <section class="about-area padding-bottom-90px overflow-hidden">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="section-heading margin-bottom-40px">
-
-                    <h2 class="sec__title">{{$about->title ?? ''}}</h2>
-                    <h4 class="title font-size-16 line-height-26 pt-4 pb-2">{!! $about->short_description ?? '' !!}</h4>
-                    <p class="sec__desc font-size-16 pb-3">{!! $about->description ?? ''!!}</p>
+                    <h2 class="sec__title">{{$terms->title ?? ''}}</h2>
+                    <h4 class="title font-size-16 line-height-26 pt-4 pb-2">{!! $terms->short_description ?? '' !!}</h4>
+                    <p class="sec__desc font-size-16 pb-3">{!! $terms->description ?? ''!!}</p>
                     {{-- <p class="sec__desc font-size-16 pb-3">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p> --}}
                     {{-- <p class="sec__desc font-size-16">Vivamus a mauris vel nunc tristique volutpat. Aenean eu faucibus enim. Aenean blandit arcu lectus, in cursus elit porttitor non. Curabitur risus eros, </p> --}}
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-6 -->
-            <div class="col-lg-5 ml-auto">
+            {{-- <div class="col-lg-5 ml-auto">
                 <div class="image-box about-img-box">
                     <img src="{{asset($about->banner)}}" alt="about-img" class="img__item img__item-1">
                     <img src="{{asset($about->banner)}}" alt="about-img" class="img__item img__item-2">
                 </div>
-            </div><!-- end col-lg-5 -->
+            </div><!-- end col-lg-5 --> --}}
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end about-area -->

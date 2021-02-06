@@ -86,9 +86,11 @@
                     <div class="single-content-wrap padding-top-60px">
                         <div id="description" class="page-scroll">
                             <div class="single-content-item pb-4">
-                                <h3 class="title font-size-26">{{$consultant->first_name ?? ''}} {{$consultant->last_name ?? ''}}          @if($consultant->is_verified == 1)
-                                    <span data-toggle="tooltip"  data-url=""  data-title="Verified" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-certificate"></i></span>
-                                @endif</h3>
+                                <h3 class="title font-size-26">{{$consultant->first_name ?? ''}} {{$consultant->last_name ?? ''}}        @if($consultant->is_verified == 1)
+                                    <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif
+                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                    @if($consultant->Premium_expire_date > $mytime)<span data-toggle="tooltip"  data-url=""  data-title="Premium Profile"  style="
+                                    background-color: #073975; border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-certificate"></i></span> @endif</h3>
                                 {{-- <div class="d-flex flex-wrap align-items-center pt-2">
                                     <p class="mr-2">University Type:       @if(isset($consultant->university->type)&&($consultant->university->type==0))
                                         Private
@@ -287,7 +289,8 @@
                                         </div>
                                         <div class="author-bio">
                                             {{-- {{dd($consultant)}} --}}
-                                            <h4 class="author__title"><a href="#">{{$universitycon->userUniversity->university->university_name ?? ''}}</a></h4>
+                                            <h4 class="author__title"><a href="#">{{$universitycon->userUniversity->university->university_name ?? ''}}</a> @if($universitycon->userUniversity->is_verified == 1)
+                                                <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif</h4>
                                             <span class="author__meta">Member Since :@if(isset($universitycon->userUniversity->university->created_at))
                                                 {{$universitycon->userUniversity->university->created_at->Format("Y") ?? ''}}@else N/A @endif</span>
                                             <div class="d-flex flex-wrap align-items-center ">
@@ -452,8 +455,8 @@
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $consultant->userUniversity->id])}}">{{$consultant->userUniversity->university->university_name ?? ''}}</a>          @if($consultant->userUniversity->is_verified == 1)
-                                    <span data-toggle="tooltip"  data-url=""  data-title="Verified" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-certificate"></i></span>
+                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $consultant->userUniversity->id])}}">{{$consultant->userUniversity->university->university_name ?? ''}}</a>         @if($consultant->userUniversity->is_verified == 1)
+                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                                 @endif</h3>
                                 <p class="card-meta">{{$consultant->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">

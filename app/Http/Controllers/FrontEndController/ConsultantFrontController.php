@@ -185,4 +185,36 @@ class ConsultantFrontController extends Controller
         }
         echo $output;
     }
+
+    public function addUniversity(Request $request)
+    {
+// dd($request->all());
+$consultant = User::find(auth()->user()->id);
+$consultant->add_university = 1;
+$consultant->save();
+$universities = $request->university_id;
+foreach($universities as $key=>$university)
+{
+UniversityConsultant::create([
+'university_id' => $university,
+'consultant_id' => auth()->user()->id,
+'status' => 1,
+]);
+}
+return response('success');
+// return redirect()->back()->with('success','University Selected Successfully');
+    }
+
+    public function skipUniversity(Request $request)
+    {
+// dd($request->all());
+$consultant = User::find(auth()->user()->id);
+$consultant->add_university = 1;
+$consultant->save();
+
+
+return response('success');
+// return redirect()->back()->with('success','University Selected Successfully');
+    }
+
 }
