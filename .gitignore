@@ -21,7 +21,7 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 vendor
-public/*
+#public/*
 
 ### Node ###
 # Logs
