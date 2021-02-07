@@ -189,11 +189,25 @@
                             <input type="text" value="@if(isset(Auth()->user()->city)){{Auth()->user()->city}}@endif" name="city" class="form-control" placeholder="City" required>
                         </div>
                     </div>
-
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-12 col-md-21">
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea rows="4"  type="text" name="address" class="form-control" placeholder="Address" required>@if(isset(Auth()->user()->address)){{Auth()->user()->address}}@endif</textarea>
+                            <div id="locationField">
+                                <input class="form-control"
+                                  id="autocomplete"
+                                  name="googleAddress"
+                                  value="@if(isset(auth()->user()->address_1)){{auth()->user()->address_1}}@endif"
+                                  placeholder="Enter your address"
+                                  onFocus="geolocate()"
+                                  type="text"
+                                 required/>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label for="address">Full Address</label>
+                            <textarea rows="4"  type="text" name="address" class="form-control" placeholder="Full Address" required>@if(isset(Auth()->user()->address)){{Auth()->user()->address}}@endif</textarea>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
@@ -218,7 +232,7 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="address">Describe Yourself</label>
-                            <textarea rows="4"  type="text" name="about_me" class="form-control" placeholder="Address" required>@if(isset(Auth()->user()->consultant->about_me)){{Auth()->user()->consultant->about_me}}@endif</textarea>
+                            <textarea rows="4" minlength="150" type="text" name="about_me" class="form-control" placeholder="Describe Yourself" required>@if(isset(Auth()->user()->consultant->about_me)){{Auth()->user()->consultant->about_me}}@endif</textarea>
                         </div>
                     </div>
 
@@ -253,19 +267,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-21">
-                        <div class="form-group">
-                            <div id="locationField">
-                                <input class="form-control"
-                                  id="autocomplete"
-                                  name="googleAddress"
-                                  placeholder="Enter your address"
-                                  onFocus="geolocate()"
-                                  type="text"
-                                 required/>
-                              </div>
-                        </div>
-                    </div>
+
                 <div class="col-lg-6 col-md-12">
                     <div class="form-group">
                         <label for="start_time">Select Start Time</label>

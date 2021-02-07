@@ -55,6 +55,14 @@
                                     <textarea rows="4" type="text" name="address" class="form-control" placeholder="Address"> {{$user->address ?? ''}} </textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select name="status" class="form-control">
+                                        <option value="">-- Select Status --</option>
+                                        <option value="1"  @if($user->status == 1) selected @endif>Active</option>
+                                        <option value="0"  @if($user->status == 0) selected @endif>InActive</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="country">Country</label>
                                     <select name="country" class="form-control">
                                         <option value="">-- Select Country --</option>
