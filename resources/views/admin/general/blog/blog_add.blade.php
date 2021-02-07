@@ -41,7 +41,7 @@
                             <label>Short Description</label>
                             <textarea  id="content" name="short_description" rows="10" cols="10" class="form-control" required></textarea>
                         </div>
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-12">
                            <label for="content">Blog Content</label><br>
                            <textarea  id="content" class="summernote" name="content" rows="10" cols="10" class="form-control" required></textarea>
                     </div>

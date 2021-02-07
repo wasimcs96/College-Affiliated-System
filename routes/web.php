@@ -149,7 +149,7 @@ Route::get('blog_all',[
 ]);
 
 
-Route::get('blog_detail{id}',[
+Route::get('blog_detail/{id}',[
     'uses' => 'FrontEndController\BlogFrontcontroller@detail',
     'as'=> 'blog_detail'
 ]);

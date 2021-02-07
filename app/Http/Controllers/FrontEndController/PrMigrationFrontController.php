@@ -109,7 +109,7 @@ class PrMigrationFrontController extends Controller
             'booking_for'=>1,
             ]);
             $type=1;
-            $slug='pr_amount';
+            $slug='PR_COMMISSION';
             $consultant_id=$request->cid;
             $check = $this->consultantDue($type,$slug,$consultant_id);
             return redirect()->route('client.dashboard')->with('success','Your Application have been Submitted Successfully');

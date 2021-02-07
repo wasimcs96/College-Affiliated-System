@@ -33,7 +33,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-       
+
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -41,10 +41,20 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ])->assignRole('client');
-       
-      
-     
-    
+
+      // Important Code
+// $replacement['COURSE_LINK'] =https://bilaltech.in/development.EducationPortal/public/university/all;
+// $replacement['CONSULTANT_LINK'] = https://bilaltech.in/development.EducationPortal/public/consultant/all;
+// $replacement['APP_STORE_APP'] = https://play.google.com/store/apps/developer?id=Digitalcolf;
+// $replacement['PLAY_STORE_APP'] = https://play.google.com/store/apps/developer?id=Digitalcolf;
+// $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+// $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+// $replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
+// $replacement['WEBSITE_LINK'] = https://bilaltech.in/development.EducationPortal/public;
+// $data = ['template'=>'welcome-email','hooksVars' => $replacement];
+// mail::to($data['email'])->send(new \App\Mail\ManuMailer($data));
+
+
 
     }
 

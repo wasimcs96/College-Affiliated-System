@@ -117,7 +117,7 @@ class ConsultantApplicationController extends Controller
        if($application==NULL)
        {
        $type=0;
-       $slug='visa_amount';
+       $slug='VISA_COMMISSION';
        $check = $this->consultantDue($type,$slug);
        $applicationCommission->is_commission_add = 1;
        $applicationCommission->save();

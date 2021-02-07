@@ -86,8 +86,8 @@
                 <li class="{{ Request::segment(2) == 'dues' ? 'active open' : null }}">
                     <a href="#Dues" class="has-arrow"><i class="fa fa-credit-card"></i><span>Commission Dues</span></a>
                     <ul>
-                        <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('consultant.dues',['id'=>1])}}">Visa</a></li>
-                        <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('consultant.dues',['id'=>2])}}">PR Migration</a></li>
+                        <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('consultant.dues',['id'=>1])}}">Visa Commission</a></li>
+                        <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('consultant.dues',['id'=>2])}}">PR Commission</a></li>
                     </ul>
                 </li>
                 {{-- <li class="{{ Request::segment(2) == 'PR_Migration' ? 'active' : null }}"><a href="{{route('admin.prmigration')}}"><i class="icon-list"></i><span>PR Migration</span></a></li> --}}
