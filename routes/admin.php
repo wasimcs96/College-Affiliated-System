@@ -550,7 +550,7 @@ Route::get('settings/logos', 'SettingManagerController@getlogos')->name('setting
 Route::delete('settings/themedelete/{id}', 'SettingManagerController@themedelete')->name('setting.deletelogo');
 Route::post('settings/update-theme-images', 'SettingManagerController@storeLogos')->name('setting.logo.update');
 Route::post('settings/store-image-temp', 'SettingManagerController@storeTempImage');
-Route::get('settings/smtp', 'SettingManagerController@getSmtpSetting')->name('setting.smtp');
+Route::get('settings/smtp', 'SettingManagerController@getSmtpSetting')->name('admin.setting.smtp');
 Route::post('settings/save-smtp-settings', 'SettingManagerController@updateSmtpSetting')->name('setting.smtp.update');
 Route::get('settings/general', 'SettingManagerController@getGeneralSetting')->name('setting.general');
 Route::get('settings/general/add', 'SettingManagerController@addGeneralSetting')->name('setting.general.add');

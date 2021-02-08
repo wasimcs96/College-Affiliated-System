@@ -57,12 +57,14 @@
                 <h2>PR Migration</h2>
             </div>
             <div class="body demo-card">
-                <form action="{{route('consultant.prmigration.store')}}" method="POST">
+                <form action="{{route('consultant.prmigration.store')}}" id="basic-form" method="POST">
                     @csrf
 
                     <div class="fancy-checkbox">
                         <input type="text" class="hidden" name="pr_service" value="0" hidden>
-                        <label><input type="checkbox"  name="pr_service" value="1" @if(isset(auth()->user()->consultant->pr_service) && auth()->user()->consultant->pr_service==1) checked @endif><span> @if(auth()->user()->consultant->pr_service==1)PR Enabled @else Enable PR @endif</span></label>                    </div>
+                        <label> @if(isset(auth()->user()->consultant->pr_service) && auth()->user()->consultant->pr_service==1)  <input type="checkbox"  name="pr_service" value="1" checked><span> PR Enabled </span> @else <input type="checkbox"  name="pr_service" value="1" required><span> Enable PR</span>  @endif</label>
+                        {{-- <label> <input type="checkbox"  name="pr_service" value="1" @if(isset(auth()->user()->consultant->pr_service) && auth()->user()->consultant->pr_service==1) checked @endif><span> @if(auth()->user()->consultant->pr_service==1)PR Enabled @else Enable PR @endif</span></label>                    --}}
+                     </div>
                         @if(auth()->user()->consultant->pr_service==1)
                     <div class="row clearfix">
                         {{-- <input type="text" value="{{$au}}" hidden> --}}

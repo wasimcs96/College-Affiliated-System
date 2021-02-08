@@ -153,7 +153,9 @@
                                                 } ?>
                         <td>  @if(isset($myabout)) <?php echo ($myabout . '...')?> @else N/A @endif</td>
                     </tr>
-
+                    <tr>
+                        <td>@if(isset($user->status)) @if($user->status==0) <button class="btn btn-success"> Active</button> @else <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
+                    </tr>
                     @endif
                     </tbody>
 

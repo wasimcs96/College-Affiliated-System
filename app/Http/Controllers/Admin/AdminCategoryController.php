@@ -54,7 +54,7 @@ class AdminCategoryController extends Controller
             'status' => 'required'
 
         ]);
-
+$newname='';
 // dd($request->image);
       if($request->hasFile('image'))
        {
@@ -106,17 +106,22 @@ class AdminCategoryController extends Controller
      * @return Response
      */
     public function update(Request $request, $id)
-    {   $image=$request->image;
+    {
+        $update= Category::find($id);
+        $image=$request->image;
+        if(isset($image))
+        {
         $name= time().$image->getClientOriginalName();
         $st= $image->move(Config::get('define.image.category_media'),$name);
         $newname= Config::get('define.image.category_media').'/'.$name;
+        $update->banner = $newname;
+        }
 
-        $update= Category::find($id);
         $update->title = $request->title;
         $update->slug = $request->slug;
         $update->status = $request->status;
         $update->parent_id = $request->parent_id;
-        $update->banner = $newname;
+
         $update->save();
         return redirect()->route('admin.category')->with('success', 'Category updated Succefully.');
     }

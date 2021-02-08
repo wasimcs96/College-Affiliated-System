@@ -36,11 +36,12 @@
 
                         <div class="modal-body">
 
-                    <div class="contact-form-action"  style=" padding: 19px;">
-                    <form method="post" action="{{ route('login') }}">
+                    <div class="contact-form-action"  style="padding: 19px;">
+                    <form method="post" id="login-form" action="{{ route('login') }}">
                         @csrf
                             <div class="input-box">
                                 <label class="label-text" style="color: #f16d01;">Email</label>
+                                <div id="loginTop"></div>
                                 <div class="form-group">
                                     <span class="la la-user form-icon"></span>
 
@@ -81,7 +82,8 @@
                                 </div>
                             </div><!-- end input-box -->
                             <div class="btn-box pt-3 pb-4">
-                                <button type="submit" class="theme-btn w-100">Login Account</button>
+                                {{-- <button type="submit" class="theme-btn w-100">Login Account</button> --}}
+                                <a href="javascript:void(0);" class="theme-btn w-100" style="text-align: center;" id="loginSubmit">Login Account</a>
                               New to Website? <a href="#registerModal" id="signupalready" data-toggle="modal" data-dismiss="modal">Sign Up</a>
                             </div>
                             <div class="action-box text-center">
@@ -179,4 +181,5 @@ $(document).on('click', '#signupalready', function ()
          console.log('test');
  });
  </script>
+
  @endsection

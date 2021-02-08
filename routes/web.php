@@ -492,3 +492,8 @@ Route::post('consultant/modal/university/skip', [
     'uses' => 'FrontEndController\ConsultantFrontController@skipUniversity',
     'as' => 'consultant.university.skip'
 ]);
+
+Route::post('login/check', [
+    'uses' => 'FrontEndController\FrontEndController@loginCheck',
+    'as' => 'login.check'
+]);

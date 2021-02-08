@@ -29,6 +29,21 @@ class FrontEndController extends Controller
 
      }
 
+     public function loginCheck(Request $request)
+     {
+        //  dd($request->all());
+        $msg = true;
+        $user = User::where('email',$request->email)->first();
+        // dd($user->status);
+        if(isset($user))
+        {
+        if($user->status==0)
+        {
+            $msg = false;
+        }
+        }
+        return response(json_encode($msg));
+     }
 
 
 }
