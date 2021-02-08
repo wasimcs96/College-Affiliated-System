@@ -44,7 +44,7 @@
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
                                             <td>@if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
                                             <td>@if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
-                                            <td>@if(isset($user->status)) @if($user->status==0) <button class="btn btn-success"> Active</button> @else <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
+                                            <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
                                             {{-- {{dd($user->countries_id->country)}} --}}
 
 
@@ -69,7 +69,7 @@
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
                                             <td>  @if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
                                             <td>  @if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
-                                            <td>@if(isset($user->status)) @if($user->status==0) <button class="btn btn-success"> Active</button> @else <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
+                                            <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
                                             <td>     @if(isset($user->countries_id) && $user->countries_id )
                                                 <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
                                             {{$country->countries_name ?? ''}} @else N/A @endif</td>
@@ -92,7 +92,7 @@
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
                                             <td>  @if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
                                             <td>  @if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
-                                            <td>@if(isset($user->status)) @if($user->status==0) <button class="btn btn-success"> Active</button> @else <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
+                                            <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
                                             <td> @if(isset($user->countries_id) && $user->countries_id )
                                                 <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
                                             {{$country->countries_name ?? ''}} @else N/A @endif</td>

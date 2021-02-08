@@ -156,7 +156,7 @@
 
                 </div>
             <button type="submit" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
-            <button type="data-dismiss" class="btn btn-round btn-default ">Cancel</button>
+            {{-- <button type="data-dismiss" class="btn btn-round btn-default">Cancel</button> --}}
             </form>
             </div>
         </div>
