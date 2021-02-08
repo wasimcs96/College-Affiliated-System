@@ -8,7 +8,7 @@
     {{--  <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon"> <!-- Favicon-->  --}}
     <link rel="icon" href="{{ asset('storage/settings/' . config('get.MAIN_FAVICON')) }}" type="image/x-icon" rel="icon"/>
     <link href="{{ asset('storage/settings/' . config('get.MAIN_FAVICON')) }}" type="image/x-icon" rel="shortcut icon"/>
-    <title>@yield('title') - Education Portal</title>
+    <title>@yield('title') - Campus Interest</title>
     <meta name="description" content="@yield('meta_description', config('app.name'))">
     <meta name="author" content="@yield('meta_author', config('app.name'))">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>

@@ -9,8 +9,9 @@
             <h2> Manage Setting
                 <small>Here you can manage the settings</small></h2>
             <ul class="header-dropdown dropdown">
-                <li><a href="{{url('admin/dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="{{route('setting.general')}}" class="active">Settings</a></li>
+                {{-- <li><a href="{{url('admin/dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="{{route('setting.general')}}" class="active">Settings</a></li> --}}
+                <li><a href="{{route('setting.general.add')}}" style="float: right; color: white;" class="btn btn-primary btn-flat btn-sm"><i class="fa fa-plus"></i> New Setting</a></li>
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
 
             </ul>
@@ -18,10 +19,9 @@
         <div class="body">
             <div class="table-responsive">
                 <table class="table table-striped table-hover dataTable js-exportable">
-                    <h3 class="box-title"><span class="caption-subject font-green bold uppercase">List Settings</span></h3>
+                    {{-- <h3 class="box-title"><span class="caption-subject font-green bold uppercase">List Settings</span></h3> --}}
                     <div class="box-tools" >
-                        <a href="{{route('setting.general.add')}}" style="
-    float: right;" class="btn btn-success btn-flat btn-sm"><i class="fa fa-plus"></i> New Setting</a>
+
                     </div>
                     <thead>
                         <tr>

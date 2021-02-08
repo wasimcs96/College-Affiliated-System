@@ -3,13 +3,12 @@
 // use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => 'role:client'], function () {
+Route::group(['middleware' => 'role:client','middleware' => 'Status'], function () {
     Route::get('dash', function(){
 
        return "client";
    });
    /* Client */
-
    /* dashboard Section */
 Route::get('dashboard',function(){
     return view('client.dashboard');
@@ -115,3 +114,4 @@ Route::post('messenger/sendMessage', [
 ]);
 
 });
+

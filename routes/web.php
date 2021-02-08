@@ -149,7 +149,7 @@ Route::get('blog_all',[
 ]);
 
 
-Route::get('blog_detail{id}',[
+Route::get('blog_detail/{id}',[
     'uses' => 'FrontEndController\BlogFrontcontroller@detail',
     'as'=> 'blog_detail'
 ]);
@@ -491,4 +491,9 @@ Route::post('consultant/modal/university', [
 Route::post('consultant/modal/university/skip', [
     'uses' => 'FrontEndController\ConsultantFrontController@skipUniversity',
     'as' => 'consultant.university.skip'
+]);
+
+Route::post('login/check', [
+    'uses' => 'FrontEndController\FrontEndController@loginCheck',
+    'as' => 'login.check'
 ]);

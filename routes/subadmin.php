@@ -5,7 +5,7 @@
  use Illuminate\Support\Facades\Route;
 //use Illuminate\Routing\Route;
 
-Route::group(['middleware' => 'role:subadmin'], function () {
+Route::group(['middleware' => 'role:subadmin','middleware' => 'Status'], function () {
  Route::get('dash', function(){
 
     return "subadmin";

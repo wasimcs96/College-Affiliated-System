@@ -67,15 +67,7 @@
                             <a href="#" class="badge">Loan</a>
                         </div>
                         <h3 class="card-title font-size-28">Educational Loan</h3>
-                        <p class="card-meta pb-3">
-                            <span class="post__author">By <a href="#" class="text-gray">John Doe</a></span>
-                            <span class="post-dot"></span>
-                            <span class="post__date"> 1 January, 2020</span>
-                            <span class="post-dot"></span>
-                            <span class="post__time"><a href="#" class="text-gray">4 Comments</a></span>
-                            <span class="post-dot"></span>
-                            <span class="post__time"><a href="#" class="text-gray">202 Likes</a></span>
-                        </p>
+
                         <div class="section-block"></div>
                         <p class="card-text py-3">Vidya Lakshmi is a first of its kind portal for students seeking
                             Education Loan. This portal has been developed under the guidance of Department of Financial

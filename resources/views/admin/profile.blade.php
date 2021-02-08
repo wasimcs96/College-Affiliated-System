@@ -63,7 +63,7 @@
                 </ul>
             </div>
             <div class="body">
-                <form action="{{ route('admin.profile.update')}}" method="POST" enctype="multipart/form-data" >
+                <form action="{{ route('admin.profile.update')}}" method="POST" id="profileForm" enctype="multipart/form-data" >
                     @csrf
                 <div class="row clearfix">
 
@@ -148,6 +148,14 @@
                             </textarea>
                         </div>
                     </div>
+                    {{-- <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label for="password">Change Password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div> --}}
+                    <div class="col-lg-6 col-md-12" id="confirmPassword">
+                    </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <input name="profile_image" type="file" class="dropify-fr" >
@@ -155,8 +163,8 @@
                     </div>
 
                 </div>
-            <button type="submit" class="btn btn-round btn-primary">Update</button> &nbsp;&nbsp;
-            <button type="data-dismiss" class="btn btn-round btn-default ">Cancel</button>
+            <button type="submit" class="btn btn-round btn-primary" id="update">Update</button> &nbsp;&nbsp;
+            {{-- <button type="data-dismiss" class="btn btn-round btn-default">Cancel</button> --}}
             </form>
             </div>
         </div>
@@ -189,4 +197,29 @@
         }
     });
 </script>
+
+<script>
+    $(document).on('click', '#password', function ()
+    {
+        $('#confirmPassword').html('<div class="form-group"><label for="cpassword">Confirm Password</label><input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Confirm Password"><div id="cpError"></div></div>')
+    });
+  </script>
+{{-- <script>
+    var email='';
+
+    $(document).on('click', '#update', function ()
+    {
+    var password=$('#password').val();
+    var cpassword=$('#cpassword').val();
+   if(password==cpassword)
+   {
+       $('#profileForm').submit();
+   }
+   else
+   {
+     $('#cpError').html('<span style="color: red;">(Passwords do not match.)</span>')
+   }
+
+    });
+  </script> --}}
 @stop

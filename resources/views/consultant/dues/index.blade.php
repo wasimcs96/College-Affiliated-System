@@ -6,7 +6,7 @@
 @if($id == 1)
 <h6>Total Payment<small style="margin-left:3px;">Payment Details</small></h6>
 <div class="row clearfix">
-    <input type="text" name="amount" value="{{$dues->due_amount ?? ''}}" hidden>
+    <input type="text" name="amount" value="@if(isset($dues->due_amount)) {{$dues->due_amount ?? ''}} @endif" hidden>
     <input type="text" name="payment_type" value="3" hidden>
     <input type="text" name="title" value="paydue" hidden>
     <div class="col-lg-6 col-md-6">
@@ -16,7 +16,7 @@
                     <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
                     <div class="ml-4">
                         <span>Total Payment</span>
-                        <h4 class="mb-0 font-weight-medium">{{$dues->paid_amount ?? ''}}</h4>
+                        <h4 class="mb-0 font-weight-medium"> @if(isset($dues->paid_amount)) {{$dues->paid_amount ?? ''}} @else 0 @endif</h4>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="icon-in-bg bg-orange text-white rounded-circle"><i class="fa fa-users"></i></div>
                     <div class="ml-4">
                         <span>Total Clients</span>
-                        <h4 class="mb-0 font-weight-medium">{{$dues->total_client_count ?? ''}}</h4>
+                        <h4 class="mb-0 font-weight-medium"> @if(isset($dues->total_client_count)) {{$dues->total_client_count ?? ''}} @else 0 @endif</h4>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
 
 <h6>Total Dues<small style="margin-left:3px;">Dues Details</small></h6>
 <div class="row clearfix">
-    <input type="text" name="amount" value="{{$dues->due_amount ?? ''}}" hidden>
+    <input type="text" name="amount" value="@if(isset($dues->due_amount)) {{$dues->due_amount ?? ''}} @endif" hidden>
     <input type="text" name="payment_type" value="3" hidden>
     <input type="text" name="title" value="paydue" hidden>
     <div class="col-lg-6 col-md-6">

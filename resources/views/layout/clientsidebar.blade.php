@@ -1,6 +1,6 @@
 <div id="left-sidebar" class="sidebar">
     <div class="navbar-brand">
-        <a href="{{ route('front') }}"><img src="{{ asset('assets/images/icon.svg') }}" alt="Education Portal Logo" class="img-fluid logo" ><span>Education Portal</span></a>
+        <a href="{{ route('front') }}"><img src="{{ asset('assets/images/icon.svg') }}" alt="Campus Interest Logo" class="img-fluid logo" ><span>Campus Interest</span></a>
         <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
     </div>
     <div class="sidebar-scroll">

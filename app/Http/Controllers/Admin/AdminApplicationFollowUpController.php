@@ -21,6 +21,7 @@ class AdminApplicationFollowUpController extends Controller
    public function index()
    {
        $applications = ApplicationFollowsUp::orderBy('date', 'DESC')->get();
+    //    dd($applications);
      return view('admin.applicationFollowUp.index')->with('applications',$applications);
    }
 

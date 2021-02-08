@@ -1,6 +1,6 @@
 <div id="left-sidebar" class="sidebar">
     <div class="navbar-brand">
-        <a href="{{route('front')}}"><img src="{{ asset('assets/images/icon.svg') }}" alt="Education Portal Logo" class="img-fluid logo"><span>Education Portal</span></a>
+        <a href="{{route('front')}}"><img src="{{ asset('assets/images/icon.svg') }}" alt="Campus Interest Logo" class="img-fluid logo"><span>Campus Interest</span></a>
         <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
     </div>
     <div class="sidebar-scroll">
@@ -92,10 +92,10 @@
                         <li class="{{ Request::segment(3) == 'contact' ? 'active' : null }}"><a href="{{route('subadmin.contact.index')}}">Contact Manager</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) == 'settings' ? 'active' : null }}"><a href="{{route('setting.general')}}"><i class="fa fa-cogs" aria-hidden="true"></i>
+                {{-- <li class="{{ Request::segment(2) == 'settings' ? 'active' : null }}"><a href="{{route('setting.general')}}"><i class="fa fa-cogs" aria-hidden="true"></i>
                     <span>Settings</span></a></li>
                 <li class="{{ Request::segment(3) == 'logos' ? 'active' : null }}"><a href="{{route('settingtheme')}}"><i class="fa fa-cog" aria-hidden="true"></i>
-                    <span>Logo Settings</span></a></li>
+                    <span>Logo Settings</span></a></li> --}}
 
                 {{-- <li class="{{ Request::segment(2) == 'report' ? 'active open' : null }}">
                     <a href="#Report" class="has-arrow"><i class="icon-book-open"></i><span>Reports</span></a>

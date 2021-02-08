@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Sessions;
 use Config;
+use Str;
 use App\Models\Country;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
@@ -25,15 +26,11 @@ class AdminProfileController extends Controller
 
     public function profileStore(Request $request)
     {
-        // dd($request);
+
         $this->validate($request,[
             'first_name'=>'required',
             'last_name'=>'required',
             'email' => 'required|email',
-         'mobile'=>'numeric|required',
-            'landline_1'=>'required',
-            'landline_2' => 'required',
-
              ]);
             $id = Auth()->user()->id;
              $user = User::find($id);
@@ -46,17 +43,21 @@ class AdminProfileController extends Controller
                  $profile_image->move(Config::get('define.image.profile'),$profile_image_new_name);
                  $user->profile_image = Config::get('define.image.profile').'/'.$profile_image_new_name;
               }
+            //   if($request->has('password'))
+            //   {
+            //     // dd(bcrypt($request->password));
+            //     //   $user->password = bcrypt($request->password);
+            //     //   $user->save();
+            //       $user->forceFill([
+            //         'password' => Hash::make($request->password),
+            //         'remember_token' => Str::random(60),
+            //     ])->save();
+            //   }
               $user->fill($request->all());
               $user->latitude = $data->latitude;
               $user->longitude = $data->longitude;
               $user->countries_id = $request->countries_id;
               $user->save();
-
-            //   $admin = Admin::create([
-            //     'name'=>$request->first_name,
-            //     'email'=>$request->email,
-            //     'password'=> Hash::make($request->password),
-            //   ]);
 
              return redirect()->route('admin.profile')->with('success','Profile Updated successfully');
     }

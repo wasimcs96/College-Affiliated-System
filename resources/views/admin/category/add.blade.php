@@ -61,7 +61,7 @@
                                <div class="form-group">
                                 Upload Category Image
                            <div class="body"id="nb"  >
-                              <input type="file" name="image"class="dropify" required>
+                              <input type="file" name="image"class="dropify">
                            </div>
 
                     </div>
