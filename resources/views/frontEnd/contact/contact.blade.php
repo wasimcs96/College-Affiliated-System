@@ -112,28 +112,28 @@
                                     <i class="la la-map-marker icon-element"></i>
                                     <h5 class="title font-size-16 pb-1">Address</h5>
                                     <p class="map__desc">
-                                        Melbourne, Australia, 105 South Park Avenue
+                                        {{config('get.ADDRESS') ?? ''}}
                                     </p>
                                 </li>
                                 <li>
                                     <i class="la la-phone icon-element"></i>
                                     <h5 class="title font-size-16 pb-1">Phone</h5>
-                                    <p class="map__desc">Telephone: 0000000000</p>
-                                    <p class="map__desc">Mobile: 090000000</p>
+                                    <p class="map__desc">Telephone: {{config('get.TELEPHONE') ?? ''}}</p>
+                                    <p class="map__desc">Mobile: {{config('get.MOBILE') ?? ''}}</p>
                                 </li>
                                 <li>
                                     <i class="la la-envelope-o icon-element"></i>
                                     <h5 class="title font-size-16 pb-1">Email</h5>
-                                    <p class="map__desc">needhelp@Digital Colf.com</p>
-                                    <p class="map__desc">inquiry@Digital Colf.com</p>
+                                    <p class="map__desc">{{config('get.ADMIN_EMAIL')}}</p>
+                                    {{-- <p class="map__desc">inquiry@Digital Colf.com</p> --}}
                                 </li>
                             </ul>
                             <ul class="social-profile text-center">
-                                <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                                <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                                <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
-                                <li><a href="#"><i class="lab la-youtube"></i></a></li>
+                                <li><a href="javascript:void(0);"><i class="lab la-facebook-f"></i></a></li>
+                                <li><a href="javascript:void(0);"><i class="lab la-twitter"></i></a></li>
+                                <li><a href="javascript:void(0);"><i class="lab la-instagram"></i></a></li>
+                                <li><a href="javascript:void(0);"><i class="lab la-linkedin-in"></i></a></li>
+                                <li><a href="javascript:void(0);"><i class="lab la-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div><!-- end form-content -->

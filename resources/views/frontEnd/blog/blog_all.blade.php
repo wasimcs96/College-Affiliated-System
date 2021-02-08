@@ -95,14 +95,14 @@
 
 
                 </div><!-- end row -->
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-lg-12">
                         <div class="btn-box mt-3 text-center">
                             <button type="button" class="theme-btn"><i class="la la-refresh mr-1"></i>Load More</button>
                             <p class="font-size-13 pt-2">Showing 1 - 12 of 44 Posts</p>
                         </div><!-- end btn-box -->
                     </div><!-- end col-lg-12 -->
-                </div><!-- end row -->
+                </div><!-- end row --> --}}
             </div><!-- end col-lg-8 -->
             {{-- <div class="col-lg-4">
                 <div class="sidebar mb-0">

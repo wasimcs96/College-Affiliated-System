@@ -10,6 +10,6 @@ class ApplicationFollowsUp extends Model
 
     public function application()
     {
-        return $this->belongsTo(Application::class);
+        return $this->belongsTo(Application::class,'application_id');
     }
 }
