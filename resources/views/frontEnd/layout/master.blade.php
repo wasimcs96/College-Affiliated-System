@@ -37,6 +37,41 @@
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/style.css') }}">
     <style>
 
+        .tabbe {
+        float: left;
+        /* border: 1px solid #ccc; */
+        background-color: #f1f1f1;
+        width: 30%;
+        height: 300px;
+        }
+
+
+        .tabbe button {
+        display: block;
+        background-color: inherit;
+        color: black;
+        padding: 10px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        font-size: 17px;
+        }
+
+        .tabbe button:hover {
+        background-color: #ddd;
+        }
+
+
+        .tabbe button.active {
+        background-color: #fff;
+        border-left-style: solid;
+        border-color: #073975;
+        }
+</style>
+    <style>
+
     .cssload-thecube {
         width: 73px;
         height: 73px;
@@ -567,8 +602,21 @@ window.location.reload();
 
     });
   </script>
-<script>
-    var email='';
+ <script>
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tabbelinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    </script>
 
     $(document).on('click', '#loginSubmit', function ()
     {

@@ -77,12 +77,12 @@
 
                                             <div class="col-lg-4 col-sm-2 pr-0">
                                                 <div class="input-box">
-                                                    <label class="label-text" id="ali">Category</label>
+                                                    <label class="label-text" id="ali">Discipline</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
                                                             <select id="categoryselect" name="category" class="select-contain-select typeselect" required>
                                                                 <option value="">
-                                                                    Select Categories
+                                                                    Select Discipline
                                                                 </option>
                                                                 <?php $categories = App\Models\Category::all();?>
                                                     @if($categories->count() > 0)
@@ -104,11 +104,16 @@
                                            <!-- end col-lg-3 -->
                                             <div class="col-lg-4 col-sm-2 pr-0" >
                                                 <div class="input-box">
-                                                    <label class="label-text">Sub Category</label>
+                                                    <label class="label-text">Sub Discipline</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select id="selectcourse" name="sub_category" class="form-control ert" style="height: 52px;">
-                                                                <option value="" selected>Select Sub Category</option>
+                                                            <select id="selectcourse" name="sub_category" class="form-control ert"   style="
+                                                            height: 52px;
+                                                        ">
+                                                                <option value="" selected>Select Sub Discipline</option>
+
+
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -2754,41 +2759,41 @@
         background-color: black;
     }
   </style>
-  <style>
+  {{-- <style>
 
-    .tabbe {
-      float: left;
-      border: 1px solid #ccc;
-      background-color: #f1f1f1;
-      width: 30%;
-      height: 300px;
-    }
-
-
-    .tabbe button {
-      display: block;
-      background-color: inherit;
-      color: black;
-      padding: 10px 16px;
-      width: 100%;
-      border: none;
-      outline: none;
-      text-align: left;
-      cursor: pointer;
-      font-size: 17px;
-    }
-
-    .tabbe button:hover {
-      background-color: #ddd;
-    }
+        .tabbe {
+        float: left;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        width: 30%;
+        height: 300px;
+        }
 
 
-    .tabbe button.active {
-      background-color: #fff;
-      border-left-style: solid;
-     border-color: orange;
-    }
-    </style>
+        .tabbe button {
+        display: block;
+        background-color: inherit;
+        color: black;
+        padding: 10px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        font-size: 17px;
+        }
+
+        .tabbe button:hover {
+        background-color: #ddd;
+        }
+
+
+        .tabbe button.active {
+        background-color: #fff;
+        border-left-style: solid;
+        border-color: orange;
+        }
+</style> --}}
 @endsection
  @section('per_page_script')
 
@@ -2923,7 +2928,7 @@
 
 
 </script>
- <script>
+ {{-- <script>
     function openCity(evt, cityName) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -2937,7 +2942,7 @@
       document.getElementById(cityName).style.display = "block";
       evt.currentTarget.className += " active";
     }
-    </script>
+    </script> --}}
 
 @endsection
 
