@@ -200,14 +200,13 @@
                                         @if($user->message != null)
                                             @foreach($user->message as $key=>$message)
                                                 @if($key == 0)
-                                                    <h5><span class="chat_date">{{$message->created_at}}</span></h5>
+                                                    <h5><span class="chat_date">{{$message->created_at ?? ''}}</span></h5>
                                                     <p>{{$message->message}}</p>
                                                 @endif
                                                 <?php $i++ ?>
                                             @endforeach
                                          @endif
-                                        {{-- <span class="message">hey this is admin</span> @if($check->receiver == $user->id) style="color: black" @endif--}}
-                                        {{-- <span class="badge badge-outline status"></span> --}}
+                                      
                                     </div>
                                 </div>
                             </a>
@@ -462,5 +461,9 @@ $(".msg_history").stop().animate({
 
             }
        </script>
-
+<script>
+    $(document).ready(function() {
+        $("#{{$use_id}}").trigger('click');
+    });
+</script>
 @stop
