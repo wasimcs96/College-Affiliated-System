@@ -117,22 +117,41 @@
                                                 <li  class="col-lg-12 mega-menu-item" style="padding: 0px;">
                                                     <div class="tabbe">
 
-                                                      <button class="tabbelinks" onmouseover="openCity(event, 'London')">Business & Management</button>
-                                                      <button class="tabbelinks" onmouseover="openCity(event, 'Paris')">Medicine & Health</button>
-                                                      <button class="tabbelinks" onmouseover="openCity(event, 'Tokyo')">Engineering & Technology</button>
-                                                      <button class="tabbelinks" onmouseover="openCity(event, 'Science')">
+                                                      <button style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;" class="tabbelinks active" onmouseover="openCity(event, 'London')">Business & Management</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'Paris')">Medicine & Health</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'Tokyo')">Engineering & Technology</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'Science')">
                                                         Applied Sciences & Professions</button>
-                                                      <button class="tabbelinks" onmouseover="openCity(event, 'Arts')"> Arts, Design & Architecture</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'Arts')"> Arts, Design & Architecture</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'Social')"> Social Sciences</button>
                                                     </div>
 
-                                                    <div id="London" class="tabcontent" style=" float: left;
+                                                    <div id="London" class="tabcontent " style=" float: left;
                                                     padding: 0px 12px;
                                                     border: 1px solid #ccc;
                                                     width: 70%;
                                                     border-left: none;
                                                     height: 300px;
-                                                    display: none;">
-                                                    <ul class="row no-gutters">
+                                                    display: block;">
+                                                    <ul class="row no-gutters" style="padding-top: 10px;">
                                                         <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
                                                             <ul>
                                                                     <li style="
@@ -151,7 +170,7 @@
                                                                     font-weight: 600;
 
                                                                     ">Top Sub Discipline</li>
-                                                                    <?php $headercourses11 = App\Models\Category::where('parent_id',6)->take(7)->get(); ?>
+                                                                    <?php $headercourses11 = App\Models\Category::where('parent_id',6)->take(8)->get(); ?>
                                                                 @foreach ($headercourses11 as $headercourse11)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
@@ -190,8 +209,8 @@
                                                                 font-size: 17px;
                                                                 font-weight: 600;
 
-                                                                ">Other Discipline</li>
-                                                                <?php $headercourses12 = App\Models\Category::where('parent_id',6)->skip(7)->take(7)->get(); ?>
+                                                                ">Other Sub Discipline</li>
+                                                                <?php $headercourses12 = App\Models\Category::where('parent_id',6)->skip(8)->take(8)->get(); ?>
                                                             @foreach ($headercourses12 as $headercourse12)
                                                             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                 @csrf
@@ -225,7 +244,7 @@
                                                     border-left: none;
                                                     height: 300px;
                                                     display: none;">
-                                                         <ul class="row no-gutters">
+                                                         <ul class="row no-gutters" style="padding-top: 10px;">
                                                             <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
                                                                 <ul>
                                                                         <li style="
@@ -283,7 +302,7 @@
                                                                     font-size: 17px;
                                                                     font-weight: 600;
 
-                                                                    ">Other Discipline</li>
+                                                                    ">Other Sub Discipline</li>
                                                                     <?php $headercourses22 = App\Models\Category::where('parent_id',15)->skip(7)->take(7)->get(); ?>
                                                                 @foreach ($headercourses22 as $headercourse22)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
@@ -323,7 +342,7 @@
                                                     border-left: none;
                                                     height: 300px;
                                                     display: none;">
-                                                         <ul class="row no-gutters">
+                                                         <ul class="row no-gutters" style="padding-top: 10px;">
                                                             <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
                                                                 <ul>
                                                                         <li style="
@@ -381,7 +400,7 @@
                                                                     font-size: 17px;
                                                                     font-weight: 600;
 
-                                                                    ">Other Discipline</li>
+                                                                    ">Other Sub Discipline</li>
                                                                     <?php $headercourses32 = App\Models\Category::where('parent_id',9)->skip(7)->take(7)->get(); ?>
                                                                 @foreach ($headercourses32 as $headercourse32)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
@@ -402,25 +421,20 @@
                                                                 </form>
                                                                 @endforeach
 
-                                                                    {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
-                                                                    <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
-                                                                    <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
-                                                                    <li><a href="#">Science<span class="badge bg-2 text-white">New</span></a></li>
-                                                                    <li><a href="#">Commerce</a></li>
-                                                                    <li><a href="#">Arts</a></li> --}}
+
                                                             </ul>
                                                             </li>
                                                         </ul>
 
                                                     </div>
-                                                    <div id="Science" class="tabcontent" style=" float: left;
+                                            <div id="Science" class="tabcontent" style=" float: left;
                                                     padding: 0px 12px;
                                                     border: 1px solid #ccc;
                                                     width: 70%;
                                                     border-left: none;
                                                     height: 300px;
                                                     display: none;">
-                                                         <ul class="row no-gutters">
+                                                         <ul class="row no-gutters" style="padding-top: 10px;">
                                                             <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
                                                                 <ul>
                                                                         <li style="
@@ -478,7 +492,8 @@
                                                                     font-size: 17px;
                                                                     font-weight: 600;
 
-                                                                    ">Other Discipline</li>
+                                                                    ">Other Sub Discipline</li>
+
                                                                     <?php $headercourses42 = App\Models\Category::where('parent_id',2)->skip(7)->take(7)->get(); ?>
                                                                 @foreach ($headercourses42 as $headercourse42)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
@@ -504,15 +519,15 @@
 
                                                     </div>
                                                     <div id="Arts" class="tabcontent" style=" float: left;
-                                                    padding: 0px 12px;
-                                                    border: 1px solid #ccc;
-                                                    width: 70%;
-                                                    border-left: none;
-                                                    height: 300px;
-                                                    display: none;">
-                                                       <ul class="row no-gutters">
-                                                        <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
-                                                            <ul>
+                                                        padding: 0px 12px;
+                                                        border: 1px solid #ccc;
+                                                        width: 70%;
+                                                        border-left: none;
+                                                        height: 300px;
+                                                        display: none;">
+                                                        <ul class="row no-gutters" style="padding-top: 10px;">
+                                                            <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                                <ul>
                                                                     <li style="
                                                                     border: none;
                                                                     background: none;
@@ -568,7 +583,7 @@
                                                                 font-size: 17px;
                                                                 font-weight: 600;
 
-                                                                ">Other Discipline</li>
+                                                                ">Other Sub Discipline</li>
                                                                 <?php $headercourses52 = App\Models\Category::where('parent_id',3)->skip(7)->take(7)->get(); ?>
                                                             @foreach ($headercourses52 as $headercourse52)
                                                             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
@@ -597,65 +612,104 @@
                                                                 <li><a href="#">Arts</a></li> --}}
                                                         </ul>
                                                         </li>
-                                                    </ul>
+                                                     </ul>
 
-                                                    </div>
+                                                </div>
+                                                <div id="Social" class="tabcontent" style=" float: left;
+                                                padding: 0px 12px;
+                                                border: 1px solid #ccc;
+                                                width: 70%;
+                                                border-left: none;
+                                                height: 300px;
+                                                display: none;">
+                                                <ul class="row no-gutters" style="padding-top: 10px;">
+                                                    <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                        <ul>
+                                                            <li style="
+                                                            border: none;
+                                                            background: none;
+                                                            display: -webkit-flex;
+                                                            display: -ms-flex;
+                                                            display: flex;
+                                                            -ms-flex-align: center;
+                                                            align-items: center;
+                                                            justify-content: space-between;
+                                                            position: relative;
+                                                            padding: 15px 25px;
+                                                            color: #5d646d;
+                                                            font-size: 17px;
+                                                            font-weight: 600;
+
+                                                            ">Top Sub Discipline</li>
+
+                                                            <?php $headercourses61 = App\Models\Category::where('parent_id',18)->take(7)->get(); ?>
+                                                        @foreach ($headercourses61 as $headercourse61)
+                                                        <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                            @csrf
+                                                        <input type="hidden" name="category" value="{{$headercourse61->parent_id}}">
+
+                                                        <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                            display: -ms-flex;
+                                                            display: flex;
+                                                            -ms-flex-align: center;
+                                                            align-items: center;
+                                                            justify-content: space-between;
+                                                            position: relative;
+                                                            padding: 3px 25px;
+                                                            color: #5d646d;
+                                                            font-size: 15px;
+                                                            font-weight: 500;">{{$headercourse61->title}}</button></li>
+                                                        </form>
+                                                        @endforeach
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <ul>
+                                                        <li style="
+                                                        border: none;
+                                                        background: none;
+                                                        display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 15px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 17px;
+                                                        font-weight: 600;
+
+                                                        ">Other Sub Discipline</li>
+                                                        <?php $headercourses62 = App\Models\Category::where('parent_id',18)->skip(7)->take(7)->get(); ?>
+                                                    @foreach ($headercourses52 as $headercourse52)
+                                                    <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        @csrf
+                                                    <input type="hidden" name="category" value="{{$headercourse62->parent_id}}">
+
+                                                    <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 3px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 15px;
+                                                        font-weight: 500;">{{$headercourse62->title}}</button></li>
+                                                    </form>
+                                                    @endforeach
+
+
+                                                </ul>
+                                                </li>
+                                             </ul>
+
+                                        </div>
                                                     </li>
-                                                @else
-                                                <li class="col-lg-4 mega-menu-item">
-                                                    <ul>
-                                                        <?php $headercoursev2 = App\Models\Category::take(7)->get(); ?>
-                                                      @foreach ($headercoursev2 as $hcc)
-                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
-                                                        @csrf
-                                                    <input type="hidden" name="category" value="{{$hcc->countries_id}}">
 
-                                                    <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
-                                                        display: -ms-flex;
-                                                        display: flex;
-                                                        -ms-flex-align: center;
-                                                        align-items: center;
-                                                        justify-content: space-between;
-                                                        position: relative;
-                                                        padding: 3px 25px;
-                                                        color: #5d646d;
-                                                        font-size: 15px;
-                                                        font-weight: 500;">{{$hcc->countries_name}}</button></li>
-                                                    </form>
-                                                      @endforeach
-
-                                                        {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="#">Science<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="#">Commerce</a></li>
-                                                        <li><a href="#">Arts</a></li> --}}
-                                                    </ul>
-                                                </li>
-                                                <li class="col-lg-8 mega-menu-item">
-                                                    <ul>
-                                                        <?php $headercourse = App\Models\Category::skip(7)->take(7)->get(); ?>
-                                                      @foreach ($headercourse as $itemsm)
-                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
-                                                        @csrf
-                                                    <input type="hidden" name="category" value="{{$itemsm->id}}">
-
-                                                    <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
-                                                        display: -ms-flex;
-                                                        display: flex;
-                                                        -ms-flex-align: center;
-                                                        align-items: center;
-                                                        justify-content: space-between;
-                                                        position: relative;
-                                                        padding: 3px 25px;
-                                                        color: #5d646d;
-                                                        font-size: 15px;
-                                                        font-weight: 500;">{{$itemsm->title}}</button></li>
-                                                    </form>
-                                                      @endforeach
-
-                                                    </ul>
-                                                </li>
                                                 @endif
                                             </ul>
                                         </div>
@@ -670,7 +724,7 @@
                                                     <ul>
                                                         <?php $headercountry = App\Models\Country::take(7)->get(); ?>
                                                         @foreach ($headercountry as $itemcountry)
-                                                        <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
                                                           @csrf
                                                       <input type="hidden" name="category" value="{{$itemcountry->countries_id}}">
 
@@ -694,7 +748,7 @@
                                                     <ul>
                                                         <?php $headercountry2 = App\Models\Country::skip(7)->take(7)->get(); ?>
                                                         @foreach ($headercountry2 as $itemcountry2)
-                                                        <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
                                                           @csrf
                                                       <input type="hidden" name="category" value="{{$itemcountry2->countries_id}}">
 
@@ -719,7 +773,7 @@
                                                     <ul>
                                                         <?php $headercountry3 = App\Models\Country::skip(14)->take(7)->get(); ?>
                                                         @foreach ($headercountry3 as $itemcountry3)
-                                                        <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
                                                           @csrf
                                                       <input type="hidden" name="category" value="{{$itemcountry3->countries_id}}">
 
@@ -745,7 +799,7 @@
                                                     <ul>
                                                         <?php $headercountryvalid = App\Models\Country::take(7)->get(); ?>
                                                       @foreach ($headercountryvalid as $headercountryv)
-                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                      <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
                                                         @csrf
                                                     <input type="hidden" name="category" value="{{$headercountryv->countries_id}}">
 
@@ -769,7 +823,7 @@
                                                     <ul>
                                                         <?php $headercountryvalid2 = App\Models\Country::skip(7)->take(7)->get(); ?>
                                                       @foreach ($headercountryvalid2 as $headercountryv2)
-                                                      <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                      <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
                                                         @csrf
                                                     <input type="hidden" name="category" value="{{ $headercountryv2->id}}">
 
@@ -794,21 +848,512 @@
                                         </div>
                                     </li>
 
+
+
                                     <li>
+                                        <a href="#">Study Abroad<i class="la la-angle-down"></i></a>
+                                        <div class="dropdown-menu-item mega-menu">
+                                            <ul class="row no-gutters">
+                                                <?php $headercountryvalidsuniversity = App\Models\Country::all(); ?>
+                                                @if($headercountryvalidsuniversity->count() > 10)
+                                                <li  class="col-lg-12 mega-menu-item" style="padding: 0px;">
+                                                    <div class="tabbe">
+
+                                                      <button style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;" class="tabbelinks active" onmouseover="openCity(event, 'country_us')"><span class="flag-icon flag-icon-us mr-1"></span>{!!"&nbsp"!!}United States Of America</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'country_uk')"><span class="flag-icon flag-icon-gb mr-1"></span>{!!"&nbsp"!!}United Kingdom</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'country_canada')"><span class="flag-icon flag-icon-ca mr-1"></span>{!!"&nbsp"!!}Canada</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'country_ireland')"><span class="flag-icon flag-icon-ie mr-1"></span>{!!"&nbsp"!!}Ireland</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'country_australia')"><span class="flag-icon flag-icon-au mr-1"></span>{!!"&nbsp"!!}Australia</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'country_india')"><span class="flag-icon flag-icon-in mr-1"></span>{!!"&nbsp"!!}India</button>
+                                                    </div>
+
+                                                    <div id="country_us" class="tabcontent" style=" float: left;
+                                                        padding: 0px 12px;
+                                                        border: 1px solid #ccc;
+                                                        width: 70%;
+                                                        border-left: none;
+                                                        height: 300px;
+                                                        display: block;">
+                                                        <ul class="row no-gutters" style="padding-top: 10px;">
+                                                        <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                            <ul>
+                                                                    <li style="
+                                                                    border: none;
+                                                                    background: none;
+                                                                    display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 15px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 17px;
+                                                                    font-weight: 600;
+
+                                                                    ">Featured University</li>
+                                                                    <?php $headercountries11 = App\Models\University::where('countries_id',223)->take(8)->get(); ?>
+                                                                @foreach ( $headercountries11 as $headercountry11)
+                                                                {{-- <form action="{{route('university_fetch.countrywise')}}" method="POST" >
+                                                                    @csrf --}}
+                                                                {{-- <input type="hidden" name="category" value="{{$headercountry11->countries_id}}"> --}}
+
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry11->user_id])}}">{{$headercountry11->university_name}}</a></li>
+                                                                {{-- </form> --}}
+                                                                @endforeach
+
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <ul>
+                                                                <li style="
+                                                                border: none;
+                                                                background: none;
+                                                                display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 15px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 17px;
+                                                                font-weight: 600;
+
+                                                                ">Other University</li>
+                                                                <?php $headercountries12 = App\Models\University::where('countries_id',223)->skip(8)->take(8)->get(); ?>
+                                                            @foreach ($headercountries12 as $headercountry12)
+                                                            {{-- <form action="{{route('university_fetch.countrywise')}}" method="POST" >
+                                                                @csrf --}}
+                                                            {{-- <input type="hidden" name="category" value="{{$headercountry12->countries_id}}"> --}}
+
+                                                            <li><a href="{{route('university_detail',['id'=>$headercountry12->user_id])}}">{{$headercountry12->university_name}}</a></li>
+                                                            {{-- </form> --}}
+                                                            @endforeach
+
+
+                                                        </ul>
+                                                        </li>
+                                                    </ul>
+
+                                                    </div>
+
+                                                    <div id="country_uk" class="tabcontent" style=" float: left;
+                                                    padding: 0px 12px;
+                                                    border: 1px solid #ccc;
+                                                    width: 70%;
+                                                    border-left: none;
+                                                    height: 300px;
+                                                    display: none;">
+                                                         <ul class="row no-gutters" style="padding-top: 10px;">
+                                                            <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                                <ul>
+                                                                        <li style="
+                                                                        border: none;
+                                                                        background: none;
+                                                                        display: -webkit-flex;
+                                                                        display: -ms-flex;
+                                                                        display: flex;
+                                                                        -ms-flex-align: center;
+                                                                        align-items: center;
+                                                                        justify-content: space-between;
+                                                                        position: relative;
+                                                                        padding: 15px 25px;
+                                                                        color: #5d646d;
+                                                                        font-size: 17px;
+                                                                        font-weight: 600;
+
+                                                                        ">Featured University</li>
+                                                                        <?php $headercountries21 = App\Models\University::where('countries_id',222)->take(7)->get(); ?>
+                                                                   @foreach ($headercountries21 as $headercountry21)
+                                                                    {{--  <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                                        @csrf
+                                                                    <input type="hidden" name="category" value="{{$headercountry21->countries_id}}"> --}}
+
+                                                                    <li><a href="{{route('university_detail',['id'=>$headercountry21->user_id])}}">{{$headercountry21->university_name}}</a></li>
+                                                                    {{-- </form> --}}
+                                                                    @endforeach
+
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <ul>
+                                                                    <li style="
+                                                                    border: none;
+                                                                    background: none;
+                                                                    display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 15px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 17px;
+                                                                    font-weight: 600;
+
+                                                                    ">Other University</li>
+                                                                    <?php $headercountries22 = App\Models\University::where('countries_id',222)->skip(7)->take(7)->get(); ?>
+                                                                @foreach ($headercountries22 as $headercountry22)
+                                                                {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                                    @csrf
+                                                                <input type="hidden" name="category" value="{{$headercountry22->countries_id}}"> --}}
+
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry22->user_id])}}">{{$headercountry22->university_name}}</a></li>
+                                                                {{-- </form> --}}
+                                                                @endforeach
+
+                                                                    {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
+                                                                    <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
+                                                                    <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
+                                                                    <li><a href="#">Science<span class="badge bg-2 text-white">New</span></a></li>
+                                                                    <li><a href="#">Commerce</a></li>
+                                                                    <li><a href="#">Arts</a></li> --}}
+                                                            </ul>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+
+                                                    <div id="country_canada" class="tabcontent" style=" float: left;
+                                                    padding: 0px 12px;
+                                                    border: 1px solid #ccc;
+                                                    width: 70%;
+                                                    border-left: none;
+                                                    height: 300px;
+                                                    display: none;">
+                                                         <ul class="row no-gutters" style="padding-top: 10px;">
+                                                            <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                                <ul>
+                                                                        <li style="
+                                                                        border: none;
+                                                                        background: none;
+                                                                        display: -webkit-flex;
+                                                                        display: -ms-flex;
+                                                                        display: flex;
+                                                                        -ms-flex-align: center;
+                                                                        align-items: center;
+                                                                        justify-content: space-between;
+                                                                        position: relative;
+                                                                        padding: 15px 25px;
+                                                                        color: #5d646d;
+                                                                        font-size: 17px;
+                                                                        font-weight: 600;
+
+                                                                        ">Featured University</li>
+                                                                        <?php $headercountries31 = App\Models\University::where('countries_id',38)->take(7)->get(); ?>
+                                                                    @foreach ($headercountries31 as $headercountry31)
+                                                                    {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                                        @csrf
+                                                                    <input type="hidden" name="category" value="{{$headercountry31->countries_id}}"> --}}
+
+
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry31->user_id])}}">{{$headercountry31->university_name}}</a></li>
+                                                                    {{-- </form> --}}
+                                                                    @endforeach
+
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <ul>
+                                                                    <li style="
+                                                                    border: none;
+                                                                    background: none;
+                                                                    display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 15px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 17px;
+                                                                    font-weight: 600;
+
+                                                                    ">Other University</li>
+                                                                    <?php $headercountries32 = App\Models\University::where('countries_id',38)->skip(7)->take(7)->get(); ?>
+                                                                @foreach ($headercountries32 as $headercountry32)
+                                                                {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                                    @csrf
+                                                                <input type="hidden" name="category" value="{{$headercountry32->countries_id}}"> --}}
+
+
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry32->user_id])}}">{{$headercountry32->university_name}}</a></li>
+                                                                {{-- </form> --}}
+                                                                @endforeach
+
+
+                                                            </ul>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                            <div id="country_ireland" class="tabcontent" style=" float: left;
+                                                    padding: 0px 12px;
+                                                    border: 1px solid #ccc;
+                                                    width: 70%;
+                                                    border-left: none;
+                                                    height: 300px;
+                                                    display: none;">
+                                                         <ul class="row no-gutters" style="padding-top: 10px;">
+                                                            <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                                <ul>
+                                                                        <li style="
+                                                                        border: none;
+                                                                        background: none;
+                                                                        display: -webkit-flex;
+                                                                        display: -ms-flex;
+                                                                        display: flex;
+                                                                        -ms-flex-align: center;
+                                                                        align-items: center;
+                                                                        justify-content: space-between;
+                                                                        position: relative;
+                                                                        padding: 15px 25px;
+                                                                        color: #5d646d;
+                                                                        font-size: 17px;
+                                                                        font-weight: 600;
+
+                                                                        ">Featured University</li>
+                                                                        <?php $headercountries41 = App\Models\Country::where('countries_id',103)->take(7)->get(); ?>
+                                                                    @foreach ($headercountries41 as $headercountry41)
+                                                                    {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                                        @csrf
+                                                                    <input type="hidden" name="category" value="{{$headercountry41->countries_id}}"> --}}
+
+
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry41->user_id])}}">{{$headercountry41->university_name}}</a></li>
+                                                                    {{-- </form> --}}
+                                                                    @endforeach
+
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <ul>
+                                                                    <li style="
+                                                                    border: none;
+                                                                    background: none;
+                                                                    display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 15px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 17px;
+                                                                    font-weight: 600;
+
+                                                                    ">Other University</li>
+
+                                                                    <?php $headercountries42 = App\Models\Category::where('parent_id',2)->skip(7)->take(7)->get(); ?>
+                                                                @foreach ($headercountries42 as $headercountry42)
+                                                                {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                                    @csrf
+                                                                <input type="hidden" name="category" value="{{$headercountry42->countries_id}}"> --}}
+
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry42->user_id])}}">{{$headercountry42->university_name}}</a></li>
+                                                                {{-- </form> --}}
+                                                                @endforeach
+                                                            </ul>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                    <div id="country_australia" class="tabcontent" style=" float: left;
+                                                        padding: 0px 12px;
+                                                        border: 1px solid #ccc;
+                                                        width: 70%;
+                                                        border-left: none;
+                                                        height: 300px;
+                                                        display: none;">
+                                                        <ul class="row no-gutters" style="padding-top: 10px;">
+                                                            <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                                <ul>
+                                                                    <li style="
+                                                                    border: none;
+                                                                    background: none;
+                                                                    display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 15px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 17px;
+                                                                    font-weight: 600;
+
+                                                                    ">Featured University</li>
+                                                                    <?php $headercountries51 = App\Models\Country::where('countries_id',13)->take(7)->get(); ?>
+                                                                @foreach ($headercountries51 as $headercountry51)
+                                                                {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                                    @csrf
+                                                                <input type="hidden" name="category" value="{{$headercountry51->countries_id}}"> --}}
+
+                                                                <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 3px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 15px;
+                                                                    font-weight: 500;">{{$headercountry51->university_name}}</button></li>
+                                                                {{-- </form> --}}
+                                                                @endforeach
+
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <ul>
+                                                                <li style="
+                                                                border: none;
+                                                                background: none;
+                                                                display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 15px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 17px;
+                                                                font-weight: 600;
+
+                                                                ">Other Universities</li>
+                                                                <?php $headercountries52 = App\Models\Country::where('countries_id',3)->skip(7)->take(7)->get(); ?>
+                                                            @foreach ($headercountries52 as $headercountry52)
+                                                            {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                                @csrf
+                                                            <input type="hidden" name="category" value="{{$headercountry52->countries_id}}"> --}}
+
+
+                                                            <li><a href="{{route('university_detail',['id'=>$headercountry52->user_id])}}">{{$headercountry52->university_name}}</a></li>
+                                                            {{-- </form> --}}
+                                                            @endforeach
+
+                                                                {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
+                                                                <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
+                                                                <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
+                                                                <li><a href="#">Science<span class="badge bg-2 text-white">New</span></a></li>
+                                                                <li><a href="#">Commerce</a></li>
+                                                                <li><a href="#">Arts</a></li> --}}
+                                                        </ul>
+                                                        </li>
+                                                     </ul>
+
+                                                </div>
+                                                <div id="country_india" class="tabcontent" style=" float: left;
+                                                padding: 0px 12px;
+                                                border: 1px solid #ccc;
+                                                width: 70%;
+                                                border-left: none;
+                                                height: 300px;
+                                                display: none;">
+                                                <ul class="row no-gutters" style="padding-top: 10px;">
+                                                    <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                        <ul>
+                                                            <li style="
+                                                            border: none;
+                                                            background: none;
+                                                            display: -webkit-flex;
+                                                            display: -ms-flex;
+                                                            display: flex;
+                                                            -ms-flex-align: center;
+                                                            align-items: center;
+                                                            justify-content: space-between;
+                                                            position: relative;
+                                                            padding: 15px 25px;
+                                                            color: #5d646d;
+                                                            font-size: 17px;
+                                                            font-weight: 600;
+
+                                                            ">Featured University</li>
+
+                                                            <?php $headercountries61 = App\Models\University::where('countries_id',99)->take(7)->get(); ?>
+                                                        @foreach ($headercountries61 as $headercountry61)
+                                                        {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                            @csrf
+                                                        <input type="hidden" name="category" value="{{$headercountry61->countries_id}}"> --}}
+
+                                                        <li><a href="{{route('university_detail',['id'=>$headercountry61->user_id])}}">{{$headercountry61->university_name}}</a></li>
+                                                        {{-- </form> --}}
+                                                        @endforeach
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <ul>
+                                                        <li style="
+                                                        border: none;
+                                                        background: none;
+                                                        display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 15px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 17px;
+                                                        font-weight: 600;
+
+                                                        ">Other Sub Discipline</li>
+                                                        <?php $headercountries62 = App\Models\University::where('countries_id',18)->skip(7)->take(7)->get(); ?>
+                                                    @foreach ($headercountries62 as $headercountry62)
+                                                    {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                        @csrf
+                                                    <input type="hidden" name="category" value="{{$headercountry62->countries_id}}"> --}}
+
+                                                    <li><a href="{{route('university_detail',['id'=>$headercountry62->user_id])}}">{{$headercountry62->university_name}}</a></li>
+                                                    {{-- </form> --}}
+                                                    @endforeach
+
+
+                                                </ul>
+                                                </li>
+                                             </ul>
+
+                                        </div>
+                                                    </li>
+
+                                                @endif
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    {{-- <li>
                                         <a href="#">Study Abroad <i class="la la-angle-down"></i></a>
                                         <div class="dropdown-menu-item mega-menu">
                                             <ul class="row no-gutters">
-                                                {{-- <li class="col-lg-4 mega-menu-item">
-                                                    <ul>
-                                                        <li><a href="add-hotel.html">Study Abroad<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="add-flight.html">Courses Abroad <span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="add-tour.html">Colleges in Abroad<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="add-cruise.html">Consultants in Abroad<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="add-car.html">Search Colleges<span class="badge bg-2 text-white">New</span></a></li>
-                                                        <li><a href="user-dashboard.html">Visa Rules</a></li>
-                                                        <li><a href="admin-dashboard.html">How to book a consultant</a></li>
-                                                    </ul>
-                                                </li> --}}
+
                                                 <li class="col-lg-8 mega-menu-item">
                                                     <ul>
                                                         <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
@@ -913,7 +1458,7 @@
 
                                             </ul>
                                         </div>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a href="{{route('Prmigration')}}">PR/Migration </a>
                                         {{-- <ul class="dropdown-menu-item">

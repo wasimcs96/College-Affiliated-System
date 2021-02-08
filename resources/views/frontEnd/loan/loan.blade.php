@@ -97,13 +97,7 @@
                                     studies in any graduate or post-graduate, professional, and pure and applied science
                                     courses - may claim deduction. The deduction will be available for a maximum of
                                     eight years starting from the day you start repaying.</b></p>
-                            Equitable Access to quality higher education has been a concern of the University Grants
-                            Commission. To this purpose the Commission, besides encouraging colleges and universities to
-                            provide for liberal financial support to the meritorious but needy students, has also been
-                            instrumental in educational loan scheme. The Reserve Bank of India (RBI) has issued
-                            guidelines in this regard to all commercial banks. A large number of banks have already
-                            launched educational loan schemes. Provided below are links to the respective website of
-                            individual banks offering such facilities.
+
 
                         </div>
 
@@ -115,13 +109,6 @@
                                     studies in any graduate or post-graduate, professional, and pure and applied science
                                     courses - may claim deduction. The deduction will be available for a maximum of
                                     eight years starting from the day you start repaying.</b></p>
-                            Equitable Access to quality higher education has been a concern of the University Grants
-                            Commission. To this purpose the Commission, besides encouraging colleges and universities to
-                            provide for liberal financial support to the meritorious but needy students, has also been
-                            instrumental in educational loan scheme. The Reserve Bank of India (RBI) has issued
-                            guidelines in this regard to all commercial banks. A large number of banks have already
-                            launched educational loan schemes. Provided below are links to the respective website of
-                            individual banks offering such facilities.
 
                         </div>
 
@@ -133,13 +120,6 @@
                                     studies in any graduate or post-graduate, professional, and pure and applied science
                                     courses - may claim deduction. The deduction will be available for a maximum of
                                     eight years starting from the day you start repaying.</b></p>
-                            Equitable Access to quality higher education has been a concern of the University Grants
-                            Commission. To this purpose the Commission, besides encouraging colleges and universities to
-                            provide for liberal financial support to the meritorious but needy students, has also been
-                            instrumental in educational loan scheme. The Reserve Bank of India (RBI) has issued
-                            guidelines in this regard to all commercial banks. A large number of banks have already
-                            launched educational loan schemes. Provided below are links to the respective website of
-                            individual banks offering such facilities.
 
                         </div>
 
@@ -151,14 +131,6 @@
                                     studies in any graduate or post-graduate, professional, and pure and applied science
                                     courses - may claim deduction. The deduction will be available for a maximum of
                                     eight years starting from the day you start repaying.</b></p>
-                            Equitable Access to quality higher education has been a concern of the University Grants
-                            Commission. To this purpose the Commission, besides encouraging colleges and universities to
-                            provide for liberal financial support to the meritorious but needy students, has also been
-                            instrumental in educational loan scheme. The Reserve Bank of India (RBI) has issued
-                            guidelines in this regard to all commercial banks. A large number of banks have already
-                            launched educational loan schemes. Provided below are links to the respective website of
-                            individual banks offering such facilities.
-
                         </div>
 
 
