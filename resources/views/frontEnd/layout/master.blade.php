@@ -323,16 +323,17 @@
                         <?php $footer_blogs=App\Models\Blog::take(6)->orderBy('Updated_at','DESC')->get() ?>
                         @foreach($footer_blogs as $footer_blog)
                         <?php
-                        // $myfooterblog =$package->description ?? '';
-                        // if (strlen($myfooterblog) > 140)
-                        //     {
-                        //         $myfooterblog = substr($myfooterblog, 0, 40);
-                        //         $myfooterblog = explode(' ',$myfooterblog);
-                        //         array_pop($myfooterblog); // remove last word from array
-                        //         $myfooterblog = implode(' ',$myfooterblog);
-                        //         // $myvalue = $myvalue . ' ...';
-                        //     } ?>
-                        <li><a href="{{route('blog_detail',['id'=>$footer_blog->id])}}"> <?php ?>{{$footer_blog->title}}</a></li>
+                        $myfooterblog =$footer_blog->title ?? '';
+                        if (strlen($myfooterblog) > 5)
+                            {
+                                $myfooterblog = substr($myfooterblog, 0, 30);
+                                $myfooterblog = explode(' ',$myfooterblog);
+                                array_pop($myfooterblog); // remove last word from array
+                                $myfooterblog = implode(' ',$myfooterblog);
+                                // $myvalue = $myvalue . ' ...';
+                            } ?>
+
+                        <li><a href="{{route('blog_detail',['id'=>$footer_blog->id])}}"> <?php echo ($myfooterblog . '...')?></a></li>
                         @endforeach
 
                     </ul>
