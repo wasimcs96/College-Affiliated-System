@@ -95,9 +95,6 @@
                                                         <option value="">Currently Unavailable</option>
 
                                                     @endif
-
-
-
                                                             </select>
                                                         </div>
                                                     </div>
@@ -107,16 +104,11 @@
                                            <!-- end col-lg-3 -->
                                             <div class="col-lg-4 col-sm-2 pr-0" >
                                                 <div class="input-box">
-                                                    <label class="label-text">Sub Cartegory</label>
+                                                    <label class="label-text">Sub Category</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select id="selectcourse" name="sub_category" class="form-control ert"   style="
-                                                            height: 52px;
-                                                        ">
-                                                                <option value="" selected>Select Sub Cartegory</option>
-
-
-
+                                                            <select id="selectcourse" name="sub_category" class="form-control ert" style="height: 52px;">
+                                                                <option value="" selected>Select Sub Category</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -143,7 +135,6 @@
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                 <select class="select-contain-select" name="countries_id" required>
-                                                    <option>Select Country</option>
                                                     <?php $countries = App\Models\Country::all();?>
                                                     @if($countries->count() > 0)
                                                     @foreach($countries as $country)
@@ -196,12 +187,11 @@
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
-                                            <select class="select-contain-select" id="salazar" name="countries_id">
-                                                <option>Select Country</option>
+                                                    <select class="select-contain-select" id="salazar" name="countries_id">
                                                         <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
-                                                            <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
+                                                            <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
                                                          @endforeach
 
                                                         @else
@@ -570,9 +560,7 @@
 
                     </div><!-- end testimonial-carousel -->
 @else
-<div class="container" style="text-align: center;">
-    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}" height="auto;" width="400px;">
-       </div>
+<h2 class="mt-5" style="text-align: center"> No Data Available</h2>
 @endif
 
 
@@ -687,9 +675,7 @@
                         @endforeach
                     </div><!-- end testimonial-carousel -->
 @else
-<div class="container" style="text-align: center;">
-    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}" height="auto;" width="400px;">
-       </div>
+<h2 class="mt-5" style="text-align: center"> No Data Available</h2>
 @endif
 
 
@@ -765,9 +751,9 @@
                         </div>
 
                         <div>
-                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 238px;"  loop  autoplay></lottie-player>
                         </div>
-                        <h3 style="text-align: center">Get Ready to <br> Fly</h3>
+                        <h3 style="text-align: center">Get Ready to Fly</h3>
                     </div>
                 </div><!-- end col-lg-3 -->
             </div><!-- end row -->
@@ -1043,9 +1029,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container" style="text-align: center;">
-                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                                       </div>
+                                <div class="container align-center">
+                                    <h1 style="text-align: center;">  Not Available </h1>
+                                      </div>
 @endif
 
                             </div>
@@ -1190,9 +1176,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container" style="text-align: center;">
-                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                                       </div>
+                                <div class="container align-center">
+                                    <h1 style="text-align: center;">  Not Available </h1>
+                                      </div>
 @endif
 
                             </div>
@@ -1337,9 +1323,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container" style="text-align: center;">
-                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                                       </div>
+                                <div class="container align-center">
+                                    <h1 style="text-align: center;">  Not Available </h1>
+                                      </div>
 @endif
 
                             </div>
@@ -1483,9 +1469,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container" style="text-align: center;">
-                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                                       </div>
+                                <div class="container align-center">
+                                    <h1 style="text-align: center;">  Not Available </h1>
+                                      </div>
 @endif
                             </div>
                         </div><!-- end tab-pane -->
@@ -1629,18 +1615,17 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container" style="text-align: center;">
-                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                                       </div>
+                                <div class="container align-center">
+                                    <h1 style="text-align: center;">  Not Available </h1>
+                                      </div>
 @endif
                             </div>
                         </div><!-- end tab-pane -->
                     </div><!-- end tab-content -->
 
                 @else
-                <div class="container" style="text-align: center;">
-                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                       </div>
+                <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
+
                     @endif
                 </div>
             </div><!-- end col-lg-12 -->
@@ -1742,523 +1727,7 @@
         </div><!-- end counter-box -->
     </div><!-- end container -->
 </section>
-<!-- ================================
-    START university AREA
-================================= -->
-{{-- <section class="hotel-area section-bg section-padding overflow-hidden padding-right-100px padding-left-100px">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading text-center">
-                    <h2 class="sec__title line-height-55">Most Popular <br> Universities</h2>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-        <div class="row padding-top-50px">
-            <div class="col-lg-12">
-                <div class="hotel-card-wrap">
-                    <div class="hotel-card-carousel carousel-action">
-                        <div class="card-item mb-0">
-                            <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/img1.jpg') }}" alt="hotel-img">
-                                </a>
-                                <span class="badge">featured</span>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
-                                <p class="card-meta">Rajasthan technical University</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">Fees</span>
-                                        <span class="price__num">$88.00</span>
-                                    </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item mb-0">
-                            <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/img2.jpg') }}" alt="hotel-img">
-                                </a>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
-                                <p class="card-meta">Rajasthan technical University</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">Fees</span>
-                                        <span class="price__num">$88.00</span>
-                                    </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item mb-0">
-                            <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/img3.jpg') }}" alt="hotel-img">
-                                </a>
-                                <span class="badge">Featured</span>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
-                                <p class="card-meta">Rajasthan technical University</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">Fees</span>
-                                        <span class="price__num">$88.00</span>
-                                    </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item mb-0">
-                            <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/img4.jpg') }}" alt="hotel-img">
-                                </a>
-                                <span class="badge">Popular</span>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
-                                <p class="card-meta">Rajasthan technical University</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">Fees</span>
-                                        <span class="price__num">$88.00</span>
-                                    </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item mb-0">
-                            <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/img5.jpg') }}" alt="hotel-img">
-                                </a>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
-                                <p class="card-meta">Rajasthan technical University</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">Fees</span>
-                                        <span class="price__num">$88.00</span>
-                                    </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item mb-0">
-                            <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/img6.jpg') }}" alt="hotel-img">
-                                </a>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
-                                <p class="card-meta">Rajasthan technical University</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">Fees</span>
-                                        <span class="price__num">$88.00</span>
-                                    </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item mb-0">
-                            <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/img1.jpg') }}" alt="hotel-img">
-                                </a>
-                                <span class="badge">Popular</span>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
-                                <p class="card-meta">Rajasthan technical University</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">Fees</span>
-                                        <span class="price__num">$88.00</span>
-                                    </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                        <div class="card-item mb-0">
-                            <div class="card-img">
-                                <a href="hotel-single.html" class="d-block">
-                                    <img src="{{ asset('frontEnd/assets/images/img2.jpg') }}" alt="hotel-img">
-                                </a>
-                                <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Bookmark">
-                                    <i class="la la-heart-o"></i>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">RTU</a></h3>
-                                <p class="card-meta">Rajasthan technical University</p>
-                                <div class="card-rating">
-                                    <span class="badge text-white">4.4/5</span>
-                                    <span class="review__text">Average</span>
-                                    <span class="rating__text">(30 Reviews)</span>
-                                </div>
-                                <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__from">Fees</span>
-                                        <span class="price__num">$88.00</span>
-                                    </p>
-                                    <a href="hotel-single.html" class="btn-text">See details<i class="la la-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- end card-item -->
-                    </div><!-- end hotel-card-carousel -->
-                </div>
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-    </div><!-- end container-fluid -->
-</section><!-- end hotel-area --> --}}
-<!-- ================================
-    END university AREA
-================================= -->
 
-<!-- ================================
-    START DESTINATION AREA
-================================= -->
-    {{-- <section class="destination-area section--padding">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <div class="section-heading">
-                        <h2 class="sec__title">Top Visited Places</h2>
-                        <p class="sec__desc pt-3">Morbi convallis bibendum urna ut viverra Maecenas quis
-                    </div><!-- end section-heading -->
-                </div><!-- end col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="btn-box btn--box text-right">
-                        <a href="tour-grid.html" class="theme-btn">Discover More</a>
-                    </div>
-                </div>
-            </div><!-- end row -->
-            <div class="row padding-top-50px">
-                <div class="col-lg-4">
-                    <div class="card-item destination-card">
-                        <div class="card-img">
-                            <img src="{{ asset('frontEnd/assets/images/destination-img2.jpg') }}" alt="destination-img">
-                            <span class="badge">new york</span>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title"><a href="tour-details.html">Main Street Park</a></h3>
-                            <div class="card-rating d-flex align-items-center">
-                                <span class="ratings d-flex align-items-center mr-1">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star-o"></i>
-                                    <i class="la la-star-o"></i>
-                                </span>
-                                <span class="rating__text">(70694 Reviews)</span>
-                            </div>
-                            <div class="card-price d-flex align-items-center justify-content-between">
-                                <p class="tour__text">
-                                    50 Tours
-                                </p>
-                                <p>
-                                    <span class="price__from">Price</span>
-                                    <span class="price__num">$58.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div><!-- end card-item -->
-                    <div class="card-item destination-card">
-                        <div class="card-img">
-                            <img src="{{ asset('frontEnd/assets/images/destination-img3.jpg') }}" alt="destination-img">
-                            <span class="badge">chicago</span>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title"><a href="tour-details.html">Chicago Cultural Center</a></h3>
-                            <div class="card-rating d-flex align-items-center">
-                                <span class="ratings d-flex align-items-center mr-1">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star-o"></i>
-                                </span>
-                                <span class="rating__text">(70694 Reviews)</span>
-                            </div>
-                            <div class="card-price d-flex align-items-center justify-content-between">
-                                <p class="tour__text">
-                                    50 Tours
-                                </p>
-                                <p>
-                                    <span class="price__from">Price</span>
-                                    <span class="price__num">$68.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div><!-- end card-item -->
-                </div><!-- end col-lg-4 -->
-                <div class="col-lg-4">
-                    <div class="card-item destination-card">
-                        <div class="card-img">
-                            <img src="{{ asset('frontEnd/assets/images/destination-img4.jpg') }}" alt="destination-img">
-                            <span class="badge">Hong Kong</span>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title"><a href="tour-details.html">Lugard Road Lookout</a></h3>
-                            <div class="card-rating d-flex align-items-center">
-                                <span class="ratings d-flex align-items-center mr-1">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star-o"></i>
-                                    <i class="la la-star-o"></i>
-                                </span>
-                                <span class="rating__text">(70694 Reviews)</span>
-                            </div>
-                            <div class="card-price d-flex align-items-center justify-content-between">
-                                <p class="tour__text">
-                                    150 Tours
-                                </p>
-                                <p>
-                                    <span class="price__from">Price</span>
-                                    <span class="price__num">$79.00</span>
-                                    <span class="price__num before-price">$89.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div><!-- end card-item -->
-                    <div class="card-item destination-card">
-                        <div class="card-img">
-                            <img src="{{ asset('frontEnd/assets/images/destination-img5.jpg') }}" alt="destination-img">
-                            <span class="badge">Las Vegas</span>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title"><a href="tour-details.html">Planet Hollywood Resort</a></h3>
-                            <div class="card-rating d-flex align-items-center">
-                                <span class="ratings d-flex align-items-center mr-1">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star-o"></i>
-                                </span>
-                                <span class="rating__text">(70694 Reviews)</span>
-                            </div>
-                            <div class="card-price d-flex align-items-center justify-content-between">
-                                <p class="tour__text">
-                                    50 Tours
-                                </p>
-                                <p>
-                                    <span class="price__from">Price</span>
-                                    <span class="price__num">$88.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div><!-- end card-item -->
-                </div><!-- end col-lg-4 -->
-                <div class="col-lg-4">
-                    <div class="card-item destination-card">
-                        <div class="card-img">
-                            <img src="{{ asset('frontEnd/assets/images/destination-img.jpg') }}" alt="destination-img">
-                            <span class="badge">Shanghai</span>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title"><a href="tour-details.html">Oriental Pearl TV Tower</a></h3>
-                            <div class="card-rating d-flex align-items-center">
-                                <span class="ratings d-flex align-items-center mr-1">
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                    <i class="la la-star"></i>
-                                </span>
-                                <span class="rating__text">(70694 Reviews)</span>
-                            </div>
-                            <div class="card-price d-flex align-items-center justify-content-between">
-                                <p class="tour__text">
-                                    50 Tours
-                                </p>
-                                <p>
-                                    <span class="price__from">Price</span>
-                                    <span class="price__num">$58.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div><!-- end card-item -->
-                </div><!-- end col-lg-4 -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </section><!-- end destination-area --> --}}
-<!-- ================================
-    END DESTINATION AREA
-================================= -->
-
-<!-- ================================
-    START cosultant AREA
-================================= -->
-{{-- <section class="info-area padding-top-100px padding-bottom-60px text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2 class="sec__title">Featured Consultants</h2>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-        <div class="row padding-top-100px">
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item team-card">
-                    <div class="card-img">
-                        <img src="{{('frontEnd/assets/images/team1.jpg')}}" alt="team-img">
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">David Roberts</h3>
-                        <p class="card-meta">Founder & Director</p>
-                        <p class="card-text font-size-15 pt-2">Ligula vehicula enenatis semper, magna lorem aliquet lacusin ante dapibus dictum fugats vitaes nemo minima.</p>
-                        <ul class="social-profile padding-top-20px pb-2">
-                            <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                            <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                            <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
-                        </ul>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item team-card">
-                    <div class="card-img">
-                        <img src="{{('frontEnd/assets/images/team2.jpg')}}" alt="team-img">
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">Augusta Silva</h3>
-                        <p class="card-meta">Chief Operating Officer</p>
-                        <p class="card-text font-size-15 pt-2">Ligula vehicula enenatis semper, magna lorem aliquet lacusin ante dapibus dictum fugats vitaes nemo minima.</p>
-                        <ul class="social-profile padding-top-20px pb-2">
-                            <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                            <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                            <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
-                        </ul>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-           <!-- end col-lg-4 -->
-             <!-- end col-lg-4 -->
-           <!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item team-card">
-                    <div class="card-img">
-                        <img src="{{('frontEnd/assets/images/team6.jpg')}}" alt="team-img">
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">Evan Porter</h3>
-                        <p class="card-meta">Head of Design</p>
-                        <p class="card-text font-size-15 pt-2">Ligula vehicula enenatis semper, magna lorem aliquet lacusin ante dapibus dictum fugats vitaes nemo minima.</p>
-                        <ul class="social-profile padding-top-20px pb-2">
-                            <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                            <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                            <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
-                        </ul>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end car-area --> --}}
-<!-- ================================
-    END consultant AREA
-================================= -->
-
-
-<!-- ================================
-       START TESTIMONIAL AREA
-================================= -->
-
-<!-- ================================
-    START CTA AREA
-================================= -->
-{{-- <section class="cta-area padding-top-100px padding-bottom-180px text-center">
-    <div class="video-bg">
-        <video autoplay loop>
-            <source src="{{asset('frontEnd/assets/video/video-bg.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2 class="sec__title text-white line-height-55">Let us show you the world <br> Discover our most popular Universities</h2>
-                </div><!-- end section-heading -->
-                <div class="btn-box padding-top-35px">
-                <a href="{{route('university_all')}}" class="theme-btn border-0">Checkout</a>
-                </div>
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-    <svg class="cta-svg" viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M-31.31,170.22 C164.50,33.05 334.36,-32.06 547.11,196.88 L500.00,150.00 L0.00,150.00 Z"></path></svg>
-</section><!-- end cta-area --> --}}
 <section class="info-area info-bg info-area2 padding-top-80px padding-bottom-45px">
     <div class="container">
         <div class="row">

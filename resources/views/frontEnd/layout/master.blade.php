@@ -528,6 +528,7 @@ data: {university_id:university_id},
 success: function (result) {
 console.log('success');
 // alert('Follow Up created Successfully');
+
 window.location.reload();
 }
 });
@@ -566,7 +567,38 @@ window.location.reload();
 
     });
   </script>
+<script>
+    var email='';
 
+    $(document).on('click', '#loginSubmit', function ()
+    {
+    var email=$('#email').val();
+    console.log(email);
+    $.ajaxSetup({headers:
+    {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+    $.ajax({
+    type: "post",
+    url: "{{route('login.check')}}",
+    data: {email:email},
+    success: function (result) {
+    console.log(JSON.parse(result));
+    if(JSON.parse(result)==false)
+    {
+        $('#loginTop').html('<span style="color: red;">(Your Account is Deactivated. Please Contact to Admin for Details.)</span> ');
+    }
+    else{
+    $('#login-form').submit();
+    }
+
+    }
+    });
+
+    });
+  </script>
 @yield('per_page_script')
 </body>
 

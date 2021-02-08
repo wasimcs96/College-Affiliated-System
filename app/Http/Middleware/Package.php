@@ -19,13 +19,20 @@ class Package
     public function handle($request, Closure $next)
     {
         $user = auth()->user();
-      
+
 
         $mytime=Carbon::now()->format('Y-m-d');
-   
+
 
         if ($user->Subscription_expire_date<$mytime || $user->Subscription_expire_date==NULL) {
-            return redirect()->route('consultant.subscription.add');
+            if($user->isConsultant())
+            {
+                return redirect()->route('consultant.subscription.add');
+            }
+            if($user->isUniversity())
+            {
+                return redirect()->route('university.subscription.add');
+            }
         }
         return $next($request);
     }

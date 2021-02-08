@@ -23,5 +23,5 @@ class UniversityMedia extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
 }
