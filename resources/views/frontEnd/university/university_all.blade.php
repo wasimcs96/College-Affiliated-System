@@ -235,7 +235,7 @@
                                                 <i class="la la-star-o"></i>
                                                 <i class="la la-star-o"></i>
                                             </span>
-                                    @elseif($university->rating == 4)
+                                    @elseif($university->rating == 4 ?? '')
                                     <span class="ratings ">
                                         <i class="la la-star"></i>
                                         <i class="la la-star"></i>
@@ -243,7 +243,7 @@
                                         <i class="la la-star"></i>
                                         <i class="la la-star-o"></i>
                                     </span>
-                                    @elseif($university->rating == 5)
+                                    @elseif($university->rating == 5 ?? '')
                                     <span class="ratings ">
                                         <i class="la la-star"></i>
                                         <i class="la la-star"></i>
@@ -251,7 +251,7 @@
                                         <i class="la la-star"></i>
                                         <i class="la la-star"></i>
                                     </span>
-                                    @elseif($university->rating == 1)
+                                    @elseif($university->rating == 1 ?? '')
                                     <span class="ratings ">
                                         <i class="la la-star"></i>
                                         <i class="la la-star-o"></i>
@@ -259,7 +259,7 @@
                                         <i class="la la-star-o"></i>
                                         <i class="la la-star-o"></i>
                                     </span>
-                                    @elseif($university->rating == 2)
+                                    @elseif($university->rating == 2 ?? '')
                                     <span class="ratings ">
                                         <i class="la la-star"></i>
                                         <i class="la la-star"></i>
@@ -380,8 +380,8 @@
             @foreach($childs as $child)
             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                 @csrf
-                <input type="hidden" name="category" value="{{$child->id}}">
-                <button type="submit" style="border: none;background:none"><p style="padding: 25px" class="mb-4"><strong>{{$child->title}}</strong></p></button>
+                <input type="hidden" name="category" value="{{$child->id ?? ''}}">
+                <button type="submit" style="border: none;background:none"><p style="padding: 25px" class="mb-4"><strong>{{$child->title ?? ''}}</strong></p></button>
             </form>
             @endforeach
 
@@ -409,9 +409,9 @@
             <li class="liidd">
                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                     @csrf
-                    <input type="hidden" name="category" value="{{$child->id}}">
+                    <input type="hidden" name="category" value="{{$child->id ?? ''}}">
               <button type="submit" class="ida" >
-                {{$child->title}}
+                {{$child->title ?? ''}}
               </button>
             </form>
             </li>
