@@ -398,10 +398,11 @@
                 <div class="footer-item">
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Pages</h4>
                     <ul class="list-items list--items">
+                        <li><a href="{{route('faq.front')}}">FAQ</a></li>
+
                         <li><a href="{{route('loan')}}">Loan</a></li>
                         {{-- <li><a href="{{route('blog_all')}}">Blog</a></li> --}}
                         <li><a href="{{route('about')}}">About Us</a></li>
-                        <li><a href="{{route('faq.front')}}">FAQ</a></li>
                         <li><a href="{{route('privacy&policy')}}">Privacy and Policy</a></li>
                         <li><a href="{{route('terms&condition')}}">Terms and Condition</a></li>
 

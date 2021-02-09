@@ -816,26 +816,28 @@
 
                         @foreach($categories as $category)
                         @if($category->parent_id == null)
+                        @if($category->status == 1)
                         <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                             @csrf
-                        <input type="hidden" name="category" value="{{$category->id}}">
+                        <input type="hidden" name="category" value="{{$category->id ?? ''}}">
                         <button type="submit" style="border: none">
                         <div class="card text-center customhover" style="border-radius: 0px; width: 15rem;height: 11rem; background-color: #edf3f6; margin: 1px; z-index:0; border-radius: inherit">
                         <div class="card-body customhover" style=";height: 174px;">
                         <h5 class="card-title">
                         @if(isset($category->banner) && file_exists($category->banner))
-                        <img style="width: 86px;" src="{{asset($category->banner)}}" alt="">
+                        <img style="width: 86px;" src="{{asset($category->banner )}}" alt="">
                         @else
                         <img src="
                         {{asset('frontEnd/assets/images/first_aid.png')}}" width="84px" >
                         @endif
                         </h5>
-                        <p class="card-text"><a style="color: black;" href="#" value="{{$category->id}}">{{$category->title}}</a></p>
+                        <p class="card-text"><a style="color: black;" href="#" value="{{$category->id ?? ''}}">{{$category->title ?? ''}}</a></p>
                         {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
                         </div>
                         </div>
                         </button>
                         </form>
+                        @endif
                         @endif
                         @endforeach
                         </div><!-- end row -->
@@ -953,8 +955,8 @@
                                         @endif
 
                                             <div class="card-rating">
-                                                <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2">Rating:</p>
+                                                <div class="d-flex flex-wrap align-items-center">
+                                                    <p class="mr-2" style="margin:0px;">Rating:</p>
 
                                                         <span>@if($us->rating == 3 ?? '' )
                                                                 <span class="ratings ">
@@ -1003,7 +1005,7 @@
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">{{$us->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num"><i class="las la-rupee-sign"></i>{{$us->university->average_fees ?? ''}}</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
@@ -1101,7 +1103,8 @@
                                         @endif
                                             <div class="card-rating">
                                                 <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2">Rating:</p>
+                                                    <p class="mr-2" style="margin:0px;">Rating:</p>
+
 
                                                         <span>@if($uk->rating == 3 ?? '' )
                                                                 <span class="ratings ">
@@ -1111,7 +1114,7 @@
                                                                     <i class="la la-star-o"></i>
                                                                     <i class="la la-star-o"></i>
                                                                 </span>
-                                                        @elseif($uk->rating == 4)
+                                                        @elseif($uk->rating == 4 ?? '')
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
@@ -1119,7 +1122,7 @@
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star-o"></i>
                                                         </span>
-                                                        @elseif($uk->rating == 5)
+                                                        @elseif($uk->rating == 5 ?? '')
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
@@ -1127,7 +1130,7 @@
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
                                                         </span>
-                                                        @elseif($uk->rating == 1)
+                                                        @elseif($uk->rating == 1 ?? '')
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star-o"></i>
@@ -1135,7 +1138,7 @@
                                                             <i class="la la-star-o"></i>
                                                             <i class="la la-star-o"></i>
                                                         </span>
-                                                        @elseif($uk->rating == 2)
+                                                        @elseif($uk->rating == 2 ?? '')
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
@@ -1150,7 +1153,7 @@
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">{{$uk->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num"><i class="las la-rupee-sign"></i>{{$uk->university->average_fees ?? ''}}</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
@@ -1248,7 +1251,7 @@
 
                                             <div class="card-rating">
                                                 <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2">Rating:</p>
+                                                    <p class="mr-2" style="margin:0px;">Rating:</p>
 
                                                         <span>@if($ire->rating == 3 ?? '' )
                                                                 <span class="ratings ">
@@ -1258,7 +1261,7 @@
                                                                     <i class="la la-star-o"></i>
                                                                     <i class="la la-star-o"></i>
                                                                 </span>
-                                                        @elseif($ire->rating == 4)
+                                                        @elseif($ire->rating == 4 ?? '')
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
@@ -1266,7 +1269,7 @@
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star-o"></i>
                                                         </span>
-                                                        @elseif($ire->rating == 5)
+                                                        @elseif($ire->rating == 5 ?? '') 
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
@@ -1274,7 +1277,7 @@
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
                                                         </span>
-                                                        @elseif($ire->rating == 1)
+                                                        @elseif($ire->rating == 1 ?? '')
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star-o"></i>
@@ -1282,7 +1285,7 @@
                                                             <i class="la la-star-o"></i>
                                                             <i class="la la-star-o"></i>
                                                         </span>
-                                                        @elseif($ire->rating == 2)
+                                                        @elseif($ire->rating == 2 ?? '')
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>
@@ -1297,7 +1300,7 @@
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">{{$ire->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num"><i class="las la-rupee-sign"></i>{{$ire->university->average_fees ?? ''}}</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
@@ -1394,7 +1397,7 @@
 
                                             <div class="card-rating">
                                                 <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2">Rating:</p>
+                                                    <p class="mr-2" style="margin:0px;">Rating:</p>
 
                                                         <span>@if($can->rating == 3 ?? '' )
                                                                 <span class="ratings ">
@@ -1443,7 +1446,7 @@
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">{{$can->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num"><i class="las la-rupee-sign"></i>{{$can->university->average_fees ?? ''}}</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
@@ -1540,7 +1543,7 @@
 
                                             <div class="card-rating">
                                                 <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2">Rating:</p>
+                                                    <p class="mr-2" style="margin:0px;">Rating:</p>
 
                                                         <span>@if($aus->rating == 3 ?? '' )
                                                                 <span class="ratings ">
@@ -1589,7 +1592,7 @@
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">{{$aus->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num"><i class="las la-rupee-sign"></i>{{$aus->university->average_fees ?? ''}}</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
@@ -1763,7 +1766,7 @@
                         </div><!-- end discount-content -->
                         <div class="company-logo">
                             <img src="images/logo2.png" alt="">
-                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name}}</p>
+                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name ?? ''}}</p>
                         </div><!-- end company-logo -->
                     </div>
                 </a>
@@ -1806,10 +1809,10 @@
                         </div>
                         <div class="card-body">
                             <div class="post-categories">
-                                {{-- <a href="#" class="badge">{{$blog->title}}</a> --}}
+                                {{-- <a href="#" class="badge">{{$blog->title ?? ''}}</a> --}}
                                 {{-- <a href="#" class="badge">lifestyle</a> --}}
                             </div>
-                            <h3 class="card-title line-height-26"><a href="{{route('blog_detail', $blog->id ?? '')}}">{{$blog->title}}</a></h3>
+                            <h3 class="card-title line-height-26"><a href="{{route('blog_detail', $blog->id ?? '')}}">{{$blog->title ?? ''}}</a></h3>
                             <p class="card-meta">
                                 <?php
                                     $myvalue =$blog->short_description ?? '';
