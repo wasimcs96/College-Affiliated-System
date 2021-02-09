@@ -430,7 +430,7 @@
                         </div><!-- end discount-content -->
                         <div class="company-logo">
                             <img src="images/logo2.png" alt="">
-                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name}}</p>
+                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name ?? ''}}</p>
                         </div><!-- end company-logo -->
                     </div>
                 </a>
@@ -886,7 +886,7 @@
                            </li>
                            <li class="nav-item">
                                <a class="nav-link" id="seoul-tab" data-toggle="tab" href="#seoul" role="tab" aria-controls="seoul" aria-selected="false">
-                                   IreLand
+                                   Ireland
                                </a>
                            </li>
                        </ul>
@@ -1763,7 +1763,7 @@
                         </div><!-- end discount-content -->
                         <div class="company-logo">
                             <img src="images/logo2.png" alt="">
-                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name}}</p>
+                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user-> ?? ''}}</p>
                         </div><!-- end company-logo -->
                     </div>
                 </a>
@@ -1799,7 +1799,11 @@
                     <a href="{{route('blog_detail', $blog->id ?? '')}}">
                     <div class="card-img">
                         <a href="{{route('blog_detail', $blog->id ?? '')}}">
-                <img style="height: 231.25px; width: 370px;" src="{{asset($blog->main_image ?? '')}}" alt="blog-img">
+                            @if(isset($blog->main_image) && file_exists($blog->main_image))
+                            <img style="height: 231.25px; width: 370px;" src="{{asset($blog->main_image ?? '')}}" alt="blog-img">
+                           @else
+                           <img style="height: 231.25px; width: 370px;" src="{{asset('assets/default/default-blog.jpg')}}" alt="blog-img">
+                           @endif
                         </a>
                         <div class="post-format icon-element">
                             <a href="{{route('blog_detail', $blog->id ?? '')}}"> <i class="la la-photo"></i></a>
@@ -1944,7 +1948,7 @@
             <div class="col-lg-6">
                 <div class="mobile-app-content">
                     <div class="section-heading">
-                        <h2 class="sec__title line-height-55">Campus Interest Android and IOS App is Available!</h2>
+                        <h2 class="sec__title line-height-55">Campus Interest Android and IOS App is Available Soon!</h2>
                     </div><!-- end section-heading -->
                     <ul class="info-list padding-top-30px">
                         <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Access and change your itinerary on-the-go</li>

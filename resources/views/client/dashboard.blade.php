@@ -8,77 +8,32 @@
 
 <div class="row clearfix">
     {{-- <div class="col-lg-9 col-md-12 col-sm-12"> --}}
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="row clearfix">
-            <div class="col-lg-6 col-md-6">
-                <div class="card-wrapper flip-left">
-                    <div class="card s-widget-top">
-                        <div class="front p-3 px-4">
-                            <div>Booking status</div>
-                            <div class="py-4 m-0 text-center h2 text-info">Pending</div>
-                            <div class="d-flex">
-                                <small class="text-muted">Applied</small>
-                                <div class="ml-auto">2020/12/12</div>
-                            </div>
-                        </div>
-                        <div class="back p-3 px-4 bg-info text-center">
-                            <p class="text-light">Booking Status</p>
-                            <span id="minibar-chart2" class="mini-bar-chart">Applied</span>
+        @php
+             $booking = DB::table('bookings')->where('client_id',auth()->user()->id)->where('booking_for',0)->count();
+             $application = DB::table('applications')->where('client_id',auth()->user()->id)->where('status',0)->count();
+        @endphp
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="body">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-in-bg bg-primary text-white rounded-circle"><i class="fa fa-sticky-note" aria-hidden="true"></i></div>
+                        <div class="ml-4">
+                            <span>Total Bookings</span>
+                            <h4 class="mb-0 font-weight-medium">{{$booking}}</h4>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="card-wrapper flip-left">
-                    <div class="card s-widget-top">
-                        <div class="front p-3 px-4">
-                            <div>Application status</div>
-                            <div class="py-4 m-0 text-center h2 text-info">Pending</div>
-                            <div class="d-flex">
-                                <small class="text-muted">Applied</small>
-                                <div class="ml-auto">2020/12/12</div>
-                            </div>
-                        </div>
-                        <div class="back p-3 px-4 bg-info text-center">
-                            <p class="text-light">Application Status</p>
-                            <span id="minibar-chart2" class="mini-bar-chart">Applied</span>
-                        </div>
+     </div>
+     <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="body">
+                <div class="d-flex align-items-center">
+                    <div class="icon-in-bg bg-success text-white rounded-circle"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="card-wrapper flip-left">
-                    <div class="card s-widget-top">
-                        <div class="front p-3 px-4">
-                            <div>Application status</div>
-                            <div class="py-4 m-0 text-center h2 text-info">Pending</div>
-                            <div class="d-flex">
-                                <small class="text-muted">Applied</small>
-                                <div class="ml-auto">2020/12/12</div>
-                            </div>
-                        </div>
-                        <div class="back p-3 px-4 bg-info text-center">
-                            <p class="text-light">Application Status</p>
-                            <span id="minibar-chart2" class="mini-bar-chart">Applied</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="card-wrapper flip-left">
-                    <div class="card s-widget-top">
-                        <div class="front p-3 px-4">
-                            <div>Total revenue</div>
-                            <div class="py-4 m-0 text-center h2 text-success">$9,653</div>
-                            <div class="d-flex">
-                                <small class="text-muted">Income</small>
-                                <div class="ml-auto"><i class="fa fa-caret-up text-success"></i>4%</div>
-                            </div>
-                        </div>
-                        <div class="back p-3 px-4 bg-success text-center">
-                            <p class="text-light">This Week</p>
-                            <span id="minibar-chart1" class="mini-bar-chart"></span>
-                        </div>
+                    <div class="ml-4">
+                        <span>Total Application</span>
+                        <h4 class="mb-0 font-weight-medium">{{$application}}</h4>
                     </div>
                 </div>
             </div>

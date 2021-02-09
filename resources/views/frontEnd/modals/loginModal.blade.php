@@ -46,7 +46,7 @@
                                     <span class="la la-user form-icon"></span>
 
                                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
-
+                                    <div id="emptyEmail"></div>
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
@@ -60,6 +60,7 @@
                                 <div class="form-group mb-2">
                                     <span class="la la-lock form-icon"></span>
                                 <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" id="password" placeholder="Type your password" required>
+                                <div id="emptyPassword"></div>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between">
                                     {{-- <div class="custom-checkbox mb-0">
