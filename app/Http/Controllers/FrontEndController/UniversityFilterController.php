@@ -19,15 +19,11 @@ class UniversityFilterController extends Controller
 
         $courses = Category::where('parent_id', $request->categoryselect)->get();
 if($courses->count()>0){
-        $output = '<div class="select-contain w-auto">
-        <div class="dropdown bootstrap-select select-contain-select"><select id="selectcourse" name="sub_category" class="select-contain-select" style="height: 52px;" tabindex="-98">
-            <option value="" selected="">Select Sub Category</option>
-        </select><button type="button" class="btn dropdown-toggle btn-light bs-placeholder" data-toggle="dropdown" role="combobox" aria-owns="bs-select-4" aria-haspopup="listbox" aria-expanded="false" data-id="selectcourse" title="Select Sub Category"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">Select Sub Category</div></div> </div></button><div class="dropdown-menu "><div class="bs-searchbox"><input type="search" class="form-control" autocomplete="off" placeholder="Search" role="combobox" aria-label="Search" aria-controls="bs-select-4" aria-autocomplete="list"></div><div class="inner show" role="listbox" id="bs-select-4" tabindex="-1"><ul class="dropdown-menu inner show" role="presentation"></ul></div></div></div>
-    </div>';
+        $output = '<option value="" selected>Select Sub Discipline</option>';
         foreach ($courses as $row) {
             $output .= '<option value="' . $row->id . '">' . $row->title . '</option>';
         }
-        $output .='</select></div>';
+
         echo $output;
     }else{
         $output = '<option value="" selected>No Data Available</option>';

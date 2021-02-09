@@ -263,12 +263,12 @@
                             <h3 class="title stroke-shape">Featured University</h3>
                             <!-- Example split danger button -->
 
-                            <div class="input-group mb-3 ">
+                            {{-- <div class="input-group mb-3 ">
                                 <div class="input-group-prepend">
                                   <button class="btn btn-outline-primary btn-sm" type="button" id="button-addon1">Country</button>
                                 </div>
                                 <input type="text" class="form-control col-xs-2" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              </div>
+                              </div> --}}
                             <div class="sidebar-list" style="
 
                             height: 530px;

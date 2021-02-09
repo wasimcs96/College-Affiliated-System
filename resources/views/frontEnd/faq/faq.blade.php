@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-content text-center">
                         <div class="section-heading">
-                            <h2 class="sec__title">How Can We Help You Today?</h2>
+                            <h2 class="sec__title">How Can We Help You?</h2>
                         </div>
                         {{-- <div class="row">
                             <div class="col-lg-6 mx-auto">
@@ -540,7 +540,7 @@
         <div class="row align-items-center">
             <div class="col-lg-7">
                 <div class="section-heading">
-                    <h2 class="sec__title font-size-30 text-white">Couldn't Find a Solution?</h2>
+                    <h2 class="sec__title font-size-30 text-white">Couldn't Find a Solution? <a href="{{route('contact')}}"> Contact Us</a></h2>
                     {{-- <p class="sec__desc text-white pt-1">.</p> --}}
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-7 -->

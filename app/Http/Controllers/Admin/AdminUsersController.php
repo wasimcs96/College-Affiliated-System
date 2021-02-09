@@ -99,6 +99,7 @@ class AdminUsersController extends Controller
         University::create([
             'user_id'=>$user->id,
 
+
         ]);
                     // Important Code
     //  $replacement['token'] =$request->_token;
