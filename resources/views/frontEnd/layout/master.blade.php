@@ -617,7 +617,7 @@ window.location.reload();
       evt.currentTarget.className += " active";
     }
     </script>
-<script>
+    <script>
     $(document).on('click', '#loginSubmit', function ()
     {
     var email=$('#email').val();
