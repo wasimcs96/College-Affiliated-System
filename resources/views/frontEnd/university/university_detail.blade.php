@@ -335,12 +335,12 @@
                             <h3 class="title stroke-shape">Featured Consultant</h3>
                             <!-- Example split danger button -->
 
-                            <div class="input-group mb-3 ">
+                            {{-- <div class="input-group mb-3 ">
                                 <div class="input-group-prepend">
                                   <button class="btn btn-outline-primary btn-sm" type="button" id="button-addon1">Country</button>
                                 </div>
                                 <input type="text" class="form-control col-xs-2" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              </div>
+                              </div> --}}
                             <div class="sidebar-list" style="
 
                             height: 530px;
@@ -360,7 +360,7 @@
                                         </div>
                                         <div class="author-bio">
                                             {{-- {{dd($consultant)}} --}}
-                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->first_name}}{{$consultant->userConsultant->last_name}}</a> @if($consultant->userConsultant->is_verified == 1)
+                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->first_name ?? ''}} {{$consultant->userConsultant->last_name ?? ''}}</a> @if($consultant->userConsultant->is_verified == 1)
                                                 <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif</h4>
                                             <span class="author__meta">Member Since :{{$consultant->userConsultant->consultant->created_at->Format("Y") ?? ''}}</span>
                                             <div class="d-flex flex-wrap align-items-center ">
@@ -651,7 +651,7 @@
 <!-- ================================
     START CTA AREA
 ================================= -->
-<section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
+{{-- <section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7">
@@ -678,7 +678,7 @@
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
     </div><!-- end container -->
-</section><!-- end cta-area -->
+</section><!-- end cta-area --> --}}
 <!-- ================================
     END CTA AREA
 ================================= -->

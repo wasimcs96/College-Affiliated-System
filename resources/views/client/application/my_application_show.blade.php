@@ -494,7 +494,7 @@
                                                        <input type="text" class="form-control" value="@if(isset($applied->course->name)){{$applied->course->name}}@endif" placeholder="Course" name="course" id="course" disabled>
                                                    </div>
                                                </div> --}}
-                                               <div class="col-lg-2 col-md-12">
+
                                                 <div class="col-lg-2 col-md-12">
                                                     <div class="form-group">
                                                         <label for="">Course Fees</label>
@@ -502,6 +502,7 @@
 
                                                         <input type="text" name="fees" class="form-control" id="coursefees"  @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$coursedetails->fees}}"@else value="{{ $applied->fees }}"  @endif />                                                     </div>
                                                      </div>
+
                                         {{-- {{ dd($applied->documents) }} --}}
                                         <div class="col-lg-10 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')
