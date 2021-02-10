@@ -286,7 +286,7 @@
                                            </tr>
                                        </thead>
                                        <tbody>
-                                           @if(isset( $universitycourse->users->universityCourse))
+                                           @if( $universitycourse->users->universityCourse->count() > 0)
                                               <?php $courses= $universitycourse->users->universityCourse?>
                                              @foreach($courses as $course)
                                            <tr>

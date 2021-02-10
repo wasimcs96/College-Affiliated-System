@@ -46,6 +46,7 @@
                                     <label>Landline 2</label>
                                     <input type="number" class="form-control" value="{{$user->landline_2 ?? ''}}" name="landline_2" id="landline_2">
                                 </div>
+
                                 <div class="form-group">
                                     <label>City</label>
                                     <input type="text" class="form-control" value="{{$user->city ?? ''}}" name="city" id="city">

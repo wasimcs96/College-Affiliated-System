@@ -40,10 +40,31 @@
                                     <label>Last Name</label>
                                     <input type="text" class="form-control" name="last_name" id="last_name" required>
                                 </div>
+                                <div style='display:none;' class="form-group" id="uniname">
+                                    <label>University Name</label>
+                                    <input type="text" class="form-control" name="university_name" id="university_name" required>
+                                </div>
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="email" class="form-control" name="email" id="email" required>
                                 </div>
+                                {{-- <div class="col-lg-4 col-md-12"> --}}
+                                    <div class="form-group">
+                                        <label for="country">Country</label>
+                                        <select name="country" class="form-control" required>
+                                            <option value="">-- Select Country --</option>
+                                            <?php $countries = App\Models\Country::all(); ?>
+                                            @if($countries->count() > 0)
+                                                @foreach($countries as $country)
+                                                    <option value="{{$country->countries_id ?? ''}}" >{{$country->countries_name ?? ''}}</option>
+                                                @endforeach
+                                            @else
+                                        <option value="Data Not Available" >Data Not Available</option>
+                                            @endif
+                                        </select>
+
+                                    </div>
+                                {{-- </div> --}}
                                 <div class="form-group">
                                     <label>Mobile</label>
                                     <input type="number" class="form-control" name="mobile" id="mobile" required>
@@ -90,4 +111,19 @@ tr.shown td.details-control {
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
+<script>
+$(document).ready(function(){
+    $('#role').on('change', function() {
+      if ( this.value == '2')
+      //.....................^.......
+      {
+        $("#uniname").show();
+      }
+      else
+      {
+        $("#uniname").hide();
+      }
+    });
+});
+</script>
 @stop
