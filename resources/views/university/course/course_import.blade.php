@@ -39,6 +39,19 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="category_id">Select Type</label>
+                        <select name="type" class="form-control" id="type" required>
+                            <option value="">--- Select Type ---</option>
+                            <option value="0">UG</option>
+                            <option value="1">PG</option>
+                            <option value="2">Diploma</option>
+                            {{-- <option value="">--- Select  Category ---</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>
+                            @endforeach --}}
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Import Courses</label>
                         <input type="file" name="file" class="form-control" style="padding-bottom: 33px;">
                     </div>

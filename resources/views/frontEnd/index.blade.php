@@ -1718,8 +1718,6 @@
                         </div>
                         <div class="counter-content">
                             <?php $bookings = DB::table('bookings')->count(); ?>
-                            {{-- <? //php $bookings = DB::table('bookings')->where('status', 1)->count(); ?> --}}
-                            {{-- {{dd($bookings)}} --}}
                             <div>
                                 <span class="counter" data-from="0" data-to="{{$bookings}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
@@ -1763,7 +1761,7 @@
                         </div><!-- end discount-content -->
                         <div class="company-logo">
                             <img src="images/logo2.png" alt="">
-                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user-> ?? ''}}</p>
+                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name ?? ''}}</p>
                         </div><!-- end company-logo -->
                     </div>
                 </a>

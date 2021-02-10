@@ -170,7 +170,7 @@
                                                                     font-weight: 600;
 
                                                                     ">Top Sub Discipline</li>
-                                                                    <?php $headercourses11 = App\Models\Category::where('parent_id',6)->take(8)->get(); ?>
+                                                                    <?php $headercourses11 = App\Models\Category::where('parent_id',6)->take(7)->get(); ?>
                                                                 @foreach ($headercourses11 as $headercourse11)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
@@ -210,7 +210,7 @@
                                                                 font-weight: 600;
 
                                                                 ">Other Sub Discipline</li>
-                                                                <?php $headercourses12 = App\Models\Category::where('parent_id',6)->skip(8)->take(8)->get(); ?>
+                                                                <?php $headercourses12 = App\Models\Category::where('parent_id',6)->skip(7)->take(7)->get(); ?>
                                                             @foreach ($headercourses12 as $headercourse12)
                                                             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                 @csrf
@@ -642,7 +642,7 @@
 
                                                             ">Top Sub Discipline</li>
 
-                                                            <?php $headercourses61 = App\Models\Category::where('parent_id',18)->take(7)->get(); ?>
+                                                            <?php $headercourses61 = App\Models\Category::where('parent_id',18)->where('status',1)->take(7)->get(); ?>
                                                         @foreach ($headercourses61 as $headercourse61)
                                                         <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                             @csrf
@@ -658,7 +658,7 @@
                                                             padding: 3px 25px;
                                                             color: #5d646d;
                                                             font-size: 15px;
-                                                            font-weight: 500;">{{$headercourse61->title}}</button></li>
+                                                            font-weight: 500;">{{$headercourse61->title ?? ''}}</button></li>
                                                         </form>
                                                         @endforeach
 
@@ -682,11 +682,11 @@
                                                         font-weight: 600;
 
                                                         ">Other Sub Discipline</li>
-                                                        <?php $headercourses62 = App\Models\Category::where('parent_id',18)->skip(7)->take(7)->get(); ?>
-                                                    @foreach ($headercourses52 as $headercourse52)
+                                                        <?php $headercourses62 = App\Models\Category::where('parent_id',18)->where('status',1)->skip(7)->take(7)->get(); ?>
+                                                    @foreach ($headercourses62 as $headercourse62)
                                                     <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                         @csrf
-                                                    <input type="hidden" name="category" value="{{$headercourse62->parent_id}}">
+                                                    <input type="hidden" name="category" value="{{$headercourse62->parent_id ?? ''}}">
 
                                                     <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                         display: -ms-flex;
@@ -698,7 +698,7 @@
                                                         padding: 3px 25px;
                                                         color: #5d646d;
                                                         font-size: 15px;
-                                                        font-weight: 500;">{{$headercourse62->title}}</button></li>
+                                                        font-weight: 500;">{{$headercourse62->title ?? ''}}</button></li>
                                                     </form>
                                                     @endforeach
 
@@ -854,7 +854,7 @@
                                         <a href="#">Study Abroad<i class="la la-angle-down"></i></a>
                                         <div class="dropdown-menu-item mega-menu">
                                             <ul class="row no-gutters">
-                                                <?php $headercountryvalidsuniversity = App\Models\Country::all(); ?>
+                                                <?php $headercountryvalidsuniversity = App\Models\University::all(); ?>
                                                 @if($headercountryvalidsuniversity->count() > 10)
                                                 <li  class="col-lg-12 mega-menu-item" style="padding: 0px;">
                                                     <div class="tabbe">
@@ -911,7 +911,7 @@
                                                                     font-weight: 600;
 
                                                                     ">Featured Universities</li>
-                                                                    <?php $headercountries11 = App\Models\University::where('countries_id',223)->take(8)->get(); ?>
+                                                                    <?php $headercountries11 = App\Models\University::where('countries_id',223)->take(7)->get(); ?>
                                                                 @foreach ( $headercountries11 as $headercountry11)
                                                                 {{-- <form action="{{route('university_fetch.countrywise')}}" method="POST" >
                                                                     @csrf --}}
@@ -941,7 +941,7 @@
                                                                 font-weight: 600;
 
                                                                 ">Other Universities</li>
-                                                                <?php $headercountries12 = App\Models\University::where('countries_id',223)->skip(8)->take(8)->get(); ?>
+                                                                <?php $headercountries12 = App\Models\University::where('countries_id',223)->skip(7)->take(7)->get(); ?>
                                                             @foreach ($headercountries12 as $headercountry12)
                                                             {{-- <form action="{{route('university_fetch.countrywise')}}" method="POST" >
                                                                 @csrf --}}
@@ -1499,7 +1499,7 @@
                             <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                             @if(auth()->user()->Subscription_expire_date<$mytime || auth()->user()->Subscription_expire_date==NULL)
                             <a @if(auth()->user()->add_university == 0)
-                                 href="javascript:void(0);" data-toggle="modal" data-target ="#exampleModal"
+                                 href="javascript:void(0);" data-toggle="modal" data-target ="#addUniversityModal"
                                 @else
                                  href="{{ route('consultant.subscription') }}"
                                  @endif
@@ -1528,7 +1528,7 @@
 
 
                             @else
-                        <a href="become-local-expert.html" class="btn btn-primary">Search Courses</a>
+                        {{-- <a href="become-local-expert.html" class="btn btn-primary">Search Courses</a> --}}
                             @endif
 
                         </div><!-- end nav-btn -->
@@ -1538,7 +1538,7 @@
         </div><!-- end container-fluid -->
     </div><!-- end header-menu-wrapper -->
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addUniversityModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="width: 520px;">
           <div class="modal-content">
             <div class="modal-header">
@@ -1575,8 +1575,9 @@
                                                         <select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university">
                                                             <?php $universities = \App\Models\University::get();  ?>
                                                             @foreach($universities as $university)
-
-                                                                <option value="{{$university->user_id}}">{{$university->university_name}}</option>
+                                                                 @if($university->deleted_at == NULL)
+                                                                   <option value="{{$university->user_id}}">{{$university->university_name}}</option>
+                                                                 @endif
                                                             @endforeach
                                                         </select>
                                                         {{-- <input class="form-control" type="name" name="name" placeholder="Your name" required> --}}

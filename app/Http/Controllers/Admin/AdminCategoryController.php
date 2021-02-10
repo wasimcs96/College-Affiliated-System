@@ -50,12 +50,11 @@ class AdminCategoryController extends Controller
     {
 
         $this->validate($request, [
-            'title' => 'required',
-            'status' => 'required'
-
+            'status' => ['required'],
+            'title' => ['required','unique:categories'],
         ]);
-$newname='';
-// dd($request->image);
+       $newname='';
+       // dd($request->image);
       if($request->hasFile('image'))
        {
         $image=$request->image;
