@@ -170,11 +170,11 @@
                                                                     font-weight: 600;
 
                                                                     ">Top Sub Discipline</li>
-                                                                    <?php $headercourses11 = App\Models\Category::where('parent_id',6)->take(7)->get(); ?>
+                                                                    <?php $headercourses11 = App\Models\Category::where('parent_id',6)->where('status',1)->take(8)->get(); ?>
                                                                 @foreach ($headercourses11 as $headercourse11)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
-                                                                <input type="hidden" name="category" value="{{$headercourse11->parent_id}}">
+                                                                <input type="hidden" name="category" value="{{$headercourse11->parent_id ?? ''}}">
 
                                                                 <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                     display: -ms-flex;
@@ -186,7 +186,7 @@
                                                                     padding: 3px 25px;
                                                                     color: #5d646d;
                                                                     font-size: 15px;
-                                                                    font-weight: 500;">{{$headercourse11->title}}</button></li>
+                                                                    font-weight: 500;">{{$headercourse11->title ?? ''}}</button></li>
                                                                 </form>
                                                                 @endforeach
 
@@ -210,11 +210,11 @@
                                                                 font-weight: 600;
 
                                                                 ">Other Sub Discipline</li>
-                                                                <?php $headercourses12 = App\Models\Category::where('parent_id',6)->skip(7)->take(7)->get(); ?>
+                                                                <?php $headercourses12 = App\Models\Category::where('parent_id',6)->where('status',1)->skip(8)->take(8)->get(); ?>
                                                             @foreach ($headercourses12 as $headercourse12)
                                                             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                 @csrf
-                                                            <input type="hidden" name="category" value="{{$headercourse12->parent_id}}">
+                                                            <input type="hidden" name="category" value="{{$headercourse12->parent_id ?? ''}}">
 
                                                             <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                 display: -ms-flex;
@@ -226,7 +226,7 @@
                                                                 padding: 3px 25px;
                                                                 color: #5d646d;
                                                                 font-size: 15px;
-                                                                font-weight: 500;">{{$headercourse12->title}}</button></li>
+                                                                font-weight: 500;">{{$headercourse12->title ?? ''}}</button></li>
                                                             </form>
                                                             @endforeach
 
@@ -263,11 +263,11 @@
                                                                         font-weight: 600;
 
                                                                         ">Top Sub Discipline</li>
-                                                                        <?php $headercourses21 = App\Models\Category::where('parent_id',15)->take(7)->get(); ?>
+                                                                        <?php $headercourses21 = App\Models\Category::where('parent_id',15)->where('status',1)->take(7)->get(); ?>
                                                                     @foreach ($headercourses21 as $headercourse21)
                                                                     <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                         @csrf
-                                                                    <input type="hidden" name="category" value="{{$headercourse21->parent_id}}">
+                                                                    <input type="hidden" name="category" value="{{$headercourse21->parent_id ?? ''}}">
 
                                                                     <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                         display: -ms-flex;
@@ -279,7 +279,7 @@
                                                                         padding: 3px 25px;
                                                                         color: #5d646d;
                                                                         font-size: 15px;
-                                                                        font-weight: 500;">{{$headercourse21->title}}</button></li>
+                                                                        font-weight: 500;">{{$headercourse21->title ?? ''}}</button></li>
                                                                     </form>
                                                                     @endforeach
 
@@ -303,11 +303,11 @@
                                                                     font-weight: 600;
 
                                                                     ">Other Sub Discipline</li>
-                                                                    <?php $headercourses22 = App\Models\Category::where('parent_id',15)->skip(7)->take(7)->get(); ?>
+                                                                    <?php $headercourses22 = App\Models\Category::where('parent_id',15)->where('status',1)->skip(7)->take(7)->get(); ?>
                                                                 @foreach ($headercourses22 as $headercourse22)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
-                                                                <input type="hidden" name="category" value="{{$headercourse22->parent_id}}">
+                                                                <input type="hidden" name="category" value="{{$headercourse22->parent_id ?? ''}}">
 
                                                                 <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                     display: -ms-flex;
@@ -319,7 +319,7 @@
                                                                     padding: 3px 25px;
                                                                     color: #5d646d;
                                                                     font-size: 15px;
-                                                                    font-weight: 500;">{{$headercourse22->title}}</button></li>
+                                                                    font-weight: 500;">{{$headercourse22->title ?? ''}}</button></li>
                                                                 </form>
                                                                 @endforeach
 
@@ -361,11 +361,11 @@
                                                                         font-weight: 600;
 
                                                                         ">Top Sub Discipline</li>
-                                                                        <?php $headercourses31 = App\Models\Category::where('parent_id',9)->take(7)->get(); ?>
+                                                                        <?php $headercourses31 = App\Models\Category::where('parent_id',9)->where('status',1)->take(7)->get(); ?>
                                                                     @foreach ($headercourses31 as $headercourse31)
                                                                     <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                         @csrf
-                                                                    <input type="hidden" name="category" value="{{$headercourse31->parent_id}}">
+                                                                    <input type="hidden" name="category" value="{{$headercourse31->parent_id ?? ''}}">
 
                                                                     <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                         display: -ms-flex;
@@ -377,7 +377,7 @@
                                                                         padding: 3px 25px;
                                                                         color: #5d646d;
                                                                         font-size: 15px;
-                                                                        font-weight: 500;">{{$headercourse31->title}}</button></li>
+                                                                        font-weight: 500;">{{$headercourse31->title ?? ''}}</button></li>
                                                                     </form>
                                                                     @endforeach
 
@@ -401,11 +401,11 @@
                                                                     font-weight: 600;
 
                                                                     ">Other Sub Discipline</li>
-                                                                    <?php $headercourses32 = App\Models\Category::where('parent_id',9)->skip(7)->take(7)->get(); ?>
+                                                                    <?php $headercourses32 = App\Models\Category::where('parent_id',9)->where('status',1)->skip(7)->take(7)->get(); ?>
                                                                 @foreach ($headercourses32 as $headercourse32)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
-                                                                <input type="hidden" name="category" value="{{$headercourse32->parent_id}}">
+                                                                <input type="hidden" name="category" value="{{$headercourse32->parent_id ?? ''}}">
 
                                                                 <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                     display: -ms-flex;
@@ -417,7 +417,7 @@
                                                                     padding: 3px 25px;
                                                                     color: #5d646d;
                                                                     font-size: 15px;
-                                                                    font-weight: 500;">{{$headercourse32->title}}</button></li>
+                                                                    font-weight: 500;">{{$headercourse32->title ?? ''}}</button></li>
                                                                 </form>
                                                                 @endforeach
 
@@ -453,11 +453,11 @@
                                                                         font-weight: 600;
 
                                                                         ">Top Sub Discipline</li>
-                                                                        <?php $headercourses41 = App\Models\Category::where('parent_id',2)->take(7)->get(); ?>
+                                                                        <?php $headercourses41 = App\Models\Category::where('parent_id',2)->where('status',1)->take(7)->get(); ?>
                                                                     @foreach ($headercourses41 as $headercourse41)
                                                                     <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                         @csrf
-                                                                    <input type="hidden" name="category" value="{{$headercourse41->parent_id}}">
+                                                                    <input type="hidden" name="category" value="{{$headercourse41->parent_id ?? ''}}">
 
                                                                     <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                         display: -ms-flex;
@@ -469,7 +469,7 @@
                                                                         padding: 3px 25px;
                                                                         color: #5d646d;
                                                                         font-size: 15px;
-                                                                        font-weight: 500;">{{$headercourse41->title}}</button></li>
+                                                                        font-weight: 500;">{{$headercourse41->title ?? ''}}</button></li>
                                                                     </form>
                                                                     @endforeach
 
@@ -494,11 +494,11 @@
 
                                                                     ">Other Sub Discipline</li>
 
-                                                                    <?php $headercourses42 = App\Models\Category::where('parent_id',2)->skip(7)->take(7)->get(); ?>
+                                                                    <?php $headercourses42 = App\Models\Category::where('parent_id',2)->where('status',1)->skip(7)->take(7)->get(); ?>
                                                                 @foreach ($headercourses42 as $headercourse42)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
-                                                                <input type="hidden" name="category" value="{{$headercourse42->parent_id}}">
+                                                                <input type="hidden" name="category" value="{{$headercourse42->parent_id ?? ''}}">
 
                                                                 <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                     display: -ms-flex;
@@ -510,7 +510,7 @@
                                                                     padding: 3px 25px;
                                                                     color: #5d646d;
                                                                     font-size: 15px;
-                                                                    font-weight: 500;">{{$headercourse42->title}}</button></li>
+                                                                    font-weight: 500;">{{$headercourse42->title ?? ''}}</button></li>
                                                                 </form>
                                                                 @endforeach
                                                             </ul>
@@ -544,11 +544,11 @@
                                                                     font-weight: 600;
 
                                                                     ">Top Sub Discipline</li>
-                                                                    <?php $headercourses51 = App\Models\Category::where('parent_id',3)->take(7)->get(); ?>
+                                                                    <?php $headercourses51 = App\Models\Category::where('parent_id',3)->where('status',1)->take(7)->get(); ?>
                                                                 @foreach ($headercourses51 as $headercourse51)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
-                                                                <input type="hidden" name="category" value="{{$headercourse51->parent_id}}">
+                                                                <input type="hidden" name="category" value="{{$headercourse51->parent_id ?? ''}}">
 
                                                                 <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                     display: -ms-flex;
@@ -560,7 +560,7 @@
                                                                     padding: 3px 25px;
                                                                     color: #5d646d;
                                                                     font-size: 15px;
-                                                                    font-weight: 500;">{{$headercourse51->title}}</button></li>
+                                                                    font-weight: 500;">{{$headercourse51->title ?? ''}}</button></li>
                                                                 </form>
                                                                 @endforeach
 
@@ -588,7 +588,7 @@
                                                             @foreach ($headercourses52 as $headercourse52)
                                                             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                 @csrf
-                                                            <input type="hidden" name="category" value="{{$headercourse52->parent_id}}">
+                                                            <input type="hidden" name="category" value="{{$headercourse52->parent_id ?? ''}}">
 
                                                             <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                 display: -ms-flex;
@@ -600,7 +600,7 @@
                                                                 padding: 3px 25px;
                                                                 color: #5d646d;
                                                                 font-size: 15px;
-                                                                font-weight: 500;">{{$headercourse52->title}}</button></li>
+                                                                font-weight: 500;">{{$headercourse52->title ?? ''}}</button></li>
                                                             </form>
                                                             @endforeach
 
@@ -646,7 +646,7 @@
                                                         @foreach ($headercourses61 as $headercourse61)
                                                         <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                             @csrf
-                                                        <input type="hidden" name="category" value="{{$headercourse61->parent_id}}">
+                                                        <input type="hidden" name="category" value="{{$headercourse61->parent_id ?? ''}}">
 
                                                         <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                             display: -ms-flex;
@@ -726,7 +726,7 @@
                                                         @foreach ($headercountry as $itemcountry)
                                                         <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
                                                           @csrf
-                                                      <input type="hidden" name="category" value="{{$itemcountry->countries_id}}">
+                                                      <input type="hidden" name="category" value="{{$itemcountry->countries_id ?? ''}}">
 
                                                       <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                           display: -ms-flex;
@@ -738,7 +738,7 @@
                                                           padding: 3px 25px;
                                                           color: #5d646d;
                                                           font-size: 15px;
-                                                          font-weight: 500;">{{$itemcountry->countries_name}}</button></li>
+                                                          font-weight: 500;">{{$itemcountry->countries_name ?? ''}}</button></li>
                                                       </form>
                                                         @endforeach
 
@@ -750,7 +750,7 @@
                                                         @foreach ($headercountry2 as $itemcountry2)
                                                         <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
                                                           @csrf
-                                                      <input type="hidden" name="category" value="{{$itemcountry2->countries_id}}">
+                                                      <input type="hidden" name="category" value="{{$itemcountry2->countries_id ?? ''}}">
 
                                                       <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                           display: -ms-flex;
@@ -762,7 +762,7 @@
                                                           padding: 3px 25px;
                                                           color: #5d646d;
                                                           font-size: 15px;
-                                                          font-weight: 500;">{{$itemcountry2->countries_name}}</button></li>
+                                                          font-weight: 500;">{{$itemcountry2->countries_name ?? ''}}</button></li>
                                                       </form>
                                                         @endforeach
 
@@ -775,7 +775,7 @@
                                                         @foreach ($headercountry3 as $itemcountry3)
                                                         <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
                                                           @csrf
-                                                      <input type="hidden" name="category" value="{{$itemcountry3->countries_id}}">
+                                                      <input type="hidden" name="category" value="{{$itemcountry3->countries_id ?? ''}}">
 
                                                       <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                           display: -ms-flex;
@@ -787,7 +787,7 @@
                                                           padding: 3px 25px;
                                                           color: #5d646d;
                                                           font-size: 15px;
-                                                          font-weight: 500;">{{$itemcountry3->countries_name}}</button></li>
+                                                          font-weight: 500;">{{$itemcountry3->countries_name ?? ''}}</button></li>
                                                       </form>
                                                         @endforeach
 
@@ -801,7 +801,7 @@
                                                       @foreach ($headercountryvalid as $headercountryv)
                                                       <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
                                                         @csrf
-                                                    <input type="hidden" name="category" value="{{$headercountryv->countries_id}}">
+                                                    <input type="hidden" name="category" value="{{$headercountryv->countries_id ?? ''}}">
 
                                                     <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                         display: -ms-flex;
@@ -825,7 +825,7 @@
                                                       @foreach ($headercountryvalid2 as $headercountryv2)
                                                       <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
                                                         @csrf
-                                                    <input type="hidden" name="category" value="{{ $headercountryv2->id}}">
+                                                    <input type="hidden" name="category" value="{{ $headercountryv2->id ?? ''}}">
 
                                                     <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                         display: -ms-flex;
@@ -837,7 +837,7 @@
                                                         padding: 3px 25px;
                                                         color: #5d646d;
                                                         font-size: 15px;
-                                                        font-weight: 500;">{{ $headercountryv2->countries_name}}</button></li>
+                                                        font-weight: 500;">{{ $headercountryv2->countries_name ?? ''}}</button></li>
                                                     </form>
                                                       @endforeach
 
@@ -915,9 +915,9 @@
                                                                 @foreach ( $headercountries11 as $headercountry11)
                                                                 {{-- <form action="{{route('university_fetch.countrywise')}}" method="POST" >
                                                                     @csrf --}}
-                                                                {{-- <input type="hidden" name="category" value="{{$headercountry11->countries_id}}"> --}}
+                                                                {{-- <input type="hidden" name="category" value="{{$headercountry11->countries_id ?? ''}}"> --}}
 
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry11->user_id])}}">{{$headercountry11->university_name}}</a></li>
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry11->user_id])}}">{{$headercountry11->university_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
                                                                 @endforeach
 
@@ -945,9 +945,9 @@
                                                             @foreach ($headercountries12 as $headercountry12)
                                                             {{-- <form action="{{route('university_fetch.countrywise')}}" method="POST" >
                                                                 @csrf --}}
-                                                            {{-- <input type="hidden" name="category" value="{{$headercountry12->countries_id}}"> --}}
+                                                            {{-- <input type="hidden" name="category" value="{{$headercountry12->countries_id ?? ''}}"> --}}
 
-                                                            <li><a href="{{route('university_detail',['id'=>$headercountry12->user_id])}}">{{$headercountry12->university_name}}</a></li>
+                                                            <li><a href="{{route('university_detail',['id'=>$headercountry12->user_id])}}">{{$headercountry12->university_name ?? ''}}</a></li>
                                                             {{-- </form> --}}
                                                             @endforeach
 
@@ -988,9 +988,9 @@
                                                                    @foreach ($headercountries21 as $headercountry21)
                                                                     {{--  <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                         @csrf
-                                                                    <input type="hidden" name="category" value="{{$headercountry21->countries_id}}"> --}}
+                                                                    <input type="hidden" name="category" value="{{$headercountry21->countries_id ?? ''}}"> --}}
 
-                                                                    <li><a href="{{route('university_detail',['id'=>$headercountry21->user_id])}}">{{$headercountry21->university_name}}</a></li>
+                                                                    <li><a href="{{route('university_detail',['id'=>$headercountry21->user_id ?? ''])}}">{{$headercountry21->university_name ?? ''}}</a></li>
                                                                     {{-- </form> --}}
                                                                     @endforeach
 
@@ -1018,9 +1018,9 @@
                                                                 @foreach ($headercountries22 as $headercountry22)
                                                                 {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
-                                                                <input type="hidden" name="category" value="{{$headercountry22->countries_id}}"> --}}
+                                                                <input type="hidden" name="category" value="{{$headercountry22->countries_id ?? ''}}"> --}}
 
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry22->user_id])}}">{{$headercountry22->university_name}}</a></li>
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry22->user_id ?? ''])}}">{{$headercountry22->university_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
                                                                 @endforeach
 
@@ -1066,10 +1066,10 @@
                                                                     @foreach ($headercountries31 as $headercountry31)
                                                                     {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                         @csrf
-                                                                    <input type="hidden" name="category" value="{{$headercountry31->countries_id}}"> --}}
+                                                                    <input type="hidden" name="category" value="{{$headercountry31->countries_id ?? ''}}"> --}}
 
 
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry31->user_id])}}">{{$headercountry31->university_name}}</a></li>
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry31->user_id ?? ''])}}">{{$headercountry31->university_name ?? ''}}</a></li>
                                                                     {{-- </form> --}}
                                                                     @endforeach
 
@@ -1097,10 +1097,10 @@
                                                                 @foreach ($headercountries32 as $headercountry32)
                                                                 {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
-                                                                <input type="hidden" name="category" value="{{$headercountry32->countries_id}}"> --}}
+                                                                <input type="hidden" name="category" value="{{$headercountry32->countries_id ?? ''}}"> --}}
 
 
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry32->user_id])}}">{{$headercountry32->university_name}}</a></li>
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry32->user_id ?? ''])}}">{{$headercountry32->university_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
                                                                 @endforeach
 
@@ -1140,10 +1140,10 @@
                                                                     @foreach ($headercountries41 as $headercountry41)
                                                                     {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                         @csrf
-                                                                    <input type="hidden" name="category" value="{{$headercountry41->countries_id}}"> --}}
+                                                                    <input type="hidden" name="category" value="{{$headercountry41->countries_id ?? ''}}"> --}}
 
 
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry41->user_id])}}">{{$headercountry41->university_name}}</a></li>
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry41->user_id ?? ''])}}">{{$headercountry41->university_name ?? ''}}</a></li>
                                                                     {{-- </form> --}}
                                                                     @endforeach
 
@@ -1172,9 +1172,9 @@
                                                                 @foreach ($headercountries42 as $headercountry42)
                                                                 {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
-                                                                <input type="hidden" name="category" value="{{$headercountry42->countries_id}}"> --}}
+                                                                <input type="hidden" name="category" value="{{$headercountry42->countries_id ?? ''}}"> --}}
 
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry42->user_id])}}">{{$headercountry42->university_name}}</a></li>
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry42->user_id ?? ''])}}">{{$headercountry42->university_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
                                                                 @endforeach
                                                             </ul>
@@ -1212,7 +1212,7 @@
                                                                 @foreach ($headercountries51 as $headercountry51)
                                                                 {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
-                                                                <input type="hidden" name="category" value="{{$headercountry51->countries_id}}"> --}}
+                                                                <input type="hidden" name="category" value="{{$headercountry51->countries_id ?? ''}}"> --}}
 
                                                                 <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                     display: -ms-flex;
@@ -1224,7 +1224,7 @@
                                                                     padding: 3px 25px;
                                                                     color: #5d646d;
                                                                     font-size: 15px;
-                                                                    font-weight: 500;">{{$headercountry51->university_name}}</button></li>
+                                                                    font-weight: 500;">{{$headercountry51->university_name ?? ''}}</button></li>
                                                                 {{-- </form> --}}
                                                                 @endforeach
 
@@ -1252,10 +1252,10 @@
                                                             @foreach ($headercountries52 as $headercountry52)
                                                             {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                 @csrf
-                                                            <input type="hidden" name="category" value="{{$headercountry52->countries_id}}"> --}}
+                                                            <input type="hidden" name="category" value="{{$headercountry52->countries_id ?? ''}}"> --}}
 
 
-                                                            <li><a href="{{route('university_detail',['id'=>$headercountry52->user_id])}}">{{$headercountry52->university_name}}</a></li>
+                                                            <li><a href="{{route('university_detail',['id'=>$headercountry52->user_id ?? ''])}}">{{$headercountry52->university_name ?? ''}}</a></li>
                                                             {{-- </form> --}}
                                                             @endforeach
 
@@ -1301,9 +1301,9 @@
                                                         @foreach ($headercountries61 as $headercountry61)
                                                         {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                             @csrf
-                                                        <input type="hidden" name="category" value="{{$headercountry61->countries_id}}"> --}}
+                                                        <input type="hidden" name="category" value="{{$headercountry61->countries_id ?? ''}}"> --}}
 
-                                                        <li><a href="{{route('university_detail',['id'=>$headercountry61->user_id])}}">{{$headercountry61->university_name}}</a></li>
+                                                        <li><a href="{{route('university_detail',['id'=>$headercountry61->user_id ?? ''])}}">{{$headercountry61->university_name ?? ''}}</a></li>
                                                         {{-- </form> --}}
                                                         @endforeach
 
@@ -1331,9 +1331,9 @@
                                                     @foreach ($headercountries62 as $headercountry62)
                                                     {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                         @csrf
-                                                    <input type="hidden" name="category" value="{{$headercountry62->countries_id}}"> --}}
+                                                    <input type="hidden" name="category" value="{{$headercountry62->countries_id ?? ''}}"> --}}
 
-                                                    <li><a href="{{route('university_detail',['id'=>$headercountry62->user_id])}}">{{$headercountry62->university_name}}</a></li>
+                                                    <li><a href="{{route('university_detail',['id'=>$headercountry62->user_id ?? ''])}}">{{$headercountry62->university_name ?? ''}}</a></li>
                                                     {{-- </form> --}}
                                                     @endforeach
 
@@ -1575,9 +1575,8 @@
                                                         <select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university">
                                                             <?php $universities = \App\Models\University::get();  ?>
                                                             @foreach($universities as $university)
-                                                                 @if($university->deleted_at == NULL)
-                                                                   <option value="{{$university->user_id}}">{{$university->university_name}}</option>
-                                                                 @endif
+
+                                                                <option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}}</option>
                                                             @endforeach
                                                         </select>
                                                         {{-- <input class="form-control" type="name" name="name" placeholder="Your name" required> --}}
