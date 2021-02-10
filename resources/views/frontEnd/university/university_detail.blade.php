@@ -135,8 +135,8 @@
                                          @endif
 
                                          @else
-                                         <input type="text" name="unviersity_id"  value="{{$university->id}}" hidden>
-                                         <input type="text" name="consultant_id"  value="{{auth()->user()->id}}" hidden>
+                                         <input type="text" name="unviersity_id"  value="{{$university->id ?? ''}}" hidden>
+                                         <input type="text" name="consultant_id"  value="{{auth()->user()->id ?? ''}}" hidden>
                                          <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
                                          <a class="btn btn-primary cs" custom1="{{$university->id}}" href="javascript:void(0);"
@@ -286,7 +286,9 @@
                                            </tr>
                                        </thead>
                                        <tbody>
+                                           @if(isset( $university->universityCourse))
                                            <?php $courses=$university->universityCourse?>
+                                {{-- @if($courses->count() > 0) --}}
                                           @foreach($courses as $course)
                                            <tr>
                                                <th scope="row"><div class="table-content d-flex align-items-center">
@@ -308,6 +310,12 @@
                                             </div></td>
                                            </tr>
                                            @endforeach
+                                           {{-- @else
+                                           Not available
+                                           @endif --}}
+                                           @else
+                                          <td> Not available</td>
+                                           @endif
                                     </tbody>
                                    </table>
 
@@ -425,7 +433,7 @@
 
  </form>
                                           @else
-                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
                                           @endif
                                           @else
                                           <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
@@ -458,7 +466,7 @@
     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
-                    <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
+                    <a href="{{$advertise->link ?? ''}}"  id="click_count" link_click="{{$advertise->id ?? ''}}" target="_blank">
                     <div class="discount-box">
                         <div class="discount-img">
 
@@ -480,7 +488,7 @@
                         </div><!-- end discount-content -->
                         <div class="company-logo">
                             <img src="images/logo2.png" alt="">
-                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name}}</p>
+                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name ?? ''}}</p>
                         </div><!-- end company-logo -->
                     </div>
                 </a>
@@ -512,7 +520,7 @@
                         <div class="card-item car-card border">
                             <div class="card-img" style="text-align: center; height:185px;">
 
-                                <a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}" class="d-block">
+                                <a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id ?? ''])}}" class="d-block">
                                     @if(isset($consultant->userConsultant->consultant->cover_image) && file_exists($consultant->userConsultant->consultant->cover_image))
                                                         <img
                                                         style=" width: 368px;
@@ -542,7 +550,7 @@
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}">{{$consultant->userConsultant->first_name}}{{$consultant->userConsultant->lasts_name}}</a>
+                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id])}}">{{$consultant->userConsultant->first_name ?? ''}}{{$consultant->userConsultant->lasts_name ?? ''}}</a>
                                     @if($consultant->userConsultant->is_verified == 1)
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                                 @endif
@@ -620,14 +628,14 @@
 <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id])}}" method="POST">
 @csrf
 <input type="text" name="universityid" value="{{$university->id}}" hidden>
-<input type="text" name="consultantid" value="{{$consultant->userConsultant->id}}" hidden>
+<input type="text" name="consultantid" value="{{$consultant->userConsultant->id ?? ''}}" hidden>
 
                                 {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
                                 <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
 
 </form>
                               @else
-                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
                               @endif
                               @else
                               <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
@@ -770,7 +778,7 @@
                                          margin: 0px;
                                          font-size: large;
                                          "
-                                     >Have patience Wait for Respond</h4>
+                                     >Have patience Wait for Responce</h4>
                                     </div>
                                 </div>
                                 <div class="modal-footer" style="

@@ -257,7 +257,7 @@
                         <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                         <td>
                             {{-- {{dd($consultant->consultantUniversity)}} --}}
-    @if ($consultant->consultantUniversity)
+    {{-- @if ($consultant->consultantUniversity->count()) --}}
                         <?php $universityconsultant=$consultant->consultantUniversity; ?>
                         <div class="sidebar-widget single-content-widget">
                             <h3 class="title stroke-shape">Featured University</h3>
@@ -274,9 +274,11 @@
                             height: 530px;
                             overflow: scroll;">
                                 <ul class="list-items">
-            @foreach($universityconsultant as $universitycon)
-            @if($universitycon->status == 1)
-            @if($universitycon->userUniversity->Premium_expire_date > $mytime)
+                                                            @if($universityconsultant->count() > 0)
+                                    @foreach($universityconsultant as $universitycon)
+                                    @if($universitycon->status == 1)
+                                    @if(isset($universitycon->userUniversity->Premium_expire_date))
+                                    @if($universitycon->userUniversity->Premium_expire_date > $mytime)
 
                                     <li><div class="author-content d-flex">
                                         <div class="author-img">
@@ -348,13 +350,15 @@
                                     </div></li>
                                     @endif
                                     @endif
+                                    @endif
+
 
 @endforeach
-
+@else Data Not available @endif
                                 </ul>
                             </div><!-- end sidebar-list -->
                         </div><!-- end sidebar-widget -->
-                        @endif
+                        {{-- @endif --}}
 
                     </div><!-- end sidebar -->
                     {{-- @endif --}}
@@ -372,7 +376,7 @@
     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
-                    <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
+                    <a href="{{$advertise->link ?? ''}}"  id="click_count" link_click="{{$advertise->id ?? ''}}" target="_blank">
                     <div class="discount-box">
                         <div class="discount-img">
 
@@ -394,7 +398,7 @@
                         </div><!-- end discount-content -->
                         <div class="company-logo">
                             <img src="images/logo2.png" alt="">
-                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name}}</p>
+                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name ?? ''}}</p>
                         </div><!-- end company-logo -->
                     </div>
                 </a>
@@ -419,34 +423,34 @@
                 <div class="hotel-card-wrap">
                     <div class="hotel-card-carousel-2 carousel-action">
                         {{-- {{dd($consultant->consultantUniversity)}} --}}
-                        @if ($consultant->consultantUniversity)
-                        <?php $consultants=$consultant->consultantUniversity; ?>
-                        @foreach($consultants as $consultant)
-                        {{-- {{dd($consultant->u)}} --}}
+                        @if ($consultant->consultantUniversity->count() > 0)
+                        <?php $universitycrousels=$consultant->consultantUniversity; ?>
+                        @foreach($universitycrousels as $universitycrousel)
+                        {{-- {{dd($universitycrousel)}} --}}
                         {{-- @if($consultant->isConsultant()) --}}
                         <div class="card-item car-card border">
                             <div class="card-img"  style="text-align: center; height:185px;">
 
-                                <a href="{{route('university_detail',['id' => $consultant->userUniversity->id])}}" class="d-block">
-                                    @if(isset($consultant->userUniversity->university->cover_image) && file_exists($consultant->userUniversity->university->cover_image))
+                                <a href="{{route('university_detail',['id' => $universitycrousel->userUniversity->id])}}" class="d-block">
+                                    @if(isset($universitycrousel->userUniversity->university->cover_image) && file_exists($universitycrousel->userUniversity->university->cover_image))
                                                         <img
                                                         style=" width: 368px;
                                                         height: 245px;"
-                                                        src="{{asset($consultant->userUniversity->university->cover_image)}}" alt="">
+                                                        src="{{asset($universitycrousel->userUniversity->university->cover_image)}}" alt="">
                                                             @else
                                                             <img     style=" width: 368px;
                                                             height: 245px;" src="{{asset('frontEnd/assets/images/university.jpg')}}" >
                                                             @endif
                                 </a>
-                                <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($consultant->userUniversity->profile_image) && file_exists($consultant->userUniversity->profile_image))
+                                <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($universitycrousel->userUniversity->profile_image) && file_exists($universitycrousel->userUniversity->profile_image))
                                     <img
                                     style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                    src="{{asset($consultant->userUniversity->profile_image)}}" alt="">
+                                    src="{{asset($universitycrousel->userUniversity->profile_image)}}" alt="">
                                         @else
                                         <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                         @endif</div>
                                         <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
-                                        @if($consultant->userUniversity->Premium_expire_date > $mytime)<span style="
+                                        @if($universitycrousel->userUniversity->Premium_expire_date > $mytime)<span style="
                                         background-color: #073975;
                                     " class="badge">Premium</span> @endif
                                 {{-- <span class="badge">Top Ranked</span> --}}
@@ -455,14 +459,14 @@
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $consultant->userUniversity->id])}}">{{$consultant->userUniversity->university->university_name ?? ''}}</a>         @if($consultant->userUniversity->is_verified == 1)
+                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $universitycrousel->userUniversity->id ?? ''])}}">{{$universitycrousel->userUniversity->university->university_name ?? ''}}</a>         @if($universitycrousel->userUniversity->is_verified == 1)
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                                 @endif</h3>
-                                <p class="card-meta">{{$consultant->city ?? ''}}</p>
+                                <p class="card-meta">{{$universitycrousel->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>
 
-                                                    <span>@if($consultant->userUniversity->rating == 3 ?? '' )
+                                                    <span>@if($universitycrousel->userUniversity->rating == 3 ?? '' )
                                                             <span class="ratings ">
                                                                 <i class="la la-star"></i>
                                                                 <i class="la la-star"></i>
@@ -470,7 +474,7 @@
                                                                 <i class="la la-star-o"></i>
                                                                 <i class="la la-star-o"></i>
                                                             </span>
-                                                    @elseif($consultant->userUniversity->rating == 4 ?? '' )
+                                                    @elseif($universitycrousel->userUniversity->rating == 4 ?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -478,7 +482,7 @@
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @elseif($consultant->userUniversity->rating == 5 ?? '' )
+                                                    @elseif($universitycrousel->userUniversity->rating == 5 ?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -486,7 +490,7 @@
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
                                                     </span>
-                                                    @elseif($consultant->userUniversity->rating == 1?? '' )
+                                                    @elseif($universitycrousel->userUniversity->rating == 1?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star-o"></i>
@@ -494,7 +498,7 @@
                                                         <i class="la la-star-o"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @elseif($consultant->userUniversity->rating == 2 ?? '' )
+                                                    @elseif($universitycrousel->userUniversity->rating == 2 ?? '' )
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -502,33 +506,33 @@
                                                         <i class="la la-star-o"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($consultant->userUniversity->rating == null) - @else{{$consultant->userUniversity->rating ?? ''}}/5 @endif</span>
+                                                    @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($universitycrousel->userUniversity->rating == null) - @else{{$universitycrousel->userUniversity->rating ?? ''}}/5 @endif</span>
 
                                             </div>
                                             <div class="card-attributes">
                                                 <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($consultant->userUniversity->university->created_at))
-                                                        {{$consultant->userUniversity->university->created_at->Format("Y")}}
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($universitycrousel->userUniversity->university->created_at))
+                                                        {{$universitycrousel->userUniversity->university->created_at->Format("Y")}}
                                                         @else N/A @endif</span></li>
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
-                                                        @if(isset($consultant->userUniversity->universityConsultant))
-                                                        {{$consultant->userUniversity->universityConsultant->count()}}@else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="las la-book"></i><span>   @if(isset($consultant->userUniversity->universityCourse))
-                                                        {{$consultant->userUniversity->universityCourse->count()}}
+                                                        @if(isset($universitycrousel->userUniversity->universityConsultant))
+                                                        {{$universitycrousel->userUniversity->universityConsultant->count()}}@else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="las la-book"></i><span>   @if(isset($universitycrousel->userUniversity->universityCourse))
+                                                        {{$universitycrousel->userUniversity->universityCourse->count()}}
                                                         @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($consultant->userUniversity->universityConsultantClient))
-                                                        {{$consultant->userUniversity->universityConsultantClient->count()}}
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($universitycrousel->userUniversity->universityConsultantClient))
+                                                        {{$universitycrousel->userUniversity->universityConsultantClient->count()}}
                                                         @else N/A @endif</span></li>
                                                 </ul>
                                             </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
                                         <span class="price__text">City :</span>
-                                        <span class="price__num">{{$consultant->userUniversity->city}}</span>
+                                        <span class="price__num">{{$universitycrousel->userUniversity->city}}</span>
                                         {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                     </p>
 
-                           <a href="{{route('university_detail',['id'=>$consultant->userUniversity->id])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                           <a href="{{route('university_detail',['id'=>$universitycrousel->userUniversity->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
 
 
                                 </div>

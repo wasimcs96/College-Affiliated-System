@@ -14,6 +14,7 @@ class University extends Model
     protected $fillable = [
         'university_name',
         'website',
+        'countries_id',
         'user_id',
         'type',
         'default_documents',

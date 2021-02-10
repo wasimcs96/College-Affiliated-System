@@ -1269,7 +1269,7 @@
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star-o"></i>
                                                         </span>
-                                                        @elseif($ire->rating == 5 ?? '') 
+                                                        @elseif($ire->rating == 5 ?? '')
                                                         <span class="ratings ">
                                                             <i class="la la-star"></i>
                                                             <i class="la la-star"></i>

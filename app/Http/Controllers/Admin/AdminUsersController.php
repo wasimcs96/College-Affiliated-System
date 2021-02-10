@@ -56,6 +56,7 @@ class AdminUsersController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
 
             $request->validate([
             'first_name'=>['required', 'string', 'max:255'],
@@ -95,10 +96,12 @@ class AdminUsersController extends Controller
             'email' => $request->email,
             'mobile' => $request->mobile,
             'password' => Hash::make($request->password),
+            'countries_id'=>$request->country,
         ])->assignRole('university');
         University::create([
             'user_id'=>$user->id,
-
+            'countries_id'=>$request->country,
+            'university_name'=>$request->university_name,
 
         ]);
                     // Important Code
