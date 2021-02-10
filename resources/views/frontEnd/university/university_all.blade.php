@@ -304,7 +304,7 @@
             @else
             <div class="container" style="text-align: center;">
                 <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                   </div>
+            </div>
             @endif
         </div><!-- end row -->
         {{-- <div class="row">

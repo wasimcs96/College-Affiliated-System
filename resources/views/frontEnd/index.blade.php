@@ -1721,8 +1721,6 @@
                         </div>
                         <div class="counter-content">
                             <?php $bookings = DB::table('bookings')->count(); ?>
-                            {{-- <? //php $bookings = DB::table('bookings')->where('status', 1)->count(); ?> --}}
-                            {{-- {{dd($bookings)}} --}}
                             <div>
                                 <span class="counter" data-from="0" data-to="{{$bookings}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
