@@ -665,6 +665,12 @@ window.location.reload();
 }
     });
   </script>
+  <script>
+    $(document).on('click', '#closeLoginForm', function ()
+    {
+        document.getElementById("login-form").reset();
+    });
+  </script>
 @yield('per_page_script')
 </body>
 
