@@ -180,6 +180,18 @@ class AdminUsersController extends Controller
         $user = User::find($id);
         $user->delete();
 
+        $university = University::where('user_id',$id)->first();
+        if($university != null)
+        {
+            $university->delete();
+        }
+
+        $consultant = Consultant::where('user_id',$id)->first();
+        if($consultant != null)
+        {
+            $consultant->delete();
+        }
+
         return redirect()->back()->with('danger', 'User Deleted Successfully.');
     }
 

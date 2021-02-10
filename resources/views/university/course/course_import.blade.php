@@ -16,14 +16,14 @@
                     @php
                         $categorys = DB::table('categories')->select('parent_id', 'title')->distinct('parent_id')->get()->toArray();
                     @endphp
-                 {{-- {{  dd($categorys) }} --}}
+                 {{-- {{  dd($categorys) }} ->unique('parent_id') --}}
                     <div class="form-group">
                         <label for="title">Discipline</label>
                         <select name="parent_id" class="form-control" id="parent_category" required>
                             <option value="">--- Select Discipline ---</option>
-                            @foreach ($categories->unique('parent_id')  as $category)
-                                @if($category->parent_id != NULL)
-                                    <option value="{{ $category->parent_id }}">{{ $category->title }}</option>
+                            @foreach ($categories  as $category)
+                                @if($category->parent_id == NULL)
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endif
                             @endforeach
                         </select>
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label for="category_id">Select Sub-Discipline</label>
                         <select name="category_id" class="form-control" id="category" required>
-                            <option value="">--- Select Discipline ---</option>
+                            <option value="">--- Select Sub Discipline ---</option>
                             {{-- <option value="">--- Select  Category ---</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>
@@ -57,6 +57,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Import Courses</button>
+                    <a href="{{route('university.courses')}}" class="btn btn-danger">Back</a>
                 </form>
             </div>
         </div>

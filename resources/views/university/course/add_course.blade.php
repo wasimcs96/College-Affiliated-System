@@ -18,14 +18,16 @@
                         <select  class="form-control" id="parent_category" required>
                             <option value="">--- Select  Discipline ---</option>
                             @foreach ($categories as $category)
+                            @if($category->parent_id == null)
                                 <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>
+                            @endif
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="category_id">Select Sub-Discipline</label>
                         <select name="category_id" class="form-control" id="category" required>
-                            <option value="">--- Select Discipline ---</option>
+                            <option value="">--- Select Sub Discipline ---</option>
                             {{-- <option value="">--- Select  Category ---</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>
@@ -73,7 +75,9 @@
 
 
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{route('university.courses')}}" class="btn btn-danger">Back</a>
                 </form>
+
             </div>
         </div>
     </div>

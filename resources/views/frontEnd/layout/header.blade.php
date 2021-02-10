@@ -6,7 +6,7 @@
                     <div class="header-top-content">
                         <div class="header-left">
                             <ul class="list-items">
-                                <li><a href="#"><i class="la la-phone mr-1"></i>(123) 123-456</a></li>
+                                <li><a href="#"><i class="la la-phone mr-1"></i>{{config('get.TELEPHONE')}}</a></li>
                                 <li><a href="#"><i class="la la-envelope mr-1"></i>{{config('get.ADMIN_EMAIL')}}</a></li>
                             </ul>
                         </div>
@@ -170,7 +170,7 @@
                                                                     font-weight: 600;
 
                                                                     ">Top Sub Discipline</li>
-                                                                    <?php $headercourses11 = App\Models\Category::where('parent_id',6)->where('status',1)->take(8)->get(); ?>
+                                                                    <?php $headercourses11 = App\Models\Category::where('parent_id',6)->where('status',1)->take(7)->get(); ?>
                                                                 @foreach ($headercourses11 as $headercourse11)
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
@@ -210,7 +210,7 @@
                                                                 font-weight: 600;
 
                                                                 ">Other Sub Discipline</li>
-                                                                <?php $headercourses12 = App\Models\Category::where('parent_id',6)->where('status',1)->skip(8)->take(8)->get(); ?>
+                                                                <?php $headercourses12 = App\Models\Category::where('parent_id',6)->where('status',1)->skip(7)->take(7)->get(); ?>
                                                             @foreach ($headercourses12 as $headercourse12)
                                                             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                 @csrf
@@ -854,7 +854,7 @@
                                         <a href="#">Study Abroad<i class="la la-angle-down"></i></a>
                                         <div class="dropdown-menu-item mega-menu">
                                             <ul class="row no-gutters">
-                                                <?php $headercountryvalidsuniversity = App\Models\University::all(); ?>
+                                                <?php $headercountryvalidsuniversity = App\Models\Country::all(); ?>
                                                 @if($headercountryvalidsuniversity->count() > 10)
                                                 <li  class="col-lg-12 mega-menu-item" style="padding: 0px;">
                                                     <div class="tabbe">

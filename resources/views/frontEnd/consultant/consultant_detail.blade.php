@@ -147,10 +147,10 @@
 
                             </div><!-- end single-content-item -->
                             <div class="section-block"></div>
-                            <div class="single-content-item padding-top-40px padding-bottom-40px">
+                            {{-- <div class="single-content-item padding-top-40px padding-bottom-40px">
                                 <h3 class="title font-size-20">Description</h3>
                                 <p class="pt-3">{{$consultant->consultant->about_me ?? ''}}</p>
-                            </div><!-- end single-content-item -->
+                            </div><!-- end single-content-item --> --}}
                             <div class="single-content-item padding-bottom-30px">
                                 <h3 class="title font-size-20">University  Statistics</h3>
                                 <div class="row pt-4">
@@ -165,17 +165,8 @@
                                             <li><span>City:</span>{{$consultant->city ?? ''}}</li>
                                             <li><span>Address:</span>{{$consultant->address ?? ''}}</li>
 
-                                            {{-- <li><span>Admission Opens:</span>19/09/20</li>
-                                            <li><span>Campus:</span>93,558 grt</li> --}}
-                                            {{-- <li><span>Working Week Days:</span> @if(isset($consultant->consultant->working_week_days)&&($consultant->consultant->type==0))
-                                                Private
-                                                @else Govenment</p>
-                                                @endif</li> --}}
-                                            {{-- <li><span>Opening time:</span>105 ft</li>
-                                            <li><span>Closeing time:</span>28 ft</li>
-                                            <li><span>brachs</span>22.5 knots</li> --}}
-                                        </ul><!-- end list-items -->
-                                    </div><!-- end col-lg-6 -->
+                                        </ul>
+                                    </div>
                                    <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
                                             <li><span>Affiliated University:</span>
@@ -185,16 +176,13 @@
                                                 @if(isset($consultant->consultantUniversityClient))
                                     {{$consultant->consultantUniversityClient->count()}}@else N/A @endif</li>
                                             <li><span>Website:</span><a target="_blank" href="{{$consultant->consultant->website ?? ''}}" URL>{{$consultant->consultant->website ?? ''}}</a></li>
-                                            {{-- <li><span>Total Staff:</span>9,078 crew</li>
-                                            <li><span>Counsellor:</span>Italian</li>
-                                            <li><span>Hostels:</span>International</li>
-                                            <li><span>affiliated collages:</span>International</li>
-                                            <li><span>Registry:</span>Panama</li> --}}
 
-                                        </ul><!-- end list-items -->
-                                    </div><!-- end col-lg-6 -->
-                                </div><!-- end row -->
-                            </div><!-- end single-content-item -->
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end single-content-item -->
 
                         </div><!-- end description -->
                         {{-- <div id="itinerary" class="page-scroll">
@@ -274,7 +262,7 @@
                             height: 530px;
                             overflow: scroll;">
                                 <ul class="list-items">
-                                                            @if($universityconsultant->count() > 0)
+                            @if($universityconsultant->count() > 0)
                                     @foreach($universityconsultant as $universitycon)
                                     @if($universitycon->status == 1)
                                     @if(isset($universitycon->userUniversity->Premium_expire_date))
@@ -354,7 +342,9 @@
 
 
 @endforeach
-@else Data Not available @endif
+@else
+<span style="text-align: center; color: black;">Data Not available</span>
+ @endif
                                 </ul>
                             </div><!-- end sidebar-list -->
                         </div><!-- end sidebar-widget -->
@@ -426,12 +416,12 @@
                         @if ($consultant->consultantUniversity->count() > 0)
                         <?php $universitycrousels=$consultant->consultantUniversity; ?>
                         @foreach($universitycrousels as $universitycrousel)
-                        {{-- {{dd($universitycrousel)}} --}}
-                        {{-- @if($consultant->isConsultant()) --}}
-                        <div class="card-item car-card border">
+
+                           @if($universitycrousel->deleted_at == NULL)
+                           <div class="card-item car-card border">
                             <div class="card-img"  style="text-align: center; height:185px;">
 
-                                <a href="{{route('university_detail',['id' => $universitycrousel->userUniversity->id])}}" class="d-block">
+                                <a href="{{route('university_detail',['id' => $universitycrousel->userUniversity->id ?? ''])}}" class="d-block">
                                     @if(isset($universitycrousel->userUniversity->university->cover_image) && file_exists($universitycrousel->userUniversity->university->cover_image))
                                                         <img
                                                         style=" width: 368px;
@@ -450,7 +440,7 @@
                                         <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                         @endif</div>
                                         <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
-                                        @if($universitycrousel->userUniversity->Premium_expire_date > $mytime)<span style="
+                                        @if($universitycrousel->userUniversity->Premium_expire_date ?? '' > $mytime)<span style="
                                         background-color: #073975;
                                     " class="badge">Premium</span> @endif
                                 {{-- <span class="badge">Top Ranked</span> --}}
@@ -459,60 +449,62 @@
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $universitycrousel->userUniversity->id ?? ''])}}">{{$universitycrousel->userUniversity->university->university_name ?? ''}}</a>         @if($universitycrousel->userUniversity->is_verified == 1)
+                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $universitycrousel->userUniversity->id ?? ''])}}">{{$universitycrousel->userUniversity->university->university_name ?? ''}}</a>         @if($universitycrousel->userUniversity->is_verified ?? '' == 1)
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                                 @endif</h3>
                                 <p class="card-meta">{{$universitycrousel->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>
 
-                                                    <span>@if($universitycrousel->userUniversity->rating == 3 ?? '' )
-                                                            <span class="ratings ">
-                                                                <i class="la la-star"></i>
-                                                                <i class="la la-star"></i>
-                                                                <i class="la la-star"></i>
-                                                                <i class="la la-star-o"></i>
-                                                                <i class="la la-star-o"></i>
-                                                            </span>
-                                                    @elseif($universitycrousel->userUniversity->rating == 4 ?? '' )
-                                                    <span class="ratings ">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star-o"></i>
-                                                    </span>
-                                                    @elseif($universitycrousel->userUniversity->rating == 5 ?? '' )
-                                                    <span class="ratings ">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                    </span>
-                                                    @elseif($universitycrousel->userUniversity->rating == 1?? '' )
-                                                    <span class="ratings ">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                    </span>
-                                                    @elseif($universitycrousel->userUniversity->rating == 2 ?? '' )
-                                                    <span class="ratings ">
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                        <i class="la la-star-o"></i>
-                                                    </span>
-                                                    @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($universitycrousel->userUniversity->rating == null) - @else{{$universitycrousel->userUniversity->rating ?? ''}}/5 @endif</span>
+                                               @if(isset($universitycrousel->userUniversity->rating))
+                                               <span>@if($universitycrousel->userUniversity->rating ?? '' == 3)
+                                                <span class="ratings ">
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star"></i>
+                                                    <i class="la la-star-o"></i>
+                                                    <i class="la la-star-o"></i>
+                                                </span>
+                                        @elseif($universitycrousel->userUniversity->rating ?? '' == 4)
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star-o"></i>
+                                        </span>
+                                        @elseif($universitycrousel->userUniversity->rating ?? '' == 5)
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        @elseif($universitycrousel->userUniversity->rating ?? '' == 1)
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                        </span>
+                                        @elseif($universitycrousel->userUniversity->rating ?? '' == 2 )
+                                        <span class="ratings ">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                        </span>
+                                        @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($universitycrousel->userUniversity->rating == null) - @else{{$universitycrousel->userUniversity->rating ?? ''}}/5 @endif</span>
 
+                                               @endif
                                             </div>
                                             <div class="card-attributes">
                                                 <ul class="d-flex align-items-center">
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($universitycrousel->userUniversity->university->created_at))
-                                                        {{$universitycrousel->userUniversity->university->created_at->Format("Y")}}
+                                                        {{$universitycrousel->userUniversity->university->created_at->Format("Y") ?? ''}}
                                                         @else N/A @endif</span></li>
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
                                                         @if(isset($universitycrousel->userUniversity->universityConsultant))
@@ -528,17 +520,18 @@
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
                                         <span class="price__text">City :</span>
-                                        <span class="price__num">{{$universitycrousel->userUniversity->city}}</span>
+                                        <span class="price__num">{{$universitycrousel->userUniversity->city ?? ''}}</span>
                                         {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                     </p>
 
-                           <a href="{{route('university_detail',['id'=>$universitycrousel->userUniversity->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                           <a @if(isset($universitycrousel->userUniversity->id)) href="{{route('university_detail',['id'=>$universitycrousel->userUniversity->id ?? ''])}}" @else href="javascript:void(0);" @endif><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
 
 
                                 </div>
                             </div>
                         </div>
-                        {{-- @endif --}}
+                           @endif
+
                         @endforeach<!-- end card-item -->
                         @endif
                 </div><!-- end hotel-card-carousel -->
