@@ -34,7 +34,8 @@ class UniversityExcelController extends Controller
     {
         // dd($request->all());
         $category = $request->category_id;
-        Excel::import(new CoursesImport($category),request()->file('file'));
+        $type = $request->type;
+        Excel::import(new CoursesImport($category,$type),request()->file('file'));
 
         return redirect()->back()->with('success','Course Uploaded Successfully');
     }
