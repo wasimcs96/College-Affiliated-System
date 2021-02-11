@@ -218,7 +218,7 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="address">Describe Yourself</label>
-                            <textarea rows="4" name="about_me"  type="text" class="form-control" placeholder="Address" required>@if(isset(auth()->user()->university->about_me)){{auth()->user()->university->about_me}}@endif</textarea>
+                            <textarea rows="4" minlength="150" name="about_me"  type="text" class="form-control" placeholder="Address" required>@if(isset(auth()->user()->university->about_me)){{auth()->user()->university->about_me}}@endif</textarea>
                         </div>
                     </div>
 

@@ -41,6 +41,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <?php $blogs=App\Models\Blog::orderBy('serial_number', 'ASC')->get();?>
+                    @if($blogs->count() > 0)
                     @foreach($blogs as $blog)
                 @if($blog->status == 1 ?? '')
                     <div class="col-lg-4 responsive-column">
@@ -86,7 +87,11 @@
                     @endforeach
                <!-- end col-lg-6 -->
 
-
+@else
+<div class="container" style="text-align: center;">
+<h2>Currently Unavailable</h2>
+</div>
+@endif
 
 
 

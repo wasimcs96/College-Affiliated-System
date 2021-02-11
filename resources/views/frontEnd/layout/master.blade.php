@@ -499,6 +499,7 @@
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Blogs</h4>
                     <ul class="list-items list--items">
                         <?php $footer_blogs=App\Models\Blog::take(6)->orderBy('Updated_at','DESC')->get() ?>
+                        @if($footer_blogs->count()>0)
                         @foreach($footer_blogs as $footer_blog)
                         <?php
                         $myfooterblog =$footer_blog->title ?? '';
@@ -513,7 +514,9 @@
 
                         <li><a href="{{route('blog_detail',['id'=>$footer_blog->id])}}"> <?php echo ($myfooterblog . '...')?></a></li>
                         @endforeach
-
+                        @else
+                        Unavailable
+@endif
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
