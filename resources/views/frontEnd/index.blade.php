@@ -1036,9 +1036,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container align-center">
-                                    <h1 style="text-align: center;">  Not Available </h1>
-                                      </div>
+                                <div class="container" style="text-align: center;">
+                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                                       </div>
 @endif
 
                             </div>
@@ -1184,9 +1184,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container align-center">
-                                    <h1 style="text-align: center;">  Not Available </h1>
-                                      </div>
+                                <div class="container" style="text-align: center;">
+                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                                       </div>
 @endif
 
                             </div>
@@ -1331,9 +1331,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container align-center">
-                                    <h1 style="text-align: center;">  Not Available </h1>
-                                      </div>
+                                <div class="container" style="text-align: center;">
+                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                                       </div>
 @endif
 
                             </div>
@@ -1477,9 +1477,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container align-center">
-                                    <h1 style="text-align: center;">  Not Available </h1>
-                                      </div>
+                                <div class="container" style="text-align: center;">
+                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                                       </div>
 @endif
                             </div>
                         </div><!-- end tab-pane -->
@@ -1623,9 +1623,9 @@
                                 @endif
                                 @endforeach
                                 @else
-                                <div class="container align-center">
-                                    <h1 style="text-align: center;">  Not Available </h1>
-                                      </div>
+                                <div class="container" style="text-align: center;">
+                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                                       </div>
 @endif
                             </div>
                         </div><!-- end tab-pane -->
