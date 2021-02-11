@@ -10,7 +10,7 @@
 ================================= -->
 <section class="hero-wrapper">
     <div class="hero-box  hero-bg "  style="
-    top: -76px;
+    top: -76px;z-index: 1;
 ">
         {{-- style="background-image: url('{{ asset('frontEnd/assets/images/svvg.svg')}}');" --}}
         <span class="line-bg line-bg1"></span>
@@ -40,7 +40,7 @@
                             </h2>
                         </div>
                     </div><!-- end hero-content -->
-                    <div class="section-tab text-center pl-4">
+                    <div class="section-tab text-center pl-4" style="font-size: 78%;">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center active" id="flight-tab" data-toggle="tab" href="#flight" role="tab" aria-controls="flight" aria-selected="true">
@@ -328,7 +328,7 @@
   </div> --}}
 
   <section class="col1 wrapped XXsnipcss_extracted_selector_selectionXX">
-    <div class="colblock" style="margin-top: 65px;">
+    <div class="colblock" style="margin-top: 65px;display: contents;">
       <div data-module="Onboarding:OnboardingBar" class="Module StudyPortals_Shared_Modules_Onboarding_OnboardingBar_OnboardingBar">
         <section id="OnboardingBar">
           <ul class="OnboardingList" id="ulid">
@@ -700,7 +700,7 @@
         {{-- <div class="row">
 
             <div class="col-lg-6">
-                <lottie-player src="{{asset('frontEnd/assets/json/book_loti.json')}}"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+                <lottie-player src="{{asset('frontEnd/assets/json/book_loti.json')}}"  background="transparent"  speed="1"  style="width: 100%; height: auto;"  loop  autoplay></lottie-player>
 
 
                 <!-- end section-heading -->
@@ -774,7 +774,7 @@
       <div class="row">
 
           <div class="col-lg-6">
-              <lottie-player src="{{asset('frontEnd/assets/json/book_loti.json')}}"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+              <lottie-player src="{{asset('frontEnd/assets/json/book_loti.json')}}"  background="transparent"  speed="1"  style="width: 100%; height: auto;"  loop  autoplay></lottie-player>
 
 
               <!-- end section-heading -->
@@ -1801,9 +1801,9 @@
                     <div class="card-img">
                         <a href="{{route('blog_detail', $blog->id ?? '')}}">
                             @if(isset($blog->main_image) && file_exists($blog->main_image))
-                            <img style="height: 231.25px; width: 370px;" src="{{asset($blog->main_image ?? '')}}" alt="blog-img">
+                            <img style="height: auto; width: 100%;" src="{{asset($blog->main_image ?? '')}}" alt="blog-img">
                            @else
-                           <img style="height: 231.25px; width: 370px;" src="{{asset('assets/default/default-blog.jpg')}}" alt="blog-img">
+                           <img style="height: auto; width: 100%;" src="{{asset('assets/default/default-blog.jpg')}}" alt="blog-img">
                            @endif
                         </a>
                         <div class="post-format icon-element">
@@ -1970,7 +1970,7 @@
                 <div class="mobile-img">
                     {{-- <img src="{{ asset('frontEnd/assets/images/mobile-app.png') }}" alt="mobile-img"> --}}
                     {{-- <img src="{{ asset('frontEnd/assets/images/contactus.gif') }}" alt="mobile-img"> --}}
-                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_vulsjlia.json')}}"  background="transparent"  speed="1"  style="width: 785px;height: 646px;"  loop  autoplay></lottie-player>
+                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_vulsjlia.json')}}"  background="transparent"  speed="1"  style="width: 100%;height: auto;"  loop  autoplay></lottie-player>
                 </div>
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->

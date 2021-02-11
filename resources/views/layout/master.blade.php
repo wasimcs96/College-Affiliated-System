@@ -104,6 +104,12 @@
         }
 
     </style> --}}
+     <!-- PWA -->
+     <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="./src/nav.css">
+<!-- /PWA -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/animate-css/vivify.min.css') }}">
@@ -120,10 +126,150 @@
     @endif
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('assets/css/site.min.css') }}">
+    <style>
+       /* sidebar css */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #22252a;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #17a2b8;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* sidebar css */
+
+    /* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .hide-on-desktop{
+        display: none !important;
+    }
+}
+/* Desktop and large devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+    .hide-on-mobile{
+        display: none !important;
+    }
+}
+
+        /* PWA CSS */
+        .nav123 {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #22252a;
+    display: flex;
+    overflow-x: auto;
+}
+.imran:hover{
+        background-color: #282b2f !important;
+        color:#17a2b8!important;
+}
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #a5a8ad;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.nav__link:hover {
+    background-color: #eeeeee;
+}
+
+.nav__link--active {
+    color: #17a2b8;
+}
+
+.nav__icon {
+    font-size: 18px;
+}
+/* PWA CSS */
+
+    </style>
 </head>
 
 <body class="font-montserrat theme-cyan">
+<!-- sidebar html -->
+<div id="mySidenav" class="sidenav" style="z-index:100;">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">Demo1</a>
+  <a href="#">Demo2</a>
+  <a href="#">Demo3</a>
+  <a href="#">Demo4</a>
+</div>
+<!-- /sidebar html -->
 
+<!-- PWA  -->
+<nav class="nav123 hide-on-desktop" style="z-index:2;">
+        <a href="{{route('front')}}" class="imran nav__link nav__link--active">
+            <i class="material-icons nav__icon">home</i>
+            <span class="nav__text">Home</span>
+        </a>
+
+        <a href="#" class="nav__link imran">
+            <i class="material-icons nav__icon">supervisor_account</i>
+            <span class="nav__text">Consultant</span>
+        </a>
+
+        <a href="#" class="nav__link imran">
+            <i class="material-icons nav__icon">dashboard</i>
+            <span class="nav__text">Dashboard</span>
+        </a>
+
+        <a href="#" class="nav__link imran">
+            <i class="material-icons nav__icon">school</i>
+            <span class="nav__text">Find university</span>
+        </a>
+
+        <a href="#" class="nav__link imran" onclick="openNav()">
+            <i class="material-icons nav__icon">more</i>
+            <!-- <span class="nav__text">More</span> -->
+            <span class="nav__text" style="cursor:pointer" >More</span>
+        </a>
+    </nav>
+<!-- /PWA -->
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
@@ -213,7 +359,18 @@
 
     </div>
 </div>
+<!-- sidebar script -->
 
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+<!-- /sidebar script -->
 <!-- Scripts -->
 @stack('before-scripts')
 <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>

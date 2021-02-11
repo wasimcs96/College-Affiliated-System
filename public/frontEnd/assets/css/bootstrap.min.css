@@ -4000,7 +4000,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 .nav-link {
     display: block;
-    padding: .5rem 1rem
+    padding: 0.5208333333333334vw 1.0416666666666667vw;
 }
 
 .nav-link:focus, .nav-link:hover {
