@@ -25,10 +25,10 @@
             <div class="col-lg-6">
                 <div class="container">
                 <div class="modal-header"  style="
-                border-bottom-color: #d0cfd1;
+                border-bottom-color: #d0cfd1;   justify-content: center;
             ">
                     <div >
-                        <h5 class="modal-title title" id="exampleModalLongTitle2" style="color: #f16d01;">Hello! Welcome to your account</h5>
+                        <h4 class="modal-title title" id="exampleModalLongTitle2" style="color: #f16d01;">Hello! Welcome to your account</h4>
                         {{-- <p class="font-size-14"></p> --}}
                     </div>
 
@@ -106,7 +106,7 @@
             <section class="testimonial-area">
                 <div class="container">
                   <div class="section-heading text-center" >
-                      <h2> How it works</h2>
+                      <h2 style="padding: 5px;"> How it works</h2>
                       <hr>
 
                   <div class="container">

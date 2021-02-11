@@ -20,7 +20,7 @@
             <div class="col-lg-6">
                 <div class="container">
                     <div class="modal-header"  style="
-                    border-bottom-color: #d0cfd1;
+                    border-bottom-color: #d0cfd1;   justify-content: center;
                 ">
                         <h5 class="modal-title" id="registerModal" style="color: #f16d01;">Create a New Account</h5>
 
@@ -110,7 +110,7 @@
             <section class="testimonial-area">
                 <div class="container">
                   <div class="section-heading text-center" >
-                      <h2> How it works</h2>
+                      <h2 style="padding: 3px;"> How it works</h2>
                       <hr>
 
                   <div class="container">
