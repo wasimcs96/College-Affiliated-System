@@ -704,7 +704,7 @@ var university_id=$('#university').val();
 console.log(university_id);
 if( university_id == '')
 {
-$('#universityError').html('<label class="label-text">Select University</label><div class="form-group"><span class="la la-user form-icon"></span><select  multiple class="form-control" placeholder="University" id="university" name="university"><?php $universities = \App\Models\University::get();  ?>@foreach($universities as $university)<option value="{{$university->user_id}}">{{$university->university_name}}</option>@endforeach</select></div><strong><span style="color:red">*This field is required</span></strong>')
+$('#universityError').html('<span class="la la-university mr-1 form-icon"></span><label class="label-text">Select University</label><div class="form-group"><select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university"><?php $universities = \App\Models\University::get();?>@foreach($universities as $university)<option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}}</option>@endforeach</select></div><strong><span style="color:red">*This field is required</span></strong>')
 }
 else
 {
@@ -833,4 +833,5 @@ window.location.reload();
 </body>
 
 </html>
+
 
