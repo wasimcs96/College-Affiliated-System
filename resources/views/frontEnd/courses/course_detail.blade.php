@@ -30,93 +30,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div style="position: absolute;bottom: 8px;left: 16px;" >
-                        {{-- <section class="hero-wrapper hero-wrapper5">
-                         <div class=" pb-0 ">
-                            <div class="container">
 
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="search-fields-container search-fields-container-shape">
-                                            <div class="search-fields-container-inner">
-                                                <div class="contact-form-action">
-                                                    <form action="#" class="row">
-                                                        <div class="col-lg-3 col-sm-6 pr-0">
-                                                            <div class="input-box">
-                                                                <label class="label-text">Where would like to go?</label>
-                                                                <div class="form-group">
-                                                                    <div class="select-contain select-contain-shadow w-auto">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div><!-- end col-lg-3 -->
-                                                        <div class="col-lg-3 col-sm-6 pr-0">
-                                                            <div class="input-box">
-                                                                <label class="label-text">Departs as early as</label>
-                                                                <div class="form-group">
-                                                                    <span class="la la-calendar form-icon"></span>
-                                                                    <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
-                                                                </div>
-                                                            </div>
-                                                        </div><!-- end col-lg-3 -->
-                                                        <div class="col-lg-3 col-sm-6 pr-0">
-                                                            <div class="input-box">
-                                                                <label class="label-text">Departs as late as</label>
-                                                                <div class="form-group">
-                                                                    <span class="la la-calendar form-icon"></span>
-                                                                    <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
-                                                                </div>
-                                                            </div>
-                                                        </div><!-- end col-lg-3 -->
-                                                        <div class="col-lg-3 col-sm-6">
-                                                            <div class="input-box">
-                                                                <label class="label-text">Travelers in the cabin</label>
-                                                                <div class="form-group">
-                                                                    <div class="dropdown dropdown-contain">
-                                                                        <a class="dropdown-toggle dropdown-btn" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                                                                            <span>Travelers <span class="qtyTotal guestTotal_8">0</span></span>
-                                                                        </a>
-                                                                        <div class="dropdown-menu dropdown-menu-wrap">
-                                                                            <div class="dropdown-item">
-                                                                                <div class="qty-box d-flex align-items-center justify-content-between">
-                                                                                    <label>Adults</label>
-                                                                                    <div class="qtyBtn d-flex align-items-center">
-                                                                                        <input type="text" name="qtyInput" value="0">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="dropdown-item">
-                                                                                <div class="qty-box d-flex align-items-center justify-content-between">
-                                                                                    <label>Children</label>
-                                                                                    <div class="qtyBtn d-flex align-items-center">
-                                                                                        <input type="text" name="qtyInput" value="0">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="dropdown-item">
-                                                                                <div class="qty-box d-flex align-items-center justify-content-between">
-                                                                                    <label>Infants</label>
-                                                                                    <div class="qtyBtn d-flex align-items-center">
-                                                                                        <input type="text" name="qtyInput" value="0">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div><!-- end dropdown -->
-                                                                </div>
-                                                            </div>
-                                                        </div><!-- end col-lg-3 -->
-                                                    </form>
-                                                </div>
-
-                                            </div>
-                                        </div><!-- end search-fields-container -->
-                                    </div>
-                                </div><!-- end row -->
-                            </div><!-- end container -->
-
-                        </div>
-                    </section> --}}
                 </div>
                     <div class="breadcrumb-btn">
                         <div class="btn-box"  style="
@@ -364,7 +278,7 @@
                                                 {{-- </p> --}}
                                             </div>
                                             <div>
-                                          <a href="{{route('course_detail',['id'=> $category->id])}}" class="theme-btn theme-btn-small mt-2" ><span style="color: #ff7504;">Detail<i class="las la-angle-double-right"></i></span><a>
+                                          <a href="{{route('course_detail',['id'=> $category->id])}}" class="btn btn-primary text-light"  ><span style="color: white;">Detail<i class="las la-angle-double-right"></i></span><a>
 
 
                                             </div>
@@ -394,7 +308,7 @@
     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
-                    <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
+                    <a href="{{$advertise->link ?? ''}}"  id="click_count" link_click="{{$advertise->id ?? ''}}" target="_blank">
                     <div class="discount-box">
                         <div class="discount-img">
 
@@ -416,7 +330,7 @@
                         </div><!-- end discount-content -->
                         <div class="company-logo">
                             <img src="images/logo2.png" alt="">
-                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name}}</p>
+                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name ?? ''}}</p>
                         </div><!-- end company-logo -->
                     </div>
                 </a>
@@ -443,8 +357,8 @@
                         @if (isset($universities))
 
                         @foreach($universities as $courseuniversity)
-                        {{-- {{dd($courseuniversity->id)}} --}}
-                        {{-- @if($consultant->isConsultant()) --}}
+                        {{-- {{dd($courseuniversity)}} --}}
+                        @if($courseuniversity->status == 1)
                         <div class="card-item car-card border" style=" margin-bottom: 22px;">
                             <div class="card-img" style="text-align: center; height:185px;">
 
@@ -550,7 +464,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- @endif --}}
+                        @endif
                         @endforeach<!-- end card-item -->
                         @endif
                 </div><!-- end hotel-card-carousel -->
