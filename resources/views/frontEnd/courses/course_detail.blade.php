@@ -445,9 +445,7 @@
                         @foreach($universities as $courseuniversity)
                         {{-- {{dd($courseuniversity->id)}} --}}
                         {{-- @if($consultant->isConsultant()) --}}
-                        <div class="card-item car-card border" style="
-                        margin-bottom: 22px;
-                    ">
+                        <div class="card-item car-card border" style=" margin-bottom: 22px;">
                             <div class="card-img" style="text-align: center; height:185px;">
 
                                 <a href="{{route('university_detail',['id' => $courseuniversity->id])}}" class="d-block">
@@ -472,10 +470,7 @@
                                         @if($courseuniversity->Premium_expire_date > $mytime)<span style="
                                         background-color: #073975;
                                     " class="badge">Premium</span> @endif
-                                {{-- <span class="badge">Top Ranked</span> --}}
-                                {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
-                                    <i class="la la-heart-o"></i>
-                                </div> --}}
+
                             </div>
                             <div class="card-body">
                                 <h3 class="card-title"><a href="{{route('university_detail',['id' => $courseuniversity->id])}}">{{$courseuniversity->university->university_name}}</a>   @if($courseuniversity->is_verified == 1)

@@ -140,7 +140,7 @@
         </div><!-- end row -->
 
         <div class="row">
-            @if(count($consultants) > 0)
+            @if(count($consultants) >0)
         @foreach($consultants as $consultant)
         @if($consultant->isConsultant())
             <div class="col-lg-4 responsive-column">
@@ -175,7 +175,7 @@
                     </div>
                     <div class="card-body">
                         {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
-                        <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->consultant->company_name ?? ''}} </a>    @if($consultant->is_verified == 1)
+                        <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}"> @if(isset($consultant->first_name)) {{$consultant->first_name ?? ''}} {{$consultant->last_name ?? ''}} @else N/A @endif</a>    @if($consultant->is_verified == 1)
                             <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                         @endif</h3>
                         <div class="card-rating">

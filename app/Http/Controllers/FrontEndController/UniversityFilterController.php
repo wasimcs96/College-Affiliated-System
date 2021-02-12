@@ -219,7 +219,7 @@ if($courses->count()>0){
                 }
             }
         } else {
-            $query = User::where('countries_id', $request->countries_id)->with(['consultant'])->get();
+            $query = User::where('countries_id', $request->countries_id)->where('status',1)->with(['consultant'])->get();
 
             foreach ($query as $key => $que) {
 
@@ -255,7 +255,7 @@ if($courses->count()>0){
         } else {
 
 
-            $query = User::where('countries_id', $request->countries_id)->with(['consultant'])->get();
+            $query = User::where('countries_id', $request->countries_id)->where('status',1)->with(['consultant'])->get();
 
             foreach ($query as $key => $que) {
 

@@ -455,7 +455,8 @@
                         float: right;
                     "><a  href="{{route('university_all')}}" class="theme-btn theme-btn-small mt-2">View all</a></span></h4>
                     <hr>
-                    <?php $universities = App\Models\User::get();
+
+                    <?php $universities = App\Models\User::where('status',1)->get();
                     ?>
                         <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
 
@@ -543,7 +544,7 @@
                                         $myvalue = implode(' ', $myvalue);
                                         // $myvalue = $myvalue . ' ...';
                                     } ?>
-                                <p class="testi__desc"><?php echo ($myvalue . '...')?></p>
+                                <p class="testi__desc">@if(isset($university->university->about_me)) <?php echo ($myvalue . '...')?> @else N/A @endif</p>
 
 
 
@@ -580,7 +581,7 @@
                     <hr>
                     <?php $consultanttime=Carbon\Carbon::now()->format('Y-m-d');?>
 
-                    <?php $consultants = App\Models\User::get();
+                    <?php $consultants = App\Models\User::where('status',1)->get();
                     ?>
                     @if($consultants->count()>0)
                     <div class="testimonial-carousel carousel-action">
@@ -665,7 +666,7 @@
                                         $myvalue = implode(' ', $myvalue);
                                         // $myvalue = $myvalue . ' ...';
                                     } ?>
-                                <p class="testi__desc"><?php echo ($myvalue . '...')?></p>
+                                <p class="testi__desc"> @if(isset($consultant->consultant->about_me))<?php echo ($myvalue . '...')?> @else N/A @endif</p>
                                 <span class="price__text"><b>City :</b></span>
                                 <span class="price__num">{{$consultant->city ?? ''}}</span>
                                 <a style="
@@ -808,7 +809,7 @@
                         </div><!-- end section-heading -->
                         </div><!-- end col-lg-12 -->
                         </div><!-- end row -->
-                        <?php $categories = App\Models\Category::all() ?>
+                        <?php $categories = App\Models\Category::where('status',1)->get() ?>
                         @if($categories->count() > 0)
                         <div class="row padding-top-80px" style="
                         justify-content: center;
@@ -816,7 +817,7 @@
 
                         @foreach($categories as $category)
                         @if($category->parent_id == null)
-                        @if($category->status == 1)
+                        {{-- @if($category->status == 1) --}}
                         <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                             @csrf
                         <input type="hidden" name="category" value="{{$category->id ?? ''}}">
@@ -837,7 +838,7 @@
                         </div>
                         </button>
                         </form>
-                        @endif
+                        {{-- @endif --}}
                         @endif
                         @endforeach
                         </div><!-- end row -->
@@ -899,7 +900,7 @@
                     <div class="tab-content" id="myTabContent4">
                         <div class="tab-pane fade show active" id="new-york" role="tabpanel" aria-labelledby="new-york-tab">
                             <div class="row">
-                                <?php $usa = App\Models\User::where('countries_id',223)->orderBy('rating', 'DESC')->limit(6)->get();?>
+                                <?php $usa = App\Models\User::where('countries_id',223)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
                                 @if($usa->count()> 0)
                                 {{-- {{dd($usa)}} --}}
                                 @foreach($usa as $us)
@@ -1045,7 +1046,7 @@
                         </div><!-- end tab-pane -->
                         <div class="tab-pane fade" id="hong-kong" role="tabpanel" aria-labelledby="hong-kong-tab">
                             <div class="row">
-                                <?php $uka = App\Models\User::where('countries_id',222)->orderBy('rating', 'DESC')->limit(6)->get();?>
+                                <?php $uka = App\Models\User::where('countries_id',222)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
                                 {{-- {{dd($usa)}} --}}
                                 @if($uka->count()> 0)
                                 @foreach($uka as $uk)
@@ -1193,7 +1194,7 @@
                         </div><!-- end tab-pane -->
                         <div class="tab-pane fade" id="seoul" role="tabpanel" aria-labelledby="seoul-tab">
                             <div class="row">
-                                <?php $irel = App\Models\User::where('countries_id',103)->orderBy('rating', 'DESC')->limit(6)->get();?>
+                                <?php $irel = App\Models\User::where('countries_id',103)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
                                 {{-- {{dd($usa)}} --}}
                                 @if($irel->count()> 0)
 
@@ -1340,7 +1341,7 @@
                         </div><!-- end tab-pane -->
                         <div class="tab-pane fade" id="tokyo" role="tabpanel" aria-labelledby="tokyo-tab">
                             <div class="row">
-                                <?php $cana = App\Models\User::where('countries_id',38)->orderBy('rating', 'DESC')->limit(6)->get();?>
+                                <?php $cana = App\Models\User::where('countries_id',38)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
                                 {{-- {{dd($usa)}} --}}
                                 @if($cana->count()> 0)
                                 @foreach($cana as $can)
@@ -1485,7 +1486,7 @@
                         </div><!-- end tab-pane -->
                         <div class="tab-pane fade" id="beijing" role="tabpanel" aria-labelledby="beijing-tab">
                             <div class="row">
-                                <?php $aust = App\Models\User::where('countries_id',13)->orderBy('rating', 'DESC')->limit(6)->get();?>
+                                <?php $aust = App\Models\User::where('countries_id',13)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
                                 {{-- {{dd($usa)}} --}}
                                 @if($aust->count()> 0)
 
@@ -1792,7 +1793,7 @@
         </div><!-- end row -->
         <div class="row padding-top-50px">
             <?php $blogs=App\Models\Blog::where('status',1)->limit(3)->get()?>
-
+@if($blogs->count() > 0)
             @foreach($blogs as $blog)
             {{-- @if($blog->status == 1) --}}
             <div class="col-lg-4 responsive-column">
@@ -1840,92 +1841,7 @@
             </div>
             {{-- @endif --}}
             @endforeach<!-- end col-lg-4 -->
-            {{-- <div class="col-lg-4 responsive-column">
-                <div class="card-item blog-card">
-                    <div class="card-img">
-                        <img src="{{ asset('frontEnd/assets/images/blog-img2.jpg') }}" alt="blog-img">
-                        <div class="post-format icon-element">
-                            <i class="la la-play"></i>
-                        </div>
-                        <div class="card-body">
-                            <div class="post-categories">
-                                <a href="#" class="badge">Video</a>
-                            </div>
-                            <h3 class="card-title line-height-26"><a href="blog-single.html">My Best Learing Tips: The Ultimate Learning Guide</a></h3>
-                            <p class="card-meta">
-                                <span class="post__date"> 1 February, 2020</span>
-                                <span class="post-dot"></span>
-                                <span class="post__time">4 Mins read</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <div class="author-content d-flex align-items-center">
-                            <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/small-team2.jpg') }}" alt="testimonial image">
-                            </div>
-                            <div class="author-bio">
-                                <a href="#" class="author__title">Phillip Hunt</a>
-                            </div>
-                        </div>
-                        <div class="post-share">
-                            <ul>
-                                <li>
-                                    <i class="la la-share icon-element"></i>
-                                    <ul class="post-share-dropdown d-flex align-items-center">
-                                        <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                                        <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 --> --}}
-            {{-- <div class="col-lg-4 responsive-column">
-                <div class="card-item blog-card">
-                    <div class="card-img">
-                        <img src="{{ asset('frontEnd/assets/images/blog-img3.jpg') }}" alt="blog-img">
-                        <div class="post-format icon-element">
-                            <i class="la la-music"></i>
-                        </div>
-                        <div class="card-body">
-                            <div class="post-categories">
-                                <a href="#" class="badge">audio</a>
-                            </div>
-                            <h3 class="card-title line-height-26"><a href="blog-single.html">By all Means, Learn from Popular universities & Don’t Rule Out Other Universities</a></h3>
-                            <p class="card-meta">
-                                <span class="post__date"> 1 March, 2020</span>
-                                <span class="post-dot"></span>
-                                <span class="post__time">3 Mins read</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <div class="author-content d-flex align-items-center">
-                            <div class="author-img">
-                                <img src="{{ asset('frontEnd/assets/images/small-team3.jpg') }}" alt="testimonial image">
-                            </div>
-                            <div class="author-bio">
-                                <a href="#" class="author__title">Luke Jacobs</a>
-                            </div>
-                        </div>
-                        <div class="post-share">
-                            <ul>
-                                <li>
-                                    <i class="la la-share icon-element"></i>
-                                    <ul class="post-share-dropdown d-flex align-items-center">
-                                        <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                                        <li><a href="#"><i class="lab la-instagram"></i></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 --> --}}
+
         </div><!-- end row -->
         <div class="row">
             <div class="col-lg-12">
@@ -1934,6 +1850,9 @@
                 </div>
             </div>
         </div>
+        @else
+        <div class="container" style="text-align:center;"> <h2> Currently unavailable</h2></div>
+          @endif
     </div><!-- end container -->
 </section><!-- end blog-area -->
 <!-- ================================
