@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ApplicationAppliedUniversity extends Model
 {
+    use softDeletes;
     protected $fillable = ['university_id','consultant_id','documents', 'course_id', 'application_id','country_id', 'note','status','document','fees','scholarship'];
 
+    protected $dates = ['deleted_at'];
     public function university()
     {
         return $this->belongsTo(University::class,'university_id');
