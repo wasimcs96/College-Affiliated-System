@@ -264,7 +264,7 @@
                                 <ul class="list-items">
                             @if($universityconsultant->count() > 0)
                                     @foreach($universityconsultant as $universitycon)
-                                    @if($universitycon->status == 1)
+                                    @if($universitycon->useruniversity->status == 1)
                                     @if(isset($universitycon->userUniversity->Premium_expire_date))
                                     @if($universitycon->userUniversity->Premium_expire_date > $mytime)
 
@@ -416,8 +416,8 @@
                         @if ($consultant->consultantUniversity->count() > 0)
                         <?php $universitycrousels=$consultant->consultantUniversity; ?>
                         @foreach($universitycrousels as $universitycrousel)
-
-                           @if($universitycrousel->deleted_at == NULL)
+                        @if($universitycrousel->deleted_at == NULL)
+                        @if($universitycrousel->userUniversity->status == 1)
                            <div class="card-item car-card border">
                             <div class="card-img"  style="text-align: center; height:185px;">
 
@@ -530,6 +530,7 @@
                                 </div>
                             </div>
                         </div>
+                           @endif
                            @endif
 
                         @endforeach<!-- end card-item -->
