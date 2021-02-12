@@ -168,7 +168,7 @@
         <div class="row">
             @if(count($universities) > 0)
             @foreach($universities as $university)
-
+@if($university)
             @if($university->isUniversity())
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
@@ -300,10 +300,11 @@
                 </div><!-- end card-item -->
             </div>
             @endif
+            @endif
             @endforeach
             @else
             <div class="container" style="text-align: center;">
-                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}" style="width: 100%;height: auto;">
             </div>
             @endif
         </div><!-- end row -->

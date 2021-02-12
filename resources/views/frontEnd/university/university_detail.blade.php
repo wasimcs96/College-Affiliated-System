@@ -65,12 +65,12 @@
 
                                  @endif
                                  @endforeach --}}
-                                 @if(isset($university->profile_image) && file_exists($university->profile_image))
-                            <a class="theme-btn" data-src=" {{asset($university->profile_image)}}" data-fancybox="gallery" data-caption="Showing image - 1" data-speed="700">
+                                 @if( $medias->count() > 0)
+                            <a class="theme-btn"  data-src=" {{asset($university->profile_image)}}" data-fancybox="gallery" data-caption="Showing image - 1" data-speed="700">
                                 <i class="la la-photo mr-2"></i>Gallery
                             </a>
                             @else
-                            <a class="theme-btn" data-src="{{ asset('assets/images/user.png') }}" data-fancybox="gallery" data-caption="Showing image - 1" data-speed="700">
+                            <a class="btn btn-success btn-lg" type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Media  Unavailable" style="background-color:#073975; color:white; border-color:white; " >
                                 <i class="la la-photo mr-2"></i>Gallery
                             </a>
                             @endif
@@ -83,8 +83,11 @@
                         <a class="d-none"
                              data-fancybox="gallery"
                             {{-- {{ dd($media->media) }} --}}
+                            @if(isset($media->media))
                              data-src="{{asset($media->media)}}"
-
+                                @else
+                            data-src="{{asset('assets/default/default-banner.jpg')}}"
+                                @endif
                              data-caption="Showing gallery - {{$i}}"
                              data-speed="700"></a>
                              <?php $i++ ?>
@@ -556,7 +559,10 @@
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id ?? ''])}}">{{$consultant->userConsultant->first_name ?? ''}}{{$consultant->userConsultant->lasts_name ?? ''}}</a>
+                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id ?? ''])}}">
+                                    @if(isset($consultant->userConsultant->first_name ))
+                                    {{$consultant->userConsultant->first_name ?? ''}}{{$consultant->userConsultant->lasts_name ?? ''}}
+                                @else N/A @endif</a>
                                     @if($consultant->userConsultant->is_verified ?? '' == 1)
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                                 @endif
