@@ -24,8 +24,8 @@ class ConsultantFrontController extends Controller
 
     public function index_all()
     {
-        $universities = User::all();
-        return view('frontEnd.consultant.consultant_all')->with('consultants', User::all());
+        $universities = User::where('status',1)->get();
+        return view('frontEnd.consultant.consultant_all')->with('consultants', User::where('status',1)->get());
     }
 
     public function index_single($id)
@@ -67,8 +67,8 @@ class ConsultantFrontController extends Controller
         //  dd($check);
         $bookings = Booking::where('booking_date', $check)->where('status','!=',3)->get();
         if ($bookings->count() > 0) {
-           
-        
+
+
         foreach ($bookings as $key => $booking) {
 
             $datanew[] = "'.$booking->booking_start_time.'-'.$booking->booking_end_time.'";
@@ -95,7 +95,7 @@ class ConsultantFrontController extends Controller
 
     function fetch_Course(Request $request)
     {
-        $fetch = User::where('id', $request->universityid)->first();
+        $fetch = User::where('id', $request->universityid)->where('status',1)->first();
         $courses =  $fetch->universityCourse;
         $output = '<option value="" selected>Choose Course</option>';
         foreach ($courses as $row) {

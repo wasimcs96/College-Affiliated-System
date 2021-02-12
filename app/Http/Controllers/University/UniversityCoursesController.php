@@ -200,7 +200,7 @@ class UniversityCoursesController extends Controller
         $categories=Category::where('parent_id',$request->parentid)->get();
         if(isset($categories))
         {
-        $output='<option value="" selected>Select Discipline</option>';
+        $output='<option value="" selected>Select Sub Discipline</option>';
         foreach($categories as $row)
         {
          $output .= '<option value="'.$row->id.'">'.$row->title.'</option>';
@@ -220,7 +220,7 @@ class UniversityCoursesController extends Controller
         $categories=Category::where('parent_id',$request->parentid)->get();
         if(isset($categories))
         {
-        $output='<option value="" selected>Select Discipline</option>';
+        $output='<option value="" selected>Select Sub Discipline</option>';
         foreach($categories as $row)
         {
          $output .= '<option value="'.$row->id.'">'.$row->title.'</option>';

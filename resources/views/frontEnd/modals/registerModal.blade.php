@@ -110,7 +110,7 @@
             <section class="testimonial-area">
                 <div class="container">
                   <div class="section-heading text-center" >
-                      <h2> How it works</h2>
+                      <h2 style="padding: 3px;"> How it works</h2>
                       <hr>
 
                   <div class="container">

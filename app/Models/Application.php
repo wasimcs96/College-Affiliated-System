@@ -1,18 +1,15 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
+    use softDeletes;
     protected $fillable = ['booking_id','client_id','consultant_id','note','status','documents'];
 
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class,'client_id');
-    // }
-
+    protected $dates = ['deleted_at'];
     public function user()
     {
         return $this->belongsTo(User::class,'client_id');

@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 use App\Models\ConsultantAvailableSlots;
 use App\Models\UniversityConsultant;
 use App\Models\UniversityConsultantClient;
 class Consultant extends Model
 {
+    use softDeletes;
     protected $fillable = [
         'user_id',
         'company_name',
@@ -22,7 +24,7 @@ class Consultant extends Model
         'cover_image'
 
     ];
-
+    protected $dates = ['deleted_at'];
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');

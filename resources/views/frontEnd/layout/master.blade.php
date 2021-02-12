@@ -499,6 +499,7 @@
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Blogs</h4>
                     <ul class="list-items list--items">
                         <?php $footer_blogs=App\Models\Blog::take(6)->orderBy('Updated_at','DESC')->get() ?>
+                        @if($footer_blogs->count()>0)
                         @foreach($footer_blogs as $footer_blog)
                         <?php
                         $myfooterblog =$footer_blog->title ?? '';
@@ -513,7 +514,9 @@
 
                         <li><a href="{{route('blog_detail',['id'=>$footer_blog->id])}}"> <?php echo ($myfooterblog . '...')?></a></li>
                         @endforeach
-
+                        @else
+                        Unavailable
+@endif
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -701,7 +704,7 @@ var university_id=$('#university').val();
 console.log(university_id);
 if( university_id == '')
 {
-$('#universityError').html('<label class="label-text">Select University</label><div class="form-group"><span class="la la-user form-icon"></span><select  multiple class="form-control" placeholder="University" id="university" name="university"><?php $universities = \App\Models\University::get();  ?>@foreach($universities as $university)<option value="{{$university->user_id}}">{{$university->university_name}}</option>@endforeach</select></div><strong><span style="color:red">*This field is required</span></strong>')
+$('#universityError').html('<span class="la la-university mr-1 form-icon"></span><label class="label-text">Select University</label><div class="form-group"><select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university"><?php $universities = \App\Models\University::get();?>@foreach($universities as $university)<option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}}</option>@endforeach</select></div><strong><span style="color:red">*This field is required</span></strong>')
 }
 else
 {
@@ -820,8 +823,15 @@ window.location.reload();
 }
     });
   </script>
+  <script>
+    $(document).on('click', '#closeLoginForm', function ()
+    {
+        document.getElementById("login-form").reset();
+    });
+  </script>
 @yield('per_page_script')
 </body>
 
 </html>
+
 

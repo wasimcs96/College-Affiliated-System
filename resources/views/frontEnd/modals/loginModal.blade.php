@@ -16,7 +16,7 @@
                         height: 70px;
                     ">
                     </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeLoginForm">
                         <span aria-hidden="true" class="la la-close"></span>
                     </button>
                 </div>
@@ -28,7 +28,7 @@
                 border-bottom-color: #d0cfd1;
             ">
                     <div >
-                        <h5 class="modal-title title" id="exampleModalLongTitle2" style="color: #f16d01;">Hello! Welcome to your account</h5>
+                        <h4 class="modal-title title" id="exampleModalLongTitle2" style="color: #f16d01;">Hello! Welcome to your account</h4>
                         {{-- <p class="font-size-14"></p> --}}
                     </div>
 
@@ -106,7 +106,7 @@
             <section class="testimonial-area">
                 <div class="container">
                   <div class="section-heading text-center" >
-                      <h2> How it works</h2>
+                      <h2 style="padding: 5px;"> How it works</h2>
                       <hr>
 
                   <div class="container">

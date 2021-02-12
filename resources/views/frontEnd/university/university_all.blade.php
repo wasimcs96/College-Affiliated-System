@@ -168,7 +168,7 @@
         <div class="row">
             @if(count($universities) > 0)
             @foreach($universities as $university)
-
+@if($university)
             @if($university->isUniversity())
             <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
@@ -299,6 +299,7 @@
                     </div>
                 </div><!-- end card-item -->
             </div>
+            @endif
             @endif
             @endforeach
             @else

@@ -13,7 +13,12 @@ use App\Models\Package;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\Consultant;
+use App\Models\Application;
+use App\Models\ApplicationAppliedUniversity;
+use App\Models\UniversityConsultant;
 use App\Models\University;
+use App\Models\UniversityCourse;
+use App\Models\UniversityMedia;
 use Illuminate\Support\Facades\Mail;
 class AdminUsersController extends Controller
 {
@@ -22,7 +27,6 @@ class AdminUsersController extends Controller
         // dd($id);
         if($id==1)
         {
-
            return view('admin.users.user.index')->with('users', User::all())->with('id',1);
         }
         if($id==2)
@@ -178,7 +182,85 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->delete();
+        if($user != null)
+        {
+            $user->delete();
+        }
+
+        $university = University::where('user_id',$id)->first();
+        if($university != null)
+        {
+            $university->delete();
+        }
+
+        $consultant = Consultant::where('user_id',$id)->first();
+        if($consultant != null)
+        {
+            $consultant->delete();
+        }
+
+        $applicationClients = Application::where('client_id',$id)->get();
+        if($applicationClients->count() > 0)
+        {
+            foreach($applicationClients as $applicationClient)
+            {
+               $applicationClient->delete();
+            }
+        }
+
+        $applicationConsultants = Application::where('consultant_id',$id)->get();
+        if($applicationConsultants->count() > 0)
+        {
+            foreach($applicationConsultants as $applicationConsultant)
+            {
+               $applicationConsultant->delete();
+            }
+        }
+
+        $applicationUniversitys = ApplicationAppliedUniversity::where('university_id',$id)->get();
+        if($applicationUniversitys->count() > 0)
+        {
+            foreach($applicationUniversitys as $applicationUniversity)
+            {
+               $applicationUniversity->delete();
+            }
+        }
+
+        $universityConsultants = UniversityConsultant::where('consultant_id',$id)->get();
+        if($universityConsultants->count() > 0)
+        {
+            foreach($universityConsultants as $universityConsultant)
+            {
+               $universityConsultant->delete();
+            }
+        }
+
+        $consultantUniversitys = UniversityConsultant::where('university_id',$id)->get();
+        if($consultantUniversitys->count() > 0)
+        {
+            foreach($consultantUniversitys as $consultantUniversity)
+            {
+               $consultantUniversity->delete();
+            }
+        }
+
+        $courses = UniversityCourse::where('user_id',$id)->get();
+        if($courses->count() > 0)
+        {
+            foreach($courses as $course)
+            {
+               $course->delete();
+            }
+        }
+
+        $medias = UniversityMedia::where('user_id',$id)->get();
+        if($medias->count() > 0)
+        {
+            foreach($medias as $media)
+            {
+               $media->delete();
+            }
+        }
 
         return redirect()->back()->with('danger', 'User Deleted Successfully.');
     }

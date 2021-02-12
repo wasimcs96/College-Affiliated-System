@@ -10,6 +10,17 @@
 </div>
 @endif
 
+@if (session()->has('danger'))
+<div class="container">
+<div class="alert alert-danger alert-block">
+
+    <button type="button" class="close" data-dismiss="alert">×</button>
+
+        <strong>{{session()->get('danger')}}</strong>
+
+</div>
+</div>
+@endif
 
 @if (session()->has('error'))
 <div class="container">
