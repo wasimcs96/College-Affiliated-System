@@ -65,12 +65,12 @@
 
                                  @endif
                                  @endforeach --}}
-                                 @if(isset($university->profile_image) && file_exists($university->profile_image))
-                            <a class="theme-btn" data-src=" {{asset($university->profile_image)}}" data-fancybox="gallery" data-caption="Showing image - 1" data-speed="700">
+                                 @if( $medias->count() > 0)
+                            <a class="theme-btn"  data-src=" {{asset($university->profile_image)}}" data-fancybox="gallery" data-caption="Showing image - 1" data-speed="700">
                                 <i class="la la-photo mr-2"></i>Gallery
                             </a>
                             @else
-                            <a class="theme-btn" data-src="{{ asset('assets/images/user.png') }}" data-fancybox="gallery" data-caption="Showing image - 1" data-speed="700">
+                            <a class="btn btn-success btn-lg" type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Media  Unavailable" style="background-color:#073975; color:white; border-color:white; " >
                                 <i class="la la-photo mr-2"></i>Gallery
                             </a>
                             @endif
@@ -83,8 +83,11 @@
                         <a class="d-none"
                              data-fancybox="gallery"
                             {{-- {{ dd($media->media) }} --}}
+                            @if(isset($media->media))
                              data-src="{{asset($media->media)}}"
-
+                                @else
+                            data-src="{{asset('assets/default/default-banner.jpg')}}"
+                                @endif
                              data-caption="Showing gallery - {{$i}}"
                              data-speed="700"></a>
                              <?php $i++ ?>
