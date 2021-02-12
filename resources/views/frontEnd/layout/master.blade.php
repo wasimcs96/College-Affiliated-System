@@ -36,6 +36,15 @@
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/style.css') }}">
     <style>
+    .browsedicipline{
+        border-radius: 0px;
+         width: 15rem;
+         height: 11rem;
+          background-color: #edf3f6;
+           margin: 1px;
+            z-index:0;
+             border-radius: inherit
+    }
         /* sidebar css */
 .sidenav {
   height: 100%;
@@ -87,6 +96,17 @@
 @media only screen and (max-width: 768px) {
     .hide-on-mobile{
         display: none !important;
+    }
+    .dicipline{
+        width:80% !important;
+        
+    }
+    .diciplineblock{
+        width: 7rem !important;
+        height: 9rem !important;
+    }
+    .fontdicipline{
+        font-size: 70% !important;
     }
 }
 
@@ -608,7 +628,7 @@
 <div id="back-to-top">
     {{-- <i class="la la-angle-up" title="Go top"></i> --}}
     <div>
-    <lottie-player src="{{asset('frontEnd/assets/json/34115-rocket-lunch.json')}}"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop  autoplay></lottie-player>
+    <lottie-player src="{{asset('frontEnd/assets/json/34115-rocket-lunch.json')}}"  background="transparent"  speed="1"  style="width: 13.157894736842104vh; height: 13.157894736842104vh;"  loop  autoplay></lottie-player>
     </div>
 </div>
 <!-- end back-to-top -->
