@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\UniversityMedia;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\UniversityCourse;
 use App\Models\UniversityConsultantClient;
 
 
 class University extends Model
 {
+    use softDeletes;
     protected $fillable = [
         'university_name',
         'website',
@@ -22,6 +24,8 @@ class University extends Model
         'average_fees',
         'cover_image'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function user()
     {

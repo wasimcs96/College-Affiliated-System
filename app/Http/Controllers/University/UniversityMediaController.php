@@ -39,14 +39,12 @@ class UniversityMediaController extends Controller
 
             'user_id'=>auth()->user()->id,
             'media'=>  $newname,
-
             'file_type' => $type
             //you can put other insertion here
         ]);
      }
 if ($request->link != null) {
     UniversityMedia::create( [
-
         'user_id'=>auth()->user()->id,
          'link'=>$request->link,
         'file_type' => 2
