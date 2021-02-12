@@ -1528,21 +1528,23 @@
                             <div class="enquiry-forum">
                                 <div class="form-box">
                                     <div class="form-content">
+                                        <?php $universities = \App\Models\University::get();  ?>
                                         <div class="contact-form-action">
                                             <input class="form-control" value="1" name="type"  hidden>
-                                                <div class="input-box" id="universityError">
+                                                <div class="input-box" >
                                                     <span class="la la-university mr-1 form-icon"></span>
                                                     <label class="label-text">Select University</label>
 
                                                     <div class="form-group">
 
                                                         <select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university">
-                                                            <?php $universities = \App\Models\University::get();  ?>
+
                                                             @foreach($universities as $university)
 
                                                                 <option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}}</option>
                                                             @endforeach
                                                         </select>
+                                                        <div id="universityError"></div>
                                                         {{-- <input class="form-control" type="name" name="name" placeholder="Your name" required> --}}
                                                     </div>
                                                 </div>

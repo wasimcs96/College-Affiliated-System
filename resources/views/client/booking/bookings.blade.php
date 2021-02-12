@@ -45,11 +45,13 @@
                                 {{-- <td>tru</td>--}}
                                 <td>@if(isset($booking->booking_start_time)){{$booking->booking_start_time}}-{{$booking->booking_end_time}}@else N/A @endif</td>
                                 {{-- <td>2020/30/11</td> --}}
-                                 <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
-                                @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
-                                @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
-                                @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
+                                @if(isset($booking->status))
+                                 <td>@if($booking->status==0)<div class="btn btn-warning">Pending</div>@endif
+                                @if($booking->status==1)<div class="btn btn-success">Accepted</div>@endif
+                                @if($booking->status==2)<div class="btn btn-primary">In Progress</div>@endif
+                                @if($booking->status==3)<div class="btn btn-danger">Declined</div>@endif
                             </td>
+                            @endif
 
                                 <td><a href="{{route('client.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                             </tr>
