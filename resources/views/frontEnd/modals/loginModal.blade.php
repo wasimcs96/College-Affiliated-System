@@ -24,8 +24,8 @@
 
             <div class="col-lg-6">
                 <div class="container">
-                <div class="modal-header"  style="
-                border-bottom-color: #d0cfd1;   justify-content: center;
+                <div class="modal-header justify-content-center"  style="
+                border-bottom-color: #d0cfd1;
             ">
                     <div >
                         <h4 class="modal-title title" id="exampleModalLongTitle2" style="color: #f16d01;">Hello! Welcome to your account</h4>
@@ -82,7 +82,7 @@
                                     </p> --}}
                                 </div>
                             </div><!-- end input-box -->
-                            <div class="btn-box pt-3 pb-4">
+                            <div class="btn-box pt-3 pb-4 text-center">
                                 {{-- <button type="submit" class="theme-btn w-100">Login Account</button> --}}
                                 <a href="javascript:void(0);" class="theme-btn w-100" style="text-align: center;" id="loginSubmit">Login Account</a>
                               New to Website? <a href="#registerModal" id="signupalready" data-toggle="modal" data-dismiss="modal">Sign Up</a>
@@ -111,13 +111,13 @@
 
                   <div class="container">
                       <div class="row padding-top-50px">
-                          <div class="row">
-                            <div class="col-lg-5 responsive-column" style="width: 429px;">
+                          <div class="row justify-content-center">
+                            <div class="col-lg-5 responsive-column">
                                 <div class="deal-list" style="
                                 height: 219px;
                             ">
 
-                                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 160px; height: 93px;"  loop  autoplay></lottie-player>
+                                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 160px; height: 93px;margin: auto;"  loop  autoplay></lottie-player>
                                     <h3 style="text-align: center"> Hire Nearby Consultant</h3>
                                 </div>
                             </div><!-- end col-lg-3 -->
@@ -128,31 +128,31 @@
 
                                   </div>
 
-                                  <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 160px; height: 93px;"  loop  autoplay></lottie-player>
+                                  <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 160px; height: 93px;margin: auto;"  loop  autoplay></lottie-player>
                                   <h3 style="text-align: center">Choose University</h3>
                               </div>
                           </div><!-- end col-lg-3 -->
                         </div>
-                        <div class="row">
-                           <div class="col-lg-5 responsive-column" style="width: 416px;">
+                        <div class="row justify-content-center">
+                           <div class="col-lg-5 responsive-column">
                               <div class="deal-list"  style=" height: 219px;">
                                   <div class="d-flex align-items-center justify-content-between mb-3">
 
                                   </div>
 
-                                  <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 160px;height: 93px;"  loop  autoplay></lottie-player>
+                                  <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 160px;height: 93px;margin: auto;"  loop  autoplay></lottie-player>
                                   <h3 style="text-align: center">Verify Documents</h3>
 
                               </div>
                           </div><!-- end col-lg-3 -->
-                          <div class="col-lg-5 responsive-column" style="width: 416px;">
+                          <div class="col-lg-5 responsive-column">
                               <div class="deal-list">
                                   <div class="d-flex align-items-center justify-content-between mb-3">
 
                                   </div>
 
                                   <div>
-                                  <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 160px;height: 93px;"  loop  autoplay></lottie-player>
+                                  <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 160px;height: 93px;margin: auto;"  loop  autoplay></lottie-player>
                                   </div>
                                   <h3 style="text-align: center">Get Ready to Fly</h3>
                               </div>
