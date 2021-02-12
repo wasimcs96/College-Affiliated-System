@@ -21,7 +21,7 @@
         <span class="line-bg line-bg6"></span>
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 mx-auto responsive--column-l">
+                <div class="col-lg-10 mx-auto responsive--column-l text-center">
                     <div class="hero-content pb-5">
                         <div class="section-heading" >
                             <h2 class="sec__title cd-headline zoom" style="color: #073975;">
@@ -40,27 +40,27 @@
                             </h2>
                         </div>
                     </div><!-- end hero-content -->
-                    <div class="section-tab text-center pl-4" style="font-size: 78%;">
+                    <div class="section-tab text-center " style="font-size: 86%; padding-left: 1.5625vw">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center active" id="flight-tab" data-toggle="tab" href="#flight" role="tab" aria-controls="flight" aria-selected="true">
+                            <li class="nav-item ">
+                                <a class="nav-link d-flex align-items-center active homebuttonoption" id="flight-tab" data-toggle="tab" href="#flight" role="tab" aria-controls="flight" aria-selected="true">
                                     <i class="la la-book mr-1"></i>Courses
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center" id="hotel-tab" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel" aria-selected="false">
+                            <li class="nav-item" style="margin-bottom: 0;">
+                                <a class="nav-link d-flex align-items-center" id="hotel-tab" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel" aria-selected="false" style="height: 100%;">
                                     <i class="la la-university mr-1"></i>Universities
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center" id="car-tab" data-toggle="tab" href="#car" role="tab" aria-controls="car" aria-selected="true">
+                            <li class="nav-item" style="margin-bottom: 0;">
+                                <a class="nav-link d-flex align-items-center" id="car-tab" data-toggle="tab" href="#car" role="tab" aria-controls="car" aria-selected="true" style="height: 100%;">
                                     <i class="la la-user mr-1"></i>Consultants
                                 </a>
                             </li>
 
-                            {{-- <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center" id="tour-tab" data-toggle="tab" href="#tour" role="tab" aria-controls="tour" aria-selected="false">
+                            {{-- <li class="nav-item" style="margin-bottom: 0;">
+                                <a class="nav-link d-flex align-items-center" id="tour-tab" data-toggle="tab" href="#tour" role="tab" aria-controls="tour" aria-selected="false" style="height: 100%;">
                                     <i class="la la-globe mr-1"></i>Abroad
                                 </a>
                             </li> --}}

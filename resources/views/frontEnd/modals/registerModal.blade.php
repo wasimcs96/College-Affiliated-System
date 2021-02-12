@@ -19,7 +19,7 @@
             <div class="row">
             <div class="col-lg-6">
                 <div class="container">
-                    <div class="modal-header"  style="
+                    <div class="modal-header justify-content-center"  style="
                     border-bottom-color: #d0cfd1;
                 ">
                         <h5 class="modal-title" id="registerModal" style="color: #f16d01;">Create a New Account</h5>
@@ -27,7 +27,7 @@
                     </div>
             <div class="modal-body">
             <form method="POST" id="registerForm" action="{{ route('register') }}"  style="
-            padding: 11vh;
+            padding: 5.442708333333333vw;
         ">
                     @csrf
 
@@ -95,7 +95,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-12" style="color: #f16d01;">
+                            <div class="col-md-12 text-center" style="color: #f16d01;">
                                 <button type="submit" class="btn btn-primary btn-block">
                                     {{ __('Register') }}
                                 </button>
@@ -115,13 +115,13 @@
 
                   <div class="container">
                       <div class="row padding-top-50px">
-                          <div class="row">
-                            <div class="col-lg-5 responsive-column" style="width: 429px;">
+                          <div class="row justify-content-center">
+                            <div class="col-lg-5 responsive-column">
                                 <div class="deal-list" style="
                                 height: 219px;
                             ">
 
-                                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 160px; height: 93px;"  loop  autoplay></lottie-player>
+                                    <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 160px; height: 93px;margin: auto;"  loop  autoplay></lottie-player>
                                     <h3 style="text-align: center"> Hire Nearby Consultant</h3>
                                 </div>
                             </div><!-- end col-lg-3 -->
@@ -132,31 +132,31 @@
 
                                   </div>
 
-                                  <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 160px; height: 93px;"  loop  autoplay></lottie-player>
+                                  <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 160px; height: 93px;margin: auto;"  loop  autoplay></lottie-player>
                                   <h3 style="text-align: center">Choose University</h3>
                               </div>
                           </div><!-- end col-lg-3 -->
                         </div>
-                        <div class="row">
-                           <div class="col-lg-5 responsive-column" style="width: 416px;">
+                        <div class="row justify-content-center">
+                           <div class="col-lg-5 responsive-column">
                               <div class="deal-list"  style=" height: 219px;">
                                   <div class="d-flex align-items-center justify-content-between mb-3">
 
                                   </div>
 
-                                  <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 160px;height: 93px;"  loop  autoplay></lottie-player>
+                                  <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 160px;height: 93px;margin: auto;"  loop  autoplay></lottie-player>
                                   <h3 style="text-align: center">Verify Documents</h3>
 
                               </div>
                           </div><!-- end col-lg-3 -->
-                          <div class="col-lg-5 responsive-column" style="width: 416px;">
+                          <div class="col-lg-5 responsive-column">
                               <div class="deal-list">
                                   <div class="d-flex align-items-center justify-content-between mb-3">
 
                                   </div>
 
                                   <div>
-                                  <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 160px;height: 93px;"  loop  autoplay></lottie-player>
+                                  <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 160px;height: 93px;margin: auto;"  loop  autoplay></lottie-player>
                                   </div>
                                   <h3 style="text-align: center">Get Ready to Fly</h3>
                               </div>
