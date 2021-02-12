@@ -724,7 +724,7 @@ var university_id=$('#university').val();
 console.log(university_id);
 if( university_id == '')
 {
-$('#universityError').html('<span class="la la-university mr-1 form-icon"></span><label class="label-text">Select University</label><div class="form-group"><select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university"><?php $universities = \App\Models\University::get();?>@foreach($universities as $university)<option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}}</option>@endforeach</select></div><strong><span style="color:red">*This field is required</span></strong>')
+$('#universityError').append('<span style="color:red">*This field is required</span></strong>')
 }
 else
 {
@@ -742,8 +742,8 @@ data: {university_id:university_id},
 success: function (result) {
 console.log('success');
 // alert('Follow Up created Successfully');
-
-window.location.reload();
+location="consultant/services/subscription/add";
+// window.location.reload();
 }
 });
 

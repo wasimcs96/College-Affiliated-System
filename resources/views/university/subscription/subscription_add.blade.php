@@ -32,7 +32,7 @@
 
                 <li class="plan-btn"><button class="btn btn-round btn-outline-secondary" data-toggle="modal" data-target="#mdlerror">Choose plan</button></li>
                 @else
-                <li class="plan-btn"><button customDescription="{{$package->description}}" customPackage="{{$package->package_time}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="0" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
+                <li class="plan-btn"><button customDescription="{{$package->description}}" customPackage="{{$package->package_time}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="0" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan" id="choosePlanScroll">Choose plan</button></li>
 
                 @endif
             </ul>
@@ -320,4 +320,10 @@ $('#choosedcontent').html(html);
 
     })
 </script>
+<script>
+    $(document).on('click', '#choosePlanScroll', function ()
+    {
+        window.scrollBy(0, 260);
+    });
+  </script>
 @stop
