@@ -1100,7 +1100,7 @@
                                                                         font-weight: 600;
 
                                                                         ">Featured Universities</li>
-                                                                        <?php $headercountries41 = App\Models\Country::where('countries_id',103)->take(7)->get(); ?>
+                                                                        <?php $headercountries41 = App\Models\University::where('countries_id',103)->take(7)->get(); ?>
                                                                     @foreach ($headercountries41 as $headercountry41)
                                                                     {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                         @csrf
@@ -1132,7 +1132,7 @@
 
                                                                     ">Other Universities</li>
 
-                                                                    <?php $headercountries42 = App\Models\Category::where('parent_id',2)->skip(7)->take(7)->get(); ?>
+                                                                    <?php $headercountries42 = App\Models\University::where('countries_id',103)->skip(7)->take(7)->get(); ?>
                                                                 @foreach ($headercountries42 as $headercountry42)
                                                                 {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
@@ -1172,7 +1172,7 @@
                                                                     font-weight: 600;
 
                                                                     ">Featured Universities</li>
-                                                                    <?php $headercountries51 = App\Models\Country::where('countries_id',13)->take(7)->get(); ?>
+                                                                    <?php $headercountries51 = App\Models\University::where('countries_id',13)->take(7)->get(); ?>
                                                                 @foreach ($headercountries51 as $headercountry51)
                                                                 {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
@@ -1212,7 +1212,7 @@
                                                                 font-weight: 600;
 
                                                                 ">Other Universities</li>
-                                                                <?php $headercountries52 = App\Models\Country::where('countries_id',3)->skip(7)->take(7)->get(); ?>
+                                                                <?php $headercountries52 = App\Models\University::where('countries_id',13)->skip(7)->take(7)->get(); ?>
                                                             @foreach ($headercountries52 as $headercountry52)
                                                             {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                 @csrf
@@ -1291,7 +1291,7 @@
                                                         font-weight: 600;
 
                                                         ">Other Universities</li>
-                                                        <?php $headercountries62 = App\Models\University::where('countries_id',18)->skip(7)->take(7)->get(); ?>
+                                                        <?php $headercountries62 = App\Models\University::where('countries_id',99)->skip(7)->take(7)->get(); ?>
                                                     @foreach ($headercountries62 as $headercountry62)
                                                     {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                         @csrf
