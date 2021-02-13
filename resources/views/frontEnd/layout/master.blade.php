@@ -91,6 +91,9 @@
     .hide-on-desktop{
         display: none !important;
     }
+    .display-flex{
+        display: flex !important;
+    }
 }
 /* Desktop and large devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
@@ -107,6 +110,9 @@
     }
     .fontdicipline{
         font-size: 70% !important;
+    }
+    .milestonewidth{
+            width: 50%;
     }
 }
 
