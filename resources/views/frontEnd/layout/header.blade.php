@@ -988,7 +988,7 @@
                                                                     font-weight: 600;
 
                                                                     ">Other Universities</li>
-                                                                    <?php $headercountries22 = App\Models\University::where('countries_id',222)->skip(7)->take(7)->get(); ?>
+                                                                    <?php $headercountries22 = App\Models\University::where('countries_id',222)->take(7)->get(); ?>
                                                                 @foreach ($headercountries22 as $headercountry22)
                                                                 @if($headercountry22->user->status == 1)
                                                                 @if($headercountry22->user->premium_expire_date < $mytime)
@@ -1069,7 +1069,7 @@
                                                                     font-weight: 600;
 
                                                                     ">Other Universities</li>
-                                                                    <?php $headercountries32 = App\Models\University::where('countries_id',38)->skip(7)->take(7)->get(); ?>
+                                                                    <?php $headercountries32 = App\Models\University::where('countries_id',38)->take(7)->get(); ?>
                                                                 @foreach ($headercountries32 as $headercountry32)
                                                                 @if($headercountry21->user->status == 1)
                                                                 @if($headercountry21->user->premium_expire_date < $mytime)
@@ -1146,10 +1146,10 @@
 
                                                                     ">Other Universities</li>
 
-                                                                    <?php $headercountries42 = App\Models\University::where('countries_id',103)->skip(7)->take(7)->get(); ?>
+                                                                    <?php $headercountries42 = App\Models\University::where('countries_id',103)->take(7)->get(); ?>
                                                                 @foreach ($headercountries42 as $headercountry42)
                                                                 @if($headercountry42->user->status == 1)
-                                                                @if($headercountry42->user->premium_expire_date > $mytime)
+                                                                @if($headercountry42->user->premium_expire_date < $mytime)
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry42->user_id ?? ''])}}">{{$headercountry42->university_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
@@ -1228,10 +1228,10 @@
                                                                 font-weight: 600;
 
                                                                 ">Other Universities</li>
-                                                                <?php $headercountries52 = App\Models\University::where('countries_id',13)->skip(7)->take(7)->get(); ?>
+                                                                <?php $headercountries52 = App\Models\University::where('countries_id',13)->take(7)->get(); ?>
                                                             @foreach ($headercountries52 as $headercountry52)
                                                             @if($headercountry52->user->status == 1)
-                                                            @if($headercountry52->user->premium_expire_date > $mytime)
+                                                            @if($headercountry52->user->premium_expire_date < $mytime)
 
 
                                                             <li><a href="{{route('university_detail',['id'=>$headercountry52->user_id ?? ''])}}">{{$headercountry52->university_name ?? ''}}</a></li>
@@ -1309,10 +1309,10 @@
                                                         font-weight: 600;
 
                                                         ">Other Universities</li>
-                                                        <?php $headercountries62 = App\Models\University::where('countries_id',99)->skip(7)->take(7)->get(); ?>
+                                                        <?php $headercountries62 = App\Models\University::where('countries_id',99)->take(7)->get(); ?>
                                                     @foreach ($headercountries62 as $headercountry62)
                                                     @if($headercountry62->user->status == 1)
-                                                    @if($headercountry62->user->premium_expire_date > $mytime)         {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                    @if($headercountry62->user->premium_expire_date <$mytime)         {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                         @csrf
                                                     <input type="hidden" name="category" value="{{$headercountry62->countries_id ?? ''}}"> --}}
 

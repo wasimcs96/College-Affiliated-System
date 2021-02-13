@@ -140,6 +140,8 @@
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                 <select class="select-contain-select" name="countries_id" required>
+                                                    <option>Select Country</option>
+
                                                     <?php $countries = App\Models\Country::all();?>
                                                     @if($countries->count() > 0)
                                                     @foreach($countries as $country)
@@ -193,10 +195,12 @@
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select" id="salazar" name="countries_id">
+                                                    <option>Select Country</option>
+
                                                         <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
-                                                            <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
+                                                            <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
                                                          @endforeach
 
                                                         @else
