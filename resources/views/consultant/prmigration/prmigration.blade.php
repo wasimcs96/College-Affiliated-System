@@ -54,9 +54,7 @@
                         </tr>
                         @endif
 @endforeach
-@else
 
-Records not available
 @endif
                     </tbody>
                 </table>
