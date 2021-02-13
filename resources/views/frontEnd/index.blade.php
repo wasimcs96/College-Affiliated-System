@@ -1674,14 +1674,14 @@
 
                 ?>
 
-                <div class="col-lg-3 responsive-column">
-                    <div class="counter-item counter-item-layout-2 d-flex">
-                        <div class="counter-icon flex-shrink-0">
+                <div class="col-lg-3 milestonewidth">
+                    <div class="counter-item counter-item-layout-2 display-flex">
+                        <div class="counter-icon flex-shrink-0 m-auto">
                             <i class="la la-users"></i>
                         </div>
-                        <div class="counter-content">
+                        <div class="counter-content text-center m-auto">
 
-                                <div>
+                                <div class="text-center">
                                     <span class="counter" data-from="0" data-to="{{$users}}"  data-refresh-interval="6">0</span>
                                     <span class="count-symbol">+</span>
                                 </div>
@@ -1691,13 +1691,13 @@
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="counter-item counter-item-layout-2 d-flex">
-                        <div class="counter-icon flex-shrink-0">
+                <div class="col-lg-3 milestonewidth">
+                    <div class="counter-item counter-item-layout-2 display-flex">
+                        <div class="counter-icon flex-shrink-0 m-auto">
                             <i class="la la-building"></i>
                         </div>
-                        <div class="counter-content">
-                            <div>
+                        <div class="counter-content text-center m-auto">
+                            <div class="text-center">
                                 <span class="counter" data-from="0" data-to="{{$university}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
                             </div>
@@ -1705,13 +1705,13 @@
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="counter-item counter-item-layout-2 d-flex">
-                        <div class="counter-icon flex-shrink-0">
+                <div class="col-lg-3 milestonewidth">
+                    <div class="counter-item counter-item-layout-2 display-flex">
+                        <div class="counter-icon flex-shrink-0 m-auto">
                             <i class="las la-user-tie"></i>
                         </div>
-                        <div class="counter-content">
-                            <div>
+                        <div class="counter-content text-center m-auto">
+                            <div class="text-center">
                                 <span class="counter" data-from="0" data-to="{{$consultant}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
                             </div>
@@ -1719,14 +1719,14 @@
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="counter-item counter-item-layout-2 d-flex">
-                        <div class="counter-icon flex-shrink-0">
+                <div class="col-lg-3 milestonewidth">
+                    <div class="counter-item counter-item-layout-2 display-flex">
+                        <div class="counter-icon flex-shrink-0 m-auto">
                             <i class="la la-check-circle"></i>
                         </div>
-                        <div class="counter-content">
+                        <div class="counter-content text-center m-auto">
                             <?php $bookings = DB::table('bookings')->count(); ?>
-                            <div>
+                            <div class="text-center">
                                 <span class="counter" data-from="0" data-to="{{$bookings}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
                             </div>
@@ -1906,8 +1906,6 @@
 <!-- ================================
        START CLIENTLOGO AREA
 ================================= -->
-<br>
-<br>
 
 {{-- <section class="clientlogo-area padding-top-80px padding-bottom-80px text-center">
     <div class="container">
