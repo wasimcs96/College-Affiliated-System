@@ -1009,13 +1009,13 @@ body {
 }
 
 .section-padding {
-    padding-top: 100px;
-    padding-bottom: 100px
+    padding-top: 6.510416666666667vw;
+    padding-bottom: 6.510416666666667vw;
 }
 
 .section--padding {
-    padding-top: 100px;
-    padding-bottom: 90px
+    padding-top: 6.510416666666667vw;
+    padding-bottom: 5.859375vw;
 }
 
 .padding-top-200px {
@@ -1059,7 +1059,7 @@ body {
 }
 
 .padding-top-100px {
-    padding-top: 100px
+    padding-top: 6.510416666666667vw;
 }
 
 .padding-top-95px {
@@ -1075,7 +1075,7 @@ body {
 }
 
 .padding-top-80px {
-    padding-top: 5.208333333333333vw
+    padding-top: 5.208333333333333vw;
 }
 
 .padding-top-70px {
@@ -1108,7 +1108,7 @@ body {
 }
 
 .padding-top-30px {
-    padding-top: 30px
+    padding-top: 1.953125vw;
 }
 
 .padding-top-20px {
@@ -1168,7 +1168,7 @@ body {
 }
 
 .padding-bottom-90px {
-    padding-bottom: 90px
+    padding-bottom: 5.859375vw;
 }
 
 .padding-bottom-85px {
@@ -1180,7 +1180,7 @@ body {
 }
 
 .padding-bottom-70px {
-    padding-bottom: 70px
+    padding-bottom: 4.557291666666667vw;
 }
 
 .padding-bottom-60px {
@@ -1188,11 +1188,11 @@ body {
 }
 
 .padding-bottom-50px {
-    padding-bottom: 50px
+    padding-bottom: 3.2552083333333335vw;
 }
 
 .padding-bottom-45px {
-    padding-bottom: 45px
+    padding-bottom: 2.9296875vw;
 }
 
 .padding-bottom-40px {
@@ -1204,7 +1204,7 @@ body {
 }
 
 .padding-bottom-30px {
-    padding-bottom: 30px
+    padding-bottom: 1.953125vw;
 }
 
 .padding-bottom-20px {
@@ -5711,7 +5711,7 @@ transform: translateX(-3px);
 }
 
 .deal-list {
-    padding: 12px 20px;
+    padding: 0.78125vw 1.3020833333333333vw;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -8428,7 +8428,7 @@ transform: translateX(-3px);
     -webkit-box-shadow: 0 0 40px rgba(82, 85, 90, 0.1);
     -moz-box-shadow: 0 0 40px rgba(82, 85, 90, 0.1);
     box-shadow: 0 0 40px rgba(82, 85, 90, 0.1);
-    padding: 20px;
+    padding: 1.3020833333333333vw;
     position: relative;
     z-index: 1;
     border: 1px solid transparent;
@@ -8836,7 +8836,7 @@ transform: translateX(-3px);
 }
 
 .mobile-app .mobile-img {
-    position: absolute;
+    /* position: absolute; */
     bottom: -100px;
     right: 0
 }

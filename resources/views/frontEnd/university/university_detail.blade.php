@@ -43,28 +43,11 @@
                         left: 151px;
                         margin-bottom: 8px;
                     ">
+                    @if(isset($university->universityMedia))
                      <?php
                      $medias = $university->universityMedia;
                      $i=2;
                      ?>
-                            {{-- <a class="theme-btn" data-fancybox="video" data-src="https://www.youtube.com/embed?v=S5WFxUDs0pE"
-                               data-speed="700"  style="
-                               margin: 12px;
-                           ">
-                                <i class="la la-video-camera mr-2"></i>Video
-                            </a>
-                            @foreach($medias as $media)
-                            @if(isset($media->media) && file_exists($media->media) && $media->file_type==1)
-                            <a class="d-none"
-                                 data-fancybox="gallery"
-
-                                 data-src="{{asset($media->media)}}"
-
-                                 data-caption="Showing gallery - {{$i}}"
-                                 data-speed="700"></a>
-
-                                 @endif
-                                 @endforeach --}}
                                  @if( $medias->count() > 0)
                             <a class="theme-btn"  data-src=" {{asset($university->profile_image)}}" data-fancybox="gallery" data-caption="Showing image - 1" data-speed="700">
                                 <i class="la la-photo mr-2"></i>Gallery
@@ -94,7 +77,7 @@
                              @endif
                              @endforeach
 
-
+                             @endif
                     </div><!-- end breadcrumb-btn -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
@@ -166,7 +149,8 @@
 
                             <div class="single-content-item pb-4">
                                 <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}
-                                    @if($university->is_verified == 1)
+
+                                    @if(isset($university->is_verified)&& $university->is_verified == 1)
                             <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif
                             <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                             @if(isset($university->Premium_expire_date))
@@ -180,6 +164,7 @@
                                 </div>
                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                     <p class="mr-2">Rating:</p>
+                                    @if(isset($university->rating))
                                         {{-- <span class="badge badge-warning text-white font-size-16">{{$university->rating ?? ''}}/5</span>{!!"&nbsp;"!!} --}}
                                         <span>@if($university->rating == 3 ?? '' )
                                                 <span class="ratings ">
@@ -221,7 +206,15 @@
                                             <i class="la la-star-o"></i>
                                             <i class="la la-star-o"></i>
                                         </span>
-                                        @endif</span> {!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($university->rating == null) - @else{{$university->rating ?? ''}}/5 @endif</span>
+                                        @endif
+                                    </span>
+                                    {!!"&nbsp;"!!}
+                                    <span class="badge badge-warning text-white font-size-16">
+                                        @if($university->rating == null) - @else{{$university->rating ?? ''}}/5 @endif
+                                    </span>
+                                    @else
+                                    <span class="badge badge-warning text-white font-size-16">-/5</span>
+                                    @endif
                                     </p>
                                 </div>
 
@@ -352,9 +345,11 @@
                             overflow: scroll;">
                             @if($universityconsultant->count() > 0)
                                 <ul class="list-items">
-            @foreach($universityconsultant as $consultant)
-            @if(isset($consultant->userConsultant->Premium_expire_date))
-            @if($consultant->userConsultant->Premium_expire_date > $mytime)
+                                    @foreach($universityconsultant as $consultant)
+                                    {{-- {{dd($consultant->userConsultant->status)}} --}}
+                                    @if($consultant->userConsultant->status == 1)
+                                    @if(isset($consultant->userConsultant->Premium_expire_date))
+                                    @if($consultant->userConsultant->Premium_expire_date > $mytime)
 
                                     <li><div class="author-content d-flex">
                                         <div class="author-img">
@@ -443,6 +438,7 @@
                                     </div></li>
                                     @endif
                                     @endif
+                                    @endif
 @endforeach
 
                                 </ul>
@@ -523,7 +519,7 @@
                     <div class="hotel-card-carousel-2 carousel-action">
 
                         @foreach($consultants as $consultant)
-                        {{-- @if($consultant->isConsultant()) --}}
+                        @if($consultant->userConsultant->status == 1)
                         <div class="card-item car-card border">
                             <div class="card-img" style="text-align: center; height:185px;">
 
@@ -561,7 +557,7 @@
                             <div class="card-body">
                                 <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id ?? ''])}}">
                                     @if(isset($consultant->userConsultant->first_name ))
-                                    {{$consultant->userConsultant->first_name ?? ''}}{{$consultant->userConsultant->lasts_name ?? ''}}
+                                    {{$consultant->userConsultant->first_name ?? ''}} &nbsp;{{$consultant->userConsultant->last_name ?? ''}}
                                 @else N/A @endif</a>
                                     @if($consultant->userConsultant->is_verified ?? '' == 1)
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
@@ -571,7 +567,7 @@
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>
 
-                                                    <span>@if($consultant->userConsultant->rating ?? '' == 3)
+                                                    <span>@if($consultant->userConsultant->rating  == 3)
                                                             <span class="ratings ">
                                                                 <i class="la la-star"></i>
                                                                 <i class="la la-star"></i>
@@ -579,7 +575,7 @@
                                                                 <i class="la la-star-o"></i>
                                                                 <i class="la la-star-o"></i>
                                                             </span>
-                                                    @elseif($consultant->userConsultant->rating ?? '' == 4)
+                                                    @elseif($consultant->userConsultant->rating  == 4)
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -587,7 +583,7 @@
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @elseif($consultant->userConsultant->rating ?? '' == 5)
+                                                    @elseif($consultant->userConsultant->rating == 5)
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -595,7 +591,7 @@
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
                                                     </span>
-                                                    @elseif($consultant->userConsultant->rating ?? '' == 1)
+                                                    @elseif($consultant->userConsultant->rating == 1)
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star-o"></i>
@@ -603,7 +599,7 @@
                                                         <i class="la la-star-o"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @elseif($consultant->userConsultant->rating ?? '' == 2)
+                                                    @elseif($consultant->userConsultant->rating  == 2)
                                                     <span class="ratings ">
                                                         <i class="la la-star"></i>
                                                         <i class="la la-star"></i>
@@ -611,7 +607,7 @@
                                                         <i class="la la-star-o"></i>
                                                         <i class="la la-star-o"></i>
                                                     </span>
-                                                    @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($consultant->userConsultant->rating ?? '' == null) - @else{{$consultant->userConsultant->rating ?? ''}}/5 @endif</span>
+                                                    @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($consultant->userConsultant->rating  == null) - @else{{$consultant->userConsultant->rating }}/5 @endif</span>
 
                                             </div>
                                             <div class="card-attributes">
@@ -655,7 +651,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- @endif --}}
+                        @endif
                         @endforeach<!-- end card-item -->
 
                 </div><!-- end hotel-card-carousel -->

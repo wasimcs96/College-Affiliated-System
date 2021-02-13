@@ -91,6 +91,10 @@
     .hide-on-desktop{
         display: none !important;
     }
+    .display-flex{
+        display: flex !important;
+    }
+
 }
 /* Desktop and large devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
@@ -108,6 +112,10 @@
     .fontdicipline{
         font-size: 70% !important;
     }
+    .milestonewidth{
+            width: 50%;
+    }
+   
 }
 
         /* PWA CSS */
@@ -628,7 +636,7 @@
 <div id="back-to-top">
     {{-- <i class="la la-angle-up" title="Go top"></i> --}}
     <div>
-    <lottie-player src="{{asset('frontEnd/assets/json/34115-rocket-lunch.json')}}"  background="transparent"  speed="1"  style="width: 13.157894736842104vh; height: 13.157894736842104vh;"  loop  autoplay></lottie-player>
+    <lottie-player src="{{asset('frontEnd/assets/json/34115-rocket-lunch.json')}}"  background="transparent"  speed="1"  style="width: 5rem; height: 5rem;"  loop  autoplay></lottie-player>
     </div>
 </div>
 <!-- end back-to-top -->

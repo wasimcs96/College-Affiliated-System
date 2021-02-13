@@ -21,9 +21,9 @@
         <span class="line-bg line-bg6"></span>
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 mx-auto responsive--column-l text-center">
+                <div class="col-lg-10 mx-auto responsive--column-l">
                     <div class="hero-content pb-5">
-                        <div class="section-heading" >
+                        <div class="section-heading text-center" >
                             <h2 class="sec__title cd-headline zoom" style="color: #073975;">
                                 Amazing <span class="cd-words-wrapper" style="color:#ff7300">
                                 <b class="is-visible">Education</b>
@@ -140,6 +140,8 @@
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                 <select class="select-contain-select" name="countries_id" required>
+                                                    <option>Select Country</option>
+
                                                     <?php $countries = App\Models\Country::all();?>
                                                     @if($countries->count() > 0)
                                                     @foreach($countries as $country)
@@ -193,10 +195,12 @@
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select" id="salazar" name="countries_id">
+                                                    <option>Select Country</option>
+
                                                         <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
-                                                            <option value="{{$country->countries_id}}" selected>{{$country->countries_name}}</option>
+                                                            <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
                                                          @endforeach
 
                                                         @else
@@ -717,49 +721,51 @@
                     <!-- end testimonial-carousel -->
             </div><!-- end col-lg-8 -->
         </div> --}}
-        <div class="container">
+        <div class="container" style="
+    padding-right: 10px;
+    padding-left: 10px;
+">
 
             <div class="row padding-top-50px">
-                <div class="col-lg-3 responsive-column">
+                <div class="col-lg-3 milestonewidth"style="padding-left: 0.9765625vw;padding-right: 0.9765625vw;">
                     <div class="deal-list">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
 
-                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 216px; margin: auto;"  loop  autoplay></lottie-player>
-                       <h3 style="text-align: center"> Hire Nearby Consultant</h3>
+                    </div>
+                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 100%; height: 23.14814814814815vh; margin: auto;"  loop  autoplay></lottie-player>
+                       <h3 style="text-align: center">Hire Nearby Consultant</h3>
                     </div>
                 </div><!-- end col-lg-3 -->
-                 <div class="col-lg-3 responsive-column">
+                 <div class="col-lg-3 milestonewidth" style="padding-left: 0.9765625vw;padding-right: 0.9765625vw;">
                     <div class="deal-list">
                         <div class="d-flex align-items-center justify-content-between mb-3">
 
                         </div>
 
-                        <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;margin: auto; "  loop  autoplay></lottie-player>
+                        <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 100%; height: 23.14814814814815vh;margin: auto; "  loop  autoplay></lottie-player>
                         <h3 style="text-align: center">Choose University</h3>
                     </div>
                 </div><!-- end col-lg-3 -->
 
 
-                 <div class="col-lg-3 responsive-column">
+                 <div class="col-lg-3 milestonewidth" style="padding-left: 0.9765625vw;padding-right: 0.9765625vw;">
                     <div class="deal-list">
                         <div class="d-flex align-items-center justify-content-between mb-3">
 
                         </div>
 
-                        <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;margin: auto;"  loop  autoplay></lottie-player>
+                        <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 100%; height: 23.14814814814815vh;margin: auto;"  loop  autoplay></lottie-player>
                         <h3 style="text-align: center">Verify Documents</h3>
 
                     </div>
                 </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
+                <div class="col-lg-3 milestonewidth" style="padding-left: 0.9765625vw;padding-right: 0.9765625vw;">
                     <div class="deal-list">
                         <div class="d-flex align-items-center justify-content-between mb-3">
 
                         </div>
-
-                        <div>
-                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 238px;margin: auto;"  loop  autoplay></lottie-player>
-                        </div>
-                        <h3 style="text-align: center">Get Ready to Fly</h3>
+                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 100%; height:23.14814814814815vh;margin: auto;"  loop  autoplay></lottie-player>
+                        <h3 style="text-align: center">Get Ready<br> to Fly</h3>
                     </div>
                 </div><!-- end col-lg-3 -->
             </div><!-- end row -->
@@ -1670,14 +1676,14 @@
 
                 ?>
 
-                <div class="col-lg-3 responsive-column">
-                    <div class="counter-item counter-item-layout-2 d-flex">
-                        <div class="counter-icon flex-shrink-0">
+                <div class="col-lg-3 milestonewidth">
+                    <div class="counter-item counter-item-layout-2 display-flex">
+                        <div class="counter-icon flex-shrink-0 m-auto">
                             <i class="la la-users"></i>
                         </div>
-                        <div class="counter-content">
+                        <div class="counter-content text-center m-auto">
 
-                                <div>
+                                <div class="text-center">
                                     <span class="counter" data-from="0" data-to="{{$users}}"  data-refresh-interval="6">0</span>
                                     <span class="count-symbol">+</span>
                                 </div>
@@ -1687,13 +1693,13 @@
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="counter-item counter-item-layout-2 d-flex">
-                        <div class="counter-icon flex-shrink-0">
+                <div class="col-lg-3 milestonewidth">
+                    <div class="counter-item counter-item-layout-2 display-flex">
+                        <div class="counter-icon flex-shrink-0 m-auto">
                             <i class="la la-building"></i>
                         </div>
-                        <div class="counter-content">
-                            <div>
+                        <div class="counter-content text-center m-auto">
+                            <div class="text-center">
                                 <span class="counter" data-from="0" data-to="{{$university}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
                             </div>
@@ -1701,13 +1707,13 @@
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="counter-item counter-item-layout-2 d-flex">
-                        <div class="counter-icon flex-shrink-0">
+                <div class="col-lg-3 milestonewidth">
+                    <div class="counter-item counter-item-layout-2 display-flex">
+                        <div class="counter-icon flex-shrink-0 m-auto">
                             <i class="las la-user-tie"></i>
                         </div>
-                        <div class="counter-content">
-                            <div>
+                        <div class="counter-content text-center m-auto">
+                            <div class="text-center">
                                 <span class="counter" data-from="0" data-to="{{$consultant}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
                             </div>
@@ -1715,14 +1721,14 @@
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="counter-item counter-item-layout-2 d-flex">
-                        <div class="counter-icon flex-shrink-0">
+                <div class="col-lg-3 milestonewidth">
+                    <div class="counter-item counter-item-layout-2 display-flex">
+                        <div class="counter-icon flex-shrink-0 m-auto">
                             <i class="la la-check-circle"></i>
                         </div>
-                        <div class="counter-content">
+                        <div class="counter-content text-center m-auto">
                             <?php $bookings = DB::table('bookings')->count(); ?>
-                            <div>
+                            <div class="text-center">
                                 <span class="counter" data-from="0" data-to="{{$bookings}}"  data-refresh-interval="6">0</span>
                                 <span class="count-symbol">+</span>
                             </div>
@@ -1902,8 +1908,6 @@
 <!-- ================================
        START CLIENTLOGO AREA
 ================================= -->
-<br>
-<br>
 
 {{-- <section class="clientlogo-area padding-top-80px padding-bottom-80px text-center">
     <div class="container">

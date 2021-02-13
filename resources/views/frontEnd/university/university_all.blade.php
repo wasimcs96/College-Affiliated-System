@@ -226,7 +226,7 @@
                         <div class="card-rating">
                             <div class="d-flex flex-wrap align-items-center pt-2">
                                 <p class="mr-2">Rating:</p>
-
+@if(isset($university->rating))
                                     <span>@if($university->rating == 3 ?? '' )
                                             <span class="ratings ">
                                                 <i class="la la-star"></i>
@@ -267,7 +267,17 @@
                                         <i class="la la-star-o"></i>
                                         <i class="la la-star-o"></i>
                                     </span>
-                                    @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif</span>
+                                    @endif
+                                </span>
+                                    {!!"&nbsp;"!!}
+                                    <span class="badge badge-warning text-white font-size-16">
+                                        @if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif
+                                    </span>
+                                    @else
+                                    <span class="badge badge-warning text-white font-size-16">
+                                        @if($university->rating == null)- @else{{$university->rating ?? ''}}/5 @endif
+                                    </span>
+                                    @endif
                                 </p>
                             </div>
                         </div>

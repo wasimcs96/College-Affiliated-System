@@ -358,6 +358,7 @@
 
                         @foreach($universities as $courseuniversity)
                         {{-- {{dd($courseuniversity)}} --}}
+                        @if($courseuniversity)
                         @if($courseuniversity->status == 1)
                         <div class="card-item car-card border" style=" margin-bottom: 22px;">
                             <div class="card-img" style="text-align: center; height:185px;">
@@ -464,6 +465,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         @endif
                         @endforeach<!-- end card-item -->
                         @endif
