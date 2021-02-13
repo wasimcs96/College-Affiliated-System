@@ -335,7 +335,7 @@
     <div class="colblock" style="margin-top: 65px;display: contents;">
       <div data-module="Onboarding:OnboardingBar" class="Module StudyPortals_Shared_Modules_Onboarding_OnboardingBar_OnboardingBar">
         <section id="OnboardingBar">
-          <ul class="OnboardingList" id="ulid">
+          <ul class="OnboardingList pl-2" id="ulid">
             <li class="OnboardingItem Explore liclss">
               <div class="OnboardingBullet">
                 <i class="OnboardingIcon" style="color: #fdac10">
@@ -727,7 +727,7 @@
                 <div class="col-lg-3 responsive-column">
                     <div class="deal-list">
 
-                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 216px;"  loop  autoplay></lottie-player>
+                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 216px; margin: auto;"  loop  autoplay></lottie-player>
                        <h3 style="text-align: center"> Hire Nearby Consultant</h3>
                     </div>
                 </div><!-- end col-lg-3 -->
@@ -737,7 +737,7 @@
 
                         </div>
 
-                        <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                        <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;margin: auto; "  loop  autoplay></lottie-player>
                         <h3 style="text-align: center">Choose University</h3>
                     </div>
                 </div><!-- end col-lg-3 -->
@@ -749,7 +749,7 @@
 
                         </div>
 
-                        <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                        <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;margin: auto;"  loop  autoplay></lottie-player>
                         <h3 style="text-align: center">Verify Documents</h3>
 
                     </div>
@@ -761,7 +761,7 @@
                         </div>
 
                         <div>
-                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 238px;"  loop  autoplay></lottie-player>
+                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 238px;margin: auto;"  loop  autoplay></lottie-player>
                         </div>
                         <h3 style="text-align: center">Get Ready to Fly</h3>
                     </div>
@@ -826,17 +826,17 @@
                             @csrf
                         <input type="hidden" name="category" value="{{$category->id ?? ''}}">
                         <button type="submit" style="border: none">
-                        <div class="card text-center customhover" style="border-radius: 0px; width: 15rem;height: 11rem; background-color: #edf3f6; margin: 1px; z-index:0; border-radius: inherit">
-                        <div class="card-body customhover" style=";height: 174px;">
+                        <div class="card text-center customhover browsedicipline diciplineblock" style="">
+                        <div class="card-body customhover dicipline" style=";height: 174px; margin: auto;">
                         <h5 class="card-title">
                         @if(isset($category->banner) && file_exists($category->banner))
-                        <img style="width: 86px;" src="{{asset($category->banner )}}" alt="">
+                        <img class="dicipline" style="width: 86px;" src="{{asset($category->banner )}}" alt="">
                         @else
                         <img src="
                         {{asset('frontEnd/assets/images/first_aid.png')}}" width="84px" >
                         @endif
                         </h5>
-                        <p class="card-text"><a style="color: black;" href="#" value="{{$category->id ?? ''}}">{{$category->title ?? ''}}</a></p>
+                        <p class="card-text fontdicipline"><a style="color: black;" href="#" value="{{$category->id ?? ''}}">{{$category->title ?? ''}}</a></p>
                         {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
                         </div>
                         </div>

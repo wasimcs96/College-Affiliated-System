@@ -36,6 +36,15 @@
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontEnd/assets/css/style.css') }}">
     <style>
+    .browsedicipline{
+        border-radius: 0px;
+         width: 15rem;
+         height: 11rem;
+          background-color: #edf3f6;
+           margin: 1px;
+            z-index:0;
+             border-radius: inherit
+    }
         /* sidebar css */
 .sidenav {
   height: 100%;
@@ -87,6 +96,17 @@
 @media only screen and (max-width: 768px) {
     .hide-on-mobile{
         display: none !important;
+    }
+    .dicipline{
+        width:80% !important;
+        
+    }
+    .diciplineblock{
+        width: 7rem !important;
+        height: 9rem !important;
+    }
+    .fontdicipline{
+        font-size: 70% !important;
     }
 }
 
@@ -608,7 +628,7 @@
 <div id="back-to-top">
     {{-- <i class="la la-angle-up" title="Go top"></i> --}}
     <div>
-    <lottie-player src="{{asset('frontEnd/assets/json/34115-rocket-lunch.json')}}"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop  autoplay></lottie-player>
+    <lottie-player src="{{asset('frontEnd/assets/json/34115-rocket-lunch.json')}}"  background="transparent"  speed="1"  style="width: 13.157894736842104vh; height: 13.157894736842104vh;"  loop  autoplay></lottie-player>
     </div>
 </div>
 <!-- end back-to-top -->
@@ -704,7 +724,7 @@ var university_id=$('#university').val();
 console.log(university_id);
 if( university_id == '')
 {
-$('#universityError').html('<span class="la la-university mr-1 form-icon"></span><label class="label-text">Select University</label><div class="form-group"><select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university"><?php $universities = \App\Models\University::get();?>@foreach($universities as $university)<option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}}</option>@endforeach</select></div><strong><span style="color:red">*This field is required</span></strong>')
+$('#universityError').append('<span style="color:red">*This field is required</span></strong>')
 }
 else
 {
@@ -722,8 +742,8 @@ data: {university_id:university_id},
 success: function (result) {
 console.log('success');
 // alert('Follow Up created Successfully');
-
-window.location.reload();
+location="consultant/services/subscription/add";
+// window.location.reload();
 }
 });
 

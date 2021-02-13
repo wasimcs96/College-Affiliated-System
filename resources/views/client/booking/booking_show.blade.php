@@ -74,11 +74,13 @@
                     </tr>
                     <tr>
                         <th scope="row">Booking Status</th>
+                        @if(isset($booking->status))
                         <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
                             @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
                             @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
                             @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
                         </td>
+                        @endif
                     </tr>
 
 
