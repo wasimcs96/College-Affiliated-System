@@ -21,9 +21,9 @@
         <span class="line-bg line-bg6"></span>
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 mx-auto responsive--column-l text-center">
+                <div class="col-lg-10 mx-auto responsive--column-l">
                     <div class="hero-content pb-5">
-                        <div class="section-heading" >
+                        <div class="section-heading text-center" >
                             <h2 class="sec__title cd-headline zoom" style="color: #073975;">
                                 Amazing <span class="cd-words-wrapper" style="color:#ff7300">
                                 <b class="is-visible">Education</b>
@@ -721,49 +721,51 @@
                     <!-- end testimonial-carousel -->
             </div><!-- end col-lg-8 -->
         </div> --}}
-        <div class="container">
+        <div class="container" style="
+    padding-right: 10px;
+    padding-left: 10px;
+">
 
             <div class="row padding-top-50px">
-                <div class="col-lg-3 responsive-column">
+                <div class="col-lg-3 milestonewidth"style="padding-left: 0.9765625vw;padding-right: 0.9765625vw;">
                     <div class="deal-list">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
 
-                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 216px; margin: auto;"  loop  autoplay></lottie-player>
-                       <h3 style="text-align: center"> Hire Nearby Consultant</h3>
+                    </div>
+                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_cum0oz6f.json')}}"  background="transparent"  speed="1"  style="width: 100%; height: 23.14814814814815vh; margin: auto;"  loop  autoplay></lottie-player>
+                       <h3 style="text-align: center">Hire Nearby Consultant</h3>
                     </div>
                 </div><!-- end col-lg-3 -->
-                 <div class="col-lg-3 responsive-column">
+                 <div class="col-lg-3 milestonewidth" style="padding-left: 0.9765625vw;padding-right: 0.9765625vw;">
                     <div class="deal-list">
                         <div class="d-flex align-items-center justify-content-between mb-3">
 
                         </div>
 
-                        <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;margin: auto; "  loop  autoplay></lottie-player>
+                        <lottie-player src="{{asset('frontEnd/assets/json/30304-back-to-school.json')}}"  background="transparent"  speed="1"  style="width: 100%; height: 23.14814814814815vh;margin: auto; "  loop  autoplay></lottie-player>
                         <h3 style="text-align: center">Choose University</h3>
                     </div>
                 </div><!-- end col-lg-3 -->
 
 
-                 <div class="col-lg-3 responsive-column">
+                 <div class="col-lg-3 milestonewidth" style="padding-left: 0.9765625vw;padding-right: 0.9765625vw;">
                     <div class="deal-list">
                         <div class="d-flex align-items-center justify-content-between mb-3">
 
                         </div>
 
-                        <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 200px;margin: auto;"  loop  autoplay></lottie-player>
+                        <lottie-player src="{{asset('frontEnd/assets/json/27490-documentscan.json')}}"  background="transparent"  speed="1"  style="width: 100%; height: 23.14814814814815vh;margin: auto;"  loop  autoplay></lottie-player>
                         <h3 style="text-align: center">Verify Documents</h3>
 
                     </div>
                 </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
+                <div class="col-lg-3 milestonewidth" style="padding-left: 0.9765625vw;padding-right: 0.9765625vw;">
                     <div class="deal-list">
                         <div class="d-flex align-items-center justify-content-between mb-3">
 
                         </div>
-
-                        <div>
-                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 200px; height: 238px;margin: auto;"  loop  autoplay></lottie-player>
-                        </div>
-                        <h3 style="text-align: center">Get Ready to Fly</h3>
+                        <lottie-player src="{{asset('frontEnd/assets/json/lf30_editor_ggnpfgjn.json')}}"  background="transparent"  speed="1"  style="width: 100%; height:23.14814814814815vh;margin: auto;"  loop  autoplay></lottie-player>
+                        <h3 style="text-align: center">Get Ready<br> to Fly</h3>
                     </div>
                 </div><!-- end col-lg-3 -->
             </div><!-- end row -->
