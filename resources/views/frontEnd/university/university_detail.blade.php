@@ -150,8 +150,7 @@
                             <div class="single-content-item pb-4">
                                 <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}
 
-                                    @if(isset($university->is_verified)&& $university->is_verified == 1)
-                            <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif
+                            <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>
                             <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                             @if(isset($university->Premium_expire_date))
                             @if($university->Premium_expire_date > $mytime)<span data-toggle="tooltip"  data-url=""  data-title="Premium Profile"  style="
@@ -362,8 +361,8 @@
                                         </div>
                                         <div class="author-bio">
                                             {{-- {{dd($consultant)}} --}}
-                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->first_name ?? ''}} {{$consultant->userConsultant->last_name ?? ''}}</a> @if($consultant->userConsultant->is_verified ?? '' == 1)
-                                                <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif</h4>
+                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->first_name ?? ''}} {{$consultant->userConsultant->last_name ?? ''}}</a>
+                                                <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span></h4>
                                             <span class="author__meta">Member Since :{{$consultant->userConsultant->consultant->created_at->Format("Y") ?? ''}}</span>
                                             <div class="d-flex flex-wrap align-items-center ">
                                                 {{-- <p class="mr-2">Rating:</p> --}}
@@ -559,9 +558,9 @@
                                     @if(isset($consultant->userConsultant->first_name ))
                                     {{$consultant->userConsultant->first_name ?? ''}} &nbsp;{{$consultant->userConsultant->last_name ?? ''}}
                                 @else N/A @endif</a>
-                                    @if($consultant->userConsultant->is_verified ?? '' == 1)
+                                 
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                @endif
+                               
                             </h3>
                                 <p class="card-meta">{{$consultant->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">

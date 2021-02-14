@@ -846,7 +846,7 @@
                                                       <button  style="
                                                       color: #5d646d;
                                                       font-size: 15px;
-                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'country_india')"><span class="flag-icon flag-icon-in mr-1"></span>{!!"&nbsp"!!}India</button>
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'country_Singapore')"><span class="flag-icon flag-icon-sg mr-1"></span>{!!"&nbsp"!!}Singapore</button>
                                                     </div>
 
                                                     <div id="country_us" class="tabcontent" style=" float: left;
@@ -1251,7 +1251,7 @@
                                                      </ul>
 
                                                 </div>
-                                                <div id="country_india" class="tabcontent" style=" float: left;
+                                                <div id="country_Singapore" class="tabcontent" style=" float: left;
                                                 padding: 0px 12px;
                                                 border: 1px solid #ccc;
                                                 width: 70%;
@@ -1278,7 +1278,7 @@
 
                                                             ">Featured Universities</li>
 
-                                                            <?php $headercountries61 = App\Models\University::where('countries_id',99)->take(7)->get(); ?>
+                                                            <?php $headercountries61 = App\Models\University::where('countries_id',188)->take(7)->get(); ?>
                                                         @foreach ($headercountries61 as $headercountry61)
                                                         @if($headercountry61->user->status == 1)
                                                         @if($headercountry61->user->premium_expire_date > $mytime)
@@ -1309,7 +1309,7 @@
                                                         font-weight: 600;
 
                                                         ">Other Universities</li>
-                                                        <?php $headercountries62 = App\Models\University::where('countries_id',99)->take(7)->get(); ?>
+                                                        <?php $headercountries62 = App\Models\University::where('countries_id',188)->take(7)->get(); ?>
                                                     @foreach ($headercountries62 as $headercountry62)
                                                     @if($headercountry62->user->status == 1)
                                                     @if($headercountry62->user->premium_expire_date <$mytime)         {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >

@@ -182,6 +182,45 @@
 
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
+                            <label for="landline_1">Establishment Year</label>
+                            <input type="text" name="establish_at" class="form-control" value="@if(isset(auth()->user()->university->established_at)){{auth()->user()->university->established_at}}@endif" placeholder="Ex. 1885" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                            <label for="landline_2">ILTS Rating</label>
+                            <input type="text" name="ilts" value="@if(isset(auth()->user()->university->iltes)){{auth()->user()->university->iltes}}@endif" class="form-control" placeholder="ILTS Rating" required>
+                        </div>
+                    </div>
+
+
+                    <div class="input-box" >
+                        <span class="la la-university mr-1 form-icon"></span>
+                        <label class="label-text">In Take </label>
+
+                        <div class="form-group">
+
+                            <select class="selectpicker" multiple="multiple" data-live-search="true"  placeholder="University" id="university" name="in_take[]" >
+                                <option value="Jan" >Jan</option>
+                                <option value="Feb">Feb</option>
+                                <option value="Mar">Mar</option>
+                                <option value="Apr">Apr</option>
+                                <option value="May">May</option>
+                                <option value="Jun">Jun</option>
+                                <option value="July">July</option>
+                                <option value="Aug">Aug</option>
+                                   <option value="Sep">Sep</option>
+                                   <option value="Oct">Oct</option>
+                                   <option value="Nov">Nov</option>
+                                   <option value="Dec">Dec</option>
+                            </select>
+                            <div id="universityError"></div>
+                            {{-- <input class="form-control" type="name" name="name" placeholder="Your name" required> --}}
+                        </div>
+                    </div>
+
+                          <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
                             <label for="city">City</label>
                             <input type="text" name="city"  value="@if(isset(auth()->user()->city)){{auth()->user()->city}}@endif" class="form-control" placeholder="City" required>
                         </div>
@@ -192,6 +231,8 @@
                             <input type="text" name="average_fees" value="@if(isset(auth()->user()->university->average_fees)){{auth()->user()->university->average_fees}}@endif" class="form-control" placeholder="Average Fees">
                         </div>
                     </div>
+
+
                     {{-- <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <textarea rows="4" name="address"  type="text" class="form-control" placeholder="Address">@if(isset(auth()->user()->address_1)){{auth()->user()->address_1}}@endif</textarea>
@@ -298,6 +339,8 @@
 @section('page-styles')
 <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 @stop
 @section('page-script')
 
@@ -371,4 +414,8 @@ $(".deleteRecord").click(function(){
     });
 
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
 @stop
+
