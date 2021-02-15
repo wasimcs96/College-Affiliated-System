@@ -797,7 +797,7 @@ $(document).ready(function(){
       e.preventDefault();
       $(".responsive-column:hidden").slice(0, 4).slideDown();
       if($(".responsive-column:hidden").length == 0) {
-        $("#loadMore").text("No Content").addClass("noContent");
+        $("#loadmore").text("No Content").addClass("noContent");
       }
     });
     
