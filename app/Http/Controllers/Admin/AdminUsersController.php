@@ -82,6 +82,7 @@ class AdminUsersController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'mobile' => $request->mobile,
+            'countries_id'=>$request->country,
             'password' => Hash::make($request->password),
         ])->assignRole('client');
 
@@ -147,6 +148,7 @@ class AdminUsersController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'mobile' => $request->mobile,
+            'countries_id'=>$request->country,
             'password' => Hash::make($request->password),
         ])->assignRole('consultant');
         Consultant::create([
@@ -169,6 +171,7 @@ class AdminUsersController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'mobile' => $request->mobile,
+            'countries_id'=>$request->country,
             'password' => Hash::make($request->password),
         ])->assignRole('subAdmin');
           // Important Code
