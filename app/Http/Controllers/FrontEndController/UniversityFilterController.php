@@ -158,11 +158,6 @@ if($courses->count()>0){
                 $query = User:: with(['university' => function ($q) use ($tape) {
                     $q->where('type', '=', $tape);
                 }]);
-
-
-
-
-
                 $rtd = $query->get();
 
                 foreach ($rtd as $key => $que) {
