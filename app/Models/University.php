@@ -22,7 +22,11 @@ class University extends Model
         'default_documents',
         'about_me',
         'average_fees',
-        'cover_image'
+        'cover_image',
+        'in_takes',
+        'iltes',
+        'established_at',
+        'exam'
     ];
 
     protected $dates = ['deleted_at'];

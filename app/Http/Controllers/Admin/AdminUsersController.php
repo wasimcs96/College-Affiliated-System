@@ -38,6 +38,10 @@ class AdminUsersController extends Controller
         {
            return view('admin.users.user.index')->with('users', User::all())->with('id',3);
         }
+        if($id==4)
+        {
+           return view('admin.users.user.index')->with('users', User::all())->with('id',4);
+        }
     }
 
     public function add()
@@ -78,18 +82,21 @@ class AdminUsersController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'mobile' => $request->mobile,
+            'countries_id'=>$request->country,
             'password' => Hash::make($request->password),
         ])->assignRole('client');
 
-            // Important Code
-    //  $replacement['token'] =$request->_token;
-
-
-    //  $replacement['USER_NAME'] = $request->first_name;
-    //  $replacement['PASSWORD'] = $request->password;
-    //  $replacement['EMAIL'] = $request->email;
-    //  $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
-    //  mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+             // Important Code
+// $replacement['COURSE_LINK'] =http://kamercio.com/campusInterest/public/university/all;
+// $replacement['CONSULTANT_LINK'] =http://kamercio.com/campusInterest/public/consultant/all;
+// $replacement['APP_STORE_APP'] = https://play.google.com/store/apps/developer?id=Digitalcolf;
+// $replacement['PLAY_STORE_APP'] = https://play.google.com/store/apps/developer?id=Digitalcolf;
+// $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+// $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+// $replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
+// $replacement['WEBSITE_LINK'] = http://kamercio.com/campusInterest/public/;
+// $data = ['template'=>'welcome-email','hooksVars' => $replacement];
+// mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
 
         return view('admin.users.user.index')->with('users', User::all())->with('id',1);
        }
@@ -118,6 +125,20 @@ class AdminUsersController extends Controller
     //  $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
     //  mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
 
+        $users = User::all();
+        foreach($users as $use)
+        {
+            if($use)
+            {
+                if($use->isConsultant())
+                {
+                    // $replacement['UNIVERSITY_NAME'] = $request->university_name;
+                    // $data = ['template'=>'university-added','hooksVars' => $replacement];
+                    // mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+                }
+            }
+        }
+
         return view('admin.users.user.index')->with('users', User::all())->with('id',3);
 
        }
@@ -127,6 +148,7 @@ class AdminUsersController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'mobile' => $request->mobile,
+            'countries_id'=>$request->country,
             'password' => Hash::make($request->password),
         ])->assignRole('consultant');
         Consultant::create([
@@ -149,10 +171,10 @@ class AdminUsersController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'mobile' => $request->mobile,
+            'countries_id'=>$request->country,
             'password' => Hash::make($request->password),
         ])->assignRole('subAdmin');
-       }
-            // Important Code
+          // Important Code
     //         $replacement['token'] =$request->_token;
 
 
@@ -161,6 +183,9 @@ class AdminUsersController extends Controller
     //  $replacement['EMAIL'] = $request->email;
     //  $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
     //  mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+    return view('admin.users.user.index')->with('users', User::all())->with('id',4);
+       }
+
     }
 
     public function update(Request $request, User $id)

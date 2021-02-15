@@ -150,8 +150,7 @@
                             <div class="single-content-item pb-4">
                                 <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}
 
-                                    @if(isset($university->is_verified)&& $university->is_verified == 1)
-                            <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif
+                            <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>
                             <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                             @if(isset($university->Premium_expire_date))
                             @if($university->Premium_expire_date > $mytime)<span data-toggle="tooltip"  data-url=""  data-title="Premium Profile"  style="
@@ -235,14 +234,14 @@
                                             @if(isset($university->countries_id))
                                             <?php $country = DB::table('countries')->where('countries_id',$university->countries_id)->get()->first();?>
                                             @endif
-                                            <li><span>Country:</span>{{$country->countries_name ?? ''}}</li>
-                                            <li><span>City:</span>{{$university->city ?? ''}}</li>
-                                            {{-- <li><span>Admission Opens:</span>19/09/20</li>
-                                            <li><span>Campus:</span>93,558 grt</li> --}}
-                                            <li><span>University Type:</span> @if(isset($university->university->type)&&($university->university->type==0))
-                                                Private
-                                                @else Govenment</p>
-                                                @endif</li>
+                                          <li><span>Established at:</span>@if(isset($university->university->established_at)){{$university->university->established_at}} @else N/A @endif</li>
+                                                {{--   <li><span>Campus:</span>93,558 grt</li> --}}
+                                                <li><span>University Type:</span> @if(isset($university->university->type)&&($university->university->type==0))
+                                                    Private
+                                                    @else Govenment</p>
+                                                    @endif</li>
+                                                    <li><span>City:</span>{{$university->city ?? ''}}</li>
+                                                    <li><span>Country:</span>{{$country->countries_name ?? ''}}</li>
                                             {{-- <li><span>Opening time:</span>105 ft</li>
                                             <li><span>Closeing time:</span>28 ft</li>
                                             <li><span>brachs</span>22.5 knots</li> --}}
@@ -250,12 +249,12 @@
                                     </div><!-- end col-lg-6 -->
                                    <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
-                                            <li><span>Courses:</span>{{$university->universityCourse->count()}}</li>
+                                            <li><span>IELTS Rating:</span>@if(isset($university->university->iltes)){{$university->university->iltes}}/10 @else -/10 @endif</li>
 
-                                            <li><span>Consultants:</span>{{$university->universityConsultant->count()}}</li>
-                                            <li><span>Website:</span><a target="_blank" href="{{$university->university->website ?? ''}}" URL>{{$university->university->website ?? ''}}</a></li>
-                                            {{-- <li><span>Total Staff:</span>9,078 crew</li>
-                                            <li><span>Counsellor:</span>Italian</li>
+                                            <li><span>In Takes:</span>@if(isset($university->university->in_takes)){{$university->university->in_takes}} @else N/A @endif</li>
+                                            <li><span>Exam:</span>{{$university->university->exam?? ''}}</li>
+                                            <li><span>Website:</span><a target="_blank" href="{{$university->university->website ?? ''}}" URL>Visit Site</a></li>
+                                            {{--   <li><span>Counsellor:</span>Italian</li>
                                             <li><span>Hostels:</span>International</li>
                                             <li><span>affiliated collages:</span>International</li>
                                             <li><span>Registry:</span>Panama</li> --}}
@@ -362,8 +361,8 @@
                                         </div>
                                         <div class="author-bio">
                                             {{-- {{dd($consultant)}} --}}
-                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->first_name ?? ''}} {{$consultant->userConsultant->last_name ?? ''}}</a> @if($consultant->userConsultant->is_verified ?? '' == 1)
-                                                <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif</h4>
+                                            <h4 class="author__title"><a href="#">{{$consultant->userConsultant->first_name ?? ''}} {{$consultant->userConsultant->last_name ?? ''}}</a>
+                                                <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span></h4>
                                             <span class="author__meta">Member Since :{{$consultant->userConsultant->consultant->created_at->Format("Y") ?? ''}}</span>
                                             <div class="d-flex flex-wrap align-items-center ">
                                                 {{-- <p class="mr-2">Rating:</p> --}}
@@ -559,9 +558,9 @@
                                     @if(isset($consultant->userConsultant->first_name ))
                                     {{$consultant->userConsultant->first_name ?? ''}} &nbsp;{{$consultant->userConsultant->last_name ?? ''}}
                                 @else N/A @endif</a>
-                                    @if($consultant->userConsultant->is_verified ?? '' == 1)
+                                 
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                @endif
+                               
                             </h3>
                                 <p class="card-meta">{{$consultant->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">

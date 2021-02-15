@@ -123,21 +123,27 @@ class ConsultantFrontController extends Controller
         // dd($request->all());
         // dd($request->uid);
         $bookind_date = strtotime($request->booking_date);
-        $bookind_date = date('Y-m-d');
-        // dd($bookind_date);
+        $book_date = date('Y-m-d',$bookind_date);
         $json = json_encode($request->banner_images);
-        // dd($json);
         $consultantBooking = Booking::create([
             'booking_start_time' => $start_time,
             'booking_end_time' => $end_time,
             'client_id' => $request->client_id,
             'consultant_id' => $request->cid,
             'enquiry' => $json,
-            'booking_date' => $bookind_date,
-            // 'comments'=>$request->comment,
+            'booking_date' =>  $book_date,
             'status' => 0,
             'booking_for' => 0,
         ]);
+          $consultant = User::where('id',$request->cid)->first();
+        // Important Code
+            // $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
+            // $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
+            // $replacement['SERVICE_NAME'] = Student Booking;
+            // $replacement['BOOKING_LINK'] = http://kamercio.com/campusInterest/public/client/bookings/show/$consultantBooking->id;
+            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
+            // mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+
         return redirect()->route('client.dashboard')->with('success', 'Your Application have been Submitted Successfully');
     }
 
