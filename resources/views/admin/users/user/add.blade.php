@@ -40,9 +40,8 @@
                                     <label>Last Name</label>
                                     <input type="text" class="form-control" name="last_name" id="last_name" required>
                                 </div>
-                                <div style='display:none;' class="form-group" id="uniname">
-                                    <label>University Name</label>
-                                    <input type="text" class="form-control" name="university_name" id="university_name" required>
+                                <div class="form-group" id="uniname">
+                                    
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
@@ -117,12 +116,11 @@ $(document).ready(function(){
       if ( this.value == '2')
       //.....................^.......
       {
-        $("#uniname").show();
+        $("#uniname").html('<label>University Name</label><input type="text" class="form-control" name="university_name" id="university_name" required>');
       }
-      else
-      {
-        $("#uniname").hide();
-      }
+    else {
+        $("#uniname").html('');
+    }
     });
 });
 </script>
