@@ -279,8 +279,8 @@
                                         </div>
                                         <div class="author-bio">
                                             {{-- {{dd($consultant)}} --}}
-                                            <h4 class="author__title"><a href="#">{{$universitycon->userUniversity->university->university_name ?? ''}}</a> @if($universitycon->userUniversity->is_verified == 1)
-                                                <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>@endif</h4>
+                                            <h4 class="author__title"><a href="#">{{$universitycon->userUniversity->university->university_name ?? ''}}</a> 
+                                                <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span></h4>
                                             <span class="author__meta">Member Since :@if(isset($universitycon->userUniversity->university->created_at))
                                                 {{$universitycon->userUniversity->university->created_at->Format("Y") ?? ''}}@else N/A @endif</span>
                                             <div class="d-flex flex-wrap align-items-center ">
@@ -449,9 +449,24 @@
                                 </div> --}}
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="{{route('university_detail',['id' => $universitycrousel->userUniversity->id ?? ''])}}">{{$universitycrousel->userUniversity->university->university_name ?? ''}}</a>         @if($universitycrousel->userUniversity->is_verified ?? '' == 1)
-                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                @endif</h3>
+                                <?php
+                                $myuniversitycrousel =$universitycrousel->userUniversity->university->university_name ?? '';
+                                // dd($myuniversitycrousel);
+                                if (strlen($myuniversitycrousel) > 5)
+                                    {
+                                        // dd($myire);
+                                        $myuniversitycrousel = substr($myuniversitycrousel, 0, 40);
+                                        $myuniversitycrousel = explode(' ', $myuniversitycrousel);
+                                        array_pop($myuniversitycrousel); // remove last word from array
+                                        $myuniversitycrousel = implode(' ', $myuniversitycrousel);
+                                        // $myvalue = $myvalue . ' ...';
+                                    } ?>
+                                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$universitycrousel->userUniversity->id])}}">
+                                        @if(isset($universitycrousel->userUniversity->university->university_name))<?php echo($myuniversitycrousel . '...')?> @else N/A @endif</a>
+                                     
+                                            <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                 
+                                        </h3>
                                 <p class="card-meta">{{$universitycrousel->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">
                                                 <p class="mr-2">Rating:</p>
@@ -503,26 +518,29 @@
                                             </div>
                                             <div class="card-attributes">
                                                 <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($universitycrousel->userUniversity->university->created_at))
-                                                        {{$universitycrousel->userUniversity->university->created_at->Format("Y") ?? ''}}
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($universitycrousel->userUniversity->university->established_at))
+                                                        {{$universitycrousel->userUniversity->university->established_at}}
                                                         @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
-                                                        @if(isset($universitycrousel->userUniversity->universityConsultant))
-                                                        {{$universitycrousel->userUniversity->universityConsultant->count()}}@else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Courses"><i class="las la-book"></i><span>   @if(isset($universitycrousel->userUniversity->universityCourse))
-                                                        {{$universitycrousel->userUniversity->universityCourse->count()}}
-                                                        @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($universitycrousel->userUniversity->universityConsultantClient))
-                                                        {{$universitycrousel->userUniversity->universityConsultantClient->count()}}
-                                                        @else N/A @endif</span></li>
-                                                </ul>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$universitycrousel->userUniversity->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($universitycrousel->userUniversity->university->in_takes)){{$result = count(explode(',',$universitycrousel->userUniversity->university->in_takes))}} @else N/A @endif</span></li>
+                                                    <!-- <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
+                                                       </span></li> -->
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$universitycrousel->userUniversity->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($universitycrousel->userUniversity->university->iltes))
+                                                            {{$universitycrousel->userUniversity->university->iltes}}/10
+                                                            @else -/10 @endif</span></li>
+                                </ul>
                                             </div>
                                 <div class="card-price d-flex align-items-center justify-content-between">
-                                    <p>
-                                        <span class="price__text">City :</span>
-                                        <span class="price__num">{{$universitycrousel->userUniversity->city ?? ''}}</span>
-                                        {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
-                                    </p>
+                                    @if(auth()->user())
+                                    <a href="{{asset($universitycrousel->userUniversity->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                         height: 38px;
+                                         padding-top: 9px;
+                                     ">Brochure</a>
+                                     @else
+                                     <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
+                                         height: 38px;
+                                         padding-top: 9px;
+                                     ">Brochure</a>
+                                     @endif
 
                            <a @if(isset($universitycrousel->userUniversity->id)) href="{{route('university_detail',['id'=>$universitycrousel->userUniversity->id ?? ''])}}" @else href="javascript:void(0);" @endif><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
 

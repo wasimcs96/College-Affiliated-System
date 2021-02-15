@@ -25,7 +25,8 @@ class University extends Model
         'cover_image',
         'in_takes',
         'iltes',
-        'established_at'
+        'established_at',
+        'exam'
     ];
 
     protected $dates = ['deleted_at'];
