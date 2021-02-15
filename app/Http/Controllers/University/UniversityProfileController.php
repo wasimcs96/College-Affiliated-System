@@ -73,6 +73,7 @@ class UniversityProfileController extends Controller
                   $university->fill(['cover_image'=>Config::get('define.image.cover_image').'/'.$profile_image_new_name]);
               }
               $in_takes = collect($request->in_take )->implode(',');
+              $exam = collect($request->exam)->implode(',');
             //   dd($in_takes);
               $university->fill([
                  'user_id'=>$user->id,
@@ -85,7 +86,7 @@ class UniversityProfileController extends Controller
                  'established_at'=>$request->establish_at,
                  'iltes'=>$request->ilts,
                  'average_fees'=>$request->average_fees,
-                //  'brochure'=>$request->brochure
+                 'exam'=>$exam
              ]);
 
              if($request->hasFile('brochure'))

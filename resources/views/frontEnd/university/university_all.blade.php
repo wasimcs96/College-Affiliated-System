@@ -170,7 +170,7 @@
             @foreach($universities as $university)
 @if($university)
             @if($university->isUniversity())
-            <div class="col-lg-4 responsive-column">
+    <div class="col-lg-4 responsive-column">
                 <div class="card-item car-card border">
                     <div class="card-img" style="text-align: center; height:185px;">
                     <a href="{{route('university_detail',['id'=>$university->id])}}" class="d-block">
@@ -239,7 +239,7 @@
                         <div class="card-rating">
                             <div class="d-flex flex-wrap align-items-center pt-2">
                                 <p class="mr-2">Rating:</p>
-@if(isset($university->rating))
+                        @if(isset($university->rating))
                                     <span>@if($university->rating == 3 ?? '' )
                                             <span class="ratings ">
                                                 <i class="la la-star"></i>
@@ -311,11 +311,22 @@
                                                         <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$university->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($university->university->iltes))
                                                             {{$university->university->iltes}}/10
                                                             @else -/10 @endif</span></li>
-                                                </ul>
+                                </ul>
                         </div>
 
                         <div class="card-price d-flex align-items-center justify-content-between">
-                            <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload">Brochure</a>
+                            @if(auth()->user())
+                                               <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                                    height: 38px;
+                                                    padding-top: 9px;
+                                                ">Brochure</a>
+                                                @else
+                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
+                                                    height: 38px;
+                                                    padding-top: 9px;
+                                                ">Brochure</a>
+                                                @endif
+
 
                             <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                         </div>
@@ -331,14 +342,14 @@
             </div>
             @endif
         </div><!-- end row -->
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-lg-12">
                 <div class="btn-box mt-3 text-center">
-                    <button type="button" class="theme-btn"><i class="la la-refresh mr-1"></i>Load More</button>
+                    <button type="button" id="loadmore" class="theme-btn"><i class="la la-refresh mr-1"></i>Load More</button>
                     <p class="font-size-13 pt-2">Showing 1 - 6 of 44 university</p>
                 </div><!-- end btn-box -->
             </div><!-- end col-lg-12 -->
-        </div><!-- end row --> --}}
+        </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end card-area -->
 <!-- ================================
@@ -779,20 +790,17 @@
 </style>
 @endsection
 @section('per_page_script')
-{{-- <script src="{{ asset('frontEnd/assets/js/three.r119.min.js') }}"></script>
-<script src="{{ asset('frontEnd/assets/js/vanta.globe.min.js') }}"></script>
 <script>
-VANTA.GLOBE({
-  el: ".bread-bg-8",
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  color: 0x287dfa,
-  backgroundColor: 0x23153c,
-  scale: 1.00,
-  scaleMobile: 1.00
-})
-</script> --}}
+$(document).ready(function(){
+    $(".responsive-column").slice(0, 4).show();
+    $("#loadmore").on("click", function(e){
+      e.preventDefault();
+      $(".responsive-column:hidden").slice(0, 4).slideDown();
+      if($(".responsive-column:hidden").length == 0) {
+        $("#loadMore").text("No Content").addClass("noContent");
+      }
+    });
+    
+  })
+</script>
 @endsection

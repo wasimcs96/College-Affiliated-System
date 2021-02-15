@@ -200,7 +200,7 @@
 
                         <div class="form-group">
 
-                            <select class="selectpicker" multiple="multiple" data-live-search="true"  placeholder="University" id="university" name="in_take[]" >
+                            <select class="selectpicker" multiple="multiple" data-live-search="true"  placeholder="Intakes" id="university" name="in_take[]" >
                                 <option value="Jan" >Jan</option>
                                 <option value="Feb">Feb</option>
                                 <option value="Mar">Mar</option>
@@ -218,6 +218,26 @@
                             {{-- <input class="form-control" type="name" name="name" placeholder="Your name" required> --}}
                         </div>
                     </div>
+                    <div class="input-box" >
+                        <span class="la la-university mr-1 form-icon"></span>
+                        <label class="label-text">Exam</label>
+
+                        <div class="form-group">
+
+                            <select class="selectpicker" multiple="multiple" data-live-search="true"  placeholder="Exam" id="university" name="exam[]" >
+                                <option value="IELTS">IELTS</option>
+                                <option value="TOEFL">TOEFL</option>
+                                <option value="PTE">PTE</option>
+                                <option value="TOEIC">TOEIC</option>
+                                <option value="SAT">SAT</option>
+                                <option value="GMAT">GMAT</option>
+                                <option value="GRE">GRE</option>
+                            </select>
+                            <div id="universityError"></div>
+                            {{-- <input class="form-control" type="name" name="name" placeholder="Your name" required> --}}
+                        </div>
+                    </div>
+
 
                           <div class="col-lg-4 col-md-12">
                         <div class="form-group">
