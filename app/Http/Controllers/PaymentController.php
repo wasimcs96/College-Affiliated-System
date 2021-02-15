@@ -67,18 +67,42 @@ class PaymentController extends Controller
             $time = $request->package_time;
             $user->Subscription_expire_date = Carbon::now()->addMonths($time);
             $user->save();
+
+            $role = '';
+            if(auth()->user()->isUniversity())
+            {
+                $role = University;
+            }
+
+            if(auth()->user()->isConsultant())
+            {
+                $role = Consultant;
+            }
+
+            // Important Code
+            // $replacement['ROLE'] = $role;
+            // $replacement['SERVICE_NAME'] =Subscription;
+            // $replacement['SERVICE_DETAIL'] = Subscription Expire Date: Carbon::now()->addMonths($time);
+            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
+            // mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
         }
 
         if ($request->payment_type == 1) {
             $time = $request->package_time;
             $user->Premium_expire_date = Carbon::now()->addMonths($time);
             $user->save();
+
+            // Important Code
+            // $replacement['SERVICE_NAME'] =Go Premium;
+            // $replacement['SERVICE_DETAIL'] = Premium Expire Date: Carbon::now()->addMonths($time);
+            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
+            // mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
         }
 
 
         $orderID = $order->id;
         OrderItem::create([
-            'order_id' => $orderID,                                    
+            'order_id' => $orderID,
             'item_title' => $request->title,
         ]);
 

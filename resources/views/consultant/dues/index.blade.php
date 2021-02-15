@@ -171,7 +171,7 @@
 @if($id==2)
 <h6>Total Payment<small style="margin-left:3px;">Payment Details</small></h6>
 <div class="row clearfix">
-    @if(isset($prDues->due_amount))
+    @if(isset($prDues) &&isset($prDues->due_amount))
     <input type="text" name="amount" value="{{$prDues->due_amount*100 ?? ''}}" hidden>
     @endif
     <input type="text" name="payment_type" value="3" hidden>
