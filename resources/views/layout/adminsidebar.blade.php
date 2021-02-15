@@ -55,6 +55,7 @@
                         <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>1])}}">Client</a></li>
                         <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>2])}}">Consultant</a></li>
                         <li class="{{ Request::segment(3) == '3' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>3])}}">University</a></li>
+                        {{-- <li class="{{ Request::segment(3) == '3' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>4])}}">SubAdmin</a></li> --}}
                     </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'booking' ? 'active' : null }}"><a href="{{route('admin.booking')}}"><i class="icon-list"></i><span>Bookings</span></a></li>

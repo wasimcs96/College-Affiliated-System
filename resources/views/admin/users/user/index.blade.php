@@ -105,6 +105,28 @@
                                 @endforeach
                             </tbody>
                         @endif
+                        {{-- @if($id == 4)
+                        <input type="text" value=4 name="parameter_id" hidden>
+                            <tbody>
+                                @foreach ($users as $user)
+                                    @if($user->isSubAdmin())
+                                        <tr>
+                                            <td>   @if(isset($user->first_name)){{$user->first_name ?? ''}} {{$user->last_name ?? ''}} @else N/A @endif</td>
+                                            <td>  @if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
+                                            <td>  @if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
+                                            <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
+                                            <td>     @if(isset($user->countries_id) && $user->countries_id )
+                                                <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
+                                            {{$country->countries_name ?? ''}} @else N/A @endif</td>
+
+                                            <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                            <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
+                                            <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>
+                        @endif --}}
 
 
                 @endif

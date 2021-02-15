@@ -43,6 +43,11 @@ class ConsultantDuesController extends Controller
             $dues->due_amount= $dues->due_amount-$amount;
             $dues->temp_client_count=0;
             $dues->save();
+            // Important Code
+            // $replacement['SERVICE_NAME'] = Dues;
+            // $replacement['SERVICE_DETAIL'] = Paid Amount: $request->amount;
+            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
+            // mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
          }
 
 

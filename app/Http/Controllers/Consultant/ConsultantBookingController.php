@@ -109,7 +109,7 @@ public function applicationStore(Request $request){
         // 'documents'=> $json,
     ]);
     $store->save();
-    // $i = 0;
+     $i = 0;
     $jsonUniversity = $request->documents;
     $jsonUniversityStore=json_encode($jsonUniversity);
     foreach($request->university as $key => $univers)
@@ -120,8 +120,8 @@ public function applicationStore(Request $request){
         'application_id' => $store->id,
         'country_id' => $request->country[$key],
         // 'documents' =>$jsonApplicationStore,
-
         ]);
+        $university_name[$i] = $univers->university->university_name;
 
     }
     $documentes = collect($request->documents);
@@ -140,6 +140,13 @@ public function applicationStore(Request $request){
            $applicationDocument->save();
         }
 
+        $userEmail = User::where('id',$request->client_id)->first();
+        $email = $userEmail->email;
+
+        // Important Code
+            // $replacement['APPLICATION_LINK'] = http://kamercio.com/campusInterest/public/client/applications/show/$store->id;
+            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
+            // mail::to($email)->send(new \App\Mail\ManuMailer($data));
         return redirect()->route('consultant.application')->with('success','Application Created Successfully');
     }
     else
