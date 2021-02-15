@@ -1087,8 +1087,7 @@ body {
 }
 
 .padding-top-50px {
-    padding-top: 50px;
-    padding-top: 50px
+    padding-top: 3.2552083333333335vw;
 }
 
 .padding-top-45px {
@@ -6699,8 +6698,8 @@ transform: translateX(-3px);
     position: relative;
     width: 100%;
     z-index: 2;
-    padding-top: 110px;
-    padding-bottom: 150px;
+    padding-top: 7.161458333333333vw;
+    padding-bottom: 9.765625vw;
     background-size: cover;
     background-position: center
 }
@@ -10661,7 +10660,7 @@ transform: translateX(-3px);
 
 @media only screen and (min-width: 320px) and (max-width: 479px) {
     .testimonial-area .section-heading {
-        margin-bottom: 50px
+        margin-bottom: 3.2552083333333335vw;
     }
 }
 
@@ -11019,7 +11018,7 @@ transform: translateX(-3px);
 
 .footer-item {
     position: relative;
-    margin-bottom: 50px
+    margin-bottom: 3.2552083333333335vw;
 }
 
 .footer-item .footer__desc a {

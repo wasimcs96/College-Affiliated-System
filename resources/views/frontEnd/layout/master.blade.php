@@ -115,7 +115,31 @@
     .milestonewidth{
             width: 50%;
     }
-   
+    .setposition{
+        position: relative !important;
+    }
+    .backgroundcolor{
+        background-color: #323c4f!important;
+    }
+    .ullist{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .footer-area:before {
+    position: absolute !important;
+    content: ''!important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center !important;
+    opacity: 1 !important;
+}
+.centertext{
+    text-align: center!important;
+}
 }
 
         /* PWA CSS */
@@ -382,7 +406,7 @@
     @yield('per_page_style')
     {{-- <script src="https://kit.fontawesome.com/d8864c88b6.js" crossorigin="anonymous"></script> --}}
 </head>
-<body id="customsvg" style="background-image: url('{{ asset('frontEnd/assets/images/bg222.png')}}');">
+<body class="p-0" id="customsvg" style="background-image: url('{{ asset('frontEnd/assets/images/bg222.png')}}');">
 
 <!-- sidebar html -->
 <div id="mySidenav" class="sidenav" style="z-index:100;">
@@ -456,7 +480,7 @@
 
 
 
-<section class="footer-area section-bg padding-top-100px padding-bottom-30px">
+<section class="footer-area section-bg padding-top-100px padding-bottom-30px backgroundcolor">
     <div class="container">
         <div class="row">
             {{-- <div class="col-lg-3 responsive-column">
@@ -472,7 +496,7 @@
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 --> --}}
-            <div class="col-lg-3 responsive-column">
+            <div class="col-lg-3 responsive-column hide-on-mobile">
                 <div class="footer-item">
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Popular Country</h4>
                     <ul class="list-items list--items" style="margin-left: 17px;">
@@ -522,7 +546,7 @@
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
-            <div class="col-lg-3 responsive-column">
+            <div class="col-lg-3 responsive-column hide-on-mobile">
                 <div class="footer-item">
                     <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Blogs</h4>
                     <ul class="list-items list--items">
@@ -548,18 +572,69 @@
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
-
+            <div class="hide-on-desktop col-lg-3 responsive-column">
+                <div class="footer-item">
+                <div class="form-content ">
+                        <div class="contact-form-action">
+                            <form action="{{route('front.contact.store')}}" method="post" class="row">
+                                @csrf
+                                <h2 class="sec__title" style="color: white;/* text-align: center; */margin: auto;">Contact us</h2>
+                                <div class="col-lg-6 responsive-column">
+                                    <div class="input-box">
+                                        <label class="label-text">Your Name</label>
+                                        <div class="form-group">
+                                            <span class="la la-user form-icon"></span>
+                                            <input class="form-control" type="text" name="user_name" placeholder="Your name" required>
+                                        </div>
+                                    </div>
+                                </div><!-- end col-lg-6 -->
+                                <div class="col-lg-6 responsive-column">
+                                    <div class="input-box">
+                                        <label class="label-text">Your Email</label>
+                                        <div class="form-group">
+                                            <span class="la la-envelope-o form-icon"></span>
+                                            <input class="form-control" type="email" name="email" placeholder="Email address"  required>
+                                        </div>
+                                    </div>
+                                </div><!-- end col-lg-6 -->
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <label class="label-text">Message</label>
+                                        <div class="form-group">
+                                            <span class="la la-pencil form-icon"></span>
+                                            <textarea class="message-control form-control" name="message" placeholder="Write message"  required></textarea>
+                                        </div>
+                                    </div>
+                                </div><!-- end col-lg-12 -->
+                                {{-- <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <div class="recapcha-box pb-4 d-flex align-items-center">
+                                            <label class="label-text flex-shrink-0 mr-3 mb-0">What is? 3 + 5 =</label>
+                                            <input class="form-control" type="text" name="text" placeholder="Type answer">
+                                        </div>
+                                    </div>
+                                </div><!-- end col-lg-12 --> --}}
+                                <div class="col-lg-12">
+                                    <div class="btn-box">
+                                        <button type="submit" class="theme-btn">Send Message</button>
+                                    </div>
+                                </div><!-- end col-lg-12 -->
+                            </form>
+                        </div><!-- end contact-form-action -->
+                    </div>
+                </div><!-- end footer-item -->
+            </div>
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
-                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Get in touch</h4>
+                    <h4 class="title curve-shape pb-3 margin-bottom-20px hide-on-mobile" data-text="curvs">Get in touch</h4>
                     <ul class="list-items list--items">
                         {{-- <li><a href="#">Book a consultant</a></li> --}}
-                        <li><a href="{{route('contact')}}">Contact Us</a></li>
+                        <li class="hide-on-mobile"><a href="{{route('contact')}}">Contact Us</a></li>
 
-                        <li><a href="{{route('Prmigration')}}">PR/ Migration</a></li>
+                        <li class="hide-on-mobile"><a href="{{route('Prmigration')}}">PR/ Migration</a></li>
                         {{-- <li><a href="#">Track Application</a></li> --}}
-                        <li>Download App</li>
-                        <li><a href="#" ><img style="    width: 105px;" src="{{ asset('frontEnd/assets/images/app-store.png') }}" alt=""></a>
+                        <li class="hide-on-mobile">Download App</li>
+                        <li class="centertext"><a href="#" ><img style="    width: 105px;" src="{{ asset('frontEnd/assets/images/app-store.png') }}" alt=""></a>
                         <a href="#"><img style="    width: 105px;" src="{{ asset('frontEnd/assets/images/google-play.png') }}" alt="">
                         </a></li>
 
@@ -570,8 +645,8 @@
 
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
-                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Pages</h4>
-                    <ul class="list-items list--items">
+                    <h4 class="hide-on-mobile title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Pages</h4>
+                    <ul class="ullist list-items list--items">
                         <li><a href="{{route('faq.front')}}">FAQ</a></li>
 
                         <li><a href="{{route('loan')}}">Loan</a></li>

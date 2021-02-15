@@ -85,7 +85,7 @@
             </div>
         </div>
     </div>
-    <div class="header-menu-wrapper padding-right-100px padding-left-100px" style="z-index: 59;">
+    <div class="setposition header-menu-wrapper padding-right-100px padding-left-100px" style="z-index: 59;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
