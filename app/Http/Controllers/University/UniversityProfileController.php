@@ -28,7 +28,7 @@ class UniversityProfileController extends Controller
 
     public function profileStore(Request $request)
     {
-        // dd($request->all());
+        // dd($request->in_take);
 
         $this->validate($request,[
             'university_name'=>'required',
@@ -72,7 +72,8 @@ class UniversityProfileController extends Controller
                   $profile_image->move(Config::get('define.image.cover_image'),$profile_image_new_name);
                   $university->fill(['cover_image'=>Config::get('define.image.cover_image').'/'.$profile_image_new_name]);
               }
-
+              $in_takes = collect($request->in_take )->implode(',');
+            //   dd($in_takes);
               $university->fill([
                  'user_id'=>$user->id,
                  'university_name'=>$request->university_name,
@@ -80,6 +81,9 @@ class UniversityProfileController extends Controller
                  'type'=>$request->type,
                  'countries_id'=>$request->countries_id,
                  'about_me'=>$request->about_me,
+                 'in_takes'=>$in_takes,
+                 'established_at'=>$request->establish_at,
+                 'iltes'=>$request->ilts,
                  'average_fees'=>$request->average_fees,
                 //  'brochure'=>$request->brochure
              ]);

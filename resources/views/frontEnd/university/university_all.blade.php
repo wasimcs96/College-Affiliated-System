@@ -207,11 +207,24 @@
                         </div> --}}
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">@if(isset($university->university->university_name)){{$university->university->university_name ?? ''}} @else N/A @endif</a>
-                             @if($university->is_verified == 1)
-                             <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                         @endif
-                        </h3>
+                    <?php
+                                    $myuniversity =$university->university->university_name ?? '';
+                                    // dd($myire);
+                                    if (strlen($myuniversity) > 5)
+                                        {
+                                            // dd($myire);
+                                            $myuniversity = substr($myuniversity, 0, 40);
+                                            $myuniversity = explode(' ', $myuniversity);
+                                            array_pop($myuniversity); // remove last word from array
+                                            $myuniversity = implode(' ', $myuniversity);
+                                            // $myvalue = $myvalue . ' ...';
+                                        } ?>
+                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">
+                                            @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif</a>
+                                         
+                                                <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                     
+                                            </h3>
                         <p class="card-meta">
                             @if(isset($university->university->type))
                              @if($university->university->type==0)
@@ -288,17 +301,17 @@
                                 {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                             </p>
                             <ul class="d-flex align-items-center">
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Member Since"><i class="las la-calendar"></i><span>   @if(isset($university->university->created_at))
-                                    {{$university->university->created_at->Format("Y")}}
-                                    @else N/A @endif</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Available Courses"><i class="las la-book"></i><span>{{$university->universityCourse->count()}}</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
-                                    @if(isset($university->universityConsultant))
-                                    {{$university->universityConsultant->count()}}@else N/A @endif</span></li>
-                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>   @if(isset($university->universityConsultantClient))
-                                        {{$university->universityConsultantClient->count()}}
-                                        @else N/A @endif</span></li>
-                            </ul>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($university->university->established_at))
+                                                        {{$university->university->established_at}}
+                                                        @else N/A @endif</span></li>
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$university->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($university->university->in_takes)){{$result = count(explode(',',$university->university->in_takes))}} @else N/A @endif</span></li>
+                                                    <!-- <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
+                                                        @if(isset($us->universityConsultant))
+                                                        {{$us->universityConsultant->count()}}@else N/A @endif</span></li> -->
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$university->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($university->university->iltes))
+                                                            {{$university->university->iltes}}/10
+                                                            @else -/10 @endif</span></li>
+                                                </ul>
                         </div>
 
                         <div class="card-price d-flex align-items-center justify-content-between">
