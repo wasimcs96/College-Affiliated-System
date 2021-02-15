@@ -39,9 +39,9 @@
                         <input type="text"  name="title" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="type">Course Type</label>
+                        <label for="type">Course Level</label>
                         <select name="type" class="form-control" required>
-                            <option value="">--- Select Course Type ---</option>
+                            <option value="">--- Select Course Level ---</option>
                                 <option value="0">UG</option>
                                 <option value="1">PG</option>
                                 <option value="2">Diploma</option>
