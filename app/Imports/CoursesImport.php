@@ -4,9 +4,10 @@ namespace App\Imports;
 
 use App\Models\UniversityCourse;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 use Illuminate\Support\Carbon;
 
-class CoursesImport implements ToModel
+class CoursesImport implements ToModel, WithStartRow
 {
   public $category;
 
@@ -16,6 +17,11 @@ class CoursesImport implements ToModel
      $this->category=$category;
      $this->type=$type;
   }
+
+  public function startRow(): int
+    {
+        return 2;
+    }
     /**
     * @param array $row
     *

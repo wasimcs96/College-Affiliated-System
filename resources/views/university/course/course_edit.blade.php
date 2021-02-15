@@ -29,9 +29,9 @@
                         <input type="text" value="{{$universitycourse->title ?? 'NA'}}" name="title" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="type">Course Type</label>
+                        <label for="type">Course Level</label>
                         <select name="type" class="form-control" required>
-                            <option value="">--- Select Course Type ---</option>
+                            <option value="">--- Select Course Level ---</option>
                                 <option value="0" @if($universitycourse->type == 0) selected @endif>UG</option>
                                 <option value="1" @if($universitycourse->type == 1) selected @endif>PG</option>
                                 <option value="2" @if($universitycourse->type == 2) selected @endif>Diploma</option>

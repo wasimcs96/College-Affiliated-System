@@ -39,9 +39,9 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="category_id">Select Type</label>
+                        <label for="category_id">Course Level</label>
                         <select name="type" class="form-control" id="type" required>
-                            <option value="">--- Select Type ---</option>
+                            <option value="">--- Select Course Level ---</option>
                             <option value="0">UG</option>
                             <option value="1">PG</option>
                             <option value="2">Diploma</option>

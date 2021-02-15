@@ -332,7 +332,7 @@ Route::get('bookings/follow_up/show/{id}',[
     'as' => 'consultant.booking.followup.show'
 ]);
 
-/* PRMIGRATION Section #######################################*/
+/* PRMIGRATION Section */
 Route::get('prmigration',[
     'uses'=>'ConsultantPrmigrationController@prindex',
     'as'=>'consultant.prmigration'
