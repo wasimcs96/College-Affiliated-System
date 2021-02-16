@@ -21,9 +21,9 @@ class UniversityFilterController extends Controller
 if($courses->count()>0){
         $output = '<option value="" selected>Select Sub Discipline</option>';
         foreach ($courses as $row) {
-            $output .= '<option value="' . $row->id . '">' . $row->title . '</option>';
+            $output .= '<option value="' . $row->id . '" >' . $row->title . '</option>';
         }
-
+            
         echo $output;
     }else{
         $output = '<option value="" selected>No Data Available</option>';
@@ -32,56 +32,57 @@ if($courses->count()>0){
 
     }
     }
-    public function courseWiseUniversity(Request $request)
-    {
+        public function courseWiseUniversity(Request $request)
+        {
 
 
-        $category = $request->category ?? '';
-        $sub_category = $request->sub_category ?? '';
+            $filtercatgory = $request->category ?? '';
+            $filtersub_category = $request->sub_category ?? '';
+            $study_level = $request->study_level ?? '';
+// dd($filtercatgory);
 
-
-
-        $universities = [];
-        $childs=[];
-        if ($sub_category != null && $sub_category != '') {
-            $universitycourse = UniversityCourse::where('category_id', $sub_category)->distinct()->get(['user_id']);
-
-            foreach ($universitycourse as $key => $univercity) {
-                $universities[$key] = $univercity->users;
-            }
-        } else {
-
-
-            $check = Category::find($category);
-            $childcheck = $check->child_category->pluck('id');
-            $childerens=$check->child_category;
-
-            if ($childcheck->count() > 0) {
-                foreach($childerens as $keys=>$child){
-                    $childs[$keys]=$child;
-
-                }
-            }
-
-
-            if ($childcheck->count() > 0) {
-
-                $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get(['user_id']);
-                foreach ($universitycourse as $key => $univercity) {
-                    $universities[$key] = $univercity->users;
-                }
-            } else {
-                $universitycourse = UniversityCourse::where('category_id',  $category)->distinct()->get(['user_id']);
+            $universities = [];
+            $childs=[];
+            if ($filtersub_category != null && $filtersub_category != '') {
+                $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->distinct()->get(['user_id']);
 
                 foreach ($universitycourse as $key => $univercity) {
                     $universities[$key] = $univercity->users;
                 }
+            } 
+            else {
+
+
+                $check = Category::find($filtercatgory);
+                $childcheck = $check->child_category->pluck('id');
+                $childerens=$check->child_category;
+
+                if ($childcheck->count() > 0) {
+                    foreach($childerens as $keys=>$child){
+                        $childs[$keys]=$child;
+
+                    }
+                }
+
+
+                if ($childcheck->count() > 0) {
+
+                    $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get(['user_id']);
+                    foreach ($universitycourse as $key => $univercity) {
+                        $universities[$key] = $univercity->users;
+                    }
+                } else {
+                    $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->distinct()->get(['user_id']);
+
+                    foreach ($universitycourse as $key => $univercity) {
+                        $universities[$key] = $univercity->users;
+                    }
+                }
             }
+
+
+            return view('frontEnd.university.university_all', compact('filtercatgory','childs','filtersub_category'))->with('universities', $universities);
         }
-
-
-        return view('frontEnd.university.university_all', compact('category','childs'))->with('universities', $universities);
-    }
 
 
     public function countryWiseUniversity(Request $request)

@@ -874,12 +874,13 @@
                                                                     font-size: 17px;
                                                                     font-weight: 600;
 
-                                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                                                    
                                                                     ">Featured Universities</li>
+                                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                                                     <?php $headercountries11 = App\Models\University::where('countries_id',223)->take(7)->get(); ?>
                                                                  @foreach ( $headercountries11 as $headercountry11)
                                                                  @if($headercountry11->user->status == 1)
-                                                                 @if($headercountry11->user->premium_expire_date > $mytime)
+                                                                 @if($headercountry11->user->Premium_expire_date > $mytime)
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry11->user_id])}}">{{$headercountry11->university_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
@@ -912,7 +913,7 @@
 
                                                             @foreach ($headercountries12 as $headercountry12)
                                                             @if($headercountry12->user->status == 1)
-                                                            @if($headercountry12->user->premium_expire_date < $mytime)
+                                                            @if($headercountry12->user->Premium_expire_date < $mytime)
 
                                                             <li><a href="{{route('university_detail',['id'=>$headercountry12->user_id])}}">{{$headercountry12->university_name ?? ''}}</a></li>
                                                             {{-- </form> --}}
@@ -958,7 +959,7 @@
 
                                                                         @foreach ($headercountries21 as $headercountry21)
                                                                    @if($headercountry21->user->status == 1)
-                                                                   @if($headercountry21->user->premium_expire_date > $mytime)
+                                                                   @if($headercountry21->user->Premium_expire_date > $mytime)
 
 
                                                                     <li><a href="{{route('university_detail',['id'=>$headercountry21->user_id ?? ''])}}">{{$headercountry21->university_name ?? ''}}</a></li>
@@ -991,7 +992,7 @@
                                                                     <?php $headercountries22 = App\Models\University::where('countries_id',222)->take(7)->get(); ?>
                                                                 @foreach ($headercountries22 as $headercountry22)
                                                                 @if($headercountry22->user->status == 1)
-                                                                @if($headercountry22->user->premium_expire_date < $mytime)
+                                                                @if($headercountry22->user->Premium_expire_date < $mytime)
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry22->user_id ?? ''])}}">{{$headercountry22->university_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
@@ -1040,7 +1041,7 @@
                                                                         <?php $headercountries31 = App\Models\University::where('countries_id',38)->take(7)->get(); ?>
                                                                     @foreach ($headercountries31 as $headercountry31)
                                                                     @if($headercountry31->user->status == 1)
-                                                                    @if($headercountry31->user->premium_expire_date > $mytime)
+                                                                    @if($headercountry31->user->Premium_expire_date > $mytime)
 
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry31->user_id ?? ''])}}">{{$headercountry31->university_name ?? ''}}</a></li>
@@ -1072,7 +1073,7 @@
                                                                     <?php $headercountries32 = App\Models\University::where('countries_id',38)->take(7)->get(); ?>
                                                                 @foreach ($headercountries32 as $headercountry32)
                                                                 @if($headercountry21->user->status == 1)
-                                                                @if($headercountry21->user->premium_expire_date < $mytime)
+                                                                @if($headercountry21->user->Premium_expire_date < $mytime)
 
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry32->user_id ?? ''])}}">{{$headercountry32->university_name ?? ''}}</a></li>
@@ -1116,7 +1117,7 @@
                                                                         <?php $headercountries41 = App\Models\University::where('countries_id',103)->take(7)->get(); ?>
                                                                     @foreach ($headercountries41 as $headercountry41)
                                                                     @if($headercountry41->user->status == 1)
-                                                                    @if($headercountry41->user->premium_expire_date > $mytime)
+                                                                    @if($headercountry41->user->Premium_expire_date > $mytime)
 
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry41->user_id ?? ''])}}">{{$headercountry41->university_name ?? ''}}</a></li>
@@ -1149,7 +1150,7 @@
                                                                     <?php $headercountries42 = App\Models\University::where('countries_id',103)->take(7)->get(); ?>
                                                                 @foreach ($headercountries42 as $headercountry42)
                                                                 @if($headercountry42->user->status == 1)
-                                                                @if($headercountry42->user->premium_expire_date < $mytime)
+                                                                @if($headercountry42->user->Premium_expire_date < $mytime)
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry42->user_id ?? ''])}}">{{$headercountry42->university_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
@@ -1190,7 +1191,7 @@
                                                                     <?php $headercountries51 = App\Models\University::where('countries_id',13)->take(7)->get(); ?>
                                                                 @foreach ($headercountries51 as $headercountry51)
                                                                 @if($headercountry51->user->status == 1)
-                                                                @if($headercountry51->user->premium_expire_date > $mytime)
+                                                                @if($headercountry51->user->Premium_expire_date > $mytime)
 
                                                                 <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                     display: -ms-flex;
@@ -1231,7 +1232,7 @@
                                                                 <?php $headercountries52 = App\Models\University::where('countries_id',13)->take(7)->get(); ?>
                                                             @foreach ($headercountries52 as $headercountry52)
                                                             @if($headercountry52->user->status == 1)
-                                                            @if($headercountry52->user->premium_expire_date < $mytime)
+                                                            @if($headercountry52->user->Premium_expire_date < $mytime)
 
 
                                                             <li><a href="{{route('university_detail',['id'=>$headercountry52->user_id ?? ''])}}">{{$headercountry52->university_name ?? ''}}</a></li>
@@ -1281,7 +1282,7 @@
                                                             <?php $headercountries61 = App\Models\University::where('countries_id',188)->take(7)->get(); ?>
                                                         @foreach ($headercountries61 as $headercountry61)
                                                         @if($headercountry61->user->status == 1)
-                                                        @if($headercountry61->user->premium_expire_date > $mytime)
+                                                        @if($headercountry61->user->Premium_expire_date > $mytime)
 
                                                         <li><a href="{{route('university_detail',['id'=>$headercountry61->user_id ?? ''])}}">{{$headercountry61->university_name ?? ''}}</a></li>
                                                         {{-- </form> --}}
@@ -1312,7 +1313,7 @@
                                                         <?php $headercountries62 = App\Models\University::where('countries_id',188)->take(7)->get(); ?>
                                                     @foreach ($headercountries62 as $headercountry62)
                                                     @if($headercountry62->user->status == 1)
-                                                    @if($headercountry62->user->premium_expire_date <$mytime)         {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+                                                    @if($headercountry62->user->Premium_expire_date <$mytime)         {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                         @csrf
                                                     <input type="hidden" name="category" value="{{$headercountry62->countries_id ?? ''}}"> --}}
 
