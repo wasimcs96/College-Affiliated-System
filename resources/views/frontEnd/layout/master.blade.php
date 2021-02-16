@@ -137,9 +137,14 @@
     background-position: center !important;
     opacity: 1 !important;
 }
-.centertext{
-    text-align: center!important;
-}
+    .centertext{
+        text-align: center!important;
+    }
+    .pageslinkcolor{
+        color: #fa7304 !important;
+    }
+
+
 }
 
         /* PWA CSS */
@@ -581,7 +586,7 @@
                                 <h2 class="sec__title" style="color: white;/* text-align: center; */margin: auto;">Contact us</h2>
                                 <div class="col-lg-6 responsive-column">
                                     <div class="input-box">
-                                        <label class="label-text">Your Name</label>
+                                        <label class="pageslinkcolor label-text">Your Name</label>
                                         <div class="form-group">
                                             <span class="la la-user form-icon"></span>
                                             <input class="form-control" type="text" name="user_name" placeholder="Your name" required>
@@ -590,7 +595,7 @@
                                 </div><!-- end col-lg-6 -->
                                 <div class="col-lg-6 responsive-column">
                                     <div class="input-box">
-                                        <label class="label-text">Your Email</label>
+                                        <label class="label-text pageslinkcolor">Your Email</label>
                                         <div class="form-group">
                                             <span class="la la-envelope-o form-icon"></span>
                                             <input class="form-control" type="email" name="email" placeholder="Email address"  required>
@@ -599,7 +604,7 @@
                                 </div><!-- end col-lg-6 -->
                                 <div class="col-lg-12">
                                     <div class="input-box">
-                                        <label class="label-text">Message</label>
+                                        <label class="label-text pageslinkcolor">Message</label>
                                         <div class="form-group">
                                             <span class="la la-pencil form-icon"></span>
                                             <textarea class="message-control form-control" name="message" placeholder="Write message"  required></textarea>
@@ -647,13 +652,13 @@
                 <div class="footer-item">
                     <h4 class="hide-on-mobile title curve-shape pb-3 margin-bottom-20px" data-text="curvs">Pages</h4>
                     <ul class="ullist list-items list--items">
-                        <li><a href="{{route('faq.front')}}">FAQ</a></li>
+                        <li><a class="pageslinkcolor" href="{{route('faq.front')}}">FAQ</a></li>
 
-                        <li><a href="{{route('loan')}}">Loan</a></li>
-                        {{-- <li><a href="{{route('blog_all')}}">Blog</a></li> --}}
-                        <li><a href="{{route('about')}}">About Us</a></li>
-                        <li><a href="{{route('privacy&policy')}}">Privacy and Policy</a></li>
-                        <li><a href="{{route('terms&condition')}}">Terms and Condition</a></li>
+                        <li><a class="pageslinkcolor" href="{{route('loan')}}">Loan</a></li>
+                        {{-- <li><a class="pageslinkcolor" href="{{route('blog_all')}}">Blog</a></li> --}}
+                        <li><a class="pageslinkcolor" href="{{route('about')}}">About Us</a></li>
+                        <li><a class="pageslinkcolor" href="{{route('privacy&policy')}}">Privacy and Policy</a></li>
+                        <li><a class="pageslinkcolor" href="{{route('terms&condition')}}">Terms and Condition</a></li>
 
 
                     </ul>
