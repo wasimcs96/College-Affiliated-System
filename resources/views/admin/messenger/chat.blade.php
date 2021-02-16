@@ -179,8 +179,9 @@
                         <?php $auth=auth()->user();?>
                         @foreach($users as $user)
                         @if($auth->isAdmin() && !$user->isAdmin())
-
-                        {{-- @if() --}}
+                        @if($id==1)
+                        @if($user->isClient())
+                        {{-- {{ dd($user->profile_image) }} --}}
                         <li class="online chat_list">
                             <a href="javascript:void(0);" id="{{$user->id}}" class="javae" >
                                 <div class="media">
@@ -206,11 +207,115 @@
                                                 <?php $i++ ?>
                                             @endforeach
                                          @endif
-                                      
+
                                     </div>
                                 </div>
                             </a>
                         </li>
+                        @endif
+                        @endif
+                        @if($id==2)
+                        @if($user->isConsultant())
+                        <li class="online chat_list">
+                            <a href="javascript:void(0);" id="{{$user->id}}" class="javae" >
+                                <div class="media">
+                                    <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
+                                        <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                        @else
+                                        <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                        @endif</div>
+                                    <div class="media-body chat_ib" id="cs">
+                                   <span class="name" id="receiver_name-{{ $user->id }}"> {{$user->first_name}} {{$user->last_name}} </span>
+                                   @php
+                                       $seen = DB::table('application_chats')->where('sender',$user->id)->where('receiver',auth()->user()->id)->where('seen',0)->count();
+                                   @endphp
+                                    @if(isset($seen) && $seen !=NULL && $seen != 0)
+                                        <span class="badge badge-outline status" id="unread_message-{{ $user->id }}" style="width: 26px; height: 26px;"> <span style="color: white">{{$seen}}</span> </span>
+                                    @endif
+                                        @if($user->message != null)
+                                            @foreach($user->message as $key=>$message)
+                                                @if($key == 0)
+                                                    <h5><span class="chat_date">{{$message->created_at ?? ''}}</span></h5>
+                                                    <p>{{$message->message}}</p>
+                                                @endif
+                                                <?php $i++ ?>
+                                            @endforeach
+                                         @endif
+
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        @endif
+                        @endif
+                        @if($id==3)
+                        @if($user->isUniversity())
+                        <li class="online chat_list">
+                            <a href="javascript:void(0);" id="{{$user->id}}" class="javae" >
+                                <div class="media">
+                                    <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
+                                        <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                        @else
+                                        <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                        @endif</div>
+                                    <div class="media-body chat_ib" id="cs">
+                                   <span class="name" id="receiver_name-{{ $user->id }}"> {{$user->university->university_name}} </span>
+                                   @php
+                                       $seen = DB::table('application_chats')->where('sender',$user->id)->where('receiver',auth()->user()->id)->where('seen',0)->count();
+                                   @endphp
+                                    @if(isset($seen) && $seen !=NULL && $seen != 0)
+                                        <span class="badge badge-outline status" id="unread_message-{{ $user->id }}" style="width: 26px; height: 26px;"> <span style="color: white">{{$seen}}</span> </span>
+                                    @endif
+                                        @if($user->message != null)
+                                            @foreach($user->message as $key=>$message)
+                                                @if($key == 0)
+                                                    <h5><span class="chat_date">{{$message->created_at ?? ''}}</span></h5>
+                                                    <p>{{$message->message}}</p>
+                                                @endif
+                                                <?php $i++ ?>
+                                            @endforeach
+                                         @endif
+
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        @endif
+                        @endif
+                        @if($id==4)
+                        @if($user->isSubAdmin())
+                        <li class="online chat_list">
+                            <a href="javascript:void(0);" id="{{$user->id}}" class="javae" >
+                                <div class="media">
+                                    <div>@if(isset($user->profile_image) && file_exists($user->profile_image))
+                                        <img src="{{ asset($user->profile_image) }}" style="height:45px; width:45px;"class="rounded" alt="">
+                                        @else
+                                        <img src="{{ asset('assets/images/xs/avatar4.jpg') }}" class="user-photo" alt="User Profile Picture">
+                                        @endif</div>
+                                    <div class="media-body chat_ib" id="cs">
+                                   <span class="name" id="receiver_name-{{ $user->id }}"> {{$user->first_name}} {{$user->last_name}} </span>
+                                   @php
+                                       $seen = DB::table('application_chats')->where('sender',$user->id)->where('receiver',auth()->user()->id)->where('seen',0)->count();
+                                   @endphp
+                                    @if(isset($seen) && $seen !=NULL && $seen != 0)
+                                        <span class="badge badge-outline status" id="unread_message-{{ $user->id }}" style="width: 26px; height: 26px;"> <span style="color: white">{{$seen}}</span> </span>
+                                    @endif
+                                        @if($user->message != null)
+                                            @foreach($user->message as $key=>$message)
+                                                @if($key == 0)
+                                                    <h5><span class="chat_date">{{$message->created_at ?? ''}}</span></h5>
+                                                    <p>{{$message->message}}</p>
+                                                @endif
+                                                <?php $i++ ?>
+                                            @endforeach
+                                         @endif
+
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        @endif
+                        @endif
                         @endif
                         @endforeach
                     </ul>
@@ -250,8 +355,11 @@
                                 </li>
                             @elseif(isset($check))
                             <li class="left clearfix">
+                                @if(file_exists($useme->profile_image) && isset($useme->profile_image))
+                                <img class="user_pix" src="{{asset($usemeSend->profile_image)}}" alt="avatar">
+                                @else
                                 <img class="user_pix" src="{{asset('assets/images/xs/avatar5.jpg')}}" alt="avatar">
-                                <div class="message">
+                                @endif                                <div class="message">
                                     <p>{{ $check->message ?? ''}}</p>
                                 </div>
                                 <span class="data_time">{{ $check->created_at ?? ''}}</span>
@@ -309,7 +417,6 @@
 
 @section('page-script')
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
-{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
 
 <script>
 var reciever = '';
@@ -326,7 +433,7 @@ var reciever = '';
                 $("#cse").find("span").css({"color": "black"});
                 $('#receiver_name-'+userid+'').css("color","white");
                 $('#unread_message-'+userid+'').css("display","none");
-console.log(userid)
+
                   // document.getElementById(`userlist-${userid}`).style.background="grey";
                 $.ajax({
                   url: "{{ route('admin.messenger.fetchdata') }}",
@@ -337,7 +444,7 @@ console.log(userid)
                          var re=JSON.parse(result);
                         //  console.log(re);
                              img = re.profile_image;
-
+console.log(img);
                             console.log(img);
                             document.getElementById("hed").innerHTML = re.first_name+" "+re.last_name;
                             document.getElementById("target").innerHTML+= `<input type="text" class="write_msg" name="id" value=${re.id} placeholder="Type a message" hidden/>`;
@@ -353,7 +460,7 @@ console.log(userid)
 
                                   if (element.send_by == 0) {
                                       html+=`<li class="right clearfix">
-                                   <img class="user_pix"  onerror="javascript:this.src='{{ asset("assets/images/xs/avatar4.jpg") }}'" src="{{asset('${img}')}}" alt="avatar">
+                                   <img class="user_pix" src="{{asset('${img}')}}"  onerror="javascript:this.src='{{ asset("assets/images/xs/avatar4.jpg") }}'"  alt="avatar">
                                 <div class="message">
                                     <p>${element.message}</p>
                                 </div>

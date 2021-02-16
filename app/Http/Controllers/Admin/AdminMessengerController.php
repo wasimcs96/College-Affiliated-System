@@ -10,30 +10,16 @@ use App\Http\Controllers\Controller;
 
 class AdminMessengerController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        // $auth=auth()->user();
-        // if($auth->isAdmin()){
-        //     $usertype=0;
-        // }
-        // // if($auth->isUniversity()){
-        // //     $usertype=1;
-        // // }
-        // if($auth->isConsultant()){
-        //     $usertype=2;
-        // }
-        // if($auth->isClient()){
-        //     $usertype=3;
-        // }
-        // if($auth->isSubAdmin()){
-        //     $usertype=4;
-        // }
+      if($id==1)
+      {
 
        $use_id='';
 
        $test=ApplicationChat::where('sender',auth()->user()->id)->orderByDesc('id')->first();
        $test2=ApplicationChat::where('receiver',auth()->user()->id)->orderByDesc('id')->first();
-   
+
        if ($test) {
         $use_id=$test->receiver;
         // dd($use_id);
@@ -46,9 +32,82 @@ class AdminMessengerController extends Controller
         $check = ApplicationChat::where('sender',auth()->user()->id)->orWhere('receiver',auth()->user()->id)->orderByDesc('id')->first();
         // dd($check);
         $check=null;
-        return view('admin.messenger.chat',compact('check','use_id'))->with('users', User::all());
+        return view('admin.messenger.chat',compact('check','use_id'))->with('users', User::all())->with('id',1);
         // $users=User::where('status','=',1)->with(["message"])->orderBY("first_name", "ASC")->get();
         //dd($users);
+    }
+    if($id==2)
+      {
+
+       $use_id='';
+
+       $test=ApplicationChat::where('sender',auth()->user()->id)->orderByDesc('id')->first();
+       $test2=ApplicationChat::where('receiver',auth()->user()->id)->orderByDesc('id')->first();
+
+       if ($test) {
+        $use_id=$test->receiver;
+        // dd($use_id);
+       }
+
+       if ($test2 && !$test) {
+        $use_id=$test2->sender;
+       }
+// dd($use_id);
+        $check = ApplicationChat::where('sender',auth()->user()->id)->orWhere('receiver',auth()->user()->id)->orderByDesc('id')->first();
+        // dd($check);
+        $check=null;
+        return view('admin.messenger.chat',compact('check','use_id'))->with('users', User::all())->with('id',2);
+        // $users=User::where('status','=',1)->with(["message"])->orderBY("first_name", "ASC")->get();
+        //dd($users);
+    }
+    if($id==3)
+      {
+
+       $use_id='';
+
+       $test=ApplicationChat::where('sender',auth()->user()->id)->orderByDesc('id')->first();
+       $test2=ApplicationChat::where('receiver',auth()->user()->id)->orderByDesc('id')->first();
+
+       if ($test) {
+        $use_id=$test->receiver;
+        // dd($use_id);
+       }
+
+       if ($test2 && !$test) {
+        $use_id=$test2->sender;
+       }
+// dd($use_id);
+        $check = ApplicationChat::where('sender',auth()->user()->id)->orWhere('receiver',auth()->user()->id)->orderByDesc('id')->first();
+        // dd($check);
+        $check=null;
+        return view('admin.messenger.chat',compact('check','use_id'))->with('users', User::all())->with('id',3);
+        // $users=User::where('status','=',1)->with(["message"])->orderBY("first_name", "ASC")->get();
+        //dd($users);
+    }
+    if($id==4)
+      {
+
+       $use_id='';
+
+       $test=ApplicationChat::where('sender',auth()->user()->id)->orderByDesc('id')->first();
+       $test2=ApplicationChat::where('receiver',auth()->user()->id)->orderByDesc('id')->first();
+
+       if ($test) {
+        $use_id=$test->receiver;
+        // dd($use_id);
+       }
+
+       if ($test2 && !$test) {
+        $use_id=$test2->sender;
+       }
+// dd($use_id);
+        $check = ApplicationChat::where('sender',auth()->user()->id)->orWhere('receiver',auth()->user()->id)->orderByDesc('id')->first();
+        // dd($check);
+        $check=null;
+        return view('admin.messenger.chat',compact('check','use_id'))->with('users', User::all())->with('id',4);
+        // $users=User::where('status','=',1)->with(["message"])->orderBY("first_name", "ASC")->get();
+        //dd($users);
+    }
     }
 
     public function fetchData(Request $request){

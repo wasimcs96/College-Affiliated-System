@@ -102,7 +102,7 @@
 <div class="tab-content">
 <div class="tab-pane fade show active" id="credit-card" role="tabpanel" aria-labelledby="credit-card-tab">
 <div class="contact-form-action">
-<form action="{{route('consultant.book.store')}}" method="POST">
+<form action="{{route('consultant.book.store')}}" id="booking-form" method="POST">
 @csrf
 
 <div class="row col-lg-12" style="margin-bottom: -34px;">
@@ -113,6 +113,7 @@ font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
 <div class="form-group">
 <span class="las la-calendar-alt form-icon"></span>
 <input class="form-control" id="date" name="booking_date" placeholder="Date" required>
+<div id="dateError"></div>
 </div>
 </div>
 </div>
@@ -126,6 +127,7 @@ font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
 {{$times=$consultant->consultantSlots}}
 {{-- {{dd($times)}} --}}
 </select>
+<div id="starttimeError"></div>
 </div><br><br>
 <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
 <input type="text" id="cid" name="cid" value="{{$consultant->id}}" hidden>
@@ -167,11 +169,12 @@ return $output;
 <tbody>
 @php
 $bannerImages = old('banner_images') ?? [];
-$inc = 1;
+$inc = 0;
 @endphp
 <tr>
-    <td class="text-center filetype"  data-row_id='+image_row+'>
-        <select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[0][university]">
+    <td class="text-center filetype"  data-row_id='{{ $inc }}'>
+
+        <select class="col-lg-12 p-2 university" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[0][university]" id="media_type-{{ $inc }}" required>
 <?php $un=$consultant->consultantUniversity?>
      @foreach($un as $uns)
 <option value="{{$uns->userUniversity->id}}"
@@ -180,16 +183,22 @@ $inc = 1;
 </option>
 @endforeach
         </select>
+        <div id="universityError"></div>
+
     </td>
     <td>
-        <select required class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;"  id="tl-'+image_row+'" name="banner_images[0][course]">
+        <div id="courseError"></div>
+        <select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;"  id="course" name="banner_images[0][course]" required>
         <?php $courses = $uns->userUniversity->universityCourse?>
         <option selected>Choose Course</option>
         @foreach($courses as $course)
        <option value="{{$course->id}}">{{$course->title}}</option>
        @endforeach
+       <div id="courseError"></div>
     </select>
+
 </td>
+
 <td>
 <button type="button" id="bst" onclick="addImage();" data-toggle="tooltip" title="<?= __('Add More') ?>" class="btn btn-primary">
 <i class="las la-plus-circle"></i>
@@ -198,7 +207,9 @@ $inc = 1;
 </tr>
 </tbody>
 <tfoot>
-
+    @php
+    $inc++;
+    @endphp
 
 </tfoot>
 </table>
@@ -214,7 +225,7 @@ $inc = 1;
 @if(auth()->user())
 <div class="btn-box">
 <button style="
-margin-left: -15px;" class="theme-btn" type="submit">Confirm Booking</button>
+margin-left: -15px;" class="theme-btn" type="button" id="confirmBooking">Confirm Booking</button>
 </div>
 
 @endif
@@ -455,7 +466,7 @@ function addImage(language_id) {
 html = '<tr id="imageBox-' + image_row + '" class="imageBox">';
 
 
-html += ' <td class="text-center filetype" data-row_id='+image_row+'><select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][university]"> <option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option><?php }?></select></td>';
+html += ' <td class="text-center filetype" data-row_id='+image_row+'><select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][university]" required> <option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option><?php }?></select></td>';
 html += ' <td class="text-left" id="tc-'+image_row+'" >'
 html +='<select required class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="tl-'+image_row+'" name="banner_images['+image_row+'][course]"><option selected>Choose Course</option></select>';
 html +='</td>';
@@ -535,5 +546,51 @@ $('#tl-'+dt+'').html(result);
 
 
 
+</script>
+<script>
+    var course = '';
+    var university = '';
+    var date = '';
+    var starttime = '';
+
+$(document).on('click', '#confirmBooking', function (){
+    course=$('#course').val();
+    console.log(course);
+    university=$('.university').val();
+    console.log(university);
+    date=$('#date').val();
+    starttime=$('#starttime').val();
+    console.log(date);
+    console.log(starttime);
+    if(course=='' || university=='' || course=='Choose Course' || date=='' || starttime=='')
+    {
+
+        if(date=='')
+        {
+            $('#dateError').html('<span style="color:red">*This field is required</span></strong>')
+        }
+        else if(starttime=='')
+        {
+            $('#starttimeError').html('<span style="color:red">*This field is required</span></strong>')
+        }
+
+        else if(university=='')
+        {
+            $('#universityError').html('<span style="color:red">*This field is required</span></strong>')
+        }
+
+        else if(course=='Choose Course' || course=='')
+        {
+            $('#courseError').html('<span style="color:red">*This field is required</span></strong>')
+        }
+
+    }
+    else
+    {
+        $('#booking-form').submit();
+    }
+// console.log(rt);
+
+});
 </script>
 @endsection

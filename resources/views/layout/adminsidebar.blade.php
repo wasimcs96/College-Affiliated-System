@@ -20,7 +20,7 @@
 
                 </strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                    <li><a href="{{route('pages.profile')}}"><i class="icon-user"></i>My Profile</a></li>
+                    <li><a href="{{route('admin.profile')}}"><i class="icon-user"></i>My Profile</a></li>
                     <li class="divider"></li>
                     <li><a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
@@ -55,7 +55,7 @@
                         <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>1])}}">Client</a></li>
                         <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>2])}}">Consultant</a></li>
                         <li class="{{ Request::segment(3) == '3' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>3])}}">University</a></li>
-                        {{-- <li class="{{ Request::segment(3) == '3' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>4])}}">SubAdmin</a></li> --}}
+                        <li class="{{ Request::segment(3) == '4' ? 'active' : null }}"><a href="{{route('admin.users',['id'=>4])}}">SubAdmin</a></li>
                     </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'booking' ? 'active' : null }}"><a href="{{route('admin.booking')}}"><i class="icon-list"></i><span>Bookings</span></a></li>
@@ -76,10 +76,20 @@
                     </ul>
                 </li>
                 <li class="{{ Request::segment(2) == 'earning' ? 'active' : null }}"><a href="{{route('admin.earning')}}"><i class="fa fa-money"></i><span>Earnings</span></a></li>
-                <li class="{{ Request::segment(2) == 'messenger' ? 'active open' : null }}"><a href="{{route('admin.messenger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
+                {{-- <li class="{{ Request::segment(2) == 'messenger' ? 'active open' : null }}"><a href="{{route('admin.messenger')}}"><i class="icon-bubbles"></i><span>Messenger</span></a></li> --}}
 
-
-                 {{-- <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('admin.subscription')}}"><i class="fa fa-id-badge" aria-hidden="true"></i><span>Subscription</span></a></li> --}}
+                <li class="{{ Request::segment(2) == 'messenger' ? 'active open' : null }}">
+                    <a href="#Messenger" class="has-arrow"><i class="fa fa-users"></i><span>Messenger</span></a>
+                    <ul>
+                        {{-- <li class="{{ Request::segment(3) == 'client' ? 'active' : null }}"><a href="{{route('admin.user')}}">Client</a></li> --}}
+                        {{-- <li class="{{ Request::segment(3) == 'consultant' ? 'active' : null }}"><a href="{{route('admin.user.consultant')}}">Consultant</a></li>
+                        <li class="{{ Request::segment(3) == 'university' ? 'active' : null }}"><a href="{{route('admin.user.university')}}">University</a></li> --}}
+                        <li class="{{ Request::segment(3) == '1' ? 'active' : null }}"><a href="{{route('admin.messenger',['id'=>1])}}">Client</a></li>
+                        <li class="{{ Request::segment(3) == '2' ? 'active' : null }}"><a href="{{route('admin.messenger',['id'=>2])}}">Consultant</a></li>
+                        <li class="{{ Request::segment(3) == '3' ? 'active' : null }}"><a href="{{route('admin.messenger',['id'=>3])}}">University</a></li>
+                        <li class="{{ Request::segment(3) == '4' ? 'active' : null }}"><a href="{{route('admin.messenger',['id'=>4])}}">SubAdmin</a></li>
+                    </ul>
+                </li>
 
                 <li class="{{ Request::segment(2) == 'general' ? 'active open' : null }}">
                     <a href="#Generals" class="has-arrow"><i class="fa fa-tasks" aria-hidden="true"></i>

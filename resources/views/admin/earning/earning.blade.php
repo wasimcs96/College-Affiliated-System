@@ -34,6 +34,7 @@
                     @if($orders->count() > 0)
                     <tbody>
                         @foreach ($orders as $order)
+                        @if($order->user)
                         <tr>
                             <td>{{$order->user->first_name ?? ''}}{{$order->user->last_name ?? ''}}</td>
                             <td>@if($order->user->isConsultant()) Consultant @endif
@@ -60,6 +61,7 @@
 
                             <td style="text-align: center;"><a href="{{route('admin.earning.earning_show',['id'=>$order->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                             @else

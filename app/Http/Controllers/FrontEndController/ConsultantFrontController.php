@@ -95,7 +95,9 @@ class ConsultantFrontController extends Controller
 
     function fetch_Course(Request $request)
     {
+        // dd($request->all());
         $fetch = User::where('id', $request->universityid)->where('status',1)->first();
+
         $courses =  $fetch->universityCourse;
         $output = '<option value="" selected>Choose Course</option>';
         foreach ($courses as $row) {

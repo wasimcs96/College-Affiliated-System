@@ -460,5 +460,9 @@ $(".msg_history").stop().animate({
 
             }
        </script>
-
+<script>
+    $(document).ready(function() {
+        $("#{{$use_id}}").trigger('click');
+    });
+</script>
 @stop
