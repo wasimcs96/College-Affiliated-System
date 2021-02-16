@@ -53,12 +53,12 @@ class ConsultantAdvertisementController extends Controller
         'order_id'=>$request->orderId,
         'link'=>$request->link
     ]);
-    //Important Code
-    // $replacement['token'] =$request->_token;
-    // $replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
-    // $replacement['USER_NAME'] = auth()->user()->first_name;
-    // $data = ['template'=>'welcome-email','hooksVars' => $replacement];
-    // Mail::to("qsaif253@gmail.com")->send(new \App\Mail\ManuMailer($data));
+            // Important Code
+            // $replacement['ROLE'] = Consultant;
+            // $replacement['SERVICE_NAME'] = Advertisement;
+            // $replacement['SERVICE_DETAIL'] = Your advertisement is under verification;
+            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
+            // mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
     // $new=new PaymentController();
     //$new->payment($request);
 //dd($new);

@@ -577,7 +577,7 @@ Route::post('commission/update/{id}',[
 
 /* Messenger  */
 
-Route::get('messenger', [
+Route::get('messenger/{id}', [
     'uses' => 'AdminMessengerController@index',
     'as' => 'admin.messenger'
 ]);

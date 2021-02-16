@@ -155,6 +155,10 @@ class ConsultantApplicationController extends Controller
         $country_name = Country::where('countries_id',$university->country_id)->value('countries_name');
         $application = $university->application_id;
          $user_id = Application::where('id',$application)->first();
+         $bookingId = $user_id->booking_id;
+         $booking = Booking::find($bookingId);
+         $booking->status = 4;
+         $booking->save();
          $email = $user_id->user->email;
         // Important Code
 

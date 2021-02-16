@@ -31,6 +31,19 @@ class UniversityMessengerController extends Controller
         // if($auth->isSubAdmin()){
         //     $usertype=4;
         // }
+        $use_id='';
+
+       $test=ApplicationChat::where('sender',auth()->user()->id)->orderByDesc('id')->first();
+       $test2=ApplicationChat::where('receiver',auth()->user()->id)->orderByDesc('id')->first();
+
+       if ($test) {
+        $use_id=$test->receiver;
+        // dd($use_id);
+       }
+
+       if ($test2 && !$test) {
+        $use_id=$test2->sender;
+       }
         $consultants = [];
         $clients= [];
         $consultants = UniversityConsultant::where('university_id',auth()->user()->id)->pluck('consultant_id');
@@ -43,7 +56,7 @@ class UniversityMessengerController extends Controller
         // dd($users);
         $check = ApplicationChat::where('sender',auth()->user()->id)->orWhere('receiver',auth()->user()->id)->orderByDesc('id')->first();
         // dd($check);
-        return view('university.messenger.chat',compact('check'))->with('adminUsers', User::all())->with('users',$users);
+        return view('university.messenger.chat',compact('check','use_id'))->with('adminUsers', User::all())->with('users',$users);
         // $users=User::where('status','=',1)->with(["message"])->orderBY("first_name", "ASC")->get();
         //dd($users);
     }

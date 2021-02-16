@@ -44,6 +44,7 @@ class ConsultantDuesController extends Controller
             $dues->temp_client_count=0;
             $dues->save();
             // Important Code
+            // $replacement['ROLE'] = Consultant;
             // $replacement['SERVICE_NAME'] = Dues;
             // $replacement['SERVICE_DETAIL'] = Paid Amount: $request->amount;
             // $data = ['template'=>'consultant-services','hooksVars' => $replacement];

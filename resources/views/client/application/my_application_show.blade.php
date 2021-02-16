@@ -500,7 +500,7 @@
                                                         <label for="">Course Fees</label>
                                                         <?php $coursedetails=\App\Models\UniversityCourse::where('id',$applied->course_id)->first(); ?>
 
-                                                        <input type="text" name="fees" class="form-control" id="coursefees"  @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$coursedetails->fees}}"@else value="{{ $applied->fees }}"  @endif />                                                     </div>
+                                                        <input type="text" name="fees" class="form-control" id="coursefees"  @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$coursedetails->fees}}"@else value="{{ $applied->fees }}"  @endif disabled />                                                     </div>
                                                      </div>
 
                                         {{-- {{ dd($applied->documents) }} --}}

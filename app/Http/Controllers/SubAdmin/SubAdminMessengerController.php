@@ -28,9 +28,22 @@ class SubAdminMessengerController extends Controller
         // if($auth->isSubAdmin()){
         //     $usertype=4;
         // }
+        $use_id='';
+
+       $test=ApplicationChat::where('sender',auth()->user()->id)->orderByDesc('id')->first();
+       $test2=ApplicationChat::where('receiver',auth()->user()->id)->orderByDesc('id')->first();
+
+       if ($test) {
+        $use_id=$test->receiver;
+        // dd($use_id);
+       }
+
+       if ($test2 && !$test) {
+        $use_id=$test2->sender;
+       }
         $check = ApplicationChat::where('sender',auth()->user()->id)->orWhere('receiver',auth()->user()->id)->orderByDesc('id')->first();
         // dd($check);
-        return view('subadmin.messenger.chat',compact('check'))->with('users', User::all());
+        return view('subadmin.messenger.chat',compact('check','use_id'))->with('users', User::all());
         // $users=User::where('status','=',1)->with(["message"])->orderBY("first_name", "ASC")->get();
         //dd($users);
     }
