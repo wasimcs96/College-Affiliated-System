@@ -56,8 +56,8 @@
 <section class="card-area section--padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="card-item blog-card blog-card-layout-2 blog-single-card mb-5" style="padding: 35px;">
+            <div class="col-lg-12 p-0">
+                <div class="card-item blog-card blog-card-layout-2 blog-single-card mb-5" style="padding: 20px;">
                     <div class="card-img before-none">
                         {{-- <img src="{{asset('frontEnd/assets/images/img20.jpg')}}" alt="blog-img"> --}}
                     </div>
@@ -135,12 +135,12 @@
                                     <div class="table-form table-responsive padding-top-30px">
                                         <table class="table">
                                             <thead>
-                                                <tr>
-                                                    <th scope="col">Provider</th>
-                                                    <th scope="col">Interest Rate</th>
-                                                    <th scope="col">Tenure</th>
-                                                    <th scope="col">Processing Fees</th>
-                                                    <th scope="col">Action</th>
+                                                <tr style="background-color: rgba(128, 137, 150, 0.1);">
+                                                    <th class="fontdicipline " scope="col">Provider</th>
+                                                    <th class="fontdicipline "scope="col">Interest Rate</th>
+                                                    <th class="fontdicipline "scope="col">Tenure</th>
+                                                    <th class="fontdicipline "scope="col">Processing Fees</th>
+                                                    <th class="fontdicipline "scope="col">Action</th>
 
                                                 </tr>
                                             </thead>
@@ -150,7 +150,7 @@
                                                 <tr>
                                                     <th scope="row">
                                                         <div class="table-content d-flex align-items-center">
-                                                            <h3 class="title">{{$loan->provider ?? ''}}</h3>
+                                                            <h3 class="tablefont title">{{$loan->provider ?? ''}}</h3>
                                                         </div>
                                                     </th>
                                                     {{-- <td>
@@ -158,9 +158,9 @@
                                                     @if($course->type == 1) PG @endif
                                                     @if($course->type == 2) Diploma @endif
                                                    </td> --}}
-                                                    <td> {{$loan->interest_rate ?? ''}}</td>
-                                                    <td> {{$loan->tenure ?? ''}}</td>
-                                                    <td>₹ {{$loan->processing_fees ?? ''}}</td>
+                                                    <td class="tablefont"> {{$loan->interest_rate ?? ''}}</td>
+                                                    <td class="tablefont"> {{$loan->tenure ?? ''}}</td>
+                                                    <td class="tablefont">₹ {{$loan->processing_fees ?? ''}}</td>
                                                     {{-- <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}
                                                     @else N/A @endif</td>
                                                     <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else
@@ -168,8 +168,8 @@
 
                                                     <td>
                                                         <div>
-                                                            <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-light">Detail<i
-                                                                    class="las la-angle-double-right"></i></a>
+                                                            <a data-toggle="modal" data-target="#exampleModal" class="tablefont btn btn-primary text-light">Detail<i
+                                                                    class="tablefont las la-angle-double-right"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>

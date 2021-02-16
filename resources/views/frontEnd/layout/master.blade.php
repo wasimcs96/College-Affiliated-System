@@ -144,7 +144,12 @@
         color: #fa7304 !important;
     }
 
-
+    .tablefont{
+        font-size: 12px !important;
+    }
+    .paddinganchor{
+        padding: 3.90625vw !important;
+    }
 }
 
         /* PWA CSS */
@@ -620,7 +625,7 @@
                                     </div>
                                 </div><!-- end col-lg-12 --> --}}
                                 <div class="col-lg-12">
-                                    <div class="btn-box">
+                                    <div class="btn-box text-center" style="font-size: small;">
                                         <button type="submit" class="theme-btn">Send Message</button>
                                     </div>
                                 </div><!-- end col-lg-12 -->
