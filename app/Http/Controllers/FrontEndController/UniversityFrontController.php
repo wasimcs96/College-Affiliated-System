@@ -19,7 +19,8 @@ class UniversityFrontController extends Controller
 {
     public function index()
     {
-       return view('frontEnd.university.university_all')->with('universities',User::where('status',1)->get());
+        $page=1;
+       return view('frontEnd.university.university_all',compact('page'))->with('universities',User::where('status',1)->get());
      }
 
      public function detail($id)

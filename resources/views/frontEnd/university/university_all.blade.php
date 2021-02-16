@@ -10,7 +10,7 @@
                 <div class="col-lg-12">
                     <div class="search-result-content">
                         <div class="section-heading">
-                            <h2 class="sec__title text-white">University Search Result</h2>
+                            <h2 class="sec__title text-white"> @if(isset($page)&& $page == 1)University Search Result @else Course Search Result @endif</h2>
                         </div>
                         <div class="search-fields-container margin-top-30px" style="
                         background-color: transparent; color:white;
@@ -18,17 +18,7 @@
                             <div class="contact-form-action">
                                 <form action="{{route('universities_inner_fetch.universities')}}" method="POST" class="row">
                                     @csrf
-                                    <div class="col-lg-3 col-sm-6 pr-0">
-                                        <div class="input-box">
-                                            <label class="label-text" style="
-                                            color: white;
-                                        ">University Name</label>
-                                            <div class="form-group">
-                                                <span class="la la-map-marker form-icon"></span>
-                                                <input class="form-control" type="text" name="keyword" placeholder="University">
-                                            </div>
-                                        </div>
-                                    </div><!-- end col-lg-4 -->
+
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text" style="
@@ -57,6 +47,18 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-3 -->
+                                    {{-- <div class="col-lg-3 col-sm-6 pr-0">
+                                        <div class="input-box">
+                                            <label class="label-text" style="
+                                            color: white;
+                                        ">University Name</label>
+                                            <div class="form-group">
+                                                <span class="la la-map-marker form-icon"></span>
+                                                <input class="form-control" type="text" name="keyword" placeholder="University">
+                                            </div>
+                                        </div>
+                                    </div><!-- end col-lg-4 --> --}}
+                               
                                     <div class="col-lg-3 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text" style="
@@ -90,6 +92,78 @@
                                     </div>
 
                                    <!-- end col-lg-2 -->
+                                   <div class="col-lg-3 col-sm-2 pr-0">
+                                    <div class="input-box">
+                                        <label class="label-text" id="ali" style="
+                                        color: white;
+                                    ">Discipline</label>
+                                        <div class="form-group">
+                                            <div class="select-contain w-auto">
+                                                <select id="categoryselect" name="category" class="select-contain-select typeselect" required style="
+                                                padding: 15px;
+                                            ">
+                                                    <option value="">
+                                                        Select Discipline
+                                                    </option>
+                                                    <?php $categories = App\Models\Category::all();?>
+                                        @if($categories->count() > 0)
+                                        @foreach($categories as $category)
+                                        <option value="{{$category->id}}" @if(isset($filtercatgory)&& $filtercatgory == $category->id) selected @endif >{{$category->title}}</option>
+                                        @endforeach
+
+                                        @else
+
+                                            <option value="">Currently Unavailable</option>
+
+                                        @endif
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               <!-- end col-lg-3 -->
+                               <!-- end col-lg-3 -->
+                                <div class="col-lg-3 col-sm-2 pr-0" >
+                                    <div class="input-box">
+                                        <label class="label-text" style="
+                                        color: white;
+                                    ">Sub Discipline</label>
+                                        <div class="form-group">
+                                            <div class="select-contain w-auto">
+                                                <select id="selectcourse" name="sub_category" class="select-contain-select ert"   style="
+                                                height: 52px;
+                                            ">
+                                                    <option value="" selected>Select Sub Discipline</option>
+
+
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-sm-2 pr-0" >
+                                    <div class="input-box">
+                                        <label class="label-text" style="
+                                        color: white;
+                                    ">Study Level</label>
+                                        <div class="form-group">
+                                            <div class="select-contain w-auto">
+                                                <select  name="study_level" class="select-contain-select"   style="
+                                                height: 52px;
+                                            ">
+                                                    <option value="" selected>Select Study Level</option>
+                                                    <option value="2" >Diploma</option>
+                                                    <option value="0" >UG</option>
+                                                    <option value="1" >PG</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
 
 
                                    <div class="col-lg-3 col-sm-2 pr-0">
@@ -197,6 +271,7 @@
                                 @else
                                 <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                 @endif</div>
+                            
                                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                         @if($university->Premium_expire_date > $mytime)<span style="
                         background-color: #073975;
@@ -220,24 +295,47 @@
                                             // $myvalue = $myvalue . ' ...';
                                         } ?>
                                             <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">
-                                            @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif</a>
+                                                
+                                             @if(isset($filtersub_category))  
+                                             @if($filtersub_category != null)
+                                              <?php $univercoursecount =App\Models\UniversityCourse::where('category_id', 23)->where('user_id',$university->id)->count();
+                                              $univercourse=App\Models\UniversityCourse::where('category_id', 23)->where('user_id',$university->id)->first(); ?>
+                                              {{-- {{dd($filtersub_category)}} --}}
+                                              @if($univercourse != null)
+                                              {{$univercourse->title ?? ''}} &nbsp;<span  style="font-size: small;">+{{$univercoursecount}} courses</span>
+                                              @endif
+                                              @endif
+                                              @if($univercourse == null)
+                                              @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
+                                                      @endif
+                                        @endif
+                                        @if(isset($page)&& $page == 1)
+                                        @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
+                                        @endif
+                                      
+                                    </a>
                                          
                                                 <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                                      
                                             </h3>
                         <p class="card-meta">
+                            @if(isset($page)&& $page == 1)
                             @if(isset($university->university->type))
                              @if($university->university->type==0)
                         Private
                     @else
-                    Govenment</p>
+                    Govenment
                     @endif
                     @else
                     N/A
                     @endif
+@else
+@if(isset($university->university->university_name))<a href="{{route('university_detail',['id'=>$university->id])}}" style="color: gray;"><?php echo($myuniversity . '...')?></a> @else N/A @endif
+@endif
+                </p>
 
                         <div class="card-rating">
-                            <div class="d-flex flex-wrap align-items-center pt-2">
+                            <div class="d-flex flex-wrap align-items-center pt-2 justify-content-center">
                                 <p class="mr-2">Rating:</p>
                         @if(isset($university->rating))
                                     <span>@if($university->rating == 3 ?? '' )
@@ -295,7 +393,7 @@
                             </div>
                         </div>
                         <div class="card-attributes">
-                            <p>
+                            <p style="text-align: center;">
                                 <span class="price__text">Average Fees :</span>
                                 <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
                                 {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
@@ -328,7 +426,7 @@
                                                 @endif
 
 
-                            <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                            <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2" style="float: right;">See details<i class="las la-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -797,7 +895,7 @@ $(document).ready(function(){
       e.preventDefault();
       $(".responsive-column:hidden").slice(0, 4).slideDown();
       if($(".responsive-column:hidden").length == 0) {
-        $("#loadMore").text("No Content").addClass("noContent");
+        $("#loadmore").text("No Content").addClass("noContent");
       }
     });
     

@@ -98,9 +98,9 @@
                 <div class="col-lg-12">
                     <div class="single-content-nav" id="single-content-nav">
                         <ul>
-                            <li><a data-scroll="description" href="#description" class="scroll-link active">About This University</a></li>
-                            <li><a data-scroll="itinerary" href="#itinerary" class="scroll-link">Courses</a></li>
-                            <li><a data-scroll="staterooms" href="#staterooms" class="scroll-link">Consultants</a></li>
+                            <li><a data-scroll="description" href="#description" class="paddinganchor scroll-link active">About This University</a></li>
+                            <li><a data-scroll="itinerary" href="#itinerary" class="paddinganchor scroll-link">Courses</a></li>
+                            <li><a data-scroll="staterooms" href="#staterooms" class="paddinganchor scroll-link">Consultants</a></li>
 
                         {{-- <li> --}}
 
@@ -145,7 +145,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="single-content-wrap padding-top-60px">
-                        <div id="description" class="page-scroll">
+                        <div id="description" class=" page-scroll">
 
                             <div class="single-content-item pb-4">
                                 <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}
@@ -265,60 +265,7 @@
                             </div><!-- end single-content-item -->
 
                         </div><!-- end description -->
-                        <div id="itinerary" class="page-scroll">
-                            <div class="section-block margin-top-40px"></div>
-                            <div class="single-content-item padding-top-40px padding-Rbottom-40px">
-                                <h3 class="title font-size-20">Courses</h3>
-                               <div class="table-form table-responsive padding-top-30px">
-                                   <table class="table">
-                                       <thead>
-                                           <tr>
-                                               <th scope="col">Course Name</th>
-                                               <th scope="col">Type</th>
-                                               <th scope="col"> Fees</th>
-                                               <th scope="col">Start Date</th>
-                                               <th scope="col">End Date</th>
-                                                <th scope="col">Action</th>
-                                           </tr>
-                                       </thead>
-                                       <tbody>
-                                           @if(isset( $university->universityCourse))
-                                           <?php $courses=$university->universityCourse?>
-                                {{-- @if($courses->count() > 0) --}}
-                                          @foreach($courses as $course)
-                                           <tr>
-                                               <th scope="row"><div class="table-content d-flex align-items-center">
-                                                {{-- <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0"> --}}
-                                                <h3 class="title">{{$course->title ?? ''}}</h3>
-                                            </div>
-                                            </th>
-                                               <td>
-                                                @if($course->type == 0) UG @endif
-                                                @if($course->type == 1) PG @endif
-                                                @if($course->type == 2) Diploma @endif
-                                               </td>
-                                               <td>₹ {{$course->fees ?? ''}}</td>
-                                               <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
-                                               <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
-
-                                                <td> <div>
-                                                <a href="{{route('course_detail',['id'=>$course->id])}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
-                                            </div></td>
-                                           </tr>
-                                           @endforeach
-                                           {{-- @else
-                                           Not available
-                                           @endif --}}
-                                           @else
-                                          <td> Not available</td>
-                                           @endif
-                                    </tbody>
-                                   </table>
-
-                               </div>
-                            </div><!-- end single-content-item -->
-                            <div class="section-block"></div>
-                        </div>
+           
                         <!-- end itinerary -->
 
                         <!-- end reviews -->
@@ -333,7 +280,7 @@
                     <div class="sidebar single-content-sidebar mb-0">
                         <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                         <td>
-    @if ($university->universityConsultant)
+                                @if ($university->universityConsultant)
                         <?php $universityconsultant=$university->universityConsultant; ?>
                         <div class="sidebar-widget single-content-widget">
                             <h3 class="title stroke-shape">Featured Consultant</h3>
@@ -454,6 +401,73 @@
                     </div><!-- end sidebar -->
                     {{-- @endif --}}
                 </div><!-- end col-lg-4 -->
+
+                <div class="col-lg-12">
+                    <div class="single-content-wrap padding-top-60px">
+        
+                        <div id="itinerary" class="page-scroll">
+                            <div class="section-block margin-top-40px"></div>
+                            <div class="single-content-item padding-top-40px padding-Rbottom-40px">
+                                <h3 class="title font-size-20">Courses</h3>
+                               <div class="table-form table-responsive padding-top-30px">
+                                   <table class="table">
+                                       <thead>
+                                           <tr>
+                                               <th scope="col">Course Name</th>
+                                               <th scope="col">Discipline</th>
+                                           
+                                               <th scope="col">Study Level</th>
+                                               <th scope="col"> Fees</th>
+                                               <th scope="col">Start Date</th>
+                                               <th scope="col">End Date</th>
+                                               <th scope="col">Action</th>
+                                           </tr>
+                                       </thead>
+                                       <tbody>
+                                        @if(isset( $university->universityCourse))
+                                        <?php $courses=$university->universityCourse?>
+                                       {{-- @if($courses->count() > 0) --}}
+                                       @foreach($courses as $course)
+                                        <tr>
+                                            <th scope="row"><div class="table-content d-flex align-items-center">
+                                             {{-- <img src="{{asset('frontEnd/assets/images/small-img4.jpg')}}" alt="" class="flex-shrink-0"> --}}
+                                             <h3 class="title">{{$course->title ?? ''}}</h3>
+                                         </div>
+                                         </th>
+                                         <td>{{$course->category->title}}</td>
+                                            <td>
+                                             @if($course->type == 0) UG @endif
+                                             @if($course->type == 1) PG @endif
+                                             @if($course->type == 2) Diploma @endif
+                                            </td>
+                                            <td>₹ {{$course->fees ?? ''}}</td>
+                                            <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
+                                            <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
+
+                                             <td> <div>
+                                             <a href="{{route('course_detail',['id'=>$course->id])}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
+                                         </div></td>
+                                        </tr>
+                                        @endforeach
+                                        {{-- @else
+                                        Not available
+                                        @endif --}}
+                                        @else
+                                       <td> Not available</td>
+                                        @endif
+                                 </tbody>
+                                   </table>
+
+                               </div>
+                            </div><!-- end single-content-item -->
+                            <div class="section-block"></div>
+                        </div><!-- end itinerary -->
+
+                        <!-- end reviews -->
+                        <!-- end review-box -->
+                    </div><!-- end single-content-wrap -->
+                </div>
+
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end single-content-box -->
