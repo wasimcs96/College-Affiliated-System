@@ -17,8 +17,27 @@
                     ">
                             <div class="contact-form-action">
                                 <form action="{{ route('consultant.inner.filter') }}" method="POST" class="row">
-@csrf
-                                    <div class="col-lg-6 col-sm-2">
+                                    @csrf
+                                    <div class="col-lg-3 col-sm-6 pr-0">
+                                        <div class="input-box">
+                                            <label class="label-text" style="
+                                            color: white;
+                                        ">Service Type</label>
+                                            <div class="form-group">
+                                                <span class="la la-map-marker form-icon"></span>
+                                                <div class="select-contain w-auto">
+                                                    <select class="selectpicker" multiple="multiple" data-live-search="true"  placeholder="Exam" id="university" name="exam[]" >
+                                                        {{-- <option value="IELTS">Selec Service</option> --}}
+                                                        <option value="IELTS">PR</option>
+                                                        <option value="TOEFL">Student Visa </option>
+                                                    
+                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-2">
                                         <div class="input-box">
                                             <label class="label-text" style="
                                             color: white;
@@ -29,7 +48,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-sm-6 pr-0">
+                                    <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text" style="
                                             color: white;
@@ -58,17 +77,17 @@
                                         </div>
                                     </div><!-- end col-lg-4 -->
 
-                                    {{-- <div class="col-lg-2 col-sm-2 pr-0">
+                                    <div class="col-lg-3 col-sm-2">
                                         <div class="input-box">
-                                            <label class="label-text">Drop-off Date</label>
+                                            <label class="label-text" style="
+                                            color: white;
+                                        ">Location</label>
                                             <div class="form-group">
-                                                <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="text" name="daterange-single" value="04/28/2020">
+                                                <input class=" form-control" type="text" name="keyword" Placeholder="Your Location">
+
                                             </div>
                                         </div>
-                                    </div><!-- end col-lg-2 --> --}}
-                                    <!-- end col-lg-3 -->
-
+                                    </div>
 
                                     <div class="btn-box pt-3" style="margin: 22px;">
                                         <button class="theme-btn" type="submit">Search Now</button>
