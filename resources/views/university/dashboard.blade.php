@@ -15,6 +15,7 @@
 <div class="row clearfix">
 
     <div class="col-lg-4 col-md-6">
+        <a href="{{route('university.students')}}">
     <div class="card">
         <div class="body">
             <div class="d-flex align-items-center">
@@ -26,10 +27,13 @@
             </div>
         </div>
     </div>
+</a>
     </div>
 
 
     <div class="col-lg-4 col-md-6">
+        <a href="{{route('university.my_consultants')}}">
+
     <div class="card">
         <div class="body">
             <div class="d-flex align-items-center">
@@ -43,9 +47,12 @@
             </div>
         </div>
     </div>
+</a>
     </div>
 
     <div class="col-lg-4 col-md-6">
+        <a href="{{route('university.courses')}}">
+
         <div class="card">
         <div class="body">
 
@@ -60,9 +67,12 @@
         </div>
         </div>
         </div>
+    </a>
         </div>
 
     <div class="col-lg-4 col-md-6">
+        <a href="{{route('university.application')}}">
+
         <div class="card">
 
         <div class="body">
@@ -76,6 +86,7 @@
             </div>
         </div>
         </div>
+    </a>
         </div>
 
     </div>

@@ -294,11 +294,12 @@
                                             $myuniversity = implode(' ', $myuniversity);
                                             // $myvalue = $myvalue . ' ...';
                                         } ?>
-                                            <h3 class="card-title"><a href="{{route('university_detail',['id'=>$university->id])}}">
+                                            <h3 class="card-title">
+                                                <a href="{{route('university_detail',['id'=>$university->id])}}">
                                                 
                                              @if(isset($filtersub_category))  
                                              @if($filtersub_category != null)
-                                              <?php $univercoursecount =App\Models\UniversityCourse::where('category_id', 23)->where('user_id',$university->id)->count();
+                                              <?php $univercoursecount =App\Models\UniversityCourse::where('category_id', 23)->where('user_id',$university->id)->count()-1;
                                               $univercourse=App\Models\UniversityCourse::where('category_id', 23)->where('user_id',$university->id)->first(); ?>
                                               {{-- {{dd($filtersub_category)}} --}}
                                               @if($univercourse != null)

@@ -36,11 +36,11 @@
                         @foreach ($orders as $order)
                         <tr>
                             <td>{{$order->user->first_name ?? ''}}{{$order->user->last_name ?? ''}}</td>
-                            <td>@if($order->user->isConsultant()) Consultant @endif
+                            <td>@if(isset($order->user)) @if($order->user->isConsultant()) Consultant @endif 
                                 @if($order->user->isUniversity()) University @endif
                                 @if($order->user->isAdmin()) Admin @endif
                                 @if($order->user->isSubAdmin()) SubAdmin @endif
-                                @if($order->user->isClient()) Client @endif
+                                @if($order->user->isClient()) Client @endif @endif
                             </td>
                             <td><i class="fa fa-inr"></i> {{$order->amount ?? ''}}</td>
                             <td>{{$order->transaction_id}}</td>
