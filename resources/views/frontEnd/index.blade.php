@@ -10,7 +10,7 @@
 ================================= -->
 
 <section class="hero-wrapper">
-    <div class="hero-box  hero-bg "  style="z-index: 1;">
+    <div class="hero-box  hero-bg "  style="z-index: 1; top: -76px;">
         {{-- style="background-image: url('{{ asset('frontEnd/assets/images/svvg.svg')}}');" --}}
         <span class="line-bg line-bg1"></span>
         <span class="line-bg line-bg2"></span>

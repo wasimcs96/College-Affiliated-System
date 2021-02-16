@@ -335,7 +335,7 @@
                 </p>
 
                         <div class="card-rating">
-                            <div class="d-flex flex-wrap align-items-center pt-2">
+                            <div class="d-flex flex-wrap align-items-center pt-2 justify-content-center">
                                 <p class="mr-2">Rating:</p>
                         @if(isset($university->rating))
                                     <span>@if($university->rating == 3 ?? '' )
@@ -393,7 +393,7 @@
                             </div>
                         </div>
                         <div class="card-attributes">
-                            <p>
+                            <p style="text-align: center;">
                                 <span class="price__text">Average Fees :</span>
                                 <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
                                 {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
@@ -426,7 +426,7 @@
                                                 @endif
 
 
-                            <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                            <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2" style="float: right;">See details<i class="las la-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->

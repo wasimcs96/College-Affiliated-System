@@ -98,9 +98,9 @@
                 <div class="col-lg-12">
                     <div class="single-content-nav" id="single-content-nav">
                         <ul>
-                            <li><a data-scroll="description" href="#description" class="scroll-link active">About This University</a></li>
-                            <li><a data-scroll="itinerary" href="#itinerary" class="scroll-link">Courses</a></li>
-                            <li><a data-scroll="staterooms" href="#staterooms" class="scroll-link">Consultants</a></li>
+                            <li><a data-scroll="description" href="#description" class="paddinganchor scroll-link active">About This University</a></li>
+                            <li><a data-scroll="itinerary" href="#itinerary" class="paddinganchor scroll-link">Courses</a></li>
+                            <li><a data-scroll="staterooms" href="#staterooms" class="paddinganchor scroll-link">Consultants</a></li>
 
                         {{-- <li> --}}
 
@@ -145,7 +145,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="single-content-wrap padding-top-60px">
-                        <div id="description" class="page-scroll">
+                        <div id="description" class=" page-scroll">
 
                             <div class="single-content-item pb-4">
                                 <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}
