@@ -62,8 +62,9 @@
                             <span class="post__time"><a href="#" class="text-gray">202 Likes</a></span> --}}
                         </p>
                         <div class="section-block"></div>
+                        <div class="row col-lg-12">
                         {!! $detail->content ?? '' !!}
-
+</div>
 
                         <div class="section-block"></div>
                         <div class="post-navigation d-flex justify-content-between py-4">

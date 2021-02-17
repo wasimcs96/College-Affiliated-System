@@ -49,7 +49,7 @@
                             <a href="{{route('blog_detail', $blog->id ?? '')}}">
                             <div class="card-img">
                                 <a href="{{route('blog_detail', $blog->id ?? '')}}">
-                        <img style="height: 231.25px; width: 370px;" src="{{asset($blog->main_image ?? '')}}" alt="blog-img">
+                        <img style="height: 231.25px; width: 100%;" src="{{asset($blog->main_image ?? '')}}" alt="blog-img">
                                 </a>
                                 <div class="post-format icon-element">
                                     <a href="{{route('blog_detail', $blog->id ?? '')}}"> <i class="la la-photo"></i></a>

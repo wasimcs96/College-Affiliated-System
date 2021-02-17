@@ -63,7 +63,6 @@
                             </a>
                             <ul class="toggle-drop-menu pt-2">
                                 <li class="line-height-26">{!! $faq->description !!}</li>
-                                <li class="line-height-26"><img src="{{asset($faq->banner)}}" height="150px" width="190px"></li>
                             </ul>
                         </li>
                     </ul>
