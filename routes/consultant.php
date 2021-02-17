@@ -410,9 +410,15 @@ Route::post('messenger/sendMessage', [
     'uses' => 'ConsultantMessengerController@sendMessage',
     'as' => 'consultant.messenger.sendmessage'
 ]);
-   });
 
-   Route::get('services/subscription/add', [
+Route::get('consultant/university/course/check', [
+    'uses' => 'ConsultantBookingController@checkCourse',
+    'as' => 'consultant.university.course.check'
+]);
+
+});
+
+Route::get('services/subscription/add', [
     'uses' => 'ConsultantSubscriptionController@add',
     'as' => 'consultant.subscription.add'
 ]);
