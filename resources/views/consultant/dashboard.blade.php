@@ -22,19 +22,24 @@
 <div class="row clearfix">
 
 <div class="col-lg-4 col-md-6">
-<div class="card">
-    <div class="body">
-        <div class="d-flex align-items-center">
-            <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-user"></i></div>
-            <div class="ml-4">
-                <span>Total Students</span>
-                <h4 class="mb-0 font-weight-medium">{{ $user }}</h4>
+    <a href="{{route('consultant.students')}}">
+
+    <div class="card">
+        <div class="body">
+            <div class="d-flex align-items-center">
+                <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-user"></i></div>
+                <div class="ml-4">
+                    <span>Total Students</span>
+                    <h4 class="mb-0 font-weight-medium">{{ $user }}</h4>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    </a>
 </div>
 <div class="col-lg-4 col-md-6">
+    <a href="{{route('consultant.associated_university')}}">
+
 <div class="card">
 <div class="body">
     <div class="d-flex align-items-center">
@@ -47,6 +52,7 @@
     </div>
 </div>
 </div>
+</a>
 </div>
 
 {{-- <div class="col-lg-4 col-md-6">
@@ -66,21 +72,26 @@
 </div> --}}
 
 <div class="col-lg-4 col-md-6">
-<div class="card">
-    <div class="body">
-        <div class="d-flex align-items-center">
-            <div class="icon-in-bg bg-primary text-white rounded-circle"><i class="fa fa-sticky-note" aria-hidden="true"></i>
-            </div>
-            <div class="ml-4">
-                <span>Total Bookings</span>
-                <h4 class="mb-0 font-weight-medium">{{$booking}}</h4>
+    <a href="{{route('consultant.bookings')}}">
+
+    <div class="card">
+        <div class="body">
+            <div class="d-flex align-items-center">
+                <div class="icon-in-bg bg-primary text-white rounded-circle"><i class="fa fa-sticky-note" aria-hidden="true"></i>
+                </div>
+                <div class="ml-4">
+                    <span>Total Bookings</span>
+                    <h4 class="mb-0 font-weight-medium">{{$booking}}</h4>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</a>
 </div>
 
 <div class="col-lg-4 col-md-6">
+    <a href="{{route('consultant.prmigration')}}">
+
     <div class="card">
     <div class="body">
 
@@ -94,9 +105,12 @@
     </div>
     </div>
     </div>
+</a>
     </div>
 
 <div class="col-lg-4 col-md-6">
+    <a href="{{route('consultant.application.followup')}}">
+
 <div class="card">
 
 <div class="body">
@@ -110,9 +124,12 @@
     </div>
 </div>
 </div>
+</a>
 </div>
 
 <div class="col-lg-4 col-md-6">
+    <a href="{{route('consultant.application')}}">
+
     <div class="card">
 
     <div class="body">
@@ -126,9 +143,12 @@
         </div>
     </div>
     </div>
+</a>
     </div>
 
     <div class="col-lg-4 col-md-6">
+    <a href="{{route('consultant.application.followup')}}">
+
         <div class="card">
 
         <div class="body">
@@ -142,10 +162,13 @@
             </div>
         </div>
         </div>
+    </a>
         </div>
 
 
 <div class="col-lg-4 col-md-6">
+    <a href="{{route('consultant.dues',['id'=>1])}}">
+
 <div class="card">
 <div class="body">
 
@@ -159,8 +182,10 @@
 </div>
 </div>
 </div>
+</a>
 </div>
 <div class="col-lg-4 col-md-6">
+    <a href="{{route('consultant.dues',['id'=>2])}}">
 <div class="card">
 <div class="body">
 
@@ -175,6 +200,7 @@
 </div>
 </div>
 </div>
+</a>
 </div>
 
 </div>

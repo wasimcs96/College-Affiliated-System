@@ -63,10 +63,7 @@
                                 <div id="emptyPassword"></div>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between">
-                                    {{-- <div class="custom-checkbox mb-0">
-                                        <input type="checkbox" id="rememberchb">
-                                        <label for="rememberchb">Remember me</label>
-                                    </div> --}}
+                              
                                     @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>

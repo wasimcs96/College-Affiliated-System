@@ -720,93 +720,503 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <?php $headercountryvalid = App\Models\Country::all(); ?>
-                                        @if($headercountryvalid->count() > 0)
-                                        <a href="#" >Consultants <i class="la la-angle-down"></i></a>
+                                        <?php $headercountryvalidconsultant = App\Models\Consultant::all(); ?>
+                                        @if($headercountryvalidconsultant->count() > 0)
+                                        <a href="#">Consultants<i class="la la-angle-down"></i></a>
                                         @else
-                                        <a type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Unavailable" style="color: #073975">Consultants </a>
+                                        <a type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Unavailable" style="color: #073975">Consultant </a>
                                         @endif
                                         <div class="dropdown-menu-item mega-menu">
                                             <ul class="row no-gutters">
-                                                @if($headercountryvalid->count() > 21)
-                                                <li class="col-lg-4 mega-menu-item">
-                                                    <ul>
-                                                        <?php $headercountry = App\Models\Country::take(7)->get(); ?>
-                                                        @foreach ($headercountry as $itemcountry)
-                                                        <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
-                                                          @csrf
-                                                      <input type="hidden" name="category" value="{{$itemcountry->countries_id ?? ''}}">
+                                                {{-- @if($headercountryvalidconsultant->count() > 10) --}}
+                                                <li  class="col-lg-12 mega-menu-item" style="padding: 0px;">
+                                                    <div class="tabbe">
 
-                                                      <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
-                                                          display: -ms-flex;
-                                                          display: flex;
-                                                          -ms-flex-align: center;
-                                                          align-items: center;
-                                                          justify-content: space-between;
-                                                          position: relative;
-                                                          padding: 3px 25px;
-                                                          color: #5d646d;
-                                                          font-size: 15px;
-                                                          font-weight: 500;">{{$itemcountry->countries_name ?? ''}}</button></li>
-                                                      </form>
+                                                      <button style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;" class="tabbelinks active" onmouseover="openCity(event, 'consultant_us')"><span class="flag-icon flag-icon-us mr-1"></span>{!!"&nbsp"!!}United States Of America</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'consultant_uk')"><span class="flag-icon flag-icon-gb mr-1"></span>{!!"&nbsp"!!}United Kingdom</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'consultant_canada')"><span class="flag-icon flag-icon-ca mr-1"></span>{!!"&nbsp"!!}Canada</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'consultant_ireland')"><span class="flag-icon flag-icon-ie mr-1"></span>{!!"&nbsp"!!}Ireland</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'consultant_australia')"><span class="flag-icon flag-icon-au mr-1"></span>{!!"&nbsp"!!}Australia</button>
+                                                      <button  style="
+                                                      color: #5d646d;
+                                                      font-size: 15px;
+                                                      font-weight: 500;"  class="tabbelinks" onmouseover="openCity(event, 'consultant_Singapore')"><span class="flag-icon flag-icon-sg mr-1"></span>{!!"&nbsp"!!}Singapore</button>
+                                                    </div>
+
+                                                    <div id="consultant_us" class="tabcontent" style=" float: left;
+                                                        padding: 0px 12px;
+                                                        border: 1px solid #ccc;
+                                                        width: 70%;
+                                                        border-left: none;
+                                                        height: 300px;
+                                                        display: block;">
+                                                        <ul class="row no-gutters" style="padding-top: 10px;">
+                                                        <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                            <ul>
+                                                                    <li style="
+                                                                    border: none;
+                                                                    background: none;
+                                                                    display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 15px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 17px;
+                                                                    font-weight: 600;
+
+                                                                    
+                                                                    ">Featured Consultants</li>
+                                                                    <?php $myconsultime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                                                    <?php $headerconsultants11 =  App\Models\User::whereHas('roles', function($q){
+                                                                        $q->where('name', 'consultant');
+                                                                    })->where('countries_id',223)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get();
+                                                    ?>
+                                                                 @foreach ( $headerconsultants11 as $headerconsultant11)
+                                                             
+                                                               
+                                                                
+                                                                <li><a href="{{route('consultant_detail',['id'=>$headerconsultant11->id])}}">{{$headerconsultant11->first_name ?? ''}} &nbsp;{{$headerconsultant11->last_name ?? ''}}</a></li>
+                                                                {{-- </form> --}}
+                                                        
+                                                              
+
+                                                                @endforeach
+
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <ul>
+                                                                <li style="
+                                                                border: none;
+                                                                background: none;
+                                                                display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 15px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 17px;
+                                                                font-weight: 600;
+
+                                                                ">Top Ranked Consultants</li>
+                                                                <?php $headerconsultants12 = App\Models\User::whereHas('roles', function($q){
+                                                                    $q->where('name', 'consultant');
+                                                                })->where('countries_id',223)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+
+                                                            @foreach ($headerconsultants12 as $headerconsultant12)
+                                                          
+
+                                                            
+                                                            <li><a href="{{route('consultant_detail',['id'=>$headerconsultant12->id])}}">{{$headerconsultant11->first_name ?? ''}} &nbsp;{{$headerconsultant11->last_name ?? ''}}</a></li>
+                                                            {{-- </form> --}}
+                                                            
+
+                                                            @endforeach
+
+
+                                                        </ul>
+                                                        </li>
+                                                    </ul>
+
+                                                    </div>
+
+                                                    <div id="consultant_uk" class="tabcontent" style=" float: left;
+                                                    padding: 0px 12px;
+                                                    border: 1px solid #ccc;
+                                                    width: 70%;
+                                                    border-left: none;
+                                                    height: 300px;
+                                                    display: none;">
+                                                         <ul class="row no-gutters" style="padding-top: 10px;">
+                                                            <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                                <ul>
+                                                                        <li style="
+                                                                        border: none;
+                                                                        background: none;
+                                                                        display: -webkit-flex;
+                                                                        display: -ms-flex;
+                                                                        display: flex;
+                                                                        -ms-flex-align: center;
+                                                                        align-items: center;
+                                                                        justify-content: space-between;
+                                                                        position: relative;
+                                                                        padding: 15px 25px;
+                                                                        color: #5d646d;
+                                                                        font-size: 17px;
+                                                                        font-weight: 600;
+
+                                                                        ">Featured Consultants</li>
+                                                                        <?php $headerconsultants21 = App\Models\User::whereHas('roles', function($q){
+                                                                            $q->where('name', 'consultant');
+                                                                        })->where('countries_id',222)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+
+                                                                        @foreach ($headerconsultants21 as $headerconsultant21)
+                                                    
+
+                                                                     
+                                                                <li><a href="{{route('consultant_detail',['id'=>$headerconsultant21->id])}}">{{$headerconsultant21->first_name ?? ''}} &nbsp;{{$headerconsultant21->last_name ?? ''}}</a></li>
+                                                             
+                                                                    @endforeach
+
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <ul>
+                                                                    <li style="
+                                                                    border: none;
+                                                                    background: none;
+                                                                    display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 15px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 17px;
+                                                                    font-weight: 600;
+
+                                                                    ">Top Ranked Consultants</li>
+                                                                    <?php $headerconsultants22 = App\Models\User::whereHas('roles', function($q){
+                                                                        $q->where('name', 'consultant');
+                                                                    })->where('countries_id',222)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                @foreach ($headerconsultants22 as $headerconsultant22)
+                                                          
+
+                                                                  
+                                                                <li><a href="{{route('consultant_detail',['id'=>$headerconsultant22->id])}}">{{$headerconsultant22->first_name ?? ''}} &nbsp;{{$headerconsultant22->last_name ?? ''}}</a></li>
+                                                                {{-- </form> --}}
+                                                              
+                                                           
+                                                                @endforeach
+
+                                                                
+                                                            </ul>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+
+                                                    <div id="consultant_canada" class="tabcontent" style=" float: left;
+                                                    padding: 0px 12px;
+                                                    border: 1px solid #ccc;
+                                                    width: 70%;
+                                                    border-left: none;
+                                                    height: 300px;
+                                                    display: none;">
+                                                         <ul class="row no-gutters" style="padding-top: 10px;">
+                                                            <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                                <ul>
+                                                                        <li style="
+                                                                        border: none;
+                                                                        background: none;
+                                                                        display: -webkit-flex;
+                                                                        display: -ms-flex;
+                                                                        display: flex;
+                                                                        -ms-flex-align: center;
+                                                                        align-items: center;
+                                                                        justify-content: space-between;
+                                                                        position: relative;
+                                                                        padding: 15px 25px;
+                                                                        color: #5d646d;
+                                                                        font-size: 17px;
+                                                                        font-weight: 600;
+
+                                                                        ">Featured Consultants</li>
+                                                                        <?php $headerconsultants31 = App\Models\User::whereHas('roles', function($q){
+                                                                            $q->where('name', 'consultant');
+                                                                        })->where('countries_id',38)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                    @foreach ($headerconsultants31 as $headerconsultant31)
+                                                              
+
+
+                                                       
+                                                                    <li><a href="{{route('consultant_detail',['id'=>$headerconsultant31->id])}}">{{$headerconsultant31->first_name ?? ''}} &nbsp;{{$headerconsultant31->last_name ?? ''}}</a></li>
+                                                              
+                                                                    @endforeach
+
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <ul>
+                                                                    <li style="
+                                                                    border: none;
+                                                                    background: none;
+                                                                    display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 15px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 17px;
+                                                                    font-weight: 600;
+
+                                                                    ">Top Ranked Consultants</li>
+                                                                    <?php $headerconsultants32 = App\Models\User::whereHas('roles', function($q){
+                                                                        $q->where('name', 'consultant');
+                                                                    })->where('countries_id',38)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                @foreach ($headerconsultants32 as $headerconsultant32)
+                                                               
+                                                                <li><a href="{{route('consultant_detail',['id'=>$headerconsultant32->id])}}">{{$headerconsultant32->first_name ?? ''}} &nbsp;{{$headerconsultant32->last_name ?? ''}}</a></li>
+                                                                @endforeach
+
+
+                                                            </ul>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                            <div id="consultant_ireland" class="tabcontent" style=" float: left;
+                                                    padding: 0px 12px;
+                                                    border: 1px solid #ccc;
+                                                    width: 70%;
+                                                    border-left: none;
+                                                    height: 300px;
+                                                    display: none;">
+                                                         <ul class="row no-gutters" style="padding-top: 10px;">
+                                                            <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                                <ul>
+                                                                        <li style="
+                                                                        border: none;
+                                                                        background: none;
+                                                                        display: -webkit-flex;
+                                                                        display: -ms-flex;
+                                                                        display: flex;
+                                                                        -ms-flex-align: center;
+                                                                        align-items: center;
+                                                                        justify-content: space-between;
+                                                                        position: relative;
+                                                                        padding: 15px 25px;
+                                                                        color: #5d646d;
+                                                                        font-size: 17px;
+                                                                        font-weight: 600;
+
+                                                                        ">Featured Consultants</li>
+                                                                        <?php $headerconsultants41 = App\Models\User::whereHas('roles', function($q){
+                                                                            $q->where('name', 'consultant');
+                                                                        })->where('countries_id',103)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                    @foreach ($headerconsultants41 as $headerconsultant41)
+                                                                 
+
+
+                                                                
+                                                                    <li><a href="{{route('consultant_detail',['id'=>$headerconsultant41->id])}}">{{$headerconsultant41->first_name ?? ''}} &nbsp;{{$headerconsultant41->last_name ?? ''}}</a></li>
+                                                                    @endforeach
+
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <ul>
+                                                                    <li style="
+                                                                    border: none;
+                                                                    background: none;
+                                                                    display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 15px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 17px;
+                                                                    font-weight: 600;
+
+                                                                    ">Top Ranked Consultants</li>
+
+                                                                    <?php $headerconsultants42 = App\Models\User::whereHas('roles', function($q){
+                                                                        $q->where('name', 'consultant');
+                                                                    })->where('countries_id',103)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                @foreach ($headerconsultants42 as $headerconsultant42)
+                                                            
+                                                                <li><a href="{{route('consultant_detail',['id'=>$headerconsultant42->id])}}">{{$headerconsultant42->first_name ?? ''}} &nbsp;{{$headerconsultant42->last_name ?? ''}}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                    <div id="consultant_australia" class="tabcontent" style=" float: left;
+                                                        padding: 0px 12px;
+                                                        border: 1px solid #ccc;
+                                                        width: 70%;
+                                                        border-left: none;
+                                                        height: 300px;
+                                                        display: none;">
+                                                        <ul class="row no-gutters" style="padding-top: 10px;">
+                                                            <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                                <ul>
+                                                                    <li style="
+                                                                    border: none;
+                                                                    background: none;
+                                                                    display: -webkit-flex;
+                                                                    display: -ms-flex;
+                                                                    display: flex;
+                                                                    -ms-flex-align: center;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    position: relative;
+                                                                    padding: 15px 25px;
+                                                                    color: #5d646d;
+                                                                    font-size: 17px;
+                                                                    font-weight: 600;
+
+                                                                    ">Featured Consultants</li>
+                                                                    <?php $headerconsultants51 = App\Models\User::whereHas('roles', function($q){
+                                                                        $q->where('name', 'consultant');
+                                                                    })->where('countries_id',13)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                @foreach ($headerconsultants51 as $headerconsultant51)
+                                                            
+                                                                <li><a href="{{route('consultant_detail',['id'=>$headerconsultant51->id])}}">{{$headerconsultant51->first_name ?? ''}} &nbsp;{{$headerconsultant51->last_name ?? ''}}</a></li>
+                                                                
+                                                                @endforeach
+
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <ul>
+                                                                <li style="
+                                                                border: none;
+                                                                background: none;
+                                                                display: -webkit-flex;
+                                                                display: -ms-flex;
+                                                                display: flex;
+                                                                -ms-flex-align: center;
+                                                                align-items: center;
+                                                                justify-content: space-between;
+                                                                position: relative;
+                                                                padding: 15px 25px;
+                                                                color: #5d646d;
+                                                                font-size: 17px;
+                                                                font-weight: 600;
+
+                                                                ">Top Ranked Consultants</li>
+                                                                <?php $headerconsultants52 = App\Models\User::whereHas('roles', function($q){
+                                                                    $q->where('name', 'consultant');
+                                                                })->where('countries_id',13)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                            @foreach ($headerconsultants52 as $headerconsultant52)
+                                                                                                                    
+                                                            <li><a href="{{route('consultant_detail',['id'=>$headerconsultant52->id])}}">{{$headerconsultant52->first_name ?? ''}} &nbsp;{{$headerconsultant52->last_name ?? ''}}</a></li>
+                                                            @endforeach
+
+                                                                {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
+                                                                <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
+                                                                <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
+                                                                <li><a href="#">Science<span class="badge bg-2 text-white">New</span></a></li>
+                                                                <li><a href="#">Commerce</a></li>
+                                                                <li><a href="#">Arts</a></li> --}}
+                                                        </ul>
+                                                        </li>
+                                                     </ul>
+
+                                                </div>
+                                                <div id="consultant_Singapore" class="tabcontent" style=" float: left;
+                                                padding: 0px 12px;
+                                                border: 1px solid #ccc;
+                                                width: 70%;
+                                                border-left: none;
+                                                height: 300px;
+                                                display: none;">
+                                                <ul class="row no-gutters" style="padding-top: 10px;">
+                                                    <li  class="col-lg-6 mega-menu-item" style="padding: 0px;">
+                                                        <ul>
+                                                            <li style="
+                                                            border: none;
+                                                            background: none;
+                                                            display: -webkit-flex;
+                                                            display: -ms-flex;
+                                                            display: flex;
+                                                            -ms-flex-align: center;
+                                                            align-items: center;
+                                                            justify-content: space-between;
+                                                            position: relative;
+                                                            padding: 15px 25px;
+                                                            color: #5d646d;
+                                                            font-size: 17px;
+                                                            font-weight: 600;
+
+                                                            ">Featured Consultants</li>
+
+                                                            <?php $headerconsultants61 = App\Models\User::whereHas('roles', function($q){
+                                                                $q->where('name', 'consultant');
+                                                            })->where('countries_id',188)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                        @foreach ($headerconsultants61 as $headerconsultant61)
+                                                
+
+                                                         
+                                                        <li><a href="{{route('consultant_detail',['id'=>$headerconsultant61->id])}}">{{$headerconsultant61->first_name ?? ''}} &nbsp;{{$headerconsultant61->last_name ?? ''}}</a></li>
+                                                    
                                                         @endforeach
 
                                                     </ul>
                                                 </li>
-                                                <li class="col-lg-4 mega-menu-item">
+                                                <li>
                                                     <ul>
-                                                        <?php $headercountry2 = App\Models\Country::skip(7)->take(7)->get(); ?>
-                                                        @foreach ($headercountry2 as $itemcountry2)
-                                                        <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
-                                                          @csrf
-                                                      <input type="hidden" name="category" value="{{$itemcountry2->countries_id ?? ''}}">
+                                                        <li style="
+                                                        border: none;
+                                                        background: none;
+                                                        display: -webkit-flex;
+                                                        display: -ms-flex;
+                                                        display: flex;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        position: relative;
+                                                        padding: 15px 25px;
+                                                        color: #5d646d;
+                                                        font-size: 17px;
+                                                        font-weight: 600;
 
-                                                      <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
-                                                          display: -ms-flex;
-                                                          display: flex;
-                                                          -ms-flex-align: center;
-                                                          align-items: center;
-                                                          justify-content: space-between;
-                                                          position: relative;
-                                                          padding: 3px 25px;
-                                                          color: #5d646d;
-                                                          font-size: 15px;
-                                                          font-weight: 500;">{{$itemcountry2->countries_name ?? ''}}</button></li>
-                                                      </form>
-                                                        @endforeach
+                                                        ">Top Ranked Consultants</li>
+                                                        <?php $headerconsultant62 = App\Models\User::whereHas('roles', function($q){
+                                                            $q->where('name', 'consultant');
+                                                        })->where('countries_id',188)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                    @foreach ($headerconsultant62 as $headerconsultant62)
+                                            
+  
+                                                    <li><a href="{{route('consultant_detail',['id'=>$headerconsultant62->id])}}">{{$headerconsultant62->first_name ?? ''}} &nbsp;{{$headerconsultant62->last_name ?? ''}}</a></li>
+                                                 
+                                                    @endforeach
 
-                                                    </ul>
+
+                                                </ul>
                                                 </li>
+                                             </ul>
 
-                                                <li class="col-lg-4 mega-menu-item">
-                                                    <ul>
-                                                        <?php $headercountry3 = App\Models\Country::skip(14)->take(7)->get(); ?>
-                                                        @foreach ($headercountry3 as $itemcountry3)
-                                                        <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" >
-                                                          @csrf
-                                                      <input type="hidden" name="category" value="{{$itemcountry3->countries_id ?? ''}}">
+                                        </div>
+                                                    </li>
 
-                                                      <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
-                                                          display: -ms-flex;
-                                                          display: flex;
-                                                          -ms-flex-align: center;
-                                                          align-items: center;
-                                                          justify-content: space-between;
-                                                          position: relative;
-                                                          padding: 3px 25px;
-                                                          color: #5d646d;
-                                                          font-size: 15px;
-                                                          font-weight: 500;">{{$itemcountry3->countries_name ?? ''}}</button></li>
-                                                      </form>
-                                                        @endforeach
-
-                                                    </ul>
-                                                </li>
-
-                                                @endif
+                                                {{-- @endif --}}
                                             </ul>
                                         </div>
                                     </li>
+                         
 
 
 
@@ -1072,8 +1482,8 @@
                                                                     ">Other Universities</li>
                                                                     <?php $headercountries32 = App\Models\University::where('countries_id',38)->take(7)->get(); ?>
                                                                 @foreach ($headercountries32 as $headercountry32)
-                                                                @if($headercountry21->user->status == 1)
-                                                                @if($headercountry21->user->Premium_expire_date < $mytime)
+                                                                @if($headercountry32->user->status == 1)
+                                                                @if($headercountry32->user->Premium_expire_date < $mytime)
 
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry32->user_id ?? ''])}}">{{$headercountry32->university_name ?? ''}}</a></li>
@@ -1335,116 +1745,7 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    {{-- <li>
-                                        <a href="#">Study Abroad <i class="la la-angle-down"></i></a>
-                                        <div class="dropdown-menu-item mega-menu">
-                                            <ul class="row no-gutters">
-
-                                                <li class="col-lg-8 mega-menu-item">
-                                                    <ul>
-                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
-                                                            <input type="hidden" name="countries_id" value="223">
-                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
-                                                                display: -ms-flex;
-                                                                display: flex;
-                                                                -ms-flex-align: center;
-                                                                align-items: center;
-                                                                justify-content: space-between;
-                                                                position: relative;
-                                                                padding: 3px 25px;
-                                                                color: #5d646d;
-                                                                font-size: 15px;
-                                                                font-weight: 500;" type="submit">Search Universities in United States of America</button> </a></form></li>
-
-                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
-                                                            <input type="hidden" name="countries_id" value="222">
-                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
-                                                                display: -ms-flex;
-                                                                display: flex;
-                                                                -ms-flex-align: center;
-                                                                align-items: center;
-                                                                justify-content: space-between;
-                                                                position: relative;
-                                                                padding: 3px 25px;
-                                                                color: #5d646d;
-                                                                font-size: 15px;
-                                                                font-weight: 500;" type="submit">Search Universities in United Kingdom</button> </a></form></li>
-
-                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
-                                                            <input type="hidden" name="countries_id" value="13">
-                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
-                                                                display: -ms-flex;
-                                                                display: flex;
-                                                                -ms-flex-align: center;
-                                                                align-items: center;
-                                                                justify-content: space-between;
-                                                                position: relative;
-                                                                padding: 3px 25px;
-                                                                color: #5d646d;
-                                                                font-size: 15px;
-                                                                font-weight: 500;" type="submit">Search Universities in Australia</button> </a></form></li>
-
-                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
-                                                            <input type="hidden" name="countries_id" value="38">
-                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
-                                                                display: -ms-flex;
-                                                                display: flex;
-                                                                -ms-flex-align: center;
-                                                                align-items: center;
-                                                                justify-content: space-between;
-                                                                position: relative;
-                                                                padding: 3px 25px;
-                                                                color: #5d646d;
-                                                                font-size: 15px;
-                                                                font-weight: 500;" type="submit">Search Universities in Canada</button> </a></form></li>
-
-                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
-                                                            <input type="hidden" name="countries_id" value="103">
-                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
-                                                                display: -ms-flex;
-                                                                display: flex;
-                                                                -ms-flex-align: center;
-                                                                align-items: center;
-                                                                justify-content: space-between;
-                                                                position: relative;
-                                                                padding: 3px 25px;
-                                                                color: #5d646d;
-                                                                font-size: 15px;
-                                                                font-weight: 500;" type="submit">Search Universities in Ireland</button> </a></form></li>
-
-                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
-                                                            <input type="hidden" name="countries_id" value="99">
-                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
-                                                                display: -ms-flex;
-                                                                display: flex;
-                                                                -ms-flex-align: center;
-                                                                align-items: center;
-                                                                justify-content: space-between;
-                                                                position: relative;
-                                                                padding: 3px 25px;
-                                                                color: #5d646d;
-                                                                font-size: 15px;
-                                                                font-weight: 500;" type="submit">Search Universities in India</button> </a></form></li>
-
-                                                        <li><form action="{{route('university_fetch.countrywise')}}" method="POST" class="row align-items-center">
-                                                            <input type="hidden" name="countries_id" value="222">
-                                                            @csrf<a> <button style="border: none;background: none;     display: -webkit-flex;
-                                                                display: -ms-flex;
-                                                                display: flex;
-                                                                -ms-flex-align: center;
-                                                                align-items: center;
-                                                                justify-content: space-between;
-                                                                position: relative;
-                                                                padding: 3px 25px;
-                                                                color: #5d646d;
-                                                                font-size: 15px;
-                                                                font-weight: 500;" type="submit">Search Universities in Germany</button> </a></form></li>
-                                                    </ul>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </li> --}}
+                         
                                     <li>
                                         <a href="{{route('Prmigration')}}">PR/Migration </a>
                                         {{-- <ul class="dropdown-menu-item">
