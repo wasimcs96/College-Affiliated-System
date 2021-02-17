@@ -20,7 +20,7 @@
 
                 </strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                    <li><a href="{{route('pages.profile')}}"><i class="icon-user"></i>My Profile</a></li>
+                    <li><a href="{{route('subadmin.profile')}}"><i class="icon-user"></i>My Profile</a></li>
                     <li class="divider"></li>
                     <li><a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();

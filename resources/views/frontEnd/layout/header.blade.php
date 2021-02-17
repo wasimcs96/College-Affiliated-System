@@ -823,7 +823,7 @@
                                                                 ">Top Ranked Consultants</li>
                                                                 <?php $headerconsultants12 = App\Models\User::whereHas('roles', function($q){
                                                                     $q->where('name', 'consultant');
-                                                                })->where('countries_id',223)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                })->where('countries_id',223)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
 
                                                             @foreach ($headerconsultants12 as $headerconsultant12)
                                                           
@@ -902,7 +902,7 @@
                                                                     ">Top Ranked Consultants</li>
                                                                     <?php $headerconsultants22 = App\Models\User::whereHas('roles', function($q){
                                                                         $q->where('name', 'consultant');
-                                                                    })->where('countries_id',222)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                    })->where('countries_id',222)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headerconsultants22 as $headerconsultant22)
                                                           
 
@@ -913,12 +913,7 @@
                                                            
                                                                 @endforeach
 
-                                                                    {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
-                                                                    <li><a href="#">MBBS<span class="badge bg-2 text-white">New</span></a></li>
-                                                                    <li><a href="#">Law<span class="badge bg-2 text-white">New</span></a></li>
-                                                                    <li><a href="#">Science<span class="badge bg-2 text-white">New</span></a></li>
-                                                                    <li><a href="#">Commerce</a></li>
-                                                                    <li><a href="#">Arts</a></li> --}}
+                                                                
                                                             </ul>
                                                             </li>
                                                         </ul>
@@ -953,7 +948,7 @@
                                                                         ">Featured Consultants</li>
                                                                         <?php $headerconsultants31 = App\Models\User::whereHas('roles', function($q){
                                                                             $q->where('name', 'consultant');
-                                                                        })->where('countries_id',223)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                        })->where('countries_id',38)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                     @foreach ($headerconsultants31 as $headerconsultant31)
                                                               
 
@@ -985,7 +980,7 @@
                                                                     ">Top Ranked Consultants</li>
                                                                     <?php $headerconsultants32 = App\Models\User::whereHas('roles', function($q){
                                                                         $q->where('name', 'consultant');
-                                                                    })->where('countries_id',223)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                    })->where('countries_id',38)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headerconsultants32 as $headerconsultant32)
                                                                
                                                                 <li><a href="{{route('consultant_detail',['id'=>$headerconsultant32->id])}}">{{$headerconsultant32->first_name ?? ''}} &nbsp;{{$headerconsultant32->last_name ?? ''}}</a></li>
@@ -1023,10 +1018,10 @@
                                                                         font-weight: 600;
 
                                                                         ">Featured Consultants</li>
-                                                                        <?php $headerconsultant41 = App\Models\User::whereHas('roles', function($q){
+                                                                        <?php $headerconsultants41 = App\Models\User::whereHas('roles', function($q){
                                                                             $q->where('name', 'consultant');
                                                                         })->where('countries_id',103)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
-                                                                    @foreach ($headerconsultant41 as $headerconsultant41)
+                                                                    @foreach ($headerconsultants41 as $headerconsultant41)
                                                                  
 
 
@@ -1055,10 +1050,10 @@
 
                                                                     ">Top Ranked Consultants</li>
 
-                                                                    <?php $headerconsultant42 = App\Models\User::whereHas('roles', function($q){
+                                                                    <?php $headerconsultants42 = App\Models\User::whereHas('roles', function($q){
                                                                         $q->where('name', 'consultant');
-                                                                    })->where('countries_id',223)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
-                                                                @foreach ($headerconsultant42 as $headerconsultant42)
+                                                                    })->where('countries_id',103)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                @foreach ($headerconsultants42 as $headerconsultant42)
                                                             
                                                                 <li><a href="{{route('consultant_detail',['id'=>$headerconsultant42->id])}}">{{$headerconsultant42->first_name ?? ''}} &nbsp;{{$headerconsultant42->last_name ?? ''}}</a></li>
                                                                 @endforeach
@@ -1095,7 +1090,7 @@
                                                                     ">Featured Consultants</li>
                                                                     <?php $headerconsultants51 = App\Models\User::whereHas('roles', function($q){
                                                                         $q->where('name', 'consultant');
-                                                                    })->where('countries_id',223)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                    })->where('countries_id',13)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headerconsultants51 as $headerconsultant51)
                                                             
                                                                 <li><a href="{{route('consultant_detail',['id'=>$headerconsultant51->id])}}">{{$headerconsultant51->first_name ?? ''}} &nbsp;{{$headerconsultant51->last_name ?? ''}}</a></li>
@@ -1122,10 +1117,10 @@
                                                                 font-weight: 600;
 
                                                                 ">Top Ranked Consultants</li>
-                                                                <?php $headerconsultant52 = App\Models\User::whereHas('roles', function($q){
+                                                                <?php $headerconsultants52 = App\Models\User::whereHas('roles', function($q){
                                                                     $q->where('name', 'consultant');
-                                                                })->where('countries_id',223)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
-                                                            @foreach ($headerconsultant52 as $headerconsultant52)
+                                                                })->where('countries_id',13)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                            @foreach ($headerconsultants52 as $headerconsultant52)
                                                                                                                     
                                                             <li><a href="{{route('consultant_detail',['id'=>$headerconsultant52->id])}}">{{$headerconsultant52->first_name ?? ''}} &nbsp;{{$headerconsultant52->last_name ?? ''}}</a></li>
                                                             @endforeach
@@ -1168,10 +1163,10 @@
 
                                                             ">Featured Consultants</li>
 
-                                                            <?php $headerconsultant61 = App\Models\User::whereHas('roles', function($q){
+                                                            <?php $headerconsultants61 = App\Models\User::whereHas('roles', function($q){
                                                                 $q->where('name', 'consultant');
-                                                            })->where('countries_id',223)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
-                                                        @foreach ($headerconsultant61 as $headerconsultant61)
+                                                            })->where('countries_id',188)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                        @foreach ($headerconsultants61 as $headerconsultant61)
                                                 
 
                                                          
@@ -1201,7 +1196,7 @@
                                                         ">Top Ranked Consultants</li>
                                                         <?php $headerconsultant62 = App\Models\User::whereHas('roles', function($q){
                                                             $q->where('name', 'consultant');
-                                                        })->where('countries_id',223)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                        })->where('countries_id',188)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                     @foreach ($headerconsultant62 as $headerconsultant62)
                                             
   
