@@ -86,7 +86,7 @@ class AdminUsersController extends Controller
             'password' => Hash::make($request->password),
         ])->assignRole('client');
 
-             // Important Code
+// Important Code
 // $replacement['COURSE_LINK'] =http://kamercio.com/campusInterest/public/university/all;
 // $replacement['CONSULTANT_LINK'] =http://kamercio.com/campusInterest/public/consultant/all;
 // $replacement['APP_STORE_APP'] = https://play.google.com/store/apps/developer?id=Digitalcolf;
@@ -175,10 +175,10 @@ class AdminUsersController extends Controller
             'password' => Hash::make($request->password),
         ])->assignRole('subAdmin');
           // Important Code
-    //         $replacement['token'] =$request->_token;
+    //  $replacement['token'] =$request->_token;
 
 
-    //         $replacement['USER_NAME'] = $request->first_name;
+    //  $replacement['USER_NAME'] = $request->first_name;
     //  $replacement['PASSWORD'] = $request->password;
     //  $replacement['EMAIL'] = $request->email;
     //  $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
