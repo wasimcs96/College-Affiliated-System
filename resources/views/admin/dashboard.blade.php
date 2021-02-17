@@ -18,6 +18,7 @@
 
                 ?>
     <div class="col-lg-4 col-md-6">
+        <a href="{{route('admin.users',['id'=>1])}}">
             <div class="card">
                 <div class="body">
                     <div class="d-flex align-items-center">
@@ -29,8 +30,11 @@
                     </div>
                 </div>
             </div>
+        </a>
      </div>
      <div class="col-lg-4 col-md-6">
+        <a href="{{route('admin.users',['id'=>3])}}">
+
         <div class="card">
             <div class="body">
                 <div class="d-flex align-items-center">
@@ -43,9 +47,12 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
 
         <div class="col-lg-4 col-md-6">
+        <a href="{{route('admin.users',['id'=>2])}}">
+
             <div class="card">
                 <div class="body">
                     <div class="d-flex align-items-center">
@@ -59,9 +66,12 @@
                     </div>
                 </div>
             </div>
+        </a>
         </div>
 
         <div class="col-lg-4 col-md-6">
+            <a href="{{route('admin.booking')}}">
+
             <div class="card">
                 <?php $booking = DB::table('bookings')->count(); ?>
                 <div class="body">
@@ -75,9 +85,12 @@
                     </div>
                 </div>
             </div>
+        </a>
      </div>
 
      <div class="col-lg-4 col-md-6">
+        <a href="{{route('admin.application')}}">
+
         <div class="card">
             <?php $applications = DB::table('applications')->count(); ?>
 
@@ -92,9 +105,11 @@
                 </div>
             </div>
         </div>
+    </a>
      </div>
 
      <div class="col-lg-4 col-md-6">
+        <a href="{{route('admin.application')}}">
         <div class="card">
             <?php $fly = DB::table('university_consultant_clients')->count(); ?>
 
@@ -108,9 +123,12 @@
                 </div>
             </div>
         </div>
+    </a>
  </div>
 
  <div class="col-lg-4 col-md-6">
+    <a href="{{route('admin.booking')}}">
+
     <div class="card">
         <div class="body">
             <?php $pr = DB::table('bookings')->where('booking_for',1)->count(); ?>
@@ -125,8 +143,11 @@
             </div>
         </div>
     </div>
+</a>
 </div>
 <div class="col-lg-4 col-md-6">
+    <a href="{{route('admin.advertisement_manager')}}">
+
     <div class="card">
         <div class="body">
 
@@ -144,8 +165,11 @@
             </div>
         </div>
     </div>
+</a>
 </div>
 <div class="col-lg-4 col-md-6">
+    <a href="{{route('admin.earning')}}">
+
     <div class="card">
         <div class="body">
             <?php $revenue = App\Models\Order::all()->sum('amount');?>
@@ -160,6 +184,7 @@
             </div>
         </div>
     </div>
+</a>
 </div>
 
 </div>
