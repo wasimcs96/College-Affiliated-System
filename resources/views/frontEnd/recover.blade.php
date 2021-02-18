@@ -49,16 +49,17 @@
                     </div><!-- form-title-wrap -->
                     <div class="form-content ">
                         <div class="contact-form-action">
-                            <form method="post">
+                           <form method="POST" action="{{ route('password.email') }}">
+                        @csrf
                                 <div class="input-box">
                                     <label class="label-text">Your Email</label>
                                     <div class="form-group">
                                         <span class="la la-envelope-o form-icon"></span>
-                                        <input class="form-control" type="email" name="email" placeholder="Enter email address">
+                                        <input class="form-control" type="email" name="email" placeholder="Enter email address" required>
                                     </div>
                                 </div>
                                 <div class="btn-box">
-                                    <button type="button" class="theme-btn">Reset Password</button>
+                                    <button type="submit" class="theme-btn">Reset Password</button>
                                 </div>
                             </form>
                         </div><!-- end contact-form-action -->
@@ -68,4 +69,47 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end contact-area -->
+{{-- <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Reset Password') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('password.email') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Send Password Reset Link') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
 @endsection

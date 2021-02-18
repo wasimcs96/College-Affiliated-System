@@ -9,6 +9,14 @@
         <div class="card">
             <div class="header">
                 <h2>Add Course</h2>
+                <ul class="header-dropdown dropdown">
+
+                    <li>
+                        <a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+                    <a  href="{{ asset('assets/default/SampleCsv.xlsx') }}" class="btn btn-warning btn-flat" download>Sample CSV</a>
+                    <a  href="{{ route('university.add_course') }}" class="btn btn-success btn-flat" id="add_course">Add Course</a>
+
+                </ul>
             </div>
             <div class="body">
                 <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
@@ -52,11 +60,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Import Courses</label>
-                        <input type="file" name="file" class="form-control" style="padding-bottom: 33px;">
+                        <label>Upload Courses</label>
+                        <input type="file" name="file" class="form-control" style="padding-bottom: 33px;" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Import Courses</button>
+                    <button type="submit" class="btn btn-primary">Upload Courses</button>
                     <a href="{{route('university.courses')}}" class="btn btn-danger">Back</a>
                 </form>
             </div>
