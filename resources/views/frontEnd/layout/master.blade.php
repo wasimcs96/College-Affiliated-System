@@ -438,26 +438,84 @@
             <span class="nav__text">Home</span>
         </a>
 
-        <a href="#" class="nav__link imran">
+        <a href="{{route('consultant_all')}}" class="nav__link imran">
             <i class="material-icons nav__icon">supervisor_account</i>
             <span class="nav__text">Consultant</span>
         </a>
+        @if(Auth()->user())
+        @if(Auth()->user()->isAdmin())
+    <a href="{{ route('admin.dashboard') }}" class="nav__link imran">
+        <i class="material-icons nav__icon">dashboard</i>
+        <span class="nav__text">Dashboard</span>
+    </a>
+        @endif
 
-        <a href="#" class="nav__link imran">
+        @if(Auth()->user()->isConsultant())
+        <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+        @if(auth()->user()->Subscription_expire_date<$mytime || auth()->user()->Subscription_expire_date==NULL)
+        <a @if(auth()->user()->add_university == 0)
+             href="javascript:void(0);" data-toggle="modal" data-target ="#addUniversityModal"
+            @else
+             href="{{ route('consultant.subscription') }}"
+             @endif
+             class="nav__link imran">
+             <i class="material-icons nav__icon">dashboard</i>
+        <span class="nav__text">Dashboard</span>
+    </a>
+        @else
+    <a href="{{ route('consultant.dashboard') }}"  class="nav__link imran">
+        <i class="material-icons nav__icon">dashboard</i>
+        <span class="nav__text">Dashboard</span>
+    </a>
+        @endif
+       @endif
+
+        @if(Auth()->user()->isClient())
+    <a href="{{ route('client.dashboard') }}"  class="nav__link imran">
             <i class="material-icons nav__icon">dashboard</i>
-            <span class="nav__text">Dashboard</span>
-        </a>
+        <span class="nav__text">Dashboard</span>
+    </a></a>
+        @endif
 
-        <a href="#" class="nav__link imran">
+        @if(Auth()->user()->isUniversity())
+        <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+        @if(auth()->user()->Subscription_expire_date<$mytime || auth()->user()->Subscription_expire_date==NULL)
+        <a href="{{ route('university.subscription') }}"  class="nav__link imran">
+            <i class="material-icons nav__icon">dashboard</i>
+        <span class="nav__text">Dashboard</span>
+    </a>
+        @else
+       <a href="{{ route('university.dashboard') }}"  class="nav__link imran">
+        <i class="material-icons nav__icon">dashboard</i>
+        <span class="nav__text">Dashboard</span>
+    </a>
+        @endif
+        @endif
+
+        @if(Auth()->user()->isSubadmin())
+        <a href="{{ route('subadmin.dashboard') }}"  class="nav__link imran">
+            <i class="material-icons nav__icon">dashboard</i>
+        <span class="nav__text">Dashboard</span>
+    </a>
+            @endif
+
+        @else
+        <a href="javascript:void(0)"  data-toggle="modal" data-target="#loginPopupForm" class="nav__link imran">
+            <i class="material-icons nav__icon">login</i>
+            <span class="nav__text">Login</span>
+        </a>
+        @endif
+
+        <a href="{{route('university_all')}}" class="nav__link imran">
             <i class="material-icons nav__icon">school</i>
             <span class="nav__text">Find university</span>
         </a>
 
-        <a href="#" class="nav__link imran" onclick="openNav()">
+        <button href="#" type="button" class="nav__link imran" onclick="openNav()" disabled style="border: none;background:none;" >
             <i class="material-icons nav__icon">more</i>
             <!-- <span class="nav__text">More</span> -->
             <span class="nav__text" style="cursor:pointer" >More</span>
-        </a>
+        </button>
     </nav>
 <!-- /PWA -->
 

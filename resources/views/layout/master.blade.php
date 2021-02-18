@@ -242,33 +242,36 @@
 <!-- /sidebar html -->
 
 <!-- PWA  -->
+@if(auth()->user()->isClient())
 <nav class="nav123 hide-on-desktop" style="z-index:2;">
-        <a href="{{route('front')}}" class="imran nav__link nav__link--active">
-            <i class="material-icons nav__icon">home</i>
-            <span class="nav__text">Home</span>
+        
+  <a href="{{route('client.dashboard')}}" class="nav__link imran">
+    <i class="material-icons nav__icon">dashboard</i>
+    <span class="nav__text">Dashboard</span>
+</a>
+        <a href="{{route('client.applications')}}" class="nav__link imran">
+            <i class="material-icons nav__icon">file_present</i>
+            <span class="nav__text">Applcation</span>
         </a>
 
-        <a href="#" class="nav__link imran">
-            <i class="material-icons nav__icon">supervisor_account</i>
-            <span class="nav__text">Consultant</span>
+      
+        <a href="{{route('client.messenger')}}" class="imran nav__link nav__link--active">
+          <i class="material-icons nav__icon">message</i>
+          <span class="nav__text">Messanger</span>
+      </a>
+
+        <a  href="{{route('client.bookings')}}" class="nav__link imran">
+            <i class="material-icons nav__icon">receipt</i>
+            <span class="nav__text">Booking</span>
         </a>
 
-        <a href="#" class="nav__link imran">
-            <i class="material-icons nav__icon">dashboard</i>
-            <span class="nav__text">Dashboard</span>
-        </a>
-
-        <a href="#" class="nav__link imran">
-            <i class="material-icons nav__icon">school</i>
-            <span class="nav__text">Find university</span>
-        </a>
-
-        <a href="#" class="nav__link imran" onclick="openNav()">
-            <i class="material-icons nav__icon">more</i>
+        <a href="{{route('client.profile')}}" class="nav__link imran" onclick="openNav()">
+            <i class="material-icons nav__icon">account_circle</i>
             <!-- <span class="nav__text">More</span> -->
-            <span class="nav__text" style="cursor:pointer" >More</span>
+            <span class="nav__text" style="cursor:pointer" >Profile</span>
         </a>
-    </nav>
+</nav>
+@endif
 <!-- /PWA -->
 <!-- Page Loader -->
 <div class="page-loader-wrapper">

@@ -13,6 +13,7 @@
              $application = DB::table('applications')->where('client_id',auth()->user()->id)->where('status',0)->count();
         @endphp
         <div class="col-lg-6 col-md-6">
+            <a href="{{route('client.bookings')}}">
             <div class="card">
                 <div class="body">
                     <div class="d-flex align-items-center">
@@ -24,8 +25,11 @@
                     </div>
                 </div>
             </div>
+        </a>
      </div>
      <div class="col-lg-6 col-md-6">
+        <a href="{{route('client.applications')}}">
+
         <div class="card">
             <div class="body">
                 <div class="d-flex align-items-center">
@@ -38,6 +42,7 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
 
 </div>
