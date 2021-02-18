@@ -10,7 +10,7 @@
                 <div class="col-lg-12">
                     <div class="search-result-content">
                         <div class="section-heading">
-                            <h2 class="sec__title text-white"> @if(isset($page)&& $page == 1)University Search Result @else Course Search Result @endif</h2>
+                            {{-- <h2 class="sec__title text-white"> @if(isset($page)&& $page == 1)University Search Result @else Course Search Result @endif</h2> --}}
                         </div>
                         <div class="search-fields-container margin-top-30px" style="
                         background-color: transparent; color:white;
@@ -123,25 +123,35 @@
                                 </div>
                                <!-- end col-lg-3 -->
                                <!-- end col-lg-3 -->
-                                <div class="col-lg-3 col-sm-2 pr-0" >
-                                    <div class="input-box">
-                                        <label class="label-text" style="
-                                        color: white;
-                                    ">Sub Discipline</label>
-                                        <div class="form-group">
-                                            <div class="select-contain w-auto">
-                                                <select id="selectcourse" name="sub_category" class="select-contain-select ert"   style="
-                                                height: 52px;
-                                            ">
-                                                    <option value="" selected>Select Sub Discipline</option>
+                               <div class="col-lg-3 col-sm-2 pr-0" >
+                                <div class="input-box">
+                                    <label class="label-text" style="color: white;">Sub Discipline</label>
+                                    <div class="form-group">
+                                        <div class="select-contain w-auto">
+                                            <select id="selectcourse" name="sub_category" class="form-control ert"   style="
+                                            height: 52px;
+                                        ">
+                                                <option value="" selected>Select Sub Discipline</option>
+                                                @if(isset($filtercatgory))
+                                                <?php $subcategories = App\Models\Category::where('parent_id',$filtercatgory)->get();?>
+                                           
+                                                @if($subcategories->count() > 0)
+                                                @foreach($subcategories as $subcategory)
+                                                <option value="{{$subcategory->id}}" @if(isset($filtersub_category)&& $filtersub_category == $subcategory->id) selected @endif >{{$subcategory->title}}</option>
+                                                @endforeach
+        
+                                                @else
+        
+                                                    <option value="">Currently Unavailable</option>
+        
+                                                @endif
+                                                @endif
 
-
-
-                                                </select>
-                                            </div>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
                                 <div class="col-lg-3 col-sm-2 pr-0" >
                                     <div class="input-box">
@@ -154,9 +164,9 @@
                                                 height: 52px;
                                             ">
                                                     <option value="" selected>Select Study Level</option>
-                                                    <option value="2" >Diploma</option>
-                                                    <option value="0" >UG</option>
-                                                    <option value="1" >PG</option>
+                                                    <option value="2" @if(isset($study_level)&& $study_level==2)selected @endif> Diploma</option>
+                                                    <option value="0"  @if(isset($study_level)&& $study_level==0)selected @endif>UG</option>
+                                                    <option value="1"  @if(isset($study_level)&& $study_level==1)selected @endif>PG</option>
 
                                                 </select>
                                             </div>
@@ -297,19 +307,22 @@
                                             <h3 class="card-title">
                                                 <a href="{{route('university_detail',['id'=>$university->id])}}">
                                                 
-                                             @if(isset($filtersub_category))  
-                                             @if($filtersub_category != null)
+                                             @if(isset($filtersub_category) && $filtersub_category != null)  
+                                            
                                               <?php $univercoursecount =App\Models\UniversityCourse::where('category_id', 23)->where('user_id',$university->id)->count()-1;
                                               $univercourse=App\Models\UniversityCourse::where('category_id', 23)->where('user_id',$university->id)->first(); ?>
                                               {{-- {{dd($filtersub_category)}} --}}
                                               @if($univercourse != null)
                                               {{$univercourse->title ?? ''}} &nbsp;<span  style="font-size: small;">+{{$univercoursecount}} courses</span>
                                               @endif
-                                              @endif
+                                             
                                               @if($univercourse == null)
                                               @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
                                                       @endif
-                                        @endif
+                                              @endif
+                                              @if(isset($filtersub_category) && $filtersub_category == null)
+                                              @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
+                                                      @endif
                                         @if(isset($page)&& $page == 1)
                                         @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
                                         @endif
@@ -441,13 +454,13 @@
             </div>
             @endif
         </div><!-- end row -->
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-12">
                 <div class="btn-box mt-3 text-center">
                     <button type="button" id="loadmore" class="theme-btn"><i class="la la-refresh mr-1"></i>Load More</button>
                     <p class="font-size-13 pt-2">Showing 1 - 6 of 44 university</p>
                 </div><!-- end btn-box -->
-            </div><!-- end col-lg-12 -->
+            </div><!-- end col-lg-12 --> --}}
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end card-area -->
@@ -639,6 +652,7 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end info-area --> --}}
+{{-- {{dd($filtersub_category)}} --}}
 @endsection
 @section('per_page_style')
 <style>
@@ -889,17 +903,48 @@
 </style>
 @endsection
 @section('per_page_script')
+
 <script>
-$(document).ready(function(){
-    $(".responsive-column").slice(0, 4).show();
-    $("#loadmore").on("click", function(e){
-      e.preventDefault();
-      $(".responsive-column:hidden").slice(0, 4).slideDown();
-      if($(".responsive-column:hidden").length == 0) {
-        $("#loadmore").text("No Content").addClass("noContent");
-      }
+    $(document).on('change', '#categoryselect', function ()
+    {
+        console.log("clicked")
+    var categoryselect=$('#categoryselect').val();
+
+    function isEmpty(val){
+        return (val == undefined || val == null || val.length <= 0) ? true : false;
+    }
+
+
+    if (isEmpty(categoryselect)){
+        $(`#ali`).html(`<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Please select the Category First
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>`)
+    }
+    else{
+
+
+    $.ajaxSetup({headers:
+    {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
     });
-    
-  })
-</script>
+
+    $.ajax({
+    url:"{{ route('university_fetch') }}",
+    method:"GET",
+    data:{categoryselect:categoryselect},
+    success: function(result){
+        console.log(result)
+
+    $(".ert").html(result)
+    }
+    });
+    }
+
+    });
+
+    </script>
 @endsection

@@ -16,16 +16,17 @@ class UniversityFilterController extends Controller
 {
     public function filter(Request $request)
     {
-
-        $courses = Category::where('parent_id', $request->categoryselect)->get();
-if($courses->count()>0){
-        $output = '<option value="" selected>Select Sub Discipline</option>';
-        foreach ($courses as $row) {
-            $output .= '<option value="' . $row->id . '" >' . $row->title . '</option>';
-        }
+        
+    $courses = Category::where('parent_id', $request->categoryselect)->get();
+            if($courses->count()>0){
+                    $output = '<option value="" selected>Select Sub Discipline</option>';
             
-        echo $output;
-    }else{
+                    foreach ($courses as $row) {
+                        $output .= '<option value="' . $row->id . '" >' . $row->title . '</option>';
+                    }
+            
+                    echo $output;
+                }else{
         $output = '<option value="" selected>No Data Available</option>';
         echo $output;
 
@@ -35,7 +36,7 @@ if($courses->count()>0){
         public function courseWiseUniversity(Request $request)
         {
 
-
+            // dd($request->all());
             $filtercatgory = $request->category ?? '';
             $filtersub_category = $request->sub_category ?? '';
             $study_level = $request->study_level ?? '';
@@ -44,11 +45,16 @@ if($courses->count()>0){
             $universities = [];
             $childs=[];
             if ($filtersub_category != null && $filtersub_category != '') {
-                $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->distinct()->get(['user_id']);
-
+                if(isset($study_level)&& $study_level != ''){
+                    $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->where('type',$study_level)->distinct()->get(['user_id']);
+                }
+                else{
+                $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->distinct()->get(['user_id']);              
+            }
                 foreach ($universitycourse as $key => $univercity) {
                     $universities[$key] = $univercity->users;
                 }
+            
             } 
             else {
 
@@ -66,14 +72,24 @@ if($courses->count()>0){
 
 
                 if ($childcheck->count() > 0) {
-
-                    $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get(['user_id']);
+                    if(isset($study_level) && $study_level != ''){
+                    $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->where('type',$study_level)->distinct()->get(['user_id']);
+                    }
+                    else
+                    {
+                        $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get(['user_id']);
+                    }
                     foreach ($universitycourse as $key => $univercity) {
                         $universities[$key] = $univercity->users;
                     }
                 } else {
-                    $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->distinct()->get(['user_id']);
-
+                    if(isset($study_level) && $study_level != ''){
+                    $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->where('type',$study_level)->distinct()->get(['user_id']);
+                    }
+                    else
+                    {
+                        $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->distinct()->get(['user_id']);
+                    }
                     foreach ($universitycourse as $key => $univercity) {
                         $universities[$key] = $univercity->users;
                     }
@@ -81,7 +97,7 @@ if($courses->count()>0){
             }
 
 
-            return view('frontEnd.university.university_all', compact('filtercatgory','childs','filtersub_category'))->with('universities', $universities);
+            return view('frontEnd.university.university_all', compact('filtercatgory','childs','filtersub_category','study_level'))->with('universities', $universities);
         }
 
 
@@ -115,7 +131,7 @@ if($courses->count()>0){
     public function universitiesInnerFilter(Request $request)
     {
 
-
+// dd($request->all());
         $universities = [];
         if ($request->keyword != null) {
             $keyword = $request->keyword;
