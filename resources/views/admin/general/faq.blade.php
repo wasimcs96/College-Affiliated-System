@@ -17,10 +17,10 @@
                             <label>Title</label>
                             <input type="text" class="form-control" name="title" id="name" required>
                         </div>
-                        <div class="form-group col-lg-4">
+                        <!-- <div class="form-group col-lg-4">
                             <label>Subtitle</label>
                             <input type="text" class="form-control" name="sub_title" id="name" required>
-                        </div>
+                        </div> -->
 
                         <div class="form-group col-lg-4">
                             <label>Status</label>

@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('parentPageTitle', 'admin')
-@section('title', 'About')
+@section('title', 'FAQ')
 
 @section('content')
 
@@ -9,44 +9,43 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="body">
-                <form action = "{{route('admin.about.store')}}" method="post" enctype="multipart/form-data">
+                <form action = "{{route('admin.faq.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <?php $select=App\Models\Page::where('page_type',0)->get()->first();?>
                     <div class="form-group">
                         <div class="row">
-                        {{-- <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-6">
                             <label>Title</label>
-                            <input type="text" class="form-control" maxlength="100" name="title" value="{{$select->title ?? ''}}" id="name" required>
-                        </div> --}}
-                        <input type="hidden" name="title" value="About Us">
-                        {{-- <div class="form-group col-lg-6">
+                            <input type="text" class="form-control" name="title" id="name" required>
+                        </div>
+                        {{-- <div class="form-group col-lg-4">
                             <label>Subtitle</label>
-                            <input type="text" class="form-control" value="{{$select->sub_title ?? ''}}" name="sub_title" id="name" required>
+                            <input type="text" class="form-control" name="sub_title" id="name" required>
                         </div> --}}
 
-                        {{-- <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-6">
                             <label>Status</label>
-                            <select name="type" class="form-control">
+                            <select name="type" class="form-control" required>
                                 <option value="">-- Select --</option>
                                 <option value="0">Inactive</option>
                                 <option value="1">Active</option>
 
                             </select>
-                       </div> --}}
+                       </div>
                     </div>
-                        {{-- <div class="form-group">
-                            <label for="content">Short Description</label><br>
-                        <textarea class="summernote" id="Short_description" value="" name="short_description" rows="10" cols="10" class="form-control" style="width:693px">{{$select->short_description ?? ''}}</textarea>
-                        </div> --}}
-                    <input type="hidden" name="page_type" value="0">
+                        <div class="form-group">
+                            <label for="content">Question</label><br>
+                            <input type="text" class="form-control" name="short_description"  maxlength="100" required>
+                        </div>
 
-                           <label for="content">Add About Us </label><br>
-                           <textarea class="summernote" id="description" value="" name="description" rows="10" cols="10" class="form-control" style="width:693px">{{$select->description ?? ''}}</textarea>
+                        <div class="form-group col-lg-12">
 
+                           <label for="content">Answer</label><br>
+                           <textarea  id="content" name="description" rows="10" cols="10" class="form-control" required></textarea>
+                        </div>
                            {{-- <div class="form-group">
                             <br>   <label for="content">Banner Image</label><br>
                        <div class="body"id="nb"  >
-                          <input type="file" name="image"class="dropify" multiple>
+                          <input type="file" name="image"class="dropify" multiple >
                        </div>
 
                 </div> --}}

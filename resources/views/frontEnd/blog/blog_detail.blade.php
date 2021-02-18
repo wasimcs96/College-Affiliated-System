@@ -51,8 +51,8 @@
                             <a href="#" class="badge">Travel</a>
                             <a href="#" class="badge">lifestyle</a>
                         </div> --}}
-                        <h3 class="card-title font-size-28">{{$detail->title ?? ''}}</h3>
-                        <p class="card-meta pb-3">
+                        <h3 class="card-title font-size-28 text-center">{{$detail->title ?? ''}}</h3>
+                        <p class="card-meta pb-3 text-center">
                             <span class="post__author">Updated {!! "&nbsp;" !!}<a href="#" class="text-gray">at</a></span>
                             <span class="post-dot"></span>
                             <span class="post__date"> {{$detail->updated_at ?? ''}}</span>
@@ -62,8 +62,9 @@
                             <span class="post__time"><a href="#" class="text-gray">202 Likes</a></span> --}}
                         </p>
                         <div class="section-block"></div>
+                        <div class="row col-lg-11" style="margin: auto;display: flex;flex-wrap: wrap;word-break: break-all;">
                         {!! $detail->content ?? '' !!}
-
+</div>
 
                         <div class="section-block"></div>
                         <div class="post-navigation d-flex justify-content-between py-4">
@@ -73,9 +74,9 @@
                             <a href="javascript:void(0)" class="btn theme-btn-hover-gray line-height-35"><i class="la la-arrow-left mr-2"></i>No More Result</a>
                             @endif
                             @if($next)
-                            <a href="{{route('blog_detail', $next->id ?? '')}}" class="btn theme-btn-hover-gray line-height-35"> Next Post<i class="la la-arrow-right ml-2"></i></a>
+                            <a href="{{route('blog_detail', $next->id ?? '')}}" class="btn theme-btn-hover-gray line-height-35" style="float: right;"> Next Post<i class="la la-arrow-right ml-2"></i></a>
                             @else
-                            <a href="#" class="btn theme-btn-hover-gray line-height-35">No More Result<i class="la la-arrow-right mr-2"></i></a>
+                            <a href="#" class="btn theme-btn-hover-gray line-height-35" style="float: right;">No More Result<i class="la la-arrow-right mr-2"></i></a>
                             @endif
                         </div>
                         <div class="section-block"></div>

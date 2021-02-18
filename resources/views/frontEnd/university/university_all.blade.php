@@ -336,7 +336,7 @@
                 </p>
 
                         <div class="card-rating">
-                            <div class="d-flex flex-wrap align-items-center pt-2 justify-content-center">
+                            <div class="d-flex flex-wrap align-items-center pt-2">
                                 <p class="mr-2">Rating:</p>
                         @if(isset($university->rating))
                                     <span>@if($university->rating == 3 ?? '' )
@@ -394,7 +394,7 @@
                             </div>
                         </div>
                         <div class="card-attributes">
-                            <p style="text-align: center;">
+                            <p style="">
                                 <span class="price__text">Average Fees :</span>
                                 <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
                                 {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}

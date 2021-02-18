@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Support\Jsonable;
 use Json;
 use Config;
+use DB;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Application;
@@ -91,12 +92,13 @@ public function application($id)
 
 
 public function applicationStore(Request $request){
-    // dd($request->document);
-    $clientExists = Application::where('client_id',$request->client_id)->first();
+    //  dd($request->all());
+    // $clientExists = Application::where('client_id',$request->client_id)->where('status',0)->first();
+
     $bookingStatus = Booking::where('id',$request->booking_id)->first();
     $bookingStatus->status = 2;
     $bookingStatus->save();
-    if($clientExists==null){
+    // if($clientExists==null){
     $jsonApplication = $request->document;
     $jsonApplicationStore = json_encode($jsonApplication);
     $store=Application::create([
@@ -148,11 +150,11 @@ public function applicationStore(Request $request){
             // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
             // mail::to($email)->send(new \App\Mail\ManuMailer($data));
         return redirect()->route('consultant.application')->with('success','Application Created Successfully');
-    }
-    else
-    {
-        return redirect()->route('consultant.application')->with('warning','Application Already Created Check the Following List');
-    }
+    // }
+    // else
+    // {
+    //     return redirect()->route('consultant.application')->with('warning','Application Already Created Check the Following List');
+    // }
 }
 
     function fetchCourse(Request $request)
@@ -160,7 +162,7 @@ public function applicationStore(Request $request){
         // dd($request->all());
         $fetch=User::where('id',$request->universityid)->first();
         $courses =  $fetch->universityCourse;
-        $output='<option value="" selected>Course Name</option>';
+        $output='<option value="" selected>Select Course Name</option>';
         foreach($courses as $row)
         {
          $output .= '<option value="'.$row->id.'">'.$row->title.'</option>';
@@ -175,12 +177,11 @@ public function applicationStore(Request $request){
         // dd($fetch);
         $universities = User::where('countries_id',$request->countryid)->get();
         //   dd( $universities->get()->toArray());
-        $output='<option value="" selected>University Name</option>';
+        $output='<option value="" selected>Select University Name</option>';
         foreach($universities as $university)
         {
             $check=UniversityConsultant::where('university_id',$university->id)->where('consultant_id',auth()->user()->id)->first();
             if ($check) {
-                # code...
         if($university->isUniversity())
             {
 
@@ -190,8 +191,30 @@ public function applicationStore(Request $request){
         }
     }
 
-        // dd($output);
         echo $output;
     }
 
+
+    function checkCourse(Request $request)
+    {
+        $applications=Application::where('client_id',$request->client_id)->get();
+        if($applications->count()>0)
+        {
+            foreach($applications as $application)
+            {
+                $checks = DB::table('application_applied_universities')->where('application_id',$application->id)->where('university_id',$request->university)->where('course_id',$request->course)->count();
+            }
+        }
+
+        $output='';
+           if($checks>0)
+           {
+               $output .= '<span style="color: red;">This Course is running in a different Application</span>' ;
+           }
+           echo $output;
+    }
+
+        // dd($output);
+
 }
+
