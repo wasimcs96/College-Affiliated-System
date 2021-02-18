@@ -30,7 +30,7 @@ if($store == null){
         Page::create([
             'title'=>$request->title,
             'page_type'=>0,
-            'slug'=>Str::slug($request->short_description),
+            // 'slug'=>Str::slug($request->short_description),
             'description'=>$request->description,
             'short_description'=>$request->short_description,
             'sub_title'=>$request->sub_title,
@@ -50,7 +50,7 @@ if($store == null){
 
         $store->title = $request->title;
         $store ->page_type = 0;
-        $store ->slug = Str::slug($request->title);
+        // $store ->slug = Str::slug($request->title);
         $store ->description = $request->description;
         $store ->short_description = $request->short_description;
         $store ->sub_title = $request->sub_title;

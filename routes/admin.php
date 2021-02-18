@@ -42,15 +42,36 @@ Route::post('general/about/store',[
      'uses' => 'AdminAboutController@store',
      'as' => 'admin.about.store'
      ]);
-
+      //  faqqqqq
+Route::get('general/faq/list',[
+        'uses' => 'AdminFaqController@list',
+        'as' => 'admin.general.faq_all'
+         ]);
 Route::get('general/faq',[
     'uses' => 'AdminFaqController@index',
     'as' => 'admin.general.faq'
      ]);
+
+Route::get('general/faq/edit/{id}',[
+        'uses' => 'AdminFaqController@edit',
+        'as' => 'admin.general.faq.edit'
+         ]);
 Route::post('general/faq/store',[
     'uses' => 'AdminFaqController@store',
     'as' => 'admin.faq.store'
          ]);
+Route::post('general/faq/update/{id}',[
+            'uses' => 'AdminFaqController@update',
+            'as' => 'admin.faq.update'
+                 ]);
+        
+Route::get('general/faq/delete/{id}',[
+'uses' => 'AdminFaqController@delete',
+'as' => 'admin.general.faq.delete'
+        ]);
+
+
+        //  faqqqqq
 
 Route::get('general/blog',[
     'uses' => 'AdminBlogController@index',

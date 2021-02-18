@@ -43,13 +43,13 @@
                            <label for="content">Add About Us </label><br>
                            <textarea class="summernote" id="description" value="" name="description" rows="10" cols="10" class="form-control" style="width:693px">{{$select->description ?? ''}}</textarea>
 
-                           <div class="form-group">
+                           {{-- <div class="form-group">
                             <br>   <label for="content">Banner Image</label><br>
                        <div class="body"id="nb"  >
                           <input type="file" name="image"class="dropify" multiple>
                        </div>
 
-                </div>
+                </div> --}}
                 <br>
                            <button type="submit" class="btn btn-primary">Store</button>
                 </form>

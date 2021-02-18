@@ -28,7 +28,7 @@ class AdminPrivacyController extends Controller
          Page::create([
              'title'=>$request->title,
              'page_type'=>3,
-             'slug'=>3,
+            //  'slug'=>3,
              'description'=>$request->description,
              'short_description'=>$request->short_description,
              'sub_title'=>$request->sub_title,
@@ -48,7 +48,7 @@ class AdminPrivacyController extends Controller
  
          $store->title = $request->title;
          $store ->page_type = 3;
-         $store ->slug = 3;
+        //  $store ->slug = 3;
          $store ->description = $request->description;
          $store ->short_description = $request->short_description;
          $store ->sub_title = $request->sub_title;
