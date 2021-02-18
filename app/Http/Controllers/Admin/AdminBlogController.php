@@ -34,7 +34,7 @@ class AdminBlogController extends Controller
             'content'=>$request->content,
             'serial_number'=>$request->serial_number,
             'status'=>$request->type,
-            'slug'=> Str::slug($request->title),
+            // 'slug'=> Str::slug($request->title),
             'main_image'=>$banner,
             'short_description'=>$request->short_description,
         ]);

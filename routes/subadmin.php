@@ -43,15 +43,38 @@ Route::post('general/about/store',[
      'as' => 'subadmin.about.store'
      ]);
 
+
+     //  faqqqqq
+
+     Route::get('general/faq/list',[
+        'uses' => 'SubAdminFaqController@list',
+        'as' => 'subadmin.general.faq_all'
+         ]);
 Route::get('general/faq',[
     'uses' => 'SubAdminFaqController@index',
     'as' => 'subadmin.general.faq'
      ]);
+
+Route::get('general/faq/edit/{id}',[
+        'uses' => 'SubAdminFaqController@edit',
+        'as' => 'subadmin.general.faq.edit'
+         ]);
 Route::post('general/faq/store',[
     'uses' => 'SubAdminFaqController@store',
     'as' => 'subadmin.faq.store'
          ]);
+Route::post('general/faq/update/{id}',[
+            'uses' => 'SubAdminFaqController@update',
+            'as' => 'subadmin.faq.update'
+                 ]);
+        
+Route::get('general/faq/delete/{id}',[
+'uses' => 'SubAdminFaqController@delete',
+'as' => 'subadmin.general.faq.delete'
+        ]);
 
+
+        //  faqqqqq
 Route::get('general/blog',[
     'uses' => 'SubAdminBlogController@index',
     'as' => 'subadmin.general.blog'

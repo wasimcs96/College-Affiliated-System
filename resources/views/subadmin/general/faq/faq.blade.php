@@ -13,16 +13,16 @@
                     @csrf
                     <div class="form-group">
                         <div class="row">
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-6">
                             <label>Title</label>
                             <input type="text" class="form-control" name="title" id="name" required>
                         </div>
-                        <div class="form-group col-lg-4">
+                        {{-- <div class="form-group col-lg-4">
                             <label>Subtitle</label>
                             <input type="text" class="form-control" name="sub_title" id="name" required>
-                        </div>
+                        </div> --}}
 
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-6">
                             <label>Status</label>
                             <select name="type" class="form-control" required>
                                 <option value="">-- Select --</option>
@@ -37,10 +37,11 @@
                             <input type="text" class="form-control" name="short_description"  maxlength="100" required>
                         </div>
 
+                        <div class="form-group col-lg-12">
 
                            <label for="content">Answer</label><br>
-                           <textarea class="summernote" id="content" name="description" rows="10" cols="10" class="form-control" style="width:693px"required></textarea>
-
+                           <textarea  id="content" name="description" rows="10" cols="10" class="form-control" required></textarea>
+                        </div>
                            {{-- <div class="form-group">
                             <br>   <label for="content">Banner Image</label><br>
                        <div class="body"id="nb"  >

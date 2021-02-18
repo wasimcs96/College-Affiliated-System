@@ -84,7 +84,7 @@
                     <a href="#Generals" class="has-arrow"><i class="fa fa-tasks" aria-hidden="true"></i>
                         <span>Generals</span></a>
                     <ul>
-                        <li class="{{ Request::segment(3) == 'faq' ? 'active' : null }}"><a href="{{route('subadmin.general.faq')}}">Manage FAQ</a></li>
+                        <li class="{{ Request::segment(3) == 'faq' ? 'active' : null }}"><a href="{{route('subadmin.general.faq_all')}}">Manage FAQ</a></li>
                         <li class="{{ Request::segment(3) == 'about' ? 'active' : null }}"><a href="{{route('subadmin.general.about')}}">Manage About Us</a></li>
                         <li class="{{ Request::segment(3) == 'terms&condition' ? 'active' : null }}"><a href="{{route('subadmin.general.terms')}}">Manage Terms & Conditions</a></li>
                         <li class="{{ Request::segment(3) == 'privacy_policy' ? 'active' : null }}"><a href="{{route('subadmin.general.privacy')}}">Manage Privacy & Policy</a></li>

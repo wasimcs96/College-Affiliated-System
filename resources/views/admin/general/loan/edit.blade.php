@@ -36,22 +36,22 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Interest Rate</label>
-                                    <input type="text" class="form-control" value="{{$loan->interest_rate}}" name="interest_rate" id="interest_rate" required>
+                                    <input type="number" class="form-control" value="{{$loan->interest_rate}}" name="interest_rate" id="interest_rate" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Tenure</label>
-                                    <input type="text" class="form-control" value="{{$loan->tenure}}"  name="tenure" id="tenure" required>
+                                    <input type="number" class="form-control" value="{{$loan->tenure}}"  name="tenure" id="tenure" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Processing Fees</label>
-                                    <input type="text" class="form-control" value="{{$loan->processing_fees}}" name="processing_fees" id="processing_fees" required>
+                                    <input type="number" class="form-control" value="{{$loan->processing_fees}}" name="processing_fees" id="processing_fees" required>
                                 </div>
 
 
 
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select name="status" class="form-control">
+                                    <select name="status" class="form-control" required>
                                         <option value="1" <?php if($loan->status == 1) { echo "selected"; } ?>>Active</option>
                                         <option value="0" <?php if($loan->status == 0) { echo "selected"; } ?>>InActive</option>
                                     </select>
