@@ -180,7 +180,7 @@
                                                                         <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                             @csrf
                                                                         <input type="hidden" name="category" value="{{$headercourse11->parent_id ?? ''}}">
-
+                                                                        <input type="hidden" name="sub_category" value="{{$headercourse11->id ?? ''}}">
                                                                         <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                             display: -ms-flex;
                                                                             display: flex;
@@ -220,7 +220,7 @@
                                                                     <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                         @csrf
                                                                     <input type="hidden" name="category" value="{{$headercourse12->parent_id ?? ''}}">
-
+                                                                    <input type="hidden" name="sub_category" value="{{$headercourse12->id ?? ''}}">
                                                                     <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                         display: -ms-flex;
                                                                         display: flex;
@@ -273,7 +273,7 @@
                                                                             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                                 @csrf
                                                                             <input type="hidden" name="category" value="{{$headercourse21->parent_id ?? ''}}">
-
+                                                                            <input type="hidden" name="sub_category" value="{{$headercourse21->id ?? ''}}">
                                                                             <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                                 display: -ms-flex;
                                                                                 display: flex;
@@ -313,7 +313,7 @@
                                                                         <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                             @csrf
                                                                         <input type="hidden" name="category" value="{{$headercourse22->parent_id ?? ''}}">
-
+                                                                        <input type="hidden" name="sub_category" value="{{$headercourse22->id ?? ''}}">
                                                                         <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                             display: -ms-flex;
                                                                             display: flex;
@@ -371,7 +371,7 @@
                                                                             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                                 @csrf
                                                                             <input type="hidden" name="category" value="{{$headercourse31->parent_id ?? ''}}">
-
+                                                                            <input type="hidden" name="sub_category" value="{{$headercourse31->id ?? ''}}">
                                                                             <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                                 display: -ms-flex;
                                                                                 display: flex;
@@ -411,7 +411,7 @@
                                                                         <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                             @csrf
                                                                         <input type="hidden" name="category" value="{{$headercourse32->parent_id ?? ''}}">
-
+                                                                        <input type="hidden" name="sub_category" value="{{$headercourse32->id ?? ''}}">
                                                                         <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                             display: -ms-flex;
                                                                             display: flex;
@@ -463,7 +463,7 @@
                                                                             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                                 @csrf
                                                                             <input type="hidden" name="category" value="{{$headercourse41->parent_id ?? ''}}">
-
+                                                                            <input type="hidden" name="sub_category" value="{{$headercourse41->id ?? ''}}">
                                                                             <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                                 display: -ms-flex;
                                                                                 display: flex;
@@ -504,7 +504,7 @@
                                                                         <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                             @csrf
                                                                         <input type="hidden" name="category" value="{{$headercourse42->parent_id ?? ''}}">
-
+                                                                        <input type="hidden" name="sub_category" value="{{$headercourse42->id ?? ''}}">
                                                                         <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                             display: -ms-flex;
                                                                             display: flex;
@@ -554,7 +554,7 @@
                                                                         <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                             @csrf
                                                                         <input type="hidden" name="category" value="{{$headercourse51->parent_id ?? ''}}">
-
+                                                                        <input type="hidden" name="sub_category" value="{{$headercourse51->id ?? ''}}">
                                                                         <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                             display: -ms-flex;
                                                                             display: flex;
@@ -594,7 +594,7 @@
                                                                     <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                         @csrf
                                                                     <input type="hidden" name="category" value="{{$headercourse52->parent_id ?? ''}}">
-
+                                                                    <input type="hidden" name="sub_category" value="{{$headercourse52->id ?? ''}}">
                                                                     <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                         display: -ms-flex;
                                                                         display: flex;
@@ -652,7 +652,7 @@
                                                                 <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                     @csrf
                                                                 <input type="hidden" name="category" value="{{$headercourse61->parent_id ?? ''}}">
-
+                                                                <input type="hidden" name="sub_category" value="{{$headercourse61->id ?? ''}}">
                                                                 <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                     display: -ms-flex;
                                                                     display: flex;
@@ -692,7 +692,7 @@
                                                             <form action="{{route('university_fetch.coursewise')}}" method="POST" >
                                                                 @csrf
                                                             <input type="hidden" name="category" value="{{$headercourse62->parent_id ?? ''}}">
-
+                                                            <input type="hidden" name="sub_category" value="{{$headercourse62->id ?? ''}}">
                                                             <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
                                                                 display: -ms-flex;
                                                                 display: flex;
