@@ -49,13 +49,14 @@
                                     <?php $univers=$book->userConsultant->consultantUniversity;
                                     $increase=0;
                                       ?>
+
                                     <div class="table-responsive" style="width: 100%; margin-top: 36px;">
                                         <label for="name">Select University</label>
                                         <table class="table table-bordered" id="dynamic_field">
                                             <tr class="dynamic-added" >
                                                 <td class="country" data-row_id="{{$increase}}">
                                                     <select id="country-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="country[{{$increase}}]" placeholder="Select Country" required>
-                                                    <option value="" selected>Country Name</option>
+                                                    <option value="" selected>Select Country </option>
                                                     @foreach($countries as $country)
                                                     <option value="{{$country->countries_id}}">{{$country->countries_name}}</option>
                                                     @endforeach
@@ -63,20 +64,22 @@
                                                 </td>
                                                 <td class="university" data-row_id="{{$increase}}">
                                                     <select id="university-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="university[{{$increase}}]" placeholder="Select University" required>
-                                                     <option value="" selected>University Name</option>
+                                                     <option value="" selected>Select University</option>
                                                   {{--  @foreach($univers as $univer)
                                                     <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option>
 
                                                     @endforeach--}}
                                                   </select>
                                                 </td>
-                                                  <td id="">
+                                                  <td id="" class="course" data-row_id="{{$increase}}">
                                                       <select id="course-{{$increase}}" name="course[{{$increase}}]" class="form-control" required>
-                                                        <option value="" selected>Course Name</option>
+                                                        <option value="" selected>Select Course</option>
                                                     {{-- @foreach($courses as $course)
                                                    <option value="{{$course->id}}">{{$course->name}}</option>
                                                    @endforeach --}}
-                                                 </select></td>
+                                                 </select>
+                                                <div id="courseError-{{$increase}}"></div>
+                                                </td>
                                                 <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i></button></td>
                                                 @php $increase++ @endphp
                                             </tr>
@@ -108,7 +111,7 @@
                                     @csrf
                                     <br>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                                <button type="submit" id="consultantCreateApplication" class="btn btn-primary">Create Application</button>
                             </form>
                         </div>
                     </div>
@@ -179,7 +182,7 @@
 // console.log(table_row);
       $('#add').click(function(){
              i++;
-           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td class="country" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="country-'+table_row+'" name="country['+table_row+']" class="form-control" required><option selected>Choose Country</option><?php foreach($countries as $country){?> <option value="{{$country->countries_id}}">{{$country->countries_name}}</option><?php }?></select></td><td class="university" data-row_id='+table_row+'><select id="university-'+table_row+'" custom1="'+table_row+'"  name="university['+table_row+']" class="form-control" required><option value="" selected>University Name</option></select></td><td ><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control" required><option value="" selected>Course Name</option></select></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td class="country" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="country-'+table_row+'" name="country['+table_row+']" class="form-control" required><option selected>Choose Country</option><?php foreach($countries as $country){?> <option value="{{$country->countries_id}}">{{$country->countries_name}}</option><?php }?></select></td><td class="university" data-row_id='+table_row+'><select id="university-'+table_row+'" custom1="'+table_row+'"  name="university['+table_row+']" class="form-control" required><option value="" selected>University Name</option></select></td><td class="course" data-row_id='+table_row+'><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control" required><option value="" selected>Course Name</option></select><div id="courseError-'+table_row+'"></div></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
            r=$('#dynamic_field .dynamic-added').length;
 
             if(r==3){
@@ -276,14 +279,14 @@ $(function() {
                            }
                            });
                            countryid=$('#country-'+dt+'').val();
-                           console.log(countryid);
+                        //    console.log(countryid);
                                  $.ajax({
                                      url:"{{ route('fetch.university_application') }}",
                                      method:"GET",
                                      data:{countryid:countryid,dt:dt},
                                      success: function(result){
                                      $('#university-'+dt+'').html(result);
-                                     console.log('success');
+                                    //  console.log('success');
                                    }
                                    });
 
@@ -301,7 +304,7 @@ $(function() {
                             }
                             });
                             universityid=$('#university-'+dt+'').val();
-                            console.log(universityid);
+                            // console.log(universityid);
                                   $.ajax({
                                       url:"{{ route('fetch.course_application') }}",
                                       method:"GET",
@@ -336,9 +339,80 @@ $(function() {
          }
        });
        docs = JSON.stringify(documents);
-          console.log(docs);
+        //   console.log(docs);
         //   console.log(value1);
           $('#basic-form').append('<input  class="form-control" value="'+docs+'" name="docs" id="docs" hidden>')
       });
 </script>
+
+<script>
+     var university = '';
+     var course = '';
+     var client_id = {{ $book->client_id }}
+    $(document).on('change', '.course', function ()
+                   {
+                          dt  = $(this).data("row_id");
+                          course = $('#course-'+dt+'').val();
+             university = $('#university-'+dt+'').val();
+        console.log(course)
+        console.log(university)
+        console.log(dt)
+        console.log(client_id)
+                              $.ajaxSetup({headers:
+                            {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                            });
+
+                                  $.ajax({
+                                      url:"{{ route('consultant.university.course.check') }}",
+                                      method:"GET",
+                                      data:{university:university,course:course,client_id:client_id},
+                                      success: function(result){
+                                        if(result!='')
+                                        {
+                                        $('#courseError-'+dt+'').html(result);
+                                        $('#course-'+dt+'').prop('selectedIndex',-1);
+                                        }
+                                        else
+                                        {
+                                            $('#courseError-'+dt+'').html('');
+                                        }
+                                    }
+                                    });
+
+                       });
+
+</script>
+{{-- <script>
+    var university = '';
+    var course = '';
+    var client_id = {{ $book->client_id }}
+   $(document).on('change', '', function ()
+                  {
+                         dt  = $(this).data("row_id");
+                         course = $('#course-'+dt+'').val();
+            university = $('#university-'+dt+'').val();
+       console.log(course)
+       console.log(university)
+       console.log(dt)
+       console.log(client_id)
+                             $.ajaxSetup({headers:
+                           {
+                               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                           }
+                           });
+
+                                 $.ajax({
+                                     url:"{{ route('consultant.university.course.check') }}",
+                                     method:"GET",
+                                     data:{university:university,course:course,client_id:client_id},
+                                     success: function(result){
+                                       $('#courseError-'+dt+'').html(result);
+                                       $('#course-'+dt+'').prop('selectedIndex',-1);                                   }
+                                   });
+
+                      });
+
+</script> --}}
 @stop
