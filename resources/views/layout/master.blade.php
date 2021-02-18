@@ -207,7 +207,7 @@
     overflow: hidden;
     white-space: nowrap;
     font-family: sans-serif;
-    font-size: 13px;
+    font-size: 3.5807291666666665vw;
     color: #a5a8ad;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
