@@ -197,7 +197,7 @@
 
                                                                     </ul>
                                                                 </li>
-                                                                <li>
+                                                                <li class="col-lg-6 mega-menu-item">
                                                                     <ul>
                                                                         <li style="
                                                                         border: none;
@@ -290,7 +290,7 @@
 
                                                                         </ul>
                                                                     </li>
-                                                                    <li>
+                                                                    <li class="col-lg-6 mega-menu-item">
                                                                         <ul>
                                                                             <li style="
                                                                             border: none;
@@ -388,7 +388,7 @@
 
                                                                         </ul>
                                                                     </li>
-                                                                    <li>
+                                                                    <li class="col-lg-6 mega-menu-item">
                                                                         <ul>
                                                                             <li style="
                                                                             border: none;
@@ -480,7 +480,7 @@
 
                                                                         </ul>
                                                                     </li>
-                                                                    <li>
+                                                                    <li class="col-lg-6 mega-menu-item">
                                                                         <ul>
                                                                             <li style="
                                                                             border: none;
@@ -571,7 +571,7 @@
 
                                                                     </ul>
                                                                 </li>
-                                                                <li>
+                                                                <li class="col-lg-6 mega-menu-item">
                                                                     <ul>
                                                                         <li style="
                                                                         border: none;
@@ -669,7 +669,7 @@
 
                                                             </ul>
                                                         </li>
-                                                        <li>
+                                                        <li class="col-lg-6 mega-menu-item">
                                                             <ul>
                                                                 <li style="
                                                                 border: none;
@@ -803,7 +803,7 @@
 
                                                             </ul>
                                                         </li>
-                                                        <li>
+                                                        <li class="col-lg-6 mega-menu-item">
                                                             <ul>
                                                                 <li style="
                                                                 border: none;
@@ -882,7 +882,7 @@
 
                                                                 </ul>
                                                             </li>
-                                                            <li>
+                                                            <li class="col-lg-6 mega-menu-item">
                                                                 <ul>
                                                                     <li style="
                                                                     border: none;
@@ -960,7 +960,7 @@
 
                                                                 </ul>
                                                             </li>
-                                                            <li>
+                                                            <li class="col-lg-6 mega-menu-item">
                                                                 <ul>
                                                                     <li style="
                                                                     border: none;
@@ -1031,7 +1031,7 @@
 
                                                                 </ul>
                                                             </li>
-                                                            <li>
+                                                            <li class="col-lg-6 mega-menu-item">
                                                                 <ul>
                                                                     <li style="
                                                                     border: none;
@@ -1099,7 +1099,7 @@
 
                                                             </ul>
                                                         </li>
-                                                        <li>
+                                                        <li class="col-lg-6 mega-menu-item">
                                                             <ul>
                                                                 <li style="
                                                                 border: none;
@@ -1176,7 +1176,7 @@
 
                                                     </ul>
                                                 </li>
-                                                <li>
+                                                <li class="col-lg-6 mega-menu-item">
                                                     <ul>
                                                         <li style="
                                                         border: none;
@@ -1301,7 +1301,7 @@
 
                                                             </ul>
                                                         </li>
-                                                        <li>
+                                                        <li class="col-lg-6 mega-menu-item">
                                                             <ul>
                                                                 <li style="
                                                                 border: none;
@@ -1381,7 +1381,7 @@
 
                                                                 </ul>
                                                             </li>
-                                                            <li>
+                                                            <li class="col-lg-6 mega-menu-item">
                                                                 <ul>
                                                                     <li style="
                                                                     border: none;
@@ -1462,7 +1462,7 @@
 
                                                                 </ul>
                                                             </li>
-                                                            <li>
+                                                            <li class="col-lg-6 mega-menu-item">
                                                                 <ul>
                                                                     <li style="
                                                                     border: none;
@@ -1538,7 +1538,7 @@
 
                                                                 </ul>
                                                             </li>
-                                                            <li>
+                                                            <li class="col-lg-6 mega-menu-item">
                                                                 <ul>
                                                                     <li style="
                                                                     border: none;
@@ -1621,7 +1621,7 @@
 
                                                             </ul>
                                                         </li>
-                                                        <li>
+                                                        <li class="col-lg-6 mega-menu-item">
                                                             <ul>
                                                                 <li style="
                                                                 border: none;
@@ -1702,7 +1702,7 @@
 
                                                     </ul>
                                                 </li>
-                                                <li>
+                                                <li class="col-lg-6 mega-menu-item">
                                                     <ul>
                                                         <li style="
                                                         border: none;
