@@ -37,10 +37,8 @@ class CoursesImport implements ToModel, WithStartRow, WithValidation, WithHeadin
     */
     public function model(array $row)
     {
-
         $start_date = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[3]))->format('Y-m-d');
         $end_date = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[4]))->format('Y-m-d');
-
             return new UniversityCourse([
             'category_id' =>$this->category,
             'title' => $row[0],
