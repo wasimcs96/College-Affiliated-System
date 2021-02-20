@@ -99,7 +99,7 @@
                                     ">Discipline</label>
                                         <div class="form-group">
                                             <div class="select-contain w-auto">
-                                                <select id="categoryselect" name="category" class="select-contain-select typeselect" required style="
+                                                <select id="categoryselect" name="filtercatgory" class="select-contain-select typeselect" style="
                                                 padding: 15px;
                                             ">
                                                     <option value="">
@@ -128,7 +128,7 @@
                                     <label class="label-text" style="color: white;">Sub Discipline</label>
                                     <div class="form-group">
                                         <div class="select-contain w-auto">
-                                            <select id="selectcourse" name="sub_category" class="form-control ert"   style="
+                                            <select id="selectcourse" name="filtersub_category" class="form-control ert"   style="
                                             height: 52px;
                                         ">
                                                 <option value="" selected>Select Sub Discipline</option>
@@ -173,8 +173,60 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-3 col-sm-2 pr-0" >
+                                    <div class="input-box">
+                                        <label class="label-text" style="
+                                        color: white;
+                                    ">IELTS Rating</label>
+                                        <div class="form-group">
+                                            <div class="select-contain w-auto">
+                                                <select  name="ielts_rating" class="select-contain-select"   style="
+                                                height: 52px;
+                                            ">             
+                                            <option value="" selected>Select IELTS Rating</option>
+                                            <option value="1" @if(isset($ielts_rating)&& $rating==1)selected @endif>1</option>
+                                                    <option value="2"  @if(isset($ielts_rating)&& $ielts_rating==2)selected @endif>2</option>
+                                                    <option value="3"  @if(isset($ielts_rating)&& $ielts_rating==3)selected @endif>3</option>
+                                                  
+                                                    <option value="4" @if(isset($ielts_rating)&& $ielts_rating==4)selected @endif>4</option>
+                                                    <option value="5"  @if(isset($ielts_rating)&& $ielts_rating==5)selected @endif>5</option>
+                                                    <option value="6" @if(isset($ielts_rating)&& $ielts_rating==6)selected @endif>6</option>
+                                                    <option value="7"  @if(isset($ielts_rating)&& $ielts_rating==7)selected @endif>7</option>
+                                                    <option value="8"  @if(isset($ielts_rating)&& $ielts_rating==8)selected @endif>8</option>
+                                                  
+                                                    <option value="9" @if(isset($ielts_rating)&& $ielts_rating==9)selected @endif>9</option>
+                                                    <option value="10"  @if(isset($ielts_rating)&& $ielts_rating==10)selected @endif>10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-2 pr-0" >
+                                    <div class="input-box">
+                                        <label class="label-text" style="
+                                        color: white;
+                                    ">Rating</label>
+                                        <div class="form-group">
+                                            <div class="select-contain w-auto">
+                                                <select  name="rating" class="select-contain-select"   style="
+                                                height: 52px;
+                                            ">
+                                                    <option value="" selected>Select Rating</option>
+                                                   
+                                                    <option value="1" @if(isset($rating)&& $rating==1)selected @endif>1</option>
+                                                    <option value="2"  @if(isset($rating)&& $rating==2)selected @endif>2</option>
+                                                    <option value="3"  @if(isset($rating)&& $rating==3)selected @endif>3</option>
+                                                  
+                                                    <option value="4" @if(isset($rating)&& $rating==4)selected @endif>4</option>
+                                                    <option value="5"  @if(isset($rating)&& $rating==5)selected @endif>5</option>
+                                                
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-
+                            <input type="hidden" value="22" name="inner_check">
 
                                    <div class="col-lg-3 col-sm-2 pr-0">
                                        <button class="theme-btn" type="submit"  style="
@@ -308,12 +360,12 @@
                                                 <a href="{{route('university_detail',['id'=>$university->id])}}">
                                                 
                                              @if(isset($filtersub_category) && $filtersub_category != null)  
-                                            
-                                              <?php $univercoursecount =App\Models\UniversityCourse::where('category_id', 23)->where('user_id',$university->id)->count()-1;
-                                              $univercourse=App\Models\UniversityCourse::where('category_id', 23)->where('user_id',$university->id)->first(); ?>
+                                             <?php $univercoursecount =App\Models\UniversityCourse::where('category_id', $filtersub_category)->where('user_id',$university->id)->count()-1;
+                                              $univercourse=App\Models\UniversityCourse::where('category_id', $filtersub_category)->where('user_id',$university->id)->first(); ?>
+                                              {{-- {{ dd(univercourse) }} --}}
                                               {{-- {{dd($filtersub_category)}} --}}
                                               @if($univercourse != null)
-                                              {{$univercourse->title ?? ''}} &nbsp;<span  style="font-size: small;">+{{$univercoursecount}} courses</span>
+                                              {{$univercourse->title ?? ''}} &nbsp;  @if(isset($univercoursecount) && $univercoursecount > 1)<span  style="font-size: small;">+{{$univercoursecount}} courses</span>@endif
                                               @endif
                                              
                                               @if($univercourse == null)
@@ -344,7 +396,7 @@
                     N/A
                     @endif
 @else
-@if(isset($university->university->university_name))<a href="{{route('university_detail',['id'=>$university->id])}}" style="color: gray;"><?php echo($myuniversity . '...')?></a> @else N/A @endif
+@if(isset($university->university->university_name))<a href="{{route('university_detail',['id'=>$university->id])}}" style="color: gray;">{{$university->university->university_name}}</a> @else N/A @endif
 @endif
                 </p>
 

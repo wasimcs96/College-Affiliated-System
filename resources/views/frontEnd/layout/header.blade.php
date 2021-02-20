@@ -784,7 +784,7 @@
                                                                     font-weight: 600;
 
                                                                     
-                                                                    ">Featured Consultants</li>
+                                                                    ">Top Featured Consultants</li>
                                                                     <?php $myconsultime=Carbon\Carbon::now()->format('Y-m-d');?>
                                                                     <?php $headerconsultants11 =  App\Models\User::whereHas('roles', function($q){
                                                                         $q->where('name', 'consultant');
@@ -823,15 +823,15 @@
                                                                 ">Top Ranked Consultants</li>
                                                                 <?php $headerconsultants12 = App\Models\User::whereHas('roles', function($q){
                                                                     $q->where('name', 'consultant');
-                                                                })->where('countries_id',223)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                })->where('countries_id',223)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
 
                                                             @foreach ($headerconsultants12 as $headerconsultant12)
                                                           
-
+@if($headerconsultant12->Premium_expire_date < $myconsultime || $headerconsultant12->Premium_expire_date == null)
                                                             
-                                                            <li><a href="{{route('consultant_detail',['id'=>$headerconsultant12->id])}}">{{$headerconsultant11->first_name ?? ''}} &nbsp;{{$headerconsultant11->last_name ?? ''}}</a></li>
+                                                            <li><a href="{{route('consultant_detail',['id'=>$headerconsultant12->id])}}">{{$headerconsultant12->first_name ?? ''}} &nbsp;{{$headerconsultant12->last_name ?? ''}}</a></li>
                                                             {{-- </form> --}}
-                                                            
+                                                            @endif
 
                                                             @endforeach
 
@@ -867,7 +867,7 @@
                                                                         font-size: 17px;
                                                                         font-weight: 600;
 
-                                                                        ">Featured Consultants</li>
+                                                                        ">Top Featured Consultants</li>
                                                                         <?php $headerconsultants21 = App\Models\User::whereHas('roles', function($q){
                                                                             $q->where('name', 'consultant');
                                                                         })->where('countries_id',222)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
@@ -902,15 +902,15 @@
                                                                     ">Top Ranked Consultants</li>
                                                                     <?php $headerconsultants22 = App\Models\User::whereHas('roles', function($q){
                                                                         $q->where('name', 'consultant');
-                                                                    })->where('countries_id',222)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                    })->where('countries_id',222)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headerconsultants22 as $headerconsultant22)
-                                                          
+                                                                @if($headerconsultant22->Premium_expire_date < $myconsultime || $headerconsultant22->Premium_expire_date == null)
 
                                                                   
                                                                 <li><a href="{{route('consultant_detail',['id'=>$headerconsultant22->id])}}">{{$headerconsultant22->first_name ?? ''}} &nbsp;{{$headerconsultant22->last_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
                                                               
-                                                           
+                                                           @endif
                                                                 @endforeach
 
                                                                 
@@ -945,7 +945,7 @@
                                                                         font-size: 17px;
                                                                         font-weight: 600;
 
-                                                                        ">Featured Consultants</li>
+                                                                        ">Top Featured Consultants</li>
                                                                         <?php $headerconsultants31 = App\Models\User::whereHas('roles', function($q){
                                                                             $q->where('name', 'consultant');
                                                                         })->where('countries_id',38)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
@@ -980,10 +980,11 @@
                                                                     ">Top Ranked Consultants</li>
                                                                     <?php $headerconsultants32 = App\Models\User::whereHas('roles', function($q){
                                                                         $q->where('name', 'consultant');
-                                                                    })->where('countries_id',38)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                    })->where('countries_id',38)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headerconsultants32 as $headerconsultant32)
-                                                               
+                                                                @if($headerconsultant32->Premium_expire_date < $myconsultime || $headerconsultant32->Premium_expire_date == null)
                                                                 <li><a href="{{route('consultant_detail',['id'=>$headerconsultant32->id])}}">{{$headerconsultant32->first_name ?? ''}} &nbsp;{{$headerconsultant32->last_name ?? ''}}</a></li>
+                                                             @endif
                                                                 @endforeach
 
 
@@ -1017,7 +1018,7 @@
                                                                         font-size: 17px;
                                                                         font-weight: 600;
 
-                                                                        ">Featured Consultants</li>
+                                                                        ">Top Featured Consultants</li>
                                                                         <?php $headerconsultants41 = App\Models\User::whereHas('roles', function($q){
                                                                             $q->where('name', 'consultant');
                                                                         })->where('countries_id',103)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
@@ -1052,10 +1053,11 @@
 
                                                                     <?php $headerconsultants42 = App\Models\User::whereHas('roles', function($q){
                                                                         $q->where('name', 'consultant');
-                                                                    })->where('countries_id',103)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                    })->where('countries_id',103)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headerconsultants42 as $headerconsultant42)
-                                                            
+                                                                @if($headerconsultant42->Premium_expire_date < $myconsultime || $headerconsultant42->Premium_expire_date == null)
                                                                 <li><a href="{{route('consultant_detail',['id'=>$headerconsultant42->id])}}">{{$headerconsultant42->first_name ?? ''}} &nbsp;{{$headerconsultant42->last_name ?? ''}}</a></li>
+                                                               @endif
                                                                 @endforeach
                                                             </ul>
                                                             </li>
@@ -1087,7 +1089,7 @@
                                                                     font-size: 17px;
                                                                     font-weight: 600;
 
-                                                                    ">Featured Consultants</li>
+                                                                    ">Top Featured Consultants</li>
                                                                     <?php $headerconsultants51 = App\Models\User::whereHas('roles', function($q){
                                                                         $q->where('name', 'consultant');
                                                                     })->where('countries_id',13)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
@@ -1119,10 +1121,11 @@
                                                                 ">Top Ranked Consultants</li>
                                                                 <?php $headerconsultants52 = App\Models\User::whereHas('roles', function($q){
                                                                     $q->where('name', 'consultant');
-                                                                })->where('countries_id',13)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                                })->where('countries_id',13)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                             @foreach ($headerconsultants52 as $headerconsultant52)
-                                                                                                                    
+                                                            @if($headerconsultant52->Premium_expire_date < $myconsultime || $headerconsultant52->Premium_expire_date == null)                            
                                                             <li><a href="{{route('consultant_detail',['id'=>$headerconsultant52->id])}}">{{$headerconsultant52->first_name ?? ''}} &nbsp;{{$headerconsultant52->last_name ?? ''}}</a></li>
+                                                         @endif
                                                             @endforeach
 
                                                                 {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
@@ -1161,7 +1164,7 @@
                                                             font-size: 17px;
                                                             font-weight: 600;
 
-                                                            ">Featured Consultants</li>
+                                                            ">Top Featured Consultants</li>
 
                                                             <?php $headerconsultants61 = App\Models\User::whereHas('roles', function($q){
                                                                 $q->where('name', 'consultant');
@@ -1196,12 +1199,13 @@
                                                         ">Top Ranked Consultants</li>
                                                         <?php $headerconsultant62 = App\Models\User::whereHas('roles', function($q){
                                                             $q->where('name', 'consultant');
-                                                        })->where('countries_id',188)->where('Premium_expire_date','<',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
+                                                        })->where('countries_id',188)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                     @foreach ($headerconsultant62 as $headerconsultant62)
-                                            
+                                                    @if($headerconsultant62->Premium_expire_date < $myconsultime || $headerconsultant62->Premium_expire_date == null)
   
                                                     <li><a href="{{route('consultant_detail',['id'=>$headerconsultant62->id])}}">{{$headerconsultant62->first_name ?? ''}} &nbsp;{{$headerconsultant62->last_name ?? ''}}</a></li>
                                                  
+                                                    @endif
                                                     @endforeach
 
 
@@ -1285,17 +1289,16 @@
                                                                     font-weight: 600;
 
                                                                     
-                                                                    ">Featured Universities</li>
+                                                                    ">Top Featured Universities</li>
                                                                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
-                                                                    <?php $headercountries11 = App\Models\University::where('countries_id',223)->take(7)->get(); ?>
+                                                                    <?php $headercountries11 = App\Models\User::whereHas('roles', function($q){
+                                                                        $q->where('name', 'university');
+                                                                    })->where('countries_id',223)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                  @foreach ( $headercountries11 as $headercountry11)
-                                                                 @if($headercountry11->user->status == 1)
-                                                                 @if($headercountry11->user->Premium_expire_date > $mytime)
+                                                           
 
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry11->user_id])}}">{{$headercountry11->university_name ?? ''}}</a></li>
-                                                                {{-- </form> --}}
-                                                                @endif
-                                                                @endif
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry11->id])}}">{{$headercountry11->university->university_name ?? ''}}</a></li>
+                                                           
 
                                                                 @endforeach
 
@@ -1318,18 +1321,16 @@
                                                                 font-size: 17px;
                                                                 font-weight: 600;
 
-                                                                ">Other Universities</li>
-                                                                <?php $headercountries12 = App\Models\University::where('countries_id',223)->take(7)->get(); ?>
+                                                                ">Top Ranked Universities</li>
+                                                                <?php $headercountries12 = App\Models\User::whereHas('roles', function($q){
+                                                                    $q->where('name', 'university');
+                                                                })->where('countries_id',223)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
 
                                                             @foreach ($headercountries12 as $headercountry12)
-                                                            @if($headercountry12->user->status == 1)
-                                                            @if($headercountry12->user->Premium_expire_date < $mytime)
-
-                                                            <li><a href="{{route('university_detail',['id'=>$headercountry12->user_id])}}">{{$headercountry12->university_name ?? ''}}</a></li>
-                                                            {{-- </form> --}}
-                                                            @endif
-                                                            @endif
-
+                                                            @if($headercountry12->Premium_expire_date < $mytime || $headercountry12->Premium_expire_date == null)
+                                                            <li><a href="{{route('university_detail',['id'=>$headercountry12->id])}}">{{$headercountry12->university->university_name ?? ''}}</a></li>
+                                                          
+@endif
                                                             @endforeach
 
 
@@ -1364,18 +1365,17 @@
                                                                         font-size: 17px;
                                                                         font-weight: 600;
 
-                                                                        ">Featured Universities</li>
-                                                                        <?php $headercountries21 = App\Models\University::where('countries_id',222)->take(7)->get(); ?>
+                                                                        ">Top Featured Universities</li>
+                                                                        <?php $headercountries21 = App\Models\User::whereHas('roles', function($q){
+                                                                            $q->where('name', 'university');
+                                                                        })->where('countries_id',222)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
 
                                                                         @foreach ($headercountries21 as $headercountry21)
-                                                                   @if($headercountry21->user->status == 1)
-                                                                   @if($headercountry21->user->Premium_expire_date > $mytime)
+                                  
 
-
-                                                                    <li><a href="{{route('university_detail',['id'=>$headercountry21->user_id ?? ''])}}">{{$headercountry21->university_name ?? ''}}</a></li>
+                                                                    <li><a href="{{route('university_detail',['id'=>$headercountry21->id ?? ''])}}">{{$headercountry21->university->university_name ?? ''}}</a></li>
                                                                     {{-- </form> --}}
-                                                                    @endif
-                                                                    @endif
+                                                           
 
                                                                     @endforeach
 
@@ -1398,16 +1398,15 @@
                                                                     font-size: 17px;
                                                                     font-weight: 600;
 
-                                                                    ">Other Universities</li>
-                                                                    <?php $headercountries22 = App\Models\University::where('countries_id',222)->take(7)->get(); ?>
+                                                                    ">Top Ranked Universities</li>
+                                                                    <?php $headercountries22 = App\Models\User::whereHas('roles', function($q){
+                                                                        $q->where('name', 'university');
+                                                                    })->where('countries_id',222)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headercountries22 as $headercountry22)
-                                                                @if($headercountry22->user->status == 1)
-                                                                @if($headercountry22->user->Premium_expire_date < $mytime)
-
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry22->user_id ?? ''])}}">{{$headercountry22->university_name ?? ''}}</a></li>
-                                                                {{-- </form> --}}
-                                                                @endif
-                                                                @endif
+                                
+                                                                @if($headercountry22->Premium_expire_date < $mytime || $headercountry22->Premium_expire_date == null)
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry22->id ?? ''])}}">{{$headercountry22->university->university_name ?? ''}}</a></li>
+                                                   @endif
                                                                 @endforeach
 
                                                                     {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
@@ -1447,17 +1446,16 @@
                                                                         font-size: 17px;
                                                                         font-weight: 600;
 
-                                                                        ">Featured Universities</li>
-                                                                        <?php $headercountries31 = App\Models\University::where('countries_id',38)->take(7)->get(); ?>
+                                                                        ">Top Featured Universities</li>
+                                                                        <?php $headercountries31 = App\Models\User::whereHas('roles', function($q){
+                                                                            $q->where('name', 'university');
+                                                                        })->where('countries_id',38)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                     @foreach ($headercountries31 as $headercountry31)
-                                                                    @if($headercountry31->user->status == 1)
-                                                                    @if($headercountry31->user->Premium_expire_date > $mytime)
+                                                          
 
 
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry31->user_id ?? ''])}}">{{$headercountry31->university_name ?? ''}}</a></li>
-                                                                    {{-- </form> --}}
-                                                                    @endif
-                                                                @endif
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry31->id ?? ''])}}">{{$headercountry31->university->university_name ?? ''}}</a></li>
+                                              
                                                                     @endforeach
 
                                                                 </ul>
@@ -1479,17 +1477,15 @@
                                                                     font-size: 17px;
                                                                     font-weight: 600;
 
-                                                                    ">Other Universities</li>
-                                                                    <?php $headercountries32 = App\Models\University::where('countries_id',38)->take(7)->get(); ?>
+                                                                    ">Top Ranked Universities</li>
+                                                                    <?php $headercountries32 = App\Models\User::whereHas('roles', function($q){
+                                                                        $q->where('name', 'university');
+                                                                    })->where('countries_id',38)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headercountries32 as $headercountry32)
-                                                                @if($headercountry32->user->status == 1)
-                                                                @if($headercountry32->user->Premium_expire_date < $mytime)
+                                                                @if($headercountry32->Premium_expire_date < $mytime || $headercountry32->Premium_expire_date == null)
 
-
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry32->user_id ?? ''])}}">{{$headercountry32->university_name ?? ''}}</a></li>
-                                                                {{-- </form> --}}
-                                                                @endif
-                                                                @endif
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry32->id ?? ''])}}">{{$headercountry32->university->university_name ?? ''}}</a></li>
+                                                     @endif
                                                                 @endforeach
 
 
@@ -1524,16 +1520,14 @@
                                                                         font-weight: 600;
 
                                                                         ">Featured Universities</li>
-                                                                        <?php $headercountries41 = App\Models\University::where('countries_id',103)->take(7)->get(); ?>
+                                                                        <?php $headercountries41 = App\Models\User::whereHas('roles', function($q){
+                                                                            $q->where('name', 'university');
+                                                                        })->where('countries_id',103)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get();?>
                                                                     @foreach ($headercountries41 as $headercountry41)
-                                                                    @if($headercountry41->user->status == 1)
-                                                                    @if($headercountry41->user->Premium_expire_date > $mytime)
+                                                              
 
-
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry41->user_id ?? ''])}}">{{$headercountry41->university_name ?? ''}}</a></li>
-                                                                    {{-- </form> --}}
-                                                                    @endif
-                                                                @endif
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry41->id ?? ''])}}">{{$headercountry41->university->university_name ?? ''}}</a></li>
+                                                            
                                                                     @endforeach
 
                                                                 </ul>
@@ -1555,17 +1549,16 @@
                                                                     font-size: 17px;
                                                                     font-weight: 600;
 
-                                                                    ">Other Universities</li>
+                                                                    ">Top Ranked Universities</li>
 
-                                                                    <?php $headercountries42 = App\Models\University::where('countries_id',103)->take(7)->get(); ?>
+                                                                    <?php $headercountries42 = App\Models\User::whereHas('roles', function($q){
+                                                                        $q->where('name', 'university');
+                                                                    })->where('countries_id',103)->where('status',1)->orderBy('rating','Desc')->take(7)->get();?>
                                                                 @foreach ($headercountries42 as $headercountry42)
-                                                                @if($headercountry42->user->status == 1)
-                                                                @if($headercountry42->user->Premium_expire_date < $mytime)
+                                                                @if($headercountry42->Premium_expire_date < $mytime || $headercountry42->Premium_expire_date == null)
 
-                                                                <li><a href="{{route('university_detail',['id'=>$headercountry42->user_id ?? ''])}}">{{$headercountry42->university_name ?? ''}}</a></li>
-                                                                {{-- </form> --}}
-                                                                @endif
-                                                                @endif
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry42->id ?? ''])}}">{{$headercountry42->university->university_name ?? ''}}</a></li>
+                                            @endif
                                                                 @endforeach
                                                             </ul>
                                                             </li>
@@ -1598,25 +1591,12 @@
                                                                     font-weight: 600;
 
                                                                     ">Featured Universities</li>
-                                                                    <?php $headercountries51 = App\Models\University::where('countries_id',13)->take(7)->get(); ?>
+                                                                    <?php $headercountries51 = App\Models\User::whereHas('roles', function($q){
+                                                                        $q->where('name', 'university');
+                                                                    })->where('countries_id',13)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headercountries51 as $headercountry51)
-                                                                @if($headercountry51->user->status == 1)
-                                                                @if($headercountry51->user->Premium_expire_date > $mytime)
-
-                                                                <li><button type="submit" style="border: none;background: none;     display: -webkit-flex;
-                                                                    display: -ms-flex;
-                                                                    display: flex;
-                                                                    -ms-flex-align: center;
-                                                                    align-items: center;
-                                                                    justify-content: space-between;
-                                                                    position: relative;
-                                                                    padding: 3px 25px;
-                                                                    color: #5d646d;
-                                                                    font-size: 15px;
-                                                                    font-weight: 500;">{{$headercountry51->university_name ?? ''}}</button></li>
-                                                                {{-- </form> --}}
-                                                                @endif
-                                                                @endif
+                                   
+                                                                <li><a href="{{route('university_detail',['id'=>$headercountry51->id ?? ''])}}">{{$headercountry51->university->university_name ?? ''}}</a></li>
                                                                 @endforeach
 
                                                             </ul>
@@ -1638,17 +1618,15 @@
                                                                 font-size: 17px;
                                                                 font-weight: 600;
 
-                                                                ">Other Universities</li>
-                                                                <?php $headercountries52 = App\Models\University::where('countries_id',13)->take(7)->get(); ?>
+                                                                ">Top Ranked Universities</li>
+                                                                <?php $headercountries52 = App\Models\User::whereHas('roles', function($q){
+                                                                    $q->where('name', 'university');
+                                                                })->where('countries_id',13)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                             @foreach ($headercountries52 as $headercountry52)
-                                                            @if($headercountry52->user->status == 1)
-                                                            @if($headercountry52->user->Premium_expire_date < $mytime)
-
-
-                                                            <li><a href="{{route('university_detail',['id'=>$headercountry52->user_id ?? ''])}}">{{$headercountry52->university_name ?? ''}}</a></li>
-                                                            {{-- </form> --}}
-                                                            @endif
-                                                                @endif
+                                            
+                                                            @if($headercountry52->Premium_expire_date < $mytime || $headercountry52->Premium_expire_date == null)
+                                                            <li><a href="{{route('university_detail',['id'=>$headercountry52->id ?? ''])}}">{{$headercountry52->university->university_name ?? ''}}</a></li>
+                                            @endif
                                                             @endforeach
 
                                                                 {{-- <li><a href="#">MBA <span class="badge bg-2 text-white">New</span></a></li>
@@ -1689,15 +1667,13 @@
 
                                                             ">Featured Universities</li>
 
-                                                            <?php $headercountries61 = App\Models\University::where('countries_id',188)->take(7)->get(); ?>
+                                                            <?php $headercountries61 = App\Models\User::whereHas('roles', function($q){
+                                                                $q->where('name', 'university');
+                                                            })->where('countries_id',188)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get();?>
                                                         @foreach ($headercountries61 as $headercountry61)
-                                                        @if($headercountry61->user->status == 1)
-                                                        @if($headercountry61->user->Premium_expire_date > $mytime)
-
-                                                        <li><a href="{{route('university_detail',['id'=>$headercountry61->user_id ?? ''])}}">{{$headercountry61->university_name ?? ''}}</a></li>
-                                                        {{-- </form> --}}
-                                                        @endif
-                                                                @endif
+                                                    
+                                                        <li><a href="{{route('university_detail',['id'=>$headercountry61->id ?? ''])}}">{{$headercountry61->university->university_name ?? ''}}</a></li>
+                                                    
                                                         @endforeach
 
                                                     </ul>
@@ -1719,18 +1695,15 @@
                                                         font-size: 17px;
                                                         font-weight: 600;
 
-                                                        ">Other Universities</li>
-                                                        <?php $headercountries62 = App\Models\University::where('countries_id',188)->take(7)->get(); ?>
+                                                        ">Top Ranked Universities</li>
+                                                        <?php $headercountries62 = App\Models\User::whereHas('roles', function($q){
+                                                            $q->where('name', 'university');
+                                                        })->where('countries_id',188)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                     @foreach ($headercountries62 as $headercountry62)
-                                                    @if($headercountry62->user->status == 1)
-                                                    @if($headercountry62->user->Premium_expire_date <$mytime)         {{-- <form action="{{route('university_fetch.coursewise')}}" method="POST" >
-                                                        @csrf
-                                                    <input type="hidden" name="category" value="{{$headercountry62->countries_id ?? ''}}"> --}}
+                                                    @if($headercountry62->Premium_expire_date < $mytime || $headercountry62->Premium_expire_date == null)
 
-                                                    <li><a href="{{route('university_detail',['id'=>$headercountry62->user_id ?? ''])}}">{{$headercountry62->university_name ?? ''}}</a></li>
-                                                    {{-- </form> --}}
-                                                    @endif
-                                                                @endif
+                                                    <li><a href="{{route('university_detail',['id'=>$headercountry62->id ?? ''])}}">{{$headercountry62->university->university_name ?? ''}}</a></li>
+                                            @endif
                                                     @endforeach
 
 
