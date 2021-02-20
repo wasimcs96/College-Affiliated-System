@@ -104,7 +104,7 @@
                         <li class="{{ Request::segment(3) == 'contact' ? 'active' : null }}"><a href="{{route('admin.contact.index')}}">Contact Manager</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('setting.general')}}"><i class="fa fa-cogs" aria-hidden="true"></i>
+                <li class="{{ Request::segment(2) == 'settings' ? 'active' : null }}"><a href="{{route('setting.general')}}"><i class="fa fa-cogs" aria-hidden="true"></i>
                     <span>Settings</span></a></li>
                 {{-- <li class="{{ Request::segment(2) == 'subscription' ? 'active' : null }}"><a href="{{route('settingtheme')}}"><i class="fa fa-cog" aria-hidden="true"></i>
                     <span>Logo Settings</span></a></li> --}}
