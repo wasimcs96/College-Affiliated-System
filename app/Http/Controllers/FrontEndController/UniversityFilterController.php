@@ -123,18 +123,22 @@ class UniversityFilterController extends Controller
         }
 
         // dd($universities);
+        $page=1;
 
 
-
-        return view('frontEnd.university.university_all', compact('countrycoming'))->with('universities', $universities);
+        return view('frontEnd.university.university_all', compact('countrycoming','page'))->with('universities', $universities);
     }
 
 
     public function universitiesInnerFilter(Request $request)
     {
-
-        //  dd($request->countries_id);
         $universities = [];
+        $childs=[];
+    
+        $countrycoming = $request->countries_id ?? '';
+       $typecoming = $request->type ?? '' ;
+        //  dd($request->countries_id);
+     
         // if ($request->keyword != null) {
         //     $keyword = $request->keyword;
 
@@ -200,8 +204,7 @@ class UniversityFilterController extends Controller
     $ielts_rating = $request->ielts_rating ?? '';
 // dd($filtercatgory);
 
-    $universities = [];
-    $childs=[];
+
     if ($filtersub_category != null && $filtersub_category != '') {
         if(isset($study_level)&& $study_level != ''){
             $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->where('type',$study_level)->distinct()->get(['user_id']);
@@ -259,7 +262,8 @@ class UniversityFilterController extends Controller
     }
 
 
-    return view('frontEnd.university.university_all', compact('filtercatgory','childs','filtersub_category','study_level'))->with('universities', $universities);
+    return view('frontEnd.university.university_all', compact('universities','filtercatgory','childs','filtersub_category','study_level','countrycoming','typecoming'));
+    // ->with('universities', $universities);
 
         // return view('frontEnd.university.university_all', compact('universities'));
     }
