@@ -30,7 +30,7 @@
                             <h2>Form</h2>
                         </div>
                         <div class="body">
-                            <form id="basic-form" method="post" novalidate action="{{route('admin.packages.update', $packages->id)}}">
+                            <form id="basic-form" method="post" action="{{route('admin.packages.update', $packages->id)}}">
                                 @csrf
                                 <div class="form-group">
                                     <label>Title</label>
@@ -38,7 +38,7 @@
                                 </div>
                               <div class="form-group">
                                         <label>Package Type</label>
-                                        <select name="package_type" class="form-control">
+                                        <select name="package_type" class="form-control" required>
                                             {{-- <option value="">-- Select Package --</option> --}}
                                             <option value="0" <?php if($packages->package_type == 0) { echo "selected"; } ?>>Subscription</option>
                                             <option value="1" <?php if($packages->package_type == 1) { echo "selected"; } ?>>Premium</option>
@@ -48,15 +48,15 @@
                               </div>
                                 <div class="form-group">
                                     <label>Package Time(in months)</label>
-                                    <input type="text" class="form-control" value="{{$packages->package_time}}" name="package_time" id="package_time" required>
+                                    <input type="number" class="form-control" value="{{$packages->package_time ?? ''}}" name="package_time" id="package_time" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Amount</label>
-                                    <input type="text" class="form-control" value="{{$packages->amount}}" name="amount" id="amount" required>
+                                    <input type="number" class="form-control" value="{{$packages->amount ?? ''}}" name="amount" id="amount" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select name="status" class="form-control">
+                                    <select name="status" class="form-control" required>
                                         {{-- <option value="">-- Select --</option> --}}
                                         <option value="1" <?php if($packages->status == 1) { echo "selected"; } ?>>Active</option>
                                         <option value="0" <?php if($packages->status == 0) { echo "selected"; } ?>>InActive</option>
@@ -64,7 +64,7 @@
                                </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" value="" name="description" rows="5" cols="30" required>{{$packages->description}}</textarea>
+                                    <textarea class="form-control" value="" name="description" rows="5" cols="30" required>{{$packages->description ?? ''}}</textarea>
                                 </div>
 
                                 <br>

@@ -23,7 +23,7 @@
                             <h2>Form</h2>
                         </div>
                         <div class="body">
-                            <form id="basic-form" method="post" novalidate action="{{route('admin.packages.store')}}">
+                            <form id="basic-form" method="post" action="{{route('admin.packages.store')}}">
                                 @csrf
                                 <div class="form-group">
                                     <label>Title</label>
@@ -31,7 +31,7 @@
                                 </div>
                               <div class="form-group">
                                         <label>Package Type</label>
-                                        <select name="package_type" class="form-control">
+                                        <select name="package_type" class="form-control" required>
                                             <option value="">-- Select Package --</option>
                                             <option value="0">Subscription</option>
                                             <option value="1">Premium</option>
@@ -41,15 +41,15 @@
                               </div>
                                 <div class="form-group">
                                     <label>Package Time(in months)</label>
-                                    <input type="text" class="form-control" name="package_time" id="package_time" required>
+                                    <input type="number" class="form-control" name="package_time" id="package_time" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Amount</label>
-                                    <input type="text" class="form-control" name="amount" id="amount" required>
+                                    <input type="number" class="form-control" name="amount" id="amount" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select name="status" class="form-control">
+                                    <select name="status" class="form-control" required>
                                         <option value="">-- Select --</option>
                                         <option value="1">Active</option>
                                         <option value="0">InActive</option>

@@ -97,6 +97,7 @@ public function applicationStore(Request $request){
 
     $bookingStatus = Booking::where('id',$request->booking_id)->first();
     $bookingStatus->status = 2;
+    $bookingStatus->comments = $request->note;
     $bookingStatus->save();
     // if($clientExists==null){
     $jsonApplication = $request->document;
@@ -123,8 +124,8 @@ public function applicationStore(Request $request){
         'country_id' => $request->country[$key],
         // 'documents' =>$jsonApplicationStore,
         ]);
-        $university_name[$i] = $univers->university->university_name;
-
+        // $university_name[$i] = $univers->university->university_name;
+// dd($univers);
     }
     $documentes = collect($request->documents);
 // dd(collect($request->documents));
@@ -197,12 +198,15 @@ public function applicationStore(Request $request){
 
     function checkCourse(Request $request)
     {
+        // dd($request->all());
         $applications=Application::where('client_id',$request->client_id)->get();
+        // dd($applications);
         if($applications->count()>0)
         {
             foreach($applications as $application)
             {
-                $checks = DB::table('application_applied_universities')->where('application_id',$application->id)->where('university_id',$request->university)->where('course_id',$request->course)->count();
+                // dd($application->id);
+                $checks = DB::table('application_applied_universities')->where('application_id',$application->id)->where('university_id',$request->university)->where('course_id',$request->course)->where('is_closed',0)->count();
             }
         }
 
@@ -211,6 +215,7 @@ public function applicationStore(Request $request){
            {
                $output .= '<span style="color: red;">This Course is running in a different Application</span>' ;
            }
+        //    dd($checks);
            echo $output;
     }
 

@@ -244,30 +244,30 @@
 <!-- PWA  -->
 @if(auth()->user()->isClient())
 <nav class="nav123 hide-on-desktop" style="z-index:2;">
-        
-  <a href="{{route('client.dashboard')}}" class="nav__link imran">
+
+  <a href="{{route('client.dashboard')}}" class="nav__link imran {{ Request::segment(2) == 'dashboard' ? 'nav__link--active' : null }}">
     <i class="material-icons nav__icon">dashboard</i>
     <span class="nav__text">Dashboard</span>
 </a>
-        <a href="{{route('client.applications')}}" class="nav__link imran">
+        <a href="{{route('client.applications')}}" class="nav__link imran {{ Request::segment(2) == 'applications' ? 'nav__link--active' : null }}">
             <i class="material-icons nav__icon">file_present</i>
-            <span class="nav__text">Applcation</span>
+            <span class="nav__text">Application</span>
         </a>
 
-      
-        <a href="{{route('client.messenger')}}" class="imran nav__link nav__link--active">
+
+        <a href="{{route('client.messenger')}}" class="imran nav__link {{ Request::segment(2) == 'messenger' ? 'nav__link--active' : null }}">
           <i class="material-icons nav__icon">message</i>
-          <span class="nav__text">Messanger</span>
+          <span class="nav__text">Messenger</span>
       </a>
 
-        <a  href="{{route('client.bookings')}}" class="nav__link imran">
+        <a  href="{{route('client.bookings')}}" class="nav__link imran {{ Request::segment(2) == 'bookings' ? 'nav__link--active' : null }}">
             <i class="material-icons nav__icon">receipt</i>
             <span class="nav__text">Booking</span>
         </a>
 
-        <a href="{{route('client.profile')}}" class="nav__link imran" onclick="openNav()">
+        <a href="{{route('client.profile')}}" class="nav__link imran {{ Request::segment(2) == 'profile' ? 'nav__link--active' : null }}" >
             <i class="material-icons nav__icon">account_circle</i>
-            <!-- <span class="nav__text">More</span> -->
+            <!-- <span class="nav__text">More</span>onclick="openNav()" -->
             <span class="nav__text" style="cursor:pointer" >Profile</span>
         </a>
 </nav>
