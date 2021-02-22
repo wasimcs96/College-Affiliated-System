@@ -680,7 +680,7 @@
             </ul> --}}
         </div>
         <div class="body">
-            <form action="{{ route('consultant.application.add.university')}}"  id="basic-form" method="POST" novalidate enctype="multipart/form-data">
+            <form action="{{ route('consultant.application.add.university')}}"  method="POST" enctype="multipart/form-data">
             @csrf
                 <div class="form-group">
                 <input type="text" class="form-control" name="client_id" value="{{$application->user->id}}"id="name" hidden>
@@ -691,7 +691,7 @@
                     <table class="table table-bordered" id="dynamic_field">
                         <tr class="dynamic-added">
                             <td class="country">
-                                <select id="country"  custom2="" class="form-control " name="country" placeholder="Select Country" required>
+                                <select id="country"  custom2="" class="form-control " name="country_id" placeholder="Select Country" required>
                                 <option value="">Select Country Name</option>
                                 @foreach($countries as $country)
                                 <option value="{{$country->countries_id}}">{{$country->countries_name}}</option>
@@ -699,7 +699,7 @@
                               </select>
                             </td>
                             <td class="university">
-                                <select id="university" custom2="" class="form-control " name="university" placeholder="Select University" required>
+                                <select id="university" custom2="" class="form-control " name="university_id" placeholder="Select University" required>
                                  <option value="">Select University Name</option>
                               {{--  @foreach($univers as $univer)
                                 <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option>
@@ -708,12 +708,14 @@
                               </select>
                             </td>
                               <td id="">
-                                  <select id="course" name="course" class="form-control" required>
+                                  <select id="course" name="course_id" class="form-control" required>
                                     <option value="">Select Course Name</option>
                                 {{-- @foreach($courses as $course)
                                <option value="{{$course->id}}">{{$course->name}}</option>
                                @endforeach --}}
-                             </select></td>
+                             </select>
+                            <div id="courseError"></div>
+                            </td>
                             {{-- <td><button type="button" name="add" id="add" class="btn btn-primary btn-m"><i class="fa fa-plus"></i></button></td> --}}
 
                         </tr>
@@ -1720,4 +1722,42 @@ var j = 0;
 
 
  </script>
+ <script>
+    var university = '';
+    var course = '';
+    var client_id = {{ $application->user->id ?? '' }}
+   $(document).on('change', '#course', function ()
+                  {
+                         dt  = $(this).data("row_id");
+                         course = $('#course').val();
+                         university = $('#university').val();
+console.log(university);
+console.log(course);
+console.log(client_id);
+                             $.ajaxSetup({headers:
+                           {
+                               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                           }
+                           });
+
+                                 $.ajax({
+                                     url:"{{ route('consultant.university.course.check') }}",
+                                     method:"GET",
+                                     data:{university:university,course:course,client_id:client_id},
+                                     success: function(result){
+                                       if(result!='')
+                                       {
+                                       $('#courseError').html(result);
+                                       $('#course').prop('selectedIndex',-1);
+                                       }
+                                       else
+                                       {
+                                           $('#courseError').html('');
+                                       }
+                                   }
+                                   });
+
+                      });
+
+</script>
 @stop

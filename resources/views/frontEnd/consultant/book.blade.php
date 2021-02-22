@@ -187,12 +187,13 @@ $inc = 0;
 
     </td>
     <td>
+        <?php $courses = DB::table('university_courses')->where('user_id',$universityid)->get() ?>
         <div id="courseError"></div>
-        <select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;"  id="course" name="banner_images[0][course]" required>
-        <?php $courses = $uns->userUniversity->universityCourse?>
+        <select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;"  id="tl-0" name="banner_images[0][course]" required>
+
         <option selected>Choose Course</option>
         @foreach($courses as $course)
-       <option value="{{$course->id}}">{{$course->title}}</option>
+       <option value="{{$course->id ?? ''}}">{{$course->title ?? ''}}</option>
        @endforeach
        <div id="courseError"></div>
     </select>

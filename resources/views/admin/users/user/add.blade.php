@@ -41,7 +41,7 @@
                                     <input type="text" class="form-control" name="last_name" id="last_name" required>
                                 </div>
                                 <div class="form-group" id="uniname">
-                                    
+
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" required>
+                                    <input type="password" minlength="6" class="form-control" name="password" id="password" required>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Create User</button>
