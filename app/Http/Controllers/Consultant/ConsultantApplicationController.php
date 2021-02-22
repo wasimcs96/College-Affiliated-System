@@ -326,10 +326,10 @@ class ConsultantApplicationController extends Controller
             'country_id'=>'required',
              ]);
             $storeUniversity = ApplicationAppliedUniversity::create([
-            'university_id' => $request->university,
-            'course_id' => $request->course,
+            'university_id' => $request->university_id,
+            'course_id' => $request->course_id,
             'application_id' => $request->application_id,
-            'country_id' => $request->country,
+            'country_id' => $request->country_id,
             // 'documents' =>$jsonApplicationStore,
 
             ]);
@@ -343,7 +343,14 @@ class ConsultantApplicationController extends Controller
         $application = Application::find($request->applicationCloseId);
         $application->status = 2;
         $application->save();
-        return redirect()->back()->with('danger','University Added Successfully');
+
+        $universities = ApplicationAppliedUniversity::where('application_id',$application->id)->get();
+        foreach($universities as $university)
+        {
+            $university->is_closed = 1;
+            $university->save();
+        }
+        return redirect()->back()->with('danger','This Application is Closed');
 
       }
 
