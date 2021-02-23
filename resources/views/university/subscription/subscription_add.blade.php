@@ -323,7 +323,10 @@ $('#choosedcontent').html(html);
 <script>
     $(document).on('click', '#choosePlanScroll', function ()
     {
-        window.scrollBy(0, 260);
+        $("html, body").animate({
+                    scrollTop: $(
+                      'html, body').get(0).scrollHeight
+                }, $(document).height());
     });
   </script>
 @stop

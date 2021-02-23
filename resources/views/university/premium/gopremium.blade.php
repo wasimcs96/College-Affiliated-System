@@ -28,9 +28,9 @@
                 <input type="text" name="title" value="{{$package->title}}" hidden>
                 @if($rt>$mytime && $rt != null)
 
-                <li class="plan-btn"><button class="btn btn-round btn-outline-secondary" data-toggle="modal" data-target="#mdlerror">Choose plan</button></li>
+                <li class="plan-btn"><button class="btn btn-round btn-outline-secondary"  data-toggle="modal" data-target="#mdlerror">Choose plan</button></li>
                 @else
-                <li class="plan-btn"><button customDescription="{{$package->description}}" customPackage="{{$package->package_time}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="1" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
+                <li class="plan-btn"><button customDescription="{{$package->description}}" id="choosePlanScroll" customPackage="{{$package->package_time}}" customAmount="{{$package->amount}}" customUser="{{auth()->user()->id}}" customPayment="1" customTitle="{{$package->title}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</button></li>
 
                 @endif
             </ul>
@@ -314,4 +314,13 @@ $('#choosedcontent').html(html);
 
     })
 </script>
+<script>
+    $(document).on('click', '#choosePlanScroll', function ()
+    {
+        $("html, body").animate({
+                    scrollTop: $(
+                      'html, body').get(0).scrollHeight
+                }, $(document).height());
+    });
+  </script>
 @stop
