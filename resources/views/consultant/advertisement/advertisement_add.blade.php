@@ -48,7 +48,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-globe"></i></span>
                         </div>
-                        <input name="link" type="url" class="form-control"placeholder="http://" >
+                        <input name="link" type="url" id="url-{{$package->id}}" class="form-control"placeholder="http://" >
                     </div>
                 </div>
                 <input type="text" name="amount" value="{{$package->amount}}" hidden>
@@ -185,18 +185,38 @@
         package_time=$(this).attr('customPackage');
         package_id=$(this).attr('customId');
         var orderId='';
-        photo=$(`#photo-${package_id}`).val()
+        photo=$(`#photo-${package_id}`).val();
+        url=$(`#url-${package_id}`).val();
         console.log(isEmpty(photo));
 
-    if (isEmpty(photo)){
-        $(`#al`).html(`<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    if (isEmpty(photo) || isEmpty(url)){
+        if(isEmpty(photo))
+        {
+            $(`#al`).html(`<div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Image not found!</strong>Please select the image
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>`)
+        }
+        else
+        {
+            $(`#al`).html(`<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>URL not found!</strong>Please fill the url
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>`)
+        }
+        window.scrollTo(0, 0);
+        document.getElementById(`frm-${package_id}`).reset();
     }
     else{
+        // $(document).scrollTop($(document).height() - 5);
+        $("html, body").animate({
+                    scrollTop: $(
+                      'html, body').get(0).scrollHeight
+                }, $(document).height());
         var html=`<div class="row clearfix">
             <div class="col-lg-12">
                 <div class="card">
@@ -329,5 +349,10 @@
 
     })
     </script>
-
+{{-- <script>
+    $(document).on('click', '.chooseplan', function ()
+    {
+        window.scrollBy(0, 250);
+    });
+  </script> --}}
 @stop

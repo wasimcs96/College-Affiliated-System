@@ -39,12 +39,15 @@
 
                                         </select>
                               </div>
+                              <div class="form-group" id="type">
+
+                             </div>
                                 <div class="form-group">
                                     <label>Package Time(in months)</label>
                                     <input type="number" class="form-control" name="package_time" id="package_time" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Amount</label>
+                                    <label>Amount(in Rs.)</label>
                                     <input type="number" class="form-control" name="amount" id="amount" required>
                                 </div>
                                 <div class="form-group">
@@ -98,4 +101,18 @@ tr.shown td.details-control {
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
+{{-- <script>
+    $(document).ready(function(){
+        $('#package_type').on('change', function() {
+          if ( this.value == '2')
+          {
+            $("#type").html('<label>Select Advertisement Type</label><select name="type" class="form-control" required><option value="">-- Select Advertisement Type --</option><option value="0">Inner</option><option value="1">Outer</option></select>');
+          }
+        else {
+            $("#type").html('');
+        }
+        });
+    });
+
+    </script> --}}
 @stop

@@ -144,13 +144,13 @@ Route::post('/slots',[
 // })->name('blog_all');
 
 Route::get('blog_all',[
-    'uses' => 'FrontEndController\BlogFrontcontroller@index',
+    'uses' => 'FrontEndController\BlogFrontController@index',
     'as'=> 'blog_all'
 ]);
 
 
 Route::get('blog_detail/{id}',[
-    'uses' => 'FrontEndController\BlogFrontcontroller@detail',
+    'uses' => 'FrontEndController\BlogFrontController@detail',
     'as'=> 'blog_detail'
 ]);
 
