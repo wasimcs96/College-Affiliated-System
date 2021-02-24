@@ -124,9 +124,9 @@
                                    <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
                                             <li><span>Fees:</span> @if(isset( $universitycourse->fees)){{ $universitycourse->fees}} @else N/A @endif</li>
-
-                                            <li><span>Start Date:</span> @if(isset( $universitycourse->start_date)) {{ $universitycourse->start_date}} @else N/A @endif</li>
-                                            <li><span>End Date:</span>@if(isset( $universitycourse->start_date)) {{ $universitycourse->start_date}} @else N/A @endif</li>
+                                            <li><span>Duration:</span> @if(isset( $universitycourse->duration)){{ $universitycourse->duration}} Years @else N/A @endif</li>
+                                            {{-- <li><span>Start Date:</span> @if(isset( $universitycourse->start_date)) {{ $universitycourse->start_date}} @else N/A @endif</li>
+                                            <li><span>End Date:</span>@if(isset( $universitycourse->start_date)) {{ $universitycourse->start_date}} @else N/A @endif</li> --}}
                                             {{-- <li><span>Total Staff:</span>9,078 crew</li>
                                             <li><span>Counsellor:</span>Italian</li>
                                             <li><span>Hostels:</span>International</li>
@@ -138,12 +138,12 @@
                                 </div><!-- end row -->
                             </div><!-- end single-content-item -->
                             <div class="single-content-item padding-bottom-30px">
-                                <h3 class="title font-size-20">University  Detail 
+                                <h3 class="title font-size-20">University  Detail
                                    @if(auth()->user()) <a href="{{asset($university->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" style="
                                            height: 38px;
                                 float: right;
                                 padding-top: 9px;
-                                " download class="buttonDownload">Brochure</a> 
+                                " download class="buttonDownload">Brochure</a>
                                 @else
                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
                                 height: 38px;
@@ -163,7 +163,7 @@
                                                 Private
                                                 @else Govenment</p>
                                                 @endif</li>
-                                            
+
                                                 <li><span>Country:</span>@if(isset($universitycourse->users->countries_id))
                                                     <?php $country = DB::table('countries')->where('countries_id',$universitycourse->users->countries_id)->get()->first();?>
                                                     {{$country->countries_name ?? ''}} @else N/A @endif
@@ -180,9 +180,9 @@
                                    <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
 
-                                     
+
                                             {{-- <li><span>Consultants:</span>{{$universitycourse->users->university->universityConsultant->count() ?? ''}}</li> --}}
-                                        
+
                                             <li><span>Application Fees:</span>{{$universitycourse->users->university->average_fees ?? ''}}</li>
                                             <li><span>IELTS Rating:</span>@if(isset($universitycourse->users->university->iltes)){{$universitycourse->users->university->iltes}}/10 @else -/10 @endif</li>
 
@@ -194,7 +194,7 @@
                                 </div><!-- end row -->
                             </div><!-- end single-content-item -->
                         </div><!-- end description -->
-                     
+
                         <!-- end reviews -->
                         <!-- end review-box -->
                     </div><!-- end single-content-wrap -->
@@ -257,10 +257,10 @@
                     </div><!-- end sidebar -->
                     {{-- @endif --}}
                 </div><!-- end col-lg-4 -->
-                
+
                 <div class="col-lg-12">
                     <div class="single-content-wrap padding-top-60px">
-        
+
                         <div id="itinerary" class="page-scroll">
                             <div class="section-block margin-top-40px"></div>
                             <div class="single-content-item padding-top-40px padding-Rbottom-40px">
@@ -271,11 +271,11 @@
                                            <tr>
                                                <th scope="col">Course Name</th>
                                                <th scope="col">Discipline</th>
-                                           
+
                                                <th scope="col">Study Level</th>
                                                <th scope="col"> Fees</th>
-                                               <th scope="col">Start Date</th>
-                                               <th scope="col">End Date</th>
+                                               <th scope="col">Duration</th>
+                                               {{-- <th scope="col">End Date</th> --}}
                                                <th scope="col">Action</th>
                                            </tr>
                                        </thead>
@@ -290,7 +290,7 @@
                                             </div>
                                             </th>
                                             <td>{{$course->category->title}}</td>
-                                       
+
 
                                                <td>
                                                 @if($course->type == 0) UG @endif
@@ -298,8 +298,9 @@
                                                 @if($course->type == 2) Diploma @endif
                                                </td>
                                                <td>₹ {{$course->fees ?? ''}}</td>
-                                               <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
-                                               <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
+                                               <td>@if(isset($course->duration)) {{ $course->duration }} @endif</td>
+                                               {{-- <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
+                                               <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td> --}}
 
                                                 <td> <div>
                                                 <a href="{{route('course_detail',['id'=> $course->id])}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
@@ -329,7 +330,7 @@
         <div class="row">
             <div class="col-lg-12">
             <div class="testimonial-carousel-ad carousel-action">
-    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('type',0)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
                     <a href="{{$advertise->link ?? ''}}"  id="click_count" link_click="{{$advertise->id ?? ''}}" target="_blank">
@@ -426,9 +427,9 @@
                                     } ?>
                                         <h3 class="card-title"><a href="{{route('university_detail',['id'=>$courseuniversity->id])}}">
                                         @if(isset($courseuniversity->university->university_name))<?php echo($mycourseuniversity . '...')?> @else N/A @endif</a>
-                                     
+
                                             <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                 
+
                                         </h3>
                                 <p class="card-meta">{{$courseuniversity->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">

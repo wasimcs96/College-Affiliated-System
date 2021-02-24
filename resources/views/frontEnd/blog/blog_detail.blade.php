@@ -11,7 +11,7 @@
                 <div class="col-lg-6">
                     <div class="breadcrumb-content">
                         <div class="section-heading">
-                            <h2 class="sec__title">{{$detail->title}}</h2>
+                            <h2 class="sec__title">{{$detail->title ?? ''}}</h2>
                         </div>
                     </div><!-- end breadcrumb-content -->
                 </div><!-- end col-lg-6 -->
@@ -53,7 +53,7 @@
                         </div> --}}
                         <h3 class="card-title font-size-28 text-center">{{$detail->title ?? ''}}</h3>
                         <p class="card-meta pb-3 text-center">
-                            <span class="post__author">Updated {!! "&nbsp;" !!}<a href="#" class="text-gray">at</a></span>
+                            <span class="post__author">Updated {!! "&nbsp;" !!}<a href="javascript:void(0);" class="text-gray">at</a></span>
                             <span class="post-dot"></span>
                             <span class="post__date"> {{$detail->updated_at ?? ''}}</span>
                             {{-- <span class="post-dot"></span> --}}

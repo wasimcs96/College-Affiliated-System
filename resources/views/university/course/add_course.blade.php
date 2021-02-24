@@ -53,17 +53,21 @@
                         <textarea class="form-control" name="description" rows="5" cols="30" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Fees</label>
+                        <label>Fees (in Rs.)</label>
                         <input type="number"  name="fees" class="form-control" required>
                     </div>
                     <div class="form-group">
+                        <label>Course Duration (in Years)</label>
+                        <input type="number" name="duration" class="form-control" required>
+                    </div>
+                    {{-- <div class="form-group">
                         <label>Course Start Date</label>
                         <input type="date" name="start_date" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Course End Date</label>
                         <input type="date" name="end_date" class="form-control" required>
-                    </div>
+                    </div> --}}
                     {{-- <div class="form-group">
                                 Upload Media
                            <div class="body"id="nb"  >

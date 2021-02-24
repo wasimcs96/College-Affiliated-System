@@ -49,6 +49,7 @@ class ConsultantAdvertisementController extends Controller
         'banner_image'=>$newname ?? '',
         'user_type'=>0,
         'status'=>0,
+        'type'=>$request->type,
         'time_period'=> $expire,
         'order_id'=>$request->orderId,
         'link'=>$request->link

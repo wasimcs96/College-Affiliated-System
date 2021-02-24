@@ -37,23 +37,27 @@
                                 <option value="2" @if($universitycourse->type == 2) selected @endif>Diploma</option>
                         </select>
                     </div>
-                   <input type="text" name="university_id" value="{{auth()->user()->university->id}}" hidden>
+                   <input type="text" name="university_id" value="{{auth()->user()->university->id ?? ''}}" hidden>
                     <div class="form-group">
                         <label>Description</label>
                         <textarea class="form-control" value="" name="description" rows="5" cols="30" required>{{$universitycourse->description}}</textarea>
                     </div>
                     <div class="form-group">
                         <label>Fees</label>
-                        <input type="number" name="fees" value= "{{$universitycourse->fees}}"  class="form-control" required>
+                        <input type="number" name="fees" value= "{{$universitycourse->fees ?? ''}}"  class="form-control" required>
                     </div>
                     <div class="form-group">
+                        <label>Course Duration (in Years)</label>
+                        <input type="number" name="duration" value="{{$universitycourse->duration ?? ''}}" class="form-control" required>
+                    </div>
+                    {{-- <div class="form-group">
                         <label>Course Start Date</label>
                         <input type="date" name="start_date" value="{{$universitycourse->start_date}}" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Course End Date</label>
                         <input type="date" name="end_date" value="{{$universitycourse->end_date}}" class="form-control" required>
-                    </div>
+                    </div> --}}
                     <input type="hidden" value="{{$universitycourse->id}}" name="university_course_id">
                     <!--  Show Uploaded Image   -->
 
@@ -90,14 +94,15 @@
                                      {{-- @endif --}}
                         </div>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                                 <label>Upload Media</label>
                            <div class="body"id="nb"  >
                               <input type="file" name="image[]"class="dropify" multiple>
                            </div>
-                    </div>
+                    </div> --}}
                     <br>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{route('university.courses')}}" class="btn btn-danger">Back</a>
                 </form>
             </div>
         </div>

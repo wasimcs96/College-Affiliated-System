@@ -58,7 +58,7 @@
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-4 --> --}}
-                               
+
                                     <div class="col-lg-3 col-sm-2 pr-0">
                                         <div class="input-box">
                                             <label class="label-text" style="
@@ -134,16 +134,16 @@
                                                 <option value="" selected>Select Sub Discipline</option>
                                                 @if(isset($filtercatgory))
                                                 <?php $subcategories = App\Models\Category::where('parent_id',$filtercatgory)->get();?>
-                                           
+
                                                 @if($subcategories->count() > 0)
                                                 @foreach($subcategories as $subcategory)
                                                 <option value="{{$subcategory->id}}" @if(isset($filtersub_category)&& $filtersub_category == $subcategory->id) selected @endif >{{$subcategory->title}}</option>
                                                 @endforeach
-        
+
                                                 @else
-        
+
                                                     <option value="">Currently Unavailable</option>
-        
+
                                                 @endif
                                                 @endif
 
@@ -183,18 +183,18 @@
                                             <div class="select-contain w-auto">
                                                 <select  name="ielts_rating" class="select-contain-select"   style="
                                                 height: 52px;
-                                            ">             
+                                            ">
                                             <option value="" selected>Select IELTS Rating</option>
                                             <option value="1" @if(isset($ielts_rating)&& $ielts_rating==1)selected @endif>1</option>
                                                     <option value="2"  @if(isset($ielts_rating)&& $ielts_rating==2)selected @endif>2</option>
                                                     <option value="3"  @if(isset($ielts_rating)&& $ielts_rating==3)selected @endif>3</option>
-                                                  
+
                                                     <option value="4" @if(isset($ielts_rating)&& $ielts_rating==4)selected @endif>4</option>
                                                     <option value="5"  @if(isset($ielts_rating)&& $ielts_rating==5)selected @endif>5</option>
                                                     <option value="6" @if(isset($ielts_rating)&& $ielts_rating==6)selected @endif>6</option>
                                                     <option value="7"  @if(isset($ielts_rating)&& $ielts_rating==7)selected @endif>7</option>
                                                     <option value="8"  @if(isset($ielts_rating)&& $ielts_rating==8)selected @endif>8</option>
-                                                  
+
                                                     <option value="9" @if(isset($ielts_rating)&& $ielts_rating==9)selected @endif>9</option>
                                                     <option value="10"  @if(isset($ielts_rating)&& $ielts_rating==10)selected @endif>10</option>
                                                 </select>
@@ -213,14 +213,14 @@
                                                 height: 52px;
                                             ">
                                                     <option value="" selected>Select Rating</option>
-                                                   
+
                                                     <option value="1" @if(isset($rating)&& $rating==1)selected @endif>1</option>
                                                     <option value="2"  @if(isset($rating)&& $rating==2)selected @endif>2</option>
                                                     <option value="3"  @if(isset($rating)&& $rating==3)selected @endif>3</option>
-                                                  
+
                                                     <option value="4" @if(isset($rating)&& $rating==4)selected @endif>4</option>
                                                     <option value="5"  @if(isset($rating)&& $rating==5)selected @endif>5</option>
-                                                
+
                                                 </select>
                                             </div>
                                         </div>
@@ -260,7 +260,7 @@
         <div class="row">
             <div class="col-lg-12">
             <div class="testimonial-carousel-ad carousel-action">
-    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('type',0)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
                     <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
@@ -334,7 +334,7 @@
                                 @else
                                 <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                                 @endif</div>
-                            
+
                                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                         @if($university->Premium_expire_date > $mytime)<span style="
                         background-color: #073975;
@@ -359,8 +359,8 @@
                                         } ?>
                                             <h3 class="card-title">
                                                 <a href="{{route('university_detail',['id'=>$university->id])}}">
-                                                
-                                             @if(isset($filtersub_category) && $filtersub_category != null)  
+
+                                             @if(isset($filtersub_category) && $filtersub_category != null)
                                              <?php $univercoursecount =App\Models\UniversityCourse::where('category_id', $filtersub_category)->where('user_id',$university->id)->count()-1;
                                               $univercourse=App\Models\UniversityCourse::where('category_id', $filtersub_category)->where('user_id',$university->id)->first(); ?>
                                               {{-- {{ dd(univercourse) }} --}}
@@ -368,7 +368,7 @@
                                               @if($univercourse != null)
                                               {{$univercourse->title ?? ''}} &nbsp;  @if(isset($univercoursecount) && $univercoursecount > 1)<span  style="font-size: small;">+{{$univercoursecount}} courses</span>@endif
                                               @endif
-                                             
+
                                               @if($univercourse == null)
                                               @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
                                                       @endif
@@ -379,11 +379,11 @@
                                         @if(isset($page)&& $page == 1)
                                         @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
                                         @endif
-                                      
+
                                     </a>
-                                         
+
                                                 <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                     
+
                                             </h3>
                         <p class="card-meta">
                             @if(isset($page)&& $page == 1)
@@ -473,9 +473,9 @@
                                                     <!-- <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Consultants"><i class="la la-user"></i><span>
                                                         @if(isset($us->universityConsultant))
                                                         {{$us->universityConsultant->count()}}@else N/A @endif</span></li> -->
-                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$university->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($university->university->iltes))
-                                                            {{$university->university->iltes}}/10
-                                                            @else -/10 @endif</span></li>
+                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$university->university->iltes ?? ''}}"><i class="las la-clipboard-list"></i><span>   @if(isset($university->university->iltes))
+                                                            {{$university->university->iltes ?? ''}}
+                                                            @else - @endif</span></li>
                                 </ul>
                         </div>
 
@@ -493,7 +493,7 @@
                                                 @endif
 
 
-                            <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2" style="float: right;">See details<i class="las la-angle-double-right"></i></a>
+                            <a href="{{route('university_detail',['id'=>$university->id])}}"  class="theme-btn theme-btn-small mt-2" style="float: right;">Apply<i class="las la-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div><!-- end card-item -->
@@ -525,7 +525,7 @@
         <div class="row">
             <div class="col-lg-12">
             <div class="testimonial-carousel-ad carousel-action">
-    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('type',0)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
                     <a href="{{$advertise->link ?? ''}}"  id="click_count" link_click="{{$advertise->id ?? ''}}" target="_blank">

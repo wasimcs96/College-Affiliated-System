@@ -8,5 +8,5 @@ class Package extends Model
 {
     protected $table = 'packages';
 
-    protected $fillable = ['title', 'package_type', 'description', 'package_time', 'amount', 'status'];
+    protected $fillable = ['title', 'package_type', 'advertisement_type','description', 'package_time', 'amount', 'status'];
 }
