@@ -31,7 +31,7 @@
                                 </div>
                               <div class="form-group">
                                         <label>Package Type</label>
-                                        <select name="package_type" class="form-control" required>
+                                        <select name="package_type" id="package_type" class="form-control" required>
                                             <option value="">-- Select Package --</option>
                                             <option value="0">Subscription</option>
                                             <option value="1">Premium</option>
@@ -101,18 +101,18 @@ tr.shown td.details-control {
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
-{{-- <script>
-    $(document).ready(function(){
-        $('#package_type').on('change', function() {
+<script>
+  $(document).on('change', '#package_type', function (){
+            // console.log(this.value);
           if ( this.value == '2')
           {
-            $("#type").html('<label>Select Advertisement Type</label><select name="type" class="form-control" required><option value="">-- Select Advertisement Type --</option><option value="0">Inner</option><option value="1">Outer</option></select>');
+            $("#type").html('<label>Select Advertisement Type</label><select name="advertisement_type" class="form-control" required><option value="">-- Select Advertisement Type --</option><option value="0">Inner</option><option value="1">Outer</option></select>');
           }
         else {
             $("#type").html('');
         }
-        });
-    });
 
-    </script> --}}
+        });
+
+    </script>
 @stop

@@ -249,10 +249,10 @@
                                     </div><!-- end col-lg-6 -->
                                    <div class="col-lg-6 responsive-column">
                                         <ul class="list-items list-items-2">
-                                            <li><span>IELTS Rating:</span>@if(isset($university->university->iltes)){{$university->university->iltes}}/10 @else -/10 @endif</li>
+                                            <li><span>IELTS Rating:</span>@if(isset($university->university->iltes)){{$university->university->iltes}} @else - @endif</li>
 
                                             <li><span>In Takes:</span>@if(isset($university->university->in_takes)){{$university->university->in_takes}} @else N/A @endif</li>
-                                            <li><span>Exam:</span>{{$university->university->exam?? ''}}</li>
+                                            <li><span>Exam:</span>{{$university->university->exam ?? ''}}</li>
                                             <li><span>Website:</span><a target="_blank" href="{{$university->university->website ?? ''}}" URL>Visit Site</a></li>
                                             {{--   <li><span>Counsellor:</span>Italian</li>
                                             <li><span>Hostels:</span>International</li>
@@ -265,7 +265,7 @@
                             </div><!-- end single-content-item -->
 
                         </div><!-- end description -->
-           
+
                         <!-- end itinerary -->
 
                         <!-- end reviews -->
@@ -404,7 +404,7 @@
 
                 <div class="col-lg-12">
                     <div class="single-content-wrap padding-top-60px">
-        
+
                         <div id="itinerary" class="page-scroll">
                             <div class="section-block margin-top-40px"></div>
                             <div class="single-content-item padding-top-40px padding-Rbottom-40px">
@@ -415,11 +415,11 @@
                                            <tr>
                                                <th scope="col">Course Name</th>
                                                <th scope="col">Discipline</th>
-                                           
+
                                                <th scope="col">Study Level</th>
                                                <th scope="col"> Fees</th>
-                                               <th scope="col">Start Date</th>
-                                               <th scope="col">End Date</th>
+                                               <th scope="col">Duration</th>
+                                               {{-- <th scope="col">Intakes</th> --}}
                                                <th scope="col">Action</th>
                                            </tr>
                                        </thead>
@@ -441,9 +441,9 @@
                                              @if($course->type == 2) Diploma @endif
                                             </td>
                                             <td>₹ {{$course->fees ?? ''}}</td>
-                                            <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
-                                            <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
-
+                                            <td>@if(isset($course->duration)) {{ $course->duration }} Years @else N/A @endif</td>
+                                            {{-- <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td> --}}
+                                            {{-- <td></td> --}}
                                              <td> <div>
                                              <a href="{{route('course_detail',['id'=>$course->id])}}" class="btn btn-primary text-light">Detail<i class="las la-angle-double-right"></i></a>
                                          </div></td>
@@ -478,7 +478,7 @@
         <div class="row">
             <div class="col-lg-12">
             <div class="testimonial-carousel-ad carousel-action">
-    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('type',0)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
                     <a href="{{$advertise->link ?? ''}}"  id="click_count" link_click="{{$advertise->id ?? ''}}" target="_blank">
@@ -572,9 +572,9 @@
                                     @if(isset($consultant->userConsultant->first_name ))
                                     {{$consultant->userConsultant->first_name ?? ''}} &nbsp;{{$consultant->userConsultant->last_name ?? ''}}
                                 @else N/A @endif</a>
-                                 
+
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                               
+
                             </h3>
                                 <p class="card-meta">{{$consultant->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">

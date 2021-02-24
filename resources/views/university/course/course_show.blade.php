@@ -42,7 +42,7 @@
                             <td>₹ {{$courses->fees ?? 'NA'}}</td>
                         </tr>
 
-                        <tr>
+                        {{-- <tr>
                             <th scope="row">Start Date</th>
                             <td>{{ Carbon\Carbon::parse($courses->start_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                         </tr>
@@ -50,6 +50,11 @@
                         <tr>
                             <th scope="row">End Date</th>
                             <td>{{ Carbon\Carbon::parse($courses->end_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
+                        </tr> --}}
+
+                        <tr>
+                            <th scope="row">Course Duration</th>
+                            <td>{{ $courses->duration ?? 'NA' }} Years</td>
                         </tr>
 
 
