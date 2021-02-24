@@ -158,7 +158,8 @@
                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                     <p class="mr-2">University Type:       @if(isset($university->university->type)&&($university->university->type==0))
                                         Private
-                                        @else Government
+                                        @else 
+                                        Government
                                     @endif</p>
                                 </div>
                                 <div class="d-flex flex-wrap align-items-center pt-2">

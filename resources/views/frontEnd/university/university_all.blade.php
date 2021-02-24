@@ -78,8 +78,8 @@
                                                         ];
                                                         ?>
 
-                                                        @foreach($type as $key=>$course)
-                                                        <option value="{{$key}}" @if(isset($typecoming) && $typecoming == $key) selected @endif>
+                                                        @foreach($type as $keyt=>$course)
+                                                        <option value="{{$keyt}}" @if(isset($typecoming) && $typecoming == $keyt) selected @endif>
                                                             {{$course}}
                                                         </option>
 
@@ -108,7 +108,7 @@
                                                     <?php $categories = App\Models\Category::all();?>
                                         @if($categories->count() > 0)
                                         @foreach($categories as $category)
-                                        <option value="{{$category->id}}" @if(isset($filtercatgory)&& $filtercatgory == $category->id) selected @endif >{{$category->title}}</option>
+                                        <option value="{{$category->id}}" @if(isset($filtercatgory) && $filtercatgory == $category->id) selected @endif >{{$category->title}}</option>
                                         @endforeach
 
                                         @else
@@ -163,6 +163,7 @@
                                                 <select  name="study_level" class="select-contain-select"   style="
                                                 height: 52px;
                                             ">
+                                          
                                                     <option value="" selected>Select Study Level</option>
                                                     <option value="2" @if(isset($study_level)&& $study_level==2)selected @endif> Diploma</option>
                                                     <option value="0"  @if(isset($study_level)&& $study_level==0)selected @endif>UG</option>
@@ -184,7 +185,7 @@
                                                 height: 52px;
                                             ">             
                                             <option value="" selected>Select IELTS Rating</option>
-                                            <option value="1" @if(isset($ielts_rating)&& $rating==1)selected @endif>1</option>
+                                            <option value="1" @if(isset($ielts_rating)&& $ielts_rating==1)selected @endif>1</option>
                                                     <option value="2"  @if(isset($ielts_rating)&& $ielts_rating==2)selected @endif>2</option>
                                                     <option value="3"  @if(isset($ielts_rating)&& $ielts_rating==3)selected @endif>3</option>
                                                   
@@ -564,7 +565,7 @@
 <!-- ================================
     START INFO AREA
 ================================= -->
-@if(isset($child))
+@if(isset($childs))
 @if (count($childs) > 0)
 {{--
 <section class="info-area info-bg padding-top-90px padding-bottom-70px">

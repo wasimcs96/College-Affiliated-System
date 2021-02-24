@@ -35,25 +35,25 @@ class UniversityFilterController extends Controller
     }
         public function courseWiseUniversity(Request $request)
         {
-
-            // dd($request->all());
-            $filtercatgory = $request->category ?? '';
-            $filtersub_category = $request->sub_category ?? '';
-            $study_level = $request->study_level ?? '';
-// dd($filtercatgory);
-
+            $filtercatgory = $request->category ?? null;
+            $filtersub_category = $request->sub_category ?? null;
+            $study_level = $request->study_level ?? null;
             $universities = [];
             $childs=[];
             if ($filtersub_category != null && $filtersub_category != '') {
                 if(isset($study_level)&& $study_level != ''){
                     $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->where('type',$study_level)->distinct()->get(['user_id']);
+                    foreach ($universitycourse as $key => $univercity) {
+                        $universities[$key] = $univercity->users;
+                    }
                 }
                 else{
                 $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->distinct()->get(['user_id']);              
-            }
                 foreach ($universitycourse as $key => $univercity) {
                     $universities[$key] = $univercity->users;
                 }
+            }
+               
             
             } 
             else {
@@ -61,51 +61,67 @@ class UniversityFilterController extends Controller
                 $check = Category::find($filtercatgory);
                 $childcheck = $check->child_category->pluck('id');
                 $childerens=$check->child_category;
-                // dd($childerens);
+                
 
                 if ($childcheck->count() > 0) {
+                    
                     foreach($childerens as $keys=>$child){
                         $childs[$keys]=$child;
 
                     }
+                    
                 }
 
 
                 if ($childcheck->count() > 0) {
+                   
                     if(isset($study_level) && $study_level != ''){
                     $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->where('type',$study_level)->distinct()->get();
-                    // dd($universitycourse);
+                    foreach ($universitycourse as $key => $univercity) {
+                        $universities[$key] = $univercity->users;
+                    }
 
                     }
                     else
                     {
+                     
                         $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get();
+                        foreach ($universitycourse as $key => $univercity) {
+                            $universities[$key] = $univercity->users;
+                        }
                     }
-                    foreach ($universitycourse as $key => $univercity) {
-                        $universities[$key] = $univercity->users;
-                    }
+                    
+                  
                 } else {
                     if(isset($study_level) && $study_level != ''){
                     $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->where('type',$study_level)->distinct()->get();
-                    }
+                    foreach ($universitycourse as $key => $univercity) {
+                        $universities[$key] = $univercity->users;
+                    }   
+                }
                     else
                     {
                         $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->distinct()->get();
+                        foreach ($universitycourse as $key => $univercity) {
+                            $universities[$key] = $univercity->users;
+                        }
                     }
-                    foreach ($universitycourse as $key => $univercity) {
-                        $universities[$key] = $univercity->users;
-                    }
+                   
                 }
             }
-
-
+        
+            if (count($universities)>0) {
+                $universities=array_unique($universities);
+            }
+           
+           
             return view('frontEnd.university.university_all', compact('filtercatgory','childs','filtersub_category','study_level'))->with('universities', $universities);
         }
 
 
     public function countryWiseUniversity(Request $request)
     {
-
+        $typecoming=$request->type ?? null;
         if ($request->type != null) {
             $universities = [];
             $countrycoming = $request->countries_id ?? '';
@@ -122,150 +138,222 @@ class UniversityFilterController extends Controller
             }
         }
 
-        // dd($universities);
+       
+        if (count($universities)>0) {
+            $universities=array_unique($universities);
+        }
         $page=1;
+        
 
-
-        return view('frontEnd.university.university_all', compact('countrycoming','page'))->with('universities', $universities);
+        return view('frontEnd.university.university_all', compact('countrycoming','page','typecoming'))->with('universities', $universities);
     }
 
 
     public function universitiesInnerFilter(Request $request)
     {
+        
         $universities = [];
         $childs=[];
-    
-        $countrycoming = $request->countries_id ?? '';
-       $typecoming = $request->type ?? '' ;
-        //  dd($request->countries_id);
-     
-        // if ($request->keyword != null) {
-        //     $keyword = $request->keyword;
-
-        //     $users = User::with(['university' => function ($q) use ($keyword) {
-        //         $q->where('university_name', 'LIKE', '%' . $keyword . '%');
-        //     }])->get();
+        $query = User::where('status', 1);
 
 
-        //     foreach ($users as $key => $user) {
-        //         if ($user->university != null) {
-        //             $universities[$key] = $user;
-        //         }
-        //     }
-        // } else {
+       $countrycoming = $request->countries_id ?? '';
+       $typecoming = $request->type ?? null ;
 
-            if ($request->countries_id != null) {
-                $query = User::where('countries_id', $request->countries_id);
+       if ($request->countries_id != null) {
+        $query =  $query->where('countries_id', '=',$request->countries_id);
+       }
 
-                if ($request->type != '' && $request->type != null) {
-                    $tape = $request->type;
-                    $query->with(['university' => function ($q) use ($tape) {
-                        $q->where('type', '=', $tape);
-                    }]);
-                }
-
-                $rtd = $query->get();
-
-                foreach ($rtd as $key => $que) {
-
-
-                    if (isset($que->university)) {
-                        if ($que->university != null) {
-                            $universities[$key] = $que;
-                        }
-                    }
-                }
-            }
-            else{
-                $tape = $request->type;
-                $query = User:: with(['university' => function ($q) use ($tape) {
-                    $q->where('type', '=', $tape);
-                }]);
-                $rtd = $query->get();
-
-                foreach ($rtd as $key => $que) {
-
-
-                    if (isset($que->university)) {
-                        if ($que->university != null) {
-                            $universities[$key] = $que;
-                        }
-                    }
-                }
-            }
-        // }
-
-
-    // dd($request->all());
-    $filtercatgory = $request->filtercatgory ?? '';
-    $filtersub_category = $request->filtersub_category ?? '';
-    $study_level = $request->study_level ?? '';
-    $rating = $request->rating ?? '' ;
-    $ielts_rating = $request->ielts_rating ?? '';
-// dd($filtercatgory);
-
-
-    if ($filtersub_category != null && $filtersub_category != '') {
-        if(isset($study_level)&& $study_level != ''){
-            $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->where('type',$study_level)->distinct()->get(['user_id']);
+       if ($request->type != '' && $request->type != null) {
+        $tape = $request->type;
+        if ($request->ielts_rating != '' && $request->ielts_rating != null) {
+            $ielts_rating = $request->ielts_rating;
+            $query->with(['university' => function ($q) use ($tape,$ielts_rating) {
+                $q->where('type', '=', $tape)->where('iltes', '=', $ielts_rating);
+            }]);
         }
         else{
-        $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->distinct()->get(['user_id']);              
-    }
-    
-        foreach ($universitycourse as $key => $univercity) {
-            $universities[$key] = $univercity->users;
+            $query->with(['university' => function ($q) use ($tape) {
+                $q->where('type', '=', $tape);
+            }]);
         }
-    
-    } 
-    else {
-        if(isset($filtercatgory) && $filtercatgory != null){
-        $check = Category::find($filtercatgory);
+       
+       }
+
+       if ($request->ielts_rating != '' && $request->ielts_rating != null) {
+        if ($request->type != '' && $request->type != null) {
+            $tape = $request->type;
+            $ielts_rating = $request->ielts_rating;
+            $query->with(['university' => function ($q) use ($ielts_rating,$tape) {
+                $q->where('iltes', '=', $ielts_rating)->where('type', '=', $tape);
+            }]);
+        }else{
+        $ielts_rating = $request->ielts_rating;
+        $query->with(['university' => function ($q) use ($ielts_rating) {
+            $q->where('iltes', '=', $ielts_rating);
+        }]);
+    }
+       }
+
+       if ($request->filtercatgory != '' && $request->filtercatgory != null) {
+        $tape = $request->filtercatgory;
+        $check = Category::find($tape);
         $childcheck = $check->child_category->pluck('id');
         $childerens=$check->child_category;
-        // dd($childerens);
-
         if ($childcheck->count() > 0) {
             foreach($childerens as $keys=>$child){
                 $childs[$keys]=$child;
-
-            }
+            }   
         }
+        $query->with(['universityCourse' => function ($q) use ($childcheck) {
+            $q->whereIn('category_id',$childcheck);
+        }]);
+       }
+
+       if ($request->filtersub_category != '' && $request->filtersub_category != null) {
+        $subtape = $request->filtersub_category;
+        $query->with(['universityCourse' => function ($q) use ($subtape) {
+            $q->where('category_id', '=', $subtape);
+        }]);
+       }
+
+       if($request->study_level != null && $request->study_level != ''){
+       $st=$request->study_level;
+        $query->with(['universityCourse' => function ($q) use ($st) {
+            $q->where('type', '=', $st);
+        }]);
+            }
 
 
-        if ($childcheck->count() > 0) {
-            if(isset($study_level) && $study_level != ''){
-            $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->where('type',$study_level)->distinct()->get();
-            // dd($universitycourse);
+       if ($request->rating != null) {
+        $query =  $query->where('rating', '=',$request->rating);
+       }
 
-            }
-            else
-            {
-                $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get();
-            }
-            foreach ($universitycourse as $key => $univercity) {
-                $universities[$key] = $univercity->users;
-            }
-        } else {
-            if(isset($study_level) && $study_level != ''){
-            $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->where('type',$study_level)->distinct()->get();
-            }
-            else
-            {
-                $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->distinct()->get();
-            }
-            foreach ($universitycourse as $key => $univercity) {
-                $universities[$key] = $univercity->users;
-            }
-        }
-      }
+
+
+       $rtd = $query->get();
+
+       foreach ($rtd as $key => $que) {
+
+
+           if (isset($que->university)) {
+               if ($que->university != null && count($que->universityCourse) > 0) {
+                   $universities[$key] = $que;
+               }
+           }
+       }
+// dd($universities);
+
+    //         if ($request->countries_id != null) {
+    //             $query = User::where('countries_id', $request->countries_id);
+
+    //             if ($request->type != '' && $request->type != null) {
+    //                 $tape = $request->type;
+    //                 $query->with(['university' => function ($q) use ($tape) {
+    //                     $q->where('type', '=', $tape);
+    //                 }]);
+    //             }
+
+    //             $rtd = $query->get();
+
+    //             foreach ($rtd as $key => $que) {
+
+
+    //                 if (isset($que->university)) {
+    //                     if ($que->university != null) {
+    //                         $universities[$key] = $que;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         else{
+    //             $tape = $request->type;
+    //             $query = User:: with(['university' => function ($q) use ($tape) {
+    //                 $q->where('type', '=', $tape);
+    //             }]);
+    //             $rtd = $query->get();
+
+    //             foreach ($rtd as $key => $que) {
+
+
+    //                 if (isset($que->university)) {
+    //                     if ($que->university != null) {
+    //                         $universities[$key] = $que;
+    //                     }
+    //                 }
+    //             }
+    //         }
+     
+
+    $filtercatgory = $request->filtercatgory ?? '';
+    $filtersub_category = $request->filtersub_category ?? '';
+    $study_level = $request->study_level ?? null;
+    $rating = $request->rating ?? '' ;
+    $ielts_rating = $request->ielts_rating ?? '';
+// dd($request->study_level);
+    
+
+    // if ($filtersub_category != null && $filtersub_category != '') {
+    //     if(isset($study_level)&& $study_level != ''){
+    //         $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->where('type',$study_level)->distinct()->get(['user_id']);
+    //     }
+    //     else{
+    //     $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->distinct()->get(['user_id']);              
+    // }
+    
+    //     foreach ($universitycourse as $key => $univercity) {
+    //         $universities[$key] = $univercity->users;
+    //     }
+    
+    // } 
+    // else {
+    //     if(isset($filtercatgory) && $filtercatgory != null){
+    //     $check = Category::find($filtercatgory);
+    //     $childcheck = $check->child_category->pluck('id');
+    //     $childerens=$check->child_category;
+    //     // dd($childerens);
+
+    //     if ($childcheck->count() > 0) {
+    //         foreach($childerens as $keys=>$child){
+    //             $childs[$keys]=$child;
+
+    //         }
+    //     }
+
+
+    //     if ($childcheck->count() > 0) {
+    //         if(isset($study_level) && $study_level != ''){
+    //         $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->where('type',$study_level)->distinct()->get();
+    //         // dd($universitycourse);
+
+    //         }
+    //         else
+    //         {
+    //             $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get();
+    //         }
+    //         foreach ($universitycourse as $key => $univercity) {
+    //             $universities[$key] = $univercity->users;
+    //         }
+    //     } else {
+    //         if(isset($study_level) && $study_level != ''){
+    //         $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->where('type',$study_level)->distinct()->get();
+    //         }
+    //         else
+    //         {
+    //             $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->distinct()->get();
+    //         }
+    //         foreach ($universitycourse as $key => $univercity) {
+    //             $universities[$key] = $univercity->users;
+    //         }
+    //     }
+    //   }
+    // }
+
+    if (count($universities)>0) {
+        $universities=array_unique($universities);
     }
-
-
-    return view('frontEnd.university.university_all', compact('universities','filtercatgory','childs','filtersub_category','study_level','countrycoming','typecoming'));
-    // ->with('universities', $universities);
-
-        // return view('frontEnd.university.university_all', compact('universities'));
+  
+    return view('frontEnd.university.university_all', compact('universities','filtercatgory','childs','filtersub_category','study_level','countrycoming','typecoming','rating','ielts_rating'));
     }
 
     public function countrySelected(Request $request)
