@@ -58,7 +58,7 @@
 
                     <tr>
                         <th scope="row">Booking Time Slot</th>
-                        <td>{{$booking->booking_start_time ?? ''}}-{{$booking->booking_end_time ?? ''}}</td>
+                        <td>{{$show->booking_start_time ?? ''}}-{{$show->booking_end_time ?? ''}}</td>
                     </tr>
 
                 <?php $i = 1?>
