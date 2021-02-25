@@ -81,9 +81,18 @@
                                         <div class="input-box">
                                             <label class="label-text" style="
                                             color: white;
-                                        ">Location</label>
+                                        ">Enter Your Location</label>
                                             <div class="form-group">
-                                                <input class=" form-control" type="text" name="keyword" Placeholder="Your Location">
+                                                <div id="locationField">
+                                                    <input class="form-control"
+                                                      id="autocomplete"
+                                                      name="googleAddress"
+                                                      value=""
+                                                      placeholder="Enter your Location"
+                                                      onFocus="geolocate()"
+                                                      type="text"
+                                                     required/>
+                                                  </div>
 
                                             </div>
                                         </div>
