@@ -3,7 +3,7 @@
 // use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => 'role:client','middleware' => 'Status'], function () {
+Route::group(['middleware' => 'role:client','middleware' => 'Status','middleware' => 'verified'], function () {
     Route::get('dash', function(){
 
        return "client";

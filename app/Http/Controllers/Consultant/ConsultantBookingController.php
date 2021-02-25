@@ -15,6 +15,8 @@ use App\Models\University;
 use App\Models\UniversityCourse;
 use App\Models\User;
 use App\Models\Country;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Models\ApplicationDocument;
 use App\Models\UniversityConsultant;
 
@@ -147,11 +149,11 @@ public function applicationStore(Request $request){
 
         $userEmail = User::where('id',$request->client_id)->first();
         $email = $userEmail->email;
-
+        $aid = $store->id;
         // Important Code
-            // $replacement['APPLICATION_LINK'] = http://kamercio.com/campusInterest/public/client/applications/show/$store->id;
-            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
-            // mail::to($email)->send(new \App\Mail\ManuMailer($data));
+            $replacement['APPLICATION_LINK'] = 'http://kamercio.com/campusInterest/public/client/applications/show/'.$aid;
+            $data = ['template'=>'application','hooksVars' => $replacement];
+            mail::to($email)->send(new \App\Mail\ManuMailer($data));
         return redirect()->route('consultant.application')->with('success','Application Created Successfully');
     // }
     // else

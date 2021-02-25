@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Route;
 // use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -19,7 +21,6 @@ use App\Models\UniversityConsultant;
 use App\Models\University;
 use App\Models\UniversityCourse;
 use App\Models\UniversityMedia;
-use Illuminate\Support\Facades\Mail;
 class AdminUsersController extends Controller
 {
     public function index($id)
@@ -118,7 +119,7 @@ class AdminUsersController extends Controller
                     // Important Code
     //  $replacement['token'] =$request->_token;
 
-
+    //  $replacement['TYPE'] = University;
     //  $replacement['USER_NAME'] = $request->first_name;
     //  $replacement['PASSWORD'] = $request->password;
     //  $replacement['EMAIL'] = $request->email;
