@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 use App\Models\University;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -34,7 +36,7 @@ class RegisterController extends Controller
     {
 
 
-        return User::create([
+       $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
@@ -43,18 +45,19 @@ class RegisterController extends Controller
         ])->assignRole('client');
 
       // Important Code
-// $replacement['COURSE_LINK'] =http://kamercio.com/campusInterest/public/university/all;
-// $replacement['CONSULTANT_LINK'] =http://kamercio.com/campusInterest/public/consultant/all;
-// $replacement['APP_STORE_APP'] = https://play.google.com/store/apps/developer?id=Digitalcolf;
-// $replacement['PLAY_STORE_APP'] = https://play.google.com/store/apps/developer?id=Digitalcolf;
-// $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
-// $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
-// $replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
-// $replacement['WEBSITE_LINK'] = http://kamercio.com/campusInterest/public/;
-// $data = ['template'=>'welcome-email','hooksVars' => $replacement];
-// mail::to($data['email'])->send(new \App\Mail\ManuMailer($data));
+      $replacement['USER_NAME'] = $user->first_name;
+$replacement['COURSE_LINK'] = 'http://kamercio.com/campusInterest/public/university/all';
+$replacement['CONSULTANT_LINK'] ='http://kamercio.com/campusInterest/public/consultant/all';
+$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+$replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
+$replacement['WEBSITE_LINK'] = 'http://kamercio.com/campusInterest/public/';
+$data = ['template'=>'welcome-email','hooksVars' => $replacement];
+mail::to($user->email)->send(new \App\Mail\ManuMailer($data));
 
-
+return $user;
 
     }
 

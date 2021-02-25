@@ -226,6 +226,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php $countries = App\Models\Country::all();?>
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
@@ -234,7 +235,6 @@
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select" id="salazar" name="countries_id">
                                                         <option>Select Country</option>
-                                                        <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
                                                             <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
@@ -255,10 +255,19 @@
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text"
-                                        >Enter Location</label>
+                                        >Enter Your Location</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
-                                                <input class="form-control" type="text" name="keyword" placeholder="Your Location">
+                                                <div id="locationField">
+                                                    <input class="form-control"
+                                                      id="autocomplete"
+                                                      name="googleAddress"
+                                                      value=""
+                                                      placeholder="Enter your Location"
+                                                      onFocus="geolocate()"
+                                                      type="text"
+                                                     required/>
+                                                  </div>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
