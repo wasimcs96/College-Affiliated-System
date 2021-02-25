@@ -36,20 +36,21 @@
                             @else
                             <img style="width: 106px;height: 98px; border-radius:98px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                             @endif</div>
-                    <div class="breadcrumb-btn">
-
-
-                        {{-- <a class="d-none"
-                             data-fancybox="gallery"
-                             data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
-                             data-caption="Showing image - 03"
-                             data-speed="700"></a>
-                        <a class="d-none"
-                             data-fancybox="gallery"
-                             data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
-                             data-caption="Showing image - 04"
-                             data-speed="700"></a> --}}
-                    </div><!-- end breadcrumb-btn -->
+                            <div class="breadcrumb-btn">
+                                <div class="btn-box"  style="
+                                position: absolute;
+                                bottom: 18px;
+                                left: 151px;
+                                margin-bottom: 8px;
+                            ">
+                 
+                                    <a class="theme-btn"  href="{{route('consultant_book',$consultant->id)}}" >
+                                        <i class="la la-paper mr-2"></i>Book Now
+                                    </a>
+                                   
+                                
+        
+                                </div>
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
         </div><!-- end container -->
