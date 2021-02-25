@@ -1,4 +1,5 @@
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true" style="    overflow-x: hidden;
+overflow-y: auto;">
     <div class="modal-dialog" role="document">
         {{-- background-image: url('{{asset('frontEnd/assets/images/signup.jpg')}}'); --}}
 
