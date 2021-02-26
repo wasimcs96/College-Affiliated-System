@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use Illuminate\Support\Carbon;
 use Config;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\PaymentController;
 
 class UniversityAdvertisementController extends Controller
