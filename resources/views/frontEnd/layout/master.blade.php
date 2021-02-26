@@ -511,12 +511,12 @@
 
 <!-- PWA  -->
 <nav class="nav123 hide-on-desktop" style="z-index:2;">
-        <a href="{{route('front')}}" class="imran nav__link nav__link--active">
+        <a href="{{route('front')}}"  class="imran nav__link  {{ (request()->segment(1) == '127.0.0.1:8000') ? 'nav__link--active' : '' }}">
             <i class="material-icons nav__icon">home</i>
             <span class="nav__text">Home</span>
         </a>
 
-        <a href="{{route('consultant_all')}}" class="nav__link imran">
+        <a href="{{route('consultant_all')}}" class="nav__link {{ (request()->segment(1) == 'consultant') ? 'nav__link--active' : '' }} imran">
             <i class="material-icons nav__icon">supervisor_account</i>
             <span class="nav__text">Consultant</span>
         </a>
@@ -584,7 +584,7 @@
         </a>
         @endif
 
-        <a href="{{route('university_all')}}" class="nav__link imran">
+        <a href="{{route('university_all')}}" class="nav__link  {{ (request()->segment(1) == 'university') ? 'nav__link--active' : '' }} imran">
             <i class="material-icons nav__icon">school</i>
             <span class="nav__text">Find university</span>
         </a>
@@ -1078,6 +1078,8 @@ location="consultant/services/subscription/add";
         document.getElementById("login-form").reset();
     });
   </script>
+
+  
 @yield('per_page_script')
 </body>
 

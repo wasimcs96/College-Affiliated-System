@@ -118,12 +118,10 @@
                     </div>
                 </li> --}}
                 @if (auth()->user()->isAdmin())
-                {{-- <li><a href="javascript:void(0);" class="megamenu_toggle icon-menu" title="University">University</a></li>
-                <li class="p_social"><a href="{{route('extra.social')}}" class="social icon-menu" title="Consultant">Consultant</a></li>
-                <li class="p_news"><a href="{{route('extra.news')}}" class="news icon-menu" title="Client">Client</a></li> --}}
-                <li class="p_news"><a href="{{route('frontend.index')}}" class="news icon-menu" title="Back to Site">Back to Site</a></li>
+         
+                <li class="p_news"><a href="{{route('frontend.index')}}" class=" icon-menu" title="Back to Site">Back to Site</a></li>
                 @else
-                <li class="p_news"><a href="{{route('frontend.index')}}" class="news icon-menu" title="Back to Site">Back to Site</a></li>
+                <li class="p_news"><a href="{{route('frontend.index')}}" class=" icon-menu" title="Back to Site">Back to Site</a></li>
                 @endif
             </ul>
         </div>
@@ -141,7 +139,7 @@
                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                          @csrf
                      </form>
-
+                    </li>
                 </ul>
             </div>
         </div>
