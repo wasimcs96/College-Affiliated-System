@@ -54,12 +54,12 @@ class AdminAdvertisementController extends Controller
         ]);
              return response($rt);
 
-        // $replacement['IMAGE'] = $image;
-        // $replacement['USER_NAME'] = $user->first_name;
-        // $replacement['REASON'] =$request->reason;
-        // $replacement['ADVERTISEMENT_LINK'] = $link;
-        // $data = ['template'=>'advertisement-reject','hooksVars' => $replacement];
-        // mail::to($user->email)->send(new \App\Mail\ManuMailer($data));
+        $replacement['IMAGE'] = $image;
+        $replacement['USER_NAME'] = $user->first_name;
+        $replacement['REASON'] =$request->reason;
+        $replacement['ADVERTISEMENT_LINK'] = $link;
+        $data = ['template'=>'advertisement-reject','hooksVars' => $replacement];
+        mail::to($user->email)->send(new \App\Mail\ManuMailer($data));
     }
 
 }

@@ -209,14 +209,14 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="address">Full Address</label>
-                            <textarea rows="4"  type="text" name="address" class="form-control" placeholder="Full Address" required>@if(isset(Auth()->user()->address)){{Auth()->user()->address}}@endif</textarea>
+                            <textarea rows="4"  type="text" name="address" class="form-control" placeholder="Full Address">@if(isset(Auth()->user()->address)){{Auth()->user()->address}}@endif</textarea>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="company_name">Company Name</label>
                             <div class="input-group">
-                                <input name="company_name" type="text" class="form-control" value="@if(isset(auth()->user()->consultant->company_name)){{auth()->user()->consultant->company_name}}@endif" placeholder="Company Name" required>
+                                <input name="company_name" type="text" class="form-control" value="@if(isset(auth()->user()->consultant->company_name)){{auth()->user()->consultant->company_name}}@endif" placeholder="Company Name">
                             </div>
                         </div>
                     </div>
