@@ -83,6 +83,18 @@ cursor: pointer;
 tr.shown td.details-control {
     background: url('../assets/images/details_close.png') no-repeat center center;
 }
+.buttons-print{
+    display: none;
+
+}
+.buttons-csv{
+    display: none;
+    
+}
+.buttons-copy{
+    display: none;
+    
+}
 </style>
 @stop
 
