@@ -78,25 +78,25 @@ class PaymentController extends Controller
             {
                 $role = Consultant;
             }
-
+$consultantSubscription = Carbon::now()->addMonths($time);
             // Important Code
-            // $replacement['ROLE'] = $role;
-            // $replacement['SERVICE_NAME'] =Subscription;
-            // $replacement['SERVICE_DETAIL'] = Subscription Expire Date: Carbon::now()->addMonths($time);
-            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
-            // mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+            $replacement['ROLE'] = $role;
+            $replacement['SERVICE_NAME'] = 'Subscription';
+            $replacement['SERVICE_DETAIL'] = 'Subscription Expire Date: '.$consultantSubscription;
+            $data = ['template'=>'consultant-services','hooksVars' => $replacement];
+            mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
         }
 
         if ($request->payment_type == 1) {
             $time = $request->package_time;
             $user->Premium_expire_date = Carbon::now()->addMonths($time);
             $user->save();
-
+$consultantPremium = Carbon::now()->addMonths($time);
             // Important Code
-            // $replacement['SERVICE_NAME'] =Go Premium;
-            // $replacement['SERVICE_DETAIL'] = Premium Expire Date: Carbon::now()->addMonths($time);
-            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
-            // mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+            $replacement['SERVICE_NAME'] ='Go Premium';
+            $replacement['SERVICE_DETAIL'] = 'Premium Expire Date: '.$consultantPremium;
+            $data = ['template'=>'consultant-services','hooksVars' => $replacement];
+            mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
         }
 
 
