@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SubAdmin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -17,14 +17,16 @@ use App\Models\University;
 use Config;
 use App\Models\ApplicationAppliedUniversity;
 use date;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
-class SubAdminApplicationController extends Controller
+class AdminApplicationController extends Controller
 {
    public function index()
    {
      $applications = Application::orderBy('created_at', 'DESC')->get();
     //  dd($applications);
-     return view('subadmin.application.application')->with('applications', $applications);
+     return view('admin.application.application')->with('applications', $applications);
    }
 
    public function applicationCreate($id)
@@ -50,7 +52,7 @@ class SubAdminApplicationController extends Controller
     }
 
 
-       return view('subadmin.application.application_create',compact('application','university','course'))->with('countries',Country::all());
+       return view('admin.application.application_create',compact('application','university','course'))->with('countries',Country::all());
    }
 
    public function documentStore(Request $request)
@@ -118,6 +120,12 @@ class SubAdminApplicationController extends Controller
     //    $university->documents = array_merge($documentVisa,$documentDefault2);
        $university->is_accepeted = 1;
        $university->save();
+
+          // Important Code
+          $replacement['WEBSITE_LINK'] = 'http://kamercio.com/campusInterest/public';
+          $replacement['UNIVERSITY_NAME'] = $university_name;
+          $data = ['template'=>'fees-visa','hooksVars' => $replacement];
+          mail::to($email)->send(new \App\Mail\ManuMailer($data));
        return response('success');
 
     }
@@ -139,7 +147,11 @@ class SubAdminApplicationController extends Controller
         // $default_document = University::find($university_id);
         // $default_document->default_documents = $document;
         // $default_document->save();
+                     // Important Code
 
+            $replacement['COUNTRY_NAME'] = $country_name;
+            $data = ['template'=>'fees-visa-received','hooksVars' => $replacement];
+            mail::to($email)->send(new \App\Mail\ManuMailer($data));
         return response('success');
 
      }
@@ -153,6 +165,12 @@ class SubAdminApplicationController extends Controller
         $university->approved_status = 1;
         $university->deadline=$date;
         $university->save();
+          // Important Code
+          $replacement['WEBSITE_LINK'] = 'http://kamercio.com/campusInterest/public';
+          $replacement['UNIVERSITY_NAME'] = $university_name;
+          $replacement['DEADLINE'] = $date;
+          $data = ['template'=>'offer-received','hooksVars' => $replacement];
+          mail::to($email)->send(new \App\Mail\ManuMailer($data));
     }
     else {
 

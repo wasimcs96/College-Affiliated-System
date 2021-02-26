@@ -8,6 +8,8 @@ use App\Models\Advertisement;
 use App\Models\User;
 use App\Models\ApplicationChat;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 class AdminAdvertisementController extends Controller
 {
     public function index()
@@ -44,8 +46,8 @@ class AdminAdvertisementController extends Controller
         $lname = $user->last_name;
         $email = $user->email;
         $reason = $request->reason;
-        $link = "https://bilaltech.in/development.EducationPortal/public/consultant/advertisement/edit/$request->advertisement_id";
-        $image = "https://bilaltech.in/development.EducationPortal/public/frontEnd/assets/image/logo.png";
+        $link = "http://kamercio.com/campusInterest/public/consultant/advertisement/edit/".$request->advertisement_id;
+        $image = "http://kamercio.com/campusInterest/public/consultant/frontEnd/assets/image/logo.png";
       $rt=  ApplicationChat::create([
            'sender'=>auth()->user()->id,
            'receiver'=>$request->user_id,
