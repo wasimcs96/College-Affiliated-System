@@ -376,11 +376,16 @@ if($courses->count()>0){
     }
     public function universityWiseConsultant(Request $request)
     {
-        $universities = [];
-         $curloc=json_decode($_COOKIE['curloc']);
+        $googleAddress=$request->googleAddress ?? '';
+        $service=$request->service ?? '';
+        $country= $request->countries_id ?? '';
 
-         $ata=[];
-         $googleAddress=$request->googleAddress;
+
+        $universities = [];
+        $curloc=json_decode($_COOKIE['curloc']);
+
+        $ata=[];
+         
      if ($googleAddress != null && $googleAddress != '') {
           $formattedAddr = str_replace(' ','+',$googleAddress);
           $geocodeFromAddr = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC1jKOFLhfQoZD3xJISSPnSW9-4SyYPpjY&address='.$formattedAddr.'&sensor=false');
@@ -399,7 +404,7 @@ if($courses->count()>0){
         $query = User::where('status',1)->where('countries_id', $request->countries_id)->pluck('id');
         $universityConsultant=UniversityConsultant::whereIn('university_id',$query)->pluck('consultant_id');
 
-        $consultants=User::whereIn('id',$universityConsultant)->get();
+        $consultants=User::where('status',1)->whereIn('id',$universityConsultant)->get();
 
         foreach ($consultants as $key => $que) {
             $R = 3958.8; // Radius of the Earth in miles
@@ -432,13 +437,13 @@ if($courses->count()>0){
             $difflon = (floatval($us->longitude)-floatval($ata['longitude'])) * (pi()/180); // Radian difference (longitudes)
             
             $d2 = 2 * $R * asin(sqrt(sin($difflat/2)*sin($difflat/2)+cos($rlat11)*cos($rlat22)*sin($difflon/2)*sin($difflon/2)));
-            if ($us->consultant->pr_service == 1 && floatval($radius) >= $d2) {
+            if ($us->consultant->pr_service == 1 && floatval($radius) >= $d2 && $us->status == 1) {
             $universities[$key]= $us;
             }
         }
        }    
     }
-        return view('frontEnd.consultant.consultant_all')->with('consultants', $universities);
+        return view('frontEnd.consultant.consultant_all',compact('googleAddress','service','country'))->with('consultants', $universities);
     }
 
     public function consultantsInnerFilter(Request $request)
