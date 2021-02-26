@@ -215,10 +215,10 @@
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
-                                                    <select class="selectpicker" multiple="multiple" data-live-search="true"  placeholder="Exam" id="university" name="exam[]" >
-                                                        {{-- <option value="IELTS">Selec Service</option> --}}
-                                                        <option value="IELTS">PR</option>
-                                                        <option value="TOEFL">Student Visa </option>
+                                                    <select class="select-contain-select" data-live-search="true"  placeholder="Exam" id="university" name="service" required>
+                                                        <option value="">Select Service</option>
+                                                        <option value="0">PR</option>
+                                                        <option value="1">Student Visa</option>
 
 
                                                     </select>
@@ -266,7 +266,7 @@
                                                       placeholder="Enter your Location"
                                                       onFocus="geolocate()"
                                                       type="text"
-                                                     required/>
+                                                     />
                                                   </div>
                                             </div>
                                         </div>

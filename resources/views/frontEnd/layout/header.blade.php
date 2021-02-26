@@ -18,7 +18,7 @@
                             <div class="header-right-action">
                                 <div class="select-contain select--contain w-auto">
                                     <select class="select-contain-select">
-                                        <?php $ip = '31.220.50.163';
+                                        <?php $ip = '117.242.119.104';
                                         $data = \Location::get($ip); ?>
                                         @php  $countries=DB::table('countries')->get();
                                         @endphp
