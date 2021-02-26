@@ -10,6 +10,7 @@ use App\Models\University;
 use App\Models\UniversityConsultant;
 use App\Models\UniversityCourse;
 use App\Models\User;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
 class UniversityFilterController extends Controller
@@ -375,33 +376,68 @@ if($courses->count()>0){
     }
     public function universityWiseConsultant(Request $request)
     {
-
         $universities = [];
-        if ($request->univercity_id || $request->univercity_id != '' || $request->univercity_id != null) {
-            $universityconsultants = UniversityConsultant::where('university_id', $request->univercity_id)->get();
+         $curloc=json_decode($_COOKIE['curloc']);
 
-            foreach ($universityconsultants as $key => $univercity) {
+         $ata=[];
+         $googleAddress=$request->googleAddress;
+     if ($googleAddress != null && $googleAddress != '') {
+          $formattedAddr = str_replace(' ','+',$googleAddress);
+          $geocodeFromAddr = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC1jKOFLhfQoZD3xJISSPnSW9-4SyYPpjY&address='.$formattedAddr.'&sensor=false');
+          $output = json_decode($geocodeFromAddr);
+          //Get latitude and longitute from json data
+          $ata['latitude']  = $output->results[0]->geometry->location->lat;
+          $ata['longitude'] = $output->results[0]->geometry->location->lng;
+         }
+     else{
+          $ata['latitude']  =  $curloc->lat;
+          $ata['longitude'] =$curloc->lng;
+         }
+         $radius=50;
 
-                $consultants = $univercity->userConsultant;
+    if ($request->service == 1) {
+        $query = User::where('status',1)->where('countries_id', $request->countries_id)->pluck('id');
+        $universityConsultant=UniversityConsultant::whereIn('university_id',$query)->pluck('consultant_id');
 
-                if ($consultants != null) {
+        $consultants=User::whereIn('id',$universityConsultant)->get();
 
-                    $universities[$key] = $consultants;
-                } else {
-                    $universities = [];
-                }
-            }
-        } else {
-            $query = User::where('countries_id', $request->countries_id)->where('status',1)->with(['consultant'])->get();
-
-            foreach ($query as $key => $que) {
-
+        foreach ($consultants as $key => $que) {
+            $R = 3958.8; // Radius of the Earth in miles
+         
+            $rlat1 = floatval($ata['latitude']) * (pi()/180); // Convert degrees to radians
+            $rlat2 = floatval($que->latitude) * (pi()/180);
+            $difflat = $rlat2-$rlat1; // Radian difference (latitudes)
+            $difflon = (floatval($que->longitude)-floatval($ata['longitude'])) * (pi()/180); // Radian difference (longitudes)
+            
+            $d = 2 * $R * asin(sqrt(sin($difflat/2)*sin($difflat/2)+cos($rlat1)*cos($rlat2)*sin($difflon/2)*sin($difflon/2)));
+            // dd($d);
+            if(floatval($radius) >= $d){
                 $universities[$key] = $que;
             }
         }
-
-
-
+       
+    }
+    else{
+        $consultants=DB::table("consultant_pr_migration_countries")
+        ->whereRaw("find_in_set('$request->countries_id',country_id)")
+        ->pluck('user_id');
+       if (count($consultants) > 0) {
+        foreach ($consultants as $key => $value) {
+            $us= User::find($value);
+            $R = 3958.8; // Radius of the Earth in miles
+         
+            $rlat11 = floatval($ata['latitude']) * (pi()/180); // Convert degrees to radians
+            $rlat22 = floatval($us->latitude) * (pi()/180);
+            $difflat = $rlat22-$rlat11; // Radian difference (latitudes)
+            $difflon = (floatval($us->longitude)-floatval($ata['longitude'])) * (pi()/180); // Radian difference (longitudes)
+            
+            $d2 = 2 * $R * asin(sqrt(sin($difflat/2)*sin($difflat/2)+cos($rlat11)*cos($rlat22)*sin($difflon/2)*sin($difflon/2)));
+            if ($us->consultant->pr_service == 1 && floatval($radius) >= $d2) {
+            $universities[$key]= $us;
+            }
+        }
+       }    
+    }
         return view('frontEnd.consultant.consultant_all')->with('consultants', $universities);
     }
 
