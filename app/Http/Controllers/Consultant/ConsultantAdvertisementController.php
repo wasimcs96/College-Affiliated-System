@@ -49,16 +49,17 @@ class ConsultantAdvertisementController extends Controller
         'banner_image'=>$newname ?? '',
         'user_type'=>0,
         'status'=>0,
+        'type'=>$request->type,
         'time_period'=> $expire,
         'order_id'=>$request->orderId,
         'link'=>$request->link
     ]);
             // Important Code
-            // $replacement['ROLE'] = Consultant;
-            // $replacement['SERVICE_NAME'] = Advertisement;
-            // $replacement['SERVICE_DETAIL'] = Your advertisement is under verification;
-            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
-            // mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+            $replacement['ROLE'] = 'Consultant';
+            $replacement['SERVICE_NAME'] = 'Advertisement';
+            $replacement['SERVICE_DETAIL'] = 'Your advertisement is under verification';
+            $data = ['template'=>'consultant-services','hooksVars' => $replacement];
+            mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
     // $new=new PaymentController();
     //$new->payment($request);
 //dd($new);

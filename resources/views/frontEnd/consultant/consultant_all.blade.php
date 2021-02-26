@@ -30,8 +30,8 @@
                                                         {{-- <option value="IELTS">Selec Service</option> --}}
                                                         <option value="IELTS">PR</option>
                                                         <option value="TOEFL">Student Visa </option>
-                                                    
-                                                    
+
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -81,9 +81,18 @@
                                         <div class="input-box">
                                             <label class="label-text" style="
                                             color: white;
-                                        ">Location</label>
+                                        ">Enter Your Location</label>
                                             <div class="form-group">
-                                                <input class=" form-control" type="text" name="keyword" Placeholder="Your Location">
+                                                <div id="locationField">
+                                                    <input class="form-control"
+                                                      id="autocomplete"
+                                                      name="googleAddress"
+                                                      value=""
+                                                      placeholder="Enter your Location"
+                                                      onFocus="geolocate()"
+                                                      type="text"
+                                                     required/>
+                                                  </div>
 
                                             </div>
                                         </div>
@@ -116,7 +125,7 @@
         <div class="row">
             <div class="col-lg-12">
             <div class="testimonial-carousel-ad carousel-action">
-    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('type',0)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
                     <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
@@ -297,7 +306,7 @@
         <div class="row">
             <div class="col-lg-12">
             <div class="testimonial-carousel-ad carousel-action">
-    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('type',0)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
                     <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">

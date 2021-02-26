@@ -52,10 +52,11 @@
                 <input type="text" name="amount" value="{{$package->amount ?? ''}}" hidden>
                 <input type="text" name="user_id" value="{{auth()->user()->id ?? ''}}" hidden>
                 <input type="text" name="payment_type" value="2" hidden>
+                <input type="text" name="type" value="{{$package->advertisement_type ?? ''}}" hidden>
                 <input type="text" name="title" value="{{$package->title ?? ''}}" hidden>
                 <input type="hidden" name="expire_date" value="{{ $package->package_time ?? ''}}"/>
 
-                <li class="plan-btn"><a href="javascript:void(0);" customId="{{$package->id ?? ''}}"  customDescription="{{$package->description ?? ''}}" customAmount="{{$package->amount ?? ''}}" customUser="{{auth()->user()->id ?? ''}}" customPackage="{{$package->package_time ?? ''}}" customPayment="2" customTitle="{{$package->title ?? ''}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</a></li>
+                <li class="plan-btn"><a href="javascript:void(0);" customId="{{$package->id ?? ''}}" customType="{{$package->advertisement_type ?? ''}}"  customDescription="{{$package->description ?? ''}}" customAmount="{{$package->amount ?? ''}}" customUser="{{auth()->user()->id ?? ''}}" customPackage="{{$package->package_time ?? ''}}" customPayment="2" customTitle="{{$package->title ?? ''}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</a></li>
 
             </ul>
         </div>
@@ -181,6 +182,7 @@
         amount=$(this).attr('customAmount');
         payment_type=$(this).attr('customPayment');
         package_time=$(this).attr('customPackage');
+        type=$(this).attr('customType');
         package_id=$(this).attr('customId');
         url=$(`#url-${package_id}`).val();
         var orderId='';
@@ -269,7 +271,7 @@
                 $.ajax({
                 url:"{{ route('subscription.payment') }}",
                 method:"post",
-                data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type,package_time:package_time},
+                data:{user_id:user_id,title:title,description:description,amount:amount,payment_type:payment_type,package_time:package_time,type:type},
                 success: function(result){
                     orderId=result.id
                     var options = {
@@ -294,7 +296,7 @@
                                 $.ajax({
                                 url:"{{ route('transaction.pay') }}",
                                 method:"GET",
-                                data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title,package_time:package_time},
+                                data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title,package_time:package_time,type:type},
                                 success: function(result){
                                     //console.log(result)
                                     $(`#frm-${package_id}`).append(`<input type="text" name="orderId" value="${result}" hidden>`);

@@ -1,4 +1,5 @@
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true" style="    overflow-x: hidden;
+overflow-y: auto;">
     <div class="modal-dialog" role="document">
         {{-- background-image: url('{{asset('frontEnd/assets/images/signup.jpg')}}'); --}}
 
@@ -101,6 +102,16 @@
                                 </button>
                                 Already Member? <a href="#loginPopupForm" id="loginalready" data-toggle="modal" data-dismiss="modal">Login</a>
                             </div>
+                        </div>
+                        <div class="action-box text-center">
+                            <p class="font-size-14">Or Sign Up Using</p>
+                            <ul class="social-profile py-3">
+
+                                <li><a href="{{ url('/login/facebook') }}" class="bg-5 text-white"><i class="lab la-facebook-f"></i></a></li>
+                                <li><a href="{{ url('/login/google') }}" class="bg-6 text-white"><i class="lab la-google"></i></a></li>
+
+                                <li><a href="{{ url('/login/linkedin') }}" class="bg-5 text-white"><i class="lab la-linkedin-in"></i></a></li>
+                            </ul>
                         </div>
                 </form>
             </div>

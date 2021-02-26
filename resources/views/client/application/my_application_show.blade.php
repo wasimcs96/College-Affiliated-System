@@ -502,7 +502,12 @@
 
                                                         <input type="text" name="fees" class="form-control" id="coursefees"  @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$coursedetails->fees}}"@else value="{{ $applied->fees }}"  @endif disabled />                                                     </div>
                                                      </div>
-
+                                                     <div class="col-lg-2 col-md-12">
+                                                        <div class="form-group">
+                                                           <label for="">Scholarship</label>
+                                                                <input type="text" name="scholarship" class="form-control" id="scholarship" @if($applied->scholarship=="NULL" || $applied->scholarship=="null" || $applied->scholarship=='') value="" @else value="{{$applied->scholarship}}" @endif />
+                                                        </div>
+                                                    </div>
                                         {{-- {{ dd($applied->documents) }} --}}
                                         <div class="col-lg-10 col-md-12">
                                             @if($applied->documents == 'null' || $applied->documents == 'NULL' || $applied->documents == '')

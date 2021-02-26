@@ -1,5 +1,5 @@
 <?php
-   Route::group(['middleware' => 'role:consultant','middleware' => 'Status'], function () {
+   Route::group(['middleware' => 'role:consultant','middleware' => 'Status','middleware' => 'verified'], function () {
     Route::get('dash', function(){
 
        return "consultant";

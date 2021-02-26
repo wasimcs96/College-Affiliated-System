@@ -36,20 +36,21 @@
                             @else
                             <img style="width: 106px;height: 98px; border-radius:98px;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
                             @endif</div>
-                    <div class="breadcrumb-btn">
-
-
-                        {{-- <a class="d-none"
-                             data-fancybox="gallery"
-                             data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
-                             data-caption="Showing image - 03"
-                             data-speed="700"></a>
-                        <a class="d-none"
-                             data-fancybox="gallery"
-                             data-src="{{asset('frontEnd/assets/img/breadcrumb/breadcrumb.jpg')}}"
-                             data-caption="Showing image - 04"
-                             data-speed="700"></a> --}}
-                    </div><!-- end breadcrumb-btn -->
+                            <div class="breadcrumb-btn">
+                                <div class="btn-box"  style="
+                                position: absolute;
+                                bottom: 18px;
+                                left: 151px;
+                                margin-bottom: 8px;
+                            ">
+                 
+                                    <a class="theme-btn"  href="{{route('consultant_book',$consultant->id)}}" >
+                                        <i class="la la-paper mr-2"></i>Book Now
+                                    </a>
+                                   
+                                
+        
+                                </div>
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
         </div><!-- end container -->
@@ -279,7 +280,7 @@
                                         </div>
                                         <div class="author-bio">
                                             {{-- {{dd($consultant)}} --}}
-                                            <h4 class="author__title"><a href="#">{{$universitycon->userUniversity->university->university_name ?? ''}}</a> 
+                                            <h4 class="author__title"><a href="#">{{$universitycon->userUniversity->university->university_name ?? ''}}</a>
                                                 <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span></h4>
                                             <span class="author__meta">Member Since :@if(isset($universitycon->userUniversity->university->created_at))
                                                 {{$universitycon->userUniversity->university->created_at->Format("Y") ?? ''}}@else N/A @endif</span>
@@ -363,7 +364,7 @@
         <div class="row">
             <div class="col-lg-12">
             <div class="testimonial-carousel-ad carousel-action">
-    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('type',0)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
                     <a href="{{$advertise->link ?? ''}}"  id="click_count" link_click="{{$advertise->id ?? ''}}" target="_blank">
@@ -463,9 +464,9 @@
                                     } ?>
                                         <h3 class="card-title"><a href="{{route('university_detail',['id'=>$universitycrousel->userUniversity->id])}}">
                                         @if(isset($universitycrousel->userUniversity->university->university_name))<?php echo($myuniversitycrousel . '...')?> @else N/A @endif</a>
-                                     
+
                                             <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                 
+
                                         </h3>
                                 <p class="card-meta">{{$universitycrousel->city ?? ''}}</p>
                                   <div class="d-flex flex-wrap align-items-center ">

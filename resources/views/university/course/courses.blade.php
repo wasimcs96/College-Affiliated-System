@@ -43,8 +43,9 @@
                             <th> <b>Course</b></th>
                             <th><b> Description</b></th>
                             <th><b>Fees</b></th>
-                            <th><b>Start Date</b></th>
-                            <th><b>End Date</b></th>
+                            <th> <b>Duration</b> </th>
+                            {{-- <th><b>Start Date</b></th>
+                            <th><b>End Date</b></th> --}}
                             <th style="text-align: center;"><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -58,10 +59,11 @@
                             <td>{{$course->title ?? 'NA'}}</td>
                             <td>{{$course->description ?? ''}}</td>
                             <td>₹ {{$course->fees ?? ''}}</td>
+                            <td>{{$course->duration ?? ''}} Years</td>
                             {{-- {{ dd($course->created_at,$course->end_date) }} --}}
-                            <td>{{ Carbon\Carbon::parse($course->start_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
+                            {{-- <td>{{ Carbon\Carbon::parse($course->start_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
 
-                            <td>{{ Carbon\Carbon::parse($course->end_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
+                            <td>{{ Carbon\Carbon::parse($course->end_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td> --}}
                             <td style="text-align: center;">
                                 <a href="{{route('university.course.show', $course->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" alt="View " title="" data-original-title="View"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;
                                 <a href="{{route('university.course.edit', $course->id )}}" class="btn btn-primary btn-sm" data-toggle="tooltip" alt="Edit" title="" data-original-title="Edit"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;

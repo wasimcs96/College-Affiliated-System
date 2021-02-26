@@ -103,7 +103,7 @@
     }
     .dicipline{
         width:80% !important;
-        
+
     }
     .diciplineblock{
         width: 7rem !important;
@@ -413,6 +413,84 @@
 }
 
     </style>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1jKOFLhfQoZD3xJISSPnSW9-4SyYPpjY&callback=initAutocomplete&libraries=places&v=weekly"
+    defer
+  ></script>
+
+  <script>
+    // This sample uses the Autocomplete widget to help the user select a
+    // place, then it retrieves the address components associated with that
+    // place, and then it populates the form fields with those details.
+    // This sample requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script
+    // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+    let placeSearch;
+    let autocomplete;
+    const componentForm = {
+      street_number: "short_name",
+      route: "long_name",
+      locality: "long_name",
+      administrative_area_level_1: "short_name",
+      country: "long_name",
+      postal_code: "short_name",
+    };
+
+    function initAutocomplete() {
+      // Create the autocomplete object, restricting the search predictions to
+      // geographical location types.
+      autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById("autocomplete"),
+        { types: ["geocode"] }
+      );
+      // Avoid paying for data that you don't need by restricting the set of
+      // place fields that are returned to just the address components.
+      autocomplete.setFields(["address_component"]);
+      // When the user selects an address from the drop-down, populate the
+      // address fields in the form.
+      autocomplete.addListener("place_changed", fillInAddress);
+    }
+
+    function fillInAddress() {
+      // Get the place details from the autocomplete object.
+      const place = autocomplete.getPlace();
+
+      for (const component in componentForm) {
+        document.getElementById(component).value = "";
+        document.getElementById(component).disabled = false;
+      }
+
+      // Get each component of the address from the place details,
+      // and then fill-in the corresponding field on the form.
+      for (const component of place.address_components) {
+        const addressType = component.types[0];
+
+        if (componentForm[addressType]) {
+          const val = component[componentForm[addressType]];
+          document.getElementById(addressType).value = val;
+        }
+      }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const geolocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          const circle = new google.maps.Circle({
+            center: geolocation,
+            radius: position.coords.accuracy,
+          });
+          autocomplete.setBounds(circle.getBounds());
+        });
+      }
+    }
+  </script>
     @yield('per_page_style')
     {{-- <script src="https://kit.fontawesome.com/d8864c88b6.js" crossorigin="anonymous"></script> --}}
 </head>
@@ -433,12 +511,12 @@
 
 <!-- PWA  -->
 <nav class="nav123 hide-on-desktop" style="z-index:2;">
-        <a href="{{route('front')}}" class="imran nav__link nav__link--active">
+        <a href="{{route('front')}}"  class="imran nav__link  {{ (request()->segment(1) == '127.0.0.1:8000') ? 'nav__link--active' : '' }}">
             <i class="material-icons nav__icon">home</i>
             <span class="nav__text">Home</span>
         </a>
 
-        <a href="{{route('consultant_all')}}" class="nav__link imran">
+        <a href="{{route('consultant_all')}}" class="nav__link {{ (request()->segment(1) == 'consultant') ? 'nav__link--active' : '' }} imran">
             <i class="material-icons nav__icon">supervisor_account</i>
             <span class="nav__text">Consultant</span>
         </a>
@@ -506,7 +584,7 @@
         </a>
         @endif
 
-        <a href="{{route('university_all')}}" class="nav__link imran">
+        <a href="{{route('university_all')}}" class="nav__link  {{ (request()->segment(1) == 'university') ? 'nav__link--active' : '' }} imran">
             <i class="material-icons nav__icon">school</i>
             <span class="nav__text">Find university</span>
         </a>
@@ -1000,6 +1078,8 @@ location="consultant/services/subscription/add";
         document.getElementById("login-form").reset();
     });
   </script>
+
+  
 @yield('per_page_script')
 </body>
 

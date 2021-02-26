@@ -52,8 +52,9 @@ class UniversityCoursesController extends Controller
             'user_id' => 'required',
             'description' => 'required',
             'fees' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            // 'start_date' => 'required',
+            // 'end_date' => 'required',
+            'duration' => 'required'
 
         ]);
         $course = UniversityCourse::create($request->all());

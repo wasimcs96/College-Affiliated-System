@@ -51,11 +51,11 @@ $as= Advertisement::create([
  ]);
 
             // Important Code
-            // $replacement['ROLE'] = University;
-            // $replacement['SERVICE_NAME'] = Advertisement;
-            // $replacement['SERVICE_DETAIL'] = Your advertisement is under ;
-            // $data = ['template'=>'consultant-services','hooksVars' => $replacement];
-            // mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+            $replacement['ROLE'] = 'University';
+            $replacement['SERVICE_NAME'] = 'Advertisement';
+            $replacement['SERVICE_DETAIL'] = 'Your advertisement is under' ;
+            $data = ['template'=>'consultant-services','hooksVars' => $replacement];
+            mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
      return redirect()->route('university.advertisement')->with('success','Advertisement updated successfully');
     }
 

@@ -17,6 +17,8 @@ use App\Models\University;
 use App\Models\UniversityConsultantClient;
 use App\Models\ConsultantDues;
 use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Config;
 use App\Models\ApplicationAppliedUniversity;
 use App\Models\UniversityConsultant;
@@ -127,10 +129,10 @@ class ConsultantApplicationController extends Controller
         $user_id = Application::where('id',$application)->first();
         $email = $user_id->user->email;
        // Important Code
-            // $replacement['WEBSITE_LINK'] = http://kamercio.com/campusInterest/public;
-            // $replacement['UNIVERSITY_NAME'] = $university_name;
-            // $data = ['template'=>'fees-visa','hooksVars' => $replacement];
-            // mail::to($email)->send(new \App\Mail\ManuMailer($data));
+            $replacement['WEBSITE_LINK'] = 'http://kamercio.com/campusInterest/public';
+            $replacement['UNIVERSITY_NAME'] = $university_name;
+            $data = ['template'=>'fees-visa','hooksVars' => $replacement];
+            mail::to($email)->send(new \App\Mail\ManuMailer($data));
        return response('success');
 
     }
@@ -162,9 +164,9 @@ class ConsultantApplicationController extends Controller
          $email = $user_id->user->email;
         // Important Code
 
-            // $replacement['COUNTRY_NAME'] = $country_name;
-            // $data = ['template'=>'fees-visa-received','hooksVars' => $replacement];
-            // mail::to($email)->send(new \App\Mail\ManuMailer($data));
+            $replacement['COUNTRY_NAME'] = $country_name;
+            $data = ['template'=>'fees-visa-received','hooksVars' => $replacement];
+            mail::to($email)->send(new \App\Mail\ManuMailer($data));
         return response('success');
 
      }
@@ -183,10 +185,11 @@ class ConsultantApplicationController extends Controller
         $user_id = Application::where('id',$application)->first();
         $email = $user_id->user->email;
         // Important Code
-            // $replacement['WEBSITE_LINK'] = http://kamercio.com/campusInterest/public;
-            // $replacement['UNIVERSITY_NAME'] = $university_name;
-            // $data = ['template'=>'offer-received','hooksVars' => $replacement];
-            // mail::to($email)->send(new \App\Mail\ManuMailer($data));
+            $replacement['WEBSITE_LINK'] = 'http://kamercio.com/campusInterest/public';
+            $replacement['UNIVERSITY_NAME'] = $university_name;
+            $replacement['DEADLINE'] = $date;
+            $data = ['template'=>'offer-received','hooksVars' => $replacement];
+            mail::to($email)->send(new \App\Mail\ManuMailer($data));
     }
     else {
 
@@ -280,7 +283,7 @@ class ConsultantApplicationController extends Controller
 
          $dueAmount = DB::table('settings')->where('slug',$slug)->get('config_value')->first();
 
-    if(isset($duesAmount))
+    if(isset($dueAmount->config_value))
     {
          if($consultant==null )
          {

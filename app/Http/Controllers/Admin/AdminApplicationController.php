@@ -118,6 +118,12 @@ class AdminApplicationController extends Controller
     //    $university->documents = array_merge($documentVisa,$documentDefault2);
        $university->is_accepeted = 1;
        $university->save();
+
+          // Important Code
+          $replacement['WEBSITE_LINK'] = 'http://kamercio.com/campusInterest/public';
+          $replacement['UNIVERSITY_NAME'] = $university_name;
+          $data = ['template'=>'fees-visa','hooksVars' => $replacement];
+          mail::to($email)->send(new \App\Mail\ManuMailer($data));
        return response('success');
 
     }
@@ -139,7 +145,11 @@ class AdminApplicationController extends Controller
         // $default_document = University::find($university_id);
         // $default_document->default_documents = $document;
         // $default_document->save();
+                     // Important Code
 
+            $replacement['COUNTRY_NAME'] = $country_name;
+            $data = ['template'=>'fees-visa-received','hooksVars' => $replacement];
+            mail::to($email)->send(new \App\Mail\ManuMailer($data));
         return response('success');
 
      }
@@ -153,6 +163,12 @@ class AdminApplicationController extends Controller
         $university->approved_status = 1;
         $university->deadline=$date;
         $university->save();
+          // Important Code
+          $replacement['WEBSITE_LINK'] = 'http://kamercio.com/campusInterest/public';
+          $replacement['UNIVERSITY_NAME'] = $university_name;
+          $replacement['DEADLINE'] = $date;
+          $data = ['template'=>'offer-received','hooksVars' => $replacement];
+          mail::to($email)->send(new \App\Mail\ManuMailer($data));
     }
     else {
 

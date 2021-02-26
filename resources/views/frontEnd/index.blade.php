@@ -219,13 +219,14 @@
                                                         {{-- <option value="IELTS">Selec Service</option> --}}
                                                         <option value="IELTS">PR</option>
                                                         <option value="TOEFL">Student Visa </option>
-                                                    
-                                                    
+
+
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php $countries = App\Models\Country::all();?>
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text">Country</label>
@@ -234,7 +235,6 @@
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select" id="salazar" name="countries_id">
                                                         <option>Select Country</option>
-                                                        <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
                                                             <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
@@ -254,15 +254,24 @@
 
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text" 
-                                        >Enter Location</label>
+                                            <label class="label-text"
+                                        >Enter Your Location</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
-                                                <input class="form-control" type="text" name="keyword" placeholder="Your Location">
+                                                <div id="locationField">
+                                                    <input class="form-control"
+                                                      id="autocomplete"
+                                                      name="googleAddress"
+                                                      value=""
+                                                      placeholder="Enter your Location"
+                                                      onFocus="geolocate()"
+                                                      type="text"
+                                                     required/>
+                                                  </div>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-4 -->
-                                 
+
                                     <div class="btn-box pt-3 col-lg-2">
                                         <button type="submit" class="theme-btn" style="
                                         margin-bottom: 8px;
@@ -412,7 +421,7 @@
         <div class="row">
             <div class="col-lg-12">
             <div class="testimonial-carousel-ad  carousel-action" data-interval="100" >
-    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('type',1)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
                     <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
@@ -945,7 +954,7 @@
                                                     @if($us->Premium_expire_date > $mytime)<span style="
                                                     background-color: #073975;
                                                 " class="badge">Premium</span> @endif
-                                        
+
                                         </div>
                                         <div class="card-body">
                                             <?php
@@ -962,9 +971,9 @@
                                                 } ?>
                                                     <h3 class="card-title"><a href="{{route('university_detail',['id'=>$us->id])}}">
                                                     @if(isset($us->university->university_name))<?php echo($myus . '...')?> @else N/A @endif</a>
-                                                 
+
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                             
+
                                                     </h3>
                                             <p class="card-meta">
                                                 @if(isset($us->university->type))
@@ -1034,8 +1043,8 @@
                                                         {{$us->university->established_at}}
                                                         @else N/A @endif</span></li>
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$us->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($us->university->in_takes)){{$result = count(explode(',',$us->university->in_takes))}} @else N/A @endif</span></li>
-                                   
-                                       
+
+
                                                         <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$us->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($us->university->iltes))
                                                             {{$us->university->iltes}}/10
                                                             @else -/10 @endif</span></li>
@@ -1110,7 +1119,7 @@
                                                     @if($uk->Premium_expire_date > $mytime)<span style="
                                                     background-color: #073975;
                                                 " class="badge">Premium</span> @endif
-                                          
+
                                         </div>
                                         <div class="card-body">
 
@@ -1128,9 +1137,9 @@
                                                 } ?>
                                                     <h3 class="card-title"><a href="{{route('university_detail',['id'=>$uk->id])}}">
                                                     @if(isset($uk->university->university_name))<?php echo($myuk . '...')?> @else N/A @endif</a>
-                                                 
+
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                             
+
                                                     </h3>
 
                                             <p class="card-meta">
@@ -1201,8 +1210,8 @@
                                                         {{$uk->university->established_at}}
                                                         @else N/A @endif</span></li>
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$uk->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($uk->university->in_takes)){{$result = count(explode(',',$uk->university->in_takes))}} @else N/A @endif</span></li>
-                                   
-                                       
+
+
                                                         <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$uk->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($uk->university->iltes))
                                                             {{$uk->university->iltes}}/10
                                                             @else -/10 @endif</span></li>
@@ -1221,8 +1230,8 @@
                                                      padding-top: 9px;
                                                  ">Brochure</a>
                                                  @endif
- 
- 
+
+
                                                 <a href="{{route('university_detail',['id'=>$uk->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
@@ -1277,7 +1286,7 @@
                                                     @if($ire->Premium_expire_date > $mytime)<span style="
                                                     background-color: #073975;
                                                 " class="badge">Premium</span> @endif
-                           
+
                                         </div>
                                         <div class="card-body">
                                             <?php
@@ -1294,9 +1303,9 @@
                                                 } ?>
                                                     <h3 class="card-title"><a href="{{route('university_detail',['id'=>$ire->id])}}">
                                                     @if(isset($ire->university->university_name))<?php echo($myire . '...')?> @else N/A @endif</a>
-                                                 
+
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                             
+
                                                     </h3>
                                             <p class="card-meta">
                                                 @if(isset($ire->university->type))
@@ -1366,8 +1375,8 @@
                                                         {{$ire->university->established_at}}
                                                         @else N/A @endif</span></li>
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$ire->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($ire->university->in_takes)){{$result = count(explode(',',$ire->university->in_takes))}} @else N/A @endif</span></li>
-                                   
-                                       
+
+
                                                         <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$ire->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($ire->university->iltes))
                                                             {{$ire->university->iltes}}/10
                                                             @else -/10 @endif</span></li>
@@ -1386,8 +1395,8 @@
                                                      padding-top: 9px;
                                                  ">Brochure</a>
                                                  @endif
- 
- 
+
+
 
                                                 <a href="{{route('university_detail',['id'=>$ire->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                                             </div>
@@ -1442,7 +1451,7 @@
                                                     @if($can->Premium_expire_date > $mytime)<span style="
                                                     background-color: #073975;
                                                 " class="badge">Premium</span> @endif
-                                       
+
                                         </div>
                                         <div class="card-body">
                                             <?php
@@ -1459,9 +1468,9 @@
                                                 } ?>
                                                     <h3 class="card-title"><a href="{{route('university_detail',['id'=>$can->id])}}">
                                                     @if(isset($can->university->university_name))<?php echo($mycan . '...')?> @else N/A @endif</a>
-                                                 
+
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                             
+
                                                     </h3>
                                             <p class="card-meta">
                                                 @if(isset($can->university->type))
@@ -1531,8 +1540,8 @@
                                                         {{$can->university->established_at}}
                                                         @else N/A @endif</span></li>
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$can->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($can->university->in_takes)){{$result = count(explode(',',$can->university->in_takes))}} @else N/A @endif</span></li>
-                                   
-                                       
+
+
                                                         <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$can->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($can->university->iltes))
                                                             {{$can->university->iltes}}/10
                                                             @else -/10 @endif</span></li>
@@ -1551,8 +1560,8 @@
                                                      padding-top: 9px;
                                                  ">Brochure</a>
                                                  @endif
- 
- 
+
+
 
                                                 <a href="{{route('university_detail',['id'=>$can->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                                             </div>
@@ -1607,7 +1616,7 @@
                                                     @if($aus->Premium_expire_date > $mytime)<span style="
                                                     background-color: #073975;
                                                 " class="badge">Premium</span> @endif
-                               
+
                                         </div>
                                         <div class="card-body">
                                             <?php
@@ -1624,9 +1633,9 @@
                                                 } ?>
                                                     <h3 class="card-title"><a href="{{route('university_detail',['id'=>$aus->id])}}">
                                                     @if(isset($aus->university->university_name))<?php echo($myaus . '...')?> @else N/A @endif</a>
-                                                 
+
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                             
+
                                                     </h3>
                                             <p class="card-meta">
                                                 @if(isset($aus->university->type))
@@ -1696,8 +1705,8 @@
                                                         {{$aus->university->established_at}}
                                                         @else N/A @endif</span></li>
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$aus->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($aus->university->in_takes)){{$result = count(explode(',',$aus->university->in_takes))}} @else N/A @endif</span></li>
-                                   
-                                       
+
+
                                                         <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$aus->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($aus->university->iltes))
                                                             {{$aus->university->iltes}}/10
                                                             @else -/10 @endif</span></li>
@@ -1716,8 +1725,8 @@
                                                      padding-top: 9px;
                                                  ">Brochure</a>
                                                  @endif
- 
- 
+
+
                                                 <a href="{{route('university_detail',['id'=>$aus->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
@@ -1842,7 +1851,7 @@
         <div class="row">
             <div class="col-lg-12">
             <div class="testimonial-carousel-ad carousel-action">
-    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('expire_date','>',$mytime)->get(); ?>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('type',1)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
                     <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
