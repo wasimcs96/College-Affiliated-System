@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Models\Package;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\Consultant;
@@ -28,20 +29,20 @@ class AdminUsersController extends Controller
         // dd($id);
         if($id==1)
         {
-           return view('admin.users.user.index')->with('users', User::all())->with('id',1);
+           return view('admin.users.user.index')->with('users', User::orderBy('updated_at', 'DESC')->get())->with('id',1);
         }
         if($id==2)
         {
             // dd($id);
-           return view('admin.users.user.index')->with('users', User::all())->with('id',2);
+           return view('admin.users.user.index')->with('users', User::orderBy('updated_at', 'DESC')->get())->with('id',2);
         }
         if($id==3)
         {
-           return view('admin.users.user.index')->with('users', User::all())->with('id',3);
+           return view('admin.users.user.index')->with('users', User::orderBy('updated_at', 'DESC')->get())->with('id',3);
         }
         if($id==4)
         {
-           return view('admin.users.user.index')->with('users', User::all())->with('id',4);
+           return view('admin.users.user.index')->with('users', User::orderBy('updated_at', 'DESC')->get())->with('id',4);
         }
     }
 

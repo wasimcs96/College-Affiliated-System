@@ -11,7 +11,7 @@ class ConsultantStudentController extends Controller
 {
     public function index()
     {
-        $students = auth()->user()->consultantUniversityClient;
+        $students = auth()->user()->consultantApplication;
         // dd($students);
         return view('consultant.student.students')->with('students', $students);
     }
@@ -19,7 +19,7 @@ class ConsultantStudentController extends Controller
     public function show($id)
     {
 
-        $show = UniversityConsultantClient::where('id',$id)->first();
+        $show = Application::where('id',$id)->first();
         // $user = User::where('id',$id)->first();
 // dd($user->first_name);
         return view('consultant.student.student_show',compact('show'));
