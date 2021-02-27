@@ -15,7 +15,7 @@ Route::get('dashboard',function(){
     return view('client.dashboard');
 })->name('client.dashboard');
 // ->middleware('verified');
-
+// ,'middleware' => 'verified'
 
 /*my_applications Section */
 // Route::get('my_applications',function(){
