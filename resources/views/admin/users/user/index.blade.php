@@ -10,6 +10,9 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+                @if($id == 3)
+                <a href="{{route('admin.university.upload')}}"class="btn btn-warning"><i class="fa fa-plus"></i>  Upload University </a>
+                @endif
                 <a href="{{route('admin.user.add')}}"class="btn btn-primary"><i class="fa fa-plus"></i>  Add User </a>
             </ul>
         </div>

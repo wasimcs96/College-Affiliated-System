@@ -190,7 +190,7 @@ headers: {
             });
     $("#accept").remove()
     $("#decline").remove()
-    $("#res").html("<a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#res").html("<a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a> <a  href='javascript:void(0);' class='btn btn-warning btn-flat'>Walking</a>")
     $("#res").append("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat' style='margin-left: 10px;'>Close</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
