@@ -37,7 +37,7 @@
 
                         </tr>
                     </thead>
-                    <?php $blogs=App\Models\Blog::get(); ?>
+                    <?php $blogs=App\Models\Blog::orderBy('created_at', 'DESC')->get(); ?>
                     @if($blogs->count() > 0)
                    <tbody>
                     @foreach ($blogs as $blog)

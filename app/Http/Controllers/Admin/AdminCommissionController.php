@@ -12,12 +12,12 @@ class AdminCommissionController extends Controller
     {
         if($id==1)
         {
-            $coms=ConsultantDues::where('due_amount_type', 0)->get();
+            $coms=ConsultantDues::where('due_amount_type', 0)->orderBy('updated_at', 'DESC')->get();
             return view('admin.commission.index')->with('coms',$coms)->with('id',$id);
         }
         if($id==2)
         {
-            $coms=ConsultantDues::where('due_amount_type', 1)->get();
+            $coms=ConsultantDues::where('due_amount_type', 1)->orderBy('updated_at', 'DESC')->get();
             return view('admin.commission.index')->with('coms',$coms)->with('id',$id);
         }
 

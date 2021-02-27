@@ -85,7 +85,7 @@
 
                 </div>
                 @if($show->status == 0)
-                <a  href="javascript:void(0);" class="btn btn-success btn-flat" id="accept">Accept</a>
+                <a  href="javascript:void(0);" class="btn btn-success btn-flat" id="accept">Accept</a> &nbsp;
                 <a href="javascript:void(0);" id="decline" class="btn btn-danger btn-flat">Decline</a>
                 @else
                 @if($show->application == NULL)
@@ -190,8 +190,8 @@ headers: {
             });
     $("#accept").remove()
     $("#decline").remove()
-    $("#res").html("<a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a> <a  href='javascript:void(0);' class='btn btn-warning btn-flat'>Walking</a>")
-    $("#res").append("<a href='{{route('consultant.bookings')}}' class='btn btn-danger btn-flat' style='margin-left: 10px;'>Close</a>")
+    $("#res").html("<a  href='{{route('consultant.booking.application',['id'=>$show->id])}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>")
+    $("#res").append("<a  href='javascript:void(0);' class='btn btn-warning btn-flat' >Walking</a>")
     // $("#res").innerHtml=`<a  href='{{route('consultant.application')}}' class='btn btn-success btn-flat' id='accept'>Create Application</a>')`
 });
 
