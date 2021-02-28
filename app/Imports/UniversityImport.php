@@ -39,6 +39,7 @@ class UniversityImport implements ToModel, WithStartRow
                 'user_id'=>$user->id,
                 'countries_id'=>$row[6],
                 'university_name'=>$row[3],
+                'type'=>$row[7],
             ]);
            $data['user'] = $user;
            $data['university'] = $university;
