@@ -27,15 +27,27 @@ class LoanFrontController extends Controller
             'type' => 'required'
         ]);
 
-       $enquiry =  Contact::create([
+      if ($request->type == 2) {
+        $enquiry =  Contact::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' =>'Title:'.$request->universityname.',  Message:'.$request->message,
+            'type' => $request->type
+        ]);
+      }
+      else{
+        $enquiry =  Contact::create([
             'name' => $request->name,
             'email' => $request->email,
             'message' => $request->message,
             'type' => $request->type
         ]);
-// dd($enquiry);
-        $enquiry->save();
+      }
 
-        return redirect()->route('loan');
+      
+
+       
+
+        return redirect()->back();
     }
 }
