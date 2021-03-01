@@ -12,7 +12,7 @@ class ConsultantStudentController extends Controller
     public function index()
     {
         $students = auth()->user()->consultantApplication;
-        // dd($students);
+      
         return view('consultant.student.students')->with('students', $students);
     }
 

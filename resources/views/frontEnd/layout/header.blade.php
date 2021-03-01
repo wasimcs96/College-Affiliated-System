@@ -1836,8 +1836,14 @@
                                                         <select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university">
 
                                                             @foreach($universities as $university)
-
-                                                                <option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}}</option>
+                                                            <?php 
+                                                            $contryid=$university->user->countries_id ?? '';
+                                                            
+                                                            $country = DB::table('countries')->where('countries_id',$university->user->countries_id)->first();
+                                
+                                
+                                                            ?>
+                                                                <option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}} ({{$country->countries_name ?? ''}})</option>
                                                             @endforeach
                                                         </select>
                                                         <div id="universityError"></div>
