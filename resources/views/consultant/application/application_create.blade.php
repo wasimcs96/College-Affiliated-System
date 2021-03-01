@@ -14,7 +14,7 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                <a href="javascript:void(0);" @if($application->status == 0 ?? '')  data-toggle="modal" data-target="#followUpModal" @else data-toggle="modal" data-target="#disabledModal" @endif custom1="{{$application->id}}" class="btn btn-primary" id="follow_up_trigger"><i class="fa fa-plus" style="margin-right: 8px;"></i>Add Follow Up</a>
+                <a href="javascript:void(0);" @if($application->status == 0 ?? '')  data-toggle="modal" data-target="#followUpModal" @elseif($application->status == 1 ?? '')  data-toggle="modal" data-target="#completedModal" @else data-toggle="modal" data-target="#disabledModal" @endif custom1="{{$application->id}}" class="btn btn-primary" id="follow_up_trigger"><i class="fa fa-plus" style="margin-right: 8px;"></i>Add Follow Up</a>
                 <div class="modal fade" id="followUpModal" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
