@@ -154,19 +154,8 @@ class ConsultantApplicationController extends Controller
         // $default_document = University::find($university_id);
         // $default_document->default_documents = $document;
         // $default_document->save();
-        $country_name = Country::where('countries_id',$university->country_id)->value('countries_name');
-        $application = $university->application_id;
-         $user_id = Application::where('id',$application)->first();
-         $bookingId = $user_id->booking_id;
-         $booking = Booking::find($bookingId);
-         $booking->status = 4;
-         $booking->save();
-         $email = $user_id->user->email;
-        // Important Code
 
-            $replacement['COUNTRY_NAME'] = $country_name;
-            $data = ['template'=>'fees-visa-received','hooksVars' => $replacement];
-            mail::to($email)->send(new \App\Mail\ManuMailer($data));
+
         return response('success');
 
      }
@@ -249,10 +238,26 @@ class ConsultantApplicationController extends Controller
                 'university_id' => $request->university_id,
             ]);
             }
+
             $application = Application::find($request->application_id);
             $application->status = 1;
             $application->save();
+
+         $country_name = Country::where('countries_id',$university->country_id)->value('countries_name');
+
+         $bookingId = $application->booking_id;
+         $booking = Booking::find($bookingId);
+         $booking->status = 4;
+         $booking->save();
+         $email = $application->user->email;
+                // Important Code
+
+            $replacement['COUNTRY_NAME'] = $country_name;
+            $data = ['template'=>'fees-visa-received','hooksVars' => $replacement];
+            mail::to($email)->send(new \App\Mail\ManuMailer($data));
             return redirect()->back()->with('success','Application Process is Completed Successfully');
+
+
         }
         // $university_id = $request->uni_id;
         // $default_document = University::find($university_id);
@@ -347,6 +352,9 @@ class ConsultantApplicationController extends Controller
         $application->status = 2;
         $application->save();
 
+        $booking = Booking::find($application->booking_id);
+        $booking->status = 5;
+        $booking->save();
         $universities = ApplicationAppliedUniversity::where('application_id',$application->id)->get();
         foreach($universities as $university)
         {
