@@ -981,8 +981,6 @@
                                                     @if(isset($us->university->university_name))<?php echo($myus . '...')?> @else N/A @endif</a>
                                                     @if($us->is_verified == 1)
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                                        @else
-                                                        <span style="float:right; color: white;" class="btn btn-warning"><a data-toggle="modal" data-target="#universityClaim" id="universityClaimId" custom1="{{$us->university->university_name}}">Request to claim</a></span>
                                                    @endif
                                                     </h3>
                                             <p class="card-meta">
@@ -1149,8 +1147,7 @@
                                                     @if(isset($uk->university->university_name))<?php echo($myuk . '...')?> @else N/A @endif</a>
                                                     @if($uk->is_verified == 1)
                                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                                    @else
-                                                    <span style="float:right; color: white;" class="btn btn-warning"><a data-toggle="modal" data-target="#universityClaim" id="universityClaimId" custom1="{{$uk->university->university_name}}">Request to claim</a></span>
+                                                  
                                                     @endif
                                                     </h3>
 
@@ -1318,8 +1315,7 @@
 
                                                     @if($ire->is_verified == 1)
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                                        @else
-                                                        <span style="float:right; color: white;" class="btn btn-warning"><a data-toggle="modal" data-target="#universityClaim" id="universityClaimId" custom1="{{$ire->university->university_name}}">Request to claim</a></span>
+                                                       
                                                    @endif
 
                                                     </h3>
@@ -1487,8 +1483,7 @@
 
                                                     @if($can->is_verified == 1)
                                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                                    @else
-                                                    <span style="float:right; color: white;" class="btn btn-warning"><a data-toggle="modal" data-target="#universityClaim" id="universityClaimId" custom1="{{$can->university->university_name}}">Request to claim</a></span>
+                                                  
                                                @endif
 
                                                     </h3>
@@ -1657,9 +1652,7 @@
 
                                                     @if($aus->is_verified == 1)
                                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                                    @else
-                                                    <span style="float:right; color: white; height: fit-content;" class="btn btn-warning"><a data-toggle="modal" data-target="#universityClaim" id="universityClaimId" custom1="{{$aus->university->university_name}}" style="display: inline-block; white-space: nowrap;">Request to claim</a></span>
-                                               @endif
+                                                    @endif
 
                                                     </h3>
                                             <p class="card-meta">

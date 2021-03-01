@@ -149,8 +149,11 @@
 
                             <div class="single-content-item pb-4">
                                 <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}
-
-                            <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>
+                                    @if($university->is_verified == 1)
+                                    <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>
+                                    @else
+                                    <span style="float:right; color: white;" class="btn btn-warning"><a data-toggle="modal" data-target="#universityClaim" id="universityClaimId" value="{{$university->university->university_name}}" custom1="{{$university->university->university_name}}">Request to claim</a></span>
+                                    @endif
                             <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                             @if(isset($university->Premium_expire_date))
                             @if($university->Premium_expire_date > $mytime)<span data-toggle="tooltip"  data-url=""  data-title="Premium Profile"  style="
@@ -823,6 +826,88 @@
                                </div>
                         </div>
                         {{-- ############################################## MODELLLLLLLLL END --}}
+
+
+                        <div class="modal fade" id="universityClaim" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 520px;">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                        
+                                        <div>
+                                            <img src="{{asset('frontEnd/assets/images/logo.png')}}" alt="logo" style="
+                                            width: 198px;
+                                            height: 70px;
+                                             ">
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true" class="la la-close"></span>
+                                        </button>
+                        
+                        
+                                </div>
+                                <div class="modal-body">
+                                    <div class="contact-form-action" style=" padding: 19px;">
+                                        <form method="post" action="{{route('loan.enquiry.submit')}}">
+                                            @csrf
+                                            <div class="sidebar-widget single-content-widget">
+                                                <h3 class="title stroke-shape">Enquiry Form</h3>
+                                                <div class="enquiry-forum">
+                                                    <div class="form-box">
+                                                        <div class="form-content">
+                                                            <div class="contact-form-action">
+                                                                <input class="form-control" value="2" name="type"  hidden>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Your Name</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-user form-icon"></span>
+                                                                            <input class="form-control" type="name" name="name" placeholder="Your name" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Your Email</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-envelope-o form-icon"></span>
+                                                                            <input class="form-control" type="email" name="email" placeholder="Email address" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Message</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-pencil form-icon"></span>
+                                                                            <textarea class="message-control form-control" name="message" placeholder="Write message" required></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{-- <div class="input-box">
+                                                                        <div class="form-group">
+                                                                            <div class="custom-checkbox mb-0">
+                                                                                <input type="checkbox" id="agreeChb">
+                                                                                <label for="agreeChb">I agree with <a href="#">Terms of Service</a> and
+                                                                                    <a href="#">Privacy Statement</a></label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div> --}}
+                                                                    <div id="latest">
+                        
+                                                                    </div>
+                                                                    <div class="btn-box">
+                                                                        <button type="submit" class="theme-btn">Submit Enquiry</button>
+                                                                    </div>
+                        
+                                                            </div><!-- end contact-form-action -->
+                                                        </div><!-- end form-content -->
+                                                    </div><!-- end form-box -->
+                                                </div><!-- end enquiry-forum -->
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                {{-- <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div> --}}
+                              </div>
+                            </div>
+                          </div>
 @endsection
 @section('per_page_style')
 <style>
@@ -863,4 +948,17 @@ headers: {
         });
     });
     </script>
+    <script>
+        $(document).on('click', '#universityClaimId', function ()
+        {
+            
+        var universityname=$(this).attr('custom1');
+    
+        $('#latest').html('<input value="'+universityname+'" name="universityname" hidden>');
+      console.log(universityname);
+      
+       
+        });
+    
+        </script>
 @endsection
