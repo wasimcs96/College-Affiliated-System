@@ -8,7 +8,6 @@
 
 </div>
 <div class="col-lg-12 col-md-7">
-
     <div class="card">
        <div class="header">
            <h2>Advertisement</h2>
@@ -28,20 +27,19 @@
     @foreach ($packages as $package)
 
     <div class="col-lg-4 cool-md-4 col-sm-12">
-<form action="{{route('consultant.advertisement.store')}}" id="frm-{{$package->id ?? ''}}" enctype="multipart/form-data" method="POST">
+<form action="{{route('consultant.advertisement.store')}}" id="frm-{{$package->id}}" enctype="multipart/form-data" method="POST">
 @csrf
 
         <div class="card">
             <ul class="pricing body">
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
-                    <h3><span><i class="fa fa-inr"></i></span>{{$package->amount ?? ''}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>                    <span>Advertisement</span>
+                    <h3><span><i class="fa fa-inr"></i></span>{{$package->amount}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>                    <span>Advertisement</span>
                 </li>
                 <li>{{$package->title ?? ''}}</li>
                 <hr>
 
-                 <li>{{$package->description}}</li>
-                 <li>@if(isset($package->advertisement_type)) @if($package->advertisement_type == 0) Inner @elseif($package->advertisement_type == 1) Outer @else @endif @endif</li>
+                 <li>{{$package->description ?? ''}}</li>
                 <input name="image" id="photo-{{$package->id ?? ''}}" type="file" class="dropify-frrr" >
                 <div class="form-group">
                     <label for="website">Link</label>
@@ -49,17 +47,16 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-globe"></i></span>
                         </div>
-                        <input name="link" type="url" id="url-{{$package->id ?? ''}}" class="form-control"placeholder="http://" >
-                    </div>
+                        <input name="link" type="url" id="url-{{$package->id ?? ''}}" class="form-control"placeholder="http://" >                    </div>
                 </div>
                 <input type="text" name="amount" value="{{$package->amount ?? ''}}" hidden>
-                <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
+                <input type="text" name="user_id" value="{{auth()->user()->id ?? ''}}" hidden>
                 <input type="text" name="payment_type" value="2" hidden>
                 <input type="text" name="type" value="{{$package->advertisement_type ?? ''}}" hidden>
                 <input type="text" name="title" value="{{$package->title ?? ''}}" hidden>
                 <input type="hidden" name="expire_date" value="{{ $package->package_time ?? ''}}"/>
 
-                <li class="plan-btn"><a href="javascript:void(0);" customId="{{$package->id ?? ''}}" customType="{{$package->advertisement_type ?? ''}}"  customDescription="{{$package->description ?? ''}}" customAmount="{{$package->amount ?? ''}}" customUser="{{auth()->user()->id}}" customPackage="{{$package->package_time ?? ''}}" customPayment="2" customTitle="{{$package->title ?? ''}}" class="btn btn-round btn-outline-secondary chooseplan" >Choose plan</a></li>
+                <li class="plan-btn"><a href="javascript:void(0);" customId="{{$package->id ?? ''}}" customType="{{$package->advertisement_type ?? ''}}"  customDescription="{{$package->description ?? ''}}" customAmount="{{$package->amount ?? ''}}" customUser="{{auth()->user()->id ?? ''}}" customPackage="{{$package->package_time ?? ''}}" customPayment="2" customTitle="{{$package->title ?? ''}}" class="btn btn-round btn-outline-secondary chooseplan">Choose plan</a></li>
 
             </ul>
         </div>
@@ -187,10 +184,10 @@
         package_time=$(this).attr('customPackage');
         type=$(this).attr('customType');
         package_id=$(this).attr('customId');
-        var orderId='';
-        photo=$(`#photo-${package_id}`).val();
         url=$(`#url-${package_id}`).val();
-        console.log(isEmpty(photo));
+        var orderId='';
+        photo=$(`#photo-${package_id}`).val()
+
 
     if (isEmpty(photo) || isEmpty(url)){
         if(isEmpty(photo))
@@ -211,11 +208,9 @@
             </button>
           </div>`)
         }
-        window.scrollTo(0, 0);
-        document.getElementById(`frm-${package_id}`).reset();
+          window.scrollTo(0, 0);
     }
     else{
-        // $(document).scrollTop($(document).height() - 5);
         $("html, body").animate({
                     scrollTop: $(
                       'html, body').get(0).scrollHeight
@@ -242,7 +237,7 @@
 
                                 <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
                                 <br>
-                                <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span><i class="fa fa-inr"></i></span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
+                                <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span><i class="fa fa-inr" aria-hidden="true"></i></span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
                             </div>
                             <br>
 
@@ -352,10 +347,5 @@
 
     })
     </script>
-{{-- <script>
-    $(document).on('click', '.chooseplan', function ()
-    {
-        window.scrollBy(0, 250);
-    });
-  </script> --}}
+
 @stop
