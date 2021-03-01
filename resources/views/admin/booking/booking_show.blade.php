@@ -85,10 +85,11 @@
                             @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
                             @if($booking->status==2 ?? '')<div class="btn btn-primary">In Progress</div>@endif
                             @if($booking->status==3 ?? '')<div class="btn btn-danger">Declined</div>@endif
-                            @if($booking->status==4 ?? '')<div class="btn btn-info">Closed</div>@endif
+                            @if($booking->status==4 ?? '')<div class="btn btn-info">Completed</div>@endif
+                            @if($booking->status==5 ?? '')<div class="btn btn-danger">Closed</div>@endif
                         </td>
                     </tr>
-<input type="text" class="" value="{{$booking->id}}" name="booking_id" hidden>
+<input type="text" class="" value="{{$booking->id ?? ''}}" name="booking_id" hidden>
 
 
             </div>

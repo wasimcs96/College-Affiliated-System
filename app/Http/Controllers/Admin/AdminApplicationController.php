@@ -17,8 +17,6 @@ use App\Models\University;
 use Config;
 use App\Models\ApplicationAppliedUniversity;
 use date;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
 class AdminApplicationController extends Controller
 {

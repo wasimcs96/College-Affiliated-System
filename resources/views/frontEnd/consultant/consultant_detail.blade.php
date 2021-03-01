@@ -465,7 +465,7 @@
                                         <h3 class="card-title"><a href="{{route('university_detail',['id'=>$universitycrousel->userUniversity->id])}}">
                                         @if(isset($universitycrousel->userUniversity->university->university_name))<?php echo($myuniversitycrousel . '...')?> @else N/A @endif</a>
 
-                                            <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                            
 
                                         </h3>
                                 <p class="card-meta">{{$universitycrousel->city ?? ''}}</p>
