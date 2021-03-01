@@ -7,8 +7,12 @@
 
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12">
+        
         <div class="card">
             <div class="header">
+                <br>
+                    <a class="btn btn-warning btn-lg" style="float: right;" href="{{asset('sample/one.csv')}}" download>Sample Download</a>
+            
                 <h2>Add Users</h2>
                 <ul class="header-dropdown dropdown">
 
