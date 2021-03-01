@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 
 class SocialController extends Controller
 {
-    
+
     public function redirect($provider)
     {
      return Socialite::driver($provider)->redirect();
@@ -21,7 +21,7 @@ class SocialController extends Controller
     public function Callback($provider){
         $userSocial =   Socialite::driver($provider)->stateless()->user();
         $users       =   User::where([$provider => $userSocial->getId()])->first();
-        
+
        if($users){
             Auth::login($users);
             return redirect('/');
@@ -51,17 +51,17 @@ public function newUser($userSocial,$provider){
         'email_verified_at'=>$time
         //'provider'      => $provider,
     ]);
-   
+
     $user->assignRole('client');
 
 
     // Important Code
-// $replacement['token'] =$request->_token;
-// $replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
+$replacement['token'] =$request->_token;
+$replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
 
-// $replacement['USER_NAME'] = $userSocial->getName();
-// $data = ['template'=>'welcome-email','hooksVars' => $replacement];
-// mail::to($userSocial->getEmail())->send(new \App\Mail\ManuMailer($data));
+$replacement['USER_NAME'] = $userSocial->getName();
+$data = ['template'=>'welcome-email','hooksVars' => $replacement];
+mail::to($userSocial->getEmail())->send(new \App\Mail\ManuMailer($data));
 
     return $user;
 }

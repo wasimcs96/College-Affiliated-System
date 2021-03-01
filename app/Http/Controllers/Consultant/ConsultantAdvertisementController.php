@@ -9,9 +9,11 @@ use DateTime;
 use Config;
 use Illuminate\Support\Carbon;
 use DateInterval;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Dotenv\Regex\Success;
 use App\Http\Controllers\PaymentController;
-use Illuminate\Support\Facades\Mail;
+
 
 class ConsultantAdvertisementController extends Controller
 {

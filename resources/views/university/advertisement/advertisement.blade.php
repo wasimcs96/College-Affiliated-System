@@ -54,7 +54,13 @@
                                                      <td>{{$rt->expire_date ?? ''}}</td>
                                                      <td>{{$rt->start_date ?? ''}}</td>
                                                      <td>{{$rt->created_at->format("Y-m-d") ?? ''}}</td>
-                                                     <td>   <a href="{{$rt->link}}" target="_blank" style="margin-right: 3px;" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Advertisement Link" style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a></td>
+                                                     <td>   <a href="{{$rt->link}}" target="_blank" style="margin-right: 3px;" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Advertisement Link" style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                                    
+                                                        @if(isset($rt->type)&&$rt->type == 1)
+                                                        <a href="{{route('frontend.index')}}" target="_blank" style="margin-right: 3px;" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Advertisement Page " style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                                        @else
+                                                        <a href="{{route('university_all')}}" target="_blank" style="margin-right: 3px;" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Advertisement Page " style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                                        @endif</td>
                                                         <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                                         <td>
                                                         {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}

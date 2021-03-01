@@ -64,7 +64,7 @@ Route::post('general/faq/update/{id}',[
             'uses' => 'AdminFaqController@update',
             'as' => 'admin.faq.update'
                  ]);
-        
+
 Route::get('general/faq/delete/{id}',[
 'uses' => 'AdminFaqController@delete',
 'as' => 'admin.general.faq.delete'
@@ -412,6 +412,16 @@ Route::post('users/update/{id}',[
 Route::get('users/delete/{id}',[
     'uses' => 'AdminUsersController@destroy',
     'as' => 'admin.user.delete'
+]);
+
+Route::get('university/upload',[
+    'uses' => 'AdminUniversityExcelController@view',
+    'as' => 'admin.university.upload'
+]);
+
+Route::post('university/upload/csv',[
+    'uses' => 'AdminUniversityExcelController@import',
+    'as' => 'admin.university.csv'
 ]);
 
 /* Booking Follow Up Show */

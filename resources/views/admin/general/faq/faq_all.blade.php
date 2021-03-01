@@ -37,7 +37,7 @@
 
                         </tr>
                     </thead>
-                   <?php $faqs=App\Models\Page::where('page_type',1)->get();?>
+                   <?php $faqs=App\Models\Page::where('page_type',1)->orderBy('updated_at', 'DESC')->get();?>
                     @if($faqs->count() > 0)
                    <tbody>
                     @foreach ($faqs as $faq)

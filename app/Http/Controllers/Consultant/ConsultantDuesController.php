@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Consultant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ConsultantDues;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Order;
 use App\Http\Controllers\PaymentController;
 

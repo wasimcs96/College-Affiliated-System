@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Models\Package;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\Consultant;
@@ -28,20 +29,20 @@ class AdminUsersController extends Controller
         // dd($id);
         if($id==1)
         {
-           return view('admin.users.user.index')->with('users', User::all())->with('id',1);
+           return view('admin.users.user.index')->with('users', User::orderBy('updated_at', 'DESC')->get())->with('id',1);
         }
         if($id==2)
         {
             // dd($id);
-           return view('admin.users.user.index')->with('users', User::all())->with('id',2);
+           return view('admin.users.user.index')->with('users', User::orderBy('updated_at', 'DESC')->get())->with('id',2);
         }
         if($id==3)
         {
-           return view('admin.users.user.index')->with('users', User::all())->with('id',3);
+           return view('admin.users.user.index')->with('users', User::orderBy('updated_at', 'DESC')->get())->with('id',3);
         }
         if($id==4)
         {
-           return view('admin.users.user.index')->with('users', User::all())->with('id',4);
+           return view('admin.users.user.index')->with('users', User::orderBy('updated_at', 'DESC')->get())->with('id',4);
         }
     }
 
@@ -66,7 +67,7 @@ class AdminUsersController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-
+        $time=Carbon::now();
             $request->validate([
             'first_name'=>['required', 'string', 'max:255'],
             'last_name'=>['required', 'string', 'max:255'],
@@ -144,6 +145,7 @@ mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
 
        }
        if($role==4){
+
         $user=User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -151,6 +153,7 @@ mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
             'mobile' => $request->mobile,
             'countries_id'=>$request->country,
             'password' => Hash::make($request->password),
+            'email_verified_at' => $time,
         ])->assignRole('consultant');
         Consultant::create([
             'user_id'=>$user->id,

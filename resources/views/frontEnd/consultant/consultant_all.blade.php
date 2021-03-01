@@ -12,11 +12,9 @@
                         <div class="section-heading">
                             <h2 class="sec__title text-white">Search Consultant</h2>
                         </div>
-                        <div class="search-fields-container margin-top-30px" style="
-                        background-color: transparent; color:white;
-                    ">
+                        <div class="search-fields-container margin-top-30px" style="background-color: transparent; color:white;" >
                             <div class="contact-form-action">
-                                <form action="{{ route('consultant.inner.filter') }}" method="POST" class="row">
+                                <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" class="row">
                                     @csrf
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
@@ -26,10 +24,10 @@
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
-                                                    <select class="selectpicker" multiple="multiple" data-live-search="true"  placeholder="Exam" id="university" name="exam[]" >
-                                                        {{-- <option value="IELTS">Selec Service</option> --}}
-                                                        <option value="IELTS">PR</option>
-                                                        <option value="TOEFL">Student Visa </option>
+                                                    <select class="select-contain-select" data-live-search="true"  placeholder="Exam" id="university" name="service" required>
+                                                        <option value="">Select Service</option>
+                                                        <option value="0" @if(isset($service) && ($service == 0)) selected @endif>PR</option>
+                                                        <option value="1" @if(isset($service) && ($service == 1)) selected @endif>Student Visa</option>
 
 
                                                     </select>
@@ -37,17 +35,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-sm-2">
-                                        <div class="input-box">
-                                            <label class="label-text" style="
-                                            color: white;
-                                        ">Name</label>
-                                            <div class="form-group">
-                                                <input class=" form-control" type="text" name="keyword" Placeholder="Search Consultant by Name">
-
-                                            </div>
-                                        </div>
-                                    </div>
+                      
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
                                             <label class="label-text" style="
@@ -56,14 +44,14 @@
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select" name="countries_id">
+                                                    <select class="select-contain-select" name="countries_id" required>
                                                         <?php $countries = App\Models\Country::all();?>
                                                         <option value="">
                                                             Select Country
                                                         </option>
                                                         @if($countries->count() > 0)
-                                                        @foreach($countries as $country)
-                                                        <option value="{{$country->countries_id}}" @if(isset($countrycoming) && $countrycoming == $country->countries_id) selected @endif>{{$country->countries_name}}</option>
+                                                        @foreach($countries as $countryt)
+                                                        <option value="{{$countryt->countries_id}}" @if(isset($country) && $country == $countryt->countries_id) selected @endif>{{$countryt->countries_name}}</option>
                                                         @endforeach
 
                                                         @else
@@ -79,21 +67,11 @@
 
                                     <div class="col-lg-3 col-sm-2">
                                         <div class="input-box">
-                                            <label class="label-text" style="
-                                            color: white;
-                                        ">Enter Your Location</label>
+                                            <label class="label-text" style="color: white;" >Enter Your Location</label>
                                             <div class="form-group">
                                                 <div id="locationField">
-                                                    <input class="form-control"
-                                                      id="autocomplete"
-                                                      name="googleAddress"
-                                                      value=""
-                                                      placeholder="Enter your Location"
-                                                      onFocus="geolocate()"
-                                                      type="text"
-                                                     required/>
+                                                    <input class="form-control" id="autocomplete" name="googleAddress" value="{{ $googleAddress ?? ''}}"  placeholder="Enter your Location" onFocus="geolocate()" type="text"  />
                                                   </div>
-
                                             </div>
                                         </div>
                                     </div>

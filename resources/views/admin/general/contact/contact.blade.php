@@ -37,7 +37,7 @@
 
                         </tr>
                     </thead>
-                    <?php $contacts=App\Models\Contact::get(); ?>
+                    <?php $contacts=App\Models\Contact::orderBy('updated_at', 'DESC')->get(); ?>
                     @if($contacts->count() > 0)
                    <tbody>
                     @foreach ($contacts as $contact)

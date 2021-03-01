@@ -18,7 +18,7 @@
                             <div class="header-right-action">
                                 <div class="select-contain select--contain w-auto">
                                     <select class="select-contain-select">
-                                        <?php $ip = '31.220.50.163';
+                                        <?php $ip = '117.242.119.104';
                                         $data = \Location::get($ip); ?>
                                         @php  $countries=DB::table('countries')->get();
                                         @endphp
@@ -1836,8 +1836,14 @@
                                                         <select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university">
 
                                                             @foreach($universities as $university)
-
-                                                                <option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}}</option>
+                                                            <?php 
+                                                            $contryid=$university->user->countries_id ?? '';
+                                                            
+                                                            $country = DB::table('countries')->where('countries_id',$university->user->countries_id)->first();
+                                
+                                
+                                                            ?>
+                                                                <option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}} ({{$country->countries_name ?? ''}})</option>
                                                             @endforeach
                                                         </select>
                                                         <div id="universityError"></div>

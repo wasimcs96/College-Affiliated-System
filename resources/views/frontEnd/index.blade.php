@@ -215,10 +215,10 @@
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
-                                                    <select class="selectpicker" multiple="multiple" data-live-search="true"  placeholder="Exam" id="university" name="exam[]" >
-                                                        {{-- <option value="IELTS">Selec Service</option> --}}
-                                                        <option value="IELTS">PR</option>
-                                                        <option value="TOEFL">Student Visa </option>
+                                                    <select class="select-contain-select" data-live-search="true"  placeholder="Exam" id="university" name="service" required>
+                                                        <option value="">Select Service</option>
+                                                        <option value="0">PR</option>
+                                                        <option value="1">Student Visa</option>
 
 
                                                     </select>
@@ -233,7 +233,7 @@
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select" id="salazar" name="countries_id">
+                                                    {{-- <select class="select-contain-select" id="salazar" name="countries_id" data-live-search="true" required>
                                                         <option>Select Country</option>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
@@ -245,6 +245,14 @@
                                                             <option value="">Currently Unavailable</option>
 
                                                         @endif
+
+                                                    </select> --}}
+                                                    <select class="select-contain-select" data-live-search="true"  name="countries_id" required>
+                                                        <option value="">Select Country</option>
+                                                        @foreach($countries as $country)
+                                                        <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
+                                                     
+                                                        @endforeach
 
                                                     </select>
                                                 </div>
@@ -266,7 +274,7 @@
                                                       placeholder="Enter your Location"
                                                       onFocus="geolocate()"
                                                       type="text"
-                                                     required/>
+                                                     />
                                                   </div>
                                             </div>
                                         </div>
