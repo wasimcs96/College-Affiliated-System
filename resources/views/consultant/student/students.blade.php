@@ -44,11 +44,14 @@
                             <td>{{$student->user->email ?? ''}}</td>
                             <td>{{$student->user->city ?? ''}}</td>
                             <td>      @if(isset($student->user->countries_id) && $student->user->countries_id )
-                                <?php $country = DB::table('countries')->where('countries_id',$student->user->countries_id)->get()->first();?>
-                            {{$country->countries_name ?? ''}} @else N/A @endif</td>
+                                <?php $country = DB::table('countries')->where('countries_id',$student->user->countries_id)->first();
+                                
+                                
+                                ?>
+                            {{$country->countries_name ?? 'N/A'}} @else N/A @endif</td>
 
 
-                            <td style="text-align: center;"><a href="{{route('consultant.student.show',['id'=> $student->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td style="text-align: center;"><a href="{{route('client.application.show',['id'=> $student->id])}}" class="btn btn-success">Go to application</a></td>
                         </tr>
 
                 @endforeach
