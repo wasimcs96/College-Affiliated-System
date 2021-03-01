@@ -384,8 +384,7 @@
 
                                     @if($university->is_verified == 1)
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                    @else
-                                    <span style="float:right; color: white;" class="btn btn-warning"><a data-toggle="modal" data-target="#universityClaim" id="universityClaimId" value="{{$university->university->university_name}}" custom1="{{$university->university->university_name}}">Request to claim</a></span>
+                                   
                                @endif
 
                                             </h3>
