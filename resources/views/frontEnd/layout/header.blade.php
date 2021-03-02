@@ -1839,7 +1839,7 @@
                                                             <?php 
                                                             $contryid=$university->user->countries_id ?? '';
                                                             
-                                                            $country = DB::table('countries')->where('countries_id',$university->user->countries_id)->first();
+                                                            $country = DB::table('countries')->where('countries_id',$contryid)->first();
                                 
                                 
                                                             ?>
