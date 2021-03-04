@@ -14,7 +14,7 @@ class ConsultantPrmigrationController extends Controller
     public function index(){
 
             $countries=Country::all();
-            $cc =auth()->user()->consultantPrMigrationCountry->country_id;
+            $cc =auth()->user()->consultantPrMigrationCountry->country_id ?? '';
 
             $consultantCountries=explode(",",$cc);
 
