@@ -382,7 +382,8 @@ if($courses->count()>0){
 
 
         $universities = [];
-        $curloc=json_decode($_COOKIE['curloc']);
+        $cookiecurloc=$_COOKIE['curloc'] ?? '';
+        $curloc=json_decode($cookiecurloc);
 
         $ata=[];
          
@@ -395,8 +396,8 @@ if($courses->count()>0){
           $ata['longitude'] = $output->results[0]->geometry->location->lng;
          }
      else{
-          $ata['latitude']  =  $curloc->lat;
-          $ata['longitude'] =$curloc->lng;
+          $ata['latitude']  =  $curloc->lat ?? '';
+          $ata['longitude'] =$curloc->lng ?? '';
          }
          $radius=50;
 

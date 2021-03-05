@@ -42,12 +42,9 @@ class ConsultantFrontController extends Controller
     public function book(Request $request)
     {
         // dd($request->all());
-
-        $universityid = $request->get('universityid');
+        $universityid = $request->get('universityid') ?? '';
         $consultantid = $request->get('consultantid');
-
         $consultant = User::find($consultantid);
-        // dd($consultant);
         return view('frontEnd.consultant.book', compact('universityid', 'consultant'))->with('countries', Country::all());
     }
 
