@@ -40,6 +40,8 @@
                 <hr>
 
                  <li>{{$package->description ?? ''}}</li>
+                 <label><span style="color: red"><b>Please Note </b>: Image should be in Given Dimensions:min-width=1200 | min-height=300  </span></label>
+
                 <input name="image" id="photo-{{$package->id ?? ''}}" type="file" class="dropify-frrr" >
                 <div class="form-group">
                     <label for="website">Link</label>

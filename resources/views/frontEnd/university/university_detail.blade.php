@@ -372,12 +372,12 @@
      <input type="text" name="universityid" value="{{$university->id}}" hidden>
      <input type="text" name="consultantid" value="{{$consultant->userConsultant->id ?? ''}}" hidden>
 
-                                            {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
+                                           
                                             <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
 
  </form>
                                           @else
-                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></label></a>
                                           @endif
                                           @else
                                           <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
@@ -660,7 +660,7 @@
 
 </form>
                               @else
-                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></label></a>
                               @endif
                               @else
                               <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
