@@ -577,7 +577,7 @@
 
                                 <a  style="
                                 float: right;
-                            " class="theme-btn theme-btn-small mt-2" href="{{route('university_detail',['id'=>$university->id])}}">Details<i class="las la-angle-double-right"></i></a>
+                            " class="theme-btn theme-btn-small mt-2" href="{{route('university_detail',['id'=>$university->id])}}">Apply<i class="las la-angle-double-right"></i></a>
 
 
                             </div>
@@ -1074,7 +1074,7 @@
 
 
 
-                                                <a href="{{route('university_detail',['id'=>$us->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$us->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->
@@ -1241,7 +1241,7 @@
                                                  @endif
 
 
-                                                <a href="{{route('university_detail',['id'=>$uk->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$uk->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->
@@ -1410,7 +1410,7 @@
 
 
 
-                                                <a href="{{route('university_detail',['id'=>$ire->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$ire->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->
@@ -1578,7 +1578,7 @@
 
 
 
-                                                <a href="{{route('university_detail',['id'=>$can->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$can->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->
@@ -1745,7 +1745,7 @@
                                                  @endif
 
 
-                                                <a href="{{route('university_detail',['id'=>$aus->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$aus->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->

@@ -176,11 +176,19 @@ $inc = 0;
 
         <select class="col-lg-12 p-2 university" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[0][university]" id="media_type-{{ $inc }}" required>
 <?php $un=$consultant->consultantUniversity?>
+
      @foreach($un as $uns)
+     @if (isset($universityid))
+
 <option value="{{$uns->userUniversity->id}}"
     @if($uns->userUniversity->id==$universityid) selected @endif >
-    {{-- {{ $t->title }} --}} {{$uns->userUniversity->university->university_name}}
+   {{$uns->userUniversity->university->university_name}}
 </option>
+    @else
+    <option value="{{$uns->userUniversity->id}}">
+       {{$uns->userUniversity->university->university_name}}
+    </option>
+@endif
 @endforeach
         </select>
         <div id="universityError"></div>

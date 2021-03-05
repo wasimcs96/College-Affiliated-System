@@ -44,11 +44,30 @@
                                 margin-bottom: 8px;
                             ">
                  
-                                    <a class="theme-btn"  href="{{route('consultant_book',$consultant->id)}}" >
+                                    {{-- <a class="theme-btn"  href="{{route('consultant_book',$consultant->id)}}" >
                                         <i class="la la-paper mr-2"></i>Book Now
-                                    </a>
+                                    </a> --}}
                                    
                                 
+                                    @if(auth()->user())
+                                    @if(auth()->user()->isClient())
+
+<form action="{{route('consultant_book',['id'=>$consultant->id])}}" method="POST">
+@csrf
+<input type="text" name="universityid" value="" hidden>
+<input type="text" name="consultantid" value="{{$consultant->id ?? ''}}" hidden>
+
+                               
+                                <button type="submit" class="theme-btn">Book Now<i class="la la-paper mr-2"></i></button>
+
+</form>
+                              @else
+                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></label></a>
+                              @endif
+                              @else
+                              <button type="submit" class="theme-btn" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="la la-paper mr-2"></i></button>
+                              @endif
+
         
                                 </div>
                 </div><!-- end col-lg-12 -->
