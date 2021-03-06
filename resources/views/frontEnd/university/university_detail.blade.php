@@ -149,7 +149,7 @@
 
                             <div class="single-content-item pb-4">
                                 <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}
-                                    @if($university->is_verified == 1)
+                                    @if(isset($university->is_verified) && $university->is_verified == 1)
                                     <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>
                                     @else
                                     <span style="float:right; color: white;" class="btn btn-warning"><a data-toggle="modal" data-target="#universityClaim" id="universityClaimId" value="{{$university->university->university_name ?? ''}}" custom1="{{$university->university->university_name ?? ''}}">Request to claim</a></span>
@@ -369,7 +369,7 @@
 
  <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id ?? ''])}}" method="POST">
      @csrf
-     <input type="text" name="universityid" value="{{$university->id}}" hidden>
+     <input type="text" name="universityid" value="{{$university->id ?? ''}}" hidden>
      <input type="text" name="consultantid" value="{{$consultant->userConsultant->id ?? ''}}" hidden>
 
                                            

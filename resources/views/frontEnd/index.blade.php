@@ -161,7 +161,7 @@
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                 <select class="select-contain-select" name="countries_id" required>
-                                                    <option>Select Country</option>
+                                                    <option>Select destination</option>
 
                                                     <?php $countries = App\Models\Country::all();?>
                                                     @if($countries->count() > 0)
@@ -183,13 +183,14 @@
 
                                     <div class="col-lg-4 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">University Type</label>
+                                            <label class="label-text">Study Level</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select" name="type">
-                                                        <option value="" selected>Select Type</option>
-                                                        <option value="0">Private</option>
-                                                        <option value="1">Government</option>
+                                                    <select class="select-contain-select" name="universitystudylevel">
+                                                        <option value="" selected>Select Study Level</option>
+                                                                <option value="2" >Diploma</option>
+                                                                <option value="0" >UG</option>
+                                                                <option value="1" >PG</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -234,7 +235,7 @@
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
                                                     {{-- <select class="select-contain-select" id="salazar" name="countries_id" data-live-search="true" required>
-                                                        <option>Select Country</option>
+                                                        <option>Select destination</option>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
                                                             <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
@@ -248,7 +249,7 @@
 
                                                     </select> --}}
                                                     <select class="select-contain-select" data-live-search="true"  name="countries_id" required>
-                                                        <option value="">Select Country</option>
+                                                        <option value="">Select destination</option>
                                                         @foreach($countries as $country)
                                                         <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
                                                      

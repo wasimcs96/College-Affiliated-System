@@ -465,7 +465,7 @@
                         <div class="card-attributes">
                             <p style="">
                                 <span class="price__text">Average Fees :</span>
-                                <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+                                <span class="price__num">₹{{$university->university->average_fees ?? ''}}</span>
                                 {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                             </p>
                             <ul class="d-flex align-items-center">
