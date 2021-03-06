@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Loan;
 use Symfony\Component\HttpFoundation\Request;
-
+use App\Models\Claim;
 class LoanFrontController extends Controller
 
 {
@@ -28,11 +28,13 @@ class LoanFrontController extends Controller
         ]);
 
       if ($request->type == 2) {
-        $enquiry =  Contact::create([
+        $enquiry =  Claim::create([
             'name' => $request->name,
             'email' => $request->email,
             'message' =>'Title:'.$request->universityname.',  Message:'.$request->message,
-            'type' => $request->type
+            'type' => $request->type,
+               'designation' => $request->designation,
+               'number'=>$request->mobile,
         ]);
       }
       else{
