@@ -299,9 +299,10 @@
 
 
                                                <td>
-                                                @if($course->type == 0) UG @endif
-                                                @if($course->type == 1) PG @endif
-                                                @if($course->type == 2) Diploma @endif
+                                                @php
+                                                $levels=Config::get('level.study_level');   
+                                                @endphp
+                                           {{$levels[$course->type] ?? 'N/A'}}
                                                </td>
                                                <td>₹ {{$course->fees ?? ''}}</td>
                                                <td>@if(isset($course->duration)) {{ $course->duration }} @endif</td>

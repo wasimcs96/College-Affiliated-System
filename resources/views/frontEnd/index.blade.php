@@ -130,9 +130,13 @@
                                                             height: 52px;
                                                         ">
                                                                 <option value="" selected>Select Study Level</option>
-                                                                <option value="2" >Diploma</option>
-                                                                <option value="0" >UG</option>
-                                                                <option value="1" >PG</option>
+                                                                @php
+                                                                $levels=Config::get('level.study_level');   
+                                                                @endphp
+        
+                                                                @foreach($levels as $key=>$level)
+                                                                        <option value="{{$key}}" >{{$level}}</option>
+                                                                @endforeach
 
                                                             </select>
                                                         </div>
@@ -157,11 +161,11 @@
                                     @csrf
                                     <div class="col-lg-6 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Country</label>
+                                            <label class="label-text">Destination Country</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                 <select class="select-contain-select" name="countries_id" required>
-                                                    <option>Select destination</option>
+                                                    <option>Select Country</option>
 
                                                     <?php $countries = App\Models\Country::all();?>
                                                     @if($countries->count() > 0)
@@ -188,10 +192,14 @@
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select" name="universitystudylevel">
                                                         <option value="" selected>Select Study Level</option>
-                                                                <option value="2" >Diploma</option>
-                                                                <option value="0" >UG</option>
-                                                                <option value="1" >PG</option>
-                                                    </select>
+                                                        @php
+                                                        $levels=Config::get('level.study_level');   
+                                                        @endphp
+
+                                                        @foreach($levels as $key=>$level)
+                                                                <option value="{{$key}}" >{{$level}}</option>
+                                                        @endforeach
+                                                            </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -218,7 +226,7 @@
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select" data-live-search="true"  placeholder="Exam" id="university" name="service" required>
                                                         <option value="">Select Service</option>
-                                                        <option value="0">PR</option>
+                                                        <option value="0">PR Migration</option>
                                                         <option value="1">Student Visa</option>
 
 
@@ -230,12 +238,12 @@
                                     <?php $countries = App\Models\Country::all();?>
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Country</label>
+                                            <label class="label-text">Destination Country</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
                                                     {{-- <select class="select-contain-select" id="salazar" name="countries_id" data-live-search="true" required>
-                                                        <option>Select destination</option>
+                                                        <option>Select Country</option>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $country)
                                                             <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
@@ -249,7 +257,7 @@
 
                                                     </select> --}}
                                                     <select class="select-contain-select" data-live-search="true"  name="countries_id" required>
-                                                        <option value="">Select destination</option>
+                                                        <option value="">Select Country</option>
                                                         @foreach($countries as $country)
                                                         <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
                                                      
