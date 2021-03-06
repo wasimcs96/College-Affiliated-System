@@ -78,6 +78,9 @@ class ConsultantFrontController extends Controller
 
 
         $output = '';
+        if(count($data) >0 ){
+
+       
         foreach ($data as $row) {
 
             $time = "'.$row->start_slot_time.'-'.$row->end_slot_time.'";
@@ -89,6 +92,10 @@ class ConsultantFrontController extends Controller
 
             $output .= '<option ' . $message . ' value="' . $row->start_slot_time . '-' . $row->end_slot_time . '">' . $row->start_slot_time . '-' . $row->end_slot_time . '</option>';
         }
+    }
+    else{
+        $output='<option>Slots Not Availaible</option>';
+    }
         echo $output;
     }
 
