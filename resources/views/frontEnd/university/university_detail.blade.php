@@ -875,6 +875,20 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="input-box">
+                                                                        <label class="label-text">Your Mobile Number</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-envelope-o form-icon"></span>
+                                                                            <input class="form-control" type="number" name="mobile" placeholder="Mobile" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Designation</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-pencil form-icon"></span>
+                                                                            <input class="form-control" type="text" name="designation" placeholder="Desgination" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-box">
                                                                         <label class="label-text">Message</label>
                                                                         <div class="form-group">
                                                                             <span class="la la-pencil form-icon"></span>

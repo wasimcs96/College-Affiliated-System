@@ -91,6 +91,11 @@
                     </ul>
                 </li>
 
+                
+                <li class="{{ Request::segment(2) == 'packages' ? 'active' : null }}"><a href="{{route('admin.university.claim')}}"><i class="fa fa-archive" aria-hidden="true"></i><span>University Claim</span></a></li>
+
+               
+
                 <li class="{{ Request::segment(2) == 'general' ? 'active open' : null }}">
                     <a href="#Generals" class="has-arrow"><i class="fa fa-tasks" aria-hidden="true"></i>
                         <span>Generals</span></a>

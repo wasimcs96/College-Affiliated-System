@@ -664,6 +664,11 @@ Route::get('loan/delete/{id}', [
     'as' => 'admin.loan.delete'
 ]);
 
+Route::get('university/claim/request', [
+    'uses' => 'ClaimController@index',
+    'as' => 'admin.university.claim'
+]);
+
 });
 
 
