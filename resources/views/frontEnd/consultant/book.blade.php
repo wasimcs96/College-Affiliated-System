@@ -325,6 +325,16 @@ $("#endtime").prop('disabled', true);
 }
 </script> --}}
 <script>
+    var date = new Date('now');
+    //var newdate = new Date(date);
+
+
+    var dd = date.getDate();
+    var tm = date.getTime();
+    var mm = date.getMonth();
+    var y = date.getFullYear();
+
+    var someFormattedDate = y + '/' + mm + '/' + dd;
 $("#date").datepicker({ onSelect: function(dateText) {
 
 
@@ -354,7 +364,10 @@ console.log("Selected date: " + dateText + "; input's current value: " + this.va
 
 
 
-} });
+},
+minDate: someFormattedDate,
+
+});
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
