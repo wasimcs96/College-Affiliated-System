@@ -47,7 +47,8 @@ public function newUser($userSocial,$provider){
         'first_name'          => $userSocial->getName() ?? '',
         'email'         => $userSocial->getEmail() ?? '',
         'profile_image'         => $userSocial->getAvatar() ?? '',
-        $provider   => $userSocial->getId(),
+         $provider   => $userSocial->getId(),
+         'status'=>1,
         'email_verified_at'=>$time
         //'provider'      => $provider,
     ]);

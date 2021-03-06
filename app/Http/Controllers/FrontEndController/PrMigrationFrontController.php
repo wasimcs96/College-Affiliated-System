@@ -22,7 +22,7 @@ class PrMigrationFrontController extends Controller
     {
         // dd($request->all());
         // $request->country=19;
-        $countrycoming=$request->country;
+        $countrycoming=$request->country ?? '';
         $total=[];
         $consultants=DB::table("consultant_pr_migration_countries")
         ->whereRaw("find_in_set('$countrycoming',country_id)")
