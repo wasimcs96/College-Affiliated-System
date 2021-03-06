@@ -60,12 +60,12 @@
 
                         </div>
 
-                      {{-- {{dd($medias)}} --}}
+                     
                         @foreach($medias as $media)
                         @if(isset($media->media) && file_exists($media->media))
                         <a class="d-none"
                              data-fancybox="gallery"
-                            {{-- {{ dd($media->media) }} --}}
+                           
                             @if(isset($media->media))
                              data-src="{{asset($media->media)}}"
                                 @else
@@ -440,9 +440,13 @@
                                          </th>
                                          <td>{{$course->category->title}}</td>
                                             <td>
-                                             @if($course->type == 0) UG @endif
-                                             @if($course->type == 1) PG @endif
-                                             @if($course->type == 2) Diploma @endif
+                                                @php
+                                                $levels=Config::get('level.study_level');   
+                                                @endphp
+                                           {{$levels[$course->type] ?? 'N/A'}}
+                                            
+
+                                            
                                             </td>
                                             <td>₹ {{$course->fees ?? ''}}</td>
                                             <td>@if(isset($course->duration)) {{ $course->duration }} Years @else N/A @endif</td>

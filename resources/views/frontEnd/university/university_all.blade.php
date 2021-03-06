@@ -165,9 +165,17 @@
                                             ">
                                           
                                                     <option value="" selected>Select Study Level</option>
-                                                    <option value="2" @if(isset($study_level)&& $study_level==2)selected @endif> Diploma</option>
-                                                    <option value="0"  @if(isset($study_level)&& $study_level==0)selected @endif>UG</option>
-                                                    <option value="1"  @if(isset($study_level)&& $study_level==1)selected @endif>PG</option>
+
+
+                                                    @php
+                                                    $levels=Config::get('level.study_level');   
+                                                    @endphp
+
+                                                    @foreach($levels as $key=>$level)
+                                                            <option value="{{$key}}" @if(isset($study_level)&& $study_level==$key)selected @endif>{{$level}}</option>
+                                                    @endforeach
+
+                                                   
 
                                                 </select>
                                             </div>
