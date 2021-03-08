@@ -311,7 +311,10 @@
 
 <!-- start back-to-top -->
 <div id="back-to-top">
-    <i class="la la-angle-up" title="Go top"></i>
+    {{-- <i class="la la-angle-up" title="Go top"></i> --}}
+    <div>
+    <lottie-player src="{{asset('frontEnd/assets/json/34115-rocket-lunch.json')}}"  background="transparent"  speed="1"  style="width: 5rem; height: 5rem;"  loop  autoplay></lottie-player>
+    </div>
 </div>
 
 <script>
