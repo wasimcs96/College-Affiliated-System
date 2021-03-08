@@ -27,8 +27,8 @@
                             <label>Status</label>
                             <select name="type" class="form-control" required>
                                 <option value="">-- Select --</option>
-                                <option value="0">Inactive</option>
-                                <option value="1">Active</option>
+                                <option @if(isset($edit->status)&& $edit->status == 0) selected @endif value="0">Inactive</option>
+                                <option @if(isset($edit->status)&& $edit->status == 1) selected @endif value="1">Active</option>
 
                             </select>
                        </div>
@@ -39,7 +39,7 @@
                         </div> --}}
                         <div class="form-group col-lg-12">
                             <label>Short Description</label>
-                            <input type="text" class="form-control" name="short_description" id="name" required>
+                            <input type="text" class="form-control" value="{{$edit->short_description ?? ''}}" name="short_description" id="name" required>
                         </div>
 
                            <label for="content">Blog Content</label><br>

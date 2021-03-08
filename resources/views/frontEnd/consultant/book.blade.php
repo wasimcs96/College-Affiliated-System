@@ -514,7 +514,7 @@ var button_id = $(this).attr("id");
 $('#imageBox'+button_id+'').remove();
 r=$('#bannewrImages .imageBox').length;
 console.log(r);
-if(r<3){
+if(r<5){
 $('#bst').prop('disabled', false);
 }
 // $('#add').add();
