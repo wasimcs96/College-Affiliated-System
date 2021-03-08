@@ -590,11 +590,10 @@
             <span class="nav__text">Find university</span>
         </a>
 
-        <button href="#" type="button" class="nav__link imran" onclick="openNav()" disabled style="border: none;background:none;" >
+        <!-- <button href="#" type="button" class="nav__link imran" onclick="openNav()" disabled style="border: none;background:none;" >
             <i class="material-icons nav__icon">more</i>
-            <!-- <span class="nav__text">More</span> -->
             <span class="nav__text" style="cursor:pointer" >More</span>
-        </button>
+        </button> -->
     </nav>
 <!-- /PWA -->
 

@@ -243,7 +243,7 @@
 
 <!-- PWA  -->
 @if(auth()->user()->isClient())
-<nav class="nav123 hide-on-desktop" style="z-index:2;">
+<nav class="nav123 hide-on-desktop" style="z-index:100;">
 
   <a href="{{route('client.dashboard')}}" class="nav__link imran {{ Request::segment(2) == 'dashboard' ? 'nav__link--active' : null }}">
     <i class="material-icons nav__icon">dashboard</i>
@@ -317,7 +317,7 @@
 @endif
 
     <div id="main-content">
-        <div class="container-fluid">
+        <div class="container-fluid pb-5">
             <div class="block-header">
                 <div class="row clearfix">
                     <div class="col-md-6 col-sm-12" id="alert_add">
