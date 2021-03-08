@@ -244,11 +244,23 @@
                         </ul>
                     </div>
                     <div class="card-price d-flex align-items-center justify-content-between">
-                        <p>
+                        <p
+                         {{-- style="
+                        white-space: pre-line;
+                    " --}}
+                    >
                             <span class="price__text">City :</span>
                             <span class="price__num">{{$consultant->city}}</span>
                         </p>
+                        @if(auth()->user())
+                        @if(auth()->user()->isClient())
                         <a href="{{route('prmigration.book',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
+                        @else
+                        <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></a>
+                        @endif
+                        @else
+                        <a href="javascript:void(0)"  data-toggle="modal" data-target="#loginPopupForm" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
+                        @endif
                     </div>
                 </div>
             </div><!-- end card-item -->

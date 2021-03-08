@@ -974,20 +974,13 @@
 
                                         </div>
                                         <div class="card-body">
-                                            <?php
-                                            $myus =$us->university->university_name ?? '';
-                                            // dd($myire);
-                                            if (strlen($myus) > 5)
-                                                {
-                                                    // dd($myire);
-                                                    $myus = substr($myus, 0, 40);
-                                                    $myus = explode(' ', $myus);
-                                                    array_pop($myus); // remove last word from array
-                                                    $myus = implode(' ', $myus);
-                                                    // $myvalue = $myvalue . ' ...';
-                                                } ?>
-                                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>$us->id])}}">
-                                                    @if(isset($us->university->university_name))<?php echo($myus . '...')?> @else N/A @endif</a>
+                                           
+                                           
+                                            <h3 class="card-title" title="{{$us->university->university_name ?? ''}}" style="
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                        "><a href="{{route('university_detail',['id'=>$us->id])}}">
+                                                    @if(isset($us->university->university_name)){{$us->university->university_name ?? ''}}@else N/A @endif</a>
                                                     @if($us->is_verified == 1)
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                                                    @endif
@@ -1140,20 +1133,11 @@
                                         </div>
                                         <div class="card-body">
 
-                                            <?php
-                                            $myuk =$uk->university->university_name ?? '';
-                                            // dd($myire);
-                                            if (strlen($myuk) > 5)
-                                                {
-                                                    // dd($myire);
-                                                    $myuk = substr($myuk, 0, 40);
-                                                    $myuk = explode(' ', $myuk);
-                                                    array_pop($myuk); // remove last word from array
-                                                    $myuk = implode(' ', $myuk);
-                                                    // $myvalue = $myvalue . ' ...';
-                                                } ?>
-                                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>$uk->id])}}">
-                                                    @if(isset($uk->university->university_name))<?php echo($myuk . '...')?> @else N/A @endif</a>
+                                      
+                                                    <h3 class="card-title"  title="{{$uk->university->university_name ?? ''}}" style="
+                                                        white-space: nowrap;
+                                                        overflow: hidden;"><a href="{{route('university_detail',['id'=>$uk->id])}}">
+                                                    @if(isset($uk->university->university_name)){{    $uk->university->university_name ?? ''}}@else N/A @endif</a>
                                                     @if($uk->is_verified == 1)
                                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                                                   
@@ -1307,20 +1291,11 @@
 
                                         </div>
                                         <div class="card-body">
-                                            <?php
-                                            $myire =$ire->university->university_name ?? '';
-                                            // dd($myire);
-                                            if (strlen($myuk) > 5)
-                                                {
-                                                    // dd($myire);
-                                                    $myire = substr($myire, 0, 40);
-                                                    $myire = explode(' ', $myire);
-                                                    array_pop($myire); // remove last word from array
-                                                    $myire = implode(' ', $myire);
-                                                    // $myvalue = $myvalue . ' ...';
-                                                } ?>
-                                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>$ire->id])}}">
-                                                    @if(isset($ire->university->university_name))<?php echo($myire . '...')?> @else N/A @endif</a>
+                                          
+                                           <h3 class="card-title" title="{{$ire->university->university_name ?? ''}}" style="
+                                            white-space: nowrap;
+                                            overflow: hidden;"><a href="{{route('university_detail',['id'=>$ire->id])}}">
+                                                    @if(isset($ire->university->university_name)){{  $ire->university->university_name ?? ''}} @else N/A @endif</a>
 
                                                     @if($ire->is_verified == 1)
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
@@ -1475,20 +1450,11 @@
 
                                         </div>
                                         <div class="card-body">
-                                            <?php
-                                            $mycan =$can->university->university_name ?? '';
-                                            // dd($myire);
-                                            if (strlen($mycan) > 5)
-                                                {
-                                                    // dd($myire);
-                                                    $mycan = substr($mycan, 0, 40);
-                                                    $mycan = explode(' ', $mycan);
-                                                    array_pop($mycan); // remove last word from array
-                                                    $mycan = implode(' ', $mycan);
-                                                    // $myvalue = $myvalue . ' ...';
-                                                } ?>
-                                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>$can->id])}}">
-                                                    @if(isset($can->university->university_name))<?php echo($mycan . '...')?> @else N/A @endif</a>
+                                                                             
+                                                    <h3 class="card-title" title="{{$can->university->university_name ?? ''}}" style="
+                                                        white-space: nowrap;
+                                                        overflow: hidden;"><a href="{{route('university_detail',['id'=>$can->id])}}">
+                                                    @if(isset($can->university->university_name))  {{$can->university->university_name ?? ''}} @else N/A @endif</a>
 
                                                     @if($can->is_verified == 1)
                                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
@@ -1643,21 +1609,15 @@
 
                                         </div>
                                         <div class="card-body">
-                                            <?php
-                                            $myaus =$aus->university->university_name ?? '';
-                                            // dd($myire);
-                                            if (strlen($myaus) > 5)
-                                                {
-                                                    // dd($myire);
-                                                    $myaus = substr($myaus, 0, 40);
-                                                    $myaus = explode(' ', $myaus);
-                                                    array_pop($myaus); // remove last word from array
-                                                    $myaus = implode(' ', $myaus);
-                                                    // $myvalue = $myvalue . ' ...';
-                                                } ?>
-                                                    <h3 class="card-title" style="display: flex;">
+                                          
+                                          
+                                       
+                                          
+                                                    <h3 class="card-title" title="{{$aus->university->university_name ?? ''}}" style="
+                                                        white-space: nowrap;
+                                                        overflow: hidden;">
                                                     <a href="{{route('university_detail',['id'=>$aus->id])}}">
-                                                    @if(isset($aus->university->university_name))<?php echo($myaus . '...')?> @else N/A @endif</a>
+                                                    @if(isset($aus->university->university_name)){{  $aus->university->university_name ?? ''}} @else N/A @endif</a>
 
                                                     @if($aus->is_verified == 1)
                                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>

@@ -342,3 +342,8 @@ Route::get('admin/cache/clear', function () {
 Route::get('admin/config/clear', function () {
     \Artisan::call('config:clear');
 });
+
+
+// Route::get('crop/image',function (){
+//     return view('image_cropping.cropping');
+// })->name('image/crop');

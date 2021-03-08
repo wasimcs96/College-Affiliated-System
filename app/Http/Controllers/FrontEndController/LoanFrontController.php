@@ -45,11 +45,6 @@ class LoanFrontController extends Controller
             'type' => $request->type
         ]);
       }
-
-      
-
-       
-
         return redirect()->back();
     }
 }
