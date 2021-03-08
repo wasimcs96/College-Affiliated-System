@@ -110,6 +110,7 @@
                                                         <div class="select-contain w-auto">
                                                             <select id="selectcourse" name="sub_category" class="form-control ert"   style="
                                                             height: 52px;
+                                                            padding: 15px;
                                                         ">
                                                                 <option value="" selected>Select Sub Discipline</option>
 
@@ -128,6 +129,7 @@
                                                         <div class="select-contain w-auto">
                                                             <select  name="study_level" class="form-control"   style="
                                                             height: 52px;
+                                                            padding: 15px;
                                                         ">
                                                                 <option value="" selected>Select Study Level</option>
                                                                 @php
