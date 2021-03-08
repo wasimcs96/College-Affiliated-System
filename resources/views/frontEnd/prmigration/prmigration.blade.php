@@ -14,7 +14,7 @@
                         </div>
                         <div class="search-fields-container margin-top-30px">
                             <div class="contact-form-action">
-                                <form action="{{route('prmigration.search.result')}}" method="POST" class="row">
+                                <form action="{{route('prmigration.search.result')}}" method="POST" class="row" style="display: flex;justify-content: center;">
 @csrf
                                     {{-- <div class="col-lg-4 col-sm-2">
                                         <div class="input-box">

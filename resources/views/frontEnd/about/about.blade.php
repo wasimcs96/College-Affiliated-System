@@ -49,8 +49,9 @@
             </div><!-- end col-lg-6 -->
             <div class="col-lg-5 ml-auto">
                 <div class="image-box about-img-box">
-                    <img @if(isset($about->banner)) src="{{asset($about->banner)}}" @else src="{{asset('assets/default/default-banner.jpg')}}" @endif alt="about-img" class="img__item img__item-1">
-                    <img @if(isset($about->banner)) src="{{asset($about->banner)}}" @else src="{{asset('assets/default/default-banner.jpg')}}" @endif  alt="about-img" class="img__item img__item-2">
+                    <!-- <img @if(isset($about->banner)) src="{{asset($about->banner)}}" @else src="{{asset('assets/default/default-banner.jpg')}}" @endif alt="about-img" class="img__item img__item-1"> -->
+                    <!-- <img @if(isset($about->banner)) src="{{asset($about->banner)}}" @else src="{{asset('assets/default/default-banner.jpg')}}" @endif  alt="about-img" class="img__item img__item-2"> -->
+                    <img src="{{asset('frontEnd/assets/images/blog-img.jpg')}}" alt="">
                 </div>
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
