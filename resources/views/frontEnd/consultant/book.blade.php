@@ -43,7 +43,10 @@
             <div class="card-item user-card card-item-list mt-4 mb-0">
                 @if(isset($consultant) && $consultant->count()>0)
                 <div class="card-img">
-                    <img src="{{asset($consultant->profile_image)}}"alt="user image" class="h-auto">
+                  @if(isset($consultant->profile_image)&&file_exists($consultant->profile_image))  <img src="{{asset($consultant->profile_image)}}"alt="user image" class="h-auto">
+                  @else
+                  <img src="{{asset('frontEnd/assets/images/defaultuser.png')}}"alt="user image" class="h-auto">
+                  @endif
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">{{$consultant->first_name ?? ''}} {{$consultant->last_name ?? ''}}</h3>

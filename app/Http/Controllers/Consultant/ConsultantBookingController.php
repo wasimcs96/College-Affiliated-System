@@ -183,19 +183,22 @@ public function applicationStore(Request $request){
         $universities = User::where('countries_id',$request->countryid)->get();
         //   dd( $universities->get()->toArray());
         $output='<option value="" selected>Select University Name</option>';
-        foreach($universities as $university)
-        {
-            $check=UniversityConsultant::where('university_id',$university->id)->where('consultant_id',auth()->user()->id)->first();
-            if ($check) {
-        if($university->isUniversity())
+        if($universities->count()>0){
+            foreach($universities as $university)
             {
+                $check=UniversityConsultant::where('university_id',$university->id)->where('consultant_id',auth()->user()->id)->first();
+                if ($check) {
+            if($university->isUniversity())
+                {
 
-              $output .= '<option value="'.$university->id.'">'.$university->first_name.'</option>';
+                $output .= '<option value="'.$university->id.'">'.$university->first_name.'</option>';
 
+                }
             }
         }
+    }else{
+        $output='<option value="" selected>University Unavailable</option>';
     }
-
         echo $output;
     }
 
