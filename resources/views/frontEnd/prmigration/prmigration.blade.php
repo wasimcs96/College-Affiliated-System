@@ -12,7 +12,9 @@
                         <div class="section-heading">
                             <h2 class="sec__title text-white">Search Consultant</h2>
                         </div>
-                        <div class="search-fields-container margin-top-30px">
+                        <div class="search-fields-container margin-top-30px"  style="
+                        background: none;
+                    ">
                             <div class="contact-form-action">
                                 <form action="{{route('prmigration.search.result')}}" method="POST" class="row" style="display: flex;justify-content: center;">
 @csrf
@@ -27,7 +29,7 @@
                                     </div> --}}
                                     <div class="col-lg-6 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Country</label>
+                                            <label class="label-text" style="color: white">Country</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
@@ -254,7 +256,12 @@
                         </p>
                         @if(auth()->user())
                         @if(auth()->user()->isClient())
-                        <a href="{{route('prmigration.book',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
+                        <form action="{{route('prmigration.book')}}" method="post">
+                            @csrf
+                            <input type="hidden" value="@if(isset($countrycoming)){{$countrycoming}} @endif" name="countrycomming">
+                            <input type="hidden" value="{{$consultant->id ?? ''}}" name="consultant_id">
+                        <button  type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
+                        </form>
                         @else
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></a>
                         @endif
