@@ -325,7 +325,7 @@
         <div class="card-header" id="headingTwo">
           <h2 class="mb-0">
             <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapse-{{$key}}">
-              University Form-{{$applied->userUniversity->university->university_name ?? ''}}
+              University Form-{{$applied->userUniversity->university->university_name ?? ''}} <span style="float: right;"><i class="fa fa-arrow-down"> </i></span>
             </button>
           </h2>
         </div>
@@ -528,13 +528,13 @@
                                                <label for="">Course Fees</label>
                                                <?php $coursedetails=\App\Models\UniversityCourse::where('id',$applied->course_id)->first(); ?>
 
-                                               <input type="text" name="fees" class="form-control" id="coursefees"  @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$coursedetails->fees}}"@else value="{{ $applied->fees }}"  @endif />
+                                               <input type="number" name="fees" class="form-control" id="coursefees"   @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$coursedetails->fees}}"@else value="{{ $applied->fees }}"  @endif />
                                             </div>
                                             </div>
                                             <div class="col-lg-2 col-md-12">
                                                 <div class="form-group">
                                                    <label for="">Scholarship</label>
-                                                        <input type="text" name="scholarship" class="form-control" id="scholarship" @if($applied->scholarship=="NULL" || $applied->scholarship=="null" || $applied->scholarship=='') value="" @else value="{{$applied->scholarship}}" @endif />
+                                                        <input type="number" name="scholarship" class="form-control" id="scholarship" @if($applied->scholarship=="NULL" || $applied->scholarship=="null" || $applied->scholarship=='') value="" @else value="{{$applied->scholarship}}" @endif />
                                                 </div>
                                             </div>
 
