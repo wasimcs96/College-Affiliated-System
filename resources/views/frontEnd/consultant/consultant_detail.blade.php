@@ -61,8 +61,7 @@
                                 <button type="submit" class="theme-btn">Book Now<i class="la la-paper mr-2"></i></button>
 
 </form>
-                              @else
-                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></label></a>
+                       
                               @endif
                               @else
                               <button type="submit" class="theme-btn" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="la la-paper mr-2"></i></button>
@@ -268,7 +267,7 @@
     {{-- @if ($consultant->consultantUniversity->count()) --}}
                         <?php $universityconsultant=$consultant->consultantUniversity; ?>
                         <div class="sidebar-widget single-content-widget">
-                            <h3 class="title stroke-shape">Featured University</h3>
+                            <h3 class="title stroke-shape">Associated Featured Universities</h3>
                             <!-- Example split danger button -->
 
                             {{-- <div class="input-group mb-3 ">
@@ -282,12 +281,13 @@
                             height: 530px;
                             overflow: scroll;">
                                 <ul class="list-items">
+                                    <?php  $i=0;?>
                             @if($universityconsultant->count() > 0)
                                     @foreach($universityconsultant as $universitycon)
                                     @if($universitycon->useruniversity->status == 1)
                                     @if(isset($universitycon->userUniversity->Premium_expire_date))
                                     @if($universitycon->userUniversity->Premium_expire_date > $mytime)
-
+                                    <?php $i++;?>
                                     <li><div class="author-content d-flex">
                                         <div class="author-img">
                                             <a href="{{route('university_detail',['id'=>$universitycon->userUniversity->id])}}">@if(isset($universitycon->userUniversity->profile_image) && file_exists($universitycon->userUniversity->profile_image))
@@ -362,8 +362,15 @@
 
 
 @endforeach
+@if($i == 0)
+<div class="text-center" style="margin-top: 110px;">
+    <h3> No Featured University Available </h3>
+</div>
+@endif
 @else
-<span style="text-align: center; color: black;">Data Not available</span>
+<div class="text-center" style="margin-top: 110px;">
+    <h3> No Featured University Available </h3>
+</div>
  @endif
                                 </ul>
                             </div><!-- end sidebar-list -->
@@ -424,20 +431,23 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading text-center">
-                    <h2 class="sec__title line-height-55">Select University</h2>
+                    <h2 class="sec__title line-height-55">Associated Universities</h2>
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         <div class="row padding-top-50px">
             <div class="col-lg-12">
                 <div class="hotel-card-wrap">
+                    <?php $i=0; ?>
+                    @if ($consultant->consultantUniversity->count() > 0)
                     <div class="hotel-card-carousel-2 carousel-action">
                         {{-- {{dd($consultant->consultantUniversity)}} --}}
-                        @if ($consultant->consultantUniversity->count() > 0)
+
                         <?php $universitycrousels=$consultant->consultantUniversity; ?>
                         @foreach($universitycrousels as $universitycrousel)
                         @if($universitycrousel->deleted_at == NULL)
                         @if($universitycrousel->userUniversity->status == 1)
+                        <?php $i++;?>
                            <div class="card-item car-card border">
                             <div class="card-img"  style="text-align: center; height:185px;">
 
@@ -471,18 +481,12 @@
                             <div class="card-body">
                                 <?php
                                 $myuniversitycrousel =$universitycrousel->userUniversity->university->university_name ?? '';
-                                // dd($myuniversitycrousel);
-                                if (strlen($myuniversitycrousel) > 5)
-                                    {
-                                        // dd($myire);
-                                        $myuniversitycrousel = substr($myuniversitycrousel, 0, 40);
-                                        $myuniversitycrousel = explode(' ', $myuniversitycrousel);
-                                        array_pop($myuniversitycrousel); // remove last word from array
-                                        $myuniversitycrousel = implode(' ', $myuniversitycrousel);
-                                        // $myvalue = $myvalue . ' ...';
-                                    } ?>
-                                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$universitycrousel->userUniversity->id])}}">
-                                        @if(isset($universitycrousel->userUniversity->university->university_name))<?php echo($myuniversitycrousel . '...')?> @else N/A @endif</a>
+                                 ?>
+                                        <h3 class="card-title" title="{{$universitycrousel->userUniversity->university->university_name ?? ''}}" style="
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                        "><a href="{{route('university_detail',['id'=>$universitycrousel->userUniversity->id])}}">
+                                        @if(isset($universitycrousel->userUniversity->university->university_name))<?php echo($myuniversitycrousel)?> @else N/A @endif</a>
 
                                             
 
@@ -571,9 +575,20 @@
                            @endif
                            @endif
 
-                        @endforeach<!-- end card-item -->
-                        @endif
+
+                        @endforeach
+                                        @if($i == 0)
+                                        <div class="text-center" style="margin-top: 110px;">
+                                            <h3> No Associated Universities Available </h3>
+                                        </div>
+                                      @endif
+                      
                 </div><!-- end hotel-card-carousel -->
+                @else
+                <div class="text-center" style="margin-top: 110px;">
+                    <h3>  No Associated Universities Available </h3>
+                </div>
+                @endif
                 </div>
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->

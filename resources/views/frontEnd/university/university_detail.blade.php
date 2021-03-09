@@ -293,6 +293,7 @@
 
                             height: 530px;
                             overflow: scroll;">
+                            <?php $i=0;?> 
                             @if($universityconsultant->count() > 0)
                                 <ul class="list-items">
                                     @foreach($universityconsultant as $consultant)
@@ -300,7 +301,7 @@
                                     @if($consultant->userConsultant->status == 1)
                                     @if(isset($consultant->userConsultant->Premium_expire_date))
                                     @if($consultant->userConsultant->Premium_expire_date > $mytime)
-
+ <?php $i++ ;?>
                                     <li><div class="author-content d-flex">
                                         <div class="author-img">
                                             <a href="#">@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
@@ -377,7 +378,7 @@
 
  </form>
                                           @else
-                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></label></a>
+                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></label></a>
                                           @endif
                                           @else
                                           <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
@@ -389,13 +390,18 @@
                                     @endif
                                     @endif
                                     @endif
-@endforeach
 
+                            @endforeach
+                            @if($i == 0)
+                            <div class="text-center" style="margin-top: 110px;">
+                                <h3> No Featured Consultant Available </h3>
+                            </div>
+                            @endif
                                 </ul>
                                 @else
 
                                 <div class="text-center" style="margin-top: 110px;">
-                                    <h3> No Featured Consultant </h3>
+                                    <h3> No Featured Consultant Available</h3>
                                </div>
                                 @endif
                             </div><!-- end sidebar-list -->
@@ -664,7 +670,7 @@
 
 </form>
                               @else
-                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></label></a>
+                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></label></a>
                               @endif
                               @else
                               <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
