@@ -422,18 +422,12 @@
                             <div class="card-body">
                                 <?php
                                 $mycourseuniversity =$courseuniversity->university->university_name ?? '';
-                                // dd($myire);
-                                if (strlen($mycourseuniversity) > 5)
-                                    {
-                                        // dd($myire);
-                                        $mycourseuniversity = substr($mycourseuniversity, 0, 40);
-                                        $mycourseuniversity = explode(' ', $mycourseuniversity);
-                                        array_pop($mycourseuniversity); // remove last word from array
-                                        $mycourseuniversity = implode(' ', $mycourseuniversity);
-                                        // $myvalue = $myvalue . ' ...';
-                                    } ?>
-                                        <h3 class="card-title"><a href="{{route('university_detail',['id'=>$courseuniversity->id])}}">
-                                        @if(isset($courseuniversity->university->university_name))<?php echo($mycourseuniversity . '...')?> @else N/A @endif</a>
+                             ?>
+                                        <h3 class="card-title" title="{{$courseuniversity->university->university_name ?? ''}}" style="
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                        "><a href="{{route('university_detail',['id'=>$courseuniversity->id])}}">
+                                        @if(isset($courseuniversity->university->university_name))<?php echo($mycourseuniversity)?> @else N/A @endif</a>
 
                                             <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
 

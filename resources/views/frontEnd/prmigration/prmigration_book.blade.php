@@ -108,7 +108,31 @@
 @csrf
 
 <div class="row col-lg-12" style="margin-bottom: -34px;">
-<div class="col-lg-6 col-md-12">
+
+    <div class="col-lg-3 col-md-12">
+        <div class="form-group">
+        <label for="start_time">Country</label>
+    
+        <select  name="country"  class="form-control"  style="height: 50px;" >
+            <?php $countries = App\Models\Country::all();?>
+            @if($countries->count() > 0)
+             @foreach($countries as $country)
+                <option value="{{$country->countries_id}}" @if(isset($countrycomming)&&$countrycomming == $country->countries_id)selected @endif>{{$country->countries_name}}</option>
+             @endforeach
+    
+            @else
+    
+                <option value="">Currently Unavailable</option>
+    
+            @endif
+    
+        </select>
+        </div><br><br>
+        <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
+        <input type="text" id="cid" name="cid" value="{{$consultant->id ?? ''}}" hidden>
+        </div>
+
+<div class="col-lg-3 col-md-12">
 <div class="input-box">
 <label style="color: grey;
 font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
@@ -119,7 +143,7 @@ font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
 </div>
 </div>
 
-<div class="col-lg-6 col-md-12">
+<div class="col-lg-3 col-md-12">
 <div class="form-group">
 <label for="start_time">Select Booking Time</label>
 <?php get_times( $default = '00:00', $interval = '+30 minutes' ); ?>
@@ -131,30 +155,6 @@ font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
 </div><br><br>
 <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
 <input type="text" id="cid" name="cid" value="{{$consultant->id ?? ''}}" hidden>
-</div>
-
-<div class="col-lg-6 col-md-12">
-    <div class="form-group">
-    <label for="start_time">Country</label>
-
-    <select  name="country"  class="form-control"   >
-        <?php $countries = App\Models\Country::all();?>
-        @if($countries->count() > 0)
-         @foreach($countries as $country)
-            <option value="{{$country->countries_id}}" @if(isset($countrycomming)&&$countrycomming == $country->countries_id)selected @endif>{{$country->countries_name}}</option>
-         @endforeach
-
-        @else
-
-            <option value="">Currently Unavailable</option>
-
-        @endif
-
-    </select>
-    </div><br><br>
-    <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
-    <input type="text" id="cid" name="cid" value="{{$consultant->id ?? ''}}" hidden>
-    </div>
 </div>
 
 <!-- Function to call time -->
@@ -177,24 +177,31 @@ return $output;
 ?>
 {{-- #######################TIMESLOT#################### --}}
 
-<div class="col-lg-12">
-@if(auth()->user())
-<div class="btn-box">
-<button style="
-margin-left: -15px;" class="theme-btn" type="submit">Confirm Booking</button>
+<div class="col-lg-3">
+    @if(auth()->user())
+    <div class="btn-box" style="
+    margin-top: 37px;
+">
+    <button style="
+    margin-left: -15px;" class="theme-btn" type="submit">Confirm Booking</button>
+    </div>
+    
+    @endif
+    @if(!auth()->user())
+    <div class="btn-box" style="
+    margin-top: 37px;
+">
+    <button style="
+    margin-left: -15px;" class="theme-btn" data-toggle="modal" data-target="#loginPopupForm">Confirm Booking</button>
+    </div>
+    @endif
+    </div><!-- end col-lg-12 -->
 </div>
 
-@endif
-</div><!-- end col-lg-12 -->
+
+
 </div>
 </form>
-@if(!auth()->user())
-<div class="btn-box">
-<button style="
-margin-left: -15px;" class="theme-btn" data-toggle="modal" data-target="#loginPopupForm">Confirm Booking</button>
-</div>
-@endif
-
 </div>
 
 

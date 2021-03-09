@@ -152,7 +152,7 @@
             <div class="card-item car-card border">
                 <div class="card-img" style="text-align: center; height:185px;">
                     <div>
-                    <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
+                    <a href="javascript:void(0)" class="d-block">
                         @if(isset($consultant->consultant->cover_image) && file_exists($consultant->consultant->cover_image))
                                             <img
                                              style=" width: 368px;
@@ -180,7 +180,7 @@
                 </div>
                 <div class="card-body">
                     {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
-                    <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->first_name}} {{$consultant->last_name}}</a>   @if($consultant->is_verified == 1)
+                    <h3 class="card-title"><a href="javascript:void(0)">{{$consultant->first_name}} {{$consultant->last_name}}</a>   @if($consultant->is_verified == 1)
                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                     @endif</h3>
                     <div class="card-rating">

@@ -355,17 +355,12 @@
                     <div class="card-body">
                     <?php
                                     $myuniversity =$university->university->university_name ?? '';
-                                    // dd($myire);
-                                    if (strlen($myuniversity) > 5)
-                                        {
-                                            // dd($myire);
-                                            $myuniversity = substr($myuniversity, 0, 40);
-                                            $myuniversity = explode(' ', $myuniversity);
-                                            array_pop($myuniversity); // remove last word from array
-                                            $myuniversity = implode(' ', $myuniversity);
-                                            // $myvalue = $myvalue . ' ...';
-                                        } ?>
-                                            <h3 class="card-title">
+
+                                     ?>
+                                            <h3 class="card-title" title="{{$university->university->university_name ?? ''}}" style="
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                        ">
                                                 <a href="{{route('university_detail',['id'=>$university->id])}}">
 
                                              @if(isset($filtersub_category) && $filtersub_category != null)
@@ -378,14 +373,14 @@
                                               @endif
 
                                               @if($univercourse == null)
-                                              @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
+                                              @if(isset($university->university->university_name))<?php echo($myuniversity)?> @else N/A @endif
                                                       @endif
                                               @endif
                                               @if(isset($filtersub_category) && $filtersub_category == null)
-                                              @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
+                                              @if(isset($university->university->university_name))<?php echo($myuniversity)?> @else N/A @endif
                                                       @endif
                                         @if(isset($page)&& $page == 1)
-                                        @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
+                                        @if(isset($university->university->university_name))<?php echo($myuniversity)?> @else N/A @endif
                                         @endif
 
                                     </a>
