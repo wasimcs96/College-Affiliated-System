@@ -311,6 +311,13 @@ class="fa fa-fw fa-save"></i> Submit
 
 
 @endsection
+@section('per_page_style')
+<style>
+    .ui-datepicker-calendar{
+        background-color: azure;
+    }
+</style>
+@endsection
 
 @section('per_page_script')
 {{-- <script type="text/javascript">
