@@ -57,9 +57,9 @@ public function newUser($userSocial,$provider){
 
 
     // Important Code
-$replacement['token'] =$request->_token;
-$replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
-
+// $replacement['token'] =$request->_token;
+// $replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
+$replacement=[];
 $replacement['USER_NAME'] = $userSocial->getName();
 $data = ['template'=>'welcome-email','hooksVars' => $replacement];
 mail::to($userSocial->getEmail())->send(new \App\Mail\ManuMailer($data));
