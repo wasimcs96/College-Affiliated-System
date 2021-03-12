@@ -37,7 +37,10 @@
                 </ul>
             </div>
             <div class="body">
-
+  
+                {{-- <small class="text-muted">Profile Page: </small><br> --}}
+                <a href="{{route('consultant_detail',auth()->user()->id)}}" class="btn btn-outline-primary" title="View Profile Page">View Profile
+                </a>
                 <hr>
                 <small class="text-muted">Email address: </small>
                  <p>@if(isset(Auth()->user()->email)){{Auth()->user()->email}}@endif</p>
@@ -351,7 +354,45 @@
     .demo-card .col-lg-4{ margin-bottom: 30px;}
 </style>
 
-
+<style>
+    .tltp {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .tltp .tltptxt {
+      visibility: hidden;
+      width: 140px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -75px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .tltp .tltptxt::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+    
+    .tltp:hover .tltptxt {
+      visibility: visible;
+      opacity: 1;
+    }
+    </style>
 @stop
 
 @section('page-script')
@@ -371,6 +412,22 @@
 
 <script src="{{ asset('assets/js/pages/forms/dropify.js') }}"></script>
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+<script>
+    function myFunction() {
+      var copyText = document.getElementById("myInput");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      
+      var tooltip = document.getElementById("myTooltip");
+      tooltip.innerHTML = "Copied: " + copyText.value;
+    }
+    
+    function outFunc() {
+      var tooltip = document.getElementById("myTooltip");
+      tooltip.innerHTML = "Copy to clipboard";
+    }
+    </script>
     <script type="text/javascript">
 
     function setEndTime(start_time){

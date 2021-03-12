@@ -8,6 +8,8 @@ use Razorpay\Api\Api;
 use Session;
 use  App\Models\Order;
 use  App\Models\OrderItem;
+use Illuminate\Support\Facades\Mail;
+
 use App\Models\UserPurchasedPlans;
 use Carbon\Carbon;
 
