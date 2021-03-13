@@ -37,6 +37,7 @@
                     <h3><span><i class="fa fa-inr"></i></span>{{$package->amount}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>                    <span>Advertisement</span>
                 </li>
                 <li>{{$package->title ?? ''}}</li>
+                <li>Advertisement Type: @if(isset($package->advertisement_type)) @if($package->advertisement_type == 1) Outer @endif @if($package->advertisement_type == 0) Inner @endif @endif </li>
                 <hr>
 
                  <li>{{$package->description ?? ''}}</li>

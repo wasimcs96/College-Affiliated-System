@@ -6,8 +6,8 @@
                     <div class="header-top-content">
                         <div class="header-left">
                             <ul class="list-items">
-                                <li><a href="#"><i class="la la-phone mr-1"></i>{{config('get.TELEPHONE')}}</a></li>
-                                <li><a href="#"><i class="la la-envelope mr-1"></i>{{config('get.ADMIN_EMAIL')}}</a></li>
+                                <li><a href="javascript:void(0);"><i class="la la-phone mr-1"></i>{{config('get.TELEPHONE')}}</a></li>
+                                <li><a href="javascript:void(0);"><i class="la la-envelope mr-1"></i>{{config('get.ADMIN_EMAIL')}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -783,7 +783,7 @@
                                                                     font-size: 17px;
                                                                     font-weight: 600;
 
-                                                                    
+
                                                                     ">Top Featured Consultants</li>
                                                                     <?php $myconsultime=Carbon\Carbon::now()->format('Y-m-d');?>
                                                                     <?php $headerconsultants11 =  App\Models\User::whereHas('roles', function($q){
@@ -791,13 +791,13 @@
                                                                     })->where('countries_id',223)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get();
                                                     ?>
                                                                  @foreach ( $headerconsultants11 as $headerconsultant11)
-                                                             
-                                                               
-                                                                
+
+
+
                                                                 <li><a href="{{route('consultant_detail',['id'=>$headerconsultant11->id])}}">{{$headerconsultant11->first_name ?? ''}} &nbsp;{{$headerconsultant11->last_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
-                                                        
-                                                              
+
+
 
                                                                 @endforeach
 
@@ -826,9 +826,9 @@
                                                                 })->where('countries_id',223)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
 
                                                             @foreach ($headerconsultants12 as $headerconsultant12)
-                                                          
+
 @if($headerconsultant12->Premium_expire_date < $myconsultime || $headerconsultant12->Premium_expire_date == null)
-                                                            
+
                                                             <li><a href="{{route('consultant_detail',['id'=>$headerconsultant12->id])}}">{{$headerconsultant12->first_name ?? ''}} &nbsp;{{$headerconsultant12->last_name ?? ''}}</a></li>
                                                             {{-- </form> --}}
                                                             @endif
@@ -873,11 +873,11 @@
                                                                         })->where('countries_id',222)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
 
                                                                         @foreach ($headerconsultants21 as $headerconsultant21)
-                                                    
 
-                                                                     
+
+
                                                                 <li><a href="{{route('consultant_detail',['id'=>$headerconsultant21->id])}}">{{$headerconsultant21->first_name ?? ''}} &nbsp;{{$headerconsultant21->last_name ?? ''}}</a></li>
-                                                             
+
                                                                     @endforeach
 
                                                                 </ul>
@@ -906,14 +906,14 @@
                                                                 @foreach ($headerconsultants22 as $headerconsultant22)
                                                                 @if($headerconsultant22->Premium_expire_date < $myconsultime || $headerconsultant22->Premium_expire_date == null)
 
-                                                                  
+
                                                                 <li><a href="{{route('consultant_detail',['id'=>$headerconsultant22->id])}}">{{$headerconsultant22->first_name ?? ''}} &nbsp;{{$headerconsultant22->last_name ?? ''}}</a></li>
                                                                 {{-- </form> --}}
-                                                              
+
                                                            @endif
                                                                 @endforeach
 
-                                                                
+
                                                             </ul>
                                                             </li>
                                                         </ul>
@@ -950,12 +950,12 @@
                                                                             $q->where('name', 'consultant');
                                                                         })->where('countries_id',38)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                     @foreach ($headerconsultants31 as $headerconsultant31)
-                                                              
 
 
-                                                       
+
+
                                                                     <li><a href="{{route('consultant_detail',['id'=>$headerconsultant31->id])}}">{{$headerconsultant31->first_name ?? ''}} &nbsp;{{$headerconsultant31->last_name ?? ''}}</a></li>
-                                                              
+
                                                                     @endforeach
 
                                                                 </ul>
@@ -1023,10 +1023,10 @@
                                                                             $q->where('name', 'consultant');
                                                                         })->where('countries_id',103)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                     @foreach ($headerconsultants41 as $headerconsultant41)
-                                                                 
 
 
-                                                                
+
+
                                                                     <li><a href="{{route('consultant_detail',['id'=>$headerconsultant41->id])}}">{{$headerconsultant41->first_name ?? ''}} &nbsp;{{$headerconsultant41->last_name ?? ''}}</a></li>
                                                                     @endforeach
 
@@ -1094,9 +1094,9 @@
                                                                         $q->where('name', 'consultant');
                                                                     })->where('countries_id',13)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headerconsultants51 as $headerconsultant51)
-                                                            
+
                                                                 <li><a href="{{route('consultant_detail',['id'=>$headerconsultant51->id])}}">{{$headerconsultant51->first_name ?? ''}} &nbsp;{{$headerconsultant51->last_name ?? ''}}</a></li>
-                                                                
+
                                                                 @endforeach
 
                                                             </ul>
@@ -1123,7 +1123,7 @@
                                                                     $q->where('name', 'consultant');
                                                                 })->where('countries_id',13)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                             @foreach ($headerconsultants52 as $headerconsultant52)
-                                                            @if($headerconsultant52->Premium_expire_date < $myconsultime || $headerconsultant52->Premium_expire_date == null)                            
+                                                            @if($headerconsultant52->Premium_expire_date < $myconsultime || $headerconsultant52->Premium_expire_date == null)
                                                             <li><a href="{{route('consultant_detail',['id'=>$headerconsultant52->id])}}">{{$headerconsultant52->first_name ?? ''}} &nbsp;{{$headerconsultant52->last_name ?? ''}}</a></li>
                                                          @endif
                                                             @endforeach
@@ -1170,11 +1170,11 @@
                                                                 $q->where('name', 'consultant');
                                                             })->where('countries_id',188)->where('Premium_expire_date','>',$myconsultime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                         @foreach ($headerconsultants61 as $headerconsultant61)
-                                                
 
-                                                         
+
+
                                                         <li><a href="{{route('consultant_detail',['id'=>$headerconsultant61->id])}}">{{$headerconsultant61->first_name ?? ''}} &nbsp;{{$headerconsultant61->last_name ?? ''}}</a></li>
-                                                    
+
                                                         @endforeach
 
                                                     </ul>
@@ -1202,9 +1202,9 @@
                                                         })->where('countries_id',188)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                     @foreach ($headerconsultant62 as $headerconsultant62)
                                                     @if($headerconsultant62->Premium_expire_date < $myconsultime || $headerconsultant62->Premium_expire_date == null)
-  
+
                                                     <li><a href="{{route('consultant_detail',['id'=>$headerconsultant62->id])}}">{{$headerconsultant62->first_name ?? ''}} &nbsp;{{$headerconsultant62->last_name ?? ''}}</a></li>
-                                                 
+
                                                     @endif
                                                     @endforeach
 
@@ -1220,7 +1220,7 @@
                                             </ul>
                                         </div>
                                     </li>
-                         
+
 
 
 
@@ -1288,17 +1288,17 @@
                                                                     font-size: 17px;
                                                                     font-weight: 600;
 
-                                                                    
+
                                                                     ">Top Featured Universities</li>
                                                                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                                                     <?php $headercountries11 = App\Models\User::whereHas('roles', function($q){
                                                                         $q->where('name', 'university');
                                                                     })->where('countries_id',223)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                  @foreach ( $headercountries11 as $headercountry11)
-                                                           
+
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry11->id])}}">{{$headercountry11->university->university_name ?? ''}}</a></li>
-                                                           
+
 
                                                                 @endforeach
 
@@ -1329,7 +1329,7 @@
                                                             @foreach ($headercountries12 as $headercountry12)
                                                             @if($headercountry12->Premium_expire_date < $mytime || $headercountry12->Premium_expire_date == null)
                                                             <li><a href="{{route('university_detail',['id'=>$headercountry12->id])}}">{{$headercountry12->university->university_name ?? ''}}</a></li>
-                                                          
+
 @endif
                                                             @endforeach
 
@@ -1371,11 +1371,11 @@
                                                                         })->where('countries_id',222)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
 
                                                                         @foreach ($headercountries21 as $headercountry21)
-                                  
+
 
                                                                     <li><a href="{{route('university_detail',['id'=>$headercountry21->id ?? ''])}}">{{$headercountry21->university->university_name ?? ''}}</a></li>
                                                                     {{-- </form> --}}
-                                                           
+
 
                                                                     @endforeach
 
@@ -1403,7 +1403,7 @@
                                                                         $q->where('name', 'university');
                                                                     })->where('countries_id',222)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headercountries22 as $headercountry22)
-                                
+
                                                                 @if($headercountry22->Premium_expire_date < $mytime || $headercountry22->Premium_expire_date == null)
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry22->id ?? ''])}}">{{$headercountry22->university->university_name ?? ''}}</a></li>
                                                    @endif
@@ -1451,11 +1451,11 @@
                                                                             $q->where('name', 'university');
                                                                         })->where('countries_id',38)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                     @foreach ($headercountries31 as $headercountry31)
-                                                          
+
 
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry31->id ?? ''])}}">{{$headercountry31->university->university_name ?? ''}}</a></li>
-                                              
+
                                                                     @endforeach
 
                                                                 </ul>
@@ -1524,10 +1524,10 @@
                                                                             $q->where('name', 'university');
                                                                         })->where('countries_id',103)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get();?>
                                                                     @foreach ($headercountries41 as $headercountry41)
-                                                              
+
 
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry41->id ?? ''])}}">{{$headercountry41->university->university_name ?? ''}}</a></li>
-                                                            
+
                                                                     @endforeach
 
                                                                 </ul>
@@ -1595,7 +1595,7 @@
                                                                         $q->where('name', 'university');
                                                                     })->where('countries_id',13)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                                 @foreach ($headercountries51 as $headercountry51)
-                                   
+
                                                                 <li><a href="{{route('university_detail',['id'=>$headercountry51->id ?? ''])}}">{{$headercountry51->university->university_name ?? ''}}</a></li>
                                                                 @endforeach
 
@@ -1623,7 +1623,7 @@
                                                                     $q->where('name', 'university');
                                                                 })->where('countries_id',13)->where('status',1)->orderBy('rating','Desc')->take(7)->get(); ?>
                                                             @foreach ($headercountries52 as $headercountry52)
-                                            
+
                                                             @if($headercountry52->Premium_expire_date < $mytime || $headercountry52->Premium_expire_date == null)
                                                             <li><a href="{{route('university_detail',['id'=>$headercountry52->id ?? ''])}}">{{$headercountry52->university->university_name ?? ''}}</a></li>
                                             @endif
@@ -1671,9 +1671,9 @@
                                                                 $q->where('name', 'university');
                                                             })->where('countries_id',188)->where('Premium_expire_date','>',$mytime)->where('status',1)->orderBy('rating','Desc')->take(7)->get();?>
                                                         @foreach ($headercountries61 as $headercountry61)
-                                                    
+
                                                         <li><a href="{{route('university_detail',['id'=>$headercountry61->id ?? ''])}}">{{$headercountry61->university->university_name ?? ''}}</a></li>
-                                                    
+
                                                         @endforeach
 
                                                     </ul>
@@ -1718,7 +1718,7 @@
                                             </ul>
                                         </div>
                                     </li>
-                         
+
                                     <li>
                                         <a href="{{route('Prmigration')}}">PR/Migration </a>
                                         {{-- <ul class="dropdown-menu-item">
@@ -1836,12 +1836,12 @@
                                                         <select class="selectpicker" multiple data-live-search="true"  placeholder="University" id="university" name="university">
 
                                                             @foreach($universities as $university)
-                                                            <?php 
+                                                            <?php
                                                             $contryid=$university->user->countries_id ?? '';
-                                                            
-                                                            $country = DB::table('countries')->where('countries_id',$university->user->countries_id)->first();
-                                
-                                
+
+                                                            $country = DB::table('countries')->where('countries_id',$university->user->countries_id ?? '')->first();
+
+
                                                             ?>
                                                                 <option value="{{$university->user_id ?? ''}}">{{$university->university_name ?? ''}} ({{$country->countries_name ?? ''}})</option>
                                                             @endforeach

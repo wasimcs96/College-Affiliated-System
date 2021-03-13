@@ -42,15 +42,16 @@
 
                     {{-- {{dd($rts)}} --}}
                     <?php $subscriptions= auth()->user()->order;
-
                     ?>
+
+                    {{-- {{ dd(auth()->user()->id) }} --}}
                     @if($subscriptions->count() > 0)
                     <tbody>
                                             @foreach($subscriptions as $subscription)
 
                                             @if($subscription->payment_type == 0)
                                             <tr>
-                                                <td>{{$subscription->OrderItem[0]->Item_title}}</td>
+                                                <td>{{$subscription->OrderItem[0]->Item_title ?? ''}}</td>
                                                 <td><i class="fa fa-inr"></i>{{$subscription->amount ?? 'NA'}}</td>
                                                 <td>{{$subscription->transaction_id ?? 'NA'}}</td>
 
@@ -71,9 +72,7 @@
 
                     @endforeach
                     </tbody>
-                    @else
 
-                    Records not available
                     @endif
 
                 </table>

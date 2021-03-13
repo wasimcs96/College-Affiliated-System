@@ -66,6 +66,7 @@
                         }
                     ?>
                             <li>
+
                                 <span>Working Week Days:</span>
                                 @if(count($weekarray)>0)
                                     @foreach($weekarray as $key => $value)
@@ -88,6 +89,7 @@
     </div>
 
 </div>
+
 <section class="booking-area padding-top-100px padding-bottom-70px">
 <div class="container">
 <div class="row">

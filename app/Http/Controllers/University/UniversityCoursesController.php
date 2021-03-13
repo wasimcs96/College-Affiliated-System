@@ -20,8 +20,9 @@ class UniversityCoursesController extends Controller
      */
     public function index()
     {
-        $universitycourse=auth()->user()->universityCourse;
+        // $universitycourse=auth()->user()->universityCourse;
         // dd($universitycourse);
+        $universitycourse = UniversityCourse::where('user_id',auth()->user()->id)->orderBy('id','DESC')->get();
         return view('university.course.courses')->with('universitycourses', $universitycourse);
 
     }

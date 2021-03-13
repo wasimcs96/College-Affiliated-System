@@ -43,11 +43,16 @@
             <div class="card-item user-card card-item-list mt-4 mb-0">
                 @if(isset($consultant) && $consultant->count()>0)
                 <div class="card-img">
+                    @if(isset($advertise->banner_image) && file_exists($advertise->banner_image))
                     <img src="{{asset($consultant->profile_image)}}"alt="user image" class="h-auto">
+                      @else
+                      <img style=" width: 368px; height: 245px;" src="{{asset('frontEnd/assets/images/img21.jpg')}}" >
+                      @endif
+
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">{{$consultant->first_name ?? ''}} {{$consultant->last_name ?? ''}}</h3>
-                    <p class="card-meta">Member since April 2016</p>
+                    {{-- <p class="card-meta">Member since April 2016</p> --}}
                     <div class="d-flex justify-content-between pt-3">
                         <ul class="list-items list-items-2 flex-grow-1">
                             <li><span>Email:</span>{{$consultant->email ?? ''}}</li>
@@ -128,28 +133,46 @@ font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
 <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
 <input type="text" id="cid" name="cid" value="{{$consultant->id}}" hidden>
 </div>
+<?php $countries = App\Models\Country::get();?>
+<?php $countryes_id =  explode(",", $consultant->consultantPrMigrationCountry->country_id ?? '');
+      $conts=[];
+      foreach($countries as $country){
+                 if (in_array($country->countries_id,$countryes_id))
+{
+   array_push($conts,$country);
+}
+      }
+?>
+
+
 
 <div class="col-lg-6 col-md-12">
     <div class="form-group">
     <label for="start_time">Country</label>
 
     <select  name="country"  class="form-control"   >
-        <?php $countries = App\Models\Country::all();?>
-        @if($countries->count() > 0)
-         @foreach($countries as $country)
-            <option value="{{$country->countries_id}}">{{$country->countries_name}}</option>
+
+
+        @if(count($conts) > 0)
+
+         @foreach($conts as $country)
+         {{-- @if (in_array($countryes_id,$countries) && ($country->countries_id==)) --}}
+
+         <option value="{{$country->countries_id ?? ''}}">{{$country->countries_name ?? ''}}</option>
+         {{-- @endif --}}
          @endforeach
 
         @else
 
-            <option value="">Currently Unavailable</option>
+            <option value="">No Country Available for PR</option>
 
         @endif
 
     </select>
     </div><br><br>
+    {{-- {{ dd($consultant->consultantPrMigrationCountry) }} --}}
     <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
-    <input type="text" id="cid" name="cid" value="{{$consultant->id}}" hidden>
+    <input type="text" id="cid" name="cid" value="{{$consultant->id ?? ''}}" hidden>
     </div>
 </div>
 

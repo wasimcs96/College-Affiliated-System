@@ -3,7 +3,7 @@
 @section('title', 'See Dues Detail')
 
 @section('content')
-@if($id == 1)
+@if($id==1)
 <h6>Total Payment<small style="margin-left:3px;">Payment Details</small></h6>
 <div class="row clearfix">
     <input type="text" name="amount" value="@if(isset($dues->due_amount)) {{$dues->due_amount ?? ''}} @endif" hidden>

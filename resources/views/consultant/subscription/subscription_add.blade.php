@@ -15,20 +15,21 @@
             <ul class="pricing body">
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
-                    <h3><span><i class="fa fa-inr"></i></span>{{$package->amount}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>
+                    <h3><span><i class="fa fa-inr"></i></span>{{$package->amount ?? ''}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>
                                         {{-- <span>Premium</span> --}}
                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');
         $rt=auth()->user()->Subscription_expire_date;
 ?>
                 </li>
-                <li>{{$package->title}}</li>
+                <li>{{$package->title ?? ''}}</li>
                 <hr>
 
-                <li>{{$package->description}}</li>
-                <input type="text" name="amount" value="{{$package->amount}}" hidden>
+                <li>{{$package->description ?? ''}}</li>
+                <input type="text" name="amount" value="{{$package->amount ?? ''}}" hidden>
                 <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
                 <input type="text" name="payment_type" value="0" hidden>
-                <input type="text" name="title" value="{{$package->title}}" hidden>
+                <input type="text" name="title" value="{{$package->title ?? ''}}" hidden>
+
                 @if($rt>$mytime && $rt != null)
 
                 <li class="plan-btn"><button class="btn btn-round btn-outline-secondary" data-toggle="modal" data-target="#mdlerror">Choose plan</button></li>
