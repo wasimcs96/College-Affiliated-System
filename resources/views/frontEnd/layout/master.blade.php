@@ -925,7 +925,7 @@ function closeNav() {
                             $("#" + key + "Error").children("strong").text(errors[key][0]);
                         });
                     } else {
-                        window.location.reload();
+                        // window.location.reload();
                     }
                 }
             })
@@ -1080,7 +1080,7 @@ location="consultant/services/subscription/add";
     });
   </script>
 
-  
+
 @yield('per_page_script')
 </body>
 

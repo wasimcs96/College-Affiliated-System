@@ -37,6 +37,6 @@ class UniversityExcelController extends Controller
         $type = $request->type;
         Excel::import(new CoursesImport($category,$type),request()->file('file'));
 
-        return redirect()->back()->with('success','Course Uploaded Successfully');
+        return redirect()->route('university.courses')->with('success','Course Uploaded Successfully');
     }
 }

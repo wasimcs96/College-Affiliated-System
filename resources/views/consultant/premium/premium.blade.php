@@ -46,11 +46,11 @@
 @if($premiums->count() > 0)
 <tbody>
                         @foreach($premiums as $key => $premium)
-
+{{-- {{dd($premium->userPurchasedPlans)}} --}}
                         @if($premium->payment_type == 1)
                         <tr>
-                            <td>{{$premium->OrderItem[0]->Item_title}}</td>
-                            <td><i class="fa fa-inr"></i>{{$premium->amount}}</td>
+                            <td>{{$premium->OrderItem[0]->Item_title ?? ''}}</td>
+                            <td><i class="fa fa-inr"></i>{{$premium->amount ?? ''}}</td>
                             <td>{{$premium->transaction_id}}</td>
 
                             <td>{{ Carbon\Carbon::parse($premium->userPurchasedPlans[0]->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>

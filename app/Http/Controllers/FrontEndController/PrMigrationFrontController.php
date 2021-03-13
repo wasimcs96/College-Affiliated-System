@@ -79,7 +79,7 @@ class PrMigrationFrontController extends Controller
 
     public function book_store(Request $request)
     {
-// dd($request->all());
+//  dd($request->all());
         $this->validate($request,[
         'start_time'=>'required',
         'booking_date'=>'required',
@@ -105,7 +105,6 @@ class PrMigrationFrontController extends Controller
             'client_id'=>$request->client_id,
             'consultant_id'=>$request->cid,
             'countries_id'=>$request->country,
-
             'booking_date'=>$bookind_date,
             // 'comments'=>$request->comment,
             'status'=>0,
@@ -115,32 +114,75 @@ class PrMigrationFrontController extends Controller
             $slug='PR_COMMISSION';
             $consultant_id=$request->cid;
             $check = $this->consultantDue($type,$slug,$consultant_id);
+            // dd($request->cid);
             return redirect()->route('client.dashboard')->with('success','Your Application have been Submitted Successfully');
 
     }
+
+//     public function consultantDue($amountType,$slug,$consultant_id)
+//     {
+//         $consultant = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get()->first();
+
+//         $alreadyDue = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get('due_amount')->first();
+//         $alreadyClient = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get()->first();
+
+//         $dueAmount = DB::table('settings')->where('slug',$slug)->get('config_value')->first();
+
+// if(isset($dueAmount))
+// {
+//         if($consultant==null)
+//         {
+//            // dd(auth()->user()->id);
+//           $newConsultant = ConsultantDues::create([
+
+//                'due_amount' => $dueAmount->config_value,
+//                'paid_amount' => 0,
+//                'consultant_id' => auth()->user()->id,
+//                'total_client_count' => 1,
+//                'temp_client_count' => 1,
+//                'due_amount_type' => $amountType
+//            ]);
+
+//            return response('success');
+//         }
+//         else
+//         {
+//             $consultant->consultant_id = $consultant_id;
+//             $consultant->due_amount = $dueAmount->config_value+$alreadyDue->due_amount;
+//             $consultant->paid_amount = $alreadyClient->paid_amount;
+//             $consultant->total_client_count = $alreadyClient->total_client_count+1;
+//             $consultant->temp_client_count = $alreadyClient->temp_client_count+1;
+//             $consultant->due_amount_type = 1;
+//             $consultant->save();
+//             return $consultant;
+//         }
+//     }
+//        return response('success');
+//     }
+
 
     public function consultantDue($amountType,$slug,$consultant_id)
     {
         $consultant = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get()->first();
 
         $alreadyDue = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get('due_amount')->first();
-        $alreadyClient = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->get()->first();
+        $alreadyClient = ConsultantDues::where('consultant_id',$consultant_id)->where('due_amount_type',1)->first();
 
         $dueAmount = DB::table('settings')->where('slug',$slug)->get('config_value')->first();
 
-if(isset($dueAmount))
-{
-        if($consultant==null)
+   if(isset($dueAmount->config_value))
+   {
+        if($consultant==null )
         {
            // dd(auth()->user()->id);
           $newConsultant = ConsultantDues::create([
 
                'due_amount' => $dueAmount->config_value,
                'paid_amount' => 0,
-               'consultant_id' => auth()->user()->id,
+               'consultant_id' => $consultant_id,
                'total_client_count' => 1,
                'temp_client_count' => 1,
-               'due_amount_type' => $amountType
+               'due_amount_type' => 1
            ]);
 
            return response('success');
@@ -156,8 +198,11 @@ if(isset($dueAmount))
             $consultant->save();
             return $consultant;
         }
-    }
        return response('success');
+       }
+       else
+       {
+           return response('success');
+       }
     }
-
 }

@@ -50,7 +50,7 @@
 
                     <tr>
                     <th scope="row">PR Migration</th>
-                    @if(isset($show->user->countries_id))
+                    @if(isset($show->countries_id))
                         <?php $prCountry = DB::table('countries')->where('countries_id',$show->countries_id)->get()->first();?>
                         @endif
                         <td> {{$prCountry->countries_name ?? ''}} </td>

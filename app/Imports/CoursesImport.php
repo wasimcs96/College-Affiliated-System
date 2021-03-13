@@ -13,7 +13,7 @@ use Rule;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Carbon;
 
-class CoursesImport implements ToModel, WithStartRow, WithValidation, WithHeadingRow
+class CoursesImport implements ToModel, WithStartRow
 {
     use Importable;
   public $category;
@@ -37,8 +37,7 @@ class CoursesImport implements ToModel, WithStartRow, WithValidation, WithHeadin
     */
     public function model(array $row)
     {
-        $start_date = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[3]))->format('Y-m-d');
-        $end_date = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[4]))->format('Y-m-d');
+
             return new UniversityCourse([
             'category_id' =>$this->category,
             'title' => $row[0],
@@ -46,8 +45,7 @@ class CoursesImport implements ToModel, WithStartRow, WithValidation, WithHeadin
             'user_id' => auth()->user()->id,
             'description' => $row[1],
             'fees' => $row[2],
-            'start_date' => $start_date,
-            'end_date' => $end_date,
+            'duration' => $row[3],
         ]);
 
     }

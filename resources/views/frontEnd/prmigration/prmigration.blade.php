@@ -36,9 +36,8 @@
                                                     <select  name="country" class="select-contain-select">
                                                         <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
-                                                        <option value="" >Select Country</option>
-                                                         @foreach($countries as $country)
-                                                            <option value="{{$country->countries_id ?? ''}}" @if(isset($countrycoming) && $countrycoming == $country->countries_id) selected @endif>{{$country->countries_name}}</option>
+                                                         @foreach($countries as $countryt)
+                                                            <option value="{{$countryt->countries_id}}" @if(isset($country) && $country == $countryt->countries_id) selected @endif @if(isset($countrycoming) && $countrycoming == $country->countries_id) selected @endif>{{$countryt->countries_name}}</option>
                                                          @endforeach
 
                                                         @else
@@ -144,7 +143,7 @@
 
         <div class="row">
 
-            @if($consultants->count() > 0)
+            @if(count($consultants) > 0)
         @foreach($consultants as $consultant)
         @if($consultant->isConsultant())
 

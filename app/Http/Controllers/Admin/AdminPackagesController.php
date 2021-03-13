@@ -13,7 +13,7 @@ class AdminPackagesController extends Controller
 {
     public function index()
     {
-        $package= Package::orderBy('updated_at', 'DESC')->get();
+        $package= Package::get();
         return view('admin.packages.index')->with('packages',$package);
     }
 

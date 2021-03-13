@@ -21,11 +21,11 @@ class UniversityFilterController extends Controller
     $courses = Category::where('parent_id',$cat)->get();
             if($courses->count()>0){
                     $output = '<option value="" selected>Select Sub Discipline</option>';
-            
+
                     foreach ($courses as $row) {
                         $output .= '<option value="' . $row->id . '" >' . $row->title . '</option>';
                     }
-            
+
                     echo $output;
                 }else{
         $output = '<option value="" selected>No Data Available</option>';
@@ -49,33 +49,33 @@ class UniversityFilterController extends Controller
                     }
                 }
                 else{
-                $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->distinct()->get(['user_id']);              
+                $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->distinct()->get(['user_id']);
                 foreach ($universitycourse as $key => $univercity) {
                     $universities[$key] = $univercity->users;
                 }
             }
-               
-            
-            } 
+
+
+            }
             else {
 
                 $check = Category::find($filtercatgory);
                 $childcheck = $check->child_category->pluck('id');
                 $childerens=$check->child_category;
-                
+
 
                 if ($childcheck->count() > 0) {
-                    
+
                     foreach($childerens as $keys=>$child){
                         $childs[$keys]=$child;
 
                     }
-                    
+
                 }
 
 
                 if ($childcheck->count() > 0) {
-                   
+
                     if(isset($study_level) && $study_level != ''){
                     $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->where('type',$study_level)->distinct()->get();
                     foreach ($universitycourse as $key => $univercity) {
@@ -85,20 +85,20 @@ class UniversityFilterController extends Controller
                     }
                     else
                     {
-                     
+
                         $universitycourse = UniversityCourse::whereIn('category_id', $childcheck)->distinct()->get();
                         foreach ($universitycourse as $key => $univercity) {
                             $universities[$key] = $univercity->users;
                         }
                     }
-                    
-                  
+
+
                 } else {
                     if(isset($study_level) && $study_level != ''){
                     $universitycourse = UniversityCourse::where('category_id',  $filtercatgory)->where('type',$study_level)->distinct()->get();
                     foreach ($universitycourse as $key => $univercity) {
                         $universities[$key] = $univercity->users;
-                    }   
+                    }
                 }
                     else
                     {
@@ -107,15 +107,15 @@ class UniversityFilterController extends Controller
                             $universities[$key] = $univercity->users;
                         }
                     }
-                   
+
                 }
             }
-        
+
             if (count($universities)>0) {
                 $universities=array_unique($universities);
             }
-           
-           
+
+
             return view('frontEnd.university.university_all', compact('filtercatgory','childs','filtersub_category','study_level'))->with('universities', $universities);
         }
 
@@ -145,12 +145,12 @@ class UniversityFilterController extends Controller
             }
         }
 
-       
+
         if (count($universities)>0) {
             $universities=array_unique($universities);
         }
         $page=1;
-        
+
 
         return view('frontEnd.university.university_all', compact('countrycoming','page','study_level'))->with('universities', $universities);
     }
@@ -158,7 +158,7 @@ class UniversityFilterController extends Controller
 
     public function universitiesInnerFilter(Request $request)
     {
-        
+
         $universities = [];
         $childs=[];
         $query = User::where('status', 1);
@@ -185,7 +185,7 @@ class UniversityFilterController extends Controller
                 $q->where('type', '=', $tape);
             }]);
         }
-       
+
        }
 
        if ($request->ielts_rating != '' && $request->ielts_rating != null) {
@@ -211,7 +211,7 @@ class UniversityFilterController extends Controller
         if ($childcheck->count() > 0) {
             foreach($childerens as $keys=>$child){
                 $childs[$keys]=$child;
-            }   
+            }
         }
         $query->with(['universityCourse' => function ($q) use ($childcheck) {
             $q->whereIn('category_id',$childcheck);
@@ -291,7 +291,7 @@ class UniversityFilterController extends Controller
     //                 }
     //             }
     //         }
-     
+
 
     $filtercatgory = $request->filtercatgory ?? '';
     $filtersub_category = $request->filtersub_category ?? '';
@@ -299,21 +299,21 @@ class UniversityFilterController extends Controller
     $rating = $request->rating ?? '' ;
     $ielts_rating = $request->ielts_rating ?? '';
 // dd($request->study_level);
-    
+
 
     // if ($filtersub_category != null && $filtersub_category != '') {
     //     if(isset($study_level)&& $study_level != ''){
     //         $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->where('type',$study_level)->distinct()->get(['user_id']);
     //     }
     //     else{
-    //     $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->distinct()->get(['user_id']);              
+    //     $universitycourse = UniversityCourse::where('category_id', $filtersub_category)->distinct()->get(['user_id']);
     // }
-    
+
     //     foreach ($universitycourse as $key => $univercity) {
     //         $universities[$key] = $univercity->users;
     //     }
-    
-    // } 
+
+    // }
     // else {
     //     if(isset($filtercatgory) && $filtercatgory != null){
     //     $check = Category::find($filtercatgory);
@@ -360,7 +360,7 @@ class UniversityFilterController extends Controller
     if (count($universities)>0) {
         $universities=array_unique($universities);
     }
-  
+
     return view('frontEnd.university.university_all', compact('universities','filtercatgory','childs','filtersub_category','study_level','countrycoming','typecoming','rating','ielts_rating'));
     }
 
@@ -393,7 +393,7 @@ if($courses->count()>0){
         $curloc=json_decode($cookiecurloc);
 
         $ata=[];
-         
+
      if ($googleAddress != null && $googleAddress != '') {
           $formattedAddr = str_replace(' ','+',$googleAddress);
           $geocodeFromAddr = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC1jKOFLhfQoZD3xJISSPnSW9-4SyYPpjY&address='.$formattedAddr.'&sensor=false');
@@ -416,19 +416,19 @@ if($courses->count()>0){
 
         foreach ($consultants as $key => $que) {
             $R = 3958.8; // Radius of the Earth in miles
-         
+
             $rlat1 = floatval($ata['latitude']) * (pi()/180); // Convert degrees to radians
             $rlat2 = floatval($que->latitude) * (pi()/180);
             $difflat = $rlat2-$rlat1; // Radian difference (latitudes)
             $difflon = (floatval($que->longitude)-floatval($ata['longitude'])) * (pi()/180); // Radian difference (longitudes)
-            
+
             $d = 2 * $R * asin(sqrt(sin($difflat/2)*sin($difflat/2)+cos($rlat1)*cos($rlat2)*sin($difflon/2)*sin($difflon/2)));
             // dd($d);
             if(floatval($radius) >= $d){
                 $universities[$key] = $que;
             }
         }
-       
+        return view('frontEnd.consultant.consultant_all',compact('googleAddress','service','country'))->with('consultants', $universities);
     }
     else{
         $consultants=DB::table("consultant_pr_migration_countries")
@@ -438,20 +438,21 @@ if($courses->count()>0){
         foreach ($consultants as $key => $value) {
             $us= User::find($value);
             $R = 3958.8; // Radius of the Earth in miles
-         
+
             $rlat11 = floatval($ata['latitude']) * (pi()/180); // Convert degrees to radians
             $rlat22 = floatval($us->latitude) * (pi()/180);
             $difflat = $rlat22-$rlat11; // Radian difference (latitudes)
             $difflon = (floatval($us->longitude)-floatval($ata['longitude'])) * (pi()/180); // Radian difference (longitudes)
-            
+
             $d2 = 2 * $R * asin(sqrt(sin($difflat/2)*sin($difflat/2)+cos($rlat11)*cos($rlat22)*sin($difflon/2)*sin($difflon/2)));
             if ($us->consultant->pr_service == 1 && floatval($radius) >= $d2 && $us->status == 1) {
             $universities[$key]= $us;
             }
         }
-       }    
+       }
+       return view('frontEnd.prmigration.prmigration',compact('googleAddress','service','country'))->with('consultants', $universities);
     }
-        return view('frontEnd.consultant.consultant_all',compact('googleAddress','service','country'))->with('consultants', $universities);
+
     }
 
     public function consultantsInnerFilter(Request $request)

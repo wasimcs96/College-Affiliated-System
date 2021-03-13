@@ -17,14 +17,14 @@ class ConsultantDuesController extends Controller
     {
         if($id==1)
         {
-            $dues = ConsultantDues::where('due_amount_type',0)->get()->first();
+            $dues = ConsultantDues::where('due_amount_type',0)->where('consultant_id',auth()->user()->id)->get()->first();
             $orders = Order::where('payment_type',3)->where('user_id',auth()->user()->id)->get();
             // dd($orders);
             return view('consultant.dues.index')->with('dues',$dues)->with('id',1)->with('orders',$orders);
         }
         if($id==2)
         {
-            $prDues = ConsultantDues::where('due_amount_type',1)->get()->first();
+            $prDues = ConsultantDues::where('due_amount_type',1)->where('consultant_id',auth()->user()->id)->get()->first();
             $orders = Order::where('payment_type',4)->where('user_id',auth()->user()->id)->get();
             return view('consultant.dues.index')->with('prDues',$prDues)->with('id',2)->with('orders',$orders);
         }

@@ -76,12 +76,12 @@
 
 
                     </tbody>
-                    @else
+                    {{-- @else
                         <tfoot>
                             <tr>
                                 <td colspan='7' align='center'> <strong>Record Not Available</strong> </td>
                             </tr>
-                        </tfoot>
+                        </tfoot> --}}
                      @endif
                 </table>
             </div>
