@@ -421,7 +421,7 @@ if($courses->count()>0){
                 $universities[$key] = $que;
             }
         }
-
+        return view('frontEnd.consultant.consultant_all',compact('googleAddress','service','country'))->with('consultants', $universities);
     }
     else{
         $consultants=DB::table("consultant_pr_migration_countries")
@@ -443,8 +443,9 @@ if($courses->count()>0){
             }
         }
        }
+       return view('frontEnd.prmigration.prmigration',compact('googleAddress','service','country'))->with('consultants', $universities);
     }
-        return view('frontEnd.consultant.consultant_all',compact('googleAddress','service','country'))->with('consultants', $universities);
+
     }
 
     public function consultantsInnerFilter(Request $request)
