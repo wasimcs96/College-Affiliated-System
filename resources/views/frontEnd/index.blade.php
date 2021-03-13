@@ -110,6 +110,7 @@
                                                         <div class="select-contain w-auto">
                                                             <select id="selectcourse" name="sub_category" class="form-control ert"   style="
                                                             height: 52px;
+                                                            padding: 15px;
                                                         ">
                                                                 <option value="" selected>Select Sub Discipline</option>
 
@@ -128,11 +129,16 @@
                                                         <div class="select-contain w-auto">
                                                             <select  name="study_level" class="form-control"   style="
                                                             height: 52px;
+                                                            padding: 15px;
                                                         ">
                                                                 <option value="" selected>Select Study Level</option>
-                                                                <option value="2" >Diploma</option>
-                                                                <option value="0" >UG</option>
-                                                                <option value="1" >PG</option>
+                                                                @php
+                                                                $levels=Config::get('level.study_level');   
+                                                                @endphp
+        
+                                                                @foreach($levels as $key=>$level)
+                                                                        <option value="{{$key}}" >{{$level}}</option>
+                                                                @endforeach
 
                                                             </select>
                                                         </div>
@@ -157,7 +163,7 @@
                                     @csrf
                                     <div class="col-lg-6 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Country</label>
+                                            <label class="label-text">Destination Country</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
                                                 <select class="select-contain-select" name="countries_id" required>
@@ -183,14 +189,19 @@
 
                                     <div class="col-lg-4 col-sm-2 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">University Type</label>
+                                            <label class="label-text">Study Level</label>
                                             <div class="form-group">
                                                 <div class="select-contain w-auto">
-                                                    <select class="select-contain-select" name="type">
-                                                        <option value="" selected>Select Type</option>
-                                                        <option value="0">Private</option>
-                                                        <option value="1">Government</option>
-                                                    </select>
+                                                    <select class="select-contain-select" name="universitystudylevel">
+                                                        <option value="" selected>Select Study Level</option>
+                                                        @php
+                                                        $levels=Config::get('level.study_level');   
+                                                        @endphp
+
+                                                        @foreach($levels as $key=>$level)
+                                                                <option value="{{$key}}" >{{$level}}</option>
+                                                        @endforeach
+                                                            </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -217,7 +228,7 @@
                                                 <div class="select-contain w-auto">
                                                     <select class="select-contain-select" data-live-search="true"  placeholder="Exam" id="university" name="service" required>
                                                         <option value="">Select Service</option>
-                                                        <option value="0">PR</option>
+                                                        <option value="0">PR Migration</option>
                                                         <option value="1">Student Visa</option>
 
 
@@ -229,7 +240,7 @@
                                     <?php $countries = App\Models\Country::all();?>
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Country</label>
+                                            <label class="label-text">Destination Country</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
@@ -577,7 +588,7 @@
 
                                 <a  style="
                                 float: right;
-                            " class="theme-btn theme-btn-small mt-2" href="{{route('university_detail',['id'=>$university->id])}}">Details<i class="las la-angle-double-right"></i></a>
+                            " class="theme-btn theme-btn-small mt-2" href="{{route('university_detail',['id'=>$university->id])}}">Apply<i class="las la-angle-double-right"></i></a>
 
 
                             </div>
@@ -965,23 +976,16 @@
 
                                         </div>
                                         <div class="card-body">
-                                            <?php
-                                            $myus =$us->university->university_name ?? '';
-                                            // dd($myire);
-                                            if (strlen($myus) > 5)
-                                                {
-                                                    // dd($myire);
-                                                    $myus = substr($myus, 0, 40);
-                                                    $myus = explode(' ', $myus);
-                                                    array_pop($myus); // remove last word from array
-                                                    $myus = implode(' ', $myus);
-                                                    // $myvalue = $myvalue . ' ...';
-                                                } ?>
-                                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>$us->id])}}">
-                                                    @if(isset($us->university->university_name))<?php echo($myus . '...')?> @else N/A @endif</a>
-
+                                           
+                                           
+                                            <h3 class="card-title" title="{{$us->university->university_name ?? ''}}" style="
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                        "><a href="{{route('university_detail',['id'=>$us->id])}}">
+                                                    @if(isset($us->university->university_name)){{$us->university->university_name ?? ''}}@else N/A @endif</a>
+                                                    @if($us->is_verified == 1)
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-
+                                                   @endif
                                                     </h3>
                                             <p class="card-meta">
                                                 @if(isset($us->university->type))
@@ -1074,7 +1078,7 @@
 
 
 
-                                                <a href="{{route('university_detail',['id'=>$us->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$us->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->
@@ -1131,23 +1135,15 @@
                                         </div>
                                         <div class="card-body">
 
-                                            <?php
-                                            $myuk =$uk->university->university_name ?? '';
-                                            // dd($myire);
-                                            if (strlen($myuk) > 5)
-                                                {
-                                                    // dd($myire);
-                                                    $myuk = substr($myuk, 0, 40);
-                                                    $myuk = explode(' ', $myuk);
-                                                    array_pop($myuk); // remove last word from array
-                                                    $myuk = implode(' ', $myuk);
-                                                    // $myvalue = $myvalue . ' ...';
-                                                } ?>
-                                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>$uk->id])}}">
-                                                    @if(isset($uk->university->university_name))<?php echo($myuk . '...')?> @else N/A @endif</a>
-
-                                                        <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-
+                                      
+                                                    <h3 class="card-title"  title="{{$uk->university->university_name ?? ''}}" style="
+                                                        white-space: nowrap;
+                                                        overflow: hidden;"><a href="{{route('university_detail',['id'=>$uk->id])}}">
+                                                    @if(isset($uk->university->university_name)){{    $uk->university->university_name ?? ''}}@else N/A @endif</a>
+                                                    @if($uk->is_verified == 1)
+                                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                                  
+                                                    @endif
                                                     </h3>
 
                                             <p class="card-meta">
@@ -1240,7 +1236,7 @@
                                                  @endif
 
 
-                                                <a href="{{route('university_detail',['id'=>$uk->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$uk->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->
@@ -1297,22 +1293,16 @@
 
                                         </div>
                                         <div class="card-body">
-                                            <?php
-                                            $myire =$ire->university->university_name ?? '';
-                                            // dd($myire);
-                                            if (strlen($myuk) > 5)
-                                                {
-                                                    // dd($myire);
-                                                    $myire = substr($myire, 0, 40);
-                                                    $myire = explode(' ', $myire);
-                                                    array_pop($myire); // remove last word from array
-                                                    $myire = implode(' ', $myire);
-                                                    // $myvalue = $myvalue . ' ...';
-                                                } ?>
-                                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>$ire->id])}}">
-                                                    @if(isset($ire->university->university_name))<?php echo($myire . '...')?> @else N/A @endif</a>
+                                          
+                                           <h3 class="card-title" title="{{$ire->university->university_name ?? ''}}" style="
+                                            white-space: nowrap;
+                                            overflow: hidden;"><a href="{{route('university_detail',['id'=>$ire->id])}}">
+                                                    @if(isset($ire->university->university_name)){{  $ire->university->university_name ?? ''}} @else N/A @endif</a>
 
+                                                    @if($ire->is_verified == 1)
                                                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                                       
+                                                   @endif
 
                                                     </h3>
                                             <p class="card-meta">
@@ -1406,7 +1396,7 @@
 
 
 
-                                                <a href="{{route('university_detail',['id'=>$ire->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$ire->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->
@@ -1462,22 +1452,16 @@
 
                                         </div>
                                         <div class="card-body">
-                                            <?php
-                                            $mycan =$can->university->university_name ?? '';
-                                            // dd($myire);
-                                            if (strlen($mycan) > 5)
-                                                {
-                                                    // dd($myire);
-                                                    $mycan = substr($mycan, 0, 40);
-                                                    $mycan = explode(' ', $mycan);
-                                                    array_pop($mycan); // remove last word from array
-                                                    $mycan = implode(' ', $mycan);
-                                                    // $myvalue = $myvalue . ' ...';
-                                                } ?>
-                                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>$can->id])}}">
-                                                    @if(isset($can->university->university_name))<?php echo($mycan . '...')?> @else N/A @endif</a>
+                                                                             
+                                                    <h3 class="card-title" title="{{$can->university->university_name ?? ''}}" style="
+                                                        white-space: nowrap;
+                                                        overflow: hidden;"><a href="{{route('university_detail',['id'=>$can->id])}}">
+                                                    @if(isset($can->university->university_name))  {{$can->university->university_name ?? ''}} @else N/A @endif</a>
 
-                                                        <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                                    @if($can->is_verified == 1)
+                                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                                  
+                                               @endif
 
                                                     </h3>
                                             <p class="card-meta">
@@ -1571,7 +1555,7 @@
 
 
 
-                                                <a href="{{route('university_detail',['id'=>$can->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$can->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->
@@ -1627,22 +1611,19 @@
 
                                         </div>
                                         <div class="card-body">
-                                            <?php
-                                            $myaus =$aus->university->university_name ?? '';
-                                            // dd($myire);
-                                            if (strlen($myaus) > 5)
-                                                {
-                                                    // dd($myire);
-                                                    $myaus = substr($myaus, 0, 40);
-                                                    $myaus = explode(' ', $myaus);
-                                                    array_pop($myaus); // remove last word from array
-                                                    $myaus = implode(' ', $myaus);
-                                                    // $myvalue = $myvalue . ' ...';
-                                                } ?>
-                                                    <h3 class="card-title"><a href="{{route('university_detail',['id'=>$aus->id])}}">
-                                                    @if(isset($aus->university->university_name))<?php echo($myaus . '...')?> @else N/A @endif</a>
+                                          
+                                          
+                                       
+                                          
+                                                    <h3 class="card-title" title="{{$aus->university->university_name ?? ''}}" style="
+                                                        white-space: nowrap;
+                                                        overflow: hidden;">
+                                                    <a href="{{route('university_detail',['id'=>$aus->id])}}">
+                                                    @if(isset($aus->university->university_name)){{  $aus->university->university_name ?? ''}} @else N/A @endif</a>
 
-                                                        <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                                    @if($aus->is_verified == 1)
+                                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                                    @endif
 
                                                     </h3>
                                             <p class="card-meta">
@@ -1735,7 +1716,7 @@
                                                  @endif
 
 
-                                                <a href="{{route('university_detail',['id'=>$aus->id])}}"  class="theme-btn theme-btn-small mt-2">See details<i class="las la-angle-double-right"></i></a>
+                                                <a href="{{route('university_detail',['id'=>$aus->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
                                             </div>
                                         </div>
                                     </div><!-- end card-item -->
@@ -2057,6 +2038,86 @@
 <!-- ================================
        START FOOTER AREA
 ================================= -->
+<div class="modal fade" id="universityClaim" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 520px;">
+      <div class="modal-content">
+        <div class="modal-header">
+
+                <div>
+                    <img src="{{asset('frontEnd/assets/images/logo.png')}}" alt="logo" style="
+                    width: 198px;
+                    height: 70px;
+                     ">
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la la-close"></span>
+                </button>
+
+
+        </div>
+        <div class="modal-body">
+            <div class="contact-form-action" style=" padding: 19px;">
+                <form method="post" action="{{route('loan.enquiry.submit')}}">
+                    @csrf
+                    <div class="sidebar-widget single-content-widget">
+                        <h3 class="title stroke-shape">Enquiry Form</h3>
+                        <div class="enquiry-forum">
+                            <div class="form-box">
+                                <div class="form-content">
+                                    <div class="contact-form-action">
+                                        <input class="form-control" value="2" name="type"  hidden>
+                                            <div class="input-box">
+                                                <label class="label-text">Your Name</label>
+                                                <div class="form-group">
+                                                    <span class="la la-user form-icon"></span>
+                                                    <input class="form-control" type="name" name="name" placeholder="Your name" required>
+                                                </div>
+                                            </div>
+                                            <div class="input-box">
+                                                <label class="label-text">Your Email</label>
+                                                <div class="form-group">
+                                                    <span class="la la-envelope-o form-icon"></span>
+                                                    <input class="form-control" type="email" name="email" placeholder="Email address" required>
+                                                </div>
+                                            </div>
+                                            <div class="input-box">
+                                                <label class="label-text">Message</label>
+                                                <div class="form-group">
+                                                    <span class="la la-pencil form-icon"></span>
+                                                    <textarea class="message-control form-control" name="message" placeholder="Write message" required></textarea>
+                                                </div>
+                                            </div>
+                                            {{-- <div class="input-box">
+                                                <div class="form-group">
+                                                    <div class="custom-checkbox mb-0">
+                                                        <input type="checkbox" id="agreeChb">
+                                                        <label for="agreeChb">I agree with <a href="#">Terms of Service</a> and
+                                                            <a href="#">Privacy Statement</a></label>
+                                                    </div>
+                                                </div>
+                                            </div> --}}
+                                            <div id="latest">
+
+                                            </div>
+                                            <div class="btn-box">
+                                                <button type="submit" class="theme-btn">Submit Enquiry</button>
+                                            </div>
+
+                                    </div><!-- end contact-form-action -->
+                                </div><!-- end form-content -->
+                            </div><!-- end form-box -->
+                        </div><!-- end enquiry-forum -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> --}}
+      </div>
+    </div>
+  </div>
 @endsection
 @section('per_page_style')
 <style>/*--thank you pop starts here--*/
@@ -2970,6 +3031,18 @@
 
 </script>
 
+<script>
+    $(document).on('click', '#universityClaimId', function ()
+    {
+        
+    var universityname=$(this).attr('custom1');
 
+    $('#latest').html('<input value="'+universityname+'" name="universityname" hidden>');
+  console.log(universityname);
+  
+   
+    });
+
+    </script>
 @endsection
 

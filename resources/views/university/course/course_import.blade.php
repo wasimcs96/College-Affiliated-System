@@ -50,9 +50,13 @@
                         <label for="category_id">Course Level</label>
                         <select name="type" class="form-control" id="type" required>
                             <option value="">--- Select Course Level ---</option>
-                            <option value="0">UG</option>
-                            <option value="1">PG</option>
-                            <option value="2">Diploma</option>
+                            @php
+                            $levels=Config::get('level.study_level');   
+                            @endphp
+
+                            @foreach($levels as $key=>$level)
+                                    <option value="{{$key}}" >{{$level}}</option>
+                            @endforeach
                             {{-- <option value="">--- Select  Category ---</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title ?? '' }}</option>

@@ -276,7 +276,7 @@
         <div class="card-header" id="headingTwo">
           <h2 class="mb-0">
             <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapse-{{$key}}">
-              University Form-{{$applied->userUniversity->university->university_name ?? ''}}
+              University Form-{{$applied->userUniversity->university->university_name ?? ''}}  <span style="float: right;"><i class="fa fa-arrow-down"> </i></span>
             </button>
           </h2>
         </div>

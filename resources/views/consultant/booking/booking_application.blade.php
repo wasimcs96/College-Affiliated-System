@@ -53,7 +53,7 @@
                                     <div class="table-responsive" style="width: 100%; margin-top: 36px;">
                                         <label for="name">Select University</label>
                                         <table class="table table-bordered" id="dynamic_field">
-                                            <tr class="dynamic-added" >
+                                            <tr class="dynamic-added" style="display: flex;flex-direction: column;" >
                                                 <td class="country" data-row_id="{{$increase}}">
                                                     <select id="country-{{$increase}}" custom1="{{$increase}}"  custom2="" class="form-control " name="country[{{$increase}}]" placeholder="Select Country" required>
                                                     <option value="" selected>Select Country </option>
@@ -182,7 +182,7 @@
 // console.log(table_row);
       $('#add').click(function(){
              i++;
-           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added"><td class="country" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="country-'+table_row+'" name="country['+table_row+']" class="form-control" required><option selected>Choose Country</option><?php foreach($countries as $country){?> <option value="{{$country->countries_id}}">{{$country->countries_name}}</option><?php }?></select></td><td class="university" data-row_id='+table_row+'><select id="university-'+table_row+'" custom1="'+table_row+'"  name="university['+table_row+']" class="form-control" required><option value="" selected>University Name</option></select></td><td class="course" data-row_id='+table_row+'><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control" required><option value="" selected>Course Name</option></select><div id="courseError-'+table_row+'"></div></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           $('#dynamic_field').append('<tr  id="row'+i+'" class="dynamic-added" style="display: flex;flex-direction: column;"><td class="country" data-row_id='+table_row+'><select custom1="'+table_row+'"  id="country-'+table_row+'" name="country['+table_row+']" class="form-control" required><option selected>Choose Country</option><?php foreach($countries as $country){?> <option value="{{$country->countries_id}}">{{$country->countries_name}}</option><?php }?></select></td><td class="university" data-row_id='+table_row+'><select id="university-'+table_row+'" custom1="'+table_row+'"  name="university['+table_row+']" class="form-control" required><option value="" selected>University Name</option></select></td><td class="course" data-row_id='+table_row+'><select id="course-'+table_row+'" custom1="'+table_row+'"  name="course['+table_row+']" class="form-control" required><option value="" selected>Course Name</option></select><div id="courseError-'+table_row+'"></div></td><td><button type="button" name="remove" id="'+table_row+'" class="btn btn-danger btn_remove">X</button></td></tr>');
            r=$('#dynamic_field .dynamic-added').length;
 
             if(r==5){

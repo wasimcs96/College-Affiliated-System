@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>  @yield('title') </title>
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.png">
@@ -589,11 +590,10 @@
             <span class="nav__text">Find university</span>
         </a>
 
-        <button href="#" type="button" class="nav__link imran" onclick="openNav()" disabled style="border: none;background:none;" >
+        <!-- <button href="#" type="button" class="nav__link imran" onclick="openNav()" disabled style="border: none;background:none;" >
             <i class="material-icons nav__icon">more</i>
-            <!-- <span class="nav__text">More</span> -->
             <span class="nav__text" style="cursor:pointer" >More</span>
-        </button>
+        </button> -->
     </nav>
 <!-- /PWA -->
 
@@ -834,7 +834,8 @@
             <div class="col-lg-7">
                 <div class="copy-right padding-top-30px">
                     <p class="copy__desc">
-                        &copy; Copyright &#169; 2020. Made with  <span class="la la-heart"></span>
+                        <!-- &copy; Copyright &#169; 2020. Made with  <span class="la la-heart"></span> -->
+                        &copy;All Rights reserve by Campusinterest  &#169;   <span class="la la-heart"></span>
                         {{-- <span class="la la-heart"></span> by <a href="https://themeforest.net/user/techydevs/portfolio">TechyDevs</a> --}}
                     </p>
                 </div><!-- end copy-right -->

@@ -277,7 +277,7 @@ Route::post('prmigration/searchresult',[
     'as' => 'prmigration.search.result'
 ]);
 
-Route::get('prmigration/book/{id}', [
+Route::post('prmigration/book', [
     'uses' => 'FrontEndController\PrMigrationFrontController@book',
     'as' => 'prmigration.book'
 ]);
@@ -288,7 +288,7 @@ Route::post('prmigration/slots',[
 ]);
 
 Route::post('prmigration/consultant/booking/confirm',[
-    'uses' => 'FrontEndController\PrmigrationFrontController@book_store',
+    'uses' => 'FrontEndController\PrMigrationFrontController@book_store',
     'as' => 'prmigration.book.store'
 ]);
 
@@ -342,3 +342,8 @@ Route::get('admin/cache/clear', function () {
 Route::get('admin/config/clear', function () {
     \Artisan::call('config:clear');
 });
+
+
+// Route::get('crop/image',function (){
+//     return view('image_cropping.cropping');
+// })->name('image/crop');

@@ -12,9 +12,11 @@
                         <div class="section-heading">
                             <h2 class="sec__title text-white">Search Consultant</h2>
                         </div>
-                        <div class="search-fields-container margin-top-30px">
+                        <div class="search-fields-container margin-top-30px"  style="
+                        background: none;
+                    ">
                             <div class="contact-form-action">
-                                <form action="{{route('prmigration.search.result')}}" method="POST" class="row">
+                                <form action="{{route('prmigration.search.result')}}" method="POST" class="row" style="display: flex;justify-content: center;">
 @csrf
                                     {{-- <div class="col-lg-4 col-sm-2">
                                         <div class="input-box">
@@ -27,7 +29,7 @@
                                     </div> --}}
                                     <div class="col-lg-6 col-sm-6 pr-0">
                                         <div class="input-box">
-                                            <label class="label-text">Country</label>
+                                            <label class="label-text" style="color: white">Country</label>
                                             <div class="form-group">
                                                 <span class="la la-map-marker form-icon"></span>
                                                 <div class="select-contain w-auto">
@@ -149,7 +151,7 @@
             <div class="card-item car-card border">
                 <div class="card-img" style="text-align: center; height:185px;">
                     <div>
-                    <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
+                    <a href="javascript:void(0)" class="d-block">
                         @if(isset($consultant->consultant->cover_image) && file_exists($consultant->consultant->cover_image))
                                             <img
                                              style=" width: 368px;
@@ -177,7 +179,7 @@
                 </div>
                 <div class="card-body">
                     {{-- <p class="card-meta">{{$consultant->website}} Premium </p> --}}
-                    <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id])}}">{{$consultant->first_name}} {{$consultant->last_name}}</a>   @if($consultant->is_verified == 1)
+                    <h3 class="card-title"><a href="javascript:void(0)">{{$consultant->first_name}} {{$consultant->last_name}}</a>   @if($consultant->is_verified == 1)
                         <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
                     @endif</h3>
                     <div class="card-rating">
@@ -243,11 +245,28 @@
                         </ul>
                     </div>
                     <div class="card-price d-flex align-items-center justify-content-between">
-                        <p>
+                        <p
+                         {{-- style="
+                        white-space: pre-line;
+                    " --}}
+                    >
                             <span class="price__text">City :</span>
                             <span class="price__num">{{$consultant->city}}</span>
                         </p>
-                        <a href="{{route('prmigration.book',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
+                        @if(auth()->user())
+                        @if(auth()->user()->isClient())
+                        <form action="{{route('prmigration.book')}}" method="post">
+                            @csrf
+                            <input type="hidden" value="@if(isset($countrycoming)){{$countrycoming}} @endif" name="countrycomming">
+                            <input type="hidden" value="{{$consultant->id ?? ''}}" name="consultant_id">
+                        <button  type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
+                        </form>
+                        @else
+                        <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></a>
+                        @endif
+                        @else
+                        <a href="javascript:void(0)"  data-toggle="modal" data-target="#loginPopupForm" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
+                        @endif
                     </div>
                 </div>
             </div><!-- end card-item -->

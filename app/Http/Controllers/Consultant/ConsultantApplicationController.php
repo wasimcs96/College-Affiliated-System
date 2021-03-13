@@ -394,7 +394,7 @@ class ConsultantApplicationController extends Controller
           $universities = User::where('countries_id',$request->countryid)->get();
           //   dd( $universities->get()->toArray());
           $output='<option value="" selected>Select University Name</option>';
-          if($universities->count() > 0)
+          if($universities->count() > 0){
           foreach($universities as $university)
           {
               $check=UniversityConsultant::where('university_id',$university->id)->where('consultant_id',auth()->user()->id)->first();
@@ -410,6 +410,9 @@ class ConsultantApplicationController extends Controller
             }
 
           }
+        }else{
+            $output = '<option value="" selected>University Unavailable</option>';
+        }
           // dd($output);
           echo $output;
       }

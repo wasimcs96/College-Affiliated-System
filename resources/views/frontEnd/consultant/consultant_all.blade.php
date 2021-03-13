@@ -261,7 +261,7 @@
             @endforeach
             @else
             <div class="container" style="text-align: center;">
-                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}" style="width: 100%;height:auto;">
                    </div>
             @endif
         </div><!-- end row -->

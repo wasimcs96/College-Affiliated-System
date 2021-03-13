@@ -165,9 +165,17 @@
                                             ">
                                           
                                                     <option value="" selected>Select Study Level</option>
-                                                    <option value="2" @if(isset($study_level)&& $study_level==2)selected @endif> Diploma</option>
-                                                    <option value="0"  @if(isset($study_level)&& $study_level==0)selected @endif>UG</option>
-                                                    <option value="1"  @if(isset($study_level)&& $study_level==1)selected @endif>PG</option>
+
+
+                                                    @php
+                                                    $levels=Config::get('level.study_level');   
+                                                    @endphp
+
+                                                    @foreach($levels as $key=>$level)
+                                                            <option value="{{$key}}" @if(isset($study_level)&& $study_level==$key)selected @endif>{{$level}}</option>
+                                                    @endforeach
+
+                                                   
 
                                                 </select>
                                             </div>
@@ -347,17 +355,12 @@
                     <div class="card-body">
                     <?php
                                     $myuniversity =$university->university->university_name ?? '';
-                                    // dd($myire);
-                                    if (strlen($myuniversity) > 5)
-                                        {
-                                            // dd($myire);
-                                            $myuniversity = substr($myuniversity, 0, 40);
-                                            $myuniversity = explode(' ', $myuniversity);
-                                            array_pop($myuniversity); // remove last word from array
-                                            $myuniversity = implode(' ', $myuniversity);
-                                            // $myvalue = $myvalue . ' ...';
-                                        } ?>
-                                            <h3 class="card-title">
+
+                                     ?>
+                                            <h3 class="card-title" title="{{$university->university->university_name ?? ''}}" style="
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                        ">
                                                 <a href="{{route('university_detail',['id'=>$university->id])}}">
 
                                              @if(isset($filtersub_category) && $filtersub_category != null)
@@ -370,19 +373,22 @@
                                               @endif
 
                                               @if($univercourse == null)
-                                              @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
+                                              @if(isset($university->university->university_name))<?php echo($myuniversity)?> @else N/A @endif
                                                       @endif
                                               @endif
                                               @if(isset($filtersub_category) && $filtersub_category == null)
-                                              @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
+                                              @if(isset($university->university->university_name))<?php echo($myuniversity)?> @else N/A @endif
                                                       @endif
                                         @if(isset($page)&& $page == 1)
-                                        @if(isset($university->university->university_name))<?php echo($myuniversity . '...')?> @else N/A @endif
+                                        @if(isset($university->university->university_name))<?php echo($myuniversity)?> @else N/A @endif
                                         @endif
 
                                     </a>
 
-                                                <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                    @if($university->is_verified == 1)
+                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                   
+                               @endif
 
                                             </h3>
                         <p class="card-meta">
@@ -462,7 +468,7 @@
                         <div class="card-attributes">
                             <p style="">
                                 <span class="price__text">Average Fees :</span>
-                                <span class="price__num">{{$university->university->average_fees ?? ''}}</span>
+                                <span class="price__num">₹{{$university->university->average_fees ?? ''}}</span>
                                 {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                             </p>
                             <ul class="d-flex align-items-center">
@@ -650,7 +656,7 @@
                                     <span class="la la-envelope form-icon"></span>
                                     <input class="form-control" type="email" name="email" placeholder="Email address">
                                     <button class="theme-btn theme-btn-small submit-btn" type="submit">Subscribe</button>
-                                    <span class="font-size-14 pt-1 text-white-50"><i class="la la-lock mr-1"></i>Don't worry your information is safe with us.</span>
+                                    <span class="font-size-14 pt-1 text-white-50"><i class="la la-lock mr-1"></i>Dont worry your information is safe with us.</span>
                                 </div>
                             </div>
                         </form>
@@ -705,7 +711,90 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end info-area --> --}}
-{{-- {{dd($filtersub_category)}} --}}
+
+
+
+<div class="modal fade" id="universityClaim" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 520px;">
+      <div class="modal-content">
+        <div class="modal-header">
+
+                <div>
+                    <img src="{{asset('frontEnd/assets/images/logo.png')}}" alt="logo" style="
+                    width: 198px;
+                    height: 70px;
+                     ">
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la la-close"></span>
+                </button>
+
+
+        </div>
+        <div class="modal-body">
+            <div class="contact-form-action" style=" padding: 19px;">
+                <form method="post" id="loan" action="{{route('loan.enquiry.submit')}}">
+                    @csrf
+                    <div class="sidebar-widget single-content-widget">
+                        <h3 class="title stroke-shape">Enquiry Form</h3>
+                        <div class="enquiry-forum">
+                            <div class="form-box">
+                                <div class="form-content">
+                                    <div class="contact-form-action">
+                                        <input class="form-control" value="2" name="type"  hidden>
+                                        
+                                            <div class="input-box">
+                                                <label class="label-text">Your Name</label>
+                                                <div class="form-group">
+                                                    <span class="la la-user form-icon"></span>
+                                                    <input class="form-control" type="name" name="name" placeholder="Your name" required>
+                                                </div>
+                                            </div>
+                                            <div class="input-box">
+                                                <label class="label-text">Your Email</label>
+                                                <div class="form-group">
+                                                    <span class="la la-envelope-o form-icon"></span>
+                                                    <input class="form-control" type="email" name="email" placeholder="Email address" required>
+                                                </div>
+                                            </div>
+                                            <div class="input-box">
+                                                <label class="label-text">Message</label>
+                                                <div class="form-group">
+                                                    <span class="la la-pencil form-icon"></span>
+                                                    <textarea class="message-control form-control" name="message" placeholder="Write message" required></textarea>
+                                                </div>
+                                            </div>
+                                            {{-- <div class="input-box">
+                                                <div class="form-group">
+                                                    <div class="custom-checkbox mb-0">
+                                                        <input type="checkbox" id="agreeChb">
+                                                        <label for="agreeChb">I agree with <a href="#">Terms of Service</a> and
+                                                            <a href="#">Privacy Statement</a></label>
+                                                    </div>
+                                                </div>
+                                            </div> --}}
+                                            <div id="latest">
+
+                                            </div>
+                                            <div class="btn-box">
+                                                <button type="submit" class="theme-btn">Submit Enquiry</button>
+                                            </div>
+
+                                    </div><!-- end contact-form-action -->
+                                </div><!-- end form-content -->
+                            </div><!-- end form-box -->
+                        </div><!-- end enquiry-forum -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> --}}
+      </div>
+    </div>
+  </div>
 @endsection
 @section('per_page_style')
 <style>
@@ -1000,4 +1089,17 @@
     });
 
     </script>
+    <script>
+        $(document).on('click', '#universityClaimId', function ()
+        {
+            
+        var universityname=$(this).attr('custom1');
+    
+        $('#latest').html('<input value="'+universityname+'" name="universityname" hidden>');
+      console.log(universityname);
+      
+       
+        });
+    
+        </script>
 @endsection

@@ -39,7 +39,10 @@
                 </ul>
             </div>
             <div class="body">
-
+               
+                
+                    <a href="{{route('university_detail',auth()->user()->id)}}" class="btn btn-outline-primary" title="View Profile Page">View Profile
+                    </a>
                 <hr>
                 <small class="text-muted">Email address: </small>
             <p>@if(isset(Auth()->user()->email)){{Auth()->user()->email}}@endif</p>
@@ -361,6 +364,46 @@
 <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
+<style>
+    .tltp {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .tltp .tltptxt {
+      visibility: hidden;
+      width: 140px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -75px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .tltp .tltptxt::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+    
+    .tltp:hover .tltptxt {
+      visibility: visible;
+      opacity: 1;
+    }
+    </style>
 @stop
 @section('page-script')
 
@@ -381,6 +424,23 @@
         }
     });
 </script>
+
+<script>
+    function myFunction() {
+      var copyText = document.getElementById("myInput");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      
+      var tooltip = document.getElementById("myTooltip");
+      tooltip.innerHTML = "Copied: " + copyText.value;
+    }
+    
+    function outFunc() {
+      var tooltip = document.getElementById("myTooltip");
+      tooltip.innerHTML = "Copy to clipboard";
+    }
+    </script>
 
 <script>
     $('.dropify-frr').dropify({

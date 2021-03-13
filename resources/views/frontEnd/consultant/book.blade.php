@@ -43,7 +43,10 @@
             <div class="card-item user-card card-item-list mt-4 mb-0">
                 @if(isset($consultant) && $consultant->count()>0)
                 <div class="card-img">
-                    <img src="{{asset($consultant->profile_image)}}"alt="user image" class="h-auto">
+                  @if(isset($consultant->profile_image)&&file_exists($consultant->profile_image))  <img src="{{asset($consultant->profile_image)}}"alt="user image" class="h-auto">
+                  @else
+                  <img src="{{asset('frontEnd/assets/images/defaultuser.png')}}"alt="user image" class="h-auto">
+                  @endif
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">{{$consultant->first_name ?? ''}} {{$consultant->last_name ?? ''}}</h3>
@@ -178,11 +181,19 @@ $inc = 0;
 
         <select class="col-lg-12 p-2 university" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[0][university]" id="media_type-{{ $inc }}" required>
 <?php $un=$consultant->consultantUniversity?>
+
      @foreach($un as $uns)
+     @if (isset($universityid))
+
 <option value="{{$uns->userUniversity->id}}"
     @if($uns->userUniversity->id==$universityid) selected @endif >
-    {{-- {{ $t->title }} --}} {{$uns->userUniversity->university->university_name}}
+   {{$uns->userUniversity->university->university_name}}
 </option>
+    @else
+    <option value="{{$uns->userUniversity->id}}">
+       {{$uns->userUniversity->university->university_name}}
+    </option>
+@endif
 @endforeach
         </select>
         <div id="universityError"></div>
@@ -302,6 +313,13 @@ class="fa fa-fw fa-save"></i> Submit
 
 
 @endsection
+@section('per_page_style')
+<style>
+    .ui-datepicker-calendar{
+        background-color: azure;
+    }
+</style>
+@endsection
 
 @section('per_page_script')
 {{-- <script type="text/javascript">
@@ -319,6 +337,16 @@ $("#endtime").prop('disabled', true);
 }
 </script> --}}
 <script>
+    var date = new Date('now');
+    //var newdate = new Date(date);
+
+
+    var dd = date.getDate();
+    var tm = date.getTime();
+    var mm = date.getMonth();
+    var y = date.getFullYear();
+
+    var someFormattedDate = y + '/' + mm + '/' + dd;
 $("#date").datepicker({ onSelect: function(dateText) {
 
 
@@ -348,7 +376,10 @@ console.log("Selected date: " + dateText + "; input's current value: " + this.va
 
 
 
-} });
+},
+minDate: someFormattedDate,
+
+});
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -495,7 +526,7 @@ var button_id = $(this).attr("id");
 $('#imageBox'+button_id+'').remove();
 r=$('#bannewrImages .imageBox').length;
 console.log(r);
-if(r<3){
+if(r<5){
 $('#bst').prop('disabled', false);
 }
 // $('#add').add();

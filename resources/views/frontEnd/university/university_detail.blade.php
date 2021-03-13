@@ -60,12 +60,12 @@
 
                         </div>
 
-                      {{-- {{dd($medias)}} --}}
+                     
                         @foreach($medias as $media)
                         @if(isset($media->media) && file_exists($media->media))
                         <a class="d-none"
                              data-fancybox="gallery"
-                            {{-- {{ dd($media->media) }} --}}
+                           
                             @if(isset($media->media))
                              data-src="{{asset($media->media)}}"
                                 @else
@@ -149,8 +149,11 @@
 
                             <div class="single-content-item pb-4">
                                 <h3 class="title font-size-26">{{$university->university->university_name ?? ''}}
-
-                            <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>
+                                    @if(isset($university->is_verified) && $university->is_verified == 1)
+                                    <span data-toggle="tooltip"  data-url=""  data-title="Verified Profile" style="background: #2dd12d;border-radius: 12px;padding: 6px;     color: white;" class="badge"><i class="las la-id-badge"></i></span>
+                                    @else
+                                    <span style="float:right; color: white;" class="btn btn-warning"><a data-toggle="modal" data-target="#universityClaim" id="universityClaimId" value="{{$university->university->university_name ?? ''}}" custom1="{{$university->university->university_name ?? ''}}">Request to claim</a></span>
+                                    @endif
                             <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                             @if(isset($university->Premium_expire_date))
                             @if($university->Premium_expire_date > $mytime)<span data-toggle="tooltip"  data-url=""  data-title="Premium Profile"  style="
@@ -290,6 +293,7 @@
 
                             height: 530px;
                             overflow: scroll;">
+                            <?php $i=0;?> 
                             @if($universityconsultant->count() > 0)
                                 <ul class="list-items">
                                     @foreach($universityconsultant as $consultant)
@@ -297,7 +301,7 @@
                                     @if($consultant->userConsultant->status == 1)
                                     @if(isset($consultant->userConsultant->Premium_expire_date))
                                     @if($consultant->userConsultant->Premium_expire_date > $mytime)
-
+ <?php $i++ ;?>
                                     <li><div class="author-content d-flex">
                                         <div class="author-img">
                                             <a href="#">@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
@@ -366,15 +370,15 @@
 
  <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id ?? ''])}}" method="POST">
      @csrf
-     <input type="text" name="universityid" value="{{$university->id}}" hidden>
+     <input type="text" name="universityid" value="{{$university->id ?? ''}}" hidden>
      <input type="text" name="consultantid" value="{{$consultant->userConsultant->id ?? ''}}" hidden>
 
-                                            {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
+                                           
                                             <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
 
  </form>
                                           @else
-                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                                       <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></label></a>
                                           @endif
                                           @else
                                           <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
@@ -386,13 +390,18 @@
                                     @endif
                                     @endif
                                     @endif
-@endforeach
 
+                            @endforeach
+                            @if($i == 0)
+                            <div class="text-center" style="margin-top: 110px;">
+                                <h3> No Featured Consultant Available </h3>
+                            </div>
+                            @endif
                                 </ul>
                                 @else
 
                                 <div class="text-center" style="margin-top: 110px;">
-                                    <h3> No Featured Consultant </h3>
+                                    <h3> No Featured Consultant Available</h3>
                                </div>
                                 @endif
                             </div><!-- end sidebar-list -->
@@ -437,9 +446,13 @@
                                          </th>
                                          <td>{{$course->category->title}}</td>
                                             <td>
-                                             @if($course->type == 0) UG @endif
-                                             @if($course->type == 1) PG @endif
-                                             @if($course->type == 2) Diploma @endif
+                                                @php
+                                                $levels=Config::get('level.study_level');   
+                                                @endphp
+                                           {{$levels[$course->type] ?? 'N/A'}}
+                                            
+
+                                            
                                             </td>
                                             <td>₹ {{$course->fees ?? ''}}</td>
                                             <td>@if(isset($course->duration)) {{ $course->duration }} Years @else N/A @endif</td>
@@ -657,7 +670,7 @@
 
 </form>
                               @else
-                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></label></a>
+                           <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></label></a>
                               @endif
                               @else
                               <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
@@ -823,6 +836,102 @@
                                </div>
                         </div>
                         {{-- ############################################## MODELLLLLLLLL END --}}
+
+
+                        <div class="modal fade" id="universityClaim" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" style="width: 520px;">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                        
+                                        <div>
+                                            <img src="{{asset('frontEnd/assets/images/logo.png')}}" alt="logo" style="
+                                            width: 198px;
+                                            height: 70px;
+                                             ">
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true" class="la la-close"></span>
+                                        </button>
+                        
+                        
+                                </div>
+                                <div class="modal-body">
+                                    <div class="contact-form-action" style=" padding: 19px;">
+                                        <form method="post" action="{{route('loan.enquiry.submit')}}">
+                                            @csrf
+                                            <div class="sidebar-widget single-content-widget">
+                                                <h3 class="title stroke-shape">Enquiry Form</h3>
+                                                <div class="enquiry-forum">
+                                                    <div class="form-box">
+                                                        <div class="form-content">
+                                                            <div class="contact-form-action">
+                                                                <input class="form-control" value="2" name="type"  hidden>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Your Name</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-user form-icon"></span>
+                                                                            <input class="form-control" type="name" name="name" placeholder="Your name" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Your Email</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-envelope-o form-icon"></span>
+                                                                            <input class="form-control" type="email" name="email" placeholder="Email address" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Your Mobile Number</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-envelope-o form-icon"></span>
+                                                                            <input class="form-control" type="number" name="mobile" placeholder="Mobile" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Designation</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-pencil form-icon"></span>
+                                                                            <input class="form-control" type="text" name="designation" placeholder="Desgination" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="input-box">
+                                                                        <label class="label-text">Message</label>
+                                                                        <div class="form-group">
+                                                                            <span class="la la-pencil form-icon"></span>
+                                                                            <textarea class="message-control form-control" name="message" placeholder="Write message" required></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{-- <div class="input-box">
+                                                                        <div class="form-group">
+                                                                            <div class="custom-checkbox mb-0">
+                                                                                <input type="checkbox" id="agreeChb">
+                                                                                <label for="agreeChb">I agree with <a href="#">Terms of Service</a> and
+                                                                                    <a href="#">Privacy Statement</a></label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div> --}}
+                                                                    <div id="latest">
+                        
+                                                                    </div>
+                                                                    <div class="btn-box">
+                                                                        <button type="submit" class="theme-btn">Submit Enquiry</button>
+                                                                    </div>
+                        
+                                                            </div><!-- end contact-form-action -->
+                                                        </div><!-- end form-content -->
+                                                    </div><!-- end form-box -->
+                                                </div><!-- end enquiry-forum -->
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                {{-- <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div> --}}
+                              </div>
+                            </div>
+                          </div>
 @endsection
 @section('per_page_style')
 <style>
@@ -863,4 +972,17 @@ headers: {
         });
     });
     </script>
+    <script>
+        $(document).on('click', '#universityClaimId', function ()
+        {
+            
+        var universityname=$(this).attr('custom1');
+    
+        $('#latest').html('<input value="'+universityname+'" name="universityname" hidden>');
+      console.log(universityname);
+      
+       
+        });
+    
+        </script>
 @endsection

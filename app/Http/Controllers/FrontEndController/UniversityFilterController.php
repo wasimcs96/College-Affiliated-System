@@ -17,8 +17,8 @@ class UniversityFilterController extends Controller
 {
     public function filter(Request $request)
     {
-
-    $courses = Category::where('parent_id', $request->categoryselect)->get();
+        $cat= $request->categoryselect;
+    $courses = Category::where('parent_id',$cat)->get();
             if($courses->count()>0){
                     $output = '<option value="" selected>Select Sub Discipline</option>';
 
@@ -122,14 +122,20 @@ class UniversityFilterController extends Controller
 
     public function countryWiseUniversity(Request $request)
     {
-        $typecoming=$request->type ?? null;
-        if ($request->type != null) {
+        // dd($request->all());
+        $study_level=$request->universitystudylevel ?? null;
+        if ($study_level != null) {
             $universities = [];
             $countrycoming = $request->countries_id ?? '';
-            $universitycourse = University::where('countries_id', $request->countries_id)->where('type', $request->type)->get();
+            // $universitycourse = University::where('countries_id', $request->countries_id)->where('type', $request->type)->get();
+    
+            $universitycourse = UniversityCourse::where('type',$study_level)->get();
             foreach ($universitycourse as $key => $univercity) {
-                $universities[$key] = $univercity->user;
-            }
+                if ($univercity->users->countries_id == $countrycoming) {
+                    $universities[$key] = $univercity->users;
+                }
+                
+            }   
         } else {
             $universities = [];
             $countrycoming = $request->countries_id ?? '';
@@ -146,7 +152,7 @@ class UniversityFilterController extends Controller
         $page=1;
 
 
-        return view('frontEnd.university.university_all', compact('countrycoming','page','typecoming'))->with('universities', $universities);
+        return view('frontEnd.university.university_all', compact('countrycoming','page','study_level'))->with('universities', $universities);
     }
 
 
@@ -162,7 +168,8 @@ class UniversityFilterController extends Controller
        $typecoming = $request->type ?? null ;
 
        if ($request->countries_id != null) {
-        $query =  $query->where('countries_id', '=',$request->countries_id);
+           $cont=$request->countries_id ?? '';
+        $query =  $query->where('countries_id', '=',$cont);
        }
 
        if ($request->type != '' && $request->type != null) {
@@ -219,7 +226,7 @@ class UniversityFilterController extends Controller
        }
 
        if($request->study_level != null && $request->study_level != ''){
-       $st=$request->study_level;
+       $st=$request->study_level ?? '';
         $query->with(['universityCourse' => function ($q) use ($st) {
             $q->where('type', '=', $st);
         }]);
@@ -382,8 +389,8 @@ if($courses->count()>0){
 
 
         $universities = [];
-        $cur=$_COOKIE['curloc'] ?? '';
-        $curloc=json_decode($cur);
+        $cookiecurloc=$_COOKIE['curloc'] ?? '';
+        $curloc=json_decode($cookiecurloc);
 
         $ata=[];
 

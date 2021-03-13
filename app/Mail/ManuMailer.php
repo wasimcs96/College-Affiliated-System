@@ -76,7 +76,7 @@ class ManuMailer extends Mailable
         return $this->view('email.echo')
                     ->from('admincs@yopmail.com', 'Campus Interest')
                     //->bcc('hanumanprasad.yadav@dotsquares.com', 'Hanuman Yad')
-                    ->replyTo('admincs@yopmail.com', 'Campus Interest')
+                    ->replyTo(config('get.ADMIN_EMAIL'), 'Campus Interest')
                     ->subject($subject)
                     ->with(['content' => $content ]);
     }
