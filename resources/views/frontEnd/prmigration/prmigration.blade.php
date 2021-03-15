@@ -37,7 +37,7 @@
                                                         <?php $countries = App\Models\Country::all();?>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $countryt)
-                                                            <option value="{{$countryt->countries_id}}" @if(isset($country) && $country == $countryt->countries_id) selected @endif @if(isset($countrycoming) && $countrycoming == $country->countries_id) selected @endif>{{$countryt->countries_name}}</option>
+                                                            <option value="{{$countryt->countries_id}}" @if(isset($country) && $country == $countryt->countries_id) selected @endif >{{$countryt->countries_name}}</option>
                                                          @endforeach
 
                                                         @else
