@@ -8,6 +8,7 @@ use App\Models\ConsultantPrMigrationCountry;
 use DB;
 use App\Models\User;
 use App\Models\Booking;
+use App\Models\Country;
 use App\Models\ConsultantDues;
 use App\Models\ConsultantAvailableSlots;
 
@@ -18,11 +19,12 @@ class PrMigrationFrontController extends Controller
         return view('frontEnd.prmigration.prmigration')->with('consultants',User::all());;
     }
 
-    Public function search(Request $request)
+    public function search(Request $request)
     {
-        // dd($request->all());
+        // dd($request->country);
         // $request->country=19;
         $countrycoming=$request->country ?? '';
+        $countries= $request->country ?? '';
         $total=[];
         $consultants=DB::table("consultant_pr_migration_countries")
         ->whereRaw("find_in_set('$countrycoming',country_id)")
@@ -35,7 +37,7 @@ class PrMigrationFrontController extends Controller
                 $consultants[$key]= $us;
         }
 
-            return view('frontEnd.prmigration.prmigration',compact('consultants','countrycoming'));
+            return view('frontEnd.prmigration.prmigration',compact('consultants','countrycoming'))->with('country',$countries);
         }
 
         public function book(Request $request)

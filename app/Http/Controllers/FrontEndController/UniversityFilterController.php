@@ -128,14 +128,14 @@ class UniversityFilterController extends Controller
             $universities = [];
             $countrycoming = $request->countries_id ?? '';
             // $universitycourse = University::where('countries_id', $request->countries_id)->where('type', $request->type)->get();
-    
+
             $universitycourse = UniversityCourse::where('type',$study_level)->get();
             foreach ($universitycourse as $key => $univercity) {
                 if ($univercity->users->countries_id == $countrycoming) {
                     $universities[$key] = $univercity->users;
                 }
-                
-            }   
+
+            }
         } else {
             $universities = [];
             $countrycoming = $request->countries_id ?? '';
@@ -401,12 +401,18 @@ if($courses->count()>0){
           //Get latitude and longitute from json data
           $ata['latitude']  = $output->results[0]->geometry->location->lat;
           $ata['longitude'] = $output->results[0]->geometry->location->lng;
+          $radius=50;
          }
      else{
-          $ata['latitude']  =  $curloc->lat ?? '';
-          $ata['longitude'] =$curloc->lng ?? '';
+         $ip = request()->ip;
+        $data = \Location::get($ip);
+        // dd($data->latitude);
+          $ata['latitude']  =  $data->latitude ?? '';
+          $ata['longitude'] =$data->longitude ?? '';
+          $radius=50000;
+        //   dd($radius);
          }
-         $radius=50;
+
 
     if ($request->service == 1) {
         $query = User::where('status',1)->where('countries_id', $request->countries_id)->pluck('id');
