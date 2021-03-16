@@ -80,7 +80,7 @@ class ConsultantFrontController extends Controller
         $output = '';
         if(count($data) >0 ){
 
-       
+
         foreach ($data as $row) {
 
             $time = "'.$row->start_slot_time.'-'.$row->end_slot_time.'";
@@ -145,14 +145,15 @@ class ConsultantFrontController extends Controller
         ]);
           $consultant = User::where('id',$request->cid)->first();
           $id=$consultantBooking->id;
-        // // Important Code
-        //     $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
-        //     $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
-        //     $replacement['ADDRESS'] = $consultant->address_1;
-        //     $replacement['SERVICE_NAME'] = 'Student Booking';
-        //     $replacement['BOOKING_LINK'] = 'http://kamercio.com/campusInterest/public/client/bookings/show/'.$id;
-        //     $data = ['template'=>'booking','hooksVars' => $replacement];
-        //     mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+         // Important Code
+            $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
+            $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
+            $replacement['ADDRESS'] = $consultant->address_1;
+            $replacement['SERVICE_NAME'] = 'Student Booking';
+            $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
+            $data = ['template'=>'booking','hooksVars' => $replacement];
+            mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+            mail::to($consultant->email)->send(new \App\Mail\ManuMailer($data));
 
         return redirect()->route('client.dashboard')->with('success', 'Your Booking has been Submitted Successfully');
     }
