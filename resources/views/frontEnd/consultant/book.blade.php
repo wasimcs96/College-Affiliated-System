@@ -179,19 +179,19 @@ $inc = 0;
 <tr>
     <td class="text-center filetype"  data-row_id='{{ $inc }}'>
 
-        <select class="col-lg-12 p-2 university" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[0][university]" id="media_type-{{ $inc }}" required>
+        <select class="col-lg-12 p-2 selectpicker university" data-live-search="true" style="border-color: gainsboro;border-radius: 4px;" name="banner_images[0][university]" id="media_type-{{ $inc }}" required>
 <?php $un=$consultant->consultantUniversity?>
 
      @foreach($un as $uns)
      @if (isset($universityid))
-
+     <?php   $contryid=$uns->userUniversity->countries_id ?? ''; $country = DB::table('countries')->where('countries_id',$contryid)->first();  ?>
 <option value="{{$uns->userUniversity->id}}"
     @if($uns->userUniversity->id==$universityid) selected @endif >
-   {{$uns->userUniversity->university->university_name}}
+   {{$uns->userUniversity->university->university_name}}({{$country->countries_name ?? ''}})
 </option>
     @else
     <option value="{{$uns->userUniversity->id}}">
-       {{$uns->userUniversity->university->university_name}}
+       {{$uns->userUniversity->university->university_name}}({{$country->countries_name ?? ''}})
     </option>
 @endif
 @endforeach
@@ -496,11 +496,14 @@ $('#course-'+dt+'').html('<option>uddsdsdsdsddsdsdsdsds</option>');
 <script type="text/javascript">
 var image_row = {{ $inc }};
 function addImage(language_id) {
+    
+ 
+    
 
 html = '<tr id="imageBox-' + image_row + '" class="imageBox">';
 
 
-html += ' <td class="text-center filetype" data-row_id='+image_row+'><select class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][university]" required> <option selected>Choose University</option><?php foreach($univers as $univer){?> <option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}}</option><?php }?></select></td>';
+html += ' <td class="text-center filetype" data-row_id='+image_row+'><select class="col-lg-12 selectpicker p-2" data-live-search="true"  style="border-color: gainsboro;border-radius: 4px;" id="media_type-'+image_row+'" name="banner_images[' + image_row + '][university]" required> <option selected>Choose University</option><?php foreach($univers as $univer){?> <?php   $contryid=$univer->userUniversity->countries_id ?? ''; $country = DB::table('countries')->where('countries_id',$contryid)->first();  ?><option value="{{$univer->userUniversity->id}}">{{$univer->userUniversity->university->university_name}} ({{$country->countries_name ?? ''}})</option><?php }?></select></td>';
 html += ' <td class="text-left" id="tc-'+image_row+'" >'
 html +='<select required class="col-lg-12 p-2" style="border-color: gainsboro;border-radius: 4px;" id="tl-'+image_row+'" name="banner_images['+image_row+'][course]"><option selected>Choose Course</option></select>';
 html +='</td>';
@@ -517,7 +520,8 @@ if(r==4){
 $('#bst').prop('disabled', true);
 }
 image_row++;
-
+$('.selectpicker').selectpicker('refresh');
+$('.selectpicker').selectpicker('render');
 }
 
 $(document).on('click', '.btn_remove', function(){
