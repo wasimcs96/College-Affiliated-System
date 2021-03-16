@@ -29,6 +29,7 @@
                             <th><b> Booking Date </b></th>
                             <th><b> Booking Time Slot </b></th>
                             <th><b> Status</b></th>
+                            <th><b> Booking Type</b></th>
                             <th><b> Actions</b></th>
 
                         </tr>
@@ -54,7 +55,7 @@
                                     @if($booking->status==5 ?? '')<div class="btn btn-danger">Closed</div>@endif
                             </td>
                             @endif
-
+                            <td><div class="btn btn-{{$booking->booking_for==0 ? 'primary':'info'}}">{{$booking->booking_for==0 ? 'Student':'Pr'}}</div></td>
                                 <td><a href="{{route('client.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                             </tr>
                             @endif
