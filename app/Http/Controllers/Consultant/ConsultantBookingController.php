@@ -25,7 +25,7 @@ class ConsultantBookingController extends Controller
    public function index()
    {
     //  $book = auth()->user()->consultantBooking;
-     $book = Booking::where('consultant_id',auth()->user()->id)->orderByDesc('created_at')->get();
+     $book = Booking::where('consultant_id',auth()->user()->id)->orderByDesc('updated_at')->get();
     //  $bookings = Booking::orderBy('booking_date', 'DESC')->get();
     //  dd($bookings);
     // dd(auth()->user()->id);

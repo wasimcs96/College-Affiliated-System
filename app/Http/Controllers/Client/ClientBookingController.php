@@ -13,7 +13,7 @@ class ClientBookingController extends Controller
     public function index()
     {
         // dd(auth()->user()->id);
-        $bookings = Booking::where('client_id',auth()->user()->id)->where('booking_for',0)->orderByDesc('created_at')->get();
+        $bookings = Booking::where('client_id',auth()->user()->id)->where('booking_for',0)->orderByDesc('id')->get();
     //    dd($applications);
         return view('client.booking.bookings')->with('bookings', $bookings);
 

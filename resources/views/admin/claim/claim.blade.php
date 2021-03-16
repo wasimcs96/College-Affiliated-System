@@ -11,12 +11,12 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-               
+
             </ul>
         </div>
         <div class="body">
             <div class="table-responsive">
-                <table class="table table-striped table-hover dataTable js-exportable">
+                <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
 
                         <tr>
@@ -25,13 +25,14 @@
                             <th> <b> Mobile Number</b></th>
                             <th> <b>Designation</b></th>
                             <th> <b>Message</b></th>
+                            <th> <b>Claim date</b></th>
                             {{-- <th><b>Type</b></th> --}}
-                            
+
                             {{-- <th style="text-align: center;"><b>Action<b></th> --}}
 
                         </tr>
                     </thead>
-                    <?php $claims=App\Models\Claim::orderBy('updated_at', 'DESC')->get(); ?>
+                    <?php $claims=App\Models\Claim::all(); ?>
                     @if($claims->count() > 0)
                    <tbody>
                     @foreach ($claims as $claim)
@@ -44,7 +45,7 @@
                             <td>{{$claim->number ?? ''}}</td>
 
                         <td>{{$claim->designation ?? ''}}</td>
-                        <td class="col-lg-3">  
+                        <td class="col-lg-3">
 @if(isset($claim->message))
                             <div class="comment more">
                             <?php $aRoom= $claim->message ?>
@@ -60,9 +61,9 @@
     N/A
     @endif
     </td>
-                     
 
-                    
+    <td>{{$claim->updated_at ?? ''}}</td>
+
 
                         </tr>
 
@@ -133,20 +134,26 @@ tr.shown td.details-control {
 <script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
-<script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
-
+{{-- <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script> --}}
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "order": [[ 5, "desc" ]]
+        } );
+    } );
+    </script>
 <script type="text/javascript">
     // Hide the extra content initially, using JS so that if JS is disabled, no problemo:
                 $('.read-more-content').addClass('hide_content')
                 $('.read-more-show, .read-more-hide').removeClass('hide_content')
-    
+
                 // Set up the toggle effect:
                 $('.read-more-show').on('click', function(e) {
                   $(this).next('.read-more-content').removeClass('hide_content');
                   $(this).addClass('hide_content');
                   e.preventDefault();
                 });
-    
+
                 // Changes contributed by @diego-rzg
                 $('.read-more-hide').on('click', function(e) {
                   var p = $(this).parent('.read-more-content');

@@ -110,29 +110,47 @@
 
 <div class="row col-lg-12" style="margin-bottom: -34px;">
 
-    <div class="col-lg-3 col-md-12">
-        <div class="form-group">
-        <label for="start_time">Country</label>
-    
-        <select  name="country"  class="form-control"  style="height: 50px;" >
-            <?php $countries = App\Models\Country::all();?>
-            @if($countries->count() > 0)
-             @foreach($countries as $country)
-                <option value="{{$country->countries_id}}" @if(isset($countrycomming)&&$countrycomming == $country->countries_id)selected @endif>{{$country->countries_name}}</option>
-             @endforeach
-    
-            @else
-    
-                <option value="">Currently Unavailable</option>
-    
-            @endif
-    
-        </select>
-        </div><br><br>
+
+        <?php $countries = App\Models\Country::get();?>
+<?php $countryes_id =  explode(",", $consultant->consultantPrMigrationCountry->country_id ?? '');
+      $conts=[];
+      foreach($countries as $country){
+                 if (in_array($country->countries_id,$countryes_id))
+{
+   array_push($conts,$country);
+}
+      }
+?>
+        <div class="col-lg-3 col-md-12" style="margin-top: 2px;">
+            <div class="form-group">
+            <label for="start_time">Country</label>
+
+            <select  name="country"  class="form-control"  style="height: 50px;" required >
+
+
+                @if(count($conts) > 0)
+
+                 @foreach($conts as $country)
+                 {{-- @if (in_array($countryes_id,$countries) && ($country->countries_id==)) --}}
+
+                 <option value="{{$country->countries_id ?? ''}}">{{$country->countries_name ?? ''}}</option>
+                 {{-- @endif --}}
+                 @endforeach
+
+                @else
+
+                    <option value="">No Country Available for PR</option>
+
+                @endif
+
+            </select>
+            </div><br><br>
+            {{-- {{ dd($consultant->consultantPrMigrationCountry) }} --}}
+            <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
+            <input type="text" id="cid" name="cid" value="{{$consultant->id ?? ''}}" hidden>
+            </div>
         <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
         <input type="text" id="cid" name="cid" value="{{$consultant->id ?? ''}}" hidden>
-        </div>
-
 <div class="col-lg-3 col-md-12">
 <div class="input-box">
 <label style="color: grey;
@@ -157,47 +175,11 @@ font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
 <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
 <input type="text" id="cid" name="cid" value="{{$consultant->id}}" hidden>
 </div>
-<?php $countries = App\Models\Country::get();?>
-<?php $countryes_id =  explode(",", $consultant->consultantPrMigrationCountry->country_id ?? '');
-      $conts=[];
-      foreach($countries as $country){
-                 if (in_array($country->countries_id,$countryes_id))
-{
-   array_push($conts,$country);
-}
-      }
-?>
 
 
 
-<div class="col-lg-6 col-md-12">
-    <div class="form-group">
-    <label for="start_time">Country</label>
-
-    <select  name="country"  class="form-control"   >
 
 
-        @if(count($conts) > 0)
-
-         @foreach($conts as $country)
-         {{-- @if (in_array($countryes_id,$countries) && ($country->countries_id==)) --}}
-
-         <option value="{{$country->countries_id ?? ''}}">{{$country->countries_name ?? ''}}</option>
-         {{-- @endif --}}
-         @endforeach
-
-        @else
-
-            <option value="">No Country Available for PR</option>
-
-        @endif
-
-    </select>
-    </div><br><br>
-    {{-- {{ dd($consultant->consultantPrMigrationCountry) }} --}}
-    <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
-    <input type="text" id="cid" name="cid" value="{{$consultant->id ?? ''}}" hidden>
-    </div>
 </div>
 
 <!-- Function to call time -->
@@ -228,7 +210,7 @@ return $output;
     <button style="
     margin-left: -15px;" class="theme-btn" type="submit">Confirm Booking</button>
     </div>
-    
+
     @endif
     @if(!auth()->user())
     <div class="btn-box" style="
@@ -316,6 +298,16 @@ class="fa fa-fw fa-save"></i> Submit
 @section('per_page_script')
 
 <script>
+      var date = new Date('now');
+    //var newdate = new Date(date);
+
+
+    var dd = date.getDate();
+    var tm = date.getTime();
+    var mm = date.getMonth();
+    var y = date.getFullYear();
+
+    var someFormattedDate = y + '/' + mm + '/' + dd;
 $("#date").datepicker({ onSelect: function(dateText) {
 
 
@@ -345,7 +337,20 @@ console.log("Selected date: " + dateText + "; input's current value: " + this.va
 
 
 
-} });
+},
+minDate: someFormattedDate
+ });
 </script>
+{{-- <script>
+     $(document).ready(function () {
+    $('#date').datepicker({
+        console.log('hiii');
+        dateFormat: 'yy-mm-dd',
+         minDate: 0,
+        //  maxDate:"4w"
 
+    });
+
+});
+</script> --}}
 @endsection

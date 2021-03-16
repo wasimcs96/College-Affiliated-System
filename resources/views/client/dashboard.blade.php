@@ -7,9 +7,9 @@
 
 
 <div class="row clearfix">
-    {{-- <div class="col-lg-9 col-md-12 col-sm-12"> --}}
+    {{-- <div class="col-lg-9 col-md-12 col-sm-12"> ->where('booking_for',0) --}}
         @php
-             $booking = DB::table('bookings')->where('client_id',auth()->user()->id)->where('booking_for',0)->count();
+             $booking = DB::table('bookings')->where('client_id',auth()->user()->id)->count();
              $application = DB::table('applications')->where('client_id',auth()->user()->id)->where('status',0)->count();
         @endphp
         <div class="col-lg-6 col-md-6">
@@ -55,10 +55,10 @@
             <ul class="header-dropdown dropdown">
 
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-              
+
             </ul>
         </div>
-     
+
         <div class="body">
             <div class="table-responsive">
                 <table class="table table-striped table-hover dataTable js-exportable">
@@ -74,13 +74,13 @@
 
                     </tfoot>
 
-                    
+
 
                     <tbody>
                         @foreach($applications as $application)
                       @if ($application->status != 2)
-                          
-                      
+
+
                             <tr>
                                 <td>{{App\Models\User::find($application->consultant_id)->first_name ?? ''}} {{App\Models\User::find($application->consultant_id)->last_name ?? ''}}</td>
                                 <td>{{ Carbon\Carbon::parse($application->created_at)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
@@ -96,13 +96,13 @@
                         @endforeach
 
 
-                       
+
 
                     </tbody>
                 </table>
             </div>
         </div>
-       
+
     </div>
 </div>
 @endif
