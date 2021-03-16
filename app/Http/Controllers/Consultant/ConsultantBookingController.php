@@ -151,7 +151,7 @@ public function applicationStore(Request $request){
         $email = $userEmail->email;
         $aid = $store->id;
         // Important Code
-            $replacement['APPLICATION_LINK'] = 'http://kamercio.com/campusInterest/public/client/applications/show/'.$aid;
+            $replacement['APPLICATION_LINK'] = 'https://campusinterest.com/client/applications/show/'.$aid;
             $data = ['template'=>'application','hooksVars' => $replacement];
             mail::to($email)->send(new \App\Mail\ManuMailer($data));
         return redirect()->route('consultant.application')->with('success','Application Created Successfully');

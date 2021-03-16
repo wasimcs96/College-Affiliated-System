@@ -46,14 +46,14 @@ class RegisterController extends Controller
 
       // Important Code
       $replacement['USER_NAME'] = $user->first_name;
-$replacement['COURSE_LINK'] = 'http://kamercio.com/campusInterest/public/university/all';
-$replacement['CONSULTANT_LINK'] ='http://kamercio.com/campusInterest/public/consultant/all';
+$replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
 $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
 $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
 $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
 $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
 $replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
-$replacement['WEBSITE_LINK'] = 'http://kamercio.com/campusInterest/public/';
+$replacement['WEBSITE_LINK'] = 'https://campusinterest.com/public/';
 $data = ['template'=>'welcome-email','hooksVars' => $replacement];
 mail::to($user->email)->send(new \App\Mail\ManuMailer($data));
 

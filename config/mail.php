@@ -58,7 +58,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'address' => env('MAIL_FROM_ADDRESS', config('get.ADMIN_EMAIL')),
         'name' => env('MAIL_FROM_NAME', 'Campus Interest'),
     ],
 

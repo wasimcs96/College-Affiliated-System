@@ -31,6 +31,7 @@
                     @if($bookings->count() > 0)
                    <tbody>
                     @foreach ($bookings as $booking)
+                    @if(strtotime($booking->booking_date ?? '') >= strtotime(date('m/d/Y')))
                         <tr>
                             <td>{{$booking->booking->user->first_name ?? ''}} {{$booking->booking->user->last_name ?? ''}}</td>
                             {{-- <td>@if($booking->application->status==0)<div class="btn btn-warning">In Progress</div>@endif
@@ -46,7 +47,7 @@
                             </td>
 
                         </tr>
-
+                        @endif
                         @endforeach
                     <tbody>
 
