@@ -931,7 +931,7 @@ function closeNav() {
             })
         });
     })
-    </script>
+</script>
     @if($errors->has('email') || $errors->has('password'))
     <script>
     $(function() {
