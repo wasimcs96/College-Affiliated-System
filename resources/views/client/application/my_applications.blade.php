@@ -23,9 +23,10 @@
         </div>
         <div class="body">
             <div class="table-responsive">
-                <table class="table table-striped table-hover dataTable js-exportable">
+                <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
+                            <th> <b>Updated At</b></th>
                             <th> <b>Consultant Name</b></th>
                             <th><b> Applied On</b></th>
                             <th><b> Status</b></th>
@@ -42,6 +43,7 @@
                         @foreach($applications as $application)
                             @if(auth()->user()->id == $application->client_id)
                             <tr>
+                                <td>{{$application->updated_at ?? ''}}</td>
                                 <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}} </td>
                                {{-- {{ dd($application->university) }} --}}
 
@@ -89,11 +91,11 @@ tr.shown td.details-control {
 }
 .buttons-csv{
     display: none;
-    
+
 }
 .buttons-copy{
     display: none;
-    
+
 }
 </style>
 @stop
@@ -108,6 +110,13 @@ tr.shown td.details-control {
 <script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
-<script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script> --}}
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "order": [[ 0, "desc" ]]
+        } );
+    } );
+    </script>
 @stop
 

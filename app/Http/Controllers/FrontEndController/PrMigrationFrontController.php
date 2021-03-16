@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\ConsultantPrMigrationCountry;
 use DB;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Booking;
 use App\Models\Country;
 use App\Models\ConsultantDues;
@@ -117,6 +119,17 @@ class PrMigrationFrontController extends Controller
             $consultant_id=$request->cid;
             $check = $this->consultantDue($type,$slug,$consultant_id);
             // dd($request->cid);
+            $consultant = User::where('id',$request->cid)->first();
+            $id=$consultantBooking->id;
+           // Important Code
+              $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
+              $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
+              $replacement['ADDRESS'] = $consultant->address_1;
+              $replacement['SERVICE_NAME'] = 'PR Booking';
+              $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
+              $data = ['template'=>'booking','hooksVars' => $replacement];
+              mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+              mail::to($consultant->email)->send(new \App\Mail\ManuMailer($data));
             return redirect()->route('client.dashboard')->with('success','Your Application have been Submitted Successfully');
 
     }

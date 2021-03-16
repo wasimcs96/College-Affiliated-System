@@ -17,9 +17,10 @@
         </div>
         <div class="body">
             <div class="table-responsive">
-                <table class="table table-striped table-hover dataTable js-exportable">
+                <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
+                            <th><b> Updated At</b></th>
                             <th> <b>
                                 Name</b></th>
                             <th><b> Mobile </b></th>
@@ -43,6 +44,7 @@
                         @foreach($applications as $application)
 
                         <tr>
+                            <td>{{$application->updated_at ?? ''}} </td>
                             <td>{{$application->user->first_name ?? ''}} </td>
                             <td>{{$application->user->mobile ?? ''}}</td>
                             <td>{{$application->user->email ?? ''}}</td>
@@ -92,5 +94,12 @@ tr.shown td.details-control {
 <script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
-<script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script> --}}
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "order": [[ 0, "desc" ]]
+        } );
+    } );
+    </script>
 @stop

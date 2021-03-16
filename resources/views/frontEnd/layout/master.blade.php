@@ -622,6 +622,7 @@
 @include('frontEnd.layout.header')
 
 
+@include('includes.alert')
 @yield('content')
 
 

@@ -22,13 +22,15 @@
         </div>
         <div class="body">
             <div class="table-responsive">
-                <table class="table table-striped table-hover dataTable js-exportable">
+                <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
+                            <th><b> Updated At</b></th>
                             <th><b> Consultant  Name</b></th>
                             <th><b> Booking Date </b></th>
                             <th><b> Booking Time Slot </b></th>
                             <th><b> Status</b></th>
+
                             <th><b> Actions</b></th>
 
                         </tr>
@@ -39,6 +41,8 @@
                         @foreach($bookings as $booking)
                             @if(auth()->user()->id == $booking->client_id)
                             <tr>
+                                <td>@if(isset($booking->updated_at)) {{$booking->updated_at }}@else N/A @endif</td>
+
                                 <td>{{$booking->userConsultant->first_name ?? ''}}  {{$booking->userConsultant->last_name ?? ''}} </td>
 
                                 <td>@if(isset($booking->booking_date)){{ Carbon\Carbon::parse($booking->booking_date)->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
@@ -109,5 +113,12 @@ tr.shown td.details-control {
 <script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
-<script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script> --}}
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "order": [[ 0, "desc" ]]
+    } );
+} );
+</script>
 @stop

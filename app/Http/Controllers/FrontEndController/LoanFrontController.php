@@ -45,6 +45,6 @@ class LoanFrontController extends Controller
             'type' => $request->type
         ]);
       }
-        return redirect()->back();
+        return redirect()->back()->with('success','Your request has been send successfully.');
     }
 }
