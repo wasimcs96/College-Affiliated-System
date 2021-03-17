@@ -61,7 +61,7 @@
 
                     {{-- <tr>
                         <th><b>Amount</b></th>
-                        <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$package->amount}}</td>
+                        <td>{{ Config::get('define.currency.currency') }}{!!"&nbsp"!!}{{$package->amount}}</td>
                     </tr> --}}
 
                     {{-- <tr>

@@ -1,6 +1,6 @@
 SYSTEM_APPLICATION_NAME: 'Project Name'
-ADMIN_EMAIL: admincs@yopmail.com
-FROM_EMAIL: admincs@yopmail.com
+ADMIN_EMAIL: admin@campusinterest.com
+FROM_EMAIL: admin@campusinterest.com
 WEBSITE_OWNER: Owner
 TELEPHONE: '+61 458 666 123'
 ADMIN_PAGE_LIMIT: '10'

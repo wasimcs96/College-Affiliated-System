@@ -52,7 +52,7 @@
                                             @if($subscription->payment_type == 0)
                                             <tr>
                                                 <td>{{$subscription->OrderItem[0]->Item_title ?? ''}}</td>
-                                                <td><i class="fa fa-inr"></i>{{$subscription->amount ?? 'NA'}}</td>
+                                                <td>{{ Config::get('define.currency.currency') }}{{$subscription->amount ?? 'NA'}}</td>
                                                 <td>{{$subscription->transaction_id ?? 'NA'}}</td>
 
                                                 <td>{{ Carbon\Carbon::parse($subscription->userPurchasedPlans[0]->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>

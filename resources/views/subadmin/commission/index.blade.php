@@ -45,10 +45,10 @@
                                         <tr>
                                             <td> {{$com->userConsultant->first_name ?? ''}} {{$com->userConsultant->last_name ?? ''}}</td>
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
-                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
-                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->paid_amount ?? ''}}</td>
+                                            <td>{{ Config::get('define.currency.currency') }}{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
+                                            <td>{{ Config::get('define.currency.currency') }}{!!"&nbsp"!!}{{$com->paid_amount ?? ''}}</td>
                                             <td>{{$com->total_client_count ?? ''}}</td>
-                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
+                                            <td>{{ Config::get('define.currency.currency') }}{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
                                             <td>{{$com->temp_client_count ?? ''}}</td>
                                             <td>Visa</td>
                                             <td style="
@@ -68,8 +68,8 @@
                                         <tr>
                                             <td> {{$com->userConsultant->first_name ?? ''}} {{$com->userConsultant->last_name ?? ''}}</td>
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
-                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
-                                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$com->paid_amount ?? ''}}</td>
+                                            <td>{{ Config::get('define.currency.currency') }}{!!"&nbsp"!!}{{$com->due_amount ?? ''}}</td>
+                                            <td>{{ Config::get('define.currency.currency') }}{!!"&nbsp"!!}{{$com->paid_amount ?? ''}}</td>
                                             <td>{{$com->total_client_count ?? ''}}</td>
                                             <td>{{$com->due_amount ?? ''}}</td>
                                             <td>{{$com->temp_client_count ?? ''}}</td>

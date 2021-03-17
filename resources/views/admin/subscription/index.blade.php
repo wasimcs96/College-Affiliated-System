@@ -14,7 +14,7 @@
             <ul class="pricing body">
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
-                    <h3><span><i class="fa fa-inr"></i></span> {{$package->amount}}<small>/ mo</small></h3>
+                    <h3><span>{{ Config::get('define.currency.currency') }}</span> {{$package->amount}}<small>/ mo</small></h3>
                     <span>Subscription</span>
                 </li>
                  <li>{{$package->description}}</li>
@@ -70,8 +70,8 @@ tr.shown td.details-control {
 <script>
 var options = {
     "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
-    "amount": "{{Session::get('amount')}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    "currency": "INR",
+    "amount": "{{Session::get('amount')}}", // Amount is in currency subunits. Default currency is USD. Hence, 50000 refers to 50000 paise
+    "currency": "USD",
     "name":"{{Session::get('name')}}",
     "description": "Test Transaction",
     "image": "https://example.com/your_logo",

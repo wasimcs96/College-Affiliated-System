@@ -177,7 +177,7 @@
     </div>
     <div class="ml-4">
         <span>Total Dues</span>
-        <h4 class="mb-0 font-weight-medium"><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!} {{  $visaDues ?? '' }} </h4>
+        <h4 class="mb-0 font-weight-medium">{{ Config::get('define.currency.currency') }}{!!"&nbsp"!!} {{  $visaDues ?? '' }} </h4>
     </div>
 </div>
 </div>
@@ -195,7 +195,7 @@
     </div>
     <div class="ml-4">
         <span>Total Paid Amount</span>
-        <h4 class="mb-0 font-weight-medium"><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{ $visaPaid ?? '' }}</h4>
+        <h4 class="mb-0 font-weight-medium">{{ Config::get('define.currency.currency') }}{!!"&nbsp"!!}{{ $visaPaid ?? '' }}</h4>
     </div>
 </div>
 </div>

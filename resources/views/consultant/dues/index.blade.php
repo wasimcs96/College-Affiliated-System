@@ -277,7 +277,7 @@
                 @foreach($orders as $order)
     @if($order->payment_type == 4)
                 <tr>
-                    <td> <i class="fa fa-inr"></i> {{$order->amount ?? ''}} </td>
+                    <td> {{ Config::get('define.currency.currency') }} {{$order->amount ?? ''}} </td>
                     <td>{{$order->transaction_id ?? ''}}</td>
                     <td> <div class="btn btn-success">Paid</div> </td>
                     <td> <div class="btn btn-warning">PR</div>  </td>
@@ -449,8 +449,8 @@ $('#choosedcontent').html(html);
 
             var options = {
                 "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
-                "amount": result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-                "currency": "INR",
+                "amount": result.amount, // Amount is in currency subunits. Default currency is USD. Hence, 50000 refers to 50000 paise
+                "currency": "USD",
                 "name":"{{Session::get('name')}}",
                 "description": "Test Transaction",
                 "image": "https://example.com/your_logo",
