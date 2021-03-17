@@ -63,6 +63,16 @@
                                         <option value="0"  @if($user->status == 0) selected @endif>InActive</option>
                                     </select>
                                 </div>
+                                @if($user->isUniversity())
+                                <div class="form-group">
+                                    <label for="is_verified">Select Verification Status</label>
+                                    <select name="is_verified" class="form-control">
+                                        <option value="">--Select Verification Status --</option>
+                                        <option value="1"  @if($user->is_verified == 1) selected @endif>Verified </option>
+                                        <option value="0"  @if($user->is_verified == 0) selected @endif>Not Verified</option>
+                                    </select>
+                                </div>
+                                @endif
                                 <div class="form-group">
                                     <label for="country">Country</label>
                                     <select name="country" class="form-control">
@@ -76,7 +86,7 @@
                                         @endif
                                     </select>
                                 </div>
-                                @if($user->isConsultant() ||$user->isUniversity())
+                                @if($user->isConsultant() || $user->isUniversity())
                                 <div class="form-group">
                                     <div class="row">
                         <label for="rating" style="font-size: 16px;margin: 17px;">Add Ratings</label>

@@ -43,6 +43,9 @@
                                 <div class="form-group" id="uniname">
 
                                 </div>
+                                <div class="form-group" id="verify">
+
+                                </div>
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="email" class="form-control" name="email" id="email" required>
@@ -117,11 +120,14 @@ $(document).ready(function(){
       //.....................^.......
       {
         $("#uniname").html('<label>University Name</label><input type="text" class="form-control" name="university_name" id="university_name" required>');
+        $("#verify").html('<label for="is_verified">Select Verification Status</label><select name="is_verified" class="form-control"><option value="">-- Select Verification Status --</option><option value="1">Verified</option><option value="0">Not Verified</option></select>');
       }
     else {
         $("#uniname").html('');
+        $("#verify").html('');
     }
     });
 });
 </script>
+
 @stop

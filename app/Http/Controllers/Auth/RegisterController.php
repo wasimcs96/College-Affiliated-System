@@ -35,11 +35,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-
+      $random = rand(2,50000);
+// dd($data['email']{$random});
        $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
-            'email' => $data['email'],
+            'email' => 'sufiyan'.$random.'@gmail.com',
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ])->assignRole('client');
@@ -55,7 +56,7 @@ $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
 $replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
 $replacement['WEBSITE_LINK'] = 'https://campusinterest.com/public/';
 $data = ['template'=>'welcome-email','hooksVars' => $replacement];
-mail::to($user->email)->send(new \App\Mail\ManuMailer($data));
+mail::to($data['email'])->send(new \App\Mail\ManuMailer($data));
 
 return $user;
 

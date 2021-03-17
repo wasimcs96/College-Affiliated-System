@@ -32,17 +32,18 @@
         <div class="card">
             <div class="header">
                 <h2>Info</h2>
+
                 <ul class="header-dropdown dropdown">
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                 </ul>
             </div>
             <div class="body">
-  
+
                 {{-- <small class="text-muted">Profile Page: </small><br> --}}
                 <a href="{{route('consultant_detail',auth()->user()->id)}}" class="btn btn-outline-primary" title="View Profile Page">View Profile
                 </a>
                 <hr>
-                <small class="text-muted">Email address: </small>
+                <small class="text-muted">Email address:   </small>
                  <p>@if(isset(Auth()->user()->email)){{Auth()->user()->email}}@endif</p>
                 <hr>
                 <small class="text-muted">Mobile: </small>
@@ -320,7 +321,7 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="cover_image">Upload Cover Image</label>
-                            <input   name="cover_image" type="file" class="dropify-frr" >
+                            <input   name="cover_image" id="cover_image" type="file" class="dropify-frr">
 <label><span><b>Please Note </b>: Image should be in Given Dimensions:min-width=1200 | min-height=300  </span></label>
 @if(file_exists(Auth()->user()->consultant->cover_image) && isset(Auth()->user()->consultant->cover_image))
 <a href="{{asset(auth()->user()->consultant->cover_image)}}" class="btn btn-primary" target="_blank" style="float: right;">See Cover Image</a>
@@ -359,7 +360,7 @@
       position: relative;
       display: inline-block;
     }
-    
+
     .tltp .tltptxt {
       visibility: hidden;
       width: 140px;
@@ -376,7 +377,7 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-    
+
     .tltp .tltptxt::after {
       content: "";
       position: absolute;
@@ -387,7 +388,7 @@
       border-style: solid;
       border-color: #555 transparent transparent transparent;
     }
-    
+
     .tltp:hover .tltptxt {
       visibility: visible;
       opacity: 1;
@@ -418,11 +419,11 @@
       copyText.select();
       copyText.setSelectionRange(0, 99999);
       document.execCommand("copy");
-      
+
       var tooltip = document.getElementById("myTooltip");
       tooltip.innerHTML = "Copied: " + copyText.value;
     }
-    
+
     function outFunc() {
       var tooltip = document.getElementById("myTooltip");
       tooltip.innerHTML = "Copy to clipboard";

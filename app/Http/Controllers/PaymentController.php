@@ -36,7 +36,7 @@ class PaymentController extends Controller
         $order  = $api->order->create([
             'receipt'         => $title,
             'amount'          => $amount * 100, // amount in the smallest currency unit
-            'currency'        => 'INR', // <a href="/docs/payment-gateway/payments/international-payments/#supported-currencies" target="_blank">See the list of supported currencies</a>.)
+            'currency'        => 'USD', // <a href="/docs/payment-gateway/payments/international-payments/#supported-currencies" target="_blank">See the list of supported currencies</a>.)
         ]);
         // dd($order);
         $orderId = $order['id'];
