@@ -497,14 +497,14 @@
 
                                                 <div class="col-lg-2 col-md-12">
                                                     <div class="form-group">
-                                                        <label for="">Course Fees</label>
+                                                        <label for="">Course Fees (in {{ Config::get('define.currency.currency') }})</label>
                                                         <?php $coursedetails=\App\Models\UniversityCourse::where('id',$applied->course_id)->first(); ?>
 
                                                         <input type="text" name="fees" class="form-control" id="coursefees"  @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$coursedetails->fees}}"@else value="{{ $applied->fees }}"  @endif disabled />                                                     </div>
                                                      </div>
                                                      <div class="col-lg-2 col-md-12">
                                                         <div class="form-group">
-                                                           <label for="">Scholarship</label>
+                                                           <label for="">Scholarship (in {{ Config::get('define.currency.currency') }})</label>
                                                                 <input type="text" name="scholarship" class="form-control" id="scholarship" @if($applied->scholarship=="NULL" || $applied->scholarship=="null" || $applied->scholarship=='') value="" @else value="{{$applied->scholarship}}" @endif />
                                                         </div>
                                                     </div>

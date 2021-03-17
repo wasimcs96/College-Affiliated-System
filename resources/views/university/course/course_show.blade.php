@@ -39,7 +39,7 @@
 
                         <tr>
                             <th scope="row">Fees</th>
-                            <td>₹ {{$courses->fees ?? 'NA'}}</td>
+                            <td>{{ Config::get('define.currency.currency') }} {{$courses->fees ?? 'NA'}}</td>
                         </tr>
 
                         {{-- <tr>

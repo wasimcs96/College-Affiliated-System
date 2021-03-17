@@ -60,12 +60,12 @@
 
                         </div>
 
-                     
+
                         @foreach($medias as $media)
                         @if(isset($media->media) && file_exists($media->media))
                         <a class="d-none"
                              data-fancybox="gallery"
-                           
+
                             @if(isset($media->media))
                              data-src="{{asset($media->media)}}"
                                 @else
@@ -161,7 +161,7 @@
                                 <div class="d-flex flex-wrap align-items-center pt-2">
                                     <p class="mr-2">University Type:       @if(isset($university->university->type)&&($university->university->type==0))
                                         Private
-                                        @else 
+                                        @else
                                         Government
                                     @endif</p>
                                 </div>
@@ -293,7 +293,7 @@
 
                             height: 530px;
                             overflow: scroll;">
-                            <?php $i=0;?> 
+                            <?php $i=0;?>
                             @if($universityconsultant->count() > 0)
                                 <ul class="list-items">
                                     @foreach($universityconsultant as $consultant)
@@ -373,7 +373,7 @@
      <input type="text" name="universityid" value="{{$university->id ?? ''}}" hidden>
      <input type="text" name="consultantid" value="{{$consultant->userConsultant->id ?? ''}}" hidden>
 
-                                           
+
                                             <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
 
  </form>
@@ -427,7 +427,7 @@
                                                <th scope="col">Discipline</th>
 
                                                <th scope="col">Study Level</th>
-                                               <th scope="col"> Fees</th>
+                                               <th scope="col"> Fees (in {{ Config::get('define.currency.currency') }})</th>
                                                <th scope="col">Duration</th>
                                                {{-- <th scope="col">Intakes</th> --}}
                                                <th scope="col">Action</th>
@@ -447,14 +447,14 @@
                                          <td>{{$course->category->title}}</td>
                                             <td>
                                                 @php
-                                                $levels=Config::get('level.study_level');   
+                                                $levels=Config::get('level.study_level');
                                                 @endphp
                                            {{$levels[$course->type] ?? 'N/A'}}
-                                            
 
-                                            
+
+
                                             </td>
-                                            <td>₹ {{$course->fees ?? ''}}</td>
+                                            <td>{{ Config::get('define.currency.currency') }} {{$course->fees ?? ''}}</td>
                                             <td>@if(isset($course->duration)) {{ $course->duration }} Years @else N/A @endif</td>
                                             {{-- <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td> --}}
                                             {{-- <td></td> --}}
@@ -842,7 +842,7 @@
                             <div class="modal-dialog" style="width: 520px;">
                               <div class="modal-content">
                                 <div class="modal-header">
-                        
+
                                         <div>
                                             <img src="{{asset('frontEnd/assets/images/logo.png')}}" alt="logo" style="
                                             width: 198px;
@@ -852,8 +852,8 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true" class="la la-close"></span>
                                         </button>
-                        
-                        
+
+
                                 </div>
                                 <div class="modal-body">
                                     <div class="contact-form-action" style=" padding: 19px;">
@@ -911,12 +911,12 @@
                                                                         </div>
                                                                     </div> --}}
                                                                     <div id="latest">
-                        
+
                                                                     </div>
                                                                     <div class="btn-box">
                                                                         <button type="submit" class="theme-btn">Submit Enquiry</button>
                                                                     </div>
-                        
+
                                                             </div><!-- end contact-form-action -->
                                                         </div><!-- end form-content -->
                                                     </div><!-- end form-box -->
@@ -975,14 +975,14 @@ headers: {
     <script>
         $(document).on('click', '#universityClaimId', function ()
         {
-            
+
         var universityname=$(this).attr('custom1');
-    
+
         $('#latest').html('<input value="'+universityname+'" name="universityname" hidden>');
       console.log(universityname);
-      
-       
+
+
         });
-    
+
         </script>
 @endsection
