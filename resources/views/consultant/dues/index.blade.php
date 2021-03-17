@@ -110,7 +110,7 @@
             @foreach($orders as $order)
 @if($order->payment_type == 3)
             <tr>
-                <td> ₹ {{$order->amount ?? ''}} </td>
+                <td> {{ Config::get('define.currency.currency') }} {{$order->amount ?? ''}} </td>
                 <td>{{$order->transaction_id ?? ''}}</td>
                 <td> <div class="btn btn-success">Paid</div> </td>
                 <td> <div class="btn btn-warning">Visa</div>  </td>
@@ -417,7 +417,7 @@ tr.shown td.details-control {
 
                         <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
                         <br>
-                        <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>₹</span>${amount}<small></small></h5></div>
+                        <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>{{ Config::get('define.currency.currency') }}</span>${amount}<small></small></h5></div>
                     </div>
                     <br>
 

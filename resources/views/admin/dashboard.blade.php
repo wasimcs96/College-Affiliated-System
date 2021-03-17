@@ -179,7 +179,7 @@
                 </div>
                 <div class="ml-4">
                     <span>Total Revenue</span>
-                    <h4 class="mb-0 font-weight-medium">{{ Config::get('define.currency.currency') }}{!!"&nbsp"!!}{{$revenue}}</h4>
+                    <h4 class="mb-0 font-weight-medium">{{ Config::get('define.currency.currency') }} {!!"&nbsp"!!}{{$revenue}}</h4>
                 </div>
             </div>
         </div>

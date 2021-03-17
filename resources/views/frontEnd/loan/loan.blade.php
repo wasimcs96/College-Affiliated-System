@@ -160,7 +160,7 @@
                                                    </td> --}}
                                                     <td class="tablefont"> {{$loan->interest_rate ?? ''}}</td>
                                                     <td class="tablefont"> {{$loan->tenure ?? ''}}</td>
-                                                    <td class="tablefont">₹ {{$loan->processing_fees ?? ''}}</td>
+                                                    <td class="tablefont">{{ Config::get('define.currency.currency') }} {{$loan->processing_fees ?? ''}}</td>
                                                     {{-- <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}
                                                     @else N/A @endif</td>
                                                     <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else

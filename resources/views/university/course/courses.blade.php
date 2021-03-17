@@ -58,7 +58,7 @@
                             @foreach($universitycourses as $course)
                             <td>{{$course->title ?? 'NA'}}</td>
                             <td>{{$course->description ?? ''}}</td>
-                            <td>₹ {{$course->fees ?? ''}}</td>
+                            <td>{{ Config::get('define.currency.currency') }} {{$course->fees ?? ''}}</td>
                             <td>{{$course->duration ?? ''}} Years</td>
                             {{-- {{ dd($course->created_at,$course->end_date) }} --}}
                             {{-- <td>{{ Carbon\Carbon::parse($course->start_date)->format(config('get.ADMIN_DATE_FORMAT')) }}</td>

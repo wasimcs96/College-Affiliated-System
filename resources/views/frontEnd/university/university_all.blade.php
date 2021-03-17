@@ -163,19 +163,19 @@
                                                 <select  name="study_level" class="select-contain-select"   style="
                                                 height: 52px;
                                             ">
-                                          
+
                                                     <option value="" selected>Select Study Level</option>
 
 
                                                     @php
-                                                    $levels=Config::get('level.study_level');   
+                                                    $levels=Config::get('level.study_level');
                                                     @endphp
 
                                                     @foreach($levels as $key=>$level)
                                                             <option value="{{$key}}" @if(isset($study_level)&& $study_level==$key)selected @endif>{{$level}}</option>
                                                     @endforeach
 
-                                                   
+
 
                                                 </select>
                                             </div>
@@ -387,7 +387,7 @@
 
                                     @if($university->is_verified == 1)
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                   
+
                                @endif
 
                                             </h3>
@@ -468,7 +468,7 @@
                         <div class="card-attributes">
                             <p style="">
                                 <span class="price__text">Average Fees :</span>
-                                <span class="price__num">₹{{$university->university->average_fees ?? ''}}</span>
+                                <span class="price__num">{{ Config::get('define.currency.currency') }} {{$university->university->average_fees ?? ''}}</span>
                                 {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                             </p>
                             <ul class="d-flex align-items-center">
@@ -742,7 +742,7 @@
                                 <div class="form-content">
                                     <div class="contact-form-action">
                                         <input class="form-control" value="2" name="type"  hidden>
-                                        
+
                                             <div class="input-box">
                                                 <label class="label-text">Your Name</label>
                                                 <div class="form-group">
@@ -1092,14 +1092,14 @@
     <script>
         $(document).on('click', '#universityClaimId', function ()
         {
-            
+
         var universityname=$(this).attr('custom1');
-    
+
         $('#latest').html('<input value="'+universityname+'" name="universityname" hidden>');
       console.log(universityname);
-      
-       
+
+
         });
-    
+
         </script>
 @endsection

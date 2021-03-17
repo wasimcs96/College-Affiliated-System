@@ -83,7 +83,7 @@
                             <div class="single-content-item pb-4">
 
                                 @if($universitycourse->users->is_verified == 0)
-                               
+
                                 <span style="float:right; color: white;" class="btn btn-warning"><a data-toggle="modal" data-target="#universityClaim" id="universityClaimId" value="{{$universitycourse->users->university->university_name ?? ''}}" custom1="{{$universitycourse->users->university->university_name ?? ''}}">Request to claim</a></span>
                                 @endif
 
@@ -300,11 +300,11 @@
 
                                                <td>
                                                 @php
-                                                $levels=Config::get('level.study_level');   
+                                                $levels=Config::get('level.study_level');
                                                 @endphp
                                            {{$levels[$course->type] ?? 'N/A'}}
                                                </td>
-                                               <td>₹ {{$course->fees ?? ''}}</td>
+                                               <td>{{ Config::get('define.currency.currency') }} {{$course->fees ?? ''}}</td>
                                                <td>@if(isset($course->duration)) {{ $course->duration }} @endif</td>
                                                {{-- <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
                                                <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td> --}}
@@ -698,14 +698,14 @@ headers: {
     <script>
         $(document).on('click', '#universityClaimId', function ()
         {
-            
+
         var universityname=$(this).attr('custom1');
-    
+
         $('#latest').html('<input value="'+universityname+'" name="universityname" hidden>');
       console.log(universityname);
-      
-       
+
+
         });
-    
+
         </script>
 @endsection
