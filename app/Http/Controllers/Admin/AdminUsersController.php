@@ -100,9 +100,10 @@ $replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
 $data = ['template'=>'welcome-email','hooksVars' => $replacement];
 mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
 
-        return view('admin.users.user.index')->with('users', User::all())->with('id',1)->with('success','Client Created Successfully');
+return redirect()->route('admin.users',['id' => 1])->with('users', User::all())->with('id',1)->with('success','Client Created Successfully');
        }
        if($role==2){
+        //    dd($request->is_verified);
            $user=User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -110,6 +111,7 @@ mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
             'mobile' => $request->mobile,
             'password' => Hash::make($request->password),
             'countries_id'=>$request->country,
+            'is_verified'=>$request->is_verified
         ])->assignRole('university');
         University::create([
             'user_id'=>$user->id,
@@ -143,7 +145,7 @@ mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
             }
         }
 
-        return view('admin.users.user.index')->with('users', User::all())->with('id',3)->with('success','Unniversity Created Successfully');
+    return redirect()->route('admin.users',['id' => 3])->with('users', User::all())->with('id',3)->with('success','University Created Successfully');
 
        }
        if($role==4){
@@ -171,7 +173,7 @@ mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
 $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
      $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
      mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
-        return view('admin.users.user.index')->with('users', User::all())->with('id',2)->with('success','Consultant Created Successfully');
+     return redirect()->route('admin.users',['id' => 2])->with('users', User::all())->with('id',2)->with('success','Consultant Created Successfully');
        }
        if($role==5){
         return User::create([
@@ -193,14 +195,14 @@ $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
 $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
      $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
      mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
-    return view('admin.users.user.index')->with('users', User::all())->with('id',4)->with('success','SubAdmin Created Successfully');
+     return redirect()->route('admin.users',['id' => 4])->with('users', User::all())->with('id',4)->with('success','SubAdmin Created Successfully');
        }
 
     }
 
     public function update(Request $request, User $id)
     {
-
+// dd($request->all());
         $id->update($request->all());
         $id->countries_id = $request->country;
         $id->rating = $request->rating;

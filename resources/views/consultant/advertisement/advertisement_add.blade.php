@@ -34,7 +34,7 @@
             <ul class="pricing body">
                 <li class="plan-img"><img class="img-fluid rounded-circle" src="{{asset('assets/images/plan-1.svg')}}" alt="" /></li>
                 <li class="price">
-                    <h3><span><i class="fa fa-inr"></i></span>{{$package->amount}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>                    <span>Advertisement</span>
+                    <h3><span>{{ Config::get('define.currency.currency') }}</span>{{$package->amount}}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}{{$package->package_time}}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h3>                    <span>Advertisement</span>
                 </li>
                 <li>{{$package->title ?? ''}}</li>
                 <li>Advertisement Type: @if(isset($package->advertisement_type)) @if($package->advertisement_type == 1) Outer @endif @if($package->advertisement_type == 0) Inner @endif @endif </li>
@@ -240,7 +240,7 @@
 
                                 <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
                                 <br>
-                                <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span><i class="fa fa-inr" aria-hidden="true"></i></span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
+                                <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>{{ Config::get('define.currency.currency') }}</span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
                             </div>
                             <br>
 
@@ -279,8 +279,8 @@
                     orderId=result.id
                     var options = {
                         "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
-                        "amount": result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-                        "currency": "INR",
+                        "amount": result.amount, // Amount is in currency subunits. Default currency is USD. Hence, 50000 refers to 50000 paise
+                        "currency": "USD",
                         "name":"{{Session::get('name')}}",
                         "description": "Test Transaction",
                         "image": "https://example.com/your_logo",

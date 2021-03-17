@@ -32,7 +32,11 @@
 
                     <tr>
                         <th scope="row">Status</th>
-                        <td>  @if(isset($user->status)){{$user->status ?? ''}} @else N/A @endif</td>
+                        <td>  @if(isset($user->status)) @if($user->status==1) <div class="btn btn-success">Active</div> @endif @if($user->status==0) <div class="btn btn-danger">InActive</div> @endif @else N/A @endif</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Verification Status</th>
+                        <td>  @if(isset($user->is_verified))@if($user->is_verified==1) <div class="btn btn-success">Verified</div> @endif @if($user->is_verified==0) <div class="btn btn-danger">Not Verified</div> @endif @else N/A @endif</td>
                     </tr>
                     <tr>
                         <th scope="row">Mobile</th>
@@ -153,9 +157,9 @@
                                                 } ?>
                         <td>  @if(isset($myabout)) <?php echo ($myabout . '...')?> @else N/A @endif</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td>@if(isset($user->status)) @if($user->status==0) <button class="btn btn-success"> Active</button> @else <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
-                    </tr>
+                    </tr> --}}
                     @endif
                     </tbody>
 

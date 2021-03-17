@@ -926,7 +926,7 @@ function closeNav() {
                             $("#" + key + "Error").children("strong").text(errors[key][0]);
                         });
                     } else {
-                        // window.location.reload();
+                        window.location.reload();
                     }
                 }
             })

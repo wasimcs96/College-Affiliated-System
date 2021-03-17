@@ -564,7 +564,7 @@
 
                                                <div class="col-lg-2 col-md-12">
                                            <div class="form-group">
-                                               <label for="">Course Fees</label>
+                                               <label for="">Course Fees </label>
                                                <?php $coursedetails=\App\Models\UniversityCourse::where('id',$applied->course_id)->first(); ?>
 
                                                <input type="text" name="fees" class="form-control" id="coursefees"  @if($applied->fees=="NULL" || $applied->fees=="null" || $applied->fees=='') value="{{$coursedetails->fees}}"@else value="{{ $applied->fees }}"  @endif />                                                                    </div>
