@@ -37,16 +37,16 @@
                         @if($order->user)
                         <tr>
                             <td> @if(isset($order->user)) {{$order->user->first_name ?? ''}}{{$order->user->last_name ?? ''}} @else N/A @endif</td>
-                            <td>@if(isset($order->user)) @if($order->user->isConsultant()) Consultant @endif 
+                            <td>@if(isset($order->user)) @if($order->user->isConsultant()) Consultant @endif
                                 @if($order->user->isUniversity()) University @endif
                                 @if($order->user->isAdmin()) Admin @endif
                                 @if($order->user->isSubAdmin()) SubAdmin @endif
-                                @if($order->user->isClient()) Client @endif 
+                                @if($order->user->isClient()) Client @endif
                                 @else
                                 N/A
                                 @endif
                             </td>
-                            <td><i class="fa fa-inr"></i> {{$order->amount ?? ''}}</td>
+                            <td>{{ Config::get('define.currency.currency') }} {{$order->amount ?? ''}}</td>
                             <td>{{$order->transaction_id}}</td>
                             {{-- <td>@if($order->payment_type == 0)Subscription @endif
                                 @if($order->payment_type == 1)Premium @endif

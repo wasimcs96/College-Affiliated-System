@@ -70,7 +70,7 @@
                                                 } ?>
                             <td><?php echo ($myvalue . '...')?>  </td>
                             <td>{{$package->package_time}}{!!"&nbsp"!!}-{!!"&nbsp"!!}Months</td>
-                            <td><i class="fa fa-inr" aria-hidden="true"></i>{!!"&nbsp"!!}{{$package->amount}}</td>
+                            <td>{{ Config::get('define.currency.currency') }}{!!"&nbsp"!!}{{$package->amount ?? ''}}</td>
                             <td>
                                 @if ($package->status == 0)
 

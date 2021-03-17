@@ -69,8 +69,8 @@
     var title="{{Session::get('title')}}"
     var options = {
         "key": "rzp_test_6PaQ95AP7ZPT1S", // Enter the Key ID generated from the Dashboard
-        "amount":"{{Session::get('amount')}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        "currency": "INR",
+        "amount":"{{Session::get('amount')}}", // Amount is in currency subunits. Default currency is USD. Hence, 50000 refers to 50000 paise
+        "currency": "USD",
         "name":"{{Session::get('name')}}",
         "description": "Test Transaction",
         "image": "https://example.com/your_logo",
@@ -92,7 +92,7 @@ console.log(transactionId);
                 data:{transactionId:transactionId,amount:amount,userId:user_id,payment_type:payment_type,title:title},
                 success: function(result){
                     console.log('success')
-                    
+
                     //$('#mdlup').modal('show')
                 }
                 });
