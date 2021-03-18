@@ -25,12 +25,12 @@
                 <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
-                            <th><b> Updated At</b></th>
+                            {{-- <th><b> Updated At</b></th> --}}
                             <th><b> Consultant  Name</b></th>
                             <th><b> Booking Date </b></th>
                             <th><b> Booking Time Slot </b></th>
                             <th><b> Status</b></th>
-
+                            <th>Booking Type</th>
                             <th><b> Actions</b></th>
 
                         </tr>
@@ -41,7 +41,7 @@
                         @foreach($bookings as $booking)
                             @if(auth()->user()->id == $booking->client_id)
                             <tr>
-                                <td>@if(isset($booking->updated_at)) {{$booking->updated_at }}@else N/A @endif</td>
+                                {{-- <td>@if(isset($booking->updated_at)) {{$booking->updated_at }}@else N/A @endif</td> --}}
 
                                 <td>{{$booking->userConsultant->first_name ?? ''}}  {{$booking->userConsultant->last_name ?? ''}} </td>
 
@@ -58,7 +58,7 @@
                                     @if($booking->status==5 ?? '')<div class="btn btn-danger">Closed</div>@endif
                             </td>
                             @endif
-                            <td><div class="btn btn-{{$booking->booking_for==0 ? 'primary':'info'}}">{{$booking->booking_for==0 ? 'Student':'Pr'}}</div></td>
+                            <td><div class="btn btn-{{$booking->booking_for==0 ? 'primary':'info'}}">{{$booking->booking_for==0 ? 'Visa':'PR'}}</div></td>
                                 <td><a href="{{route('client.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                             </tr>
                             @endif
