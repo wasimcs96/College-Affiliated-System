@@ -35,6 +35,8 @@
                                                 <div class="select-contain w-auto">
                                                     <select  name="country" class="select-contain-select">
                                                         <?php $countries = App\Models\Country::all();?>
+
+                                                        <option>Select Country</option>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $countryt)
                                                             <option value="{{$countryt->countries_id}}" @if(isset($country) && $country == $countryt->countries_id) selected @endif >{{$countryt->countries_name}}</option>
@@ -148,7 +150,9 @@
         @if($consultant->isConsultant())
 
         <div class="col-lg-4 responsive-column">
-            <div class="card-item car-card border">
+            <div class="card-item car-card border" style="
+            overflow: hidden;
+        ">
                 <div class="card-img" style="text-align: center; height:185px;">
                     <div>
                     <a href="javascript:void(0)" class="d-block">
@@ -235,9 +239,10 @@
                             <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established"><i class="las la-calendar"></i><span>   @if(isset($consultant->consultant->created_at))
                                 {{$consultant->consultant->created_at->Format("Y") ?? ''}}
                                 @else N/A @endif</span></li>
-                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Location"><i class="las la-map-marker-alt"></i> {{ $consultant->address_1 ?? '' }}</li>
+                             
                         </ul>
                     </div>
+                    <span class="align-items-center" data-toggle="tooltip" data-placement="top" title="Location: {{ $consultant->address_1 ?? 'N/A' }}" style="white-space: nowrap; overflow: hidden;"><i class="las la-map-marker-alt"></i> {{ $consultant->address_1 ?? 'N/A' }}</span>
                     <div class="card-price d-flex align-items-center justify-content-between">
                         <p
                          {{-- style="

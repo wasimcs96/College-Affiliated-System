@@ -150,7 +150,9 @@
         @foreach($consultants as $consultant)
         @if($consultant->isConsultant())
             <div class="col-lg-4 responsive-column">
-                <div class="card-item car-card border">
+                <div class="card-item car-card border" style="
+                overflow: hidden;
+            ">
                     <div class="card-img" style="text-align: center; height:185px;">
                         <div>
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="d-block">
@@ -247,7 +249,7 @@
                                     {{$consultant->consultantUniversityClient->count()}}@else N/A @endif</span></li> --}}
                             </ul>
                         </div>
-                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Location"><i class="las la-map-marker-alt"></i> {{ $consultant->address_1 ?? '' }}</li>
+                        <span class="align-items-center" data-toggle="tooltip" data-placement="top" title="Location: {{ $consultant->address_1 ?? 'N/A' }}" style="white-space: nowrap; overflow: hidden;"><i class="las la-map-marker-alt"></i> {{ $consultant->address_1 ?? 'N/A' }}</span>
                         <div class="card-price d-flex align-items-center justify-content-between">
                             <p>
                                 <span class="price__text">City :</span>
