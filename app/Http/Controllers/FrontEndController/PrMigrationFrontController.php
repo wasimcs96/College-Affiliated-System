@@ -105,7 +105,7 @@ class PrMigrationFrontController extends Controller
         // dd($request->uid);
         $bookind_date=$request->booking_date;
         // dd($request->booking_date);
-        $newDate = date("Y-m-d", strtotime($bookind_date));
+        $book_date = date("Y-m-d", strtotime($bookind_date));
     //    $date = $bookind_date->format('Y-m-d');
         // dd($bookind_date);
                 // $json = json_encode($request->country);
@@ -116,7 +116,7 @@ class PrMigrationFrontController extends Controller
             'client_id'=>$request->client_id,
             'consultant_id'=>$request->cid,
             'countries_id'=>$request->country,
-            'booking_date'=>$newDate,
+            'booking_date'=>$book_date,
             // 'comments'=>$request->comment,
             'status'=>0,
             'booking_for'=>1,
