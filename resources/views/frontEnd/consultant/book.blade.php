@@ -239,7 +239,7 @@ $inc = 0;
 @if(auth()->user())
 <div class="btn-box">
 <button style="
-margin-left: -15px;" class="theme-btn" type="button" id="confirmBooking">Confirm Booking</button>
+margin-left: -15px;" class="theme-btn" type="submit" id="confirmBooking">Confirm Booking</button>
 </div>
 
 @endif
@@ -520,7 +520,7 @@ if(r==4){
 $('#bst').prop('disabled', true);
 }
 image_row++;
-$('.selectpicker').selectpicker('refresh');
+//$('.selectpicker').selectpicker('refresh');
 $('.selectpicker').selectpicker('render');
 }
 

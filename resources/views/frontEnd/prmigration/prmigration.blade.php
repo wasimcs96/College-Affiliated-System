@@ -249,12 +249,7 @@
                         </p>
                         @if(auth()->user())
                         @if(auth()->user()->isClient())
-                        <form action="{{route('prmigration.book')}}" method="post">
-                            @csrf
-                            <input type="hidden" value="@if(isset($countrycoming)){{$countrycoming}} @endif" name="countrycomming">
-                            <input type="hidden" value="{{$consultant->id ?? ''}}" name="consultant_id">
-                        <button  type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
-                        </form>
+                        <a href="{{route('prmigration.book',['consultantId'=>$consultant->id ?? '','countryId'=>$countrycoming ?? $country ?? '0'])}}"  class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
                         @else
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></a>
                         @endif

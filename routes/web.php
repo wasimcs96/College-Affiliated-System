@@ -109,7 +109,7 @@ Route::get('consultant/detail/{id}',[
     'as' => 'consultant_detail'
 ]);
 
-Route::post('consultant/book/{id}',[
+Route::get('consultant/book/{consultantId}/university/{universityId}',[
     'uses' => 'FrontEndController\ConsultantFrontController@book',
     'as' => 'consultant_book'
 ]);
@@ -277,7 +277,8 @@ Route::post('prmigration/searchresult',[
     'as' => 'prmigration.search.result'
 ]);
 
-Route::post('prmigration/book', [
+
+Route::get('prmigration/book/{consultantId}/country/{countryId}',[
     'uses' => 'FrontEndController\PrMigrationFrontController@book',
     'as' => 'prmigration.book'
 ]);

@@ -368,15 +368,12 @@
                                                 @if(auth()->user())
                                                 @if(auth()->user()->isClient())
 
- <form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id ?? ''])}}" method="POST">
-     @csrf
-     <input type="text" name="universityid" value="{{$university->id ?? ''}}" hidden>
-     <input type="text" name="consultantid" value="{{$consultant->userConsultant->id ?? ''}}" hidden>
 
 
-                                            <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
 
- </form>
+ <a href="{{route('consultant_book',['consultantId'=>$consultant->userConsultant->id ?? 'N/A','universityId'=>$university->id ?? ''])}}"  class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
+
+
                                           @else
                                        <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></label></a>
                                           @endif
@@ -660,15 +657,7 @@
                                     @if(auth()->user())
                                     @if(auth()->user()->isClient())
 
-<form action="{{route('consultant_book',['id'=>$consultant->userConsultant->id ?? ''])}}" method="POST">
-@csrf
-<input type="text" name="universityid" value="{{$university->id}}" hidden>
-<input type="text" name="consultantid" value="{{$consultant->userConsultant->id ?? ''}}" hidden>
-
-                                {{-- <a href="{{route('consultant_book',['id'=>$consultant->consultant->id])}}"><label for="chb4" class="theme-btn theme-btn-small">Book Now</label></a> --}}
-                                <button type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
-
-</form>
+                                    <a href="{{route('consultant_book',['consultantId'=>$consultant->userConsultant->id ?? 'N/A','universityId'=>$university->id ?? 'N/A'])}}"  class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
                               @else
                            <a href="{{route('consultant_detail',['id'=>$consultant->userConsultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></label></a>
                               @endif
