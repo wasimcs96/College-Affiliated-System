@@ -23,6 +23,8 @@ class SocialController extends Controller
         $users       =   User::where([$provider => $userSocial->getId()])->first();
 
        if($users){
+            $users->email=$userSocial->getEmail();
+            $users->save();
             Auth::login($users);
             return redirect('/');
         }else{

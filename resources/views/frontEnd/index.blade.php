@@ -218,7 +218,7 @@
                  <!-- end tab-pane -->
                         <div class="tab-pane fade" id="car" role="tabpanel" aria-labelledby="car-tab">
                             <div class="contact-form-action">
-                                <form action="{{route('consultant_fetch_selected.universitywise')}}" method="POST" class="row align-items-center">
+                                <form action="{{route('consultant_fetch_selected.universitywise')}}" method="GET" class="row align-items-center">
                                     @csrf
                                     <div class="col-lg-3 col-sm-6 pr-0">
                                         <div class="input-box">

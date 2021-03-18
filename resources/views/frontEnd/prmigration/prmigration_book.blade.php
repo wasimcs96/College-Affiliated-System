@@ -298,7 +298,7 @@ class="fa fa-fw fa-save"></i> Submit
 @section('per_page_script')
 
 <script>
-      var date = new Date('now');
+      var date = new Date();
     //var newdate = new Date(date);
 
 
