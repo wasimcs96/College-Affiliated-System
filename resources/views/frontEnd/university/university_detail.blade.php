@@ -544,7 +544,9 @@
 
                         @foreach($consultants as $consultant)
                         @if($consultant->userConsultant->status == 1)
-                        <div class="card-item car-card border">
+                        <div class="card-item car-card border" style="
+                        overflow: hidden;
+                    ">
                             <div class="card-img" style="text-align: center; height:185px;">
 
                                 <a href="{{route('consultant_detail',['id' => $consultant->userConsultant->id ?? ''])}}" class="d-block">
@@ -636,18 +638,17 @@
                                             </div>
                                             <div class="card-attributes">
                                                 <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Since"><i class="las la-university"></i><span>   @if(isset($consultant->created_at))
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established"><i class="las la-university"></i><span>   @if(isset($consultant->created_at))
                                                         {{$consultant->created_at->Format("Y")}}
                                                         @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span>
-                                                        @if(isset($consultant->userConsultant->consultantBooking))
-                                                        {{$consultant->userConsultant->consultantBooking->count()}}@else N/A @endif</span></li>
+                                          
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>   @if(isset($consultant->userConsultant->consultantUniversity))
                                                         {{$consultant->userConsultant->consultantUniversity->count()}}
                                                         @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>45</span></li>
+                                                   
                                                 </ul>
                                             </div>
+                                            <span class="align-items-center" data-toggle="tooltip" data-placement="top" title="Location: {{ $consultant->userConsultant->address_1 ?? 'N/A' }}" style="white-space: nowrap; overflow: hidden;"><i class="las la-map-marker-alt"></i> {{ $consultant->userConsultant->address_1 ?? 'N/A' }}</span>
                                 <div class="card-price d-flex align-items-center justify-content-between">
                                     <p>
                                         <span class="price__text">City :</span>

@@ -466,9 +466,11 @@
                         <div class="company-logo">
                             <img src="images/logo2.png" alt="">
                             <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name ?? ''}}</p>
+                            
                         </div><!-- end company-logo -->
                     </div>
                 </a>
+                <span style="position:absolute;right: 15px;">ad</span>
                 </div>
                 @endforeach
         </div><!-- end row -->

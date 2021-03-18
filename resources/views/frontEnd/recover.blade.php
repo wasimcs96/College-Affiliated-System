@@ -44,7 +44,7 @@
                     <div class="form-title-wrap">
                         <h3 class="title">Recover Password</h3>
                         <p class="font-size-15 pt-2">Enter the email of your account to reset password. Then you will receive a link to email to reset the password.If you have any issue about reset password
-                            <a href="contact.html" class="text-color">contact us</a>
+                            <a href="{{route('contact')}}" class="text-color">contact us</a>
                         </p>
                     </div><!-- form-title-wrap -->
                     <div class="form-content ">
