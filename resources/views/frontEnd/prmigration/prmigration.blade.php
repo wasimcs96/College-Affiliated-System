@@ -232,16 +232,10 @@
                     </div>
                     <div class="card-attributes">
                         <ul class="d-flex align-items-center">
-                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Since"><i class="las la-calendar"></i><span>   @if(isset($consultant->consultant->created_at))
-                                {{$consultant->consultant->created_at->Format("Y")}}
+                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established"><i class="las la-calendar"></i><span>   @if(isset($consultant->consultant->created_at))
+                                {{$consultant->consultant->created_at->Format("Y") ?? ''}}
                                 @else N/A @endif</span></li>
-                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span> @if(isset($consultant->consultantBooking))
-                                {{$consultant->consultantBooking->count()}}@else N/A @endif</span></li>
-                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span> @if(isset($consultant->consultantUniversity))
-                                {{$consultant->consultantUniversity->count()}}@else N/A @endif</span></li>
-                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>
-                                @if(isset($consultant->consultantUniversityClient))
-                                {{$consultant->consultantUniversityClient->count()}}@else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Location"><i class="las la-map-marker-alt"></i> {{ $consultant->address_1 ?? '' }}</li>
                         </ul>
                     </div>
                     <div class="card-price d-flex align-items-center justify-content-between">

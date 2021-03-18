@@ -70,11 +70,16 @@ class PrMigrationFrontController extends Controller
 
 
                 $output='';
+
+                if($data->count()>0){
                 foreach($data as $row)
                 {
 
                  $output .= '<option value="'.$row->start_slot_time.'-'.$row->end_slot_time.'">'.$row->start_slot_time.'-'.$row->end_slot_time.'</option>';
                 }
+            }else{
+                $output .= '<option > Slots Not Available</option>';
+            }
                 echo $output;
 
 
@@ -98,10 +103,12 @@ class PrMigrationFrontController extends Controller
         // dd($time[1]);
         // dd($request->all());
         // dd($request->uid);
-        $bookind_date=strtotime($request->booking_date);
-        $bookind_date= date('Y-m-d');
-// dd($bookind_date);
-        // $json = json_encode($request->country);
+        $bookind_date=$request->booking_date;
+        // dd($request->booking_date);
+        $newDate = date("Y-m-d", strtotime($bookind_date));
+    //    $date = $bookind_date->format('Y-m-d');
+        // dd($bookind_date);
+                // $json = json_encode($request->country);
         // dd($json);
         $consultantBooking = Booking::create([
             'booking_start_time'=>$start_time,
@@ -109,27 +116,27 @@ class PrMigrationFrontController extends Controller
             'client_id'=>$request->client_id,
             'consultant_id'=>$request->cid,
             'countries_id'=>$request->country,
-            'booking_date'=>$bookind_date,
+            'booking_date'=>$newDate,
             // 'comments'=>$request->comment,
             'status'=>0,
             'booking_for'=>1,
             ]);
             $type=1;
             $slug='PR_COMMISSION';
-            $consultant_id=$request->cid;
-            $check = $this->consultantDue($type,$slug,$consultant_id);
-            // dd($request->cid);
-            $consultant = User::where('id',$request->cid)->first();
-            $id=$consultantBooking->id;
-           // Important Code
-              $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
-              $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
-              $replacement['ADDRESS'] = $consultant->address_1;
-              $replacement['SERVICE_NAME'] = 'PR Booking';
-              $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
-              $data = ['template'=>'booking','hooksVars' => $replacement];
-              mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
-              mail::to($consultant->email)->send(new \App\Mail\ManuMailer($data));
+        //     $consultant_id=$request->cid;
+        //     $check = $this->consultantDue($type,$slug,$consultant_id);
+        //     // dd($request->cid);
+        //     $consultant = User::where('id',$request->cid)->first();
+        //     $id=$consultantBooking->id;
+        //    // Important Code
+        //       $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
+        //       $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
+        //       $replacement['ADDRESS'] = $consultant->address_1;
+        //       $replacement['SERVICE_NAME'] = 'PR Booking';
+        //       $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
+        //       $data = ['template'=>'booking','hooksVars' => $replacement];
+        //       mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+        //       mail::to($consultant->email)->send(new \App\Mail\ManuMailer($data));
             return redirect()->route('client.dashboard')->with('success','Your Application have been Submitted Successfully');
 
     }

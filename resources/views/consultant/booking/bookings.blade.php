@@ -26,8 +26,7 @@
                     <thead>
                         <tr>
                             <th><b> Updated At </b></th>
-                            <th> <b>
-                                Name</b></th>
+                            <th> <b>Name</b></th>
                             <th><b> Mobile </b></th>
                             <th><b> E-mail</b></th>
                             <th><b>Date</b></th>

@@ -130,8 +130,8 @@ class ConsultantFrontController extends Controller
         // dd($time[1]);
         // dd($request->all());
         // dd($request->uid);
-        $bookind_date = strtotime($request->booking_date);
-        $book_date = date('Y-m-d',$bookind_date);
+        $bookind_date =$request->booking_date;
+        $book_date = date("Y-m-d", strtotime($bookind_date));
         $json = json_encode($request->banner_images);
         $consultantBooking = Booking::create([
             'booking_start_time' => $start_time,
