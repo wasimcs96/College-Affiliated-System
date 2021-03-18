@@ -105,7 +105,7 @@ class PrMigrationFrontController extends Controller
                  $output .= '<option ' . $message . ' value="'.$row->start_slot_time.'-'.$row->end_slot_time.'">'.$row->start_slot_time.'-'.$row->end_slot_time.'</option>';
                 }
             }else{
-                $output .= '<option > Slots Not Available</option>';
+                $output .= '<option value="" > Slots Not Available</option>';
             }
                 echo $output;
 

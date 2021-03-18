@@ -94,7 +94,7 @@ class ConsultantFrontController extends Controller
         }
     }
     else{
-        $output='<option>Slots Not Availaible</option>';
+        $output='<option value="">Slots Not Availaible</option>';
     }
         echo $output;
     }

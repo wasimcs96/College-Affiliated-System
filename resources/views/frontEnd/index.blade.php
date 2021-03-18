@@ -443,34 +443,42 @@
     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d'); $advertisement=App\Models\Advertisement::where('status',1)->where('type',1)->where('expire_date','>',$mytime)->get(); ?>
     @foreach($advertisement as $advertise)
                     <div class="col-lg-12">
+                   <div>
                     <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
-                    <div class="discount-box">
-                        <div class="discount-img">
-
-                            @if(isset($advertise->banner_image) && file_exists($advertise->banner_image))
-                            <img  src="{{asset($advertise->banner_image)}}" height="159px;" alt="" class="d-block w-100">
-                                @else
-                                <img src="{{asset('frontEnd/assets/images/discount-hotel-img.jpg')}}"  height="159px;"  alt="discount img">
-                                @endif
-                        </div>
-                        <!-- end discount-img -->
-                        <div class="discount-content">
-                            {{-- <div class="section-heading"> --}}
-                                {{-- <p class="sec__desc text-white">Hot deal, save 50%</p> --}}
-                                {{-- <h6 class="sec__title mb-0 line-height-50 text-white"></h6> --}}
-                            {{-- </div><!-- end section-heading --> --}}
-                            <div class="btn-box pt-4">
-                                {{-- <a href="#" class="theme-btn border-0">Learn More <i class="la la-arrow-right ml-1"></i></a> --}}
+                        <div class="discount-box">
+                            <div class="discount-img">
+    
+                                @if(isset($advertise->banner_image) && file_exists($advertise->banner_image))
+                                <img  src="{{asset($advertise->banner_image)}}" height="159px;" alt="" class="d-block w-100">
+                                    @else
+                                    <img src="{{asset('frontEnd/assets/images/discount-hotel-img.jpg')}}"  height="159px;"  alt="discount img">
+                                    @endif
                             </div>
-                        </div><!-- end discount-content -->
-                        <div class="company-logo">
-                            <img src="images/logo2.png" alt="">
-                            <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name ?? ''}}</p>
-                            
-                        </div><!-- end company-logo -->
-                    </div>
-                </a>
-                <span style="position:absolute;right: 15px;">ad</span>
+                            <!-- end discount-img -->
+                            <div class="discount-content">
+                                {{-- <div class="section-heading"> --}}
+                                    {{-- <p class="sec__desc text-white">Hot deal, save 50%</p> --}}
+                                    {{-- <h6 class="sec__title mb-0 line-height-50 text-white"></h6> --}}
+                                {{-- </div><!-- end section-heading --> --}}
+                                <div class="btn-box pt-4">
+                                    {{-- <a href="#" class="theme-btn border-0">Learn More <i class="la la-arrow-right ml-1"></i></a> --}}
+                                </div>
+                            </div><!-- end discount-content -->
+                            <div class="company-logo">
+                                <img src="images/logo2.png" alt="">
+                                <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name ?? ''}}</p>
+                                
+                            </div><!-- end company-logo -->
+                        </div>
+                    </a>
+                   </div>
+                   <div style="
+                   text-align: end;
+               ">
+
+                       {{-- <span style="">ad</span> --}}
+                       <label for="">AD</label>
+                   </div>
                 </div>
                 @endforeach
         </div><!-- end row -->
@@ -586,7 +594,7 @@
 
 
                                 <span class="price__text"><b>Average Fees :</b></span>
-                                <span class="price__num"><i class="las la-rupee-sign"></i>{{$university->university->average_fees ?? ''}}</span>
+                                <span class="price__num">@if(isset($university->university->average_fees)) {{ Config::get('define.currency.currency') }}{{$university->university->average_fees ?? ''}}@else N/A @endif</span>
 
                                 <a  style="
                                 float: right;
@@ -1049,7 +1057,7 @@
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num"><i class="las la-rupee-sign"></i>{{$us->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num">@if(isset($us->university->average_fees )){{ Config::get('define.currency.currency') }}{{$us->university->average_fees ?? ''}}@else N/A @endif</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
@@ -1208,7 +1216,7 @@
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num"><i class="las la-rupee-sign"></i>{{$uk->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num">@if(isset($uk->university->average_fees )){{ Config::get('define.currency.currency') }}{{$uk->university->average_fees ?? ''}}@else N/A @endif</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
@@ -1367,7 +1375,7 @@
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num"><i class="las la-rupee-sign"></i>{{$ire->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num">@if(isset($ire->university->average_fees )){{ Config::get('define.currency.currency') }}{{$ire->university->average_fees ?? ''}} @else N/A @endif</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
@@ -1526,7 +1534,7 @@
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num"><i class="las la-rupee-sign"></i>{{$can->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num">@if(isset($can->university->average_fees )){{ Config::get('define.currency.currency') }}{{$can->university->average_fees ?? ''}} @else N/A @endif</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
@@ -1688,7 +1696,7 @@
                                             <div class="card-attributes">
                                                 <p>
                                                     <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num"><i class="las la-rupee-sign"></i>{{$aus->university->average_fees ?? ''}}</span>
+                                                    <span class="price__num">@if(isset($aus->university->average_fees )){{ Config::get('define.currency.currency') }}{{$aus->university->average_fees ?? ''}} @else N/A @endif</span>
                                                     {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
                                                 </p>
                                                 <ul class="d-flex align-items-center">
@@ -1871,7 +1879,15 @@
                         </div><!-- end company-logo -->
                     </div>
                 </a>
+                <div style="
+                text-align: end;
+            ">
+
+                    {{-- <span style="">ad</span> --}}
+                    <label for="">AD</label>
                 </div>
+                </div>
+            
                 @endforeach
         </div><!-- end row -->
         </div>
