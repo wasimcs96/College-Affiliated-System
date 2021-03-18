@@ -337,15 +337,15 @@ $("#endtime").prop('disabled', true);
 }
 </script> --}}
 <script>
-    var date = new Date('now');
+    var date =new Date();
     //var newdate = new Date(date);
-
+    //date.setDate(date.getDate() + 2);
 
     var dd = date.getDate();
     var tm = date.getTime();
     var mm = date.getMonth();
     var y = date.getFullYear();
-
+    
     var someFormattedDate = y + '/' + mm + '/' + dd;
 $("#date").datepicker({ onSelect: function(dateText) {
 
