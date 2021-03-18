@@ -42,11 +42,11 @@ class PrMigrationFrontController extends Controller
             return view('frontEnd.prmigration.prmigration',compact('consultants','countrycoming'))->with('country',$countries);
         }
 
-        public function book(Request $request)
+        public function book($consultantId,$countryId)
         {
             //  dd($request->all());
-            $consultant = $request->consultant_id ?? '';
-            $countrycoming = $request->countrycomming;
+            $consultant = $consultantId ?? '';
+            $countrycoming = $countryId ?? '';
             $consultant = User::find($consultant)  ;
             return view('frontEnd.prmigration.prmigration_book',compact('countrycoming'))->with('consultant',$consultant);
         }
@@ -54,17 +54,39 @@ class PrMigrationFrontController extends Controller
         function slots(Request $request)
         {
             // dd($request->all());
-
+            $datanew=[];
 
             $dat=date('m-d-Y');
 
             $select = $request->get('select');
             $value = $request->get('value');
-
             $consultantid = $request->get('consultantid');
+            
+            /////////////////////////////
+          
             $dt=strtotime($value);
+            $vr=date('w',$dt);
+          
+            $check = date('Y-m-d', $dt);
+            //  dd($check);
+            $bookings = Booking::where('booking_date', $check)->where('status','!=',3)->get();
+            if ($bookings->count() > 0) {
+    
+    
+            foreach ($bookings as $key => $booking) {
+                
+    
+                $datanew[] = "'.$booking->booking_start_time.'-'.$booking->booking_end_time.'";
+            }
+              }
+    
+            
+            
+            ////////////////////////////////
 
-                $vr=date('w',$dt);
+           
+
+               
 
                 $data = ConsultantAvailableSlots::where('user_id',$consultantid)->where('week_day',$vr)->get();
 
@@ -74,8 +96,13 @@ class PrMigrationFrontController extends Controller
                 if($data->count()>0){
                 foreach($data as $row)
                 {
-
-                 $output .= '<option value="'.$row->start_slot_time.'-'.$row->end_slot_time.'">'.$row->start_slot_time.'-'.$row->end_slot_time.'</option>';
+                    $time = "'.$row->start_slot_time.'-'.$row->end_slot_time.'";
+                    if (in_array($time, $datanew)) {
+                        $message = "disabled='disabled'";
+                    } else {
+                        $message = "";
+                    }
+                 $output .= '<option ' . $message . ' value="'.$row->start_slot_time.'-'.$row->end_slot_time.'">'.$row->start_slot_time.'-'.$row->end_slot_time.'</option>';
                 }
             }else{
                 $output .= '<option > Slots Not Available</option>';
@@ -118,7 +145,7 @@ class PrMigrationFrontController extends Controller
             'countries_id'=>$request->country,
             'booking_date'=>$newDate,
             // 'comments'=>$request->comment,
-            'status'=>0,
+            'status'=>1,
             'booking_for'=>1,
             ]);
             $type=1;

@@ -39,11 +39,11 @@ class ConsultantFrontController extends Controller
         return view('frontEnd.consultant.consultant_detail', compact('consultantUniversity'))->with('consultant', $consultant);
     }
 
-    public function book(Request $request)
+    public function book($consultantId,$universityId)
     {
         // dd($request->all());
-        $universityid = $request->get('universityid') ?? '';
-        $consultantid = $request->get('consultantid');
+        $universityid = $universityId ?? '';
+        $consultantid = $consultantId;
         $consultant = User::find($consultantid);
         return view('frontEnd.consultant.book', compact('universityid', 'consultant'))->with('countries', Country::all());
     }

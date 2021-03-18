@@ -13,7 +13,7 @@ class ClientBookingController extends Controller
     public function index()
     {
         // dd(auth()->user()->id);
-        $bookings = Booking::where('client_id',auth()->user()->id)->where('booking_for',0)->orderByDesc('id')->get();
+        $bookings = Booking::where('client_id',auth()->user()->id)->orderByDesc('id')->get();
     //    dd($applications);
         return view('client.booking.bookings')->with('bookings', $bookings);
 
@@ -21,23 +21,28 @@ class ClientBookingController extends Controller
 
     public function show($id)
     {
+        $university=[];
+        $course=[];
         $booking = Booking::where('id', $id)->get()->first();
         $book = $booking->enquiry;
         $enquires = json_decode($book,true);
         // dd($bookings);
         $i = 0;
         // dd(json_decode($book,true));
-        foreach($enquires as $enquiry)
-        {
-            // dd($booking);
-            $university_id[$i] = $enquiry['university'] ?? '';
-             $course_id[$i] = $enquiry['course'] ?? '';
-
-            $university[$i] =  User::where('id',$university_id[$i])->get()->first();
-            $course[$i] = UniversityCourse::where('id',$course_id[$i])->get()->first();
-            // dd($university[0]);
-            $i++;
+        if (is_Array($enquires) && count($enquires) > 0) {
+            foreach($enquires as $enquiry)
+            {
+                // dd($booking);
+                $university_id[$i] = $enquiry['university'] ?? '';
+                 $course_id[$i] = $enquiry['course'] ?? '';
+    
+                $university[$i] =  User::where('id',$university_id[$i])->get()->first();
+                $course[$i] = UniversityCourse::where('id',$course_id[$i])->get()->first();
+                // dd($university[0]);
+                $i++;
+            }
         }
+     
         return view('client.booking.booking_show', compact('booking','university','course'));
     }
 }

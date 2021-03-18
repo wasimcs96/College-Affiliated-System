@@ -52,15 +52,7 @@
                                     @if(auth()->user())
                                     @if(auth()->user()->isClient())
 
-<form action="{{route('consultant_book',['id'=>$consultant->id])}}" method="POST">
-@csrf
-<input type="text" name="universityid" value="" hidden>
-<input type="text" name="consultantid" value="{{$consultant->id ?? ''}}" hidden>
-
-                               
-                                <button type="submit" class="theme-btn">Book Now<i class="la la-paper mr-2"></i></button>
-
-</form>
+                                    <a href="{{route('consultant_book',['consultantId'=>$consultant->id ?? 'N/A','universityId'=>$university->id ?? '0'])}}"  class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
                        
                               @endif
                               @else
