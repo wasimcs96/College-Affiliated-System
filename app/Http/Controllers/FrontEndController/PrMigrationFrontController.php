@@ -150,11 +150,11 @@ class PrMigrationFrontController extends Controller
             ]);
             $type=1;
             $slug='PR_COMMISSION';
-        //     $consultant_id=$request->cid;
-        //     $check = $this->consultantDue($type,$slug,$consultant_id);
-        //     // dd($request->cid);
-        //     $consultant = User::where('id',$request->cid)->first();
-        //     $id=$consultantBooking->id;
+             $consultant_id=$request->cid;
+             $check = $this->consultantDue($type,$slug,$consultant_id);
+             // dd($request->cid);
+             $consultant = User::where('id',$request->cid)->first();
+             $id=$consultantBooking->id;
         //    // Important Code
         //       $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
         //       $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
