@@ -120,16 +120,16 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
 
         ]);
                     // Important Code
-     $replacement['token'] =$request->_token;
+    //  $replacement['token'] =$request->_token;
 
-     $replacement['TYPE'] = 'University';
-     $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
-     $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
-     $replacement['USER_NAME'] = $request->first_name;
-     $replacement['PASSWORD'] = $request->password;
-     $replacement['EMAIL'] = $request->email;
-     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
-     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+    //  $replacement['TYPE'] = 'University';
+    //  $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+    //  $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+    //  $replacement['USER_NAME'] = $request->first_name;
+    //  $replacement['PASSWORD'] = $request->password;
+    //  $replacement['EMAIL'] = $request->email;
+    //  $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+    //  mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
 
         $users = User::all();
         foreach($users as $use)
@@ -163,16 +163,16 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
             'user_id'=>$user->id,
         ]);
                     // Important Code
-                    $replacement['token'] =$request->_token;
+//                     $replacement['token'] =$request->_token;
 
 
-                    $replacement['USER_NAME'] = $request->first_name;
-     $replacement['PASSWORD'] = $request->password;
-     $replacement['EMAIL'] = $request->email;
-     $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
-$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
-     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
-     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+//                     $replacement['USER_NAME'] = $request->first_name;
+//      $replacement['PASSWORD'] = $request->password;
+//      $replacement['EMAIL'] = $request->email;
+//      $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+// $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+//      $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+//      mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
      return redirect()->route('admin.users',['id' => 2])->with('users', User::all())->with('id',2)->with('success','Consultant Created Successfully');
        }
        if($role==5){

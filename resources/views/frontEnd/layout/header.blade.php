@@ -1228,7 +1228,7 @@
                                     <li>
                                         <?php $headercountryvalidsuniversity = App\Models\Country::all(); ?>
                                         @if($headercountryvalidsuniversity->count() > 0)
-                                        <a href="#">Study Abroad<i class="la la-angle-down"></i></a>
+                                        <a href="#">Universities<i class="la la-angle-down"></i></a>
                                         @else
                                         <a type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Unavailable" style="color: #073975">Study Abroad </a>
                                         @endif
@@ -1874,12 +1874,68 @@
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="skip">Skip</button>
+              <button type="button" data-toggle="modal" data-target ="#addUniversityModal" class="btn btn-secondary">Skip</button>
               <button type="button" class="btn btn-primary" id="universitySubmit">Submit</button>
             </div>
           </div>
         </div>
       </div>
+
+
+      
+<div class="modal fade" id="mdlerror" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-body" style="
+        text-align:center;
+        padding: 0px;
+        ">
+            <div style="
+            padding: 0px;
+            background-color: #fdb719;
+        ">
+            <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/error.png')}}">
+            </div>
+
+            <div style="
+            background-color: white;
+            color: #585550;
+            font-family: sans-serif;
+        ">
+                <h1>You can't buy Plan ! </h1>
+                <h4 style="
+
+                margin: 0px;
+                font-size: large;
+                "
+            >Previous Plan is still active</h4>
+            </div>
+        </div>
+        <div class="modal-footer"  style="
+        padding: 0px;
+        border: 0px;
+        justify-content: center;
+        background-color: white;
+    ">
+          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+          <button id="skip" style="border-radius: 62px;
+          background-color: #fdb719;
+          border-color: #fdb719;
+          color: black;
+          font-weight: 500;
+    font-family: sans-serif;"  class="btn btn-primary">Yes</button>
+          <a href=""  style="border-radius: 62px;
+          background-color: #fdb719;
+          border-color: #fdb719;
+          color: black;
+          font-weight: 500;
+    font-family: sans-serif;" class="btn btn-primary"  data-toggle="modal" data-target ="#addUniversityModal"  id="add_document3">No</a>
+        </div>
+        </div>
+       </div>
+</div>
+{{-- ####################################################ERROR###################### --}}
 </header>
 
 
