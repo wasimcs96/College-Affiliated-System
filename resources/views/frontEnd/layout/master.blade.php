@@ -521,6 +521,11 @@
             <i class="material-icons nav__icon">supervisor_account</i>
             <span class="nav__text">Consultant</span>
         </a>
+
+        <a href="{{route('university_all')}}" class="nav__link  {{ (request()->segment(1) == 'university') ? 'nav__link--active' : '' }} imran">
+            <i class="material-icons nav__icon">school</i>
+            <span class="nav__text">Find university</span>
+        </a>
         @if(Auth()->user())
         @if(Auth()->user()->isAdmin())
     <a href="{{ route('admin.dashboard') }}" class="nav__link imran">
@@ -584,11 +589,6 @@
             <span class="nav__text">Login</span>
         </a>
         @endif
-
-        <a href="{{route('university_all')}}" class="nav__link  {{ (request()->segment(1) == 'university') ? 'nav__link--active' : '' }} imran">
-            <i class="material-icons nav__icon">school</i>
-            <span class="nav__text">Find university</span>
-        </a>
 
         <!-- <button href="#" type="button" class="nav__link imran" onclick="openNav()" disabled style="border: none;background:none;" >
             <i class="material-icons nav__icon">more</i>

@@ -12,7 +12,7 @@ class AdminBookingController extends Controller
 {
  Public function index(){
 
-    $bookings= Booking::orderBy('updated_at', 'DESC')->where('booking_for',0)->get();
+    $bookings= Booking::orderBy('updated_at', 'DESC')->get();
     return view('admin.booking.booking',compact('bookings'));
  }
 

@@ -54,7 +54,7 @@ class ConsultantPrmigrationController extends Controller
        public function prindex()
        {
          $book = auth()->user()->consultantBooking;
-        //  $bookings = Booking::orderBy('booking_date', 'DESC')->get();
+         $bookings = Booking::where('consultant_id',auth()->user()->id)->orderBy('created_at', 'DESC')->get();
         //  dd($bookings);
          return view('consultant.prmigration.prmigration')->with('bookings', $book);
        }
