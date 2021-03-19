@@ -113,7 +113,7 @@
                                         <?php $headervalid = App\Models\Category::all(); ?>
 
                                         @if($headervalid->count()>0)
-                                        <a href="#">Courses<i style="color:#073975" class="la la-angle-down"></i></a>
+                                        <a href="#" onmouseover="openCity(event, 'London')">Courses<i style="color:#073975" class="la la-angle-down"></i></a>
                                         @else
                                         <a type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Unavailable" style="color: #073975">Courses</a>
                                         @endif
@@ -723,7 +723,7 @@
                                     <li>
                                         <?php $headercountryvalidconsultant = App\Models\Consultant::all(); ?>
                                         @if($headercountryvalidconsultant->count() > 0)
-                                        <a href="#">Consultants<i class="la la-angle-down"></i></a>
+                                        <a href="#" onmouseover="openCity(event, 'consultant_us')">Consultants<i class="la la-angle-down"></i></a>
                                         @else
                                         <a type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Unavailable" style="color: #073975">Consultant </a>
                                         @endif
@@ -1228,7 +1228,7 @@
                                     <li>
                                         <?php $headercountryvalidsuniversity = App\Models\Country::all(); ?>
                                         @if($headercountryvalidsuniversity->count() > 0)
-                                        <a href="#">Study Abroad<i class="la la-angle-down"></i></a>
+                                        <a href="#" onmouseover="openCity(event, 'country_us')">Study Abroad<i class="la la-angle-down"></i></a>
                                         @else
                                         <a type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Unavailable" style="color: #073975">Study Abroad </a>
                                         @endif
