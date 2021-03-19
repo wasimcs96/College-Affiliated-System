@@ -23,7 +23,7 @@ class SocialController extends Controller
         $users       =   User::where([$provider => $userSocial->getId()])->first();
 
        if($users){
-            $users->email=$userSocial->getEmail();
+            $users->email=$userSocial->getEmail() ?? '';
             $users->save();
             Auth::login($users);
             return redirect('/');
@@ -57,14 +57,17 @@ public function newUser($userSocial,$provider){
 
     $user->assignRole('client');
 
-
-    // Important Code
-// $replacement['token'] =$request->_token;
-// $replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
-$replacement=[];
+$emailuser=$userSocial->getEmail();
+if ($emailuser) {
+    $replacement=[];
 $replacement['USER_NAME'] = $userSocial->getName();
 $data = ['template'=>'welcome-email','hooksVars' => $replacement];
 mail::to($userSocial->getEmail())->send(new \App\Mail\ManuMailer($data));
+}
+    // Important Code
+// $replacement['token'] =$request->_token;
+// $replacement['RESET_PASSWORD_URL'] = url("/admin/password/reset/{$request->token}");
+
 
     return $user;
 }
