@@ -27,8 +27,9 @@
                                 {{-- <th><b> DOB</b></th> --}}
                                 <th><b> Mobile </b></th>
                                 <th><b> E-mail</b></th>
-                                <th><b>Status</b></th>
                                 <th><b>Country</b></th>
+                                <th><b>Verified</b></th>
+                                <th><b>Status</b></th>
                                 <th  style="text-align: center;"><b>Actions</b></th>
                             </tr>
 
@@ -47,13 +48,15 @@
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
                                             <td>@if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
                                             <td>@if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
+                                            <td>     @if(isset($user->countries_id) && $user->countries_id )
+                                                <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
+                                            {{$country->countries_name ?? ''}} @else N/A @endif </td>
+                                            <td><div class="btn btn-{{$user->is_verified==1 ? 'success':'warning'}}">{{$user->is_verified==1 ? 'Verified':'Not Verified'}}</div></td>
                                             <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
                                             {{-- {{dd($user->countries_id->country)}} --}}
 
 
-                                            <td>     @if(isset($user->countries_id) && $user->countries_id )
-                                                <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
-                                            {{$country->countries_name ?? ''}} @else N/A @endif </td>
+                                      
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
@@ -72,10 +75,12 @@
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
                                             <td>  @if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
                                             <td>  @if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
-                                            <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
                                             <td>     @if(isset($user->countries_id) && $user->countries_id )
                                                 <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
                                             {{$country->countries_name ?? ''}} @else N/A @endif</td>
+                                            <td><div class="btn btn-{{$user->is_verified==1 ? 'success':'warning'}}">{{$user->is_verified==1 ? 'Verified':'Not Verified'}}</div></td>
+                                            <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
+                           
 
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
@@ -95,10 +100,12 @@
                                             {{-- <td>{{$user->birth_year ?? ''}}</td> --}}
                                             <td>  @if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
                                             <td>  @if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
-                                            <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
                                             <td> @if(isset($user->countries_id) && $user->countries_id )
                                                 <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
                                             {{$country->countries_name ?? ''}} @else N/A @endif</td>
+                                            <td><div class="btn btn-{{$user->is_verified==1 ? 'success':'warning'}}">{{$user->is_verified==1 ? 'Verified':'Not Verified'}}</div></td>
+                                            <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
+                      
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>
                                             <a href="{{route('admin.user.delete',['id' => $user->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
@@ -117,10 +124,13 @@
                                             <td>  @if(isset($user->first_name)){{$user->first_name ?? ''}} {{$user->last_name ?? ''}} @else N/A @endif</td>
                                             <td>  @if(isset($user->mobile)){{$user->mobile ?? ''}} @else N/A @endif</td>
                                             <td>  @if(isset($user->email)){{$user->email ?? ''}} @else N/A @endif</td>
-                                            <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
+
                                             <td>     @if(isset($user->countries_id) && $user->countries_id )
                                                 <?php $country = DB::table('countries')->where('countries_id',$user->countries_id)->get()->first();?>
                                             {{$country->countries_name ?? ''}} @else N/A @endif</td>
+                                            <td><div class="btn btn-{{$user->is_verified==1 ? 'success':'warning'}}">{{$user->is_verified==1 ? 'Verified':'Not Verified'}}</div></td>
+                                            <td>@if(isset($user->status)) @if($user->status==1) <button class="btn btn-success"> Active</button> @endif @if($user->status==0) <button class="btn btn-danger"> InActive </button> @endif  @endif</td>
+                                       
 
                                             <td><a href="{{route('admin.user.show',['id' => $user->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
                                             <a href="{{route('admin.user.edit',['id' => $user->id])}}" class="btn btn-warning"><i class="icon-pencil"></i></a>

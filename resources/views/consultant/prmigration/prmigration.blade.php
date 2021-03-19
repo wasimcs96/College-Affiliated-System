@@ -45,10 +45,10 @@
 
                             <td>{{ Carbon\Carbon::parse($booking->booking_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}</td>
                             <td>{{$booking->booking_start_time ?? ''}}-{{$booking->booking_end_time ?? ''}}</td>
-                            <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
+                            <td>@if($booking->status==0 ?? '')<div class="btn btn-success">Accepted</div>@endif
                                 @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
-                                @if($booking->status==2 ?? '')<div class="btn btn-danger">Rejected</div>@endif
-                                @if($booking->status==3 ?? '')<div class="btn btn-primary">Walking</div>@endif
+                                @if($booking->status==2 ?? '')<div class="btn btn-success">Accepted</div>@endif
+                                @if($booking->status==3 ?? '')<div class="btn btn-success">Accepted</div>@endif
                             </td>
                             <td style="text-align: center;"><a href="{{route('prmigration.booking.show',['id'=> $booking->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>

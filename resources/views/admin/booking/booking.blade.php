@@ -29,9 +29,9 @@
                             <th> <b>
                                Client Name</b></th>
                             <th><b>Consultant Name </b></th>
-                            <th><b>Booking Type</b></th>
                             <th><b>Booking Date</b></th>
                             <th><b>Booking Time Slot</b></th>
+                            <th><b>Booking Type</b></th>
                             <th><b>Booking Status</b></th>
                             <th><b>Actions</b></th>
                         </tr>
@@ -49,10 +49,14 @@
                             <td>@if(isset($booking->user->first_name)){{$booking->user->first_name}} {{$booking->user->last_name}}@else N/A @endif</td>
                             <td>@if(isset($booking->userConsultant->first_name)){{$booking->userConsultant->first_name}} {{$booking->userConsultant->last_name}}@else N/A @endif</td>
 
-                            <td>@if(isset($booking->booking_for))@if($booking->booking_for == 0)Student Visa @elseif($booking->booking_for == 1)PR Migration @endif @else N/A @endif</td>
+              
+
+                  
+
                             <td>@if(isset($booking->booking_date)){{ Carbon\Carbon::parse($booking->booking_date)->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
                             {{-- <td>tru</td>--}}
                             <td>@if(isset($booking->booking_start_time)){{$booking->booking_start_time}}-{{$booking->booking_end_time}}@else N/A @endif</td>
+                            <td><div class="btn btn-{{$booking->booking_for==0 ? 'primary':'info'}}">{{$booking->booking_for==0 ? 'Study Abroad':'PR'}}</div></td>
                             {{-- <td>2020/30/11</td> --}}
                             <td>@if($booking->status==0 ?? '')<div class="btn btn-warning">Pending</div>@endif
                                 @if($booking->status==1 ?? '')<div class="btn btn-success">Accepted</div>@endif
