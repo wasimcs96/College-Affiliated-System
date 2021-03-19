@@ -486,6 +486,926 @@
     </div><!-- end container -->
 </section>
 {{-- ########################ADVERTISEMENT END  --}}
+
+
+
+<?php $universities = App\Models\User::where('status',1)->get();
+?>
+    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+
+{{-- discipline start --}}
+
+<section class="service-area section--padding text-center">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+    <div class="section-heading text-center">
+    <h2 class="sec__title">Browse by Discipline</h2>
+    </div><!-- end section-heading -->
+    </div><!-- end col-lg-12 -->
+    </div><!-- end row -->
+    <?php $categories = App\Models\Category::where('status',1)->get() ?>
+    @if($categories->count() > 0)
+    <div class="row padding-top-80px" style="
+    justify-content: center;
+    ">
+
+    @foreach($categories as $category)
+    @if($category->parent_id == null)
+    {{-- @if($category->status == 1) --}}
+    <form action="{{route('university_fetch.coursewise')}}" method="POST" >
+        @csrf
+    <input type="hidden" name="category" value="{{$category->id ?? ''}}">
+    <button type="submit" style="border: none">
+    <div class="card text-center customhover browsedicipline diciplineblock" style="">
+    <div class="card-body customhover dicipline" style=";height: 174px; margin: auto;">
+    <h5 class="card-title">
+    @if(isset($category->banner) && file_exists($category->banner))
+    <img class="dicipline" style="width: 86px;" src="{{asset($category->banner )}}" alt="">
+    @else
+    <img src="
+    {{asset('frontEnd/assets/images/first_aid.png')}}" width="84px" >
+    @endif
+    </h5>
+    <p class="card-text fontdicipline"><a style="color: black;" href="#" value="{{$category->id ?? ''}}">{{$category->title ?? ''}}</a></p>
+    {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+    </div>
+    </div>
+    </button>
+    </form>
+    {{-- @endif --}}
+    @endif
+    @endforeach
+    </div><!-- end row -->
+
+    @else
+    <div>
+    <h4 style="margin-top: 50px;">Discipline Unavailable</h4>
+    </div>
+    @endif
+    </div><!-- end container -->
+</section>
+
+  {{-- discipline end --}}
+
+<section class="round-trip-flight section-padding">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="section-heading text-center">
+<h2 class="sec__title line-height-55">Browse by Destinations</h2>
+</div><!-- end section-heading -->
+</div><!-- end col-lg-12 -->
+</div><!-- end row -->
+<div class="row padding-top-50px">
+<div class="col-lg-12">
+<div class="flight-filter-tab text-center">
+<div class="section-tab section-tab-3">
+   <ul class="nav nav-tabs justify-content-center" id="myTab4" role="tablist">
+       <li class="nav-item">
+           <a class="nav-link active" id="new-york-tab" data-toggle="tab" href="#new-york" role="tab" aria-controls="new-york" aria-selected="false">
+               United States
+           </a>
+       </li>
+       <li class="nav-item">
+           <a class="nav-link" id="hong-kong-tab" data-toggle="tab" href="#hong-kong" role="tab" aria-controls="hong-kong" aria-selected="false">
+             United Kingdom
+           </a>
+       </li>
+       <li class="nav-item">
+           <a class="nav-link" id="beijing-tab" data-toggle="tab" href="#beijing" role="tab" aria-controls="beijing" aria-selected="false">
+            Australia
+           </a>
+       </li>
+       <li class="nav-item">
+           <a class="nav-link" id="tokyo-tab" data-toggle="tab" href="#tokyo" role="tab" aria-controls="tokyo" aria-selected="false">
+               Canada
+           </a>
+       </li>
+       <li class="nav-item">
+           <a class="nav-link" id="seoul-tab" data-toggle="tab" href="#seoul" role="tab" aria-controls="seoul" aria-selected="false">
+               Ireland
+           </a>
+       </li>
+   </ul>
+</div><!-- end section-tab -->
+</div><!-- end flight-filter-tab -->
+@if($universities->count()>0)
+<div class="popular-round-trip-wrap padding-top-40px">
+<div class="tab-content" id="myTabContent4">
+    <div class="tab-pane fade show active" id="new-york" role="tabpanel" aria-labelledby="new-york-tab">
+        <div class="row">
+            <?php $usa = App\Models\User::where('countries_id',223)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
+            @if($usa->count()> 0)
+            {{-- {{dd($usa)}} --}}
+            @foreach($usa as $us)
+            @if($us->isUniversity())
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item car-card border">
+                    <div class="card-img" style="text-align: center; height:185px;">
+                    <a href="{{route('university_detail',['id'=>$us->id])}}" class="d-block">
+                        {{-- @php
+                        print_r($university->user->profile_image);
+                    @endphp --}}
+                            {{-- <img src="{{asset($aus->profile_image)}}" alt="university-img" > --}}
+                            @if(isset($us->university->cover_image) && file_exists($us->university->cover_image))
+                            <img
+                              {{-- style=" width: 368px;
+                            height: 245px;"  --}}
+                            src="{{asset($us->university->cover_image)}}" height="185px;"alt="">
+                                @else
+                                <img
+                                  {{-- style=" width: 368px;
+                                height: 245px;"  --}}
+                                src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                @endif
+                        </a>
+                        <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($us->profile_image) && file_exists($us->profile_image))
+                            <img
+                            style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                            src="{{asset($us->profile_image)}}" alt="">
+                                @else
+                                <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                @endif</div>
+                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                @if($us->Premium_expire_date > $mytime)<span style="
+                                background-color: #073975;
+                            " class="badge">Premium</span> @endif
+
+                    </div>
+                    <div class="card-body">
+                       
+                       
+                        <h3 class="card-title" title="{{$us->university->university_name ?? ''}}" style="
+                        white-space: nowrap;
+                        overflow: hidden;
+                    "><a href="{{route('university_detail',['id'=>$us->id])}}">
+                                @if(isset($us->university->university_name)){{$us->university->university_name ?? ''}}@else N/A @endif</a>
+                                @if($us->is_verified == 1)
+                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                               @endif
+                                </h3>
+                        <p class="card-meta">
+                            @if(isset($us->university->type))
+                             @if($us->university->type==0)
+                        Private
+                    @else
+                    Govenment</p>
+                    @endif
+                    @endif
+
+                        <div class="card-rating">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <p class="mr-2" style="margin:0px;">Rating:</p>
+
+                                    <span>@if($us->rating == 3 ?? '' )
+                                            <span class="ratings ">
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star-o"></i>
+                                                <i class="la la-star-o"></i>
+                                            </span>
+                                    @elseif($us->rating == 4)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($us->rating == 5)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                    </span>
+                                    @elseif($us->rating == 1)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($us->rating == 2)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($us->rating == null)- @else{{$us->rating ?? ''}}/5 @endif</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-attributes">
+                            <p>
+                                <span class="price__text">Average Fees :</span>
+                                <span class="price__num">@if(isset($us->university->average_fees )){{ Config::get('define.currency.currency') }}{{$us->university->average_fees ?? ''}}@else N/A @endif</span>
+                                {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                            </p>
+                            <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($us->university->established_at))
+                                    {{$us->university->established_at}}
+                                    @else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$us->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($us->university->in_takes)){{$result = count(explode(',',$us->university->in_takes))}} @else N/A @endif</span></li>
+
+
+                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$us->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($us->university->iltes))
+                                        {{$us->university->iltes}}/10
+                                        @else -/10 @endif</span></li>
+            </ul>
+                        </div>
+
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            @if(auth()->user())
+                           <a href="{{asset($us->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                height: 38px;
+                                padding-top: 9px;
+                            ">Brochure</a>
+                            @else
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
+                                height: 38px;
+                                padding-top: 9px;
+                            ">Brochure</a>
+                            @endif
+
+
+
+                            <a href="{{route('university_detail',['id'=>$us->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            @endif
+            @endforeach
+            @else
+            <div class="container" style="text-align: center;">
+                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                   </div>
+@endif
+
+        </div>
+    </div><!-- end tab-pane -->
+    <div class="tab-pane fade" id="hong-kong" role="tabpanel" aria-labelledby="hong-kong-tab">
+        <div class="row">
+            <?php $uka = App\Models\User::where('countries_id',222)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
+            {{-- {{dd($usa)}} --}}
+            @if($uka->count()> 0)
+            @foreach($uka as $uk)
+            @if($uk->isUniversity())
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item car-card border">
+                    <div class="card-img" style="text-align: center; height:185px;">
+                    <a href="{{route('university_detail',['id'=>$uk->id])}}" class="d-block">
+                        {{-- @php
+                        print_r($uk->user->profile_image);
+                    @endphp --}}
+                            {{-- <img src="{{asset($uk->profile_image)}}" alt="university-img" > --}}
+                            @if(isset($uk->university->cover_image) && file_exists($uk->university->cover_image))
+                            <img
+                              {{-- style=" width: 368px;
+                            height: 245px;"  --}}
+                            src="{{asset($uk->university->cover_image)}}" height="185px;"alt="">
+                                @else
+                                <img
+                                  {{-- style=" width: 368px;
+                                height: 245px;"  --}}
+                                src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                @endif
+                        </a>
+                        <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($uk->profile_image) && file_exists($uk->profile_image))
+                            <img
+                            style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                            src="{{asset($uk->profile_image)}}" alt="">
+                                @else
+                                <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                @endif</div>
+                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                @if($uk->Premium_expire_date > $mytime)<span style="
+                                background-color: #073975;
+                            " class="badge">Premium</span> @endif
+
+                    </div>
+                    <div class="card-body">
+
+                  
+                                <h3 class="card-title"  title="{{$uk->university->university_name ?? ''}}" style="
+                                    white-space: nowrap;
+                                    overflow: hidden;"><a href="{{route('university_detail',['id'=>$uk->id])}}">
+                                @if(isset($uk->university->university_name)){{    $uk->university->university_name ?? ''}}@else N/A @endif</a>
+                                @if($uk->is_verified == 1)
+                                <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                              
+                                @endif
+                                </h3>
+
+                        <p class="card-meta">
+                            @if(isset($uk->university->type))
+                             @if($uk->university->type==0)
+                        Private
+                    @else
+                    Govenment</p>
+                    @endif
+                    @endif
+                        <div class="card-rating">
+                            <div class="d-flex flex-wrap align-items-center pt-2">
+                                <p class="mr-2" style="margin:0px;">Rating:</p>
+
+
+                                    <span>@if($uk->rating == 3 ?? '' )
+                                            <span class="ratings ">
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star-o"></i>
+                                                <i class="la la-star-o"></i>
+                                            </span>
+                                    @elseif($uk->rating == 4 ?? '')
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($uk->rating == 5 ?? '')
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                    </span>
+                                    @elseif($uk->rating == 1 ?? '')
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($uk->rating == 2 ?? '')
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($uk->rating == null)- @else{{$uk->rating ?? ''}}/5 @endif</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-attributes">
+                            <p>
+                                <span class="price__text">Average Fees :</span>
+                                <span class="price__num">@if(isset($uk->university->average_fees )){{ Config::get('define.currency.currency') }}{{$uk->university->average_fees ?? ''}}@else N/A @endif</span>
+                                {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                            </p>
+                            <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($uk->university->established_at))
+                                    {{$uk->university->established_at}}
+                                    @else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$uk->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($uk->university->in_takes)){{$result = count(explode(',',$uk->university->in_takes))}} @else N/A @endif</span></li>
+
+
+                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$uk->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($uk->university->iltes))
+                                        {{$uk->university->iltes}}/10
+                                        @else -/10 @endif</span></li>
+            </ul>
+                        </div>
+
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            @if(auth()->user())
+                            <a href="{{asset($uk->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                 height: 38px;
+                                 padding-top: 9px;
+                             ">Brochure</a>
+                             @else
+                             <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
+                                 height: 38px;
+                                 padding-top: 9px;
+                             ">Brochure</a>
+                             @endif
+
+
+                            <a href="{{route('university_detail',['id'=>$uk->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            @endif
+            @endforeach
+            @else
+            <div class="container" style="text-align: center;">
+                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                   </div>
+@endif
+
+        </div>
+    </div><!-- end tab-pane -->
+    <div class="tab-pane fade" id="seoul" role="tabpanel" aria-labelledby="seoul-tab">
+        <div class="row">
+            <?php $irel = App\Models\User::where('countries_id',103)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
+            {{-- {{dd($usa)}} --}}
+            @if($irel->count()> 0)
+
+            @foreach($irel as $ire)
+            @if($ire->isUniversity())
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item car-card border">
+                    <div class="card-img" style="text-align: center; height:185px;">
+                    <a href="{{route('university_detail',['id'=>$ire->id])}}" class="d-block">
+                        {{-- @php
+                        print_r($ire->user->profile_image);
+                    @endphp --}}
+                            {{-- <img src="{{asset($ire->profile_image)}}" alt="university-img" > --}}
+                            @if(isset($ire->university->cover_image) && file_exists($ire->university->cover_image))
+                            <img
+                              {{-- style=" width: 368px;
+                            height: 245px;"  --}}
+                            src="{{asset($ire->university->cover_image)}}" height="185px;"alt="">
+                                @else
+                                <img
+                                  {{-- style=" width: 368px;
+                                height: 245px;"  --}}
+                                src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                @endif
+                        </a>
+                        <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($ire->profile_image) && file_exists($ire->profile_image))
+                            <img
+                            style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                            src="{{asset($ire->profile_image)}}" alt="">
+                                @else
+                                <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                @endif</div>
+                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                @if($ire->Premium_expire_date > $mytime)<span style="
+                                background-color: #073975;
+                            " class="badge">Premium</span> @endif
+
+                    </div>
+                    <div class="card-body">
+                      
+                       <h3 class="card-title" title="{{$ire->university->university_name ?? ''}}" style="
+                        white-space: nowrap;
+                        overflow: hidden;"><a href="{{route('university_detail',['id'=>$ire->id])}}">
+                                @if(isset($ire->university->university_name)){{  $ire->university->university_name ?? ''}} @else N/A @endif</a>
+
+                                @if($ire->is_verified == 1)
+                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                   
+                               @endif
+
+                                </h3>
+                        <p class="card-meta">
+                            @if(isset($ire->university->type))
+                             @if($ire->university->type==0)
+                        Private
+                    @else
+                    Govenment</p>
+                    @endif
+                    @endif
+
+                        <div class="card-rating">
+                            <div class="d-flex flex-wrap align-items-center pt-2">
+                                <p class="mr-2" style="margin:0px;">Rating:</p>
+
+                                    <span>@if($ire->rating == 3 ?? '' )
+                                            <span class="ratings ">
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star-o"></i>
+                                                <i class="la la-star-o"></i>
+                                            </span>
+                                    @elseif($ire->rating == 4 ?? '')
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($ire->rating == 5 ?? '')
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                    </span>
+                                    @elseif($ire->rating == 1 ?? '')
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($ire->rating == 2 ?? '')
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($ire->rating == null)- @else{{$ire->rating ?? ''}}/5 @endif</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-attributes">
+                            <p>
+                                <span class="price__text">Average Fees :</span>
+                                <span class="price__num">@if(isset($ire->university->average_fees )){{ Config::get('define.currency.currency') }}{{$ire->university->average_fees ?? ''}} @else N/A @endif</span>
+                                {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                            </p>
+                            <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($ire->university->established_at))
+                                    {{$ire->university->established_at}}
+                                    @else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$ire->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($ire->university->in_takes)){{$result = count(explode(',',$ire->university->in_takes))}} @else N/A @endif</span></li>
+
+
+                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$ire->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($ire->university->iltes))
+                                        {{$ire->university->iltes}}/10
+                                        @else -/10 @endif</span></li>
+            </ul>
+                        </div>
+
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            @if(auth()->user())
+                            <a href="{{asset($ire->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                 height: 38px;
+                                 padding-top: 9px;
+                             ">Brochure</a>
+                             @else
+                             <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
+                                 height: 38px;
+                                 padding-top: 9px;
+                             ">Brochure</a>
+                             @endif
+
+
+
+                            <a href="{{route('university_detail',['id'=>$ire->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            @endif
+            @endforeach
+            @else
+            <div class="container" style="text-align: center;">
+                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                   </div>
+@endif
+
+        </div>
+    </div><!-- end tab-pane -->
+    <div class="tab-pane fade" id="tokyo" role="tabpanel" aria-labelledby="tokyo-tab">
+        <div class="row">
+            <?php $cana = App\Models\User::where('countries_id',38)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
+            {{-- {{dd($usa)}} --}}
+            @if($cana->count()> 0)
+            @foreach($cana as $can)
+            @if($can->isUniversity())
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item car-card border">
+                    <div class="card-img" style="text-align: center; height:185px;">
+                    <a href="{{route('university_detail',['id'=>$can->id])}}" class="d-block">
+                        {{-- @php
+                        print_r($can->user->profile_image);
+                    @endphp --}}
+                            {{-- <img src="{{asset($can->profile_image)}}" alt="university-img" > --}}
+                            @if(isset($can->university->cover_image) && file_exists($can->university->cover_image))
+                            <img
+                              {{-- style=" width: 368px;
+                            height: 245px;"  --}}
+                            src="{{asset($can->university->cover_image)}}" height="185px;"alt="">
+                                @else
+                                <img
+                                  {{-- style=" width: 368px;
+                                height: 245px;"  --}}
+                                src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                @endif
+                        </a>
+                        <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($can->profile_image) && file_exists($can->profile_image))
+                            <img
+                            style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                            src="{{asset($can->profile_image)}}" alt="">
+                                @else
+                                <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                @endif</div>
+                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                @if($can->Premium_expire_date > $mytime)<span style="
+                                background-color: #073975;
+                            " class="badge">Premium</span> @endif
+
+                    </div>
+                    <div class="card-body">
+                                                         
+                                <h3 class="card-title" title="{{$can->university->university_name ?? ''}}" style="
+                                    white-space: nowrap;
+                                    overflow: hidden;"><a href="{{route('university_detail',['id'=>$can->id])}}">
+                                @if(isset($can->university->university_name))  {{$can->university->university_name ?? ''}} @else N/A @endif</a>
+
+                                @if($can->is_verified == 1)
+                                <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                              
+                           @endif
+
+                                </h3>
+                        <p class="card-meta">
+                            @if(isset($can->university->type))
+                             @if($can->university->type==0)
+                        Private
+                    @else
+                    Govenment</p>
+                    @endif
+                    @endif
+
+                        <div class="card-rating">
+                            <div class="d-flex flex-wrap align-items-center pt-2">
+                                <p class="mr-2" style="margin:0px;">Rating:</p>
+
+                                    <span>@if($can->rating == 3 ?? '' )
+                                            <span class="ratings ">
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star-o"></i>
+                                                <i class="la la-star-o"></i>
+                                            </span>
+                                    @elseif($can->rating == 4)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($can->rating == 5)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                    </span>
+                                    @elseif($can->rating == 1)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($can->rating == 2)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($can->rating == null)- @else{{$can->rating ?? ''}}/5 @endif</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-attributes">
+                            <p>
+                                <span class="price__text">Average Fees :</span>
+                                <span class="price__num">@if(isset($can->university->average_fees )){{ Config::get('define.currency.currency') }}{{$can->university->average_fees ?? ''}} @else N/A @endif</span>
+                                {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                            </p>
+                            <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($can->university->established_at))
+                                    {{$can->university->established_at}}
+                                    @else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$can->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($can->university->in_takes)){{$result = count(explode(',',$can->university->in_takes))}} @else N/A @endif</span></li>
+
+
+                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$can->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($can->university->iltes))
+                                        {{$can->university->iltes}}/10
+                                        @else -/10 @endif</span></li>
+            </ul>
+                        </div>
+
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            @if(auth()->user())
+                            <a href="{{asset($can->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                 height: 38px;
+                                 padding-top: 9px;
+                             ">Brochure</a>
+                             @else
+                             <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
+                                 height: 38px;
+                                 padding-top: 9px;
+                             ">Brochure</a>
+                             @endif
+
+
+
+                            <a href="{{route('university_detail',['id'=>$can->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            @endif
+            @endforeach
+            @else
+            <div class="container" style="text-align: center;">
+                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                   </div>
+@endif
+        </div>
+    </div><!-- end tab-pane -->
+    <div class="tab-pane fade" id="beijing" role="tabpanel" aria-labelledby="beijing-tab">
+        <div class="row">
+            <?php $aust = App\Models\User::where('countries_id',13)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
+            {{-- {{dd($usa)}} --}}
+            @if($aust->count()> 0)
+
+            @foreach($aust as $aus)
+            @if($aus->isUniversity())
+            <div class="col-lg-4 responsive-column">
+                <div class="card-item car-card border">
+                    <div class="card-img" style="text-align: center; height:185px;">
+                    <a href="{{route('university_detail',['id'=>$aus->id])}}" class="d-block">
+                        {{-- @php
+                        print_r($aus->user->profile_image);
+                    @endphp --}}
+                            {{-- <img src="{{asset($aus->profile_image)}}" alt="university-img" > --}}
+                            @if(isset($aus->university->cover_image) && file_exists($aus->university->cover_image))
+                            <img
+                              {{-- style=" width: 368px;
+                            height: 245px;"  --}}
+                            src="{{asset($aus->university->cover_image)}}" height="185px;"alt="">
+                                @else
+                                <img
+                                  {{-- style=" width: 368px;
+                                height: 245px;"  --}}
+                                src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
+                                @endif
+                        </a>
+                        <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($aus->profile_image) && file_exists($aus->profile_image))
+                            <img
+                            style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                            src="{{asset($aus->profile_image)}}" alt="">
+                                @else
+                                <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                @endif</div>
+                                <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                @if($aus->Premium_expire_date > $mytime)<span style="
+                                background-color: #073975;
+                            " class="badge">Premium</span> @endif
+
+                    </div>
+                    <div class="card-body">
+                      
+                      
+                   
+                      
+                                <h3 class="card-title" title="{{$aus->university->university_name ?? ''}}" style="
+                                    white-space: nowrap;
+                                    overflow: hidden;">
+                                <a href="{{route('university_detail',['id'=>$aus->id])}}">
+                                @if(isset($aus->university->university_name)){{  $aus->university->university_name ?? ''}} @else N/A @endif</a>
+
+                                @if($aus->is_verified == 1)
+                                <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+                                @endif
+
+                                </h3>
+                        <p class="card-meta">
+                            @if(isset($aus->university->type))
+                             @if($aus->university->type==0)
+                        Private
+                    @else
+                    Govenment</p>
+                    @endif
+                    @endif
+
+                        <div class="card-rating">
+                            <div class="d-flex flex-wrap align-items-center pt-2">
+                                <p class="mr-2" style="margin:0px;">Rating:</p>
+
+                                    <span>@if($aus->rating == 3 ?? '' )
+                                            <span class="ratings ">
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star"></i>
+                                                <i class="la la-star-o"></i>
+                                                <i class="la la-star-o"></i>
+                                            </span>
+                                    @elseif($aus->rating == 4)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($aus->rating == 5)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                    </span>
+                                    @elseif($aus->rating == 1)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @elseif($aus->rating == 2)
+                                    <span class="ratings ">
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                        <i class="la la-star-o"></i>
+                                    </span>
+                                    @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($aus->rating == null)- @else{{$aus->rating ?? ''}}/5 @endif</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-attributes">
+                            <p>
+                                <span class="price__text">Average Fees :</span>
+                                <span class="price__num">@if(isset($aus->university->average_fees )){{ Config::get('define.currency.currency') }}{{$aus->university->average_fees ?? ''}} @else N/A @endif</span>
+                                {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                            </p>
+                            <ul class="d-flex align-items-center">
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($aus->university->established_at))
+                                    {{$aus->university->established_at}}
+                                    @else N/A @endif</span></li>
+                                <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$aus->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($aus->university->in_takes)){{$result = count(explode(',',$aus->university->in_takes))}} @else N/A @endif</span></li>
+
+
+                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$aus->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($aus->university->iltes))
+                                        {{$aus->university->iltes}}/10
+                                        @else -/10 @endif</span></li>
+            </ul>
+                        </div>
+
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            @if(auth()->user())
+                            <a href="{{asset($aus->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
+                                 height: 38px;
+                                 padding-top: 9px;
+                             ">Brochure</a>
+                             @else
+                             <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
+                                 height: 38px;
+                                 padding-top: 9px;
+                             ">Brochure</a>
+                             @endif
+
+
+                            <a href="{{route('university_detail',['id'=>$aus->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-4 -->
+            @endif
+            @endforeach
+            @else
+            <div class="container" style="text-align: center;">
+                <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
+                   </div>
+@endif
+        </div>
+    </div><!-- end tab-pane -->
+</div><!-- end tab-content -->
+
+@else
+<h2 class="mt-5" style="text-align: center"> No Data Available</h2>
+
+@endif
+</div>
+</div><!-- end col-lg-12 -->
+</div><!-- end row -->
+</div><!-- end container -->
+</section><!-- end round-trip-flight -->
+<!-- ================================
+END ROUND-TRIP AREA
+================================= -->
+
+
+
+
 <!-- ================================
        START TESTIMONIAL AREA
 ================================= -->
@@ -843,917 +1763,6 @@
   </div><!-- end container -->
 </section>
                       {{-- works end --}}
-
-
-                      {{-- discipline start --}}
-
-                      <section class="service-area section--padding text-center">
-                        <div class="container">
-                        <div class="row">
-                        <div class="col-lg-12">
-                        <div class="section-heading text-center">
-                        <h2 class="sec__title">Browse by Discipline</h2>
-                        </div><!-- end section-heading -->
-                        </div><!-- end col-lg-12 -->
-                        </div><!-- end row -->
-                        <?php $categories = App\Models\Category::where('status',1)->get() ?>
-                        @if($categories->count() > 0)
-                        <div class="row padding-top-80px" style="
-                        justify-content: center;
-                        ">
-
-                        @foreach($categories as $category)
-                        @if($category->parent_id == null)
-                        {{-- @if($category->status == 1) --}}
-                        <form action="{{route('university_fetch.coursewise')}}" method="POST" >
-                            @csrf
-                        <input type="hidden" name="category" value="{{$category->id ?? ''}}">
-                        <button type="submit" style="border: none">
-                        <div class="card text-center customhover browsedicipline diciplineblock" style="">
-                        <div class="card-body customhover dicipline" style=";height: 174px; margin: auto;">
-                        <h5 class="card-title">
-                        @if(isset($category->banner) && file_exists($category->banner))
-                        <img class="dicipline" style="width: 86px;" src="{{asset($category->banner )}}" alt="">
-                        @else
-                        <img src="
-                        {{asset('frontEnd/assets/images/first_aid.png')}}" width="84px" >
-                        @endif
-                        </h5>
-                        <p class="card-text fontdicipline"><a style="color: black;" href="#" value="{{$category->id ?? ''}}">{{$category->title ?? ''}}</a></p>
-                        {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
-                        </div>
-                        </div>
-                        </button>
-                        </form>
-                        {{-- @endif --}}
-                        @endif
-                        @endforeach
-                        </div><!-- end row -->
-
-                        @else
-                        <div>
-                        <h4 style="margin-top: 50px;">Discipline Unavailable</h4>
-                        </div>
-                        @endif
-                        </div><!-- end container -->
-                        </section>
-
-                      {{-- discipline end --}}
-
-<section class="round-trip-flight section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading text-center">
-                    <h2 class="sec__title line-height-55">Browse by Destinations</h2>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-        <div class="row padding-top-50px">
-            <div class="col-lg-12">
-               <div class="flight-filter-tab text-center">
-                   <div class="section-tab section-tab-3">
-                       <ul class="nav nav-tabs justify-content-center" id="myTab4" role="tablist">
-                           <li class="nav-item">
-                               <a class="nav-link active" id="new-york-tab" data-toggle="tab" href="#new-york" role="tab" aria-controls="new-york" aria-selected="false">
-                                   United States
-                               </a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="nav-link" id="hong-kong-tab" data-toggle="tab" href="#hong-kong" role="tab" aria-controls="hong-kong" aria-selected="false">
-                                 United Kingdom
-                               </a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="nav-link" id="beijing-tab" data-toggle="tab" href="#beijing" role="tab" aria-controls="beijing" aria-selected="false">
-                                Australia
-                               </a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="nav-link" id="tokyo-tab" data-toggle="tab" href="#tokyo" role="tab" aria-controls="tokyo" aria-selected="false">
-                                   Canada
-                               </a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="nav-link" id="seoul-tab" data-toggle="tab" href="#seoul" role="tab" aria-controls="seoul" aria-selected="false">
-                                   Ireland
-                               </a>
-                           </li>
-                       </ul>
-                   </div><!-- end section-tab -->
-               </div><!-- end flight-filter-tab -->
-               @if($universities->count()>0)
-                <div class="popular-round-trip-wrap padding-top-40px">
-                    <div class="tab-content" id="myTabContent4">
-                        <div class="tab-pane fade show active" id="new-york" role="tabpanel" aria-labelledby="new-york-tab">
-                            <div class="row">
-                                <?php $usa = App\Models\User::where('countries_id',223)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
-                                @if($usa->count()> 0)
-                                {{-- {{dd($usa)}} --}}
-                                @foreach($usa as $us)
-                                @if($us->isUniversity())
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="card-item car-card border">
-                                        <div class="card-img" style="text-align: center; height:185px;">
-                                        <a href="{{route('university_detail',['id'=>$us->id])}}" class="d-block">
-                                            {{-- @php
-                                            print_r($university->user->profile_image);
-                                        @endphp --}}
-                                                {{-- <img src="{{asset($aus->profile_image)}}" alt="university-img" > --}}
-                                                @if(isset($us->university->cover_image) && file_exists($us->university->cover_image))
-                                                <img
-                                                  {{-- style=" width: 368px;
-                                                height: 245px;"  --}}
-                                                src="{{asset($us->university->cover_image)}}" height="185px;"alt="">
-                                                    @else
-                                                    <img
-                                                      {{-- style=" width: 368px;
-                                                    height: 245px;"  --}}
-                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
-                                                    @endif
-                                            </a>
-                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($us->profile_image) && file_exists($us->profile_image))
-                                                <img
-                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                                src="{{asset($us->profile_image)}}" alt="">
-                                                    @else
-                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                                                    @endif</div>
-                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
-                                                    @if($us->Premium_expire_date > $mytime)<span style="
-                                                    background-color: #073975;
-                                                " class="badge">Premium</span> @endif
-
-                                        </div>
-                                        <div class="card-body">
-                                           
-                                           
-                                            <h3 class="card-title" title="{{$us->university->university_name ?? ''}}" style="
-                                            white-space: nowrap;
-                                            overflow: hidden;
-                                        "><a href="{{route('university_detail',['id'=>$us->id])}}">
-                                                    @if(isset($us->university->university_name)){{$us->university->university_name ?? ''}}@else N/A @endif</a>
-                                                    @if($us->is_verified == 1)
-                                                        <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                                   @endif
-                                                    </h3>
-                                            <p class="card-meta">
-                                                @if(isset($us->university->type))
-                                                 @if($us->university->type==0)
-                                            Private
-                                        @else
-                                        Govenment</p>
-                                        @endif
-                                        @endif
-
-                                            <div class="card-rating">
-                                                <div class="d-flex flex-wrap align-items-center">
-                                                    <p class="mr-2" style="margin:0px;">Rating:</p>
-
-                                                        <span>@if($us->rating == 3 ?? '' )
-                                                                <span class="ratings ">
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                </span>
-                                                        @elseif($us->rating == 4)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($us->rating == 5)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                        </span>
-                                                        @elseif($us->rating == 1)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($us->rating == 2)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($us->rating == null)- @else{{$us->rating ?? ''}}/5 @endif</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-attributes">
-                                                <p>
-                                                    <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">@if(isset($us->university->average_fees )){{ Config::get('define.currency.currency') }}{{$us->university->average_fees ?? ''}}@else N/A @endif</span>
-                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
-                                                </p>
-                                                <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($us->university->established_at))
-                                                        {{$us->university->established_at}}
-                                                        @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$us->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($us->university->in_takes)){{$result = count(explode(',',$us->university->in_takes))}} @else N/A @endif</span></li>
-
-
-                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$us->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($us->university->iltes))
-                                                            {{$us->university->iltes}}/10
-                                                            @else -/10 @endif</span></li>
-                                </ul>
-                                            </div>
-
-                                            <div class="card-price d-flex align-items-center justify-content-between">
-                                                @if(auth()->user())
-                                               <a href="{{asset($us->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
-                                                    height: 38px;
-                                                    padding-top: 9px;
-                                                ">Brochure</a>
-                                                @else
-                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
-                                                    height: 38px;
-                                                    padding-top: 9px;
-                                                ">Brochure</a>
-                                                @endif
-
-
-
-                                                <a href="{{route('university_detail',['id'=>$us->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card-item -->
-                                </div><!-- end col-lg-4 -->
-                                @endif
-                                @endforeach
-                                @else
-                                <div class="container" style="text-align: center;">
-                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                                       </div>
-@endif
-
-                            </div>
-                        </div><!-- end tab-pane -->
-                        <div class="tab-pane fade" id="hong-kong" role="tabpanel" aria-labelledby="hong-kong-tab">
-                            <div class="row">
-                                <?php $uka = App\Models\User::where('countries_id',222)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
-                                {{-- {{dd($usa)}} --}}
-                                @if($uka->count()> 0)
-                                @foreach($uka as $uk)
-                                @if($uk->isUniversity())
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="card-item car-card border">
-                                        <div class="card-img" style="text-align: center; height:185px;">
-                                        <a href="{{route('university_detail',['id'=>$uk->id])}}" class="d-block">
-                                            {{-- @php
-                                            print_r($uk->user->profile_image);
-                                        @endphp --}}
-                                                {{-- <img src="{{asset($uk->profile_image)}}" alt="university-img" > --}}
-                                                @if(isset($uk->university->cover_image) && file_exists($uk->university->cover_image))
-                                                <img
-                                                  {{-- style=" width: 368px;
-                                                height: 245px;"  --}}
-                                                src="{{asset($uk->university->cover_image)}}" height="185px;"alt="">
-                                                    @else
-                                                    <img
-                                                      {{-- style=" width: 368px;
-                                                    height: 245px;"  --}}
-                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
-                                                    @endif
-                                            </a>
-                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($uk->profile_image) && file_exists($uk->profile_image))
-                                                <img
-                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                                src="{{asset($uk->profile_image)}}" alt="">
-                                                    @else
-                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                                                    @endif</div>
-                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
-                                                    @if($uk->Premium_expire_date > $mytime)<span style="
-                                                    background-color: #073975;
-                                                " class="badge">Premium</span> @endif
-
-                                        </div>
-                                        <div class="card-body">
-
-                                      
-                                                    <h3 class="card-title"  title="{{$uk->university->university_name ?? ''}}" style="
-                                                        white-space: nowrap;
-                                                        overflow: hidden;"><a href="{{route('university_detail',['id'=>$uk->id])}}">
-                                                    @if(isset($uk->university->university_name)){{    $uk->university->university_name ?? ''}}@else N/A @endif</a>
-                                                    @if($uk->is_verified == 1)
-                                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                                  
-                                                    @endif
-                                                    </h3>
-
-                                            <p class="card-meta">
-                                                @if(isset($uk->university->type))
-                                                 @if($uk->university->type==0)
-                                            Private
-                                        @else
-                                        Govenment</p>
-                                        @endif
-                                        @endif
-                                            <div class="card-rating">
-                                                <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2" style="margin:0px;">Rating:</p>
-
-
-                                                        <span>@if($uk->rating == 3 ?? '' )
-                                                                <span class="ratings ">
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                </span>
-                                                        @elseif($uk->rating == 4 ?? '')
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($uk->rating == 5 ?? '')
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                        </span>
-                                                        @elseif($uk->rating == 1 ?? '')
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($uk->rating == 2 ?? '')
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($uk->rating == null)- @else{{$uk->rating ?? ''}}/5 @endif</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-attributes">
-                                                <p>
-                                                    <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">@if(isset($uk->university->average_fees )){{ Config::get('define.currency.currency') }}{{$uk->university->average_fees ?? ''}}@else N/A @endif</span>
-                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
-                                                </p>
-                                                <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($uk->university->established_at))
-                                                        {{$uk->university->established_at}}
-                                                        @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$uk->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($uk->university->in_takes)){{$result = count(explode(',',$uk->university->in_takes))}} @else N/A @endif</span></li>
-
-
-                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$uk->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($uk->university->iltes))
-                                                            {{$uk->university->iltes}}/10
-                                                            @else -/10 @endif</span></li>
-                                </ul>
-                                            </div>
-
-                                            <div class="card-price d-flex align-items-center justify-content-between">
-                                                @if(auth()->user())
-                                                <a href="{{asset($uk->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
-                                                     height: 38px;
-                                                     padding-top: 9px;
-                                                 ">Brochure</a>
-                                                 @else
-                                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
-                                                     height: 38px;
-                                                     padding-top: 9px;
-                                                 ">Brochure</a>
-                                                 @endif
-
-
-                                                <a href="{{route('university_detail',['id'=>$uk->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card-item -->
-                                </div><!-- end col-lg-4 -->
-                                @endif
-                                @endforeach
-                                @else
-                                <div class="container" style="text-align: center;">
-                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                                       </div>
-@endif
-
-                            </div>
-                        </div><!-- end tab-pane -->
-                        <div class="tab-pane fade" id="seoul" role="tabpanel" aria-labelledby="seoul-tab">
-                            <div class="row">
-                                <?php $irel = App\Models\User::where('countries_id',103)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
-                                {{-- {{dd($usa)}} --}}
-                                @if($irel->count()> 0)
-
-                                @foreach($irel as $ire)
-                                @if($ire->isUniversity())
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="card-item car-card border">
-                                        <div class="card-img" style="text-align: center; height:185px;">
-                                        <a href="{{route('university_detail',['id'=>$ire->id])}}" class="d-block">
-                                            {{-- @php
-                                            print_r($ire->user->profile_image);
-                                        @endphp --}}
-                                                {{-- <img src="{{asset($ire->profile_image)}}" alt="university-img" > --}}
-                                                @if(isset($ire->university->cover_image) && file_exists($ire->university->cover_image))
-                                                <img
-                                                  {{-- style=" width: 368px;
-                                                height: 245px;"  --}}
-                                                src="{{asset($ire->university->cover_image)}}" height="185px;"alt="">
-                                                    @else
-                                                    <img
-                                                      {{-- style=" width: 368px;
-                                                    height: 245px;"  --}}
-                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
-                                                    @endif
-                                            </a>
-                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($ire->profile_image) && file_exists($ire->profile_image))
-                                                <img
-                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                                src="{{asset($ire->profile_image)}}" alt="">
-                                                    @else
-                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                                                    @endif</div>
-                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
-                                                    @if($ire->Premium_expire_date > $mytime)<span style="
-                                                    background-color: #073975;
-                                                " class="badge">Premium</span> @endif
-
-                                        </div>
-                                        <div class="card-body">
-                                          
-                                           <h3 class="card-title" title="{{$ire->university->university_name ?? ''}}" style="
-                                            white-space: nowrap;
-                                            overflow: hidden;"><a href="{{route('university_detail',['id'=>$ire->id])}}">
-                                                    @if(isset($ire->university->university_name)){{  $ire->university->university_name ?? ''}} @else N/A @endif</a>
-
-                                                    @if($ire->is_verified == 1)
-                                                        <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                                       
-                                                   @endif
-
-                                                    </h3>
-                                            <p class="card-meta">
-                                                @if(isset($ire->university->type))
-                                                 @if($ire->university->type==0)
-                                            Private
-                                        @else
-                                        Govenment</p>
-                                        @endif
-                                        @endif
-
-                                            <div class="card-rating">
-                                                <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2" style="margin:0px;">Rating:</p>
-
-                                                        <span>@if($ire->rating == 3 ?? '' )
-                                                                <span class="ratings ">
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                </span>
-                                                        @elseif($ire->rating == 4 ?? '')
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($ire->rating == 5 ?? '')
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                        </span>
-                                                        @elseif($ire->rating == 1 ?? '')
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($ire->rating == 2 ?? '')
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($ire->rating == null)- @else{{$ire->rating ?? ''}}/5 @endif</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-attributes">
-                                                <p>
-                                                    <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">@if(isset($ire->university->average_fees )){{ Config::get('define.currency.currency') }}{{$ire->university->average_fees ?? ''}} @else N/A @endif</span>
-                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
-                                                </p>
-                                                <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($ire->university->established_at))
-                                                        {{$ire->university->established_at}}
-                                                        @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$ire->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($ire->university->in_takes)){{$result = count(explode(',',$ire->university->in_takes))}} @else N/A @endif</span></li>
-
-
-                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$ire->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($ire->university->iltes))
-                                                            {{$ire->university->iltes}}/10
-                                                            @else -/10 @endif</span></li>
-                                </ul>
-                                            </div>
-
-                                            <div class="card-price d-flex align-items-center justify-content-between">
-                                                @if(auth()->user())
-                                                <a href="{{asset($ire->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
-                                                     height: 38px;
-                                                     padding-top: 9px;
-                                                 ">Brochure</a>
-                                                 @else
-                                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
-                                                     height: 38px;
-                                                     padding-top: 9px;
-                                                 ">Brochure</a>
-                                                 @endif
-
-
-
-                                                <a href="{{route('university_detail',['id'=>$ire->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card-item -->
-                                </div><!-- end col-lg-4 -->
-                                @endif
-                                @endforeach
-                                @else
-                                <div class="container" style="text-align: center;">
-                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                                       </div>
-@endif
-
-                            </div>
-                        </div><!-- end tab-pane -->
-                        <div class="tab-pane fade" id="tokyo" role="tabpanel" aria-labelledby="tokyo-tab">
-                            <div class="row">
-                                <?php $cana = App\Models\User::where('countries_id',38)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
-                                {{-- {{dd($usa)}} --}}
-                                @if($cana->count()> 0)
-                                @foreach($cana as $can)
-                                @if($can->isUniversity())
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="card-item car-card border">
-                                        <div class="card-img" style="text-align: center; height:185px;">
-                                        <a href="{{route('university_detail',['id'=>$can->id])}}" class="d-block">
-                                            {{-- @php
-                                            print_r($can->user->profile_image);
-                                        @endphp --}}
-                                                {{-- <img src="{{asset($can->profile_image)}}" alt="university-img" > --}}
-                                                @if(isset($can->university->cover_image) && file_exists($can->university->cover_image))
-                                                <img
-                                                  {{-- style=" width: 368px;
-                                                height: 245px;"  --}}
-                                                src="{{asset($can->university->cover_image)}}" height="185px;"alt="">
-                                                    @else
-                                                    <img
-                                                      {{-- style=" width: 368px;
-                                                    height: 245px;"  --}}
-                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
-                                                    @endif
-                                            </a>
-                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($can->profile_image) && file_exists($can->profile_image))
-                                                <img
-                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                                src="{{asset($can->profile_image)}}" alt="">
-                                                    @else
-                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                                                    @endif</div>
-                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
-                                                    @if($can->Premium_expire_date > $mytime)<span style="
-                                                    background-color: #073975;
-                                                " class="badge">Premium</span> @endif
-
-                                        </div>
-                                        <div class="card-body">
-                                                                             
-                                                    <h3 class="card-title" title="{{$can->university->university_name ?? ''}}" style="
-                                                        white-space: nowrap;
-                                                        overflow: hidden;"><a href="{{route('university_detail',['id'=>$can->id])}}">
-                                                    @if(isset($can->university->university_name))  {{$can->university->university_name ?? ''}} @else N/A @endif</a>
-
-                                                    @if($can->is_verified == 1)
-                                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                                  
-                                               @endif
-
-                                                    </h3>
-                                            <p class="card-meta">
-                                                @if(isset($can->university->type))
-                                                 @if($can->university->type==0)
-                                            Private
-                                        @else
-                                        Govenment</p>
-                                        @endif
-                                        @endif
-
-                                            <div class="card-rating">
-                                                <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2" style="margin:0px;">Rating:</p>
-
-                                                        <span>@if($can->rating == 3 ?? '' )
-                                                                <span class="ratings ">
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                </span>
-                                                        @elseif($can->rating == 4)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($can->rating == 5)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                        </span>
-                                                        @elseif($can->rating == 1)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($can->rating == 2)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($can->rating == null)- @else{{$can->rating ?? ''}}/5 @endif</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-attributes">
-                                                <p>
-                                                    <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">@if(isset($can->university->average_fees )){{ Config::get('define.currency.currency') }}{{$can->university->average_fees ?? ''}} @else N/A @endif</span>
-                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
-                                                </p>
-                                                <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($can->university->established_at))
-                                                        {{$can->university->established_at}}
-                                                        @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$can->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($can->university->in_takes)){{$result = count(explode(',',$can->university->in_takes))}} @else N/A @endif</span></li>
-
-
-                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$can->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($can->university->iltes))
-                                                            {{$can->university->iltes}}/10
-                                                            @else -/10 @endif</span></li>
-                                </ul>
-                                            </div>
-
-                                            <div class="card-price d-flex align-items-center justify-content-between">
-                                                @if(auth()->user())
-                                                <a href="{{asset($can->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
-                                                     height: 38px;
-                                                     padding-top: 9px;
-                                                 ">Brochure</a>
-                                                 @else
-                                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
-                                                     height: 38px;
-                                                     padding-top: 9px;
-                                                 ">Brochure</a>
-                                                 @endif
-
-
-
-                                                <a href="{{route('university_detail',['id'=>$can->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card-item -->
-                                </div><!-- end col-lg-4 -->
-                                @endif
-                                @endforeach
-                                @else
-                                <div class="container" style="text-align: center;">
-                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                                       </div>
-@endif
-                            </div>
-                        </div><!-- end tab-pane -->
-                        <div class="tab-pane fade" id="beijing" role="tabpanel" aria-labelledby="beijing-tab">
-                            <div class="row">
-                                <?php $aust = App\Models\User::where('countries_id',13)->where('status',1)->orderBy('rating', 'DESC')->limit(6)->get();?>
-                                {{-- {{dd($usa)}} --}}
-                                @if($aust->count()> 0)
-
-                                @foreach($aust as $aus)
-                                @if($aus->isUniversity())
-                                <div class="col-lg-4 responsive-column">
-                                    <div class="card-item car-card border">
-                                        <div class="card-img" style="text-align: center; height:185px;">
-                                        <a href="{{route('university_detail',['id'=>$aus->id])}}" class="d-block">
-                                            {{-- @php
-                                            print_r($aus->user->profile_image);
-                                        @endphp --}}
-                                                {{-- <img src="{{asset($aus->profile_image)}}" alt="university-img" > --}}
-                                                @if(isset($aus->university->cover_image) && file_exists($aus->university->cover_image))
-                                                <img
-                                                  {{-- style=" width: 368px;
-                                                height: 245px;"  --}}
-                                                src="{{asset($aus->university->cover_image)}}" height="185px;"alt="">
-                                                    @else
-                                                    <img
-                                                      {{-- style=" width: 368px;
-                                                    height: 245px;"  --}}
-                                                    src="{{asset('frontEnd/assets/images/university.jpg')}}" height="185px;">
-                                                    @endif
-                                            </a>
-                                            <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($aus->profile_image) && file_exists($aus->profile_image))
-                                                <img
-                                                style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
-                                                src="{{asset($aus->profile_image)}}" alt="">
-                                                    @else
-                                                    <img style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
-                                                    @endif</div>
-                                                    <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
-                                                    @if($aus->Premium_expire_date > $mytime)<span style="
-                                                    background-color: #073975;
-                                                " class="badge">Premium</span> @endif
-
-                                        </div>
-                                        <div class="card-body">
-                                          
-                                          
-                                       
-                                          
-                                                    <h3 class="card-title" title="{{$aus->university->university_name ?? ''}}" style="
-                                                        white-space: nowrap;
-                                                        overflow: hidden;">
-                                                    <a href="{{route('university_detail',['id'=>$aus->id])}}">
-                                                    @if(isset($aus->university->university_name)){{  $aus->university->university_name ?? ''}} @else N/A @endif</a>
-
-                                                    @if($aus->is_verified == 1)
-                                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                                    @endif
-
-                                                    </h3>
-                                            <p class="card-meta">
-                                                @if(isset($aus->university->type))
-                                                 @if($aus->university->type==0)
-                                            Private
-                                        @else
-                                        Govenment</p>
-                                        @endif
-                                        @endif
-
-                                            <div class="card-rating">
-                                                <div class="d-flex flex-wrap align-items-center pt-2">
-                                                    <p class="mr-2" style="margin:0px;">Rating:</p>
-
-                                                        <span>@if($aus->rating == 3 ?? '' )
-                                                                <span class="ratings ">
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                    <i class="la la-star-o"></i>
-                                                                </span>
-                                                        @elseif($aus->rating == 4)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($aus->rating == 5)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                        </span>
-                                                        @elseif($aus->rating == 1)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @elseif($aus->rating == 2)
-                                                        <span class="ratings ">
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                            <i class="la la-star-o"></i>
-                                                        </span>
-                                                        @endif</span>{!!"&nbsp;"!!}<span class="badge badge-warning text-white font-size-16">@if($aus->rating == null)- @else{{$aus->rating ?? ''}}/5 @endif</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-attributes">
-                                                <p>
-                                                    <span class="price__text">Average Fees :</span>
-                                                    <span class="price__num">@if(isset($aus->university->average_fees )){{ Config::get('define.currency.currency') }}{{$aus->university->average_fees ?? ''}} @else N/A @endif</span>
-                                                    {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
-                                                </p>
-                                                <ul class="d-flex align-items-center">
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established "><i class="las la-history"></i><span>   @if(isset($aus->university->established_at))
-                                                        {{$aus->university->established_at}}
-                                                        @else N/A @endif</span></li>
-                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="InTakes:{{$aus->university->in_takes ?? ''}}"><i class="las la-calendar-day"></i><span>@if(isset($aus->university->in_takes)){{$result = count(explode(',',$aus->university->in_takes))}} @else N/A @endif</span></li>
-
-
-                                                        <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="IELTS Rating : {{$aus->university->iltes}}/10"><i class="las la-clipboard-list"></i><span>   @if(isset($aus->university->iltes))
-                                                            {{$aus->university->iltes}}/10
-                                                            @else -/10 @endif</span></li>
-                                </ul>
-                                            </div>
-
-                                            <div class="card-price d-flex align-items-center justify-content-between">
-                                                @if(auth()->user())
-                                                <a href="{{asset($aus->university->brochure ?? '')}}" data-toggle="tooltip" data-placement="top"  title="Download Brochure" target="_blank" download class="buttonDownload" style="
-                                                     height: 38px;
-                                                     padding-top: 9px;
-                                                 ">Brochure</a>
-                                                 @else
-                                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#loginPopupForm" class="buttonDownload" style="
-                                                     height: 38px;
-                                                     padding-top: 9px;
-                                                 ">Brochure</a>
-                                                 @endif
-
-
-                                                <a href="{{route('university_detail',['id'=>$aus->id])}}"  class="theme-btn theme-btn-small mt-2">Apply<i class="las la-angle-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card-item -->
-                                </div><!-- end col-lg-4 -->
-                                @endif
-                                @endforeach
-                                @else
-                                <div class="container" style="text-align: center;">
-                                    <img src="{{asset('frontEnd/assets/images/noresult.gif')}}">
-                                       </div>
-@endif
-                            </div>
-                        </div><!-- end tab-pane -->
-                    </div><!-- end tab-content -->
-
-                @else
-                <h2 class="mt-5" style="text-align: center"> No Data Available</h2>
-
-                    @endif
-                </div>
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end round-trip-flight -->
-<!-- ================================
-    END ROUND-TRIP AREA
-================================= -->
 
 
 <section class="funfact-area padding-bottom-70px">
