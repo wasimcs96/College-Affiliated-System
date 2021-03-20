@@ -297,6 +297,13 @@
                         </div><!-- end company-logo -->
                     </div>
                 </a>
+                <div style="
+                text-align: end;
+            ">
+
+                    {{-- <span style="">ad</span> --}}
+                    <label for="">AD</label>
+                </div>
                 </div>
                 @endforeach
         </div><!-- end row -->
@@ -560,6 +567,13 @@
                         </div><!-- end company-logo -->
                     </div>
                 </a>
+                <div style="
+                text-align: end;
+            ">
+
+                    {{-- <span style="">ad</span> --}}
+                    <label for="">AD</label>
+                </div>
                 </div>
                 @endforeach
         </div><!-- end row -->

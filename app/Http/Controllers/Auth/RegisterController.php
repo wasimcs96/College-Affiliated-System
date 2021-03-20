@@ -55,7 +55,7 @@ $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?i
 $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
 $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
 $replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
-$replacement['WEBSITE_LINK'] = 'https://campusinterest.com/public/';
+$replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
 $data = ['template'=>'welcome-email','hooksVars' => $replacement];
 mail::to($email)->send(new \App\Mail\ManuMailer($data));
 

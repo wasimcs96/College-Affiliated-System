@@ -39,11 +39,11 @@ class ConsultantFrontController extends Controller
         return view('frontEnd.consultant.consultant_detail', compact('consultantUniversity'))->with('consultant', $consultant);
     }
 
-    public function book(Request $request)
+    public function book($consultantId,$universityId)
     {
         // dd($request->all());
-        $universityid = $request->get('universityid') ?? '';
-        $consultantid = $request->get('consultantid');
+        $universityid = $universityId ?? '';
+        $consultantid = $consultantId;
         $consultant = User::find($consultantid);
         return view('frontEnd.consultant.book', compact('universityid', 'consultant'))->with('countries', Country::all());
     }
@@ -94,7 +94,7 @@ class ConsultantFrontController extends Controller
         }
     }
     else{
-        $output='<option>Slots Not Availaible</option>';
+        $output='<option value="">Slots Not Availaible</option>';
     }
         echo $output;
     }
@@ -130,8 +130,8 @@ class ConsultantFrontController extends Controller
         // dd($time[1]);
         // dd($request->all());
         // dd($request->uid);
-        $bookind_date = strtotime($request->booking_date);
-        $book_date = date('Y-m-d',$bookind_date);
+        $bookind_date =$request->booking_date;
+        $book_date = date("Y-m-d", strtotime($bookind_date));
         $json = json_encode($request->banner_images);
         $consultantBooking = Booking::create([
             'booking_start_time' => $start_time,

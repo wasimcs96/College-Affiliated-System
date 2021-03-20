@@ -239,7 +239,7 @@ $inc = 0;
 @if(auth()->user())
 <div class="btn-box">
 <button style="
-margin-left: -15px;" class="theme-btn" type="button" id="confirmBooking">Confirm Booking</button>
+margin-left: -15px;" class="theme-btn" type="submit" id="confirmBooking">Confirm Booking</button>
 </div>
 
 @endif
@@ -337,16 +337,15 @@ $("#endtime").prop('disabled', true);
 }
 </script> --}}
 <script>
-    var date = new Date('now');
-    //var newdate = new Date(date);
+    var date = new Date(); // get current date
+    date.setDate(date.getDate() + 1); // add two days to it
 
-
-    var dd = date.getDate();
-    var tm = date.getTime();
-    var mm = date.getMonth();
-    var y = date.getFullYear();
-
-    var someFormattedDate = y + '/' + mm + '/' + dd;
+   // var dd = date.getDate();
+   // var tm = date.getTime();
+   // var mm = date.getMonth();
+  // var y = date.getFullYear();
+    
+   // var someFormattedDate = y + '/' + mm + '/' + dd;
 $("#date").datepicker({ onSelect: function(dateText) {
 
 
@@ -377,7 +376,7 @@ console.log("Selected date: " + dateText + "; input's current value: " + this.va
 
 
 },
-minDate: someFormattedDate,
+minDate: date,
 
 });
 </script>
@@ -520,7 +519,7 @@ if(r==4){
 $('#bst').prop('disabled', true);
 }
 image_row++;
-$('.selectpicker').selectpicker('refresh');
+//$('.selectpicker').selectpicker('refresh');
 $('.selectpicker').selectpicker('render');
 }
 

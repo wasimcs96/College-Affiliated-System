@@ -113,7 +113,7 @@
                                         <?php $headervalid = App\Models\Category::all(); ?>
 
                                         @if($headervalid->count()>0)
-                                        <a href="#">Courses<i style="color:#073975" class="la la-angle-down"></i></a>
+                                        <a href="#" onmouseover="openCity(event, 'London')">Courses<i style="color:#073975" class="la la-angle-down"></i></a>
                                         @else
                                         <a type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Unavailable" style="color: #073975">Courses</a>
                                         @endif
@@ -723,7 +723,7 @@
                                     <li>
                                         <?php $headercountryvalidconsultant = App\Models\Consultant::all(); ?>
                                         @if($headercountryvalidconsultant->count() > 0)
-                                        <a href="#">Consultants<i class="la la-angle-down"></i></a>
+                                        <a href="#" onmouseover="openCity(event, 'consultant_us')">Consultants<i class="la la-angle-down"></i></a>
                                         @else
                                         <a type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Unavailable" style="color: #073975">Consultant </a>
                                         @endif
@@ -1228,7 +1228,7 @@
                                     <li>
                                         <?php $headercountryvalidsuniversity = App\Models\Country::all(); ?>
                                         @if($headercountryvalidsuniversity->count() > 0)
-                                        <a href="#">Study Abroad<i class="la la-angle-down"></i></a>
+                                        <a href="#" onmouseover="openCity(event, 'country_us')">Universities<i class="la la-angle-down"></i></a>
                                         @else
                                         <a type="button" disabled data-toggle="tooltip"  data-url=""  data-title="Unavailable" style="color: #073975">Study Abroad </a>
                                         @endif
@@ -1874,12 +1874,115 @@
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="skip">Skip</button>
-              <button type="button" class="btn btn-primary" id="universitySubmit">Submit</button>
+              <button type="button" data-toggle="modal" data-target ="#mdlerror" class="btn btn-secondary">Skip</button>
+              <button type="button" data-toggle="modal" data-target ="#mdlsub" class="btn btn-primary" >Submit</button>
             </div>
           </div>
         </div>
       </div>
+
+
+      
+<div class="modal fade" id="mdlerror" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-body" style="
+        text-align:center;
+        padding: 0px;
+        ">
+            <div style="
+            padding: 0px;
+            background-color: #fdb719;
+        ">
+            <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/error.png')}}">
+            </div>
+
+            <div style="background-color: white;color: #585550;font-family: sans-serif;">
+                <h1>Are You Sure You Want to Skip ! </h1>
+                <h4 style="
+
+                margin: 0px;
+                font-size: large;
+                "
+            >This Action Can't be Undone</h4>
+            </div>
+        </div>
+        <div class="modal-footer"  style="
+        padding: 0px;
+        border: 0px;
+        justify-content: center;
+        background-color: white;
+    ">
+          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+          <button id="skip" style="border-radius: 62px;
+          background-color: #fdb719;
+          border-color: #fdb719;
+          color: black;
+          font-weight: 500;
+    font-family: sans-serif;"  class="btn btn-primary">Yes</button>
+          <a href="#addUniversityModal"  style="border-radius: 62px;
+          background-color: #fdb719;
+          border-color: #fdb719;
+          color: black;
+          font-weight: 500;
+    font-family: sans-serif;" class="btn btn-primary"  data-toggle="modal" data-dismiss="modal"  id="add_document3">No</a>
+        </div>
+        </div>
+       </div>
+</div>
+{{-- ####################################################ERROR###################### --}}
+
+
+<div class="modal fade" id="mdlsub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-body" style="
+        text-align:center;
+        padding: 0px;
+        ">
+            <div style="
+            padding: 0px;
+            background-color: #fdb719;
+        ">
+            <img  style=" width: 122px;margin-top: 18px;margin-bottom: 18px"; src="{{asset('frontEnd/assets/images/error.png')}}">
+            </div>
+
+            <div style="background-color: white;color: #585550;font-family: sans-serif;">
+                <h1>Are You Sure! </h1>
+                <h4 style="
+
+                margin: 0px;
+                font-size: large;
+                "
+            >This Action Can't be Undone</h4>
+            </div>
+        </div>
+        <div class="modal-footer"  style="
+        padding: 0px;
+        border: 0px;
+        justify-content: center;
+        background-color: white;
+    ">
+          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+          <button id="universitySubmit" style="border-radius: 62px;
+          background-color: #fdb719;
+          border-color: #fdb719;
+          color: black;
+          font-weight: 500;
+    font-family: sans-serif;"  class="btn btn-primary">Yes</button>
+          <a href="#addUniversityModal"  style="border-radius: 62px;
+          background-color: #fdb719;
+          border-color: #fdb719;
+          color: black;
+          font-weight: 500;
+    font-family: sans-serif;" class="btn btn-primary"  data-toggle="modal" data-dismiss="modal"  id="add_document3">No</a>
+        </div>
+        </div>
+       </div>
+</div>
+{{-- ####################################################ERROR###################### --}}
 </header>
 
 

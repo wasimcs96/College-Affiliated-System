@@ -73,18 +73,26 @@ class PaymentController extends Controller
             $role = '';
             if(auth()->user()->isUniversity())
             {
-                $role = University;
+                $role = 'University';
             }
 
             if(auth()->user()->isConsultant())
             {
-                $role = Consultant;
+                $role = 'Consultant';
             }
 $consultantSubscription = Carbon::now()->addMonths($time);
             // Important Code
             $replacement['ROLE'] = $role;
             $replacement['SERVICE_NAME'] = 'Subscription';
             $replacement['SERVICE_DETAIL'] = 'Subscription Expire Date: '.$consultantSubscription;
+            $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+$replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
+            $replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
             $data = ['template'=>'consultant-services','hooksVars' => $replacement];
             mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
         }
@@ -95,8 +103,18 @@ $consultantSubscription = Carbon::now()->addMonths($time);
             $user->save();
 $consultantPremium = Carbon::now()->addMonths($time);
             // Important Code
+                $replacement['ROLE'] = $role;
             $replacement['SERVICE_NAME'] ='Go Premium';
             $replacement['SERVICE_DETAIL'] = 'Premium Expire Date: '.$consultantPremium;
+                  $replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
+                        $replacement['SUPPORT_EMAIL'] = 'https://campusinterest.com';
+                        $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+$replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
             $data = ['template'=>'consultant-services','hooksVars' => $replacement];
             mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
         }

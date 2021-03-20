@@ -35,7 +35,8 @@
                                                 <div class="select-contain w-auto">
                                                     <select  name="country" class="select-contain-select">
                                                         <?php $countries = App\Models\Country::all();?>
-                                                        <option value=""  >Select Country</option>
+
+                                                        <option>Select Country</option>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $countryt)
                                                             <option value="{{$countryt->countries_id}}" @if(isset($country) && $country == $countryt->countries_id) selected @endif >{{$countryt->countries_name}}</option>
@@ -149,7 +150,9 @@
         @if($consultant->isConsultant())
 
         <div class="col-lg-4 responsive-column">
-            <div class="card-item car-card border">
+            <div class="card-item car-card border" style="
+            overflow: hidden;
+        ">
                 <div class="card-img" style="text-align: center; height:185px;">
                     <div>
                     <a href="javascript:void(0)" class="d-block">
@@ -236,16 +239,10 @@
                             <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established"><i class="las la-calendar"></i><span>   @if(isset($consultant->consultant->created_at))
                                 {{$consultant->consultant->created_at->Format("Y") ?? ''}}
                                 @else N/A @endif</span></li>
-                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span> @if(isset($consultant->consultantBooking))
-                                {{$consultant->consultantBooking->count()}}@else N/A @endif</span></li>
-                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span> @if(isset($consultant->consultantUniversity))
-                                {{$consultant->consultantUniversity->count()}}@else N/A @endif</span></li>
-                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Client"><i class="las la-users"></i><span>
-                                @if(isset($consultant->consultantUniversityClient))
-                                {{$consultant->consultantUniversityClient->count()}}@else N/A @endif</span></li>
+
                         </ul>
                     </div>
-                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Location"><i class="las la-map-marker-alt"></i> {{ $consultant->address_1 ?? '' }}</li>
+                    <span class="align-items-center" data-toggle="tooltip" data-placement="top" title="Location: {{ $consultant->address_1 ?? 'N/A' }}" style="white-space: nowrap; overflow: hidden;"><i class="las la-map-marker-alt"></i> {{ $consultant->address_1 ?? 'N/A' }}</span>
                     <div class="card-price d-flex align-items-center justify-content-between">
                         <p
                          {{-- style="
@@ -257,12 +254,7 @@
                         </p>
                         @if(auth()->user())
                         @if(auth()->user()->isClient())
-                        <form action="{{route('prmigration.book')}}" method="post">
-                            @csrf
-                            <input type="hidden" value="@if(isset($countrycoming)){{$countrycoming}} @endif" name="countrycomming">
-                            <input type="hidden" value="{{$consultant->id ?? ''}}" name="consultant_id">
-                        <button  type="submit" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></button>
-                        </form>
+                        <a href="{{route('prmigration.book',['consultantId'=>$consultant->id ?? '','countryId'=>$countrycoming ?? $country ?? '0'])}}"  class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
                         @else
                         <a href="{{route('consultant_detail',['id' => $consultant->id])}}" class="theme-btn theme-btn-small mt-2">Detail<i class="las la-angle-double-right"></i></a>
                         @endif

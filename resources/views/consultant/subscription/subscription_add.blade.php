@@ -234,13 +234,15 @@
                         <br>
 
                         <p class="align-justify"><b >Payment Method</b></p>
-                        <div class="align-justify"> <img style="margin-top: -57px; margin-left: 1px;"  class="cntr" id="rzp-button1" src="{{asset('assets/images/razor_pay.png')}} "></div>
+                        <div class="align-justify"><button type="button" class="btn btn-outline-primary cntr" id="rzp-button1"  style="font-size: xx-large;">Payment</button></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>`;
+
+
 $('#choosedcontent').html(html);
     $.ajaxSetup({headers:
         {

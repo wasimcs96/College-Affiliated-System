@@ -298,16 +298,13 @@ class="fa fa-fw fa-save"></i> Submit
 @section('per_page_script')
 
 <script>
-      var date = new Date('now');
+    //  var date = new Date('now');
     //var newdate = new Date(date);
 
+    var date = new Date(); // get current date
+    date.setDate(date.getDate() + 1); // add two days to it
 
-    var dd = date.getDate();
-    var tm = date.getTime();
-    var mm = date.getMonth();
-    var y = date.getFullYear();
-
-    var someFormattedDate = y + '/' + mm + '/' + dd;
+   
 $("#date").datepicker({ onSelect: function(dateText) {
 
 
@@ -338,7 +335,7 @@ console.log("Selected date: " + dateText + "; input's current value: " + this.va
 
 
 },
-minDate: someFormattedDate
+minDate: date
  });
 </script>
 {{-- <script>
