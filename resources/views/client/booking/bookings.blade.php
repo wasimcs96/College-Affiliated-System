@@ -25,12 +25,13 @@
                 <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
-                            {{-- <th><b> Updated At</b></th> --}}
+
                             <th><b> Consultant  Name</b></th>
                             <th><b> Booking Date </b></th>
                             <th><b> Booking Time Slot </b></th>
                             <th><b> Status</b></th>
                             <th>Booking Type</th>
+                            <th><b> Updated At</b></th>
                             <th><b> Actions</b></th>
 
                         </tr>
@@ -59,7 +60,8 @@
                             </td>
                             @endif
                             <td><div class="btn btn-{{$booking->booking_for==0 ? 'primary':'info'}}">{{$booking->booking_for==0 ? 'Study Abroad':'PR'}}</div></td>
-                                <td><a href="{{route('client.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                            <td>{{ $booking->updated_at ?? ''}}</td>
+                            <td><a href="{{route('client.booking.show',['id'=> $booking->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                             </tr>
                             @endif
                         @endforeach
@@ -117,7 +119,7 @@ tr.shown td.details-control {
 <script>
 $(document).ready(function() {
     $('#example').DataTable( {
-        "order": [[ 0, "desc" ]]
+        "order": [[ 5, "desc" ]]
     } );
 } );
 </script>

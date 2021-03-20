@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class FrontEndController extends Controller
 {
 
@@ -45,5 +45,12 @@ class FrontEndController extends Controller
         return response(json_encode($msg));
      }
 
-
+ public function userVerify($id)
+     {
+        // dd($id);
+        $user=User::find($id);
+        $user->email_verified_at=Carbon::now();
+        $user->save();
+        return redirect(route('front'));
+     }
 }

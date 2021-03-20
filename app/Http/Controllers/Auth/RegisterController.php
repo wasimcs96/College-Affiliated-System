@@ -37,28 +37,31 @@ class RegisterController extends Controller
 
       $random = rand(2,50000);
 // dd($data['email']{$random});
-$email = $data['email'];
        $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
-            'email' => 'sufiyan'.$random.'@gmail.com',
+            'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ])->assignRole('client');
 
+        $site = config('get.WEBSITE_LINK');
+        $support_email = config('get.ADMIN_EMAIL');
+        if(isset($user->email))
+        {
       // Important Code
       $replacement['USER_NAME'] = $user->first_name;
-$replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
-$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
-$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
-$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
-$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
-$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
-$replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
-$replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
-$data = ['template'=>'welcome-email','hooksVars' => $replacement];
-mail::to($email)->send(new \App\Mail\ManuMailer($data));
-
+      $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+      $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+      $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+      $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+      $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+      $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+      $replacement['SUPPORT_EMAIL'] = $support_email;
+      $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
+      $data = ['template'=>'welcome-email','hooksVars' => $replacement];
+      mail::to($user->email)->send(new \App\Mail\ManuMailer($data));
+        }
 return $user;
 
     }

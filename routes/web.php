@@ -15,6 +15,7 @@
     // ]);
 
 // ######################univerisity all###################################
+
 Route::get('university/all',[
     'uses'=>'FrontEndController\UniversityFrontController@index',
     'as'=>'university_all'
@@ -49,7 +50,7 @@ Route::post('fetch/university/selectedcountrywise',[
 ]);
 
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+Route::get('email/verify/{id}', 'FrontEndController\FrontEndController@userVerify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::get('fetch/consultants/universitywise',[

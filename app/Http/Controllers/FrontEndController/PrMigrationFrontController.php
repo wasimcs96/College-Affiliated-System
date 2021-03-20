@@ -155,15 +155,47 @@ class PrMigrationFrontController extends Controller
             // dd($request->cid);
             $consultant = User::where('id',$request->cid)->first();
             $id=$consultantBooking->id;
+            $site = config('get.WEBSITE_LINK');
+            $support_email = config('get.ADMIN_EMAIL');
+            if(isset(auth()->user()->email))
+            {
            // Important Code
-            //   $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
-            //   $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
-            //   $replacement['ADDRESS'] = $consultant->address_1;
-            //   $replacement['SERVICE_NAME'] = 'PR Booking';
-            //   $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
-            //   $data = ['template'=>'booking','hooksVars' => $replacement];
-            //   mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
-            //   mail::to($consultant->email)->send(new \App\Mail\ManuMailer($data));
+              $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
+              $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
+              $replacement['ADDRESS'] = $consultant->address_1;
+              $replacement['SERVICE_NAME'] = 'PR Booking';
+              $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
+              $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+              $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+              $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+              $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+              $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+              $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+              $replacement['SUPPORT_EMAIL'] = $support_email;
+              $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
+              $data = ['template'=>'booking','hooksVars' => $replacement];
+              mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+        }
+        if(isset($consultant->email))
+        {
+             // Important Code
+          $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
+          $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
+          $replacement['ADDRESS'] = auth()->user()->address;
+          $replacement['SERVICE_NAME'] = 'PR Booking';
+          $replacement['BOOKING_LINK'] = 'https://campusinterest.com/consultant/bookings/show/'.$id;
+          $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+$replacement['SUPPORT_EMAIL'] = $support_email;
+$replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
+
+          $data = ['template'=>'consultant-booking','hooksVars' => $replacement];
+          mail::to($consultant->email)->send(new \App\Mail\ManuMailer($data));
+        }
             return redirect()->route('client.dashboard')->with('success','Your Booking have been Submitted Successfully');
 
     }

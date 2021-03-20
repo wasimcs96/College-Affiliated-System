@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://kamercio.com/campusInterest/public/'),
+    'url' => env('APP_URL', 'https://campusinterest.com'),
 
     'asset_url' => env('ASSET_URL', null),
 

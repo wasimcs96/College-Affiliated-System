@@ -17,7 +17,7 @@
         </div>
         <div class="body">
             <div class="table-responsive">
-                <table class="table table-striped table-hover dataTable js-exportable">
+                <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
                             <th> <b>
@@ -27,6 +27,7 @@
                             {{-- <th><b> Universities</b></th> --}}
                             {{-- <th><b> Date</b></th> --}}
                             <th><b> Status</b></th>
+                            <th><b> Updated At </b></th>
                             <th style="text-align: center;"><b> Actions</b></th>
                         </tr>
                     </thead>
@@ -50,6 +51,7 @@
                                 @if($application->status==1)<div class="btn btn-success">Completed</div>@endif
                                 @if($application->status==2)<div class="btn btn-danger">Closed</div>@endif
                             </td>
+                            <td> {{ $appplication->updated_at ?? '' }} </td>
                             <td style="text-align: center;"><a href="{{route('university.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
                         @endif
@@ -93,4 +95,11 @@ tr.shown td.details-control {
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "order": [[ 0, "desc" ]]
+        } );
+    } );
+</script>
 @stop
