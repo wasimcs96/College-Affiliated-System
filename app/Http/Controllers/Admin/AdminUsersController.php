@@ -87,19 +87,23 @@ class AdminUsersController extends Controller
             'countries_id'=>$request->country,
             'password' => Hash::make($request->password),
         ])->assignRole('client');
-
+        $site = config('get.WEBSITE_LINK');
+        $support_email = config('get.ADMIN_EMAIL');
+        if(isset($request->email))
+        {
 // Important Code
+$replacement['USER_NAME'] = $user->first_name;
 $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
 $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
 $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
 $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
 $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
 $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
-$replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
-$replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
+$replacement['SUPPORT_EMAIL'] = $support_email;
+$replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
 $data = ['template'=>'welcome-email','hooksVars' => $replacement];
 mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
-
+        }
 return redirect()->route('admin.users',['id' => 1])->with('users', User::all())->with('id',1)->with('success','Client Created Successfully');
        }
        if($role==2){
@@ -119,18 +123,27 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
             'university_name'=>$request->university_name,
 
         ]);
+        $site = config('get.WEBSITE_LINK');
+        $support_email = config('get.ADMIN_EMAIL');
+        if(isset($request->email))
+        {
                     // Important Code
-    //  $replacement['token'] =$request->_token;
-
-    //  $replacement['TYPE'] = 'University';
-    //  $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
-    //  $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
-    //  $replacement['USER_NAME'] = $request->first_name;
-    //  $replacement['PASSWORD'] = $request->password;
-    //  $replacement['EMAIL'] = $request->email;
-    //  $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
-    //  mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
-
+     $replacement['token'] =$request->_token;
+     $replacement['TYPE'] = 'University';
+     $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+        $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+        $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+        $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+        $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+        $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+        $replacement['SUPPORT_EMAIL'] = $support_email;
+        $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
+     $replacement['USER_NAME'] = $request->first_name;
+     $replacement['PASSWORD'] = $request->password;
+     $replacement['EMAIL'] = $request->email;
+     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+        }
         $users = User::all();
         foreach($users as $use)
         {
@@ -138,9 +151,20 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
             {
                 if($use->isConsultant())
                 {
+                    if(isset($request->email))
+                    {
                     $replacement['UNIVERSITY_NAME'] = $request->university_name;
+                    $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+                    $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+                    $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+                    $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+                    $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+                    $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+                    $replacement['SUPPORT_EMAIL'] = $support_email;
+                    $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
                     $data = ['template'=>'university-added','hooksVars' => $replacement];
                     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+                    }
                 }
             }
         }
@@ -162,17 +186,28 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
         Consultant::create([
             'user_id'=>$user->id,
         ]);
+        $site = config('get.WEBSITE_LINK');
+        $support_email = config('get.ADMIN_EMAIL');
+        if(isset($request->email))
+        {
                     // Important Code
-//                     $replacement['token'] =$request->_token;
+                    $replacement['token'] =$request->_token;
 
 
-//                     $replacement['USER_NAME'] = $request->first_name;
-//      $replacement['PASSWORD'] = $request->password;
-//      $replacement['EMAIL'] = $request->email;
-//      $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
-// $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
-//      $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
-//      mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+                    $replacement['USER_NAME'] = $request->first_name;
+     $replacement['PASSWORD'] = $request->password;
+     $replacement['EMAIL'] = $request->email;
+     $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+     $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+     $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+     $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+     $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+     $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+     $replacement['SUPPORT_EMAIL'] = $support_email;
+     $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
+     $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
+     mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+        }
      return redirect()->route('admin.users',['id' => 2])->with('users', User::all())->with('id',2)->with('success','Consultant Created Successfully');
        }
        if($role==5){
@@ -184,6 +219,10 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
             'countries_id'=>$request->country,
             'password' => Hash::make($request->password),
         ])->assignRole('subAdmin');
+        $site = config('get.WEBSITE_LINK');
+        $support_email = config('get.ADMIN_EMAIL');
+        if(isset($request->email))
+        {
           // Important Code
      $replacement['token'] =$request->_token;
 
@@ -192,9 +231,16 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
      $replacement['PASSWORD'] = $request->password;
      $replacement['EMAIL'] = $request->email;
      $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
-$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+     $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+     $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+     $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+     $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+     $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+     $replacement['SUPPORT_EMAIL'] = $support_email;
+     $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
      $data = ['template'=>'consultant-sign-up','hooksVars' => $replacement];
      mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+        }
      return redirect()->route('admin.users',['id' => 4])->with('users', User::all())->with('id',4)->with('success','SubAdmin Created Successfully');
        }
 

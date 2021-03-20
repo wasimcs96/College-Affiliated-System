@@ -128,11 +128,25 @@ class ConsultantApplicationController extends Controller
        $application = $university->application_id;
         $user_id = Application::where('id',$application)->first();
         $email = $user_id->user->email;
+         $site = config('get.WEBSITE_LINK');
+        $support_email = config('get.ADMIN_EMAIL');
+         if(isset($email))
+        {
        // Important Code
             $replacement['WEBSITE_LINK'] = 'https://campusinterest.com/';
             $replacement['UNIVERSITY_NAME'] = $university_name;
-            $data = ['template'=>'fees-visa','hooksVars' => $replacement];
+
+            $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+$replacement['SUPPORT_EMAIL'] = $support_email;
+// $replacement['WEBSITE_LINK'] = $site ;
+ $data = ['template'=>'fees-visa','hooksVars' => $replacement];
             mail::to($email)->send(new \App\Mail\ManuMailer($data));
+   }
        return response('success');
 
     }
@@ -173,12 +187,26 @@ class ConsultantApplicationController extends Controller
         $application = $university->application_id;
         $user_id = Application::where('id',$application)->first();
         $email = $user_id->user->email;
+           $site = config('get.WEBSITE_LINK');
+        $support_email = config('get.ADMIN_EMAIL');
+         if(isset($email))
+        {
         // Important Code
             $replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
             $replacement['UNIVERSITY_NAME'] = $university_name;
             $replacement['DEADLINE'] = $date;
+                $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+$replacement['SUPPORT_EMAIL'] = $support_email;
+// $replacement['WEBSITE_LINK'] = $site ;
+ $data = ['template'=>'fees-visa','hooksVars' => $replacement];
             $data = ['template'=>'offer-received','hooksVars' => $replacement];
             mail::to($email)->send(new \App\Mail\ManuMailer($data));
+        }
     }
     else {
 
@@ -250,11 +278,25 @@ class ConsultantApplicationController extends Controller
          $booking->status = 4;
          $booking->save();
          $email = $application->user->email;
+            $site = config('get.WEBSITE_LINK');
+        $support_email = config('get.ADMIN_EMAIL');
+        if(isset($email))
+        {
                 // Important Code
 
             $replacement['COUNTRY_NAME'] = $country_name;
+                $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+$replacement['SUPPORT_EMAIL'] = $support_email;
+$replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
+ $data = ['template'=>'fees-visa','hooksVars' => $replacement];
             $data = ['template'=>'fees-visa-received','hooksVars' => $replacement];
             mail::to($email)->send(new \App\Mail\ManuMailer($data));
+        }
             return redirect()->back()->with('success','Application Process is Completed Successfully');
 
 

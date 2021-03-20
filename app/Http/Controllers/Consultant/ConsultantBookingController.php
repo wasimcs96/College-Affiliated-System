@@ -150,10 +150,23 @@ public function applicationStore(Request $request){
         $userEmail = User::where('id',$request->client_id)->first();
         $email = $userEmail->email;
         $aid = $store->id;
+        $site = config('get.WEBSITE_LINK');
+        $support_email = config('get.ADMIN_EMAIL');
+        if(isset($email))
+        {
         // Important Code
             $replacement['APPLICATION_LINK'] = 'https://campusinterest.com/client/applications/show/'.$aid;
+            $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+            $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+            $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+            $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+            $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+            $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+            $replacement['SUPPORT_EMAIL'] = $support_email;
+            $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
             $data = ['template'=>'application','hooksVars' => $replacement];
             mail::to($email)->send(new \App\Mail\ManuMailer($data));
+        }
         return redirect()->route('consultant.application')->with('success','Application Created Successfully');
     // }
     // else

@@ -52,12 +52,25 @@ $as= Advertisement::create([
      'order_id'=>$request->orderId
  ]);
 
+ $site = config('get.WEBSITE_LINK');
+ $support_email = config('get.ADMIN_EMAIL');
+ if(isset(auth()->user()->email))
+ {
             // Important Code
             $replacement['ROLE'] = 'University';
             $replacement['SERVICE_NAME'] = 'Advertisement';
             $replacement['SERVICE_DETAIL'] = 'Your advertisement is under' ;
+            $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+            $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+            $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+            $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+            $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+            $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+            $replacement['SUPPORT_EMAIL'] = $support_email;
+            $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
             $data = ['template'=>'consultant-services','hooksVars' => $replacement];
             mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+ }
      return redirect()->route('university.advertisement')->with('success','Advertisement updated successfully');
     }
 

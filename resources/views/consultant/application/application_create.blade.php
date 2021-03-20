@@ -558,7 +558,7 @@
                                                         <input type="hidden" name="doc[{{$dockey}}]" value="0" hidden>
                                                         <input type="checkbox" name="doc[{{$dockey}}]" id="document[{{$increase}}]" value="{{$value}}" checked style="margin-right: 4px">
 
-                                                        <span>{{$dockey}}</span>
+                                                        <span>{{$dockey ?? ''}}</span>
 
                                                         @php $increase++ @endphp
 

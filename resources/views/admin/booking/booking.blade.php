@@ -49,9 +49,9 @@
                             <td>@if(isset($booking->user->first_name)){{$booking->user->first_name}} {{$booking->user->last_name}}@else N/A @endif</td>
                             <td>@if(isset($booking->userConsultant->first_name)){{$booking->userConsultant->first_name}} {{$booking->userConsultant->last_name}}@else N/A @endif</td>
 
-              
 
-                  
+
+
 
                             <td>@if(isset($booking->booking_date)){{ Carbon\Carbon::parse($booking->booking_date)->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
                             {{-- <td>tru</td>--}}

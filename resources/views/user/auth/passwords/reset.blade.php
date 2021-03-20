@@ -112,7 +112,7 @@
 
                         </p> --}}
                     </div><!-- form-title-wrap -->
-                    <div class="form-content ">
+                    <div class="form-content">
                         <div class="contact-form-action">
                             <form method="POST" action="{{ route('password.update') }}">
                         @csrf
@@ -136,7 +136,7 @@
                                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="form-group">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" minlength="8" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -149,7 +149,7 @@
                                 <div class="input-box">
                                     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="form-group">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                                 </div>

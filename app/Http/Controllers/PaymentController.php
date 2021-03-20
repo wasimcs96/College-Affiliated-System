@@ -81,42 +81,51 @@ class PaymentController extends Controller
                 $role = 'Consultant';
             }
 $consultantSubscription = Carbon::now()->addMonths($time);
+$site = config('get.WEBSITE_LINK');
+$support_email = config('get.ADMIN_EMAIL');
+        if(isset(auth()->user()->email))
+        {
             // Important Code
             $replacement['ROLE'] = $role;
             $replacement['SERVICE_NAME'] = 'Subscription';
             $replacement['SERVICE_DETAIL'] = 'Subscription Expire Date: '.$consultantSubscription;
             $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
-$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
-$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
-$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
-$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
-$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
-$replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
+            $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+            $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+            $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+            $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+            $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+            $replacement['SUPPORT_EMAIL'] = $support_email;
             $replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
             $data = ['template'=>'consultant-services','hooksVars' => $replacement];
             mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+        }
         }
 
         if ($request->payment_type == 1) {
             $time = $request->package_time;
             $user->Premium_expire_date = Carbon::now()->addMonths($time);
             $user->save();
-$consultantPremium = Carbon::now()->addMonths($time);
+            $consultantPremium = Carbon::now()->addMonths($time);
+            $site = config('get.WEBSITE_LINK');
+            $support_email = config('get.ADMIN_EMAIL');
+           if(auth()->user()->email)
+           {
             // Important Code
                 $replacement['ROLE'] = $role;
-            $replacement['SERVICE_NAME'] ='Go Premium';
-            $replacement['SERVICE_DETAIL'] = 'Premium Expire Date: '.$consultantPremium;
-                  $replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
-                        $replacement['SUPPORT_EMAIL'] = 'https://campusinterest.com';
-                        $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
-$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
-$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
-$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
-$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
-$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
-$replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
+                $replacement['SERVICE_NAME'] ='Go Premium';
+                $replacement['SERVICE_DETAIL'] = 'Premium Expire Date: '.$consultantPremium;
+                $replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
+                $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+                $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+                $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+                $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+                $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+                $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+                $replacement['SUPPORT_EMAIL'] = $support_email;
             $data = ['template'=>'consultant-services','hooksVars' => $replacement];
             mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+        }
         }
 
 

@@ -45,12 +45,25 @@ class ConsultantDuesController extends Controller
             $dues->due_amount= $dues->due_amount-$amount;
             $dues->temp_client_count=0;
             $dues->save();
+            $site = config('get.WEBSITE_LINK');
+            $support_email = config('get.ADMIN_EMAIL');
+            if(isset(auth()->user()->email))
+            {
             // Important Code
             $replacement['ROLE'] = 'Consultant';
             $replacement['SERVICE_NAME'] = 'Dues';
             $replacement['SERVICE_DETAIL'] = 'Paid Amount: '.$request->amount;
+            $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+            $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+            $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+            $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+            $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+            $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+            $replacement['SUPPORT_EMAIL'] = $support_email;
+            $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
             $data = ['template'=>'consultant-services','hooksVars' => $replacement];
             mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+            }
          }
 
 

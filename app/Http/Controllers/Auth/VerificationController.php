@@ -10,7 +10,7 @@ class VerificationController extends Controller
 {
     use VerifiesEmails;
 
-    protected $redirectTo = '/';
+    protected $redirectTo = '/index';
 
     public function __construct()
     {
@@ -25,4 +25,6 @@ class VerificationController extends Controller
             ? redirect($this->redirectPath())
             : view('user.auth.verify');
     }
+
+
 }

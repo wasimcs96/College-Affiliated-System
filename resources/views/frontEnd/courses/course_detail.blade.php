@@ -295,7 +295,7 @@
                                                 <h3 class="title">{{$course->title ?? ''}}</h3>
                                             </div>
                                             </th>
-                                            <td>{{$course->category->title}}</td>
+                                            <td>{{$course->category->title ?? 'N/A'}}</td>
 
 
                                                <td>
@@ -304,8 +304,8 @@
                                                 @endphp
                                            {{$levels[$course->type] ?? 'N/A'}}
                                                </td>
-                                               <td>{{ Config::get('define.currency.currency') }} {{$course->fees ?? ''}}</td>
-                                               <td>@if(isset($course->duration)) {{ $course->duration }} @endif</td>
+                                               <td>{{ Config::get('define.currency.currency') }} {{$course->fees ?? 'N/A'}}</td>
+                                               <td> {{ $course->duration ?? 'N/A' }}</td>
                                                {{-- <td>@if(isset($course->start_date)) {{ Carbon\Carbon::parse($course->start_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }} @else N/A @endif</td>
                                                <td>@if(isset($course->end_date)){{ Carbon\Carbon::parse($course->end_date ?? '')->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td> --}}
 

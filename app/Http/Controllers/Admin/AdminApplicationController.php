@@ -118,12 +118,24 @@ class AdminApplicationController extends Controller
      //    $university->documents = array_merge($documentVisa,$documentDefault2);
         $university->is_accepeted = 1;
         $university->save();
-
+        $site = config('get.WEBSITE_LINK');
+        $support_email = config('get.ADMIN_EMAIL');
+        if(isset($email))
+        {
            // Important Code
            $replacement['WEBSITE_LINK'] = 'https://campusinterest.com/';
            $replacement['UNIVERSITY_NAME'] = $university_name;
+           $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+           $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+           $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+           $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+           $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+           $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+           $replacement['SUPPORT_EMAIL'] = $support_email;
+        //    $replacement['WEBSITE_LINK'] = $site ;
            $data = ['template'=>'fees-visa','hooksVars' => $replacement];
            mail::to($email)->send(new \App\Mail\ManuMailer($data));
+        }
         return response('success');
 
      }
@@ -145,11 +157,23 @@ class AdminApplicationController extends Controller
          // $default_document = University::find($university_id);
          // $default_document->default_documents = $document;
          // $default_document->save();
+         $site = config('get.WEBSITE_LINK');
+         $support_email = config('get.ADMIN_EMAIL');
                       // Important Code
-
+           if(isset($email))
+           {
              $replacement['COUNTRY_NAME'] = $country_name;
+             $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+             $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+             $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+             $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+             $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+             $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+             $replacement['SUPPORT_EMAIL'] = $support_email;
+             $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
              $data = ['template'=>'fees-visa-received','hooksVars' => $replacement];
              mail::to($email)->send(new \App\Mail\ManuMailer($data));
+           }
          return response('success');
 
       }
@@ -163,12 +187,25 @@ class AdminApplicationController extends Controller
          $university->approved_status = 1;
          $university->deadline=$date;
          $university->save();
+         $site = config('get.WEBSITE_LINK');
+         $support_email = config('get.ADMIN_EMAIL');
+         if(isset($email))
+         {
            // Important Code
            $replacement['WEBSITE_LINK'] = 'https://campusinterest.com/';
            $replacement['UNIVERSITY_NAME'] = $university_name;
            $replacement['DEADLINE'] = $date;
+           $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+           $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+           $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+           $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+           $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+           $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+           $replacement['SUPPORT_EMAIL'] = $support_email;
+        //    $replacement['WEBSITE_LINK'] = $site ;
            $data = ['template'=>'offer-received','hooksVars' => $replacement];
            mail::to($email)->send(new \App\Mail\ManuMailer($data));
+         }
      }
      else {
 

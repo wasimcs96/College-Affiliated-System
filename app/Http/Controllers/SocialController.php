@@ -56,13 +56,23 @@ public function newUser($userSocial,$provider){
     ]);
 
     $user->assignRole('client');
-
+    $site = config('get.WEBSITE_LINK');
+    $support_email = config('get.ADMIN_EMAIL');
 $emailuser=$userSocial->getEmail();
-if ($emailuser) {
+if (isset($emailuser))
+{
     $replacement=[];
-$replacement['USER_NAME'] = $userSocial->getName();
-$data = ['template'=>'welcome-email','hooksVars' => $replacement];
-mail::to($userSocial->getEmail())->send(new \App\Mail\ManuMailer($data));
+  $replacement['USER_NAME'] = $userSocial->getName();
+  $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
+$replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+$replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+$replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+$replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+$replacement['SUPPORT_EMAIL'] = $support_email;
+$replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
+  $data = ['template'=>'welcome-email','hooksVars' => $replacement];
+   mail::to($userSocial->getEmail())->send(new \App\Mail\ManuMailer($data));
 }
     // Important Code
 // $replacement['token'] =$request->_token;
