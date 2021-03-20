@@ -173,7 +173,7 @@ font: caption; margin-bottom: 13px;" class="label-text"> Booking Date</label>
 </select>
 </div><br><br>
 <input type="text" id="client_id" name="client_id" value="{{auth()->user()->id}}" hidden>
-<input type="text" id="cid" name="cid" value="{{$consultant->id}}" hidden>
+<input type="text" id="cid" name="cid" value="{{$consultant->id ?? ''}}" hidden>
 </div>
 
 

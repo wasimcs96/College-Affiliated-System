@@ -61,32 +61,32 @@ class PrMigrationFrontController extends Controller
             $select = $request->get('select');
             $value = $request->get('value');
             $consultantid = $request->get('consultantid');
-            
+
             /////////////////////////////
-          
+
             $dt=strtotime($value);
             $vr=date('w',$dt);
-          
+
             $check = date('Y-m-d', $dt);
             //  dd($check);
             $bookings = Booking::where('booking_date', $check)->where('status','!=',3)->get();
             if ($bookings->count() > 0) {
-    
-    
+
+
             foreach ($bookings as $key => $booking) {
-                
-    
+
+
                 $datanew[] = "'.$booking->booking_start_time.'-'.$booking->booking_end_time.'";
             }
               }
-    
-            
-            
+
+
+
             ////////////////////////////////
 
-           
 
-               
+
+
 
                 $data = ConsultantAvailableSlots::where('user_id',$consultantid)->where('week_day',$vr)->get();
 
@@ -150,21 +150,21 @@ class PrMigrationFrontController extends Controller
             ]);
             $type=1;
             $slug='PR_COMMISSION';
-             $consultant_id=$request->cid;
-             $check = $this->consultantDue($type,$slug,$consultant_id);
-             // dd($request->cid);
-             $consultant = User::where('id',$request->cid)->first();
-             $id=$consultantBooking->id;
-        //    // Important Code
-        //       $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
-        //       $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
-        //       $replacement['ADDRESS'] = $consultant->address_1;
-        //       $replacement['SERVICE_NAME'] = 'PR Booking';
-        //       $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
-        //       $data = ['template'=>'booking','hooksVars' => $replacement];
-        //       mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
-        //       mail::to($consultant->email)->send(new \App\Mail\ManuMailer($data));
-            return redirect()->route('client.dashboard')->with('success','Your Application have been Submitted Successfully');
+            $consultant_id=$request->cid;
+            $check = $this->consultantDue($type,$slug,$consultant_id);
+            // dd($request->cid);
+            $consultant = User::where('id',$request->cid)->first();
+            $id=$consultantBooking->id;
+           // Important Code
+            //   $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
+            //   $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
+            //   $replacement['ADDRESS'] = $consultant->address_1;
+            //   $replacement['SERVICE_NAME'] = 'PR Booking';
+            //   $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
+            //   $data = ['template'=>'booking','hooksVars' => $replacement];
+            //   mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+            //   mail::to($consultant->email)->send(new \App\Mail\ManuMailer($data));
+            return redirect()->route('client.dashboard')->with('success','Your Booking have been Submitted Successfully');
 
     }
 

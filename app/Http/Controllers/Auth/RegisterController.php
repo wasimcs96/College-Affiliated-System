@@ -37,6 +37,7 @@ class RegisterController extends Controller
 
       $random = rand(2,50000);
 // dd($data['email']{$random});
+$email = $data['email'];
        $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -56,7 +57,7 @@ $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
 $replacement['SUPPORT_EMAIL'] = config('get.SUPPORT_EMAIL');
 $replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
 $data = ['template'=>'welcome-email','hooksVars' => $replacement];
-mail::to($data['email'])->send(new \App\Mail\ManuMailer($data));
+mail::to($email)->send(new \App\Mail\ManuMailer($data));
 
 return $user;
 
