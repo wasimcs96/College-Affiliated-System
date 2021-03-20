@@ -35,6 +35,7 @@
                                                 <div class="select-contain w-auto">
                                                     <select  name="country" class="select-contain-select">
                                                         <?php $countries = App\Models\Country::all();?>
+                                                        <option value=""  >Select Country</option>
                                                         @if($countries->count() > 0)
                                                          @foreach($countries as $countryt)
                                                             <option value="{{$countryt->countries_id}}" @if(isset($country) && $country == $countryt->countries_id) selected @endif >{{$countryt->countries_name}}</option>
@@ -232,8 +233,8 @@
                     </div>
                     <div class="card-attributes">
                         <ul class="d-flex align-items-center">
-                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated Since"><i class="las la-calendar"></i><span>   @if(isset($consultant->consultant->created_at))
-                                {{$consultant->consultant->created_at->Format("Y")}}
+                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established"><i class="las la-calendar"></i><span>   @if(isset($consultant->consultant->created_at))
+                                {{$consultant->consultant->created_at->Format("Y") ?? ''}}
                                 @else N/A @endif</span></li>
                             <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="On Going Booking"><i class="la la-book"></i><span> @if(isset($consultant->consultantBooking))
                                 {{$consultant->consultantBooking->count()}}@else N/A @endif</span></li>
@@ -244,6 +245,7 @@
                                 {{$consultant->consultantUniversityClient->count()}}@else N/A @endif</span></li>
                         </ul>
                     </div>
+                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Location"><i class="las la-map-marker-alt"></i> {{ $consultant->address_1 ?? '' }}</li>
                     <div class="card-price d-flex align-items-center justify-content-between">
                         <p
                          {{-- style="
@@ -379,4 +381,61 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section> --}}
+@include('frontEnd.modals.loginModal')
+@endsection
+
+@section('per_page_script')
+<script>
+    $(document).on('click', '#loginSubmit', function ()
+    {
+    var email=$('#email').val();
+    var password=$('#password').val();
+    if(email=='' || password=='')
+    {
+        if(email=='')
+        {
+        $('#emptyEmail').html('<span style="color: red;">*Please enter email.</span> ');
+        document.getElementById("login-form").reset();
+        }
+        else
+        {
+        $('#emptyPassword').html('<span style="color: red;">*Please enter password.</span> ');
+        document.getElementById("login-form").reset();
+        }
+    }
+
+    else
+    {
+    $.ajaxSetup({headers:
+    {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+    $.ajax({
+    type: "post",
+    url: "{{route('login.check')}}",
+    data: {email:email},
+    success: function (result) {
+    console.log(JSON.parse(result));
+
+    if(JSON.parse(result)==false)
+    {
+        $('#loginTop').html('<span style="color: red;">(Your Account is Deactivated. Please Contact to Admin for Details.)</span> ');
+    }
+    else{
+    $('#login-form').submit();
+    }
+
+    }
+    });
+}
+    });
+  </script>
+  <script>
+    $(document).on('click', '#closeLoginForm', function ()
+    {
+        document.getElementById("login-form").reset();
+    });
+  </script>
 @endsection

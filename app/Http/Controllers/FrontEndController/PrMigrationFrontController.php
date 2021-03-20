@@ -122,15 +122,15 @@ class PrMigrationFrontController extends Controller
             $consultant = User::where('id',$request->cid)->first();
             $id=$consultantBooking->id;
            // Important Code
-              $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
-              $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
-              $replacement['ADDRESS'] = $consultant->address_1;
-              $replacement['SERVICE_NAME'] = 'PR Booking';
-              $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
-              $data = ['template'=>'booking','hooksVars' => $replacement];
-              mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
-              mail::to($consultant->email)->send(new \App\Mail\ManuMailer($data));
-            return redirect()->route('client.dashboard')->with('success','Your Application have been Submitted Successfully');
+            //   $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
+            //   $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
+            //   $replacement['ADDRESS'] = $consultant->address_1;
+            //   $replacement['SERVICE_NAME'] = 'PR Booking';
+            //   $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
+            //   $data = ['template'=>'booking','hooksVars' => $replacement];
+            //   mail::to(auth()->user()->email)->send(new \App\Mail\ManuMailer($data));
+            //   mail::to($consultant->email)->send(new \App\Mail\ManuMailer($data));
+            return redirect()->route('client.dashboard')->with('success','Your Booking have been Submitted Successfully');
 
     }
 
