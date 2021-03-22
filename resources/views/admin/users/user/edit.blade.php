@@ -32,11 +32,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" value="{{$user->email ?? ''}}" name="email" id="email" disabled>
+                                    <input type="email" class="form-control" value="{{$user->email ?? ''}}" name="email" id="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Mobile</label>
-                                    <input type="number" class="form-control" value="{{$user->mobile ?? ''}}" name="mobile" id="mobile" disabled>
+                                    <input type="number" class="form-control" value="{{$user->mobile ?? ''}}" name="mobile" id="mobile" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Landline 1</label>

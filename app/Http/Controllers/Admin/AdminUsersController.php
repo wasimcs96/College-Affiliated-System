@@ -248,13 +248,29 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
 
     public function update(Request $request, User $id)
     {
-// dd($request->all());
-        $id->update($request->all());
-        $id->countries_id = $request->country;
-        $id->rating = $request->rating;
-        // $id->status = $request->status;
-        $id->save();
-        return redirect()->route('admin.users',['id' => $request->parameter_id])->with('success', 'User updated Succefully.');
+                // dd($request->all());
+                if($request->email != $id->email)
+                {
+                $request->validate([
+                    'first_name'=>['required', 'string', 'max:255'],
+                    'last_name'=>['required', 'string', 'max:255'],
+                    'email' => ['required','unique:users'],
+                     ]);
+                }
+                if($request->mobile != $id->mobile)
+                {
+                     $request->validate([
+                    'first_name'=>['required', 'string', 'max:255'],
+                    'last_name'=>['required', 'string', 'max:255'],
+                    'mobile' => ['required','min:6','unique:users','numeric'],
+                     ]);
+                }
+                    $id->update($request->all());
+                    $id->countries_id = $request->country;
+                    $id->rating = $request->rating;
+                    // $id->status = $request->status;
+                    $id->save();
+                    return redirect()->route('admin.users',['id' => $request->parameter_id])->with('success', 'User updated Succefully.');
     }
 
     /**
