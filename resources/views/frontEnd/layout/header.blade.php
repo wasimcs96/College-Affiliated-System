@@ -19,14 +19,15 @@
                                 <div class="select-contain select--contain w-auto">
                                     <select class="select-contain-select">
                                         {{-- $ip = '117.242.119.104' --}}
-                                        <?php $ip = request()->ip;
+                                        <?php $ip = request()->ip();
+
                                         $data = \Location::get($ip); ?>
                                         @php  $countries=DB::table('countries')->get();
                                         @endphp
                                         @foreach ($countries as $country)
                                         <option data-content='<span class="flag-icon flag-icon-{{strtolower($country->countries_iso_code)}} mr-1"></span> {{$country->countries_name}}' <?php if ($data->countryName == $country->countries_name) {
                                             echo 'selected';
-                                        } ?>>{{$country->countries_name}}</option>
+                                        } ?>>{{$country->countries_name ?? ''}}</option>
                                         @endforeach
                                         </select>
                                 </div>
@@ -1882,7 +1883,7 @@
       </div>
 
 
-      
+
 <div class="modal fade" id="mdlerror" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
