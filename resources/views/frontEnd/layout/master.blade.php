@@ -492,6 +492,17 @@
       }
     }
   </script>
+  <script src=
+  "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+      </script>
+
+
+    <?php
+    $str = file_get_contents('https://api.ipify.org?format=json');
+    $json = json_decode($str, true); // decode the JSON into an associative array
+    ?>
+
+
     @yield('per_page_style')
     {{-- <script src="https://kit.fontawesome.com/d8864c88b6.js" crossorigin="anonymous"></script> --}}
 </head>

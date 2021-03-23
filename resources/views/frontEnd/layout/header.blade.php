@@ -12,13 +12,24 @@
                         </div>
                     </div>
                 </div>
+                 <?php $data = \Location::get($json["ip"]);?>
+                                      {{-- {{ dd($data) }} --}}
                 <div class="col-lg-6">
                     <div class="header-top-content">
                         <div class="header-right d-flex align-items-center justify-content-end">
                             <div class="header-right-action">
                                 <div class="select-contain select--contain w-auto">
                                     <select class="select-contain-select">
+                                        {{-- $ip = '117.242.119.104' --}}
 
+
+                                        @php  $countries=DB::table('countries')->get();
+                                        @endphp
+                                        @foreach ($countries as $country)
+                                        <option data-content='<span class="flag-icon flag-icon-{{strtolower($country->countries_iso_code)}} mr-1"></span> {{$country->countries_name}}' <?php if ($data->countryName == $country->countries_name) {
+                                            echo 'selected';
+                                        } ?>>{{$country->countries_name ?? ''}}</option>
+                                        @endforeach
                                         </select>
                                 </div>
                             </div>
