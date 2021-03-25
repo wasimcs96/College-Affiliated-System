@@ -526,12 +526,173 @@
                     <label for="">AD</label>
                 </div>
                 </div>
-                
+
                 @endforeach
         </div><!-- end row -->
         </div>
     </div><!-- end container -->
 </section>
+
+
+<section class="hotel-area section-bg padding-top-100px padding-bottom-200px overflow-hidden" id="staterooms">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading text-center">
+                    <h2 class="sec__title line-height-55">Select NearBy Consultant</h2>
+                </div><!-- end section-heading -->
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+        @if(isset($nearByConsultants))
+        <?php $consultants=$university->universityConsultant; ?>
+        @if(count($nearByConsultants) > 0)
+        <div class="row padding-top-50px">
+            <div class="col-lg-12">
+                <div class="hotel-card-wrap">
+                    <div class="hotel-card-carousel-2 carousel-action">
+
+                        @foreach($nearByConsultants as $consultant)
+                        @if($consultant->status == 1)
+                        <div class="card-item car-card border" style="
+                        overflow: hidden;
+                    ">
+                            <div class="card-img" style="text-align: center; height:185px;">
+
+                                <a href="{{route('consultant_detail',['id' => $consultant->id ?? ''])}}" class="d-block">
+                                    @if(isset($consultant->consultant->cover_image) && file_exists($consultant->consultant->cover_image))
+                                                        <img
+                                                        style=" width: 368px;
+                                                        height: 245px;"
+                                                        src="{{asset($consultant->consultant->cover_image)}}" alt="">
+                                                            @else
+                                                            <img     style=" width: 368px;
+                                                            height: 245px;" src="{{asset('frontEnd/assets/images/img21.jpg')}}" >
+                                                            @endif
+                                </a>
+                                <div style="position: absolute;bottom: 8px;left: 16px;" >@if(isset($consultant->userConsultant->profile_image) && file_exists($consultant->userConsultant->profile_image))
+                                    <img
+                                    style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;"
+                                    src="{{asset($consultant->profile_image)}}" alt="">
+                                        @else
+                                        <img  style="width: 106px;height: 98px;border-radius: 50%;border-image-width: 151px;border-style: solid;border-color: white;border-width: thick;" src="{{asset('frontEnd/assets/images/defaultuser.png')}}" >
+                                        @endif</div>
+                                        <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
+                                        @if(isset($consultant->Premium_expire_date))
+                                        @if($consultant->Premium_expire_date > $mytime)
+                                        <span style="
+                                        background-color: #073975;
+                                    " class="badge">Premium</span>
+                                     @endif
+                                     @endif
+                                {{-- <span class="badge">Top Ranked</span> --}}
+                                {{-- <div class="add-to-wishlist icon-element" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                    <i class="la la-heart-o"></i>
+                                </div> --}}
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title"><a href="{{route('consultant_detail',['id' => $consultant->id ?? ''])}}">
+                                    @if(isset($consultant->first_name ))
+                                    {{$consultant->first_name ?? ''}} &nbsp;{{$consultant->last_name ?? ''}}
+                                @else N/A @endif</a>
+
+                                    <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
+
+                            </h3>
+                                <p class="card-meta">{{$consultant->city ?? ''}}</p>
+                                  <div class="d-flex flex-wrap align-items-center ">
+                                                <p class="mr-2">Rating:</p>
+
+                                                    <span>@if($consultant->rating  == 3)
+                                                            <span class="ratings ">
+                                                                <i class="la la-star"></i>
+                                                                <i class="la la-star"></i>
+                                                                <i class="la la-star"></i>
+                                                                <i class="la la-star-o"></i>
+                                                                <i class="la la-star-o"></i>
+                                                            </span>
+                                                    @elseif($consultant->rating  == 4)
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star-o"></i>
+                                                    </span>
+                                                    @elseif($consultant->rating == 5)
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                    </span>
+                                                    @elseif($consultant->rating == 1)
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                    </span>
+                                                    @elseif($consultant->rating  == 2)
+                                                    <span class="ratings ">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                        <i class="la la-star-o"></i>
+                                                    </span>
+                                                    @endif</span> {!!"&nbsp;"!!} <span class="badge badge-warning text-white font-size-16">@if($consultant->rating  == null) - @else{{$consultant->rating }}/5 @endif</span>
+
+                                            </div>
+                                            <div class="card-attributes">
+                                                <ul class="d-flex align-items-center">
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established"><i class="las la-university"></i><span>   @if(isset($consultant->created_at))
+                                                        {{$consultant->created_at->Format("Y")}}
+                                                        @else N/A @endif</span></li>
+
+                                                    <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>   @if(isset($consultant->consultantUniversity))
+                                                        {{$consultant->consultantUniversity->count()}}
+                                                        @else N/A @endif</span></li>
+
+                                                </ul>
+                                            </div>
+                                            <span class="align-items-center" data-toggle="tooltip" data-placement="top" title="Location: {{ $consultant->userConsultant->address_1 ?? 'N/A' }}" style="white-space: nowrap; overflow: hidden;"><i class="las la-map-marker-alt"></i> {{ $consultant->userConsultant->address_1 ?? 'N/A' }}</span>
+                                <div class="card-price d-flex align-items-center justify-content-between">
+                                    <p>
+                                        <span class="price__text">City :</span>
+                                        <span class="price__num">{{$consultant->city ?? ''}}</span>
+                                        {{-- <span class="price__num before-price color-text-3">$120.00</span> --}}
+                                    </p>
+                                    @if(auth()->user())
+                                    @if(auth()->user()->isClient())
+
+                                    <a href="{{route('consultant_book',['consultantId'=>$consultant->id ?? 'N/A','universityId'=>$university->id ?? 'N/A'])}}"  class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
+                              @else
+                           <a href="{{route('consultant_detail',['id'=>$consultant->id ?? ''])}}"><label for="chb4" class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></label></a>
+                              @endif
+                              @else
+                              <button type="submit" class="theme-btn theme-btn-small mt-2" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="las la-angle-double-right"></i></button>
+                              @endif
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach<!-- end card-item -->
+
+                </div><!-- end hotel-card-carousel -->
+                </div>
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+        @else
+<div class="text-center" style="margin-top: 110px;">
+     <h3> No Nearby Affiliated Consultant Available </h3>
+</div>
+        @endif
+        @endif
+    </div><!-- end container-fluid -->
+</section>
+
 
 <section class="hotel-area section-bg padding-top-100px padding-bottom-200px overflow-hidden" id="staterooms">
     <div class="container">
@@ -649,11 +810,11 @@
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Established"><i class="las la-university"></i><span>   @if(isset($consultant->created_at))
                                                         {{$consultant->created_at->Format("Y")}}
                                                         @else N/A @endif</span></li>
-                                          
+
                                                     <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="Affiliated university"><i class="las la-university"></i><span>   @if(isset($consultant->userConsultant->consultantUniversity))
                                                         {{$consultant->userConsultant->consultantUniversity->count()}}
                                                         @else N/A @endif</span></li>
-                                                   
+
                                                 </ul>
                                             </div>
                                             <span class="align-items-center" data-toggle="tooltip" data-placement="top" title="Location: {{ $consultant->userConsultant->address_1 ?? 'N/A' }}" style="white-space: nowrap; overflow: hidden;"><i class="las la-map-marker-alt"></i> {{ $consultant->userConsultant->address_1 ?? 'N/A' }}</span>
