@@ -154,6 +154,10 @@ class ConsultantFrontController extends Controller
             $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
             $replacement['ADDRESS'] = $consultant->address_1;
             $replacement['SERVICE_NAME'] = 'Student Booking';
+            $replacement['CONSULTANT_NUMBER'] = $consultant->mobile;
+            $replacement['TIME_SLOT'] = $request->start_time;
+            $replacement['BOOKING_DATE'] = $book_date;
+
             $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
             $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
 $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
@@ -174,6 +178,9 @@ $replacement['WEBSITE_LINK'] = 'https://campusinterest.com';
             $replacement['CONSULTANT_NAME'] = $consultant->first_name.' '.$consultant->last_name;
             $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
             $replacement['ADDRESS'] = auth()->user()->address;
+            $replacement['STUDENT_NUMBER'] = auth()->user()->mobile;
+            $replacement['TIME_SLOT'] = $request->start_time ?? '';
+            $replacement['BOOKING_DATE'] = $book_date ?? '';
             $replacement['SERVICE_NAME'] = 'Student Booking';
             $replacement['BOOKING_LINK'] = 'https://campusinterest.com/consultant/bookings/show/'.$id;
             $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
