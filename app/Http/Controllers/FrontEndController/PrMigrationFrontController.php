@@ -164,6 +164,9 @@ class PrMigrationFrontController extends Controller
               $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
               $replacement['ADDRESS'] = $consultant->address_1;
               $replacement['SERVICE_NAME'] = 'PR Booking';
+              $replacement['CONSULTANT_NUMBER'] = $consultant->mobile;
+              $replacement['TIME_SLOT'] = $request->start_time;
+              $replacement['BOOKING_DATE'] = $book_date;
               $replacement['BOOKING_LINK'] = 'https://campusinterest.com/client/bookings/show/'.$id;
               $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
               $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
@@ -183,6 +186,9 @@ class PrMigrationFrontController extends Controller
           $replacement['STUDENT_NAME'] = auth()->user()->first_name.' '.auth()->user()->last_name;
           $replacement['ADDRESS'] = auth()->user()->address;
           $replacement['SERVICE_NAME'] = 'PR Booking';
+          $replacement['STUDENT_NUMBER'] = auth()->user()->mobile ?? '';
+          $replacement['TIME_SLOT'] = $request->start_time ?? '';
+          $replacement['BOOKING_DATE'] = $book_date ?? '';
           $replacement['BOOKING_LINK'] = 'https://campusinterest.com/consultant/bookings/show/'.$id;
           $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
 $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
