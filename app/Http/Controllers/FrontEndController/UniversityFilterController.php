@@ -404,12 +404,15 @@ if($courses->count()>0){
           $radius=50;
          }
      else{
-         $ip = request()->ip;
-        $data = \Location::get($ip);
+        //  $ip = request()->ip;
+        // $data = \Location::get($ip);
         // dd($data->latitude);
+          $str = file_get_contents('https://api.ipify.org?format=json');
+          $json = json_decode($str, true);
+          $data = \Location::get($json["ip"]);
           $ata['latitude']  =  $data->latitude ?? '';
           $ata['longitude'] =$data->longitude ?? '';
-          $radius=50000;
+          $radius=50;
         //   dd($radius);
          }
 
