@@ -9,13 +9,15 @@
             <h2>Advertisement</h2>
             <ul class="header-dropdown dropdown">
 {{-- <li><a class="btn btn-primary btn-sm" style="color: white;" href="{{route('consultant.advertisement.add')}}">Purchase AD</a></li> --}}
+<li><a href="https://campusinterest.com/university/all" target="_blank" style="margin-right: 3px;" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Inner Advertisement Page" style="color: white;">Inner Ad Page</a></li>
+<li><a href="https://campusinterest.com" target="_blank" style="margin-right: 3px;" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Outer Advertisement Page" style="color: white;">Outer Ad Page</a></li>
                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
 
             </ul>
         </div>
         <div class="body">
             <div class="table-responsive">
-                <table class="table table-striped table-hover dataTable js-exportable">
+                <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
                             <th  style="text-align: center;"><b>Banner Image</b></th>
@@ -27,6 +29,7 @@
                             <th><b>Purchased Date</b></th>
                             <th><b>Link</b></th>
                             <th><b>Status</b></th>
+                            <th><b>Updated At</b></th>
                             <th style="text-align: center;"><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -44,11 +47,14 @@
 
                         {{-- {{dd($rt->advertisement)}} --}}
                         <tr>
-                            <td style="text-align: center;">
-                                @if(isset($rt->banner_image) && file_exists($rt->banner_image))<a href="{{asset($rt->banner_image)}}" target="_blank"> <img src="{{asset($rt->banner_image)}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"></a>@else <img src="{{asset('assets/default/default-banner.jpg')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"> @endif</td>                                <td>{{$rt->user->first_name ?? ''}}</td>
+                                     <td style="text-align: center;">
+                                @if(isset($rt->banner_image) && file_exists($rt->banner_image))<a href="{{asset($rt->banner_image ?? '')}}" target="_blank"> <img src="{{asset($rt->banner_image ?? '')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"></a>@else <img src="{{asset('assets/default/default-banner.jpg')}}" class="user-photo" id="zm" alt="Banner image" width="40px" height="40px"> @endif</td>
 
-                            <td>@if($rt->user->isConsultant() ?? '') Consultant @endif
-                            @if($rt->user->isUniversity() ?? '') Univeristy @endif</td>
+                                <td>{{$rt->user->first_name ?? ''}}</td>
+
+                            <td>@if(isset($rt->user))
+                                @if($rt->user->isConsultant() ?? '') Consultant @endif
+                            @if($rt->user->isUniversity() ?? '') Univeristy @endif @endif</td>
                             <td>@if(isset($rt->click_count)){{$rt->click_count ?? ''}}@else N/A @endif</td>
                             <td>
                                 @if(isset($rt->start_date )){{ Carbon\Carbon::parse($rt->start_date )->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif
@@ -57,7 +63,12 @@
                                 @if(isset($rt->expire_date )){{ Carbon\Carbon::parse($rt->expire_date )->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif
                             </td>
                             <td>@if(isset($rt->created_at)){{ Carbon\Carbon::parse($rt->created_at)->format(config('get.ADMIN_DATE_FORMAT')) }}@else N/A @endif</td>
-                            <td>   <a href="{{$rt->link}}" target="_blank" style="margin-right: 3px;" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Advertisement Link" style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a></td>
+                            <td>   <a href="{{$rt->link}}" target="_blank" style="margin-right: 3px;" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Advertisement Link" style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a>
+                            @if(isset($rt->type) && $rt->type == 1)
+                            <a href="{{route('frontend.index')}}" target="_blank" style="margin-right: 3px;" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Check Advertisement Page " style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a>
+                            @else
+                            <a href="{{route('university_all')}}" target="_blank" style="margin-right: 3px;" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Check Advertisement Page " style="margin-left: 8px;"><i class="fa fa-link" aria-hidden="true"></i></a>
+                            @endif</td>
                             <td>
                                     <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>
                                 {{-- @if($rt->status==0)<div class="btn btn-warning">Pending</div>@endif --}}
@@ -66,6 +77,7 @@
                                 @if($rt->expire_date == null)<div class="btn btn-warning">Pending</div>@endif
                                 {{-- @if($rt->status==2)<div class="btn btn-primary">Inactive</div>@endif --}}
                             </td>
+                            <td> {{ $rt->updated_at ?? '' }} </td>
                             <td style="justify-content: center;"> @if($rt->expire_date == null)
                                 <div class="row" >
                                 <form action="{{route('admin.advertisement_manager.update')}}" method="POST" >
@@ -74,7 +86,7 @@
                                 <button type="submit" data-toggle="tooltip" data-placement="top" title="Accept" class="btn btn-success"><i class="icon-check"></i></button>
                             </form>
 
-                                <a href="javascript:void(0);" @if($rt->user->isConsultant() ?? '') custom2="{{ $rt->user->id }}" @endif @if($rt->user->isUniversity() ?? '') custom2="{{ $rt->user->id }}" @endif custom1="{{ $rt->id }}" class="btn btn-danger" data-toggle="modal" data-target="#rejectModal" data-placement="top" title="Reject" style="margin-left: 8px;" id="rejectTrigger"><i class="icon-trash"></i></a>
+                                <a href="javascript:void(0);" @if(isset($rt->user)) @if($rt->user->isConsultant() ?? '') custom2="{{ $rt->user->id }}" @endif @if($rt->user->isUniversity() ?? '') custom2="{{ $rt->user->id }}" @endif @endif custom1="{{ $rt->id }}" class="btn btn-danger" data-toggle="modal" data-target="#rejectModal" data-placement="top" title="Reject" style="margin-left: 8px;" id="rejectTrigger"><i class="icon-trash"></i></a>
                         </div>
 
                         @endif</td>
@@ -173,7 +185,7 @@ tr.shown td.details-control {
 <script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
-<script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
+<!--<script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>-->
 <script>
     var advertisement_id='';
     var user_id='';
@@ -220,4 +232,11 @@ tr.shown td.details-control {
 
 
  </script>
+ <script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "order": [[ 9, "desc" ]]
+        } );
+    });
+</script>
 @stop

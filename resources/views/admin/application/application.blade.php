@@ -110,5 +110,5 @@ tr.shown td.details-control {
             "order": [[ 0, "desc" ]]
         } );
     });
-    </script>
+</script>
 @stop
