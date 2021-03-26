@@ -43,23 +43,23 @@
                                 left: 151px;
                                 margin-bottom: 8px;
                             ">
-                 
+
                                     {{-- <a class="theme-btn"  href="{{route('consultant_book',$consultant->id)}}" >
                                         <i class="la la-paper mr-2"></i>Book Now
                                     </a> --}}
-                                   
-                                
+
+
                                     @if(auth()->user())
                                     @if(auth()->user()->isClient())
 
                                     <a href="{{route('consultant_book',['consultantId'=>$consultant->id ?? 'N/A','universityId'=>$university->id ?? '0'])}}"  class="theme-btn theme-btn-small mt-2">Book Now<i class="las la-angle-double-right"></i></a>
-                       
+
                               @endif
                               @else
                               <button type="submit" class="theme-btn" data-toggle="modal" data-target="#loginPopupForm">Book Now<i class="la la-paper mr-2"></i></button>
                               @endif
 
-        
+
                                 </div>
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
@@ -276,7 +276,7 @@
                                     <?php  $i=0;?>
                             @if($universityconsultant->count() > 0)
                                     @foreach($universityconsultant as $universitycon)
-                                    @if($universitycon->useruniversity->status == 1)
+                                    @if(isset($universitycon->useruniversity->status) && $universitycon->useruniversity->status == 1)
                                     @if(isset($universitycon->userUniversity->Premium_expire_date))
                                     @if($universitycon->userUniversity->Premium_expire_date > $mytime)
                                     <?php $i++;?>
@@ -444,7 +444,9 @@
 
                         <?php $universitycrousels=$consultant->consultantUniversity; ?>
                         @foreach($universitycrousels as $universitycrousel)
+
                         @if($universitycrousel->deleted_at == NULL)
+                        @if(isset($universitycrousel->userUniversity->status))
                         @if($universitycrousel->userUniversity->status == 1)
                         <?php $i++;?>
                            <div class="card-item car-card border">
@@ -487,7 +489,7 @@
                                         "><a href="{{route('university_detail',['id'=>$universitycrousel->userUniversity->id])}}">
                                         @if(isset($universitycrousel->userUniversity->university->university_name))<?php echo($myuniversitycrousel)?> @else N/A @endif</a>
 
-                                            
+
 
                                         </h3>
                                 <p class="card-meta">{{$universitycrousel->city ?? ''}}</p>
@@ -573,7 +575,7 @@
                         </div>
                            @endif
                            @endif
-
+                          @endif
 
                         @endforeach
                                         @if($i == 0)
@@ -581,7 +583,7 @@
                                             <h3> No Associated Universities Available </h3>
                                         </div>
                                       @endif
-                      
+
                 </div><!-- end hotel-card-carousel -->
                 @else
                 <div class="text-center" style="margin-top: 110px;">

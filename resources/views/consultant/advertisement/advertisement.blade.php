@@ -127,5 +127,5 @@ tr.shown td.details-control {
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
-<script></script>
+
 @stop
