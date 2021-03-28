@@ -92,7 +92,7 @@ class AdminUsersController extends Controller
         if(isset($request->email))
         {
 // Important Code
-$replacement['USER_NAME'] = $user->first_name;
+$replacement['USER_NAME'] = $request->first_name;
 $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
 $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
 $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
@@ -151,7 +151,7 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
             {
                 if($use->isConsultant())
                 {
-                    if(isset($request->email))
+                    if(isset($use->email))
                     {
                     $replacement['UNIVERSITY_NAME'] = $request->university_name;
                     $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
@@ -163,7 +163,7 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
                     $replacement['SUPPORT_EMAIL'] = $support_email;
                     $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
                     $data = ['template'=>'university-added','hooksVars' => $replacement];
-                    mail::to($request->email)->send(new \App\Mail\ManuMailer($data));
+                    mail::to($use->email)->send(new \App\Mail\ManuMailer($data));
                     }
                 }
             }

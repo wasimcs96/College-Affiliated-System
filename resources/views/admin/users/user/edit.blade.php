@@ -74,7 +74,7 @@
                                 </div>
                                 @endif
                                 <div class="form-group">
-                                    <label for="country">Country</label>
+                                    <label for="country">Your Country</label>
                                     <select name="country" class="form-control">
                                         <option value="">-- Select Country --</option>
                                         @if($countries->count() > 0)

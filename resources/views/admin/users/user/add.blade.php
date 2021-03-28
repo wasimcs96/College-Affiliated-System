@@ -52,7 +52,7 @@
                                 </div>
                                 {{-- <div class="col-lg-4 col-md-12"> --}}
                                     <div class="form-group">
-                                        <label for="country">Country</label>
+                                        <label for="country">Your Country</label>
                                         <select name="country" class="form-control" required>
                                             <option value="">-- Select Country --</option>
                                             <?php $countries = App\Models\Country::all(); ?>
