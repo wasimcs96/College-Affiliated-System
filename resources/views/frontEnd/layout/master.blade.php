@@ -8,9 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <title>  @yield('title') </title>
+    <link href="{{ asset('assets/default/title-image') }}" type="image/x-icon" rel="shortcut icon"/>
     <!-- Favicon -->
-    <link rel="icon" href="images/favicon.png">
+    {{-- <link rel="icon" href="images/favicon.png"> --}}
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
@@ -846,9 +848,7 @@
             <div class="col-lg-7">
                 <div class="copy-right padding-top-30px">
                     <p class="copy__desc">
-                        <!-- &copy; Copyright &#169; 2020. Made with  <span class="la la-heart"></span> -->
-                        &copy;All Rights reserve by Campusinterest  &#169;   <span class="la la-heart"></span>
-                        {{-- <span class="la la-heart"></span> by <a href="https://themeforest.net/user/techydevs/portfolio">TechyDevs</a> --}}
+                        &copy; {{ date('Y') }} All Rights reserved by CampusInterest  &#169;   <span class="la la-heart"></span>
                     </p>
                 </div><!-- end copy-right -->
             </div><!-- end col-lg-7 -->
