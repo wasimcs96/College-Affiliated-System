@@ -634,4 +634,11 @@ $(document).on('click', '#confirmBooking', function (){
 
 });
 </script>
+<script>
+$('#date').on('click', function(e) {
+e.preventDefault();
+$(this).attr("autocomplete", "off");
+});
+</script>
+
 @endsection

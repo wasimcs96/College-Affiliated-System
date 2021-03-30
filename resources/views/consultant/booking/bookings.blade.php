@@ -25,7 +25,7 @@
                 <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
-                            {{-- <th><b> Updated At </b></th> --}}
+                             <th><b> Updated At </b></th>
                             <th> <b>Name</b></th>
                             <th><b> Mobile </b></th>
                             <th><b> E-mail</b></th>
@@ -46,7 +46,7 @@
                         @foreach($bookings as $booking)
 @if($booking->booking_for == 0)
                         <tr>
-                            {{-- <td>{{$booking->updated_at ?? ''}} </td> --}}
+                             <td>{{$booking->updated_at ?? ''}} </td>
                             <td>{{$booking->user->first_name ?? ''}} </td>
                             <td>{{$booking->user->mobile ?? ''}}</td>
                             <td>{{$booking->user->email ?? ''}}</td>
