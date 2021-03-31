@@ -31,7 +31,7 @@
                     @if($applications->count() > 0)
                    <tbody>
                     @foreach ($applications as $application)
-                    @if(strtotime($application->date) >= strtotime(date('m/d/Y')))
+                    @if(strtotime($application->date) >= strtotime(date('Y/m/d')))
                         <tr>
                             <td>{{$application->application->user->first_name ?? ''}} {{$application->application->user->last_name ?? ''}}</td>
                             {{-- <td>@if($application->application->status==0)<div class="btn btn-warning">In Progress</div>@endif

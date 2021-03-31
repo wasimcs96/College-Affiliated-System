@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Client')
+@section('parentPageTitle', 'Consultant')
 @section('title', 'Profile')
 
 
@@ -123,13 +123,13 @@
                         <div class="form-group">
                             <label for="first_name">First Name</label>
                             <input type="text" value="@if(isset(Auth()->user()->first_name)){{Auth()->user()->first_name}}@endif" name="first_name" class="form-control" placeholder="First Name" required>
-                            <input type="text"  name="userid" value="@if(isset(auth()->user()->id)){{auth()->user()->id}}@endif" hidden>
+                            <input type="text"  name="userid" value="@if(isset(auth()->user()->id)){{auth()->user()->id}} @else {{ old('first_name') }}  @endif" hidden>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="last_name">Last Name</label>
-                            <input type="text" value="@if(isset(Auth()->user()->last_name)){{Auth()->user()->last_name}}@endif" name="last_name" class="form-control" placeholder="Last Name" required>
+                            <input type="text" value="@if(isset(Auth()->user()->last_name)){{Auth()->user()->last_name}} @else {{ old('last_name') }} @endif" name="last_name" class="form-control" placeholder="Last Name" required>
                         </div>
                     </div>
 
@@ -140,7 +140,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-calendar"></i></span>
                                 </div>
-                                <input value="@if(isset(Auth()->user()->birth_year)){{Auth()->user()->birth_year}}@endif" data-provide="datepicker" data-date-autoclose="true" class="form-control" name="birth_year" placeholder="DOB" required>
+                                <input value="@if(isset(Auth()->user()->birth_year)){{Auth()->user()->birth_year}} @else {{ old('birth_year') }} @endif" data-provide="datepicker" data-date-autoclose="true" class="form-control" name="birth_year" placeholder="DOB" required>
                             </div>
                         </div>
                     </div>
@@ -151,26 +151,26 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
                                 </div>
-                                <input value="@if(isset(Auth()->user()->email)){{Auth()->user()->email}}@endif" type="text" name="email" class="form-control" placeholder="Email" required>
+                                <input value="@if(isset(Auth()->user()->email)){{Auth()->user()->email}} @else {{ old('email') }} @endif" type="text" name="email" class="form-control" placeholder="Email" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="mobile">Mobile</label>
-                            <input type="phone" value="@if(isset(Auth()->user()->mobile)){{Auth()->user()->mobile}}@endif" name="mobile" class="form-control" placeholder="Mobile Number" required>
+                            <input type="phone" value="@if(isset(Auth()->user()->mobile)){{Auth()->user()->mobile}} @else {{ old('mobile') }}  @endif" name="mobile" class="form-control" placeholder="Mobile Number" required>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="landline_1">Landline 1</label>
-                            <input type="text" value="@if(isset(Auth()->user()->landline_1)){{Auth()->user()->landline_1}}@endif" name="landline_1" class="form-control" placeholder="Landline1" >
+                            <input type="text" value="@if(isset(Auth()->user()->landline_1)){{Auth()->user()->landline_1}} @else {{ old('landline_1') }} @endif" name="landline_1" class="form-control" placeholder="Landline1" >
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="landline_2">Landline 2</label>
-                            <input type="text" value="@if(isset(Auth()->user()->landline_2)){{Auth()->user()->landline_2}}@endif"  name="landline_2" class="form-control" placeholder="Landline2" >
+                            <input type="text" value="@if(isset(Auth()->user()->landline_2)){{Auth()->user()->landline_2}} @else {{ old('landline_2') }}  @endif"  name="landline_2" class="form-control" placeholder="Landline2" >
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
@@ -192,7 +192,7 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="city" >City</label>
-                            <input type="text" value="@if(isset(Auth()->user()->city)){{Auth()->user()->city}}@endif" name="city" class="form-control" placeholder="City" required>
+                            <input type="text" value="@if(isset(Auth()->user()->city)){{Auth()->user()->city}} @else {{ old('city') }} @endif" name="city" class="form-control" placeholder="City" required>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-21">
@@ -202,7 +202,7 @@
                                 <input class="form-control"
                                   id="autocomplete"
                                   name="googleAddress"
-                                  value="@if(isset(auth()->user()->address_1)){{auth()->user()->address_1}}@endif"
+                                  value="@if(isset(auth()->user()->address_1)){{auth()->user()->address_1}} @else {{ old('googleAddress') }} @endif"
                                   placeholder="Enter your address"
                                   onFocus="geolocate()"
                                   type="text"
@@ -213,14 +213,14 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="address">Full Address</label>
-                            <textarea rows="4"  type="text" name="address" class="form-control" placeholder="Full Address">@if(isset(Auth()->user()->address)){{Auth()->user()->address}}@endif</textarea>
+                            <textarea rows="4"  type="text" name="address" class="form-control" placeholder="Full Address">@if(isset(Auth()->user()->address)){{Auth()->user()->address}} @else {{ old('address') }} @endif</textarea>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <label for="company_name">Company Name</label>
                             <div class="input-group">
-                                <input name="company_name" type="text" class="form-control" value="@if(isset(auth()->user()->consultant->company_name)){{auth()->user()->consultant->company_name}}@endif" placeholder="Company Name">
+                                <input name="company_name" type="text" class="form-control" value="@if(isset(auth()->user()->consultant->company_name)){{auth()->user()->consultant->company_name}}@else {{ old('company_name') }} @endif" placeholder="Company Name">
                             </div>
                         </div>
                     </div>
@@ -231,14 +231,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
                                 </div>
-                                <input name="website" type="url" class="form-control" value="@if(isset(auth()->user()->consultant->website)){{auth()->user()->consultant->website}}@endif" placeholder="http://" >
+                                <input name="website" type="url" class="form-control" value="@if(isset(auth()->user()->consultant->website)){{auth()->user()->consultant->website}} @else {{ old('website') }}  @endif" placeholder="http://" >
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="address">Describe Yourself</label>
-                            <textarea rows="4" minlength="150" type="text" name="about_me" class="form-control" placeholder="Describe Yourself" required>@if(isset(Auth()->user()->consultant->about_me)){{Auth()->user()->consultant->about_me}}@endif</textarea>
+                            <textarea rows="4" minlength="150" type="text" name="about_me" class="form-control" placeholder="Describe Yourself" required>@if(isset(Auth()->user()->consultant->about_me)){{Auth()->user()->consultant->about_me}} @else {{ old('about_me') }} @endif</textarea>
                         </div>
                     </div>
 
@@ -321,8 +321,10 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label for="cover_image">Upload Cover Image</label>
-                            <input   name="cover_image" id="cover_image" type="file" class="dropify-frr">
+                            <input name="cover_image" id="cover_image" type="file" class="dropify-frr">
 <label><span><b>Please Note </b>: Image should be in Given Dimensions:min-width=1200 | min-height=300  </span></label>
+<label><span><b>Please Note </b>: Please click on the link <a href="https://resizeimage.net/" target="_blank">Image Resizer</a> to resize your image  </span></label>
+
 @if(file_exists(Auth()->user()->consultant->cover_image) && isset(Auth()->user()->consultant->cover_image))
 <a href="{{asset(auth()->user()->consultant->cover_image)}}" class="btn btn-primary" target="_blank" style="float: right;">See Cover Image</a>
 @endif

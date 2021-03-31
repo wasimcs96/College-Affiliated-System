@@ -51,6 +51,7 @@ class ConsultantBookingFollowUpController extends Controller
         'note' => 'required',
         'date' => 'required',
     ]);
+
     //  $dateFormat = strtotime($request->date);
     //  $dateFormat =  date('Y-m-d');
     //  dd($dateFormat);
