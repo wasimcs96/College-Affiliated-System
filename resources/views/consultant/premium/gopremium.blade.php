@@ -210,7 +210,7 @@
                 <div class="col-md-3">
                     <br>
 
-                    <p class="align-center" ><b  style="float: left;">Amount To Pay</b></p>
+                    <p class="align-center" ><b  style="float: left;">Amount to be paid</b></p>
                     <br>
                     <div class="align-center" ><h5 style="float:left; margin-left: -6px;"><span>{{ Config::get('define.currency.currency') }}</span>${amount}<small>{!! "&nbsp;" !!}/{!! "&nbsp;" !!}${package_time}{!! "&nbsp;" !!}-{!! "&nbsp;" !!}months</small></h5></div>
                 </div>
@@ -229,7 +229,7 @@
                     <br>
 
                     <p class="align-justify"><b >Payment Method</b></p>
-                    <div class="align-justify"> <button type="button" class="btn btn-outline-primary cntr" id="rzp-button1"  style="font-size: xx-large;">Payment</button></div>
+                    <div class="align-justify"><button type="button" class="btn btn-outline-primary cntr" id="rzp-button1"  style="font-size: xx-large;">Continue to payment</button></div>
                 </div>
             </div>
         </div>

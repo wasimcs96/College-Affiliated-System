@@ -304,7 +304,7 @@ class="fa fa-fw fa-save"></i> Submit
     var date = new Date(); // get current date
     date.setDate(date.getDate() + 1); // add two days to it
 
-   
+
 $("#date").datepicker({ onSelect: function(dateText) {
 
 
@@ -350,4 +350,10 @@ minDate: date
 
 });
 </script> --}}
+<script>
+    $('#date').on('click', function(e) {
+    e.preventDefault();
+    $(this).attr("autocomplete", "off");
+    });
+</script>
 @endsection
