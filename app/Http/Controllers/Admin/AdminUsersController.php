@@ -131,13 +131,13 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
      $replacement['token'] =$request->_token;
      $replacement['TYPE'] = 'University';
      $replacement['COURSE_LINK'] = 'https://campusinterest.com/university/all';
-        $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
-        $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
-        $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
-        $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
-        $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
-        $replacement['SUPPORT_EMAIL'] = $support_email;
-        $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
+     $replacement['CONSULTANT_LINK'] ='https://campusinterest.com/consultant/all';
+     $replacement['APP_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+     $replacement['PLAY_STORE_APP'] = 'https://play.google.com/store/apps/developer?id=Digitalcolf';
+     $replacement['DISCLAIMER_LINK'] = config('get.DISCLAIMER_LINK');
+     $replacement['COPYRIGHT_LINK'] = config('get.COPYRIGHT_LINK');
+     $replacement['SUPPORT_EMAIL'] = $support_email;
+     $replacement['WEBSITE_LINK'] = 'https://campusinterest.com' ;
      $replacement['USER_NAME'] = $request->first_name;
      $replacement['PASSWORD'] = $request->password;
      $replacement['EMAIL'] = $request->email;
@@ -211,7 +211,7 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
      return redirect()->route('admin.users',['id' => 2])->with('users', User::all())->with('id',2)->with('success','Consultant Created Successfully');
        }
        if($role==5){
-        return User::create([
+        $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
@@ -225,7 +225,6 @@ return redirect()->route('admin.users',['id' => 1])->with('users', User::all())-
         {
           // Important Code
      $replacement['token'] =$request->_token;
-
      $replacement['TYPE'] = 'SubAdmin';
      $replacement['USER_NAME'] = $request->first_name;
      $replacement['PASSWORD'] = $request->password;

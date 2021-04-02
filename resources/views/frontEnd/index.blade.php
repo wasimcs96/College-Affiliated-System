@@ -133,9 +133,9 @@
                                                         ">
                                                                 <option value="" selected>Select Study Level</option>
                                                                 @php
-                                                                $levels=Config::get('level.study_level');   
+                                                                $levels=Config::get('level.study_level');
                                                                 @endphp
-        
+
                                                                 @foreach($levels as $key=>$level)
                                                                         <option value="{{$key}}" >{{$level}}</option>
                                                                 @endforeach
@@ -195,7 +195,7 @@
                                                     <select class="select-contain-select" name="universitystudylevel">
                                                         <option value="" selected>Select Study Level</option>
                                                         @php
-                                                        $levels=Config::get('level.study_level');   
+                                                        $levels=Config::get('level.study_level');
                                                         @endphp
 
                                                         @foreach($levels as $key=>$level)
@@ -262,7 +262,7 @@
                                                         <option value="">Select Country</option>
                                                         @foreach($countries as $country)
                                                         <option value="{{$country->countries_id}}" >{{$country->countries_name}}</option>
-                                                     
+
                                                         @endforeach
 
                                                     </select>
@@ -376,9 +376,9 @@
               <div class="OnboardingText">
                 <p>
                   <span class="ItemHeader">
-                    Booking Submitted
+                    Book a Consultant
                   </span>
-                  You can browse more than 71.000 Master’s programmes from all over the world.
+                  Search for courses and universities from all over the world and book verified consultants for Free.
                 </p>
               </div>
             </li>
@@ -391,9 +391,9 @@
               <div class="OnboardingText">
                 <p>
                   <span class="ItemHeader">
-                 Applied University
+                    Apply in Universities
                   </span>
-                  Make a wishlist of your favourite programmes, check your fit with them, and read what other students are saying.
+                  Get admitted to your dream course in your preferred university and also get scholarships.
                 </p>
               </div>
             </li>
@@ -406,10 +406,10 @@
               <div class="OnboardingText">
                 <p>
                   <span class="ItemHeader">
-                   Offer receipt
+                    Accept your offer
                   </span>
-                  Now that you have your top programmes shortlisted, you can pick the ones that fit you the best.
-                </p>
+                  Get your visa and other formalities completed.
+                                </p>
               </div>
             </li>
             <li class="OnboardingItem Apply" liclss>
@@ -423,7 +423,7 @@
                   <span class="ItemHeader">
                    Ready to Fly
                   </span>
-                  When you feel confident about your programme choice, you can apply.
+                  Pack your bags and Welcome to your Dream University.
                 </p>
               </div>
             </li>
@@ -447,7 +447,7 @@
                     <a href="{{$advertise->link}}"  id="click_count" link_click="{{$advertise->id}}" target="_blank">
                         <div class="discount-box">
                             <div class="discount-img">
-    
+
                                 @if(isset($advertise->banner_image) && file_exists($advertise->banner_image))
                                 <img  src="{{asset($advertise->banner_image)}}" height="159px;" alt="" class="d-block w-100">
                                     @else
@@ -467,7 +467,7 @@
                             <div class="company-logo">
                                 <img src="images/logo2.png" alt="">
                                 <p class="text-white font-size-14 text-right">Published By: {!!"&nbsp"!!} {{$advertise->user->first_name ?? ''}}</p>
-                                
+
                             </div><!-- end company-logo -->
                         </div>
                     </a>
@@ -634,8 +634,8 @@
 
                     </div>
                     <div class="card-body">
-                       
-                       
+
+
                         <h3 class="card-title" title="{{$us->university->university_name ?? ''}}" style="
                         white-space: nowrap;
                         overflow: hidden;
@@ -793,14 +793,14 @@
                     </div>
                     <div class="card-body">
 
-                  
+
                                 <h3 class="card-title"  title="{{$uk->university->university_name ?? ''}}" style="
                                     white-space: nowrap;
                                     overflow: hidden;"><a href="{{route('university_detail',['id'=>$uk->id])}}">
                                 @if(isset($uk->university->university_name)){{    $uk->university->university_name ?? ''}}@else N/A @endif</a>
                                 @if($uk->is_verified == 1)
                                 <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                              
+
                                 @endif
                                 </h3>
 
@@ -951,7 +951,7 @@
 
                     </div>
                     <div class="card-body">
-                      
+
                        <h3 class="card-title" title="{{$ire->university->university_name ?? ''}}" style="
                         white-space: nowrap;
                         overflow: hidden;"><a href="{{route('university_detail',['id'=>$ire->id])}}">
@@ -959,7 +959,7 @@
 
                                 @if($ire->is_verified == 1)
                                     <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                                   
+
                                @endif
 
                                 </h3>
@@ -1110,7 +1110,7 @@
 
                     </div>
                     <div class="card-body">
-                                                         
+
                                 <h3 class="card-title" title="{{$can->university->university_name ?? ''}}" style="
                                     white-space: nowrap;
                                     overflow: hidden;"><a href="{{route('university_detail',['id'=>$can->id])}}">
@@ -1118,7 +1118,7 @@
 
                                 @if($can->is_verified == 1)
                                 <span style="background: #2dd12d;float:right;border-radius: 12px;padding: 6px;     color: white;" class="badge">Verified</span>
-                              
+
                            @endif
 
                                 </h3>
@@ -1269,10 +1269,10 @@
 
                     </div>
                     <div class="card-body">
-                      
-                      
-                   
-                      
+
+
+
+
                                 <h3 class="card-title" title="{{$aus->university->university_name ?? ''}}" style="
                                     white-space: nowrap;
                                     overflow: hidden;">
@@ -1896,7 +1896,7 @@ END ROUND-TRIP AREA
                     <label for="">AD</label>
                 </div>
                 </div>
-            
+
                 @endforeach
         </div><!-- end row -->
         </div>
@@ -3061,13 +3061,13 @@ END ROUND-TRIP AREA
 <script>
     $(document).on('click', '#universityClaimId', function ()
     {
-        
+
     var universityname=$(this).attr('custom1');
 
     $('#latest').html('<input value="'+universityname+'" name="universityname" hidden>');
   console.log(universityname);
-  
-   
+
+
     });
 
     </script>

@@ -471,7 +471,7 @@
                                          </div>
                                            <div class="form-group">
                                                <div class="fancy-checkbox">
-                                                   <label><span> <p> @if ($applied->is_accepeted == 0) University has accepted your application. Please accept before <b> {{$applied->deadline}} </b>@else @endif </p></span></label>
+                                                   <label><span> <p> @if ($applied->is_accepeted == 0) University has accepted your application. Please accept before <b> {{$applied->deadline ?? ''}} </b>@else @endif </p></span></label>
 
                                                  </div>
                                            </div>
@@ -1759,5 +1759,11 @@ console.log(client_id);
 
                       });
 
+</script>
+<script>
+    $('#modalDate').on('click', function(e) {
+    e.preventDefault();
+    $(this).attr("autocomplete", "off");
+    });
 </script>
 @stop
