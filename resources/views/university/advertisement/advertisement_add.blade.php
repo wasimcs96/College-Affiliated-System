@@ -255,7 +255,7 @@
                                 <br>
 
                                 <p class="align-justify"><b >Payment Method</b></p>
-                                <div class="align-justify"><button type="button" class="btn btn-outline-primary cntr" id="rzp-button1"  style="font-size: xx-large;">Continue to payment</button></div>
+                                <div class="align-justify"><button type="button" class="btn btn-primary cntr" id="rzp-button1"  style="font-size:large;">Continue to payment</button></div>
                             </div>
                         </div>
                     </div>

@@ -51,7 +51,7 @@
 
                                             @if($subscription->payment_type == 0)
                                             <tr>
-                                                <td>{{$subscription->OrderItem[0]->Item_title ?? ''}}</td>
+                                                <td>{{$subscription->OrderItem[0]->Item_title ?? 'N/A'}}</td>
                                                 <td>{{ Config::get('define.currency.currency') }}{{$subscription->amount ?? 'NA'}}</td>
                                                 <td>{{$subscription->transaction_id ?? 'NA'}}</td>
 
