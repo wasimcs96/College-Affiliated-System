@@ -25,13 +25,14 @@
                 <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
-                             <th><b> Updated At </b></th>
+                            
                             <th> <b>Name</b></th>
                             <th><b> Mobile </b></th>
                             <th><b> E-mail</b></th>
                             <th><b>Date</b></th>
                             <th><b>Time Slot</b></th>
                             <th><b> Status</b></th>
+                            <th><b> Updated At </b></th>
                             <th><b>Actions</b></th>
                         </tr>
                     </thead>
@@ -46,7 +47,7 @@
                         @foreach($bookings as $booking)
 @if($booking->booking_for == 0)
                         <tr>
-                             <td>{{$booking->updated_at ?? ''}} </td>
+                           
                             <td>{{$booking->user->first_name ?? ''}} </td>
                             <td>{{$booking->user->mobile ?? ''}}</td>
                             <td>{{$booking->user->email ?? ''}}</td>
@@ -61,6 +62,7 @@
                                 @if($booking->status==4 ?? '')<div class="btn btn-info">Completed</div>@endif
                                 @if($booking->status==5 ?? '')<div class="btn btn-danger">Closed</div>@endif
                             </td>
+                            <td>{{$booking->updated_at ?? ''}} </td>
                             <td style="text-align: center;"><a href="{{route('consultant.booking.show',['id'=> $booking->id ?? ''])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
                         @endif
@@ -105,7 +107,7 @@ tr.shown td.details-control {
 <script>
     $(document).ready(function() {
         $('#example').DataTable( {
-            "order": [[ 0, "desc" ]]
+            "order": [[ 6, "desc" ]]
         } );
     } );
     </script>

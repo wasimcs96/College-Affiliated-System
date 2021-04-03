@@ -20,7 +20,7 @@
                 <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
-                            <th> <b> Updated At</b></th>
+                        
                             <th> <b> Student Name</b></th>
                             <th> <b> Consultant Name</b></th>
 
@@ -32,6 +32,7 @@
                             {{-- <th><b> Universities</b></th> --}}
                             {{-- <th><b> Date</b></th> --}}
                             <th><b> Status</b></th>
+                            <th> <b> Updated At</b></th>
                             <th style="text-align: center;"><b> Actions</b></th>
                         </tr>
                     </thead>
@@ -45,7 +46,7 @@
                         @foreach($applications as $application)
 
                         <tr>
-                            <td>{{$application->updated_at ?? ''}}</td>
+                           
                             <td>{{$application->user->first_name ?? ''}} {{$application->user->last_name ?? ''}}</td>
                             <td>{{$application->userConsultant->first_name ?? ''}} {{$application->userConsultant->last_name ?? ''}}</td>
 
@@ -62,6 +63,7 @@
                                 @if($application->status==2)<div class="btn btn-danger">Closed</div>@endif
 
                             </td>
+                            <td>{{$application->updated_at ?? ''}}</td>
                             <td style="text-align: center;"><a href="{{route('admin.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 

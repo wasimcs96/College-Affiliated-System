@@ -20,7 +20,7 @@
                 <table class="table table-striped table-hover dataTable js-exportable" id="example">
                     <thead>
                         <tr>
-                            <th><b> Updated At</b></th>
+                           
                             <th> <b>
                                 Name</b></th>
                             <th><b> Mobile </b></th>
@@ -28,6 +28,7 @@
                             {{-- <th><b> Universities</b></th> --}}
                             {{-- <th><b> Date</b></th> --}}
                             <th><b> Status</b></th>
+                            <th><b> Updated At</b></th>
                             <th style="text-align: center;"><b> Actions</b></th>
                         </tr>
                     </thead>
@@ -44,7 +45,7 @@
                         @foreach($applications as $application)
 
                         <tr>
-                            <td>{{$application->updated_at ?? ''}} </td>
+                            
                             <td>{{$application->user->first_name ?? ''}} </td>
                             <td>{{$application->user->mobile ?? ''}}</td>
                             <td>{{$application->user->email ?? ''}}</td>
@@ -54,6 +55,7 @@
                                 @if($application->status==1)<div class="btn btn-success">Completed</div>@endif
                                 @if($application->status==2)<div class="btn btn-danger">Closed</div>@endif
                             </td>
+                            <td>{{$application->updated_at ?? ''}} </td>
                             <td style="text-align: center;"><a href="{{route('consultant.application.create',['id'=> $application->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
                         </tr>
 @endforeach
@@ -98,7 +100,7 @@ tr.shown td.details-control {
 <script>
     $(document).ready(function() {
         $('#example').DataTable( {
-            "order": [[ 0, "desc" ]]
+            "order": [[ 4, "desc" ]]
         } );
     } );
     </script>
