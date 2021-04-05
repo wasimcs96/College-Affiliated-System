@@ -1038,6 +1038,55 @@ location="consultant/services/subscription/add";
       evt.currentTarget.className += " active";
     }
     </script>
+        <script>
+                        $('#login-form').keypress(function(e) {
+
+            if (e.which == 13) {
+              var email=$('#email').val();
+              var password=$('#password').val();
+              if(email=='' || password=='')
+              {
+                  if(email=='')
+                  {
+                  $('#emptyEmail').html('<span style="color: red;">*Please enter email.</span> ');
+                  document.getElementById("login-form").reset();
+                  }
+                  else
+                  {
+                  $('#emptyPassword').html('<span style="color: red;">*Please enter password.</span> ');
+                  document.getElementById("login-form").reset();
+                  }
+              }
+
+              else
+              {
+              $.ajaxSetup({headers:
+              {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+              });
+
+              $.ajax({
+              type: "post",
+              url: "{{route('login.check')}}",
+              data: {email:email},
+              success: function (result) {
+              console.log(JSON.parse(result));
+
+              if(JSON.parse(result)==false)
+              {
+                  $('#loginTop').html('<span style="color: red;">(Your Account is Deactivated. Please Contact to Admin for Details.)</span> ');
+              }
+              else{
+              $('#login-form').submit();
+              }
+
+              }
+              });
+          }
+            }
+          });
+              </script>
 <script>
     $(document).on('click', '#loginSubmit', function ()
     {

@@ -1766,4 +1766,13 @@ console.log(client_id);
     $(this).attr("autocomplete", "off");
     });
 </script>
+<script>
+    $('#basic-form2').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) {
+    e.preventDefault();
+    return false;
+  }
+});
+</script>
 @stop

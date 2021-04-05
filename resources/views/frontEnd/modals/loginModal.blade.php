@@ -64,7 +64,7 @@
                                 <div id="emptyPassword"></div>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between">
-                              
+
                                     @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -82,7 +82,7 @@
                             </div><!-- end input-box -->
                             <div class="btn-box pt-3 pb-4 text-center">
                                 {{-- <button type="submit" class="theme-btn w-100">Login Account</button> --}}
-                                <a href="javascript:void(0);" class="theme-btn w-100" style="text-align: center;" id="loginSubmit">Login Account</a>
+                                <a href="javascript:void(0);" class="btn btn-primary w-100" style="text-align: center;" id="loginSubmit">Login Account</a>
                               New to Website? <a href="#registerModal" id="signupalready" data-toggle="modal" data-dismiss="modal">Sign Up</a>
                             </div>
                             <div class="action-box text-center">
