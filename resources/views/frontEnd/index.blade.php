@@ -1764,20 +1764,19 @@ END ROUND-TRIP AREA
 </section>
                       {{-- works end --}}
 
-
-<section class="funfact-area padding-bottom-70px">
+<!--<section class="funfact-area padding-bottom-70px">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading text-center">
                     <h2 class="sec__title">Milestone of 10 Years</h2>
-                </div><!-- end section-heading -->
-            </div><!-- end col-lg-12 -->
-        </div><!-- end row -->
+                </div>
+            </div>
+        </div>
         <div class="counter-box counter-box-2 margin-top-60px mb-0">
             <div class="row">
 
-                <?php $users = App\Models\User::whereHas('roles', function($q){
+            <?php $users = App\Models\User::whereHas('roles', function($q){
                     $q->where('name', 'client');
                 })->count();
                 $university = App\Models\User::whereHas('roles', function($q){
@@ -1803,9 +1802,9 @@ END ROUND-TRIP AREA
                                 <p class="counter__title"> Satisfied Students </p>
 
 
-                        </div><!-- end counter-content -->
-                    </div><!-- end counter-item -->
-                </div><!-- end col-lg-3 -->
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-3 milestonewidth">
                     <div class="counter-item counter-item-layout-2 display-flex">
                         <div class="counter-icon flex-shrink-0 m-auto">
@@ -1817,9 +1816,9 @@ END ROUND-TRIP AREA
                                 <span class="count-symbol">+</span>
                             </div>
                             <p class="counter__title">Universities</p>
-                        </div><!-- end counter-content -->
-                    </div><!-- end counter-item -->
-                </div><!-- end col-lg-3 -->
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-3 milestonewidth">
                     <div class="counter-item counter-item-layout-2 display-flex">
                         <div class="counter-icon flex-shrink-0 m-auto">
@@ -1831,9 +1830,9 @@ END ROUND-TRIP AREA
                                 <span class="count-symbol">+</span>
                             </div>
                             <p class="counter__title">Consultants</p>
-                        </div><!-- end counter-content -->
-                    </div><!-- end counter-item -->
-                </div><!-- end col-lg-3 -->
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-3 milestonewidth">
                     <div class="counter-item counter-item-layout-2 display-flex">
                         <div class="counter-icon flex-shrink-0 m-auto">
@@ -1846,13 +1845,14 @@ END ROUND-TRIP AREA
                                 <span class="count-symbol">+</span>
                             </div>
                             <p class="counter__title">Booking</p>
-                        </div><!-- end counter-content -->
-                    </div><!-- end counter-item -->
-                </div><!-- end col-lg-3 -->
-            </div><!-- end row -->
-        </div><!-- end counter-box -->
-    </div><!-- end container -->
-</section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+
 
 <section class="info-area info-bg info-area2 padding-top-80px padding-bottom-45px">
     <div class="container">
