@@ -323,7 +323,7 @@
                             <label for="cover_image">Upload Cover Image</label>
                             <input name="cover_image" id="cover_image" type="file" class="dropify-frr">
 <label><span><b>Please Note </b>: Image should be in Given Dimensions:min-width=1200 | min-height=300  </span></label>
-<label><span><b>Please Note </b>: Please click on the link <a href="https://resizeimage.net/" target="_blank">Image Resizer</a> to resize your image  </span></label>
+<label><span><b>Please Note </b>: Please click on the link <a href="https://online-image-resizer.com/" target="_blank">Image Resizer</a> to resize your image  </span></label>
 
 @if(file_exists(Auth()->user()->consultant->cover_image) && isset(Auth()->user()->consultant->cover_image))
 <a href="{{asset(auth()->user()->consultant->cover_image)}}" class="btn btn-primary" target="_blank" style="float: right;">See Cover Image</a>

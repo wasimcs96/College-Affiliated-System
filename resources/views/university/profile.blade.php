@@ -39,8 +39,8 @@
                 </ul>
             </div>
             <div class="body">
-               
-                
+
+
                     <a href="{{route('university_detail',auth()->user()->id)}}" class="btn btn-outline-primary" title="View Profile Page">View Profile
                     </a>
                 <hr>
@@ -312,6 +312,8 @@
                             <label for="profile_image">Upload Cover Image</label>
                             <input name="cover_image" type="file" class="dropify-frr"  >
                              <label><span><b>Please Note </b>: Image should be in Given Dimensions:min-width=1200 | min-height=300  </span></label>
+                             <label><span><b>Please Note </b>: Please click on the link <a href="https://online-image-resizer.com/" target="_blank">Image Resizer</a> to resize your image  </span></label>
+
                             @if(file_exists(Auth()->user()->university->cover_image) && isset(Auth()->user()->university->cover_image))
                                 <a href="{{asset(auth()->user()->university->cover_image)}}" class="btn btn-primary" target="_blank" style="float: right;">See Cover Image</a>
                             @endif
@@ -370,7 +372,7 @@
       position: relative;
       display: inline-block;
     }
-    
+
     .tltp .tltptxt {
       visibility: hidden;
       width: 140px;
@@ -387,7 +389,7 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-    
+
     .tltp .tltptxt::after {
       content: "";
       position: absolute;
@@ -398,7 +400,7 @@
       border-style: solid;
       border-color: #555 transparent transparent transparent;
     }
-    
+
     .tltp:hover .tltptxt {
       visibility: visible;
       opacity: 1;
@@ -431,11 +433,11 @@
       copyText.select();
       copyText.setSelectionRange(0, 99999);
       document.execCommand("copy");
-      
+
       var tooltip = document.getElementById("myTooltip");
       tooltip.innerHTML = "Copied: " + copyText.value;
     }
-    
+
     function outFunc() {
       var tooltip = document.getElementById("myTooltip");
       tooltip.innerHTML = "Copy to clipboard";
