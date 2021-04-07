@@ -77,8 +77,8 @@
                     </tr>
 
                     <tr>
-                        <th scope="row">Website</th>
-                        <td>  @if(isset($user->consultant->website)){{$user->consultant->website ?? ''}}  @else N/A @endif</td>
+                        <th scope="row">GSTIN</th>
+                        <td>  @if(isset($user->consultant->website)){{$user->consultant->website ?? 'N/A'}}  @else N/A @endif</td>
                     </tr>
                     <tr>
                         <th scope="row">Working Week Days</th>

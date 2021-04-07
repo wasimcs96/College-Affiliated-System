@@ -1,5 +1,5 @@
 @extends('frontEnd.layout.master')
-
+@section('title','Campus Interest')
 @section('content')
 <!-- ================================
          END HEADER AREA
@@ -23,7 +23,8 @@
                 <div class="col-lg-10 mx-auto responsive--column-l">
                     <div class="hero-content pb-5">
                         <div class="section-heading text-center" >
-                            <h2 class="sec__title cd-headline zoom" style="color: #073975;">
+                            {{-- #073975; --}}
+                            <h2 class="sec__title cd-headline zoom" style="color: white">
                                 Amazing <span class="cd-words-wrapper" style="color:#ff7300">
                                 <b class="is-visible">Education</b>
                                 <b>Courses</b>
@@ -88,7 +89,7 @@
                                                                 <?php $categories = App\Models\Category::all();?>
                                                     @if($categories->count() > 0)
                                                     @foreach($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                                    <option value="{{$category->id ?? ''}}">{{$category->title ?? ''}}</option>
                                                     @endforeach
 
                                                     @else
@@ -590,6 +591,7 @@
    </ul>
 </div><!-- end section-tab -->
 </div><!-- end flight-filter-tab -->
+
 @if($universities->count()>0)
 <div class="popular-round-trip-wrap padding-top-40px">
 <div class="tab-content" id="myTabContent4">
@@ -1995,10 +1997,10 @@ END ROUND-TRIP AREA
             <div class="col-lg-6">
                 <div class="mobile-app-content">
                     <div class="section-heading">
-                        <h2 class="sec__title line-height-55">Campus Interest Android and IOS App is Available Soon!</h2>
+                        <h2 class="sec__title line-height-55">Campus Interest Android and IOS App will be Available Soon!</h2>
                     </div><!-- end section-heading -->
                     <ul class="info-list padding-top-30px">
-                        <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Access and change your itinerary on-the-go</li>
+                        {{-- <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Access and change your itinerary on-the-go</li> --}}
                         <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Free access</li>
                         <li class="d-flex align-items-center mb-3"><span class="la la-check icon-element flex-shrink-0 ml-0"></span> Get real-time  updates</li>
                     </ul>

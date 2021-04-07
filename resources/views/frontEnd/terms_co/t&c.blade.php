@@ -1,4 +1,5 @@
 @extends('frontEnd.layout.master')
+@section('title','Campus Interest - Terms & Conditions')
 @section('content')
 <?php $terms=App\Models\Page::where('page_type',2)->first() ?>
 

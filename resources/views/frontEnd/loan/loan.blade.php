@@ -1,4 +1,5 @@
 @extends('frontEnd.layout.master')
+@section('title','Campus Interest - Loan')
 @section('per_page_style')
 <style>
     a {

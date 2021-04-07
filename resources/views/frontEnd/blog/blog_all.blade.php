@@ -1,4 +1,5 @@
 @extends('frontEnd.layout.master')
+@section('title','Campus Interest - Blog All')
 @section('content')
 
 <section class="breadcrumb-area bread-bg-9">

@@ -1,4 +1,5 @@
 @extends('frontEnd.layout.master')
+@section('title','Campus Interest - Consultant All')
 @section('content')
 
 

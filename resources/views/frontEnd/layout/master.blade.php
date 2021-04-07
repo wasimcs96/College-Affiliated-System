@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <title>  @yield('title') </title>
-    <link href="{{ asset('assets/default/title-image') }}" type="image/x-icon" rel="shortcut icon"/>
+    <link href="{{ asset('assets/default/title-image.ico') }}" type="image/x-icon" rel="shortcut icon"/>
     <!-- Favicon -->
     {{-- <link rel="icon" href="images/favicon.png"> --}}
 

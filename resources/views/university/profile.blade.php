@@ -189,14 +189,46 @@
                             <input type="text" name="establish_at" class="form-control" value="@if(isset(auth()->user()->university->established_at)){{auth()->user()->university->established_at}}@endif" placeholder="Ex. 1885" required>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
+                    {{-- <div class="col-lg-4 col-md-12">
                         <div class="form-group">
-                            <label for="landline_2">ILTS Rating</label>
+                            <label for="landline_2">IELTS Rating</label>
                             <input type="text" name="ilts" value="@if(isset(auth()->user()->university->iltes)){{auth()->user()->university->iltes}}@endif" class="form-control" placeholder="ILTS Rating" required>
                         </div>
+                    </div> --}}
+                <div class="col-lg-4 col-md-12">
+                    <div class="input-box" >
+                        <span class="la la-university mr-1 form-icon"></span>
+                        <label class="label-text">IELTS Rating</label>
+
+                        <div class="form-group">
+
+                            <select name="ilts" class="form-control" required>
+                                <option value="0" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 0) selected @endif @endif>0</option>
+                                <option value="0.5" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 0.5) selected @endif @endif>0.5</option>
+                                <option value="1" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 1) selected @endif @endif>1</option>
+                                <option value="1.5" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 1.5) selected @endif @endif>1.5</option>
+                                <option value="2" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 2) selected @endif @endif>2</option>
+                                <option value="2.5" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 2.5) selected @endif @endif>2.5</option>
+                                <option value="3" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 3) selected @endif @endif>3</option>
+                                <option value="3.5" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 3.5) selected @endif @endif>3.5</option>
+                                <option value="4" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 4) selected @endif @endif >4</option>
+                                <option value="4.5"  @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 4.5) selected @endif @endif>4.5</option>
+                                <option value="5"  @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 5) selected @endif @endif>5</option>
+                                <option value="5.5"  @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 5.5) selected @endif @endif>5.5</option>
+                                <option value="6"  @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 6) selected @endif @endif>6</option>
+                                <option value="6.5"  @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 6.5) selected @endif @endif>6.5</option>
+                                <option value="7"  @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 7) selected @endif @endif>7</option>
+                                <option value="7.5"  @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 7.5) selected @endif @endif>7.5</option>
+                                <option value="8"  @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 8) selected @endif @endif>8</option>
+                                <option value="8.5" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes == 8.5) selected @endif @endif>8.5</option>
+                                <option value="9" @if(isset(auth()->user()->university->iltes)) @if(auth()->user()->university->iltes ==9) selected @endif @endif>9</option>
+                            </select>
+                            <div id="universityError"></div>
+                            {{-- <input class="form-control" type="name" name="name" placeholder="Your name" required> --}}
+                        </div>
                     </div>
-
-
+                </div>
+                <div class="col-lg-4 col-md-12">
                     <div class="input-box" >
                         <span class="la la-university mr-1 form-icon"></span>
                         <label class="label-text">In Take </label>
@@ -212,15 +244,17 @@
                                 <option value="Jun">Jun</option>
                                 <option value="July">July</option>
                                 <option value="Aug">Aug</option>
-                                   <option value="Sep">Sep</option>
-                                   <option value="Oct">Oct</option>
-                                   <option value="Nov">Nov</option>
-                                   <option value="Dec">Dec</option>
+                                <option value="Sep">Sep</option>
+                                <option value="Oct">Oct</option>
+                                <option value="Nov">Nov</option>
+                                <option value="Dec">Dec</option>
                             </select>
                             <div id="universityError"></div>
                             {{-- <input class="form-control" type="name" name="name" placeholder="Your name" required> --}}
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
                     <div class="input-box" >
                         <span class="la la-university mr-1 form-icon"></span>
                         <label class="label-text">Exam</label>
@@ -240,7 +274,7 @@
                             {{-- <input class="form-control" type="name" name="name" placeholder="Your name" required> --}}
                         </div>
                     </div>
-
+                </div>
 
                           <div class="col-lg-4 col-md-12">
                         <div class="form-group">

@@ -1,5 +1,5 @@
 @extends('frontEnd.layout.master')
-@section('title','Book a Consultant')
+@section('title','Campus Interest - PR Migration Booking')
 
 
 @section('content')

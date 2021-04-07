@@ -1,4 +1,5 @@
 @extends('frontEnd.layout.master')
+@section('title','Campus Interest - Consultant Detail')
 @section('content')
 
 {{-- <section class="breadcrumb-top-bar">
@@ -186,7 +187,7 @@
                                             <li><span>Clients:</span>
                                                 @if(isset($consultant->consultantUniversityClient))
                                     {{$consultant->consultantUniversityClient->count()}}@else N/A @endif</li>
-                                            <li><span>Website:</span><a target="_blank" href="{{$consultant->consultant->website ?? ''}}" URL>{{$consultant->consultant->website ?? ''}}</a></li>
+                                            {{-- <li><span>Website:</span><a target="_blank" href="{{$consultant->consultant->website ?? ''}}" URL>{{$consultant->consultant->website ?? ''}}</a></li> --}}
 
 
                                         </ul>
@@ -580,14 +581,14 @@
                         @endforeach
                                         @if($i == 0)
                                         <div class="text-center" style="margin-top: 110px;">
-                                            <h3> No Associated Universities Available </h3>
+                                            <h3> No Universities Available </h3>
                                         </div>
                                       @endif
 
                 </div><!-- end hotel-card-carousel -->
                 @else
                 <div class="text-center" style="margin-top: 110px;">
-                    <h3>  No Associated Universities Available </h3>
+                    <h3>  No Universities Available </h3>
                 </div>
                 @endif
                 </div>

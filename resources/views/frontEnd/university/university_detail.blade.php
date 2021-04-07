@@ -1,4 +1,5 @@
 @extends('frontEnd.layout.master')
+@section('title','Campus Interest - University Detail')
 @section('content')
 
 {{-- <section class="breadcrumb-top-bar">
@@ -846,7 +847,7 @@
         </div><!-- end row -->
         @else
 <div class="text-center" style="margin-top: 110px;">
-     <h3> No Affiliated Consultant Available </h3>
+     <h3> No Consultant Available </h3>
 </div>
         @endif
         @endif

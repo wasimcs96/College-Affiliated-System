@@ -43,17 +43,20 @@
                         @if($university->status == 1)
                         <tr class="row-{{ $university->id }}">
                             <td>{{ $sno=$sno+1}}.</td>
-                            <td>{{$university->userUniversity->university->university_name ?? ''}}</td>
-                            <td>{{$university->userUniversity->university->website ?? ''}}</td>
-                            <td>@if($university->userUniversity->university->type==0 ?? '')
+                            <td> @if(isset($university->userUniversity->university)) {{$university->userUniversity->university->university_name ?? ''}} @endif</td>
+                            <td> @if(isset($university->userUniversity->university)) {{$university->userUniversity->university->website ?? ''}} @endif</td>
+                            <td> @if(isset($university->userUniversity->university)) @if($university->userUniversity->university->type==0 ?? '')
                                 <span class="btn btn-warning" >Private</span>
                                 @else
                                 <span class="btn btn-info" >Government</span>
-                              @endif</td>
+                              @endif @endif</td>
                             {{-- <td> {{$university->university->user->address}}</td>
                             <td>Indian</td>--}}
                             <td>
-                            <a href="{{route('consultant.university.show',['id'=>$university->userUniversity->id])}}" class="btn btn-success"><i class="icon-eye"></i></a></td>
+                                @if(isset($university->userUniversity))
+                                    <a href="{{route('consultant.university.show',['id'=>$university->userUniversity->id])}}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                @endif
+                            </td>
                         </tr>
                         @endif
                         @endforeach

@@ -1,9 +1,31 @@
+<style>
+       /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+    </style>
+
 <div id="left-sidebar" class="sidebar">
     <div class="navbar-brand">
-        <a href="{{route('front')}}"><img src="{{ asset('assets/images/icon.svg') }}" alt="Campus Interest Logo" class="img-fluid logo"><span>Campus Interest</span></a>
+        <a href="/"><img src="{{ asset('assets/images/icon.svg') }}" alt="Campus Interest Logo" class="img-fluid logo"><span>Campus Interest</span></a>
         <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
     </div>
-    <div class="sidebar-scroll">
+    <div class="sidebar-scroll" style="overflow-y: auto" >
         <div class="user-account">
             <div class="user_div">
                 @if(isset(Auth()->user()->profile_image) && file_exists(Auth()->user()->profile_image))
@@ -33,7 +55,7 @@
                 </ul>
             </div>
         </div>
-        <nav id="left-sidebar-nav" class="sidebar-nav">
+        <nav id="left-sidebar-nav" class="sidebar-nav"  >
             {{-- @if(auth()->user()) --}}
             <ul id="main-menu" class="metismenu">
                 <?php $mytime=Carbon\Carbon::now()->format('Y-m-d');?>

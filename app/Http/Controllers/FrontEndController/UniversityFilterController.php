@@ -36,6 +36,7 @@ class UniversityFilterController extends Controller
     }
         public function courseWiseUniversity(Request $request)
         {
+            // dd($request->all());
             $filtercatgory = $request->category ?? null;
             $filtersub_category = $request->sub_category ?? null;
             $study_level = $request->study_level ?? null;
@@ -122,7 +123,7 @@ class UniversityFilterController extends Controller
 
     public function countryWiseUniversity(Request $request)
     {
-        // dd($request->all());
+        //  dd($request->all());
         $study_level=$request->universitystudylevel ?? null;
         if ($study_level != null) {
             $universities = [];
@@ -142,6 +143,7 @@ class UniversityFilterController extends Controller
             $universitycourse = University::where('countries_id', $countrycoming)->get();
             foreach ($universitycourse as $key => $univercity) {
                 $universities[$key] = $univercity->user;
+
             }
         }
 
