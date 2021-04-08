@@ -108,7 +108,7 @@
      <link rel="shortcut icon" href="/assets/favicon.ico">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-    <link rel="stylesheet" href="./src/nav.css">
+
 <!-- /PWA -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
@@ -126,6 +126,16 @@
     @endif
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('assets/css/site.min.css') }}">
+
+@if(auth()->user()->isConsultant() || auth()->user()->isAdmin())
+    <style>
+
+     .sidebar-scroll{
+         overflow: auto !important;
+     }
+
+    </style>
+@endif
     <style>
        /* sidebar css */
 .sidenav {
@@ -137,6 +147,7 @@
   right: 0;
   background-color: #22252a;
   overflow-x: hidden;
+  overflow-y: auto;
   transition: 0.5s;
   padding-top: 60px;
 }

@@ -1,4 +1,5 @@
 @extends('frontEnd.layout.master')
+@section('title','Campus Interest - Blog Detail')
 @section('content')
 
 <!-- ================================

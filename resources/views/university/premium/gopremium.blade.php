@@ -227,7 +227,7 @@
                 <div class="col-md-3">
                     <br>
 
-                    <p class="align-justify" style="text-align: center;"><b >Payment Method</b></p>
+                    <p class="align-justify" style="text-align: center;"><b ></b></p>
                                 <div class="align-justify"><button type="button" class="btn btn-primary cntr" id="rzp-button1"  style="font-size:large;">Continue to payment</button></div>
                 </div>
             </div>

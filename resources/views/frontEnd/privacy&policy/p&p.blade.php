@@ -1,4 +1,5 @@
 @extends('frontEnd.layout.master')
+@section('title','Campus Interest - Privacy & Privacy')
 @section('content')
 <?php $policy=App\Models\Page::where('page_type',3)->first() ?>
 

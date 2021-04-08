@@ -12,6 +12,7 @@
        <div class="header">
            <h2>Advertisement</h2>
            <ul class="header-dropdown dropdown">
+            <li><a href="https://online-image-resizer.com/" class="btn btn-primary" target="_blank" style="color: white;"> Image Resizer</a></li>
                <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
            </ul>
        </div>
@@ -254,7 +255,7 @@
                             <div class="col-md-3">
                                 <br>
 
-                                <p class="align-justify"><b >Payment Method</b></p>
+                                <p class="align-justify"><b></b></p>
                                 <div class="align-justify"><button type="button" class="btn btn-primary cntr" id="rzp-button1"  style="font-size:large;">Continue to payment</button></div>
                             </div>
                         </div>

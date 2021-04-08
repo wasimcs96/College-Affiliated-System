@@ -118,10 +118,10 @@
                     </div>
                 </li> --}}
                 @if (auth()->user()->isAdmin())
-         
-                <li class="p_news"><a href="{{route('frontend.index')}}" class=" icon-menu" title="Back to Site">Back to Site</a></li>
+
+                <li class="p_news"><a href="/" class=" icon-menu" title="Back to Site">Back to Site</a></li>
                 @else
-                <li class="p_news"><a href="{{route('frontend.index')}}" class=" icon-menu" title="Back to Site">Back to Site</a></li>
+                <li class="p_news"><a href="/" class=" icon-menu" title="Back to Site">Back to Site</a></li>
                 @endif
             </ul>
         </div>

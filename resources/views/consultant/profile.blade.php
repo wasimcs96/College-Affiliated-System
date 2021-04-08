@@ -197,7 +197,7 @@
                     </div>
                     <div class="col-lg-12 col-md-21">
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="address">Address (Geolocation)</label>
                             <div id="locationField">
                                 <input class="form-control"
                                   id="autocomplete"
@@ -212,7 +212,7 @@
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <label for="address">Full Address</label>
+                            <label for="address">Full Address (This Address will be seen on frontend)</label>
                             <textarea rows="4"  type="text" name="address" class="form-control" placeholder="Full Address">@if(isset(Auth()->user()->address)){{Auth()->user()->address}} @else {{ old('address') }} @endif</textarea>
                         </div>
                     </div>
@@ -226,12 +226,12 @@
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
-                            <label for="website">Website</label>
+                            <label for="website">GSTIN</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
+                                {{-- <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-globe"></i></span>
-                                </div>
-                                <input name="website" type="url" class="form-control" value="@if(isset(auth()->user()->consultant->website)){{auth()->user()->consultant->website}} @else {{ old('website') }}  @endif" placeholder="http://" >
+                                </div> --}}
+                                <input name="website" type="text" class="form-control" value="@if(isset(auth()->user()->consultant->website)){{auth()->user()->consultant->website}} @else {{ old('website') }}  @endif" placeholder="http://" >
                             </div>
                         </div>
                     </div>

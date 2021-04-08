@@ -1,4 +1,5 @@
 @extends('frontEnd.layout.master')
+@section('title','Campus Interest - About')
 @section('content')
 <?php $about=App\Models\Page::where('page_type',0)->first() ?>
 <section class="breadcrumb-area bread-bg-9">
